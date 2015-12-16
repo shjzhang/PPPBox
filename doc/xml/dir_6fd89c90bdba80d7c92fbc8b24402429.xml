@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_6fd89c90bdba80d7c92fbc8b24402429" kind="dir">
+    <compoundname>PosSol</compoundname>
+    <innerfile refid="Combinations_8hpp">Combinations.hpp</innerfile>
+    <innerfile refid="PRSolution_8cpp">PRSolution.cpp</innerfile>
+    <innerfile refid="PRSolution_8hpp">PRSolution.hpp</innerfile>
+    <innerfile refid="PRSolution2_8cpp">PRSolution2.cpp</innerfile>
+    <innerfile refid="PRSolution2_8hpp">PRSolution2.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/PosSol/"/>
+  </compounddef>
+</doxygen>

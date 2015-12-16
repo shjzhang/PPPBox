@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="CommandLine_8hpp" kind="file">
+    <compoundname>CommandLine.hpp</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>ident<sp/>&quot;$Id$&quot;</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CommandLine.hpp<sp/><sp/>Command<sp/>line<sp/>options<sp/>and<sp/>argument<sp/>processing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NB.<sp/>Repeatable<sp/>means<sp/>a<sp/>parse<sp/>error<sp/>will<sp/>be<sp/>generated<sp/>if<sp/>the<sp/>option<sp/>appears<sp/>more</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>than<sp/>once,<sp/>unless<sp/>that<sp/>option<sp/>is<sp/>repeatable.<sp/>Only<sp/>vector<sp/>types<sp/>(2,5,7)<sp/>can<sp/>have</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>more<sp/>than<sp/>one<sp/>value,<sp/>but<sp/>this<sp/>has<sp/>nothing<sp/>to<sp/>do<sp/>with<sp/>being<sp/>repeatable!</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NB.<sp/>Options<sp/>that<sp/>go<sp/>into<sp/>vectors<sp/>(types<sp/>2,5,7)<sp/>may<sp/>have<sp/>arguments<sp/>value,value,...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>and<sp/>@files.lst<sp/>where<sp/>files.lst<sp/>is<sp/>a<sp/>file<sp/>containing<sp/>values<sp/>separated<sp/>by<sp/>spaces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>and/or<sp/>linefeed<sp/>and<sp/>NOT<sp/>starting<sp/>with<sp/>#<sp/>(but<sp/>not<sp/>val,val,..<sp/>inside<sp/>the<sp/>file).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NB.<sp/>There<sp/>is<sp/>an<sp/>issue<sp/>for<sp/>repeatable<sp/>options<sp/>that<sp/>are<sp/>not<sp/>vector<sp/>types,<sp/>namely<sp/>if</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>there<sp/>is<sp/>more<sp/>than<sp/>one<sp/>value,<sp/>which<sp/>to<sp/>use:<sp/>values[0]<sp/>or<sp/>values[values.size()-1]?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NB.<sp/>This<sp/>is<sp/>related<sp/>to<sp/>the<sp/>question<sp/>for<sp/>bool<sp/>options<sp/>-<sp/>does<sp/>the<sp/>presence<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>option<sp/>set<sp/>the<sp/>target<sp/>true,<sp/>or<sp/>does<sp/>it<sp/>toggle<sp/>the<sp/>target?<sp/>see<sp/>TD<sp/>in<sp/>.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>COMMAND_LINE_INCLUDE</highlight></codeline>
+<codeline lineno="17"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>COMMAND_LINE_INCLUDE</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RinexSatID_8hpp" kindref="compound">RinexSatID.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keyword">class<sp/></highlight><highlight class="normal">CommandLine<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>OptionTypeEnum<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeUndefined=-1,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeBool,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeInt,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeVectorInt,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeDouble,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeString,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeVectorString,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeSat,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeVectorSat,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeCount<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>must<sp/>be<sp/>last</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/>}<sp/>typeOpt;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>---------------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Encapsulate<sp/>information<sp/>needed<sp/>to<sp/>use<sp/>an<sp/>option,<sp/>including<sp/>where<sp/>to<sp/>store<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Option<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>shortOpt;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>character<sp/>appearing<sp/>in<sp/>the<sp/>short<sp/>command<sp/>:<sp/>x<sp/>in<sp/><sp/>-x<sp/>&lt;arg&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>longOpt;</highlight><highlight class="comment">//<sp/>string<sp/>appearing<sp/>in<sp/>the<sp/>long<sp/>command<sp/>:<sp/>obs<sp/>in<sp/>--obs<sp/>&lt;arg&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>arg;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string<sp/>giving<sp/>the<sp/>argument<sp/>:<sp/>arg<sp/>in<sp/>the<sp/>above<sp/>example</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>predesc;</highlight><highlight class="comment">//<sp/>string<sp/>to<sp/>put<sp/>on<sp/>line<sp/>_before_<sp/>description<sp/>on<sp/>syntax<sp/>page</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>desc;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string<sp/>giving<sp/>the<sp/>description<sp/>on<sp/>the<sp/>syntax<sp/>page</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>syntax;<sp/></highlight><highlight class="comment">//<sp/>full<sp/>string<sp/>used<sp/>in<sp/>syntax<sp/>page:<sp/>--opt<sp/>&lt;arg&gt;<sp/><sp/><sp/>Desc<sp/>(def)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>repeat;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>true,<sp/>option<sp/>is<sp/>repeatable,<sp/>meaning<sp/>repeat=F<sp/>causes<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>parse<sp/>error<sp/>if<sp/>the<sp/>option<sp/>appears<sp/>more<sp/>than<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>required;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>true,<sp/>option<sp/>is<sp/>required</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>expand;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>true,<sp/>expand<sp/>arguments<sp/>a,b,c<sp/>(vector<sp/>types<sp/>only)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeOpt<sp/>type;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>type<sp/>target:<sp/>bool,<sp/>int,<sp/>doub,<sp/>str,<sp/>vec&lt;str&gt;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RinexSatID,<sp/>vec&lt;RinexSatID&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*p_output;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pointer<sp/>to<sp/>output<sp/>-<sp/>default<sp/>is<sp/>its<sp/>value<sp/>on<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>values;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>store<sp/>values<sp/>from<sp/>command<sp/>line</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>:<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shortOpt(0),repeat(false),required(false),expand(true),</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type(typeUndefined),p_output(NULL)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/>std::string<sp/>predes,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>des,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,<sp/>typeOpt<sp/>t,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shortOpt<sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>longOpt<sp/>=<sp/>l;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arg<sp/>=<sp/>a;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>predesc<sp/>=<sp/>predes;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>desc<sp/>=<sp/>des;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>repeat<sp/>=<sp/>rep;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>required<sp/>=<sp/>req;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>=<sp/>t;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_output<sp/>=<sp/>ptr;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>expand<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/>};<sp/></highlight><highlight class="comment">//<sp/>end<sp/>class<sp/>Option<sp/>-------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>--------------<sp/>member<sp/>data<sp/>------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>first<sp/>two<sp/>for<sp/>internal<sp/>use<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>help,verbose,helponly,foundErrors;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>debug;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NB<sp/>default<sp/>is<sp/>-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>syntaxPageBuilt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0<sp/>c&apos;tor,<sp/>1<sp/>Usage:<sp/>...,<sp/>2<sp/>prgm<sp/>descript,<sp/>3<sp/>complete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/>std::string<sp/>syntaxPage;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/>std::vector&lt;Option&gt;<sp/>options;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>ignore_opts_with_arg;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>ignore_opts_without_arg;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>ignore_on_opts;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>ignore_off_opts;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/>std::map&lt;std::string,std::string&gt;<sp/>deprec_opts;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/>std::vector&lt;Option&gt;<sp/>undoc_options;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>--------------<sp/>member<sp/>functions<sp/>-------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>clang<sp/>diagnostic<sp/>push</highlight></codeline>
+<codeline lineno="116"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#pragma<sp/>clang<sp/>diagnostic<sp/>ignored<sp/>&quot;-Wreorder&quot;</highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>CommandLine(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>help(false),debug(-1),verbose(false),syntaxPageBuilt(0)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>clang<sp/>diagnostic<sp/>pop</highlight></codeline>
+<codeline lineno="120"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>destructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/>~CommandLine(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>access</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hasHelp(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>help;<sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hasErrors(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>foundErrors;<sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>--------------<sp/>add<sp/>to<sp/>list<sp/>---------------------------------------</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add_ignore(std::string<sp/>opt,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>has_arg=</highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(has_arg)<sp/>ignore_opts_with_arg.push_back(opt);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ignore_opts_without_arg.push_back(opt);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add_ignore_on(std::string<sp/>opt)<sp/>{<sp/>ignore_on_opts.push_back(opt);<sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add_ignore_off(std::string<sp/>opt)<sp/>{<sp/>ignore_off_opts.push_back(opt);<sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add_deprecated(std::string<sp/>old_opt,<sp/>std::string<sp/>new_opt)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>deprec_opts[old_opt]<sp/>=<sp/>new_opt;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>ptr,<sp/>std::string<sp/>predes,<sp/>std::string<sp/>des,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option<sp/>opt(s,l,a,predes,des,rep,req,typeBool,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)ptr);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>add(opt,doc);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>ptr,<sp/>std::string<sp/>predes,<sp/>std::string<sp/>des,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option<sp/>opt(s,l,a,predes,des,rep,req,typeInt,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)ptr);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>add(opt,doc);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;int&gt;*<sp/>ptr,<sp/>std::string<sp/>predes,<sp/>std::string<sp/>des,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option<sp/>opt(s,l,a,predes,des,rep,req,typeVectorInt,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)ptr);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>add(opt,doc);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>ptr,<sp/>std::string<sp/>predes,<sp/>std::string<sp/>des,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option<sp/>opt(s,l,a,predes,des,rep,req,typeDouble,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)ptr);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>add(opt,doc);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string*<sp/>ptr,<sp/>std::string<sp/>predes,<sp/>std::string<sp/>des,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option<sp/>opt(s,l,a,predes,des,rep,req,typeString,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)ptr);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>add(opt,doc);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;*<sp/>ptr,<sp/>std::string<sp/>predes,<sp/>std::string<sp/>des,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option<sp/>opt(s,l,a,predes,des,rep,req,typeVectorString,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)ptr);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>add(opt,doc);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpstk::RinexSatID*<sp/>ptr,<sp/>std::string<sp/>predes,<sp/>std::string<sp/>des,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option<sp/>opt(s,l,a,predes,des,rep,req,typeSat,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)ptr);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>add(opt,doc);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>s,<sp/>std::string<sp/>l,<sp/>std::string<sp/>a,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rep,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>req,</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;gpstk::RinexSatID&gt;*<sp/>ptr,<sp/>std::string<sp/>predes,<sp/>std::string<sp/>des,</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Option<sp/>opt(s,l,a,predes,des,rep,req,typeVectorSat,(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)ptr);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>add(opt,doc);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>modify<sp/>an<sp/>option<sp/>-<sp/>string<sp/>must<sp/>match<sp/>long<sp/>option<sp/>string<sp/>passed<sp/>to<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>vector<sp/>types<sp/>only:<sp/>turn<sp/>off<sp/>expansion<sp/>of<sp/>arguments<sp/>(&apos;a,b,c&apos;<sp/>-&gt;<sp/>&apos;a&apos;<sp/>&apos;b&apos;<sp/>and<sp/>&apos;c&apos;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>noExpansion(std::string<sp/>l)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;options.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(options[i].longOpt<sp/>==<sp/>l<sp/>&amp;&amp;<sp/>(options[i].type<sp/>==<sp/>typeVectorString<sp/>||</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options[i].type<sp/>==<sp/>typeVectorSat<sp/>||</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options[i].type<sp/>==<sp/>typeVectorInt))</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options[i].expand<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-------------------------------------------------------------</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DefineUsageString(std::string<sp/>str)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">()</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>syntaxPage<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Usage:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>str;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>syntaxPageBuilt<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ProcessCommandLine(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**<sp/>argv,<sp/>std::string<sp/>PrgmDesc,</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string&amp;<sp/>Usage,<sp/>std::string&amp;<sp/>Errors,<sp/>std::vector&lt;std::string&gt;&amp;<sp/>Unrec)</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(gpstk::Exception);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DumpConfiguration(std::ostream&amp;<sp/>os)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(gpstk::Exception);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ValidateCommandLine(std::string&amp;<sp/>msg)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(gpstk::Exception);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>BuildSyntaxPage(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>throw(gpstk::Exception);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PreProcessArgs(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*arg,<sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;&amp;<sp/>Args,</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>Errors)<sp/>throw(gpstk::Exception);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Parse(std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;&amp;<sp/>Args,<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>Errors,</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;&amp;<sp/>Unrecog)<sp/>throw(gpstk::Exception);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>SyntaxPage(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>throw(gpstk::Exception);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Postprocess(std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>Errors,<sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;&amp;<sp/>Unrecog)</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>throw(gpstk::Exception);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>add(Option&amp;<sp/>opt,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>doc)<sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(doc)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options.push_back(opt);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>undoc_options.push_back(opt);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>end<sp/>class<sp/>CommandLine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>COMMAND_LINE_INCLUDE</highlight></codeline>
+    </programlisting>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/CommandLine/CommandLine.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_8425773b281009bda9f9289d5c0ae7ee" kind="dir">
+    <compoundname>deprecate</compoundname>
+    <innerfile refid="AmbiguityDatum2_8cpp">AmbiguityDatum2.cpp</innerfile>
+    <innerfile refid="AmbiguityDatum2_8hpp">AmbiguityDatum2.hpp</innerfile>
+    <innerfile refid="compass__constants_8hpp">compass_constants.hpp</innerfile>
+    <innerfile refid="CorrectUPDXs_8cpp">CorrectUPDXs.cpp</innerfile>
+    <innerfile refid="CorrectUPDXs_8hpp">CorrectUPDXs.hpp</innerfile>
+    <innerfile refid="gps__constants_8hpp">gps_constants.hpp</innerfile>
+    <innerfile refid="RinexUPDXBase_8hpp">RinexUPDXBase.hpp</innerfile>
+    <innerfile refid="RinexUPDXData_8cpp">RinexUPDXData.cpp</innerfile>
+    <innerfile refid="RinexUPDXData_8hpp">RinexUPDXData.hpp</innerfile>
+    <innerfile refid="RinexUPDXHeader_8cpp">RinexUPDXHeader.cpp</innerfile>
+    <innerfile refid="RinexUPDXHeader_8hpp">RinexUPDXHeader.hpp</innerfile>
+    <innerfile refid="RinexUPDXStore_8cpp">RinexUPDXStore.cpp</innerfile>
+    <innerfile refid="RinexUPDXStore_8hpp">RinexUPDXStore.hpp</innerfile>
+    <innerfile refid="RinexUPDXStream_8hpp">RinexUPDXStream.hpp</innerfile>
+    <innerfile refid="SatUPDX_8hpp">SatUPDX.hpp</innerfile>
+    <innerfile refid="SolverPPP2_8cpp">SolverPPP2.cpp</innerfile>
+    <innerfile refid="SolverPPP2_8hpp">SolverPPP2.hpp</innerfile>
+    <innerfile refid="SVExclusionList_8cpp">SVExclusionList.cpp</innerfile>
+    <innerfile refid="SVExclusionList_8hpp">SVExclusionList.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/deprecate/"/>
+  </compounddef>
+</doxygen>

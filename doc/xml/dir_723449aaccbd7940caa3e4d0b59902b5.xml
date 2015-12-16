@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_723449aaccbd7940caa3e4d0b59902b5" kind="dir">
+    <compoundname>RINEX3</compoundname>
+    <innerfile refid="Rinex3ClockBase_8hpp">Rinex3ClockBase.hpp</innerfile>
+    <innerfile refid="Rinex3ClockData_8cpp">Rinex3ClockData.cpp</innerfile>
+    <innerfile refid="Rinex3ClockData_8hpp">Rinex3ClockData.hpp</innerfile>
+    <innerfile refid="Rinex3ClockHeader_8cpp">Rinex3ClockHeader.cpp</innerfile>
+    <innerfile refid="Rinex3ClockHeader_8hpp">Rinex3ClockHeader.hpp</innerfile>
+    <innerfile refid="Rinex3ClockStream_8hpp">Rinex3ClockStream.hpp</innerfile>
+    <innerfile refid="Rinex3NavBase_8hpp">Rinex3NavBase.hpp</innerfile>
+    <innerfile refid="Rinex3NavData_8cpp">Rinex3NavData.cpp</innerfile>
+    <innerfile refid="Rinex3NavData_8hpp">Rinex3NavData.hpp</innerfile>
+    <innerfile refid="Rinex3NavFilterOperators_8hpp">Rinex3NavFilterOperators.hpp</innerfile>
+    <innerfile refid="Rinex3NavHeader_8cpp">Rinex3NavHeader.cpp</innerfile>
+    <innerfile refid="Rinex3NavHeader_8hpp">Rinex3NavHeader.hpp</innerfile>
+    <innerfile refid="Rinex3NavStream_8hpp">Rinex3NavStream.hpp</innerfile>
+    <innerfile refid="Rinex3ObsBase_8hpp">Rinex3ObsBase.hpp</innerfile>
+    <innerfile refid="Rinex3ObsData_8cpp">Rinex3ObsData.cpp</innerfile>
+    <innerfile refid="Rinex3ObsData_8hpp">Rinex3ObsData.hpp</innerfile>
+    <innerfile refid="Rinex3ObsFilterOperators_8hpp">Rinex3ObsFilterOperators.hpp</innerfile>
+    <innerfile refid="Rinex3ObsHeader_8cpp">Rinex3ObsHeader.cpp</innerfile>
+    <innerfile refid="Rinex3ObsHeader_8hpp">Rinex3ObsHeader.hpp</innerfile>
+    <innerfile refid="Rinex3ObsStream_8hpp">Rinex3ObsStream.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/FileHandling/RINEX3/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="RACRotation_8cpp" kind="file">
+    <compoundname>RACRotation.cpp</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>ident<sp/>&quot;$Id$&quot;</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>This<sp/>file<sp/>is<sp/>part<sp/>of<sp/>GPSTk,<sp/>the<sp/>GPS<sp/>Toolkit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>The<sp/>GPSTk<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Lesser<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>by<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2.1<sp/>of<sp/>the<sp/>License,<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>The<sp/>GPSTk<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>GNU<sp/>Lesser<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Lesser<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>License<sp/>along<sp/>with<sp/>GPSTk;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,<sp/>MA<sp/>02110,<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2004,<sp/>The<sp/>University<sp/>of<sp/>Texas<sp/>at<sp/>Austin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>gpstk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RACRotation_8hpp" kindref="compound">RACRotation.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gpstk</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//using<sp/>namespace<sp/>std;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">RACRotation::RACRotation(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::Triple&amp;<sp/>SVPositionVector,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::Triple&amp;<sp/>SVVelocityVector)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>gpstk::Matrix&lt;double&gt;(3,3)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/>compute(<sp/>SVPositionVector,<sp/>SVVelocityVector<sp/>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">RACRotation::RACRotation(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::Xvt&amp;<sp/>xvt)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>gpstk::Matrix&lt;double&gt;(3,3)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/>compute(<sp/>xvt.x,<sp/>xvt.v<sp/>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Given<sp/>the<sp/>SV<sp/>position<sp/>vector<sp/>and<sp/>the<sp/>SV<sp/>velocity<sp/>vector,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>compute<sp/>a<sp/>rotation<sp/>from<sp/>ECEF<sp/>XYZ<sp/>to<sp/>ECEF<sp/>Radial,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Along-Track,<sp/>Cross-Track<sp/>(RAC).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Let<sp/>the<sp/>SV<sp/>position<sp/>vector<sp/>be<sp/>represented<sp/>by<sp/>R</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Let<sp/>the<sp/>SV<sp/>velocity<sp/>vector<sp/>be<sp/>represented<sp/>by<sp/>V</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>1.)<sp/>Form<sp/>the<sp/>unit<sp/>vector<sp/>R^<sp/>=<sp/>R<sp/>/<sp/>|R|.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>2.)<sp/>Compute<sp/>vector<sp/>C<sp/>=<sp/>R^<sp/>cross<sp/>V<sp/>and<sp/>unit<sp/>vector<sp/>C^<sp/>=<sp/>C<sp/>/<sp/>|C|.<sp/><sp/>C^<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>perpendiculat<sp/>to<sp/>the<sp/>RV<sp/>plane</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>3.)<sp/>Compute<sp/>A^<sp/>=<sp/>C^<sp/>corss<sp/>R^.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>4.)<sp/>[R^,<sp/>A^,<sp/>C^]<sp/>is<sp/>an<sp/>orthonormal<sp/>triad<sp/>and<sp/>the<sp/>rotation<sp/>matrix<sp/>between</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>XYZ<sp/>and<sp/>RAC<sp/>is<sp/>the<sp/>matrix<sp/>where<sp/>R^,<sp/>C^,<sp/>and<sp/>A^<sp/>are<sp/>each<sp/>a<sp/>row<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RACRotation::compute(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::Triple&amp;<sp/>SVPositionVector,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::Triple&amp;<sp/>SVVelocityVector)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/>gpstk::Triple<sp/>unitR<sp/>=<sp/>SVPositionVector.unitVector();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/>gpstk::Triple<sp/>C<sp/>=<sp/>unitR.cross(SVVelocityVector);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/>gpstk::Triple<sp/>unitC<sp/>=<sp/>C.unitVector();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/>gpstk::Triple<sp/>unitA<sp/>=<sp/>unitC.cross(unitR);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(0,0)<sp/>=<sp/>unitR[0];</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(0,1)<sp/>=<sp/>unitR[1];</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(0,2)<sp/>=<sp/>unitR[2];</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(1,0)<sp/>=<sp/>unitA[0];</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(1,1)<sp/>=<sp/>unitA[1];</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(1,2)<sp/>=<sp/>unitA[2];</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(2,0)<sp/>=<sp/>unitC[0];</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(2,1)<sp/>=<sp/>unitC[1];</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/>(*this)<sp/>(2,2)<sp/>=<sp/>unitC[2];</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">gpstk::Vector&lt;double&gt;<sp/>RACRotation::convertToRAC(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::Vector&lt;double&gt;&amp;<sp/>inV<sp/>)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/>gpstk::Vector&lt;double&gt;<sp/>outV(3);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>My<sp/>goal<sp/>was<sp/>to<sp/>use<sp/>the<sp/>following<sp/>statement.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/>outV<sp/>=<sp/><sp/>this<sp/>*<sp/>inV;</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>However,<sp/>for<sp/>some<sp/>reason,<sp/>gcc<sp/>refuses<sp/>to<sp/>recognize<sp/>RACRotation<sp/>as<sp/>a</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>Matrix<sp/>subclass.<sp/><sp/>Therefore,<sp/>I&apos;ve<sp/>incorporated<sp/>the<sp/>matrix<sp/>multiply</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>as<sp/>a<sp/>temporary<sp/>kludge.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(inV.size()!=3)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpstk::Exception<sp/>e(</highlight><highlight class="stringliteral">&quot;Incompatible<sp/>dimensions<sp/>for<sp/>Vector&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>GPSTK_THROW(e);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i,<sp/>j;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>3;<sp/>i++)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>outV[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>3;<sp/>j++)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>temp<sp/>=<sp/><sp/>(*this)(i,j)<sp/>*<sp/>inV[j];</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outV[i]<sp/>+=<sp/>temp;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>end<sp/>kludge<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(outV);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">gpstk::Triple<sp/>RACRotation::convertToRAC(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::Triple&amp;<sp/>inVec<sp/>)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/>gpstk::Vector&lt;double&gt;<sp/>v(3);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/>v[0]<sp/>=<sp/>inVec[0];</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/>v[1]<sp/>=<sp/>inVec[1];</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/>v[2]<sp/>=<sp/>inVec[2];</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/>gpstk::Vector&lt;double&gt;<sp/>vOut<sp/>=<sp/>convertToRAC(<sp/>v<sp/>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/>gpstk::Triple<sp/>outVec(<sp/>vOut[0],<sp/>vOut[1],<sp/>vOut[2]<sp/>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(outVec);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">gpstk::Xvt<sp/>RACRotation::convertToRAC(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::Xvt&amp;<sp/>in<sp/>)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/>gpstk::Xvt<sp/>out;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/>out.clkbias<sp/>=<sp/>in.clkbias;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/>out.relcorr<sp/>=<sp/>in.relcorr;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/>out.clkdrift<sp/>=<sp/>in.clkdrift;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/>out.x<sp/>=<sp/>convertToRAC(<sp/>in.x<sp/>);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/>out.v<sp/>=<sp/>convertToRAC(<sp/>in.v<sp/>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(out);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>end<sp/>namespace<sp/>gpstk</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Math/RACRotation.cpp"/>
+  </compounddef>
+</doxygen>

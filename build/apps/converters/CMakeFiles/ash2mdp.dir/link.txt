@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/ash2mdp.dir/ash2mdp.cpp.o  -o ash2mdp  ../../libpppbox.dylib 

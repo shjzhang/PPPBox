@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_eb7b6389ab0564052e9461a3948b0be4" kind="dir">
+    <compoundname>Geomatics</compoundname>
+    <innerfile refid="AntexBase_8hpp">AntexBase.hpp</innerfile>
+    <innerfile refid="AntexData_8cpp">AntexData.cpp</innerfile>
+    <innerfile refid="AntexData_8hpp">AntexData.hpp</innerfile>
+    <innerfile refid="AntexHeader_8cpp">AntexHeader.cpp</innerfile>
+    <innerfile refid="AntexHeader_8hpp">AntexHeader.hpp</innerfile>
+    <innerfile refid="AntexStream_8hpp">AntexStream.hpp</innerfile>
+    <innerfile refid="DDid_8cpp">DDid.cpp</innerfile>
+    <innerfile refid="DDid_8hpp">DDid.hpp</innerfile>
+    <innerfile refid="DiscCorr_8cpp">DiscCorr.cpp</innerfile>
+    <innerfile refid="DiscCorr_8hpp">DiscCorr.hpp</innerfile>
+    <innerfile refid="EarthOrientation_8cpp">EarthOrientation.cpp</innerfile>
+    <innerfile refid="EarthOrientation_8hpp">EarthOrientation.hpp</innerfile>
+    <innerfile refid="format_8cpp">format.cpp</innerfile>
+    <innerfile refid="format_8hpp">format.hpp</innerfile>
+    <innerfile refid="GeodeticFrames_8cpp">GeodeticFrames.cpp</innerfile>
+    <innerfile refid="GeodeticFrames_8hpp">GeodeticFrames.hpp</innerfile>
+    <innerfile refid="GSatID_8cpp">GSatID.cpp</innerfile>
+    <innerfile refid="GSatID_8hpp">GSatID.hpp</innerfile>
+    <innerfile refid="index_8hpp">index.hpp</innerfile>
+    <innerfile refid="KalmanFilter_8hpp">KalmanFilter.hpp</innerfile>
+    <innerfile refid="Geomatics_2logstream_8hpp">Geomatics/logstream.hpp</innerfile>
+    <innerfile refid="PhaseWindup_8cpp">PhaseWindup.cpp</innerfile>
+    <innerfile refid="PhaseWindup_8hpp">PhaseWindup.hpp</innerfile>
+    <innerfile refid="PreciseRange_8cpp">PreciseRange.cpp</innerfile>
+    <innerfile refid="PreciseRange_8hpp">PreciseRange.hpp</innerfile>
+    <innerfile refid="random_8cpp">random.cpp</innerfile>
+    <innerfile refid="random_8hpp">random.hpp</innerfile>
+    <innerfile refid="RobustStats_8cpp">RobustStats.cpp</innerfile>
+    <innerfile refid="RobustStats_8hpp">RobustStats.hpp</innerfile>
+    <innerfile refid="SatPass_8cpp">SatPass.cpp</innerfile>
+    <innerfile refid="SatPass_8hpp">SatPass.hpp</innerfile>
+    <innerfile refid="Geomatics_2singleton_8hpp">Geomatics/singleton.hpp</innerfile>
+    <innerfile refid="SolarPosition_8cpp">SolarPosition.cpp</innerfile>
+    <innerfile refid="SolarPosition_8hpp">SolarPosition.hpp</innerfile>
+    <innerfile refid="SolarSystem_8cpp">SolarSystem.cpp</innerfile>
+    <innerfile refid="SolarSystem_8hpp">SolarSystem.hpp</innerfile>
+    <innerfile refid="SolidEarthTides_8cpp">SolidEarthTides.cpp</innerfile>
+    <innerfile refid="SolidEarthTides_8hpp">SolidEarthTides.hpp</innerfile>
+    <innerfile refid="Geomatics_2SpecialFunctions_8hpp">Geomatics/SpecialFunctions.hpp</innerfile>
+    <innerfile refid="SRI_8cpp">SRI.cpp</innerfile>
+    <innerfile refid="SRI_8hpp">SRI.hpp</innerfile>
+    <innerfile refid="SRIFilter_8cpp">SRIFilter.cpp</innerfile>
+    <innerfile refid="SRIFilter_8hpp">SRIFilter.hpp</innerfile>
+    <innerfile refid="SRIleastSquares_8cpp">SRIleastSquares.cpp</innerfile>
+    <innerfile refid="SRIleastSquares_8hpp">SRIleastSquares.hpp</innerfile>
+    <innerfile refid="SRIMatrix_8hpp">SRIMatrix.hpp</innerfile>
+    <innerfile refid="SunEarthSatGeometry_8cpp">SunEarthSatGeometry.cpp</innerfile>
+    <innerfile refid="SunEarthSatGeometry_8hpp">SunEarthSatGeometry.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Geomatics/"/>
+  </compounddef>
+</doxygen>

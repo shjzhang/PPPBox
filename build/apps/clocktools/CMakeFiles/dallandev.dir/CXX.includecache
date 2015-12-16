@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/shjzhang/Documents/Develop/rocket/pppbox/apps/clocktools/dallandev.cpp
+iostream
+-
+vector
+-
+string
+-
+cstdio
+-
+cstring
+-
+cmath
+-
+cstdlib
+-
+

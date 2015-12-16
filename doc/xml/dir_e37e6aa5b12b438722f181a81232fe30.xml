@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_e37e6aa5b12b438722f181a81232fe30" kind="dir">
+    <compoundname>FIC</compoundname>
+    <innerfile refid="FICAStream_8hpp">FICAStream.hpp</innerfile>
+    <innerfile refid="FICBase_8hpp">FICBase.hpp</innerfile>
+    <innerfile refid="FICData_8cpp">FICData.cpp</innerfile>
+    <innerfile refid="FICData_8hpp">FICData.hpp</innerfile>
+    <innerfile refid="FICData109_8cpp">FICData109.cpp</innerfile>
+    <innerfile refid="FICData109_8hpp">FICData109.hpp</innerfile>
+    <innerfile refid="FICData162_8cpp">FICData162.cpp</innerfile>
+    <innerfile refid="FICData162_8hpp">FICData162.hpp</innerfile>
+    <innerfile refid="FICData62_8cpp">FICData62.cpp</innerfile>
+    <innerfile refid="FICData62_8hpp">FICData62.hpp</innerfile>
+    <innerfile refid="FICData9_8cpp">FICData9.cpp</innerfile>
+    <innerfile refid="FICData9_8hpp">FICData9.hpp</innerfile>
+    <innerfile refid="FICFilterOperators_8hpp">FICFilterOperators.hpp</innerfile>
+    <innerfile refid="FICHeader_8cpp">FICHeader.cpp</innerfile>
+    <innerfile refid="FICHeader_8hpp">FICHeader.hpp</innerfile>
+    <innerfile refid="FICStream_8hpp">FICStream.hpp</innerfile>
+    <innerfile refid="FICStreamBase_8hpp">FICStreamBase.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/FileHandling/FIC/"/>
+  </compounddef>
+</doxygen>

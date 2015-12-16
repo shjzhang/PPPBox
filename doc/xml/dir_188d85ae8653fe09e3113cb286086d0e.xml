@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_188d85ae8653fe09e3113cb286086d0e" kind="dir">
+    <compoundname>apps</compoundname>
+    <innerdir refid="dir_1f51c8a8f587c82a8245d2a9b09c47b4">ObsArrayEvaluator</innerdir>
+    <innerdir refid="dir_04e7357021f9a6dfda885736601ebaa8">qa</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/removed/apps/"/>
+  </compounddef>
+</doxygen>

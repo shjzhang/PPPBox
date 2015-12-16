@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_ecb8b091630eddec385ab373026aec24" kind="dir">
+    <compoundname>Misc</compoundname>
+    <innerfile refid="Bancroft_8cpp">Bancroft.cpp</innerfile>
+    <innerfile refid="Bancroft_8hpp">Bancroft.hpp</innerfile>
+    <innerfile refid="DOP_8cpp">DOP.cpp</innerfile>
+    <innerfile refid="DOP_8hpp">DOP.hpp</innerfile>
+    <innerfile refid="GloFreqIndex_8cpp">GloFreqIndex.cpp</innerfile>
+    <innerfile refid="GloFreqIndex_8hpp">GloFreqIndex.hpp</innerfile>
+    <innerfile refid="MemoryUtils_8hpp">MemoryUtils.hpp</innerfile>
+    <innerfile refid="mergePCodeWords_8h">mergePCodeWords.h</innerfile>
+    <innerfile refid="ModeledPseudorangeBase_8hpp">ModeledPseudorangeBase.hpp</innerfile>
+    <innerfile refid="MOPSWeight_8cpp">MOPSWeight.cpp</innerfile>
+    <innerfile refid="MOPSWeight_8hpp">MOPSWeight.hpp</innerfile>
+    <innerfile refid="RK4VehicleModel_8cpp">RK4VehicleModel.cpp</innerfile>
+    <innerfile refid="RK4VehicleModel_8hpp">RK4VehicleModel.hpp</innerfile>
+    <innerfile refid="SimpleIURAWeight_8cpp">SimpleIURAWeight.cpp</innerfile>
+    <innerfile refid="SimpleIURAWeight_8hpp">SimpleIURAWeight.hpp</innerfile>
+    <innerfile refid="SVNumXRef_8cpp">SVNumXRef.cpp</innerfile>
+    <innerfile refid="SVNumXRef_8hpp">SVNumXRef.hpp</innerfile>
+    <innerfile refid="WeightBase_8hpp">WeightBase.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Misc/"/>
+  </compounddef>
+</doxygen>

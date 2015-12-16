@@ -1,0 +1,9 @@
+digraph "deprecate" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_9f13e7e48b1dae88d68f6e470b94897e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="lib" fontname="Helvetica", fontsize="10", URL="dir_9f13e7e48b1dae88d68f6e470b94897e.html"]
+  dir_8425773b281009bda9f9289d5c0ae7ee [shape=box, label="deprecate", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_8425773b281009bda9f9289d5c0ae7ee.html"];
+  }
+}

@@ -1,0 +1,209 @@
+#pragma ident "$Id: SolverPPPAR.hpp 1914 2009-05-24 22:09:30Z architest $"
+
+/**
+ * @file SolverPPPAR.hpp
+ * Class to compute the PPP solution in forwards-backwards mode.
+ */
+
+#ifndef GPSTK_SOLVERPPPAR_HPP
+#define GPSTK_SOLVERPPPAR_HPP
+
+//============================================================================
+//
+//  This file is part of GPSTk, the GPS Toolkit.
+//
+//  The GPSTk is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published
+//  by the Free Software Foundation; either version 2.1 of the License, or
+//  any later version.
+//
+//  The GPSTk is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public
+//  License along with GPSTk; if not, write to the Free Software Foundation,
+//  Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+//  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2008, 2009
+//
+//============================================================================
+
+
+#include "CodeKalmanSolver.hpp"
+#include "SolverPPPWL.hpp"
+#include "SolverPPPNL.hpp"
+#include <list>
+#include <set>
+
+
+namespace gpstk
+{
+
+      /** @addtogroup GPSsolutions */
+      /// @ingroup math
+
+      //@{
+
+      /** This class computes the Precise Point Positioning (PPP) solution. 
+       *
+       * A typical way to use this class follows:
+       *
+       * @code
+       *
+       *      // INITIALIZATION PART
+       *
+       *
+       *      // PROCESSING PART
+       *
+       *
+       *      // --->>> Process() phase <<<--- //
+       *
+       * @endcode
+       *
+       *
+       * \warning "SolverPPPAR" is based on a Kalman filter, and Kalman filters
+       * are objets that store their internal state, so you MUST NOT use the
+       * SAME object to process DIFFERENT data streams.
+       *
+       * @sa SolverBase.hpp, SolverLMS.hpp, CodeKalmanSolver.hpp and
+       * SolverPPP.hpp for base classes.
+       *
+       */
+   class SolverPPPAR : public CodeKalmanSolver
+   {
+   public:
+
+         /** Common constructor.
+          *
+          * @param useNEU   If true, will compute dLat, dLon, dH coordinates;
+          *                 if false (the default), will compute dx, dy, dz.
+          */
+      SolverPPPAR(bool useNEU = false);
+
+
+         /** Returns a reference to a gnnsSatTypeValue object after
+          *  solving the previously defined equation system.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssSatTypeValue& Process(gnssSatTypeValue& gData)
+         throw(ProcessingException, SVNumException);
+
+
+         /** Returns a reference to a gnnsRinex object after solving
+          *  the previously defined equation system.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssRinex& Process(gnssRinex& gData)
+         throw(ProcessingException, SVNumException);
+
+
+         /** Sets if a NEU system will be used.
+          *
+          * @param useNEU  Boolean value indicating if a NEU system will
+          *                be used
+          *
+          */
+      virtual SolverPPPAR& setNEU( bool useNEU );
+
+
+         /** Set a single coordinates stochastic model to ALL coordinates.
+          *
+          * @param pModel      Pointer to StochasticModel associated with
+          *                    coordinates.
+          *
+          * @warning Do NOT use this method to set the SAME state-aware
+          * stochastic model (like RandomWalkModel, for instance) to ALL
+          * coordinates, because the results will certainly be erroneous. Use
+          * this method only with non-state-aware stochastic models like
+          * 'StochasticModel' (constant coordinates) or 'WhiteNoiseModel'.
+          */
+      virtual SolverPPPAR& setCoordinatesModel(StochasticModel* pModel)
+      { pppnlSolver.setCoordinatesModel(pModel); return (*this); };
+
+
+         /** Returns the solution associated to a given TypeID.
+          *
+          * @param type    TypeID of the solution we are looking for.
+          */
+      virtual double getSolution(const TypeID& type) const
+         throw(InvalidRequest);
+
+
+         /** Returns the variance associated to a given TypeID.
+          *
+          * @param type    TypeID of the variance we are looking for.
+          */
+      virtual double getVariance(const TypeID& type) const
+         throw(InvalidRequest);
+
+
+
+         /** Return the CURRENT number of satellite.
+          */
+      virtual int getCurrentSatNumber() const
+         throw(InvalidRequest);
+
+
+         /** Return the CURRENT number of satellite.
+          */
+      virtual int getCurrentFixedSatNumber() const
+         throw(InvalidRequest);
+
+
+         /** Return the CURRENT number of satellite.
+          */
+      virtual int getAmbWLFixedNumber() const
+         throw(InvalidRequest);
+
+
+         /// Returns an index identifying this object.
+      virtual int getIndex(void) const;
+
+
+         /// Returns a string identifying this object.
+      virtual std::string getClassName(void) const;
+
+
+         /// Destructor.
+      virtual ~SolverPPPAR() {};
+
+
+   protected:
+
+
+         /// Widelane ambiguity fixing for PPP using MW combinations
+      SolverPPPWL pppwlSolver;
+
+
+         /// Narrowlane ambiguity for PPP using L3 combinations
+      SolverPPPNL pppnlSolver;
+
+
+   private:
+
+
+         /// Initial index assigned to this class.
+      static int classIndex;
+
+
+         /// Index belonging to this object.
+      int index;
+
+
+         /// Sets the index and increment classIndex.
+      void setIndex(void)
+      { index = classIndex++; };
+
+
+   }; // End of class 'SolverPPPAR'
+
+
+      //@}
+
+}  // End of namespace gpstk
+
+#endif   // GPSTK_SOLVERPPPAR_HPP

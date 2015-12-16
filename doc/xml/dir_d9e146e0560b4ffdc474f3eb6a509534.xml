@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_d9e146e0560b4ffdc474f3eb6a509534" kind="dir">
+    <compoundname>AstroEph</compoundname>
+    <innerfile refid="AstronomicalFunctions_8cpp">AstronomicalFunctions.cpp</innerfile>
+    <innerfile refid="AstronomicalFunctions_8hpp">AstronomicalFunctions.hpp</innerfile>
+    <innerfile refid="MoonPosition_8cpp">MoonPosition.cpp</innerfile>
+    <innerfile refid="MoonPosition_8hpp">MoonPosition.hpp</innerfile>
+    <innerfile refid="PlanetEphemeris_8cpp">PlanetEphemeris.cpp</innerfile>
+    <innerfile refid="PlanetEphemeris_8hpp">PlanetEphemeris.hpp</innerfile>
+    <innerfile refid="SunPosition_8cpp">SunPosition.cpp</innerfile>
+    <innerfile refid="SunPosition_8hpp">SunPosition.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/AstroEph/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,27 @@
+     2.10           Observation         G (GPS)             RINEX VERSION / TYPE
+teqc  2000Jul20     ARGNET              20151123 061819 UTC PGM / RUN BY / DATE
+coco                                                        MARKER NAME
+Geoscience AustraliaGeoscience Australia                    OBSERVER / AGENCY
+C130U               AOA SNR-12 ACT      99.12.12 / 3.3.32.3 REC # / TYPE / VERS
+261                 AOAD/M_T        AUST                    ANT # / TYPE
+  -741952.1911  6190968.1181 -1337770.3869                  APPROX POSITION XYZ
+        0.0040        0.0000        0.0000                  ANTENNA: DELTA H/E/N
+     1     1                                                WAVELENGTH FACT L1/2
+     7    L1    L2    C1    P2    P1    S1    S2            # / TYPES OF OBSERV
+    30.000                                                  INTERVAL
+  2004     3     1     0     0    0.0000000     GPS         TIME OF FIRST OBS
+50127M001                                                   MARKER NUMBER
+Solaris 2.7|Ultra 2|cc SC5.0|=+-|*Sparc                     COMMENT
+BIT 2 OF LLI FLAGS DATA COLLECTED UNDER A/S CONDITION       COMMENT
+Australian Regional GPS Network (ARGN)                      COMMENT
+Cocos Island AU018                                          COMMENT
+P1 =    P1  TurboRogue; =    Y1  Benchmark                  COMMENT
+L1 = L1(P1) TurboRogue; = L1(Y1) Benchmark                  COMMENT
+P2 =    P2  TurboRogue; =    Y2  Benchmark                  COMMENT
+L2 = L2(P2) TurboRogue; = L2(Y2) Benchmark                  COMMENT
+SNR is mapped to RINEX snr flag value [1,4-9]               COMMENT
+SNR:   >316  >100  >31.6  >10  >3.2    >0 bad=0             COMMENT
+L1 & L2:      9     8     7     6     5     4     1         COMMENT
+teqc windowed: start @ 2004 Mar  1 00:00:00.000             COMMENT
+teqc windowed: delta = 86398.560 sec                        COMMENT
+                                                            END OF HEADER

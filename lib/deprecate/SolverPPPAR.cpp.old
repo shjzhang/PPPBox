@@ -1,0 +1,244 @@
+#pragma ident "$Id: SolverPPPAR.cpp 2346 2013-04-02 15:55:58Z shjzhang $"
+
+/**
+ * @file SolverPPPAR.cpp
+ * Class to compute the PPP solution with ambiguity fixing
+ */
+
+//============================================================================
+//
+//  This file is part of GPSTk, the GPS Toolkit.
+//
+//  The GPSTk is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published
+//  by the Free Software Foundation; either version 2.1 of the License, or
+//  any later version.
+//
+//  The GPSTk is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public
+//  License along with GPSTk; if not, write to the Free Software Foundation,
+//  Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+//  Shoujian Zhang, Wuhan University, 2013
+//
+//============================================================================
+
+
+#include "SolverPPPAR.hpp"
+
+namespace gpstk
+{
+
+      // Index initially assigned to this class
+   int SolverPPPAR::classIndex = 9400000;
+
+
+      // Returns an index identifying this object.
+   int SolverPPPAR::getIndex() const
+   { return index; }
+
+
+      // Returns a string identifying this object.
+   std::string SolverPPPAR::getClassName() const
+   { return "SolverPPPAR"; }
+
+
+      /* Common constructor.
+       *
+       * @param useNEU   If true, will compute dLat, dLon, dH coordinates;
+       *                 if false (the default), will compute dx, dy, dz.
+       */
+   SolverPPPAR::SolverPPPAR(bool useNEU)
+   {
+
+         // Set the equation for the pppnlSolver
+      pppnlSolver.setNEU(useNEU);
+
+         // Set the class index
+      setIndex();
+
+   }  // End of 'SolverPPPAR::SolverPPPAR()'
+
+
+
+      /* Returns a reference to a gnnsSatTypeValue object after
+       * solving the previously defined equation system.
+       *
+       * @param gData    Data object holding the data.
+       */
+   gnssSatTypeValue& SolverPPPAR::Process(gnssSatTypeValue& gData)
+      throw(ProcessingException, SVNumException)
+   {
+
+      try
+      {
+
+            // Build a gnssRinex object and fill it with data
+         gnssRinex g1;
+         g1.header = gData.header;
+         g1.body = gData.body;
+
+            // Call the Process() method with the appropriate input object
+         Process(g1);
+
+            // Update the original gnssSatTypeValue object with the results
+         gData.body = g1.body;
+
+         return gData;
+
+      }
+      catch(SVNumException& e)
+      {
+
+            // Rethrow the exception
+         GPSTK_RETHROW(e);
+
+      }
+      catch(Exception& u)
+      {
+            // Throw an exception if something unexpected happens
+         ProcessingException e( getClassName() + ":"
+                                + StringUtils::asString( getIndex() ) + ":"
+                                + u.what() );
+
+         GPSTK_THROW(e);
+
+      }
+
+   }  // End of method 'SolverPPPAR::Process()'
+
+
+
+      /* Returns a reference to a gnnsRinex object after solving
+       * the previously defined equation system.
+       *
+       * @param gData     Data object holding the data.
+       */
+   gnssRinex& SolverPPPAR::Process(gnssRinex& gData)
+      throw(ProcessingException, SVNumException)
+   {
+
+      try
+      {
+
+            // Widelane ambiguity fixing
+         pppwlSolver.Process(gData);
+
+            // Narrowlane ambiguity fixing
+         pppnlSolver.Process(gData);
+
+
+         return gData;
+
+      }
+      catch(SVNumException& e)
+      {
+
+            // Rethrow the exception
+         GPSTK_RETHROW(e);
+
+      }
+      catch(Exception& u)
+      {
+            // Throw an exception if something unexpected happens
+         ProcessingException e( getClassName() + ":"
+                                + StringUtils::asString( getIndex() ) + ":"
+                                + u.what() );
+
+         GPSTK_THROW(e);
+
+      }
+
+   }  // End of method 'SolverPPPAR::Process()'
+
+
+      /* Sets if a NEU system will be used.
+       *
+       * @param useNEU  Boolean value indicating if a NEU system will
+       *                be used
+       *
+       */
+   SolverPPPAR& SolverPPPAR::setNEU( bool useNEU )
+   {
+
+         // Set the SolverPPP filter
+      pppnlSolver.setNEU(useNEU);
+
+         // Return this object
+      return (*this);
+
+   }  // End of method 'SolverPPPAR::setNEU()'
+
+
+      /* Returns the solution associated to a given TypeID.
+       *
+       * @param type    TypeID of the solution we are looking for.
+       */
+   double SolverPPPAR::getSolution(const TypeID& type) const
+      throw(InvalidRequest)
+   {
+
+         // Get the solution from 'pppnlSolver'
+      double solution( pppnlSolver.getSolution(type) );
+
+      return solution;
+
+   }  // End of method 'SolverPPPAR::getSolution()'
+
+
+
+      /* Returns the variance associated to a given TypeID.
+       *
+       * @param type    TypeID of the variance we are looking for.
+       */
+   double SolverPPPAR::getVariance(const TypeID& type) const
+      throw(InvalidRequest)
+   {
+         // Get the variance from 'pppnlSolver'
+      double variance( pppnlSolver.getVariance(type) );
+
+      return variance;
+
+   }  // End of method 'SolverPPPAR::getVariance()'
+
+
+      /** Return the CURRENT number of satellite.
+       */
+   int SolverPPPAR::getCurrentSatNumber() const
+      throw(InvalidRequest)
+   {
+         // Get the current SV number from 'pppnlSolver'
+      int numCurrentSV = pppnlSolver.getCurrentSatNumber();
+
+      return numCurrentSV;
+   }
+
+
+      /** Return the CURRENT number of satellite.
+       */
+   int SolverPPPAR::getCurrentFixedSatNumber() const
+      throw(InvalidRequest)
+   {
+         // Get the current fixed SV number from 'pppnlSolver'
+      int numCurrentFixedSV = pppnlSolver.getCurrentFixedSatNumber();
+
+      return numCurrentFixedSV;
+   }
+
+      /** Return the CURRENT number of satellite.
+       */
+   int SolverPPPAR::getAmbWLFixedNumber() const
+      throw(InvalidRequest)
+   {
+         // Get the current widelane fixed number from 'pppnlSolver'
+      int numAmbWLFixed = pppnlSolver.getAmbWLFixedNumber();
+
+      return numAmbWLFixed;
+   }
+
+
+}  // End of namespace gpstk

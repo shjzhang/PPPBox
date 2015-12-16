@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/mdp2rinex.dir/mdp2rinex.cpp.o  -o mdp2rinex  libmdplib.a ../../libpppbox.dylib 

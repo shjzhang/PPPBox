@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_d3a5228eb40169de77ff52cff084ce0a" kind="dir">
+    <compoundname>Rxio</compoundname>
+    <innerfile refid="AshtechALB_8cpp">AshtechALB.cpp</innerfile>
+    <innerfile refid="AshtechALB_8hpp">AshtechALB.hpp</innerfile>
+    <innerfile refid="AshtechData_8cpp">AshtechData.cpp</innerfile>
+    <innerfile refid="AshtechData_8hpp">AshtechData.hpp</innerfile>
+    <innerfile refid="AshtechEPB_8cpp">AshtechEPB.cpp</innerfile>
+    <innerfile refid="AshtechEPB_8hpp">AshtechEPB.hpp</innerfile>
+    <innerfile refid="AshtechMBEN_8cpp">AshtechMBEN.cpp</innerfile>
+    <innerfile refid="AshtechMBEN_8hpp">AshtechMBEN.hpp</innerfile>
+    <innerfile refid="AshtechPBEN_8cpp">AshtechPBEN.cpp</innerfile>
+    <innerfile refid="AshtechPBEN_8hpp">AshtechPBEN.hpp</innerfile>
+    <innerfile refid="AshtechStream_8hpp">AshtechStream.hpp</innerfile>
+    <innerfile refid="ATSData_8cpp">ATSData.cpp</innerfile>
+    <innerfile refid="ATSData_8hpp">ATSData.hpp</innerfile>
+    <innerfile refid="ATSStream_8hpp">ATSStream.hpp</innerfile>
+    <innerfile refid="DataStatus_8hpp">DataStatus.hpp</innerfile>
+    <innerfile refid="EphReader_8cpp">EphReader.cpp</innerfile>
+    <innerfile refid="EphReader_8hpp">EphReader.hpp</innerfile>
+    <innerfile refid="FFIdentifier_8cpp">FFIdentifier.cpp</innerfile>
+    <innerfile refid="FFIdentifier_8hpp">FFIdentifier.hpp</innerfile>
+    <innerfile refid="MDPHeader_8cpp">MDPHeader.cpp</innerfile>
+    <innerfile refid="MDPHeader_8hpp">MDPHeader.hpp</innerfile>
+    <innerfile refid="MDPNavSubframe_8cpp">MDPNavSubframe.cpp</innerfile>
+    <innerfile refid="MDPNavSubframe_8hpp">MDPNavSubframe.hpp</innerfile>
+    <innerfile refid="MDPObsEpoch_8cpp">MDPObsEpoch.cpp</innerfile>
+    <innerfile refid="MDPObsEpoch_8hpp">MDPObsEpoch.hpp</innerfile>
+    <innerfile refid="MDPPVTSolution_8cpp">MDPPVTSolution.cpp</innerfile>
+    <innerfile refid="MDPPVTSolution_8hpp">MDPPVTSolution.hpp</innerfile>
+    <innerfile refid="MDPSelftestStatus_8cpp">MDPSelftestStatus.cpp</innerfile>
+    <innerfile refid="MDPSelftestStatus_8hpp">MDPSelftestStatus.hpp</innerfile>
+    <innerfile refid="MDPStream_8hpp">MDPStream.hpp</innerfile>
+    <innerfile refid="MetReader_8cpp">MetReader.cpp</innerfile>
+    <innerfile refid="MetReader_8hpp">MetReader.hpp</innerfile>
+    <innerfile refid="miscdefs_8hpp">miscdefs.hpp</innerfile>
+    <innerfile refid="miscenum_8hpp">miscenum.hpp</innerfile>
+    <innerfile refid="NovatelData_8cpp">NovatelData.cpp</innerfile>
+    <innerfile refid="NovatelData_8hpp">NovatelData.hpp</innerfile>
+    <innerfile refid="NovatelStream_8hpp">NovatelStream.hpp</innerfile>
+    <innerfile refid="ObsEphReaderFramework_8cpp">ObsEphReaderFramework.cpp</innerfile>
+    <innerfile refid="ObsEphReaderFramework_8hpp">ObsEphReaderFramework.hpp</innerfile>
+    <innerfile refid="ObsReader_8cpp">ObsReader.cpp</innerfile>
+    <innerfile refid="ObsReader_8hpp">ObsReader.hpp</innerfile>
+    <innerfile refid="ObsUtils_8cpp">ObsUtils.cpp</innerfile>
+    <innerfile refid="ObsUtils_8hpp">ObsUtils.hpp</innerfile>
+    <innerfile refid="RinexConverters_8cpp">RinexConverters.cpp</innerfile>
+    <innerfile refid="RinexConverters_8hpp">RinexConverters.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Rxio/"/>
+  </compounddef>
+</doxygen>

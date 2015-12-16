@@ -1,0 +1,34 @@
+
+# 第一步
+
+   ppp.sh -s station.list -b time -e etime -i 24
+  
+   ssc2coord -s sscfile -p coordfile
+
+   teqc --split - rinex 
+
+   get_data.sh -t OBS
+   get_data.sh -t EPH
+   get_data.sh -t CLK
+   get_data.sh -t ATX
+   get_data.sh -t EOP
+
+   ls *11o >> rinexfilelist
+   ls sp3 >> sp3filelist
+   ls clk > clkfilelist
+   ls eop >> eopfilelist
+
+   ppp -c conf -r rinexfilelist -s sp3filelist -c clkfilelist -e eopfilelist -p positionfilelist
+
+
+# 第二步
+
+   1) spp-> initiaPos,velocity;
+      solverPPP.Init(time, initiaPos,velocity);
+   while (rin>>gRin)
+   {
+   1) LICSDetector2;
+   2) solverPPP.timeUpdate(gRin); ===> predicted pos,vel;
+   3) corr, linearized/ basicModel, windUp, satPCcenter, ......, pList;
+   4) solverPPP.MeasUpdate(gRin); ==> updated pos, vel;
+   }

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_0a303808f8ccc818e831139306328220" kind="dir">
+    <compoundname>oldtests</compoundname>
+    <innerfile refid="AnotherFileFilterTest_8cpp">AnotherFileFilterTest.cpp</innerfile>
+    <innerfile refid="DayTimeConversionTest_8cpp">DayTimeConversionTest.cpp</innerfile>
+    <innerfile refid="DayTimeIncrementTest_8cpp">DayTimeIncrementTest.cpp</innerfile>
+    <innerfile refid="DayTimeIncrementTest2_8cpp">DayTimeIncrementTest2.cpp</innerfile>
+    <innerfile refid="daytimetest_8cpp">daytimetest.cpp</innerfile>
+    <innerfile refid="DayTimeToleranceTest_8cpp">DayTimeToleranceTest.cpp</innerfile>
+    <innerfile refid="EphComp_8cpp">EphComp.cpp</innerfile>
+    <innerfile refid="exceptiontest_8cpp">exceptiontest.cpp</innerfile>
+    <innerfile refid="FileSpecTest_8cpp">FileSpecTest.cpp</innerfile>
+    <innerfile refid="gpszcounttest_8cpp">gpszcounttest.cpp</innerfile>
+    <innerfile refid="MatrixTest_8cpp">MatrixTest.cpp</innerfile>
+    <innerfile refid="MinSfTest_8cpp">MinSfTest.cpp</innerfile>
+    <innerfile refid="petest_8cpp">petest.cpp</innerfile>
+    <innerfile refid="positiontest_8cpp">positiontest.cpp</innerfile>
+    <innerfile refid="rinex__met__read__write_8cpp">rinex_met_read_write.cpp</innerfile>
+    <innerfile refid="rinex__met__test_8cpp">rinex_met_test.cpp</innerfile>
+    <innerfile refid="rinex__nav__read__write_8cpp">rinex_nav_read_write.cpp</innerfile>
+    <innerfile refid="rinex__nav__test_8cpp">rinex_nav_test.cpp</innerfile>
+    <innerfile refid="rinex__obs__read__write_8cpp">rinex_obs_read_write.cpp</innerfile>
+    <innerfile refid="rinex__obs__test_8cpp">rinex_obs_test.cpp</innerfile>
+    <innerfile refid="RungeKuttaTest_8cpp">RungeKuttaTest.cpp</innerfile>
+    <innerfile refid="stringutiltest_8cpp">stringutiltest.cpp</innerfile>
+    <innerfile refid="testExpression_8cpp">testExpression.cpp</innerfile>
+    <innerfile refid="TimeTest_8cpp">TimeTest.cpp</innerfile>
+    <innerfile refid="Xbegweek_8cpp">Xbegweek.cpp</innerfile>
+    <innerfile refid="Xendweek_8cpp">Xendweek.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/oldtests/"/>
+  </compounddef>
+</doxygen>

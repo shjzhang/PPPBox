@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_9f13e7e48b1dae88d68f6e470b94897e" kind="dir">
+    <compoundname>lib</compoundname>
+    <innerdir refid="dir_1a0678982ae9a7d588e3e21bf7a12aa4">AppFrame</innerdir>
+    <innerdir refid="dir_d9e146e0560b4ffdc474f3eb6a509534">AstroEph</innerdir>
+    <innerdir refid="dir_e5e55cc17bbc320ea21fea0d0eeefbc3">CodeGen</innerdir>
+    <innerdir refid="dir_8d07b9e1921b9f65c31aed945a525e24">CommandLine</innerdir>
+    <innerdir refid="dir_8425773b281009bda9f9289d5c0ae7ee">deprecate</innerdir>
+    <innerdir refid="dir_86fde8b9b61eec87b5ee4571ab5b4d98">dev</innerdir>
+    <innerdir refid="dir_ed44a0165b0439501fe1a79a3bd02afe">FileDirProc</innerdir>
+    <innerdir refid="dir_2409f140ca6b329e1a129f8097428273">FileHandling</innerdir>
+    <innerdir refid="dir_d4bdeda034e4f0ea89a6f6ac4747f180">Geodyn</innerdir>
+    <innerdir refid="dir_eb7b6389ab0564052e9461a3948b0be4">Geomatics</innerdir>
+    <innerdir refid="dir_bc5c44517bb1613852d64bb35a29f3a5">GNSSCore</innerdir>
+    <innerdir refid="dir_9b7a788d5f3c7f5a024c2b292950a106">GNSSEph</innerdir>
+    <innerdir refid="dir_8bc00a9cb30ca1e40042375383f4ee65">Math</innerdir>
+    <innerdir refid="dir_ecb8b091630eddec385ab373026aec24">Misc</innerdir>
+    <innerdir refid="dir_d4929c492e8d52f7aecdefbc16e1f13f">network</innerdir>
+    <innerdir refid="dir_6fd89c90bdba80d7c92fbc8b24402429">PosSol</innerdir>
+    <innerdir refid="dir_b7c4e04029f73e3b26002c9e92c21202">Procframe</innerdir>
+    <innerdir refid="dir_529e4dcbd4420ba7afa1c7118022a812">ProcLib</innerdir>
+    <innerdir refid="dir_9c40091a7a27e15303e41a0872fa5d7e">RefTime</innerdir>
+    <innerdir refid="dir_d3a5228eb40169de77ff52cff084ce0a">Rxio</innerdir>
+    <innerdir refid="dir_541084778b24810f6e23393f90777da4">TimeHandling</innerdir>
+    <innerdir refid="dir_3cd7a784e9d671b7ddcc56c1c94084a7">Utilities</innerdir>
+    <innerdir refid="dir_e21c41e87a3693f3e7f3a2a5fedc9b64">Vdraw</innerdir>
+    <innerdir refid="dir_fc245d8a5fc1b34a3ccd3381d89b372d">Vplot</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/"/>
+  </compounddef>
+</doxygen>

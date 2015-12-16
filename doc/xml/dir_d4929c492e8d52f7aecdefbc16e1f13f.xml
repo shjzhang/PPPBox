@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_d4929c492e8d52f7aecdefbc16e1f13f" kind="dir">
+    <compoundname>network</compoundname>
+    <innerfile refid="Ambiguity_8cpp">Ambiguity.cpp</innerfile>
+    <innerfile refid="Ambiguity_8hpp">Ambiguity.hpp</innerfile>
+    <innerfile refid="AmbiguityDatum_8cpp">AmbiguityDatum.cpp</innerfile>
+    <innerfile refid="AmbiguityDatum_8hpp">AmbiguityDatum.hpp</innerfile>
+    <innerfile refid="AmbiguitySmoother_8cpp">AmbiguitySmoother.cpp</innerfile>
+    <innerfile refid="AmbiguitySmoother_8hpp">AmbiguitySmoother.hpp</innerfile>
+    <innerfile refid="Arc_8cpp">Arc.cpp</innerfile>
+    <innerfile refid="Arc_8hpp">Arc.hpp</innerfile>
+    <innerfile refid="Edge_8cpp">Edge.cpp</innerfile>
+    <innerfile refid="Edge_8hpp">Edge.hpp</innerfile>
+    <innerfile refid="EquationSystem_8cpp">EquationSystem.cpp</innerfile>
+    <innerfile refid="EquationSystem_8hpp">EquationSystem.hpp</innerfile>
+    <innerfile refid="EquationSystem2_8cpp">EquationSystem2.cpp</innerfile>
+    <innerfile refid="EquationSystem2_8hpp">EquationSystem2.hpp</innerfile>
+    <innerfile refid="IndepAmbiguityDatum_8cpp">IndepAmbiguityDatum.cpp</innerfile>
+    <innerfile refid="IndepAmbiguityDatum_8hpp">IndepAmbiguityDatum.hpp</innerfile>
+    <innerfile refid="Kruskal_8cpp">Kruskal.cpp</innerfile>
+    <innerfile refid="Kruskal_8hpp">Kruskal.hpp</innerfile>
+    <innerfile refid="SolverGeneral_8cpp">SolverGeneral.cpp</innerfile>
+    <innerfile refid="SolverGeneral_8hpp">SolverGeneral.hpp</innerfile>
+    <innerfile refid="SolverGeneral2_8cpp">SolverGeneral2.cpp</innerfile>
+    <innerfile refid="SolverGeneral2_8hpp">SolverGeneral2.hpp</innerfile>
+    <innerfile refid="SolverGeneralFB_8cpp">SolverGeneralFB.cpp</innerfile>
+    <innerfile refid="SolverGeneralFB_8hpp">SolverGeneralFB.hpp</innerfile>
+    <innerfile refid="SolverGenNL_8cpp">SolverGenNL.cpp</innerfile>
+    <innerfile refid="SolverGenNL_8hpp">SolverGenNL.hpp</innerfile>
+    <innerfile refid="SolverGenWL_8cpp">SolverGenWL.cpp</innerfile>
+    <innerfile refid="SolverGenWL_8hpp">SolverGenWL.hpp</innerfile>
+    <innerfile refid="SolverUpdNL_8cpp">SolverUpdNL.cpp</innerfile>
+    <innerfile refid="SolverUpdNL_8hpp">SolverUpdNL.hpp</innerfile>
+    <innerfile refid="SolverUpdWL_8cpp">SolverUpdWL.cpp</innerfile>
+    <innerfile refid="SolverUpdWL_8hpp">SolverUpdWL.hpp</innerfile>
+    <innerfile refid="SolverZapNL_8cpp">SolverZapNL.cpp</innerfile>
+    <innerfile refid="SolverZapNL_8hpp">SolverZapNL.hpp</innerfile>
+    <innerfile refid="SolverZapWL_8cpp">SolverZapWL.cpp</innerfile>
+    <innerfile refid="SolverZapWL_8hpp">SolverZapWL.hpp</innerfile>
+    <innerfile refid="Vertex_8cpp">Vertex.cpp</innerfile>
+    <innerfile refid="Vertex_8hpp">Vertex.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/network/"/>
+  </compounddef>
+</doxygen>

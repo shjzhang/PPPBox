@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="Geomatics_2singleton_8hpp" kind="file">
+    <compoundname>Geomatics/singleton.hpp</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>ident<sp/>&quot;$Id:<sp/>singleton.hpp<sp/>137<sp/>2009-04-27<sp/>13:42:41Z<sp/>BrianTolman<sp/>$&quot;</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>This<sp/>file<sp/>is<sp/>part<sp/>of<sp/>GPSTk,<sp/>the<sp/>GPS<sp/>Toolkit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>The<sp/>GPSTk<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Lesser<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>by<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2.1<sp/>of<sp/>the<sp/>License,<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>The<sp/>GPSTk<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>GNU<sp/>Lesser<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Lesser<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>License<sp/>along<sp/>with<sp/>GPSTk;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,<sp/>MA<sp/>02110,<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2004,<sp/>The<sp/>University<sp/>of<sp/>Texas<sp/>at<sp/>Austin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>software<sp/>developed<sp/>by<sp/>Applied<sp/>Research<sp/>Laboratories<sp/>at<sp/>the<sp/>University</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>Texas<sp/>at<sp/>Austin,<sp/>under<sp/>contract<sp/>to<sp/>an<sp/>agency<sp/>or<sp/>agencies<sp/>within<sp/>the<sp/>U.S.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Department<sp/>of<sp/>Defense.<sp/>The<sp/>U.S.<sp/>Government<sp/>retains<sp/>all<sp/>rights<sp/>to<sp/>use,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>duplicate,<sp/>distribute,<sp/>disclose,<sp/>or<sp/>release<sp/>this<sp/>software.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Pursuant<sp/>to<sp/>DoD<sp/>Directive<sp/>523024<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DISTRIBUTION<sp/>STATEMENT<sp/>A:<sp/>This<sp/>software<sp/>has<sp/>been<sp/>approved<sp/>for<sp/>public<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>release,<sp/>distribution<sp/>is<sp/>unlimited.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//=============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SINGLETON_TEMPLATE_INCLUDE</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SINGLETON_TEMPLATE_INCLUDE</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="43"><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Singleton<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>T&amp;<sp/>Instance()<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>T<sp/>theInstance;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>theInstance;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/>Singleton()<sp/>{}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>c&apos;tor<sp/>protected</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~Singleton()<sp/>{}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>d&apos;tor<sp/>virtual<sp/>and<sp/>protected</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/>Singleton(Singleton<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>c&apos;tor<sp/>prohibited</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/>Singleton&amp;<sp/>operator=(Singleton<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>operator=<sp/>prohibited</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/><sp/>//SINGLETON_TEMPLATE_INCLUDE</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>use<sp/>this<sp/>class<sp/>like<sp/>this:</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"></highlight></codeline>
+<codeline lineno="60"><highlight class="comment">//<sp/>main.cpp<sp/>cf.<sp/>Docs/Cpp/singleton.pdf</highlight></codeline>
+<codeline lineno="61"><highlight class="comment">#include<sp/>&lt;iostream&gt;</highlight></codeline>
+<codeline lineno="62"><highlight class="comment">#include<sp/>&lt;iomanip&gt;</highlight></codeline>
+<codeline lineno="63"><highlight class="comment">#include<sp/>&quot;singleton.hpp&quot;</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment">class<sp/>MyClass<sp/>:<sp/>public<sp/>Singleton&lt;MyClass&gt;<sp/>{<sp/><sp/>//<sp/>Curiously<sp/>Recurring<sp/>Template<sp/>Pattern</highlight></codeline>
+<codeline lineno="66"><highlight class="comment">public:</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/>void<sp/>set(int<sp/>n)<sp/>{<sp/>x<sp/>=<sp/>n;<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>these<sp/>are<sp/>required<sp/>only<sp/>if<sp/>data<sp/>is<sp/>private</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/>int<sp/>get()<sp/>const<sp/>{<sp/>return<sp/>x;<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/>and<sp/>you<sp/>wish<sp/>to<sp/>control<sp/>access.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/>double<sp/>y;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>public<sp/>data<sp/>is<sp/>fine.</highlight></codeline>
+<codeline lineno="70"><highlight class="comment">protected:</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>MyClass<sp/>must<sp/>have<sp/>empty<sp/>c&apos;tor;<sp/>there<sp/>are</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>ways<sp/>to<sp/>mod<sp/>this<sp/>-<sp/>see<sp/>s&apos;ton<sp/>articles.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/>MyClass()<sp/>:<sp/>x(0),y(3.14159)<sp/>{<sp/>}<sp/><sp/><sp/><sp/><sp/>//<sp/>set<sp/>defaults<sp/>here</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/>friend<sp/>class<sp/>Singleton&lt;MyClass&gt;;<sp/><sp/><sp/><sp/>//<sp/>so<sp/>Instance()<sp/>can<sp/>call<sp/>MyClass<sp/>c&apos;tor</highlight></codeline>
+<codeline lineno="75"><highlight class="comment">private:</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/>int<sp/>x;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>private<sp/>data<sp/>is<sp/>fine.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment">};</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment">int<sp/>main(void)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/>//<sp/>&apos;get&apos;<sp/>the<sp/>singleton;<sp/>this<sp/>may<sp/>appear<sp/>anywhere<sp/>MyClass<sp/>is<sp/>defined.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/>MyClass&amp;<sp/>CFG=MyClass::Instance();</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"></highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;x<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>CFG.get()<sp/>&lt;&lt;<sp/>&quot;<sp/>y<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>CFG.y<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;set<sp/>x<sp/>to<sp/>17<sp/>and<sp/>y<sp/>*=<sp/>2&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>CFG.set(17);</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>CFG.y<sp/>*=<sp/>2.0;</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;x<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>CFG.get()<sp/>&lt;&lt;<sp/>&quot;<sp/>y<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>CFG.y<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"></highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Get<sp/>a<sp/>new<sp/>object&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/>MyClass&amp;<sp/>newCFG=MyClass::Instance();</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;new<sp/>x<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>newCFG.get()<sp/>&lt;&lt;<sp/>&quot;<sp/>y<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>newCFG.y<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;set<sp/>old<sp/>x<sp/>to<sp/>23<sp/>and<sp/>new<sp/>y<sp/>to<sp/>37.&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>CFG.set(23);</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/>newCFG.y<sp/>=<sp/>37.;</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;old<sp/>x<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>CFG.get()<sp/>&lt;&lt;<sp/>&quot;<sp/>y<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>CFG.y<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;new<sp/>x<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>newCFG.get()<sp/>&lt;&lt;<sp/>&quot;<sp/>y<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>newCFG.y<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"></highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline lineno="99"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="100"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Geomatics/singleton.hpp"/>
+  </compounddef>
+</doxygen>

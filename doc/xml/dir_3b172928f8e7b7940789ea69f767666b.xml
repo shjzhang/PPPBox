@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_3b172928f8e7b7940789ea69f767666b" kind="dir">
+    <compoundname>removed</compoundname>
+    <innerdir refid="dir_188d85ae8653fe09e3113cb286086d0e">apps</innerdir>
+    <innerdir refid="dir_71b9bb2bc081d1cc57a33c8a109a0398">lib</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/removed/"/>
+  </compounddef>
+</doxygen>

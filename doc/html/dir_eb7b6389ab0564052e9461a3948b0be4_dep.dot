@@ -1,0 +1,9 @@
+digraph "Geomatics" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_9f13e7e48b1dae88d68f6e470b94897e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="lib" fontname="Helvetica", fontsize="10", URL="dir_9f13e7e48b1dae88d68f6e470b94897e.html"]
+  dir_eb7b6389ab0564052e9461a3948b0be4 [shape=box, label="Geomatics", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_eb7b6389ab0564052e9461a3948b0be4.html"];
+  }
+}

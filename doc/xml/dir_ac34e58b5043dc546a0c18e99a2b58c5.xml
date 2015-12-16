@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_ac34e58b5043dc546a0c18e99a2b58c5" kind="dir">
+    <compoundname>Vector</compoundname>
+    <innerfile refid="Vector_8hpp">Vector.hpp</innerfile>
+    <innerfile refid="VectorBase_8cpp">VectorBase.cpp</innerfile>
+    <innerfile refid="VectorBase_8hpp">VectorBase.hpp</innerfile>
+    <innerfile refid="VectorBaseOperators_8hpp">VectorBaseOperators.hpp</innerfile>
+    <innerfile refid="VectorOperators_8hpp">VectorOperators.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Math/Vector/"/>
+  </compounddef>
+</doxygen>

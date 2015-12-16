@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_fc245d8a5fc1b34a3ccd3381d89b372d" kind="dir">
+    <compoundname>Vplot</compoundname>
+    <innerfile refid="Axis_8cpp">Axis.cpp</innerfile>
+    <innerfile refid="Axis_8hpp">Axis.hpp</innerfile>
+    <innerfile refid="AxisStyle_8hpp">AxisStyle.hpp</innerfile>
+    <innerfile refid="LinePlot_8cpp">LinePlot.cpp</innerfile>
+    <innerfile refid="LinePlot_8hpp">LinePlot.hpp</innerfile>
+    <innerfile refid="Plot_8cpp">Plot.cpp</innerfile>
+    <innerfile refid="Plot_8hpp">Plot.hpp</innerfile>
+    <innerfile refid="plottypes_8hpp">plottypes.hpp</innerfile>
+    <innerfile refid="ScatterPlot_8cpp">ScatterPlot.cpp</innerfile>
+    <innerfile refid="ScatterPlot_8hpp">ScatterPlot.hpp</innerfile>
+    <innerfile refid="SeriesList_8cpp">SeriesList.cpp</innerfile>
+    <innerfile refid="SeriesList_8hpp">SeriesList.hpp</innerfile>
+    <innerfile refid="Splitter_8cpp">Splitter.cpp</innerfile>
+    <innerfile refid="Splitter_8hpp">Splitter.hpp</innerfile>
+    <innerfile refid="SurfacePlot_8cpp">SurfacePlot.cpp</innerfile>
+    <innerfile refid="SurfacePlot_8hpp">SurfacePlot.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Vplot/"/>
+  </compounddef>
+</doxygen>

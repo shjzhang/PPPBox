@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_b7c4e04029f73e3b26002c9e92c21202" kind="dir">
+    <compoundname>Procframe</compoundname>
+    <innerfile refid="CodeSmoother_8cpp">CodeSmoother.cpp</innerfile>
+    <innerfile refid="CodeSmoother_8hpp">CodeSmoother.hpp</innerfile>
+    <innerfile refid="ComputeCombination_8cpp">ComputeCombination.cpp</innerfile>
+    <innerfile refid="ComputeCombination_8hpp">ComputeCombination.hpp</innerfile>
+    <innerfile refid="ComputeDOP_8cpp">ComputeDOP.cpp</innerfile>
+    <innerfile refid="ComputeDOP_8hpp">ComputeDOP.hpp</innerfile>
+    <innerfile refid="ComputeIonoModel_8cpp">ComputeIonoModel.cpp</innerfile>
+    <innerfile refid="ComputeIonoModel_8hpp">ComputeIonoModel.hpp</innerfile>
+    <innerfile refid="ComputeIURAWeights_8cpp">ComputeIURAWeights.cpp</innerfile>
+    <innerfile refid="ComputeIURAWeights_8hpp">ComputeIURAWeights.hpp</innerfile>
+    <innerfile refid="ComputeLC_8cpp">ComputeLC.cpp</innerfile>
+    <innerfile refid="ComputeLC_8hpp">ComputeLC.hpp</innerfile>
+    <innerfile refid="ComputeLdelta_8cpp">ComputeLdelta.cpp</innerfile>
+    <innerfile refid="ComputeLdelta_8hpp">ComputeLdelta.hpp</innerfile>
+    <innerfile refid="ComputeLI_8cpp">ComputeLI.cpp</innerfile>
+    <innerfile refid="ComputeLI_8hpp">ComputeLI.hpp</innerfile>
+    <innerfile refid="ComputeLinear_8cpp">ComputeLinear.cpp</innerfile>
+    <innerfile refid="ComputeLinear_8hpp">ComputeLinear.hpp</innerfile>
+    <innerfile refid="ComputeMelbourneWubbena_8cpp">ComputeMelbourneWubbena.cpp</innerfile>
+    <innerfile refid="ComputeMelbourneWubbena_8hpp">ComputeMelbourneWubbena.hpp</innerfile>
+    <innerfile refid="ComputeMOPSWeights_8cpp">ComputeMOPSWeights.cpp</innerfile>
+    <innerfile refid="ComputeMOPSWeights_8hpp">ComputeMOPSWeights.hpp</innerfile>
+    <innerfile refid="ComputePC_8cpp">ComputePC.cpp</innerfile>
+    <innerfile refid="ComputePC_8hpp">ComputePC.hpp</innerfile>
+    <innerfile refid="ComputePdelta_8cpp">ComputePdelta.cpp</innerfile>
+    <innerfile refid="ComputePdelta_8hpp">ComputePdelta.hpp</innerfile>
+    <innerfile refid="ComputePI_8cpp">ComputePI.cpp</innerfile>
+    <innerfile refid="ComputePI_8hpp">ComputePI.hpp</innerfile>
+    <innerfile refid="ComputeSatPCenter_8cpp">ComputeSatPCenter.cpp</innerfile>
+    <innerfile refid="ComputeSatPCenter_8hpp">ComputeSatPCenter.hpp</innerfile>
+    <innerfile refid="ComputeSimpleWeights_8cpp">ComputeSimpleWeights.cpp</innerfile>
+    <innerfile refid="ComputeSimpleWeights_8hpp">ComputeSimpleWeights.hpp</innerfile>
+    <innerfile refid="ComputeTropModel_8cpp">ComputeTropModel.cpp</innerfile>
+    <innerfile refid="ComputeTropModel_8hpp">ComputeTropModel.hpp</innerfile>
+    <innerfile refid="ComputeWindUp_8cpp">ComputeWindUp.cpp</innerfile>
+    <innerfile refid="ComputeWindUp_8hpp">ComputeWindUp.hpp</innerfile>
+    <innerfile refid="ConfData_8hpp">ConfData.hpp</innerfile>
+    <innerfile refid="ConfDataItem_8hpp">ConfDataItem.hpp</innerfile>
+    <innerfile refid="ConfDataSection_8hpp">ConfDataSection.hpp</innerfile>
+    <innerfile refid="ConfDataStructures_8hpp">ConfDataStructures.hpp</innerfile>
+    <innerfile refid="ConvertC1ToP1_8cpp">ConvertC1ToP1.cpp</innerfile>
+    <innerfile refid="ConvertC1ToP1_8hpp">ConvertC1ToP1.hpp</innerfile>
+    <innerfile refid="CorrectObservables_8cpp">CorrectObservables.cpp</innerfile>
+    <innerfile refid="CorrectObservables_8hpp">CorrectObservables.hpp</innerfile>
+    <innerfile refid="DeltaOp_8cpp">DeltaOp.cpp</innerfile>
+    <innerfile refid="DeltaOp_8hpp">DeltaOp.hpp</innerfile>
+    <innerfile refid="Differentiator_8cpp">Differentiator.cpp</innerfile>
+    <innerfile refid="Differentiator_8hpp">Differentiator.hpp</innerfile>
+    <innerfile refid="DoubleOp_8cpp">DoubleOp.cpp</innerfile>
+    <innerfile refid="DoubleOp_8hpp">DoubleOp.hpp</innerfile>
+    <innerfile refid="Dumper_8cpp">Dumper.cpp</innerfile>
+    <innerfile refid="Dumper_8hpp">Dumper.hpp</innerfile>
+    <innerfile refid="EclipsedSatFilter_8cpp">EclipsedSatFilter.cpp</innerfile>
+    <innerfile refid="EclipsedSatFilter_8hpp">EclipsedSatFilter.hpp</innerfile>
+    <innerfile refid="EclipsedSatMarker_8cpp">EclipsedSatMarker.cpp</innerfile>
+    <innerfile refid="EclipsedSatMarker_8hpp">EclipsedSatMarker.hpp</innerfile>
+    <innerfile refid="GravitationalDelay_8cpp">GravitationalDelay.cpp</innerfile>
+    <innerfile refid="GravitationalDelay_8hpp">GravitationalDelay.hpp</innerfile>
+    <innerfile refid="Keeper_8cpp">Keeper.cpp</innerfile>
+    <innerfile refid="Keeper_8hpp">Keeper.hpp</innerfile>
+    <innerfile refid="ModeledPR_8cpp">ModeledPR.cpp</innerfile>
+    <innerfile refid="ModeledPR_8hpp">ModeledPR.hpp</innerfile>
+    <innerfile refid="ModeledReferencePR_8cpp">ModeledReferencePR.cpp</innerfile>
+    <innerfile refid="ModeledReferencePR_8hpp">ModeledReferencePR.hpp</innerfile>
+    <innerfile refid="ModelObs_8cpp">ModelObs.cpp</innerfile>
+    <innerfile refid="ModelObs_8hpp">ModelObs.hpp</innerfile>
+    <innerfile refid="ModelObsFixedStation_8cpp">ModelObsFixedStation.cpp</innerfile>
+    <innerfile refid="ModelObsFixedStation_8hpp">ModelObsFixedStation.hpp</innerfile>
+    <innerfile refid="NablaOp_8cpp">NablaOp.cpp</innerfile>
+    <innerfile refid="NablaOp_8hpp">NablaOp.hpp</innerfile>
+    <innerfile refid="NetworkObsStreams_8cpp">NetworkObsStreams.cpp</innerfile>
+    <innerfile refid="NetworkObsStreams_8hpp">NetworkObsStreams.hpp</innerfile>
+    <innerfile refid="OneFreqCSDetector_8cpp">OneFreqCSDetector.cpp</innerfile>
+    <innerfile refid="OneFreqCSDetector_8hpp">OneFreqCSDetector.hpp</innerfile>
+    <innerfile refid="PCSmoother_8cpp">PCSmoother.cpp</innerfile>
+    <innerfile refid="PCSmoother_8hpp">PCSmoother.hpp</innerfile>
+    <innerfile refid="PhaseCodeAlignment_8cpp">PhaseCodeAlignment.cpp</innerfile>
+    <innerfile refid="PhaseCodeAlignment_8hpp">PhaseCodeAlignment.hpp</innerfile>
+    <innerfile refid="ProblemSatFilter_8cpp">ProblemSatFilter.cpp</innerfile>
+    <innerfile refid="ProblemSatFilter_8hpp">ProblemSatFilter.hpp</innerfile>
+    <innerfile refid="ProcessingClass_8hpp">ProcessingClass.hpp</innerfile>
+    <innerfile refid="ProcessingList_8cpp">ProcessingList.cpp</innerfile>
+    <innerfile refid="ProcessingList_8hpp">ProcessingList.hpp</innerfile>
+    <innerfile refid="ProcessingVector_8cpp">ProcessingVector.cpp</innerfile>
+    <innerfile refid="ProcessingVector_8hpp">ProcessingVector.hpp</innerfile>
+    <innerfile refid="Pruner_8cpp">Pruner.cpp</innerfile>
+    <innerfile refid="Pruner_8hpp">Pruner.hpp</innerfile>
+    <innerfile refid="RequireObservables_8cpp">RequireObservables.cpp</innerfile>
+    <innerfile refid="RequireObservables_8hpp">RequireObservables.hpp</innerfile>
+    <innerfile refid="SatArcMarker_8cpp">SatArcMarker.cpp</innerfile>
+    <innerfile refid="SatArcMarker_8hpp">SatArcMarker.hpp</innerfile>
+    <innerfile refid="SolverWMS_8cpp">SolverWMS.cpp</innerfile>
+    <innerfile refid="SolverWMS_8hpp">SolverWMS.hpp</innerfile>
+    <innerfile refid="Synchronize_8cpp">Synchronize.cpp</innerfile>
+    <innerfile refid="Synchronize_8hpp">Synchronize.hpp</innerfile>
+    <innerfile refid="XYZ2NED_8cpp">XYZ2NED.cpp</innerfile>
+    <innerfile refid="XYZ2NED_8hpp">XYZ2NED.hpp</innerfile>
+    <innerfile refid="XYZ2NEU_8cpp">XYZ2NEU.cpp</innerfile>
+    <innerfile refid="XYZ2NEU_8hpp">XYZ2NEU.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Procframe/"/>
+  </compounddef>
+</doxygen>

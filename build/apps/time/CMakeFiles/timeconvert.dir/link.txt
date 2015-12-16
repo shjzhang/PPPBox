@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/timeconvert.dir/timeconvert.cpp.o  -o timeconvert  ../../libpppbox.dylib 

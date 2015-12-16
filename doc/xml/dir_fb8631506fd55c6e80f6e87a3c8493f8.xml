@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_fb8631506fd55c6e80f6e87a3c8493f8" kind="dir">
+    <compoundname>Geomatics</compoundname>
+    <innerfile refid="removed_2lib_2Geomatics_2Namelist_8cpp">removed/lib/Geomatics/Namelist.cpp</innerfile>
+    <innerfile refid="removed_2lib_2Geomatics_2Namelist_8hpp">removed/lib/Geomatics/Namelist.hpp</innerfile>
+    <innerfile refid="removed_2lib_2Geomatics_2OceanLoading_8cpp">removed/lib/Geomatics/OceanLoading.cpp</innerfile>
+    <innerfile refid="removed_2lib_2Geomatics_2OceanLoading_8hpp">removed/lib/Geomatics/OceanLoading.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/removed/lib/Geomatics/"/>
+  </compounddef>
+</doxygen>

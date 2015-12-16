@@ -1,0 +1,355 @@
+RECEIVER INFORMATION FILE, BERNESE GNSS SOFTWARE 5.3                 17-AUG-2015
+--------------------------------------------------------------------------------
+
+RECEIVER TYPE        #FREQ  CODE  FREQ  WAVE.F.  SYST
+********************   *     **    L*:     *     ****
+
+3SNAV R100-30T 12      2     C1    L1:     1     GR
+                             P2    L2:     1
+
+3SNAV R100-40T 12      2     C1    L1:     1     GR
+                             P2    L2:     1
+
+3SNAV R101 OLD         2     C1    L1:     1     GR
+                             P2    L2:     1
+
+AOA BENCHMARK ACT      2     P1    L1:     1     G
+                             P2    L2:     1
+
+AOA ICS-4000Z          2     C1    L1:     1     G
+                             X2    L2:     1
+
+AOA ICS-4000Z ACT      2     P1    L1:     1     G
+                             P2    L2:     1
+
+AOA SNR-12 ACT         2     P1    L1:     1     G
+                             P2    L2:     1
+
+AOA SNR-8000 ACT       2     P1    L1:     1     G
+                             P2    L2:     1
+
+AOA SNR-8100 ACT       2     P1    L1:     1     G
+                             P2    L2:     1
+
+ASHTECH GG24C          2     P1    L1:     1     GR
+                             P2    L2:     1
+
+ASHTECH MICROZ         2     P1    L1:     1     G
+                             P2    L2:     1
+
+ASHTECH P-XII3         2     P1    L1:     1     G
+                             P2    L2:     1
+
+ASHTECH PF500          2     C1    L1:     1     GR
+                             P2    L2:     1
+
+ASHTECH UZ-12          2     P1    L1:     1     G
+                             P2    L2:     1
+
+ASHTECH Z-X            2     P1    L1:     1     G
+                             P2    L2:     1
+
+ASHTECH Z-XII3         2     P1    L1:     1     G
+                             P2    L2:     1
+
+ASHTECH Z-XII3T        2     P1    L1:     1     G
+                             P2    L2:     1
+
+ASHTECH Z18            2     P1    L1:     1     GR
+                             P2    L2:     1
+
+BLACKJACK              2     P1    L1:     1     G
+                             P2    L2:     1
+
+DICOM GTR50            2     P1    L1:     1     G
+                             P2    L2:     1
+
+GETR                   2     P1    L1:     1     GE
+                             P2    L2:     1
+
+IFEN SX_NSR_RT_400     2     C1    L1:     1     G
+                             P2    L2:     1
+
+JAVAD TRE_3 DELTA      2     P1    L1:     1     GR
+                             P2    L2:     1
+
+JAVAD TRE_G2T DELTA    2     P1    L1:     1     GR
+                             P2    L2:     1
+
+JAVAD TRE_G3T DELTA    2     P1    L1:     1     GR
+                             P2    L2:     1
+
+JAVAD TRE_G3TH DELTA   2     P1    L1:     1     GR
+                             P2    L2:     1
+
+JAVAD TRE_G3TH SIGMA   2     P1    L1:     1     GR
+                             P2    L2:     1
+
+JPS EGGDT              2     P1    L1:     1     GR
+                             P2    L2:     1
+
+JPS EUROCARD           2     P1    L1:     1     GR
+                             P2    L2:     1
+
+JPS E_GGD              2     P1    L1:     1     GR
+                             P2    L2:     1
+
+JPS LEGACY             2     P1    L1:     1     GR
+                             P2    L2:     1
+
+LABEN                  2     P1    L1:     1     G
+                             P2    L2:     1
+
+LEICA CRS1000          2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA GMX902           2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA GMX902GG         2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GR10             2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GR25             2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GRX1200          2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA GRX1200+GNSS     2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GRX1200GGPRO     2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GRX1200PRO       2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA GS14             2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GS15             2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GS25             2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GX1230           2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA GX1230+GNSS      2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA GX1230GG         2     C1    L1:     1     GR
+                             P2    L2:     1
+
+LEICA MC1000           2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA MC500            2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA RS500            2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA SR399            2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA SR399E           2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA SR520            2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA SR530            2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA SR9500           2     C1    L1:     1     G
+                             P2    L2:     1
+
+LEICA SR9600           2     C1    L1:     1     G
+                             P2    L2:     1
+
+MINIMAC 2816AT         1     C1    L1:     1     G
+
+NOV 15A                2     C1    L1:     1     GS
+                             P2    L2:     1
+
+NOV EURO4-1.00-222     2     C1    L1:     1     G
+                             P2    L2:     1
+
+NOV MILLEN-RT2         2     C1    L1:     1     G
+                             P2    L2:     1
+
+NOV MILLEN-STD         2     C1    L1:     1     G
+                             P2    L2:     1
+
+NOV MILLEN-STDW        2     C1    L1:     1     G
+                             P2    L2:     1
+
+NOV OEM4-G2            2     C1    L1:     1     GS
+                             P2    L2:     1
+
+NOV OEMV1              2     C1    L1:     1     GS
+                             P2    L2:     1
+
+NOV OEMV1G             2     C1    L1:     1     GR
+                             P2    L2:     1
+
+NOV OEMV2              2     C1    L1:     1     GR
+                             P2    L2:     1
+
+NOV OEMV3              2     C1    L1:     1     GR
+                             P2    L2:     1
+
+NOV OEMV3-RT2          2     C1    L1:     1     GS
+                             P2    L2:     1
+
+NOV WAASGII            2     C1    L1:     1     G
+                             P2    L2:     1
+
+ROGUE SNR-12           2     C1    L1:     1     G
+                             X2    L2:     1
+
+ROGUE SNR-12 RM        2     C1    L1:     1     G
+                             X2    L2:     1
+
+ROGUE SNR-8            2     C1    L1:     1     G
+                             X2    L2:     1
+
+ROGUE SNR-800          2     C1    L1:     1     G
+                             X2    L2:     1
+
+ROGUE SNR-8000         2     C1    L1:     1     G
+                             X2    L2:     1
+
+ROGUE SNR-8100         2     C1    L1:     1     G
+                             X2    L2:     1
+
+ROGUE SNR-8C           2     C1    L1:     1     G
+                             X2    L2:     1
+
+SEPT POLARX2           2     P1    L1:     1     GS
+                             P2    L2:     1
+
+SEPT POLARX2E          2     P1    L1:     1     GS
+                             P2    L2:     1
+
+SEPT POLARX3ETR        2     P1    L1:     1     GR
+                             P2    L2:     1
+
+SEPT POLARX4           2     P1    L1:     1     GR
+                             P2    L2:     1
+
+SEPT POLARX4TR         2     P1    L1:     1     GR
+                             P2    L2:     1
+
+SIMULA                 2     P1    L1:     1     GR
+                             P2    L2:     1
+
+SPP GEOTRACER100       2     C1    L1:     1     G
+                             X2    L2:     1
+
+TOPCON GP-DX1          2     C1    L1:     1     G
+                             X2    L2:     1
+
+TOPCON GP-R1DY         2     P1    L1:     1     G
+                             P2    L2:     1
+
+TOPCON TT4000SSI       2     C1    L1:     1     G
+                             X2    L2:     1
+
+TPS EGGDT              2     P1    L1:     1     GR
+                             P2    L2:     1
+
+TPS EUROCARD           2     P1    L1:     1     GR
+                             P2    L2:     1
+
+TPS E_GGD              2     P1    L1:     1     GR
+                             P2    L2:     1
+
+TPS GB-1000            2     P1    L1:     1     GR
+                             P2    L2:     1
+
+TPS LEGACY             2     P1    L1:     1     GR
+                             P2    L2:     1
+
+TPS NET-G3A            2     P1    L1:     1     GR
+                             P2    L2:     1
+
+TPS NETG3              2     P1    L1:     1     GR
+                             P2    L2:     1
+
+TPS ODYSSEY_E          2     P1    L1:     1     GR
+                             P2    L2:     1
+
+TRIMBLE 4000SGL        2     C1    L1:     1     GR
+                             P2    L2:     1
+
+TRIMBLE 4000SSE        2     C1    L1:     1     G
+                             X2    L2:     1
+
+TRIMBLE 4000SSI        2     C1    L1:     1     G
+                             X2    L2:     1
+
+TRIMBLE 4000SST        2     C1    L1:     1     G
+                             X2    L2:     1
+
+TRIMBLE 4400           2     C1    L1:     1     G
+                             P2    L2:     1
+
+TRIMBLE 4700           2     C1    L1:     1     G
+                             P2    L2:     1
+
+TRIMBLE 5700           2     C1    L1:     1     G
+                             P2    L2:     1
+
+TRIMBLE 7400MSI        2     C1    L1:     1     G
+                             P2    L2:     1
+
+TRIMBLE MS750          2     C1    L1:     1     G
+                             P2    L2:     1
+
+TRIMBLE NETR3          2     C1    L1:     1     GR
+                             P2    L2:     1
+
+TRIMBLE NETR5          2     C1    L1:     1     GR
+                             P2    L2:     1
+
+TRIMBLE NETR8          2     C1    L1:     1     GR
+                             P2    L2:     1
+
+TRIMBLE NETR9          2     C1    L1:     1     GR
+                             P2    L2:     1
+
+TRIMBLE NETRS          2     C1    L1:     1     G
+                             P2    L2:     1
+
+TRIMBLE R7             2     C1    L1:     1     G
+                             P2    L2:     1
+
+TRIMBLE R8             2     C1    L1:     1     G
+                             P2    L2:     1
+
+TRSR                   2     P1    L1:     1     G
+                             P2    L2:     1
+
+TTS-3                  2     P1    L1:     1     GR
+                             P2    L2:     1
+
+ZY12                   2     P1    L1:     1     G
+                             P2    L2:     1
+
+
+
+REMARK:
+
+  X2=C1+(P2-P1)
+  P1= C1+(P1-C1)                          ???
+  P2'=X2+(P1-C1)=C1+(P2-P1)+(P1-C1)=P2    ???
+  G: GPS
+  R: GLONASS
+  E: GALILEO
+  S: SBAS

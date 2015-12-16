@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_bc5c44517bb1613852d64bb35a29f3a5" kind="dir">
+    <compoundname>GNSSCore</compoundname>
+    <innerfile refid="convhelp_8hpp">convhelp.hpp</innerfile>
+    <innerfile refid="EllipsoidModel_8hpp">EllipsoidModel.hpp</innerfile>
+    <innerfile refid="ENUUtil_8cpp">ENUUtil.cpp</innerfile>
+    <innerfile refid="ENUUtil_8hpp">ENUUtil.hpp</innerfile>
+    <innerfile refid="geometry_8hpp">geometry.hpp</innerfile>
+    <innerfile refid="GNSSconstants_8hpp">GNSSconstants.hpp</innerfile>
+    <innerfile refid="GPSEllipsoid_8hpp">GPSEllipsoid.hpp</innerfile>
+    <innerfile refid="IonoModel_8cpp">IonoModel.cpp</innerfile>
+    <innerfile refid="IonoModel_8hpp">IonoModel.hpp</innerfile>
+    <innerfile refid="IonoModelStore_8cpp">IonoModelStore.cpp</innerfile>
+    <innerfile refid="IonoModelStore_8hpp">IonoModelStore.hpp</innerfile>
+    <innerfile refid="NEDUtil_8cpp">NEDUtil.cpp</innerfile>
+    <innerfile refid="NEDUtil_8hpp">NEDUtil.hpp</innerfile>
+    <innerfile refid="ObsID_8cpp">ObsID.cpp</innerfile>
+    <innerfile refid="ObsID_8hpp">ObsID.hpp</innerfile>
+    <innerfile refid="ObsIDInitializer_8cpp">ObsIDInitializer.cpp</innerfile>
+    <innerfile refid="ObsIDInitializer_8hpp">ObsIDInitializer.hpp</innerfile>
+    <innerfile refid="lib_2GNSSCore_2OceanLoading_8cpp">lib/GNSSCore/OceanLoading.cpp</innerfile>
+    <innerfile refid="lib_2GNSSCore_2OceanLoading_8hpp">lib/GNSSCore/OceanLoading.hpp</innerfile>
+    <innerfile refid="Position_8cpp">Position.cpp</innerfile>
+    <innerfile refid="Position_8hpp">Position.hpp</innerfile>
+    <innerfile refid="PZ90Ellipsoid_8hpp">PZ90Ellipsoid.hpp</innerfile>
+    <innerfile refid="SolidTides_8cpp">SolidTides.cpp</innerfile>
+    <innerfile refid="SolidTides_8hpp">SolidTides.hpp</innerfile>
+    <innerfile refid="TropModel_8cpp">TropModel.cpp</innerfile>
+    <innerfile refid="TropModel_8hpp">TropModel.hpp</innerfile>
+    <innerfile refid="WGS84Ellipsoid_8hpp">WGS84Ellipsoid.hpp</innerfile>
+    <innerfile refid="WxObsMap_8cpp">WxObsMap.cpp</innerfile>
+    <innerfile refid="WxObsMap_8hpp">WxObsMap.hpp</innerfile>
+    <innerfile refid="Xv_8hpp">Xv.hpp</innerfile>
+    <innerfile refid="Xvt_8cpp">Xvt.cpp</innerfile>
+    <innerfile refid="Xvt_8hpp">Xvt.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/GNSSCore/"/>
+  </compounddef>
+</doxygen>

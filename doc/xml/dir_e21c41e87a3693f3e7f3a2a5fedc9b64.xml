@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_e21c41e87a3693f3e7f3a2a5fedc9b64" kind="dir">
+    <compoundname>Vdraw</compoundname>
+    <innerfile refid="Adler32_8cpp">Adler32.cpp</innerfile>
+    <innerfile refid="Adler32_8hpp">Adler32.hpp</innerfile>
+    <innerfile refid="Base64Encoder_8cpp">Base64Encoder.cpp</innerfile>
+    <innerfile refid="Base64Encoder_8hpp">Base64Encoder.hpp</innerfile>
+    <innerfile refid="BasicShape_8hpp">BasicShape.hpp</innerfile>
+    <innerfile refid="Bitmap_8cpp">Bitmap.cpp</innerfile>
+    <innerfile refid="Bitmap_8hpp">Bitmap.hpp</innerfile>
+    <innerfile refid="BorderLayout_8cpp">BorderLayout.cpp</innerfile>
+    <innerfile refid="BorderLayout_8hpp">BorderLayout.hpp</innerfile>
+    <innerfile refid="Canvas_8cpp">Canvas.cpp</innerfile>
+    <innerfile refid="Canvas_8hpp">Canvas.hpp</innerfile>
+    <innerfile refid="Circle_8hpp">Circle.hpp</innerfile>
+    <innerfile refid="Color_8cpp">Color.cpp</innerfile>
+    <innerfile refid="Color_8hpp">Color.hpp</innerfile>
+    <innerfile refid="ColorMap_8cpp">ColorMap.cpp</innerfile>
+    <innerfile refid="ColorMap_8hpp">ColorMap.hpp</innerfile>
+    <innerfile refid="Comment_8cpp">Comment.cpp</innerfile>
+    <innerfile refid="Comment_8hpp">Comment.hpp</innerfile>
+    <innerfile refid="CRC32_8cpp">CRC32.cpp</innerfile>
+    <innerfile refid="CRC32_8hpp">CRC32.hpp</innerfile>
+    <innerfile refid="EPSImage_8cpp">EPSImage.cpp</innerfile>
+    <innerfile refid="EPSImage_8hpp">EPSImage.hpp</innerfile>
+    <innerfile refid="Fillable_8hpp">Fillable.hpp</innerfile>
+    <innerfile refid="Frame_8cpp">Frame.cpp</innerfile>
+    <innerfile refid="Frame_8hpp">Frame.hpp</innerfile>
+    <innerfile refid="GraphicsConstants_8cpp">GraphicsConstants.cpp</innerfile>
+    <innerfile refid="GraphicsConstants_8hpp">GraphicsConstants.hpp</innerfile>
+    <innerfile refid="GridLayout_8cpp">GridLayout.cpp</innerfile>
+    <innerfile refid="GridLayout_8hpp">GridLayout.hpp</innerfile>
+    <innerfile refid="Helper_8hpp">Helper.hpp</innerfile>
+    <innerfile refid="HLayout_8cpp">HLayout.cpp</innerfile>
+    <innerfile refid="HLayout_8hpp">HLayout.hpp</innerfile>
+    <innerfile refid="InterpolatedColorMap_8cpp">InterpolatedColorMap.cpp</innerfile>
+    <innerfile refid="InterpolatedColorMap_8hpp">InterpolatedColorMap.hpp</innerfile>
+    <innerfile refid="Layout_8hpp">Layout.hpp</innerfile>
+    <innerfile refid="Line_8cpp">Line.cpp</innerfile>
+    <innerfile refid="Line_8hpp">Line.hpp</innerfile>
+    <innerfile refid="Markable_8hpp">Markable.hpp</innerfile>
+    <innerfile refid="Marker_8cpp">Marker.cpp</innerfile>
+    <innerfile refid="Marker_8hpp">Marker.hpp</innerfile>
+    <innerfile refid="Palette_8cpp">Palette.cpp</innerfile>
+    <innerfile refid="Palette_8hpp">Palette.hpp</innerfile>
+    <innerfile refid="Path_8cpp">Path.cpp</innerfile>
+    <innerfile refid="Path_8hpp">Path.hpp</innerfile>
+    <innerfile refid="PNG_8cpp">PNG.cpp</innerfile>
+    <innerfile refid="PNG_8hpp">PNG.hpp</innerfile>
+    <innerfile refid="Polygon_8hpp">Polygon.hpp</innerfile>
+    <innerfile refid="PSImage_8cpp">PSImage.cpp</innerfile>
+    <innerfile refid="PSImage_8hpp">PSImage.hpp</innerfile>
+    <innerfile refid="PSImageBase_8cpp">PSImageBase.cpp</innerfile>
+    <innerfile refid="PSImageBase_8hpp">PSImageBase.hpp</innerfile>
+    <innerfile refid="Rectangle_8cpp">Rectangle.cpp</innerfile>
+    <innerfile refid="Rectangle_8hpp">Rectangle.hpp</innerfile>
+    <innerfile refid="StrokeStyle_8cpp">StrokeStyle.cpp</innerfile>
+    <innerfile refid="StrokeStyle_8hpp">StrokeStyle.hpp</innerfile>
+    <innerfile refid="SVGImage_8cpp">SVGImage.cpp</innerfile>
+    <innerfile refid="SVGImage_8hpp">SVGImage.hpp</innerfile>
+    <innerfile refid="Text_8cpp">Text.cpp</innerfile>
+    <innerfile refid="Text_8hpp">Text.hpp</innerfile>
+    <innerfile refid="TextStyle_8cpp">TextStyle.cpp</innerfile>
+    <innerfile refid="TextStyle_8hpp">TextStyle.hpp</innerfile>
+    <innerfile refid="VDrawException_8hpp">VDrawException.hpp</innerfile>
+    <innerfile refid="VGImage_8cpp">VGImage.cpp</innerfile>
+    <innerfile refid="VGImage_8hpp">VGImage.hpp</innerfile>
+    <innerfile refid="VGState_8hpp">VGState.hpp</innerfile>
+    <innerfile refid="ViewerManager_8cpp">ViewerManager.cpp</innerfile>
+    <innerfile refid="ViewerManager_8hpp">ViewerManager.hpp</innerfile>
+    <innerfile refid="VLayout_8cpp">VLayout.cpp</innerfile>
+    <innerfile refid="VLayout_8hpp">VLayout.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Vdraw/"/>
+  </compounddef>
+</doxygen>

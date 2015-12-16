@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_2409f140ca6b329e1a129f8097428273" kind="dir">
+    <compoundname>FileHandling</compoundname>
+    <innerdir refid="dir_6f61044727ad89f16e9ecdeb79d27c79">Binex</innerdir>
+    <innerdir refid="dir_e37e6aa5b12b438722f181a81232fe30">FIC</innerdir>
+    <innerdir refid="dir_17579728be6fb539355c1a78f3ce2e16">Ionex</innerdir>
+    <innerdir refid="dir_b71164f2daf32c8606006e1646a93e62">MSC</innerdir>
+    <innerdir refid="dir_6c0400e9226e7bdd3fd52406f6d4c35e">RINEX</innerdir>
+    <innerdir refid="dir_723449aaccbd7940caa3e4d0b59902b5">RINEX3</innerdir>
+    <innerdir refid="dir_0ab1d96c55c5a43ea9abb9ad21cfd51d">SEM</innerdir>
+    <innerdir refid="dir_09ebd9c38acfd288c7b679ee4720af9b">SP3</innerdir>
+    <innerdir refid="dir_7aaff85ae1f4931d9ccc4d3149f9b585">Yuma</innerdir>
+    <innerfile refid="BLQDataReader_8cpp">BLQDataReader.cpp</innerfile>
+    <innerfile refid="BLQDataReader_8hpp">BLQDataReader.hpp</innerfile>
+    <innerfile refid="ConfDataReader_8cpp">ConfDataReader.cpp</innerfile>
+    <innerfile refid="ConfDataReader_8hpp">ConfDataReader.hpp</innerfile>
+    <innerfile refid="ConfDataWriter_8cpp">ConfDataWriter.cpp</innerfile>
+    <innerfile refid="ConfDataWriter_8hpp">ConfDataWriter.hpp</innerfile>
+    <innerfile refid="DCBDataReader_8cpp">DCBDataReader.cpp</innerfile>
+    <innerfile refid="DCBDataReader_8hpp">DCBDataReader.hpp</innerfile>
+    <innerfile refid="FFBinaryStream_8hpp">FFBinaryStream.hpp</innerfile>
+    <innerfile refid="FFData_8cpp">FFData.cpp</innerfile>
+    <innerfile refid="FFData_8hpp">FFData.hpp</innerfile>
+    <innerfile refid="FFStream_8cpp">FFStream.cpp</innerfile>
+    <innerfile refid="FFStream_8hpp">FFStream.hpp</innerfile>
+    <innerfile refid="FFStreamError_8hpp">FFStreamError.hpp</innerfile>
+    <innerfile refid="FFTextStream_8hpp">FFTextStream.hpp</innerfile>
+    <innerfile refid="SatDataReader_8cpp">SatDataReader.cpp</innerfile>
+    <innerfile refid="SatDataReader_8hpp">SatDataReader.hpp</innerfile>
+    <innerfile refid="SMODFData_8cpp">SMODFData.cpp</innerfile>
+    <innerfile refid="SMODFData_8hpp">SMODFData.hpp</innerfile>
+    <innerfile refid="SMODFStream_8hpp">SMODFStream.hpp</innerfile>
+    <innerfile refid="StreamBuf_8hpp">StreamBuf.hpp</innerfile>
+    <innerfile refid="TimeNamedFileStream_8hpp">TimeNamedFileStream.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/FileHandling/"/>
+  </compounddef>
+</doxygen>

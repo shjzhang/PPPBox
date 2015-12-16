@@ -1,0 +1,315 @@
+#pragma ident "$Id: AmbiguityDatumPPPWL.cpp 2939 2012-04-06 19:55:11Z shjzhang $"
+
+/**
+ * @file AmbiguityDatumPPPWL.cpp
+ * Class to define and handle the ambiguity datum for PPP.
+ */
+
+//============================================================================
+//
+//  Function
+//  --------
+//
+//  This file is part of GPSTk, the GPS Toolkit.
+//
+//  The GPSTk is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published
+//  by the Free Software Foundation; either version 2.1 of the License, or
+//  any later version.
+//
+//  The GPSTk is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public
+//  License along with GPSTk; if not, write to the Free Software Foundation,
+//  Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+//
+//  Copyright
+//  ---------
+//
+//  Shoujian Zhang, Wuhan University, 2012
+//
+//============================================================================
+//
+//  History
+//  -------
+//
+//  2012.10.12  Modify this program for ambiguity datum determination in PPP.
+//  2012.10.20  Change this file name from "AmbDatumPos" to "AmbiguityDatumPPPWL" 
+//
+//============================================================================
+
+
+#include "SystemTime.hpp"
+#include "AmbiguityDatumPPPWL.hpp"
+#include <iterator>
+
+namespace gpstk
+{
+
+      // General white noise stochastic model
+   WhiteNoiseModel AmbiguityDatumPPPWL::whiteNoiseModel;
+
+
+      /* Set the ambiguity type for this class 
+       *
+       * @param ambType   Ambiguity variable to be added.
+       *
+       */
+   AmbiguityDatumPPPWL& AmbiguityDatumPPPWL::setAmbType( const Variable& inType)
+   {
+
+         // Set "ambType" as inType 
+      ambType = inType;
+
+         // We must "Prepare()" this "AmbiguityDatumPPPWL"
+      isPrepared = false;
+
+      return (*this);
+
+   }  // End of method 'AmbiguityDatumPPPWL::setAmbType()'
+
+
+      /* Prepare this object to carry out its work.
+       *
+       * @param gData     Map of GNSS data structures (GDS), indexed
+       *                  by SourceID.
+       */
+   AmbiguityDatumPPPWL& AmbiguityDatumPPPWL::Prepare( gnssRinex& gData )
+   {
+
+         // Store the independent ambiguity unknowns of the previous epoch
+      oldIndepEdge = currentIndepEdge;
+
+         // Prepare current edges
+      currentEdgeSet = prepareCurrentEdges(gData);
+
+         // Prepare current independent edge
+      currentIndepEdge = prepareCurrentIndepEdge(gData);
+
+         // Set this object as "prepared"
+      isPrepared = true;
+
+      return (*this);
+
+   }  // End of method 'AmbiguityDatumPPPWL::Prepare()'
+
+
+      // Prepare set of current unknowns and list of current constraints
+   EdgeSet AmbiguityDatumPPPWL::prepareCurrentEdges( gnssRinex& gData )
+   {
+
+         // Let's create current edge set
+      EdgeSet currentEdgeSet;
+
+         // Get the source from 'gnssRinex'
+      SourceID source( gData.header.source );
+
+         // Get current satellites 
+      SatIDSet currentSatSet( gData.body.getSatID() );
+
+         // The ambiguity fixing method
+      ARRound ambRes(1000.0, 0.25, 0.25);
+
+         // Clear the map
+      ambFixedMap.clear();
+
+         // Let's generate current ambiguity unknowns and edges
+      for( SatIDSet::const_iterator itSat = currentSatSet.begin();
+           itSat != currentSatSet.end();
+           ++itSat )
+      {
+            // Warning, the satellite in 'currentSatSet' may not
+            // exist in 'ambMap' and 'ambCovMap', 
+            // e.g. in SolverPPPNL, the satellite should only be
+            // the satellites with widelane already fixed.
+            
+            // Check if '(*itSat)' belongs to 'ambCovMap'
+         if( ambCovMap.find( (*itSat) ) != ambCovMap.end()  )
+         {
+
+
+               // Define temporary variables
+            double ambValue, ambVariance;
+
+               // Ambiguity value
+            ambValue = ambMap[ (*itSat) ];
+
+//          cout << "ambiguity value" << ambValue << endl;
+
+                  // If it belongs, get element from 'covarianceMap'
+            ambVariance = ambCovMap[ (*itSat) ][ (*itSat) ];
+
+               // Calculating the fixing decision
+            double ambFixed = ambRes.resolve(ambValue, ambVariance);
+
+               // Get the ambiguity fixed flag
+            bool ambFlag = ambRes.getFlags(ambValue, ambVariance);
+
+
+//          cout << "ambFlag" << endl;
+
+               // Store the fixed ambiguity value into 'ambFixedMap'
+            if(ambFlag)
+            {
+               ambFixedMap[ (*itSat) ] = ambFixed;
+            }
+
+               // Ambiguity sigma
+            double sigma = std::sqrt(ambVariance);
+
+               // Calculating the fixing decision
+            double decision = ambRes.getDecision(ambValue, sigma);
+
+               // The weight for this edges 
+            double edgeWeight = decision;
+
+               // Get the arc for this edge
+            double satArc( gData.getValue((*itSat), TypeID::satArc) );
+
+               // Get the arc for this edge
+            double elev( gData.getValue( (*itSat),TypeID::elevation) );
+
+            cout << "satellite" <<  (*itSat)
+                 << "ambValue"  << ambValue 
+                 << "ambVariance" << ambVariance
+                 << "ambFixed" << ambFixed
+                 << "ambFlag" << ambFlag
+                 << "edgeWeight" << edgeWeight
+                 << "elev:" << elev
+                 << endl;
+
+               // Create a new edge 
+            Edge edge( source, (*itSat), satArc, edgeWeight, elev );
+
+               // New constraint is complete: Add it to 'currentEdgeSet'
+            currentEdgeSet.insert( edge );
+
+         }  // End of 'If(...)'
+
+      }  // End of 'for(...)'
+
+
+         // Return set of current edges
+      return currentEdgeSet;
+
+   }  // End of method 'AmbiguityDatumPPPWL::prepareCurrentEdges()'
+
+
+      // Prepare set of current unknowns and list of current constraints
+   Edge AmbiguityDatumPPPWL::prepareCurrentIndepEdge(gnssRinex& gData)
+   {
+
+      Edge currentIndepEdge;
+
+         // Continuous independent edges
+      Edge continuousEdge;
+
+            // Arc information of the previous edge
+      Arc oldArc( oldIndepEdge );
+
+         // Arc information of the previous edge
+      SatID oldSat( oldIndepEdge.getSatellite() );
+
+         // Define new SatID
+      SatID newSat;
+
+         // Find the 'oldIndepEdge' in 'currentEdgeSet'
+      bool find(false);
+
+         // Current edge information
+      for( EdgeSet::const_iterator it2 = currentEdgeSet.begin();
+           it2 != currentEdgeSet.end();
+           ++it2)
+      {
+         cout << "Edge Sat: " <<  (*it2).getSatellite()  << endl;
+
+         Arc newArc( (*it2) );
+
+            // Add the old independent edge into the 'continuousEdge'
+         if( newArc == oldArc )
+         {
+               // Current independent edge is the old one      
+            currentIndepEdge = (*it2);
+
+               // Arc information of the previous edge
+            newSat = currentIndepEdge.getSatellite();
+
+               // Set the 'find' as 'true'
+            find = true;
+
+               // OK, found the independent edge.
+            break;
+         }
+      }
+
+         // If the 'oldIndepEdge' is found in 'currentEdges'
+      if(!find)
+      {
+            // Get the first element 
+         EdgeSet::iterator itEdge = currentEdgeSet.begin();
+
+            // Get the first element 
+         currentIndepEdge = (*itEdge);
+
+            // Arc information of the previous edge
+         newSat = currentIndepEdge.getSatellite();
+      }
+
+         // Firstly, Clear the ambFixedMap
+      ambFixedMap.clear();
+
+         // The ambiguity fixing method
+         // Warning: you must set the bias as 0.5 here, 
+         // or else, when only one satellite's widelane is
+         // fixed, but the narrowlane has a bias than a small
+         // value, e.g. 0.2, then the datum satellite will 
+         // be choosen, but its widelane ambiguity will be not fixed.
+      ARRound ambRes(1000.0, 0.25, 0.25);
+
+         // Define temporary variables
+      double ambValue, ambVariance;
+
+         // Ambiguity value
+      ambValue = ambMap[ newSat ];
+
+         // If it belongs, get element from 'covarianceMap'
+      ambVariance = ambCovMap[ newSat ][ newSat ];
+
+         // Calculating the fixing decision
+      double ambFixed = ambRes.resolve(ambValue, ambVariance);
+
+         // Store the fixed ambiguity value into 'ambFixedMap'
+         // Warning: we will insert this satellite into 'ambFixedMap' 
+         //          directly whether it can be fixed or not, because
+         //          this satellite is the independent ambiguity datum.
+      ambFixedMap[ newSat ] = ambFixed;
+
+         // Return set of current unknowns
+      return currentIndepEdge;
+
+   }  // End of method 'AmbiguityDatumPPPWL::prepareCurrentIndepEdge()'
+
+
+      /** Get the ambiguity datum set which are fixed directly.
+       */
+   std::map<SatID,double> AmbiguityDatumPPPWL::getAmbFixedMap( void )
+      throw(InvalidAmbiguityDatumPPPWL)
+   {
+
+         // If the object as not ready, throw an exception
+      if (!isPrepared)
+      {
+         GPSTK_THROW(InvalidAmbiguityDatumPPPWL("AmbiguityDatumPPPWL is not prepared"));
+      }
+
+         // Return
+      return ambFixedMap;
+
+   }  // End of method 'AmbiguityDatumPPPWL::getAmbFixedMap()'
+
+
+}  // End of namespace gpstk

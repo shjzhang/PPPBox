@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_71b9bb2bc081d1cc57a33c8a109a0398" kind="dir">
+    <compoundname>lib</compoundname>
+    <innerdir refid="dir_fb8631506fd55c6e80f6e87a3c8493f8">Geomatics</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/removed/lib/"/>
+  </compounddef>
+</doxygen>

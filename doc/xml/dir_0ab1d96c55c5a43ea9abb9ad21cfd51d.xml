@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_0ab1d96c55c5a43ea9abb9ad21cfd51d" kind="dir">
+    <compoundname>SEM</compoundname>
+    <innerfile refid="SEMBase_8hpp">SEMBase.hpp</innerfile>
+    <innerfile refid="SEMData_8cpp">SEMData.cpp</innerfile>
+    <innerfile refid="SEMData_8hpp">SEMData.hpp</innerfile>
+    <innerfile refid="SEMHeader_8cpp">SEMHeader.cpp</innerfile>
+    <innerfile refid="SEMHeader_8hpp">SEMHeader.hpp</innerfile>
+    <innerfile refid="SEMStream_8hpp">SEMStream.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/FileHandling/SEM/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,32 @@
+                           
+                            EPHINT 
+
+ Purpose
+
+ read the ephemeris, clock and other files from IGS center, then interpolate
+ the orbit, clock, Satellite Phase Center Offsets(PCVs) and other corrections
+ according to the given time, expressed by year and day of year.
+
+ needs:
+ (1)  The year of interest (2-digit or 4-digit will do)
+ (2)  The day of year of interest (Julian day, 0-365/366)
+ (3)  The interval you want to interpolate the data
+ (4)  An input SP3 file or multiple SP3 files 
+ (5)  An input CLK file or multiple clk files 
+ (6)  antex file defined by the IGS 
+
+ Usage:
+
+ > ephint -y<year> -j<DOY> -i<interval> -e<SP3File> -c<CLKFile> -x<ATXFile> [-s<PRN>]
+ -y : year (2-digit or 4-digit)
+ -j : day of year (0-365|366)
+ -i : interpolation inteval you needed
+ -e : Where to get the ephemeris data with SP3 format. Repeat for multiple files
+ -c : Where to get the precise clock data with SP3 format. Repeat for multiple files
+ -x : GPS antex file, which can be obtained from IGS analysis center.
+ -s : only print out the given PRN's information, optional (to be supported)
+
+ EXAMPLE:
+
+ > ephint -y2011 -j283 -i10 -ecod16570.eph -ecod16571.eph -ecod16572.eph -ccod16571.clk -xigs08_1648.atx > ephint.log &
+

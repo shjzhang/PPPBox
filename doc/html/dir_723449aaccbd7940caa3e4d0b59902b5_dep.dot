@@ -1,0 +1,9 @@
+digraph "RINEX3" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2409f140ca6b329e1a129f8097428273 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="FileHandling" fontname="Helvetica", fontsize="10", URL="dir_2409f140ca6b329e1a129f8097428273.html"]
+  dir_723449aaccbd7940caa3e4d0b59902b5 [shape=box, label="RINEX3", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_723449aaccbd7940caa3e4d0b59902b5.html"];
+  }
+}

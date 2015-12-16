@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/shjzhang/Documents/Develop/rocket/pppbox/apps/clocktools/rmoutlier.cpp
+iostream
+-
+vector
+-
+string
+-
+stdio.h
+-
+math.h
+-
+

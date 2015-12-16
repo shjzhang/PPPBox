@@ -1,0 +1,19 @@
+                           
+                            rnxsort 
+
+ Purpose
+ Sort the observations according SatID at every epoch. 
+
+ needs:
+ (1)  The RINEX file which needs to sort its observation.
+ (2)  The output RINEX file's name. 
+
+ Usage:
+
+ > rnxsort -i<inFile> -o<outFile>
+ i : inFile,      Input RINEX File.
+ o : outFile,     Output RINEX file.
+
+ EXAMPLE:
+
+> rnxsort -i "../data/rnxfile/bell0610.04o" -o "../data/bell110610.04o.out"

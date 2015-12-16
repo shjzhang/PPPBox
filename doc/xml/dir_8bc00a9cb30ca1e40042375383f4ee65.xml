@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_8bc00a9cb30ca1e40042375383f4ee65" kind="dir">
+    <compoundname>Math</compoundname>
+    <innerdir refid="dir_11cdd0d8cbd2e125d352eb6799b968e1">Matrix</innerdir>
+    <innerdir refid="dir_ac34e58b5043dc546a0c18e99a2b58c5">Vector</innerdir>
+    <innerfile refid="AllanDeviation_8hpp">AllanDeviation.hpp</innerfile>
+    <innerfile refid="BaseDistribution_8hpp">BaseDistribution.hpp</innerfile>
+    <innerfile refid="BivarStats_8hpp">BivarStats.hpp</innerfile>
+    <innerfile refid="Chi2Distribution_8cpp">Chi2Distribution.cpp</innerfile>
+    <innerfile refid="Chi2Distribution_8hpp">Chi2Distribution.hpp</innerfile>
+    <innerfile refid="lib_2Math_2Expression_8cpp">lib/Math/Expression.cpp</innerfile>
+    <innerfile refid="lib_2Math_2Expression_8hpp">lib/Math/Expression.hpp</innerfile>
+    <innerfile refid="FilterBase_8hpp">FilterBase.hpp</innerfile>
+    <innerfile refid="FIRDifferentiator5thOrder_8cpp">FIRDifferentiator5thOrder.cpp</innerfile>
+    <innerfile refid="FIRDifferentiator5thOrder_8hpp">FIRDifferentiator5thOrder.hpp</innerfile>
+    <innerfile refid="GaussianDistribution_8cpp">GaussianDistribution.cpp</innerfile>
+    <innerfile refid="GaussianDistribution_8hpp">GaussianDistribution.hpp</innerfile>
+    <innerfile refid="MathBase_8hpp">MathBase.hpp</innerfile>
+    <innerfile refid="MiscMath_8hpp">MiscMath.hpp</innerfile>
+    <innerfile refid="lib_2Math_2Namelist_8cpp">lib/Math/Namelist.cpp</innerfile>
+    <innerfile refid="lib_2Math_2Namelist_8hpp">lib/Math/Namelist.hpp</innerfile>
+    <innerfile refid="PolyFit_8hpp">PolyFit.hpp</innerfile>
+    <innerfile refid="PowerSum_8cpp">PowerSum.cpp</innerfile>
+    <innerfile refid="PowerSum_8hpp">PowerSum.hpp</innerfile>
+    <innerfile refid="RACRotation_8cpp">RACRotation.cpp</innerfile>
+    <innerfile refid="RACRotation_8hpp">RACRotation.hpp</innerfile>
+    <innerfile refid="RungeKutta4_8cpp">RungeKutta4.cpp</innerfile>
+    <innerfile refid="RungeKutta4_8hpp">RungeKutta4.hpp</innerfile>
+    <innerfile refid="SimpleKalmanFilter_8cpp">SimpleKalmanFilter.cpp</innerfile>
+    <innerfile refid="SimpleKalmanFilter_8hpp">SimpleKalmanFilter.hpp</innerfile>
+    <innerfile refid="Stats_8hpp">Stats.hpp</innerfile>
+    <innerfile refid="StudentDistribution_8cpp">StudentDistribution.cpp</innerfile>
+    <innerfile refid="StudentDistribution_8hpp">StudentDistribution.hpp</innerfile>
+    <innerfile refid="Triple_8cpp">Triple.cpp</innerfile>
+    <innerfile refid="Triple_8hpp">Triple.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Math/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_529e4dcbd4420ba7afa1c7118022a812" kind="dir">
+    <compoundname>ProcLib</compoundname>
+    <innerfile refid="Antenna_8cpp">Antenna.cpp</innerfile>
+    <innerfile refid="Antenna_8hpp">Antenna.hpp</innerfile>
+    <innerfile refid="AntexReader_8cpp">AntexReader.cpp</innerfile>
+    <innerfile refid="AntexReader_8hpp">AntexReader.hpp</innerfile>
+    <innerfile refid="CheckPRData_8hpp">CheckPRData.hpp</innerfile>
+    <innerfile refid="ClockModel_8hpp">ClockModel.hpp</innerfile>
+    <innerfile refid="EpochClockModel_8hpp">EpochClockModel.hpp</innerfile>
+    <innerfile refid="ExtractCombinationData_8cpp">ExtractCombinationData.cpp</innerfile>
+    <innerfile refid="ExtractCombinationData_8hpp">ExtractCombinationData.hpp</innerfile>
+    <innerfile refid="ExtractData_8cpp">ExtractData.cpp</innerfile>
+    <innerfile refid="ExtractData_8hpp">ExtractData.hpp</innerfile>
+    <innerfile refid="ExtractLC_8hpp">ExtractLC.hpp</innerfile>
+    <innerfile refid="ExtractPC_8hpp">ExtractPC.hpp</innerfile>
+    <innerfile refid="LinearClockModel_8cpp">LinearClockModel.cpp</innerfile>
+    <innerfile refid="LinearClockModel_8hpp">LinearClockModel.hpp</innerfile>
+    <innerfile refid="ObsClockModel_8cpp">ObsClockModel.cpp</innerfile>
+    <innerfile refid="ObsClockModel_8hpp">ObsClockModel.hpp</innerfile>
+    <innerfile refid="ObsEpochMap_8cpp">ObsEpochMap.cpp</innerfile>
+    <innerfile refid="ObsEpochMap_8hpp">ObsEpochMap.hpp</innerfile>
+    <innerfile refid="ObsRngDev_8cpp">ObsRngDev.cpp</innerfile>
+    <innerfile refid="ObsRngDev_8hpp">ObsRngDev.hpp</innerfile>
+    <innerfile refid="ORDEpoch_8hpp">ORDEpoch.hpp</innerfile>
+    <innerfile refid="SolverBase_8hpp">SolverBase.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/ProcLib/"/>
+  </compounddef>
+</doxygen>

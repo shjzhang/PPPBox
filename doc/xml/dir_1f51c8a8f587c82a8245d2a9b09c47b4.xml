@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_1f51c8a8f587c82a8245d2a9b09c47b4" kind="dir">
+    <compoundname>ObsArrayEvaluator</compoundname>
+    <innerfile refid="oae_8cpp">oae.cpp</innerfile>
+    <innerfile refid="ObsArray_8cpp">ObsArray.cpp</innerfile>
+    <innerfile refid="ObsArray_8hpp">ObsArray.hpp</innerfile>
+    <innerfile refid="SparseBinnedStats_8hpp">SparseBinnedStats.hpp</innerfile>
+    <innerfile refid="ValarrayUtils_8hpp">ValarrayUtils.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/removed/apps/ObsArrayEvaluator/"/>
+  </compounddef>
+</doxygen>

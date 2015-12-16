@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="SVNumXRef_8hpp" kind="file">
+    <compoundname>SVNumXRef.hpp</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>This<sp/>file<sp/>is<sp/>part<sp/>of<sp/>GPSTk,<sp/>the<sp/>GPS<sp/>Toolkit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>The<sp/>GPSTk<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Lesser<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>by<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2.1<sp/>of<sp/>the<sp/>License,<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>The<sp/>GPSTk<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>GNU<sp/>Lesser<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Lesser<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>License<sp/>along<sp/>with<sp/>GPSTk;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,<sp/>MA<sp/>02110,<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>//<sp/><sp/>Copyright<sp/>2004,<sp/>The<sp/>University<sp/>of<sp/>Texas<sp/>at<sp/>Austin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">/*<sp/><sp/><sp/>SVNumXRef.hpp</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">*<sp/><sp/><sp/>Applied<sp/>Research<sp/>Laboratories,<sp/>The<sp/>University<sp/>of<sp/>Texas<sp/>at<sp/>Austin</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">*<sp/><sp/><sp/>June<sp/>2007</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">*<sp/><sp/><sp/>This<sp/>class<sp/>implements<sp/>a<sp/>cross-reference<sp/>between<sp/>PRN<sp/>numbers<sp/>and<sp/>NAVSTAR<sp/>IDs.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">*<sp/><sp/><sp/>Since<sp/>PRN<sp/>numbers<sp/>are<sp/>re-used<sp/>(historically,<sp/>there&apos;s<sp/>a<sp/>limit<sp/>of<sp/>1-32<sp/>in</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">*<sp/><sp/><sp/>the<sp/>PRN<sp/>IDs)<sp/>it&apos;s<sp/>necessary<sp/>provide<sp/>a<sp/>several-&gt;one<sp/>PRN<sp/>ID<sp/>-&gt;NAVSTAR<sp/>mapping.</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">*<sp/><sp/><sp/>Originally,<sp/>the<sp/>NAVSTAR-&gt;PRN<sp/>ID<sp/>mapping<sp/>is<sp/>unique.<sp/>However,<sp/>this<sp/>is<sp/>no<sp/>longer</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">*<sp/><sp/><sp/>true<sp/>and<sp/>several<sp/>-&gt;<sp/>one<sp/>mapping<sp/>now<sp/>necessary<sp/>in<sp/>both<sp/>directions.</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">*<sp/><sp/><sp/>As<sp/>a<sp/>result,<sp/>the<sp/>cross<sp/>reference<sp/>methods<sp/>support<sp/>the<sp/>ability<sp/>to<sp/>provide<sp/>a</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">*<sp/><sp/><sp/>date<sp/>so<sp/>the<sp/>method<sp/>can<sp/>select<sp/>between<sp/>multiple<sp/>options.</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">*<sp/><sp/><sp/>Note:<sp/>Thie<sp/>information<sp/>is<sp/>not<sp/>contained<sp/>anywhere<sp/>in<sp/>the<sp/>navigation<sp/>message.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">*<sp/><sp/><sp/>Therefore,<sp/>it<sp/>needs<sp/>to<sp/>come<sp/>from<sp/>&quot;outside<sp/>the<sp/>system&quot;.<sp/><sp/>The<sp/>information</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">*<sp/><sp/><sp/>contained<sp/>in<sp/>the<sp/>class<sp/>constructor<sp/>will<sp/>also<sp/>need<sp/>to<sp/>updated<sp/>with<sp/>each</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">*<sp/><sp/><sp/>new<sp/>launch<sp/>and<sp/>disposal.<sp/><sp/>This<sp/>is<sp/>a<sp/>sore<sp/>point,<sp/>but<sp/>there<sp/>appears<sp/>to<sp/>be</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">*<sp/><sp/><sp/>no<sp/>easy<sp/>way<sp/>around<sp/>it.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">*<sp/><sp/><sp/>Note:<sp/>The<sp/>data<sp/>in<sp/>the<sp/>module<sp/>is<sp/>derived<sp/>from<sp/>several<sp/>sources<sp/>and<sp/>there</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">*<sp/><sp/><sp/>are<sp/>some<sp/>issues<sp/>of<sp/>interpretation.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">*<sp/><sp/><sp/><sp/>-<sp/>The<sp/>USNO<sp/>website<sp/>ftp://tycho.usno.navy.mil/pub/gps/gpsb2.txt<sp/>contains</highlight></codeline>
+<codeline lineno="44"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>very<sp/>helpful<sp/>history</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">*<sp/><sp/><sp/><sp/>-<sp/>This<sp/>class<sp/>only<sp/>attempts<sp/>to<sp/>track<sp/>the<sp/>relationship<sp/>between<sp/>PRN<sp/>ID<sp/>and</highlight></codeline>
+<codeline lineno="46"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/>NAVSTAR<sp/>numbers.<sp/><sp/>There&apos;s<sp/>no<sp/>guarantee<sp/>a<sp/>SV<sp/>was<sp/>operationally,<sp/>broadcasting,</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/>or<sp/>healthy.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment">*<sp/><sp/>MEMBER<sp/>METHODS</highlight></codeline>
+<codeline lineno="50"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>SVNumXRef(<sp/>);<sp/>-<sp/>Constructor.<sp/><sp/>Works<sp/>from<sp/>a<sp/>fixed<sp/>table<sp/>that<sp/>is<sp/>compiled</highlight></codeline>
+<codeline lineno="51"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>into<sp/>the<sp/>code.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>int<sp/>getNAVSTAR(<sp/>const<sp/>int<sp/>PRNID,<sp/>const<sp/>gpstk::CommonTime<sp/>dt<sp/>)<sp/>const;<sp/>-</highlight></codeline>
+<codeline lineno="53"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Given<sp/>a<sp/>PRNID<sp/>and<sp/>a<sp/>date,<sp/>return<sp/>the<sp/>NAVSTAR<sp/>number</highlight></codeline>
+<codeline lineno="54"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>related<sp/>to<sp/>thsat<sp/>PRNID<sp/>at<sp/>the<sp/>date<sp/>provided.<sp/><sp/>May</highlight></codeline>
+<codeline lineno="55"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>&quot;NoNAVSTARNumFound&quot;<sp/>error.<sp/>The<sp/>date<sp/>defaults<sp/>to</highlight></codeline>
+<codeline lineno="56"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>current<sp/>date<sp/>if<sp/>one<sp/>is<sp/>not<sp/>provided.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>int<sp/>getPRNID(<sp/>const<sp/>int<sp/>NAVSTARID,<sp/>const<sp/>gpstk::CommonTime<sp/>dt<sp/>)<sp/>const;<sp/>-</highlight></codeline>
+<codeline lineno="58"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Given<sp/>a<sp/>NAVSTAR<sp/>Number<sp/>and<sp/>a<sp/>date,<sp/>return<sp/>the<sp/>corresponding</highlight></codeline>
+<codeline lineno="59"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PRNID<sp/>related<sp/>to<sp/>the<sp/>NAVSTAR<sp/>Number<sp/>on<sp/>the<sp/>specified<sp/>date.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>May<sp/>throw<sp/>&quot;No<sp/>PRNNumberFound&quot;<sp/>error.&quot;<sp/>The<sp/>date<sp/>defaults<sp/>to</highlight></codeline>
+<codeline lineno="61"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>current<sp/>date<sp/>if<sp/>one<sp/>is<sp/>not<sp/>provided.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment">*<sp/><sp/>The<sp/>following<sp/>four<sp/>members<sp/>parallel<sp/>the<sp/>preceding<sp/>four<sp/>and<sp/>provide<sp/>a</highlight></codeline>
+<codeline lineno="64"><highlight class="comment">*<sp/><sp/>means<sp/>of<sp/>determining<sp/>is<sp/>the<sp/>specified<sp/>information<sp/>is<sp/>available<sp/>prior<sp/>to</highlight></codeline>
+<codeline lineno="65"><highlight class="comment">*<sp/><sp/>making<sp/>a<sp/>&quot;get&quot;<sp/>call.<sp/><sp/>This<sp/>is<sp/>useful<sp/>if<sp/>you<sp/>want<sp/>to<sp/>avoid<sp/>writing</highlight></codeline>
+<codeline lineno="66"><highlight class="comment">*<sp/><sp/>&quot;try/catch&quot;<sp/>blocks.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>bool<sp/>PRNIDavailable(<sp/>const<sp/>int<sp/>NAVSTARID,<sp/>const<sp/>gpstk::CommonTime<sp/>dt<sp/>)<sp/>const;</highlight></codeline>
+<codeline lineno="68"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>bool<sp/>NAVSTARIDAvailable(<sp/>const<sp/>int<sp/>PRNID,<sp/>const<sp/>gpstk::CommonTime<sp/>dt<sp/>)<sp/>const;</highlight></codeline>
+<codeline lineno="69"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="70"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="71"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>bool<sp/>NAVSTARIDActive(<sp/>const<sp/>int<sp/>NAVSTARID,<sp/>const<sp/>gpstk::CommonTime<sp/>dt<sp/>)<sp/>const;<sp/>-</highlight></codeline>
+<codeline lineno="72"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>Given<sp/>a<sp/>NAVSTAR<sp/>ID<sp/>and<sp/>a<sp/>date,<sp/>return<sp/>true<sp/>if<sp/>the<sp/>specified<sp/>NAVSTAR<sp/>ID<sp/>was</highlight></codeline>
+<codeline lineno="73"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>active<sp/>on<sp/>the<sp/>date<sp/>provided.<sp/>The<sp/>date<sp/>defaults<sp/>to<sp/>the<sp/>current<sp/>date<sp/>if<sp/>one</highlight></codeline>
+<codeline lineno="74"><highlight class="comment">*<sp/><sp/><sp/><sp/><sp/>is<sp/>not<sp/>provided.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment">*</highlight></codeline>
+<codeline lineno="76"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SVNUMXREF_HPP</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SVNUMXREF_HPP</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Language<sp/>Headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Library<sp/>Headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="CommonTime_8hpp" kindref="compound">CommonTime.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="SystemTime_8hpp" kindref="compound">SystemTime.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gps__constants_8hpp" kindref="compound">gps_constants.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Exception_8hpp" kindref="compound">Exception.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Project<sp/>Headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gpstk</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">NEW_EXCEPTION_CLASS(<sp/>NoPRNNumberFound,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">NEW_EXCEPTION_CLASS(<sp/>NoNAVSTARNumberFound,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">XRefNode</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>XRefNode(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NumArg,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>begDT,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>endDT<sp/>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getNAVSTARNum()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getPRNNum()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpstk::CommonTime<sp/>getBeginTime()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpstk::CommonTime<sp/>getEndTime()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isApplicable(<sp/>gpstk::CommonTime<sp/>dt<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Num;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpstk::CommonTime<sp/>begValid;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpstk::CommonTime<sp/>endValid;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::multimap&lt;int,<sp/>XRefNode&gt;::const_iterator<sp/>SVNumXRefListCI;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::pair&lt;SVNumXRefListCI,SVNumXRefListCI&gt;<sp/>SVNumXRefPair;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::multimap&lt;int,<sp/>XRefNode&gt;::const_iterator<sp/>NAVNumXRefCI;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::pair&lt;NAVNumXRefCI,NAVNumXRefCI&gt;<sp/>NAVNumXRefPair;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SVNumXRef</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>BlockType</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>I,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>II,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>IIA,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>IIR,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>IIR_M,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>IIF</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SVNumXRef(<sp/>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>~SVNumXRef()<sp/>{}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>BlockType<sp/>getBlockType(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NAVSTARID<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>getBlockTypeString(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NAVSTARID<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getNAVSTAR(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>PRNID,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>dt<sp/>=<sp/>SystemTime()<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getPRNID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NAVSTARID,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>dt<sp/>=<sp/>SystemTime()<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PRNIDAvailable(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NAVSTARID,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>dt<sp/>=<sp/>SystemTime()<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>NAVSTARIDAvailable(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>PRNID,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>dt<sp/>=<sp/>SystemTime()<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>BlockTypeAvailable(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NAVSTARID<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>NAVSTARIDActive(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NAVSTARID,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>dt<sp/>=<sp/>SystemTime()<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::multimap&lt;int,XRefNode&gt;<sp/>NtoPMap;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::multimap&lt;int,XRefNode&gt;<sp/>PtoNMap;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::map&lt;int,BlockType&gt;<sp/>NtoBMap;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>XRefNode::getNAVSTARNum()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(Num);<sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>XRefNode::getPRNNum()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(Num);<sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>XRefNode::getBeginTime()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(<sp/>begValid<sp/>);<sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>gpstk::CommonTime<sp/>XRefNode::getEndTime()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(<sp/>endValid<sp/>);<sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Misc/SVNumXRef.hpp"/>
+  </compounddef>
+</doxygen>

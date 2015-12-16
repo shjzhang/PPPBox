@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_1a0678982ae9a7d588e3e21bf7a12aa4" kind="dir">
+    <compoundname>AppFrame</compoundname>
+    <innerfile refid="BasicFramework_8cpp">BasicFramework.cpp</innerfile>
+    <innerfile refid="BasicFramework_8hpp">BasicFramework.hpp</innerfile>
+    <innerfile refid="InOutFramework_8hpp">InOutFramework.hpp</innerfile>
+    <innerfile refid="LoopedFramework_8cpp">LoopedFramework.cpp</innerfile>
+    <innerfile refid="LoopedFramework_8hpp">LoopedFramework.hpp</innerfile>
+    <innerfile refid="MainAdapter_8hpp">MainAdapter.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/AppFrame/"/>
+  </compounddef>
+</doxygen>

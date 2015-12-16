@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/example14.dir/example14.cpp.o  -o example14  ../libpppbox.dylib 

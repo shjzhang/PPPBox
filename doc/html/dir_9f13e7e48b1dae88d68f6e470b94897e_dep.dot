@@ -1,0 +1,33 @@
+digraph "lib" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_9f13e7e48b1dae88d68f6e470b94897e {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_9f13e7e48b1dae88d68f6e470b94897e.html"];
+    dir_9f13e7e48b1dae88d68f6e470b94897e [shape=plaintext label="lib"];
+    dir_1a0678982ae9a7d588e3e21bf7a12aa4 [shape=box label="AppFrame" color="black" fillcolor="white" style="filled" URL="dir_1a0678982ae9a7d588e3e21bf7a12aa4.html"];
+    dir_d9e146e0560b4ffdc474f3eb6a509534 [shape=box label="AstroEph" color="black" fillcolor="white" style="filled" URL="dir_d9e146e0560b4ffdc474f3eb6a509534.html"];
+    dir_e5e55cc17bbc320ea21fea0d0eeefbc3 [shape=box label="CodeGen" color="black" fillcolor="white" style="filled" URL="dir_e5e55cc17bbc320ea21fea0d0eeefbc3.html"];
+    dir_8d07b9e1921b9f65c31aed945a525e24 [shape=box label="CommandLine" color="black" fillcolor="white" style="filled" URL="dir_8d07b9e1921b9f65c31aed945a525e24.html"];
+    dir_8425773b281009bda9f9289d5c0ae7ee [shape=box label="deprecate" color="black" fillcolor="white" style="filled" URL="dir_8425773b281009bda9f9289d5c0ae7ee.html"];
+    dir_86fde8b9b61eec87b5ee4571ab5b4d98 [shape=box label="dev" color="black" fillcolor="white" style="filled" URL="dir_86fde8b9b61eec87b5ee4571ab5b4d98.html"];
+    dir_ed44a0165b0439501fe1a79a3bd02afe [shape=box label="FileDirProc" color="black" fillcolor="white" style="filled" URL="dir_ed44a0165b0439501fe1a79a3bd02afe.html"];
+    dir_2409f140ca6b329e1a129f8097428273 [shape=box label="FileHandling" color="red" fillcolor="white" style="filled" URL="dir_2409f140ca6b329e1a129f8097428273.html"];
+    dir_d4bdeda034e4f0ea89a6f6ac4747f180 [shape=box label="Geodyn" color="black" fillcolor="white" style="filled" URL="dir_d4bdeda034e4f0ea89a6f6ac4747f180.html"];
+    dir_eb7b6389ab0564052e9461a3948b0be4 [shape=box label="Geomatics" color="black" fillcolor="white" style="filled" URL="dir_eb7b6389ab0564052e9461a3948b0be4.html"];
+    dir_bc5c44517bb1613852d64bb35a29f3a5 [shape=box label="GNSSCore" color="black" fillcolor="white" style="filled" URL="dir_bc5c44517bb1613852d64bb35a29f3a5.html"];
+    dir_9b7a788d5f3c7f5a024c2b292950a106 [shape=box label="GNSSEph" color="black" fillcolor="white" style="filled" URL="dir_9b7a788d5f3c7f5a024c2b292950a106.html"];
+    dir_8bc00a9cb30ca1e40042375383f4ee65 [shape=box label="Math" color="red" fillcolor="white" style="filled" URL="dir_8bc00a9cb30ca1e40042375383f4ee65.html"];
+    dir_ecb8b091630eddec385ab373026aec24 [shape=box label="Misc" color="black" fillcolor="white" style="filled" URL="dir_ecb8b091630eddec385ab373026aec24.html"];
+    dir_d4929c492e8d52f7aecdefbc16e1f13f [shape=box label="network" color="black" fillcolor="white" style="filled" URL="dir_d4929c492e8d52f7aecdefbc16e1f13f.html"];
+    dir_6fd89c90bdba80d7c92fbc8b24402429 [shape=box label="PosSol" color="black" fillcolor="white" style="filled" URL="dir_6fd89c90bdba80d7c92fbc8b24402429.html"];
+    dir_b7c4e04029f73e3b26002c9e92c21202 [shape=box label="Procframe" color="black" fillcolor="white" style="filled" URL="dir_b7c4e04029f73e3b26002c9e92c21202.html"];
+    dir_529e4dcbd4420ba7afa1c7118022a812 [shape=box label="ProcLib" color="black" fillcolor="white" style="filled" URL="dir_529e4dcbd4420ba7afa1c7118022a812.html"];
+    dir_9c40091a7a27e15303e41a0872fa5d7e [shape=box label="RefTime" color="black" fillcolor="white" style="filled" URL="dir_9c40091a7a27e15303e41a0872fa5d7e.html"];
+    dir_d3a5228eb40169de77ff52cff084ce0a [shape=box label="Rxio" color="black" fillcolor="white" style="filled" URL="dir_d3a5228eb40169de77ff52cff084ce0a.html"];
+    dir_541084778b24810f6e23393f90777da4 [shape=box label="TimeHandling" color="black" fillcolor="white" style="filled" URL="dir_541084778b24810f6e23393f90777da4.html"];
+    dir_3cd7a784e9d671b7ddcc56c1c94084a7 [shape=box label="Utilities" color="black" fillcolor="white" style="filled" URL="dir_3cd7a784e9d671b7ddcc56c1c94084a7.html"];
+    dir_e21c41e87a3693f3e7f3a2a5fedc9b64 [shape=box label="Vdraw" color="black" fillcolor="white" style="filled" URL="dir_e21c41e87a3693f3e7f3a2a5fedc9b64.html"];
+    dir_fc245d8a5fc1b34a3ccd3381d89b372d [shape=box label="Vplot" color="black" fillcolor="white" style="filled" URL="dir_fc245d8a5fc1b34a3ccd3381d89b372d.html"];
+  }
+}

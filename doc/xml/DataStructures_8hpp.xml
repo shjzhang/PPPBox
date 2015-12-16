@@ -1,0 +1,890 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="DataStructures_8hpp" kind="file">
+    <compoundname>DataStructures.hpp</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>ident<sp/>&quot;$Id$&quot;</highlight></codeline>
+<codeline lineno="2"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>GPSTK_DATASTRUCTURES_HPP</highlight></codeline>
+<codeline lineno="9"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GPSTK_DATASTRUCTURES_HPP</highlight></codeline>
+<codeline lineno="10"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>This<sp/>file<sp/>is<sp/>part<sp/>of<sp/>GPSTk,<sp/>the<sp/>GPS<sp/>Toolkit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>The<sp/>GPSTk<sp/>is<sp/>free<sp/>software;<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>Lesser<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>by<sp/>the<sp/>Free<sp/>Software<sp/>Foundation;<sp/>either<sp/>version<sp/>2.1<sp/>of<sp/>the<sp/>License,<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>any<sp/>later<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>The<sp/>GPSTk<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>GNU<sp/>Lesser<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>Lesser<sp/>General<sp/>Public</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>License<sp/>along<sp/>with<sp/>GPSTk;<sp/>if<sp/>not,<sp/>write<sp/>to<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Inc.,<sp/>51<sp/>Franklin<sp/>Street,<sp/>Fifth<sp/>Floor,<sp/>Boston,<sp/>MA<sp/>02110,<sp/>USA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Dagoberto<sp/>Salazar<sp/>-<sp/>gAGE<sp/>(<sp/>http://www.gage.es<sp/>).<sp/>2007,<sp/>2008,<sp/>2009,<sp/>2011</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="DataHeaders_8hpp" kindref="compound">DataHeaders.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="FFData_8hpp" kindref="compound">FFData.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RinexObsStream_8hpp" kindref="compound">RinexObsStream.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RinexObsData_8hpp" kindref="compound">RinexObsData.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Rinex3ObsStream_8hpp" kindref="compound">Rinex3ObsStream.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Rinex3ObsData_8hpp" kindref="compound">Rinex3ObsData.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="StringUtils_8hpp" kindref="compound">StringUtils.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vector_8hpp" kindref="compound">Vector.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Matrix_8hpp" kindref="compound">Matrix.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="CivilTime_8hpp" kindref="compound">CivilTime.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="YDSTime_8hpp" kindref="compound">YDSTime.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="GNSSconstants_8hpp" kindref="compound">GNSSconstants.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gpstk</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>First,<sp/>we<sp/>must<sp/>declare<sp/>some<sp/>important<sp/>exception<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/>NEW_EXCEPTION_CLASS(TypeIDNotFound,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/>NEW_EXCEPTION_CLASS(SatIDNotFound,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/>NEW_EXCEPTION_CLASS(SourceIDNotFound,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/>NEW_EXCEPTION_CLASS(CommonTimeNotFound,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/>NEW_EXCEPTION_CLASS(ValueNotFound,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/>NEW_EXCEPTION_CLASS(NumberOfTypesMismatch,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/>NEW_EXCEPTION_CLASS(NumberOfSatsMismatch,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/>NEW_EXCEPTION_CLASS(SVNumException,<sp/>gpstk::Exception);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Now,<sp/>some<sp/>useful<sp/>type<sp/>definitions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::set&lt;TypeID&gt;<sp/>TypeIDSet;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::set&lt;SatID&gt;<sp/>SatIDSet;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::set&lt;SourceID&gt;<sp/>SourceIDSet;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">typeValueMap<sp/>:<sp/>std::map&lt;TypeID,<sp/>double&gt;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>numTypes()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="187"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).size();<sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TypeIDSet<sp/>getTypeID()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeValueMap<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeValueMap<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeValueMap&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeValueMap&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeValueMap&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).erase(type);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeValueMap&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(TypeIDNotFound);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(TypeIDNotFound);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~typeValueMap()<sp/>{};</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>typeValueMap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">satValueMap<sp/>:<sp/>std::map&lt;SatID,<sp/>double&gt;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>numSats()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="257"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).size();<sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SatIDSet<sp/>getSatID()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;SatID&gt;<sp/>getVectorOfSatID()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satValueMap<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satValueMap<sp/>extractSatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satValueMap<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satValueMap&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satValueMap&amp;<sp/>keepOnlySatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satValueMap&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satValueMap&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).erase(satellite);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satValueMap&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(SatIDNotFound);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(SatIDNotFound);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~satValueMap()<sp/>{};</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;satValueMap&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">satTypeValueMap<sp/>:<sp/>std::map&lt;SatID,<sp/>typeValueMap&gt;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>numSats()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="344"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).size();<sp/>}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>numElements()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SatIDSet<sp/>getSatID()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;SatID&gt;<sp/>getVectorOfSatID()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TypeIDSet<sp/>getTypeID()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap<sp/>extractSatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite);</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>keepOnlySatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).erase(satellite);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"></highlight></codeline>
+<codeline lineno="437"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="442"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;double&gt;<sp/>getVectorOfTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Matrix&lt;double&gt;<sp/>getMatrixOfTypes(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>insertTypeIDVector(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type,</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector&lt;double&gt;<sp/>dataVector<sp/>)</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(NumberOfSatsMismatch);</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>satTypeValueMap&amp;<sp/>insertMatrix(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet,</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Matrix&lt;double&gt;<sp/>dataMatrix<sp/>)</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(NumberOfSatsMismatch,<sp/>NumberOfTypesMismatch);</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"></highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite,</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(<sp/>SatIDNotFound,<sp/>TypeIDNotFound<sp/>);</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"></highlight></codeline>
+<codeline lineno="515"><highlight class="normal"></highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeValueMap&amp;<sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(SatIDNotFound);</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"></highlight></codeline>
+<codeline lineno="521"><highlight class="normal"></highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/>dump(<sp/>std::ostream&amp;<sp/>s,</highlight></codeline>
+<codeline lineno="524"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="525"><highlight class="normal"></highlight></codeline>
+<codeline lineno="526"><highlight class="normal"></highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~satTypeValueMap()<sp/>{};</highlight></codeline>
+<codeline lineno="529"><highlight class="normal"></highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;satTypeValueMap&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="531"><highlight class="normal"></highlight></codeline>
+<codeline lineno="532"><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal"></highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/>std::ostream&amp;<sp/>operator&lt;&lt;(<sp/>std::ostream&amp;<sp/>s,</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>satTypeValueMap&amp;<sp/>stvMap);</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"></highlight></codeline>
+<codeline lineno="538"><highlight class="normal"></highlight></codeline>
+<codeline lineno="539"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::map&lt;CommonTime,<sp/>satTypeValueMap&gt;<sp/><sp/>epochSatTypeValueMap;</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::map&lt;CommonTime,<sp/>satValueMap&gt;<sp/><sp/><sp/><sp/><sp/><sp/>epochSatValueMap;</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::map&lt;CommonTime,<sp/>typeValueMap&gt;<sp/><sp/><sp/><sp/><sp/>epochTypeValueMap;</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"></highlight></codeline>
+<codeline lineno="549"><highlight class="normal"></highlight></codeline>
+<codeline lineno="550"><highlight class="normal"></highlight></codeline>
+<codeline lineno="551"><highlight class="normal"></highlight></codeline>
+<codeline lineno="553"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>HEADER_CLASS,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>BODY_CLASS&gt;</highlight></codeline>
+<codeline lineno="554"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">gnssData</highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"></highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HEADER_CLASS<sp/>header;</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"></highlight></codeline>
+<codeline lineno="560"><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>BODY_CLASS<sp/><sp/><sp/>body;</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"></highlight></codeline>
+<codeline lineno="564"><highlight class="normal"></highlight></codeline>
+<codeline lineno="565"><highlight class="normal"></highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssData()<sp/>{}</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"></highlight></codeline>
+<codeline lineno="569"><highlight class="normal"></highlight></codeline>
+<codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssData(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HEADER_CLASS&amp;<sp/>h,</highlight></codeline>
+<codeline lineno="572"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>BODY_CLASS&amp;<sp/>b<sp/>)</highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>header<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>body<sp/>=<sp/>b;</highlight></codeline>
+<codeline lineno="576"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"></highlight></codeline>
+<codeline lineno="578"><highlight class="normal"></highlight></codeline>
+<codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>H,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>B&gt;</highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssData(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gnssData&lt;H,B&gt;&amp;<sp/>g)</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>header<sp/>=<sp/>g.header;</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>body<sp/>=<sp/>g.body;</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"></highlight></codeline>
+<codeline lineno="587"><highlight class="normal"></highlight></codeline>
+<codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~gnssData()<sp/>{};</highlight></codeline>
+<codeline lineno="590"><highlight class="normal"></highlight></codeline>
+<codeline lineno="591"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;gnssData&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="592"><highlight class="normal"></highlight></codeline>
+<codeline lineno="593"><highlight class="normal"></highlight></codeline>
+<codeline lineno="594"><highlight class="normal"></highlight></codeline>
+<codeline lineno="595"><highlight class="normal"></highlight></codeline>
+<codeline lineno="596"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Further<sp/>type<sp/>definitions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="597"><highlight class="normal"></highlight></codeline>
+<codeline lineno="600"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal">gnssSatValue<sp/>:<sp/>gnssData&lt;sourceEpochTypeHeader,<sp/>satValueMap&gt;</highlight></codeline>
+<codeline lineno="601"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="602"><highlight class="normal"></highlight></codeline>
+<codeline lineno="603"><highlight class="normal"></highlight></codeline>
+<codeline lineno="606"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>numSats()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="607"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>body.numSats();<sp/>};</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"></highlight></codeline>
+<codeline lineno="609"><highlight class="normal"></highlight></codeline>
+<codeline lineno="611"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SatIDSet<sp/>getSatID()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="612"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body.getSatID();<sp/>}</highlight></codeline>
+<codeline lineno="613"><highlight class="normal"></highlight></codeline>
+<codeline lineno="614"><highlight class="normal"></highlight></codeline>
+<codeline lineno="616"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;SatID&gt;<sp/>getVectorOfSatID()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="617"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>body.getVectorOfSatID();<sp/>}</highlight></codeline>
+<codeline lineno="618"><highlight class="normal"></highlight></codeline>
+<codeline lineno="619"><highlight class="normal"></highlight></codeline>
+<codeline lineno="622"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatValue<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="623"><highlight class="normal"></highlight></codeline>
+<codeline lineno="624"><highlight class="normal"></highlight></codeline>
+<codeline lineno="629"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatValue<sp/>extractSatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="630"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="631"><highlight class="normal"></highlight></codeline>
+<codeline lineno="632"><highlight class="normal"></highlight></codeline>
+<codeline lineno="636"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatValue<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="637"><highlight class="normal"></highlight></codeline>
+<codeline lineno="638"><highlight class="normal"></highlight></codeline>
+<codeline lineno="641"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatValue&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite);</highlight></codeline>
+<codeline lineno="642"><highlight class="normal"></highlight></codeline>
+<codeline lineno="643"><highlight class="normal"></highlight></codeline>
+<codeline lineno="647"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatValue&amp;<sp/>keepOnlySatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="648"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>);</highlight></codeline>
+<codeline lineno="649"><highlight class="normal"></highlight></codeline>
+<codeline lineno="650"><highlight class="normal"></highlight></codeline>
+<codeline lineno="653"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatValue&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="654"><highlight class="normal"></highlight></codeline>
+<codeline lineno="655"><highlight class="normal"></highlight></codeline>
+<codeline lineno="658"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatValue&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)</highlight></codeline>
+<codeline lineno="659"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).body.erase(satellite);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="660"><highlight class="normal"></highlight></codeline>
+<codeline lineno="661"><highlight class="normal"></highlight></codeline>
+<codeline lineno="665"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatValue&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="666"><highlight class="normal"></highlight></codeline>
+<codeline lineno="667"><highlight class="normal"></highlight></codeline>
+<codeline lineno="672"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="673"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(SatIDNotFound)</highlight></codeline>
+<codeline lineno="674"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body.getValue(satellite);<sp/>}</highlight></codeline>
+<codeline lineno="675"><highlight class="normal"></highlight></codeline>
+<codeline lineno="676"><highlight class="normal"></highlight></codeline>
+<codeline lineno="680"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)</highlight></codeline>
+<codeline lineno="681"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(SatIDNotFound)</highlight></codeline>
+<codeline lineno="682"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body(satellite);<sp/>}</highlight></codeline>
+<codeline lineno="683"><highlight class="normal"></highlight></codeline>
+<codeline lineno="684"><highlight class="normal"></highlight></codeline>
+<codeline lineno="686"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~gnssSatValue()<sp/>{};</highlight></codeline>
+<codeline lineno="687"><highlight class="normal"></highlight></codeline>
+<codeline lineno="688"><highlight class="normal"></highlight></codeline>
+<codeline lineno="689"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;gnssSatValue&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="690"><highlight class="normal"></highlight></codeline>
+<codeline lineno="691"><highlight class="normal"></highlight></codeline>
+<codeline lineno="692"><highlight class="normal"></highlight></codeline>
+<codeline lineno="693"><highlight class="normal"></highlight></codeline>
+<codeline lineno="696"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal">gnssTypeValue<sp/>:<sp/>gnssData&lt;sourceEpochSatHeader,<sp/>typeValueMap&gt;</highlight></codeline>
+<codeline lineno="697"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="698"><highlight class="normal"></highlight></codeline>
+<codeline lineno="701"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>numTypes()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="702"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>body.numTypes();<sp/>};</highlight></codeline>
+<codeline lineno="703"><highlight class="normal"></highlight></codeline>
+<codeline lineno="704"><highlight class="normal"></highlight></codeline>
+<codeline lineno="707"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TypeIDSet<sp/>getTypeID()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="708"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body.getTypeID();<sp/>}</highlight></codeline>
+<codeline lineno="709"><highlight class="normal"></highlight></codeline>
+<codeline lineno="710"><highlight class="normal"></highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssTypeValue<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="714"><highlight class="normal"></highlight></codeline>
+<codeline lineno="715"><highlight class="normal"></highlight></codeline>
+<codeline lineno="719"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssTypeValue<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="720"><highlight class="normal"></highlight></codeline>
+<codeline lineno="721"><highlight class="normal"></highlight></codeline>
+<codeline lineno="724"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssTypeValue&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="725"><highlight class="normal"></highlight></codeline>
+<codeline lineno="726"><highlight class="normal"></highlight></codeline>
+<codeline lineno="730"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssTypeValue&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="731"><highlight class="normal"></highlight></codeline>
+<codeline lineno="732"><highlight class="normal"></highlight></codeline>
+<codeline lineno="735"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssTypeValue&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)</highlight></codeline>
+<codeline lineno="736"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).body.erase(type);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="737"><highlight class="normal"></highlight></codeline>
+<codeline lineno="738"><highlight class="normal"></highlight></codeline>
+<codeline lineno="742"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssTypeValue&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="743"><highlight class="normal"></highlight></codeline>
+<codeline lineno="744"><highlight class="normal"></highlight></codeline>
+<codeline lineno="749"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="750"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(TypeIDNotFound)</highlight></codeline>
+<codeline lineno="751"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body.getValue(type);<sp/>}</highlight></codeline>
+<codeline lineno="752"><highlight class="normal"></highlight></codeline>
+<codeline lineno="753"><highlight class="normal"></highlight></codeline>
+<codeline lineno="756"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)</highlight></codeline>
+<codeline lineno="757"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(TypeIDNotFound)</highlight></codeline>
+<codeline lineno="758"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body(type);<sp/>}</highlight></codeline>
+<codeline lineno="759"><highlight class="normal"></highlight></codeline>
+<codeline lineno="760"><highlight class="normal"></highlight></codeline>
+<codeline lineno="762"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~gnssTypeValue()<sp/>{};</highlight></codeline>
+<codeline lineno="763"><highlight class="normal"></highlight></codeline>
+<codeline lineno="764"><highlight class="normal"></highlight></codeline>
+<codeline lineno="765"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;gnssTypeValue&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="766"><highlight class="normal"></highlight></codeline>
+<codeline lineno="767"><highlight class="normal"></highlight></codeline>
+<codeline lineno="768"><highlight class="normal"></highlight></codeline>
+<codeline lineno="771"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal">gnssSatTypeValue<sp/>:<sp/>gnssData&lt;sourceEpochHeader,<sp/>satTypeValueMap&gt;</highlight></codeline>
+<codeline lineno="772"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="773"><highlight class="normal"></highlight></codeline>
+<codeline lineno="776"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>numSats()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="777"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>body.numSats();<sp/>};</highlight></codeline>
+<codeline lineno="778"><highlight class="normal"></highlight></codeline>
+<codeline lineno="779"><highlight class="normal"></highlight></codeline>
+<codeline lineno="782"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TypeIDSet<sp/>getTypeID()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="783"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body.getTypeID();<sp/>}</highlight></codeline>
+<codeline lineno="784"><highlight class="normal"></highlight></codeline>
+<codeline lineno="785"><highlight class="normal"></highlight></codeline>
+<codeline lineno="787"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SatIDSet<sp/>getSatID()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="788"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body.getSatID();<sp/>}</highlight></codeline>
+<codeline lineno="789"><highlight class="normal"></highlight></codeline>
+<codeline lineno="790"><highlight class="normal"></highlight></codeline>
+<codeline lineno="792"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;SatID&gt;<sp/>getVectorOfSatID()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="793"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body.getVectorOfSatID();<sp/>}</highlight></codeline>
+<codeline lineno="794"><highlight class="normal"></highlight></codeline>
+<codeline lineno="795"><highlight class="normal"></highlight></codeline>
+<codeline lineno="800"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>numElements()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="801"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>body.numElements();<sp/>};</highlight></codeline>
+<codeline lineno="802"><highlight class="normal"></highlight></codeline>
+<codeline lineno="803"><highlight class="normal"></highlight></codeline>
+<codeline lineno="806"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="807"><highlight class="normal"></highlight></codeline>
+<codeline lineno="808"><highlight class="normal"></highlight></codeline>
+<codeline lineno="813"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue<sp/>extractSatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="814"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="815"><highlight class="normal"></highlight></codeline>
+<codeline lineno="816"><highlight class="normal"></highlight></codeline>
+<codeline lineno="820"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="821"><highlight class="normal"></highlight></codeline>
+<codeline lineno="822"><highlight class="normal"></highlight></codeline>
+<codeline lineno="825"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite);</highlight></codeline>
+<codeline lineno="826"><highlight class="normal"></highlight></codeline>
+<codeline lineno="827"><highlight class="normal"></highlight></codeline>
+<codeline lineno="831"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>keepOnlySatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="832"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>);</highlight></codeline>
+<codeline lineno="833"><highlight class="normal"></highlight></codeline>
+<codeline lineno="834"><highlight class="normal"></highlight></codeline>
+<codeline lineno="837"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="838"><highlight class="normal"></highlight></codeline>
+<codeline lineno="839"><highlight class="normal"></highlight></codeline>
+<codeline lineno="842"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="843"><highlight class="normal"></highlight></codeline>
+<codeline lineno="844"><highlight class="normal"></highlight></codeline>
+<codeline lineno="848"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="849"><highlight class="normal"></highlight></codeline>
+<codeline lineno="850"><highlight class="normal"></highlight></codeline>
+<codeline lineno="853"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="854"><highlight class="normal"></highlight></codeline>
+<codeline lineno="855"><highlight class="normal"></highlight></codeline>
+<codeline lineno="859"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="860"><highlight class="normal"></highlight></codeline>
+<codeline lineno="861"><highlight class="normal"></highlight></codeline>
+<codeline lineno="864"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)</highlight></codeline>
+<codeline lineno="865"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).body.erase(satellite);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="866"><highlight class="normal"></highlight></codeline>
+<codeline lineno="867"><highlight class="normal"></highlight></codeline>
+<codeline lineno="871"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="872"><highlight class="normal"></highlight></codeline>
+<codeline lineno="873"><highlight class="normal"></highlight></codeline>
+<codeline lineno="876"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)</highlight></codeline>
+<codeline lineno="877"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).body.removeTypeID(type);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="878"><highlight class="normal"></highlight></codeline>
+<codeline lineno="879"><highlight class="normal"></highlight></codeline>
+<codeline lineno="883"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="884"><highlight class="normal"></highlight></codeline>
+<codeline lineno="885"><highlight class="normal"></highlight></codeline>
+<codeline lineno="888"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Vector&lt;double&gt;<sp/>getVectorOfTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="889"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>(*this).body.getVectorOfTypeID(type)<sp/>);<sp/>}</highlight></codeline>
+<codeline lineno="890"><highlight class="normal"></highlight></codeline>
+<codeline lineno="891"><highlight class="normal"></highlight></codeline>
+<codeline lineno="907"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>insertTypeIDVector(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type,</highlight></codeline>
+<codeline lineno="908"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector&lt;double&gt;<sp/>dataVector<sp/>)</highlight></codeline>
+<codeline lineno="909"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(NumberOfSatsMismatch)</highlight></codeline>
+<codeline lineno="910"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).body.insertTypeIDVector(type,<sp/>dataVector);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="911"><highlight class="normal"></highlight></codeline>
+<codeline lineno="912"><highlight class="normal"></highlight></codeline>
+<codeline lineno="932"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssSatTypeValue&amp;<sp/>insertMatrix(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet,</highlight></codeline>
+<codeline lineno="933"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Matrix&lt;double&gt;<sp/>dataMatrix<sp/>)</highlight></codeline>
+<codeline lineno="934"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(NumberOfSatsMismatch,<sp/>NumberOfTypesMismatch)</highlight></codeline>
+<codeline lineno="935"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>(*this).body.insertMatrix(typeSet,<sp/>dataMatrix);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="936"><highlight class="normal"></highlight></codeline>
+<codeline lineno="937"><highlight class="normal"></highlight></codeline>
+<codeline lineno="944"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite,</highlight></codeline>
+<codeline lineno="945"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="946"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(<sp/>SatIDNotFound,<sp/>TypeIDNotFound<sp/>)</highlight></codeline>
+<codeline lineno="947"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body.getValue(<sp/>satellite,<sp/>type<sp/>);<sp/>}</highlight></codeline>
+<codeline lineno="948"><highlight class="normal"></highlight></codeline>
+<codeline lineno="949"><highlight class="normal"></highlight></codeline>
+<codeline lineno="997"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>typeValueMap&amp;<sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)</highlight></codeline>
+<codeline lineno="998"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(SatIDNotFound)</highlight></codeline>
+<codeline lineno="999"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*this).body(satellite);<sp/>}</highlight></codeline>
+<codeline lineno="1000"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1001"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1003"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~gnssSatTypeValue()<sp/>{};</highlight></codeline>
+<codeline lineno="1004"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1005"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1006"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;gnssSatTypeValue&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1007"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1008"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1009"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1012"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">gnssRinex<sp/>:<sp/>gnssSatTypeValue</highlight></codeline>
+<codeline lineno="1013"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1014"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1015"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1017"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sourceEpochRinexHeader<sp/>header;</highlight></codeline>
+<codeline lineno="1018"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1019"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1021"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex()<sp/>{};</highlight></codeline>
+<codeline lineno="1022"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1023"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1028"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gnssSatTypeValue&amp;<sp/>gds)</highlight></codeline>
+<codeline lineno="1029"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>header<sp/>=<sp/>gds.header;<sp/>body<sp/>=<sp/>gds.body;<sp/>};</highlight></codeline>
+<codeline lineno="1030"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1031"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1034"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1035"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1036"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1041"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex<sp/>extractSatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="1042"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1043"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1044"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1048"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1049"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1050"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1053"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite);</highlight></codeline>
+<codeline lineno="1054"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1055"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1059"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex&amp;<sp/>keepOnlySatID(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>p,</highlight></codeline>
+<codeline lineno="1060"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem&amp;<sp/>s<sp/>);</highlight></codeline>
+<codeline lineno="1061"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1062"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1065"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="1066"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1067"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1070"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1071"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1072"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1076"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1077"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1078"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1081"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="1082"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1083"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1087"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="1088"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1089"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1092"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex&amp;<sp/>keepOnlySatSystem(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID::SatelliteSystem<sp/>satSys);</highlight></codeline>
+<codeline lineno="1093"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1094"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1095"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1097"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~gnssRinex()<sp/>{};</highlight></codeline>
+<codeline lineno="1098"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1099"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1100"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;gnssRinex&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1109"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">sourceDataMap<sp/>:<sp/>std::map&lt;SourceID,<sp/>satTypeValueMap&gt;</highlight></codeline>
+<codeline lineno="1110"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sourceDataMap()<sp/>{};</highlight></codeline>
+<codeline lineno="1114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source,</highlight></codeline>
+<codeline lineno="1124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite,</highlight></codeline>
+<codeline lineno="1125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(<sp/>SourceIDNotFound,<sp/>SatIDNotFound,<sp/>TypeIDNotFound<sp/>);</highlight></codeline>
+<codeline lineno="1127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SourceIDSet<sp/>getSourceIDSet(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SatIDSet<sp/>getSatIDSet(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~sourceDataMap()<sp/>{};</highlight></codeline>
+<codeline lineno="1147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1149"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;sourceDataMap&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1155"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal">gnssDataMap<sp/>:<sp/>std::multimap&lt;CommonTime,<sp/>sourceDataMap&gt;</highlight></codeline>
+<codeline lineno="1156"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap()</highlight></codeline>
+<codeline lineno="1160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>tolerance(0.1)<sp/>{};</highlight></codeline>
+<codeline lineno="1161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap(<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tol<sp/>)</highlight></codeline>
+<codeline lineno="1168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>tolerance(tol)<sp/>{};</highlight></codeline>
+<codeline lineno="1169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>addGnssSatTypeValue(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gnssSatTypeValue&amp;<sp/>gds<sp/>);</highlight></codeline>
+<codeline lineno="1176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>addGnssRinex(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gnssRinex&amp;<sp/>gds<sp/>);</highlight></codeline>
+<codeline lineno="1183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex<sp/>getGnssRinex(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex<sp/>getGnssRinex(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>sat<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>addGnssDataMap(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gnssDataMap&amp;<sp/>gds<sp/>);</highlight></codeline>
+<codeline lineno="1210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>front(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pop_front(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="1218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>frontEpoch(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pop_front_epoch(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="1229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>back(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pop_back(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="1237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>backEpoch(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pop_back_epoch(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="1248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>getDataFromEpoch(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CommonTime&amp;<sp/>epoch<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(<sp/>CommonTimeNotFound<sp/>);</highlight></codeline>
+<codeline lineno="1257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CommonTime&amp;<sp/>epoch,</highlight></codeline>
+<codeline lineno="1271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source,</highlight></codeline>
+<codeline lineno="1272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite,</highlight></codeline>
+<codeline lineno="1273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(<sp/>CommonTimeNotFound,<sp/>ValueNotFound<sp/>);</highlight></codeline>
+<codeline lineno="1275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getValue(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source,</highlight></codeline>
+<codeline lineno="1288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite,</highlight></codeline>
+<codeline lineno="1289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type<sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(<sp/>ValueNotFound<sp/>);</highlight></codeline>
+<codeline lineno="1291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>insertValue(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CommonTime&amp;<sp/>epoch,</highlight></codeline>
+<codeline lineno="1303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source,</highlight></codeline>
+<codeline lineno="1304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite,</highlight></codeline>
+<codeline lineno="1305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type,</highlight></codeline>
+<codeline lineno="1306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value<sp/>)</highlight></codeline>
+<codeline lineno="1307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(<sp/>CommonTimeNotFound,<sp/>ValueNotFound<sp/>);</highlight></codeline>
+<codeline lineno="1308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>insertValue(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source,</highlight></codeline>
+<codeline lineno="1319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>satellite,</highlight></codeline>
+<codeline lineno="1320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type,</highlight></codeline>
+<codeline lineno="1321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value<sp/>)</highlight></codeline>
+<codeline lineno="1322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(<sp/>ValueNotFound<sp/>);</highlight></codeline>
+<codeline lineno="1323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SourceIDSet<sp/>getSourceIDSet(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>SatIDSet<sp/>getSatIDSet(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getTolerance(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="1343"><highlight class="keyword"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tolerance;<sp/>};</highlight></codeline>
+<codeline lineno="1344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>setTolerance(<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tol<sp/>)</highlight></codeline>
+<codeline lineno="1351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>tolerance<sp/>=<sp/>std::abs(tol);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>};</highlight></codeline>
+<codeline lineno="1352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/>dump(<sp/>std::ostream&amp;<sp/>s,</highlight></codeline>
+<codeline lineno="1356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="1357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="1361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>extractSourceID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source);</highlight></codeline>
+<codeline lineno="1362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="1363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>extractSourceID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceIDSet&amp;<sp/>sourceSet);</highlight></codeline>
+<codeline lineno="1368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>keepOnlySourceID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source);</highlight></codeline>
+<codeline lineno="1373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>keepOnlySourceID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceIDSet&amp;<sp/>sourceSet);</highlight></codeline>
+<codeline lineno="1379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>removeSourceID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceID&amp;<sp/>source);</highlight></codeline>
+<codeline lineno="1384"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>removeSourceID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SourceIDSet&amp;<sp/>sourceSet);</highlight></codeline>
+<codeline lineno="1390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>sat);</highlight></codeline>
+<codeline lineno="1395"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>extractSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="1401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>sat);</highlight></codeline>
+<codeline lineno="1406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>keepOnlySatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="1412"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1413"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>sat);</highlight></codeline>
+<codeline lineno="1417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1422"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>removeSatID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatIDSet&amp;<sp/>satSet);</highlight></codeline>
+<codeline lineno="1423"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="1428"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1429"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1433"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap<sp/>extractTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="1434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="1439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1440"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1444"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>keepOnlyTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="1445"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1449"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>type);</highlight></codeline>
+<codeline lineno="1450"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1451"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1455"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssDataMap&amp;<sp/>removeTypeID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>typeSet);</highlight></codeline>
+<codeline lineno="1456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1464"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>gnssDataMap&amp;<sp/>edit(CommonTime<sp/>tmin,<sp/></highlight></codeline>
+<codeline lineno="1465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CommonTime<sp/>tmax<sp/>=<sp/>CommonTime::END_OF_TIME);</highlight></codeline>
+<codeline lineno="1466"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1468"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>loadObsFile(std::string<sp/>obsFile);</highlight></codeline>
+<codeline lineno="1469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1470"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1472"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tolerance;</highlight></codeline>
+<codeline lineno="1473"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1474"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~gnssDataMap()<sp/>{};</highlight></codeline>
+<codeline lineno="1477"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1478"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1479"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;gnssDataMap&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1480"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1481"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1482"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1484"><highlight class="normal"><sp/><sp/><sp/>std::ostream&amp;<sp/>operator&lt;&lt;(<sp/>std::ostream&amp;<sp/>s,</highlight></codeline>
+<codeline lineno="1485"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gnssDataMap&amp;<sp/>gdsMap);</highlight></codeline>
+<codeline lineno="1486"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1487"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1488"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1491"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal">gnssEquationDefinition<sp/>:<sp/>gnssData&lt;TypeID,<sp/>TypeIDSet&gt;</highlight></codeline>
+<codeline lineno="1492"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1493"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1495"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssEquationDefinition()<sp/>{};</highlight></codeline>
+<codeline lineno="1496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1497"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1499"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssEquationDefinition(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>h,</highlight></codeline>
+<codeline lineno="1500"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeIDSet&amp;<sp/>b<sp/>)</highlight></codeline>
+<codeline lineno="1501"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1502"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>header<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="1503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>body<sp/><sp/><sp/>=<sp/>b;</highlight></codeline>
+<codeline lineno="1504"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1506"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~gnssEquationDefinition()<sp/>{};</highlight></codeline>
+<codeline lineno="1509"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1510"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1511"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;gnssEquationDefinition&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1512"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1513"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1514"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1518"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal">gnssLinearCombination<sp/>:<sp/>gnssData&lt;TypeID,<sp/>typeValueMap&gt;</highlight></codeline>
+<codeline lineno="1519"><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1520"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1522"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssLinearCombination()<sp/>{};</highlight></codeline>
+<codeline lineno="1523"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1524"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1526"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gnssLinearCombination(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TypeID&amp;<sp/>h,</highlight></codeline>
+<codeline lineno="1527"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>typeValueMap&amp;<sp/>b<sp/>)</highlight></codeline>
+<codeline lineno="1528"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="1529"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>header<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="1530"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>body<sp/><sp/><sp/>=<sp/>b;</highlight></codeline>
+<codeline lineno="1531"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="1532"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1533"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1535"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~gnssLinearCombination()<sp/>{};</highlight></codeline>
+<codeline lineno="1536"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1537"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1538"><highlight class="normal"><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>&apos;gnssLinearCombination&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1539"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1540"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1542"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::list&lt;gnssLinearCombination&gt;<sp/>LinearCombList;</highlight></codeline>
+<codeline lineno="1543"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1544"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1547"><highlight class="normal"><sp/><sp/><sp/>SourceID::SourceType<sp/>SatIDsystem2SourceIDtype(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>SatID&amp;<sp/>sid);</highlight></codeline>
+<codeline lineno="1548"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1549"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1550"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1555"><highlight class="normal"><sp/><sp/><sp/>satTypeValueMap<sp/>satTypeValueMapFromRinexObsData(</highlight></codeline>
+<codeline lineno="1556"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>RinexObsHeader&amp;<sp/>roh,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>RinexObsData&amp;<sp/>rod<sp/>);</highlight></codeline>
+<codeline lineno="1557"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1558"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1563"><highlight class="normal"><sp/><sp/><sp/>satTypeValueMap<sp/>satTypeValueMapFromRinex3ObsData(</highlight></codeline>
+<codeline lineno="1564"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Rinex3ObsHeader&amp;<sp/>roh,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Rinex3ObsData&amp;<sp/>rod<sp/>);</highlight></codeline>
+<codeline lineno="1565"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1566"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1589"><highlight class="normal"><sp/><sp/><sp/>std::istream&amp;<sp/>operator&gt;&gt;(<sp/>std::istream&amp;<sp/>i,<sp/>gnssRinex&amp;<sp/>f<sp/>);</highlight></codeline>
+<codeline lineno="1590"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1591"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1623"><highlight class="normal"><sp/><sp/><sp/>std::ostream&amp;<sp/>operator&lt;&lt;(<sp/>std::ostream&amp;<sp/>s,</highlight></codeline>
+<codeline lineno="1624"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gnssRinex&amp;<sp/>f<sp/>)</highlight></codeline>
+<codeline lineno="1625"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(FFStreamError,<sp/>gpstk::StringUtils::StringException);</highlight></codeline>
+<codeline lineno="1626"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1627"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1629"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1630"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>of<sp/>namespace<sp/>gpstk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1631"><highlight class="normal"></highlight></codeline>
+<codeline lineno="1632"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>GPSTK_DATASTRUCTURES_HPP</highlight></codeline>
+    </programlisting>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/dev/DataStructures.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+Parameter            # of Characters   Range/Value          Units
+Release Year(1)            4           1980-9999            year
+Release Day of Year(1)     3           1-366                day of year
+Numeric ID                 5           0-99999              N/A
+String ID                  7           N/A                  N/A
+Reference Epoch(2)         14          1980-2200            001-366 00000-86400 year, day of year, second of day
+Earliest Effectivity(3)(4) 14          1980-2200            001-366 00000-86400 year, day of year, second of day
+X Coordinate               12          +/-9999999.999       meters
+Y Coordinate               12          +/-9999999.999       meters
+Z Coordinate               12          +/-9999999.999       meters
+X Velocity                 7           +/-1.00000           meters/year
+Y Velocity                 7           +/-1.00000           meters/year
+Z Velocity                 7           +/-1.00000           meters/year
+Antenna Offset             8           +/-10.0000           meters
+Antenna Type               20          N/A                  N/A
+Receiver Type              20          N/A                  N/A

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_d4bdeda034e4f0ea89a6f6ac4747f180" kind="dir">
+    <compoundname>Geodyn</compoundname>
+    <innerfile refid="ASConstant_8hpp">ASConstant.hpp</innerfile>
+    <innerfile refid="AtmosphericDrag_8cpp">AtmosphericDrag.cpp</innerfile>
+    <innerfile refid="AtmosphericDrag_8hpp">AtmosphericDrag.hpp</innerfile>
+    <innerfile refid="CiraExponentialDrag_8cpp">CiraExponentialDrag.cpp</innerfile>
+    <innerfile refid="CiraExponentialDrag_8hpp">CiraExponentialDrag.hpp</innerfile>
+    <innerfile refid="EarthBody_8cpp">EarthBody.cpp</innerfile>
+    <innerfile refid="EarthBody_8hpp">EarthBody.hpp</innerfile>
+    <innerfile refid="EarthOceanTide_8cpp">EarthOceanTide.cpp</innerfile>
+    <innerfile refid="EarthOceanTide_8hpp">EarthOceanTide.hpp</innerfile>
+    <innerfile refid="EarthPoleTide_8cpp">EarthPoleTide.cpp</innerfile>
+    <innerfile refid="EarthPoleTide_8hpp">EarthPoleTide.hpp</innerfile>
+    <innerfile refid="EarthSolidTide_8cpp">EarthSolidTide.cpp</innerfile>
+    <innerfile refid="EarthSolidTide_8hpp">EarthSolidTide.hpp</innerfile>
+    <innerfile refid="EGM96GravityModel_8cpp">EGM96GravityModel.cpp</innerfile>
+    <innerfile refid="EGM96GravityModel_8hpp">EGM96GravityModel.hpp</innerfile>
+    <innerfile refid="EquationOfMotion_8hpp">EquationOfMotion.hpp</innerfile>
+    <innerfile refid="ForceModel_8hpp">ForceModel.hpp</innerfile>
+    <innerfile refid="ForceModelList_8cpp">ForceModelList.cpp</innerfile>
+    <innerfile refid="ForceModelList_8hpp">ForceModelList.hpp</innerfile>
+    <innerfile refid="HarrisPriesterDrag_8cpp">HarrisPriesterDrag.cpp</innerfile>
+    <innerfile refid="HarrisPriesterDrag_8hpp">HarrisPriesterDrag.hpp</innerfile>
+    <innerfile refid="IERS_8cpp">IERS.cpp</innerfile>
+    <innerfile refid="IERS_8hpp">IERS.hpp</innerfile>
+    <innerfile refid="IERSConventions_8cpp">IERSConventions.cpp</innerfile>
+    <innerfile refid="IERSConventions_8hpp">IERSConventions.hpp</innerfile>
+    <innerfile refid="Integrator_8hpp">Integrator.hpp</innerfile>
+    <innerfile refid="JGM3GravityModel_8cpp">JGM3GravityModel.cpp</innerfile>
+    <innerfile refid="JGM3GravityModel_8hpp">JGM3GravityModel.hpp</innerfile>
+    <innerfile refid="KeplerOrbit_8cpp">KeplerOrbit.cpp</innerfile>
+    <innerfile refid="KeplerOrbit_8hpp">KeplerOrbit.hpp</innerfile>
+    <innerfile refid="MoonForce_8cpp">MoonForce.cpp</innerfile>
+    <innerfile refid="MoonForce_8hpp">MoonForce.hpp</innerfile>
+    <innerfile refid="Msise00Drag_8cpp">Msise00Drag.cpp</innerfile>
+    <innerfile refid="Msise00Drag_8hpp">Msise00Drag.hpp</innerfile>
+    <innerfile refid="PvtStore_8cpp">PvtStore.cpp</innerfile>
+    <innerfile refid="PvtStore_8hpp">PvtStore.hpp</innerfile>
+    <innerfile refid="ReferenceFrames_8cpp">ReferenceFrames.cpp</innerfile>
+    <innerfile refid="ReferenceFrames_8hpp">ReferenceFrames.hpp</innerfile>
+    <innerfile refid="RelativityEffect_8cpp">RelativityEffect.cpp</innerfile>
+    <innerfile refid="RelativityEffect_8hpp">RelativityEffect.hpp</innerfile>
+    <innerfile refid="RungeKuttaFehlberg_8cpp">RungeKuttaFehlberg.cpp</innerfile>
+    <innerfile refid="RungeKuttaFehlberg_8hpp">RungeKuttaFehlberg.hpp</innerfile>
+    <innerfile refid="SatOrbit_8cpp">SatOrbit.cpp</innerfile>
+    <innerfile refid="SatOrbit_8hpp">SatOrbit.hpp</innerfile>
+    <innerfile refid="SatOrbitPropagator_8cpp">SatOrbitPropagator.cpp</innerfile>
+    <innerfile refid="SatOrbitPropagator_8hpp">SatOrbitPropagator.hpp</innerfile>
+    <innerfile refid="SolarRadiationPressure_8cpp">SolarRadiationPressure.cpp</innerfile>
+    <innerfile refid="SolarRadiationPressure_8hpp">SolarRadiationPressure.hpp</innerfile>
+    <innerfile refid="Spacecraft_8cpp">Spacecraft.cpp</innerfile>
+    <innerfile refid="Spacecraft_8hpp">Spacecraft.hpp</innerfile>
+    <innerfile refid="SphericalHarmonicGravity_8cpp">SphericalHarmonicGravity.cpp</innerfile>
+    <innerfile refid="SphericalHarmonicGravity_8hpp">SphericalHarmonicGravity.hpp</innerfile>
+    <innerfile refid="SunForce_8cpp">SunForce.cpp</innerfile>
+    <innerfile refid="SunForce_8hpp">SunForce.hpp</innerfile>
+    <innerfile refid="UTCTime_8cpp">UTCTime.cpp</innerfile>
+    <innerfile refid="UTCTime_8hpp">UTCTime.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Geodyn/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_6c0400e9226e7bdd3fd52406f6d4c35e" kind="dir">
+    <compoundname>RINEX</compoundname>
+    <innerfile refid="RinexClockBase_8hpp">RinexClockBase.hpp</innerfile>
+    <innerfile refid="RinexClockData_8cpp">RinexClockData.cpp</innerfile>
+    <innerfile refid="RinexClockData_8hpp">RinexClockData.hpp</innerfile>
+    <innerfile refid="RinexClockFilterOperators_8hpp">RinexClockFilterOperators.hpp</innerfile>
+    <innerfile refid="RinexClockHeader_8cpp">RinexClockHeader.cpp</innerfile>
+    <innerfile refid="RinexClockHeader_8hpp">RinexClockHeader.hpp</innerfile>
+    <innerfile refid="RinexClockStream_8hpp">RinexClockStream.hpp</innerfile>
+    <innerfile refid="RinexMetBase_8hpp">RinexMetBase.hpp</innerfile>
+    <innerfile refid="RinexMetData_8cpp">RinexMetData.cpp</innerfile>
+    <innerfile refid="RinexMetData_8hpp">RinexMetData.hpp</innerfile>
+    <innerfile refid="RinexMetFilterOperators_8hpp">RinexMetFilterOperators.hpp</innerfile>
+    <innerfile refid="RinexMetHeader_8cpp">RinexMetHeader.cpp</innerfile>
+    <innerfile refid="RinexMetHeader_8hpp">RinexMetHeader.hpp</innerfile>
+    <innerfile refid="RinexMetStream_8hpp">RinexMetStream.hpp</innerfile>
+    <innerfile refid="RinexNavBase_8hpp">RinexNavBase.hpp</innerfile>
+    <innerfile refid="RinexNavData_8cpp">RinexNavData.cpp</innerfile>
+    <innerfile refid="RinexNavData_8hpp">RinexNavData.hpp</innerfile>
+    <innerfile refid="RinexNavFilterOperators_8hpp">RinexNavFilterOperators.hpp</innerfile>
+    <innerfile refid="RinexNavHeader_8cpp">RinexNavHeader.cpp</innerfile>
+    <innerfile refid="RinexNavHeader_8hpp">RinexNavHeader.hpp</innerfile>
+    <innerfile refid="RinexNavStream_8hpp">RinexNavStream.hpp</innerfile>
+    <innerfile refid="RinexObsBase_8hpp">RinexObsBase.hpp</innerfile>
+    <innerfile refid="RinexObsData_8cpp">RinexObsData.cpp</innerfile>
+    <innerfile refid="RinexObsData_8hpp">RinexObsData.hpp</innerfile>
+    <innerfile refid="RinexObsFilterOperators_8hpp">RinexObsFilterOperators.hpp</innerfile>
+    <innerfile refid="RinexObsStream_8hpp">RinexObsStream.hpp</innerfile>
+    <innerfile refid="RinexUtilities_8cpp">RinexUtilities.cpp</innerfile>
+    <innerfile refid="RinexUtilities_8hpp">RinexUtilities.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/FileHandling/RINEX/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_09ebd9c38acfd288c7b679ee4720af9b" kind="dir">
+    <compoundname>SP3</compoundname>
+    <innerfile refid="SP3Base_8hpp">SP3Base.hpp</innerfile>
+    <innerfile refid="SP3Data_8cpp">SP3Data.cpp</innerfile>
+    <innerfile refid="SP3Data_8hpp">SP3Data.hpp</innerfile>
+    <innerfile refid="SP3Header_8cpp">SP3Header.cpp</innerfile>
+    <innerfile refid="SP3Header_8hpp">SP3Header.hpp</innerfile>
+    <innerfile refid="SP3Stream_8hpp">SP3Stream.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/FileHandling/SP3/"/>
+  </compounddef>
+</doxygen>

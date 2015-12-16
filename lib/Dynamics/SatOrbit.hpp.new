@@ -1,0 +1,146 @@
+#pragma ident "$Id$"
+
+/**
+ * @file SatOrbit.hpp
+ * This Class handle general orbit for different satellite orbit type.
+ */
+
+#ifndef GPSTK_SAT_ORBIT_HPP
+#define GPSTK_SAT_ORBIT_HPP
+
+
+//============================================================================
+//
+//  This file is part of GPSTk, the GPS Toolkit.
+//
+//  The GPSTk is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published
+//  by the Free Software Foundation; either version 2.1 of the License, or
+//  any later version.
+//
+//  The GPSTk is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public
+//  License along with GPSTk; if not, write to the Free Software Foundation,
+//  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+//
+//  Shoujian Zhang - Wuhan University,2015
+//
+//============================================================================
+
+#include "EquationOfMotion.hpp"
+#include "EarthBody.hpp"
+#include "Spacecraft.hpp"
+#include "ForceModelList.hpp"
+
+#include "SphericalHarmonicGravity.hpp"
+#include "SunForce.hpp"
+#include "MoonForce.hpp"
+#include "AtmosphericDrag.hpp"
+#include "SolarRadiationPressure.hpp"
+#include "RelativityEffect.hpp"
+
+namespace gpstk
+{
+
+      /** @addtogroup GeoDynamics */
+      //@{
+
+  
+      /** This Class handle general orbit for different satellite orbit type.
+       * 
+       */
+   class SatOrbit : public EquationOfMotion
+   {
+
+   public:
+
+         /// Default constructor
+      SatOrbit() 
+      {}
+
+         ///
+      virtual Vector<double> getDerivatives(const double&         t,
+                                            const Vector<double>& y );
+
+
+         // Methods to config the orbit perturbation force models
+         // call 'reset()' before call these methods
+      SatOrbit& setEarthGravityModel(SatOrbit::GravityModel model,
+                                     const int& maxDegree,
+                                     const int& maxOrder);
+
+
+         ///
+      SatOrbit& setAtmosphericDragModel(SatOrbit::AtmosphericModel model 
+                                        = SatOrbit::AM_HarrisPriester,
+                                      );
+
+         ///
+      SatOrbit& setSRPModel();
+
+
+         ///
+      SatOrbit& setRelativeEffectModel();
+
+
+         /// set reference epoch
+      SatOrbit& setRefEpoch(UTCTime utc)
+      { utc0 = utc; return (*this); }
+
+
+         /// get reference epoch
+      UTCTime getRefEpoch() const
+      { return utc0; }
+
+
+         /// Default destructor
+      virtual ~SatOrbit()
+      {}
+
+
+   private:
+
+      int egmDegree;
+
+      int egmOrder;
+
+         /// 
+      SphericalHarmonicGravity* pEarthGravityModel;
+      
+      SunForce* pSunForce;
+      
+      MoonForce* pMoonForce;
+
+      AtmosphericDrag* pAtmDrag;
+      
+      SolarRadiationPressure* pSolarPressure;
+      
+      RelativityEffect* pRelEffect;
+
+      double dailyF107;
+      double averageF107;
+      double dailyKp;
+
+
+         /// Reference epoch
+      UTCTime utc0;
+
+
+         /// Force Model List
+      ForceModelList forceList;
+
+         /// Initializing method.
+      void Init(void);
+
+   }; // End of class 'SatOrbit'
+
+}  // End of namespace 'gpstk'
+
+#endif   // GPSTK_SAT_ORBIT_HPP
+
+
+

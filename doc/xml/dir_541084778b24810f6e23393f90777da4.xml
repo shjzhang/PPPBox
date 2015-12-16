@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_541084778b24810f6e23393f90777da4" kind="dir">
+    <compoundname>TimeHandling</compoundname>
+    <innerfile refid="ANSITime_8cpp">ANSITime.cpp</innerfile>
+    <innerfile refid="ANSITime_8hpp">ANSITime.hpp</innerfile>
+    <innerfile refid="BDSWeekSecond_8hpp">BDSWeekSecond.hpp</innerfile>
+    <innerfile refid="CivilTime_8cpp">CivilTime.cpp</innerfile>
+    <innerfile refid="CivilTime_8hpp">CivilTime.hpp</innerfile>
+    <innerfile refid="CommonTime_8cpp">CommonTime.cpp</innerfile>
+    <innerfile refid="CommonTime_8hpp">CommonTime.hpp</innerfile>
+    <innerfile refid="Epoch_8cpp">Epoch.cpp</innerfile>
+    <innerfile refid="Epoch_8hpp">Epoch.hpp</innerfile>
+    <innerfile refid="EpochDataStore_8cpp">EpochDataStore.cpp</innerfile>
+    <innerfile refid="EpochDataStore_8hpp">EpochDataStore.hpp</innerfile>
+    <innerfile refid="GALWeekSecond_8hpp">GALWeekSecond.hpp</innerfile>
+    <innerfile refid="GPSWeek_8cpp">GPSWeek.cpp</innerfile>
+    <innerfile refid="GPSWeek_8hpp">GPSWeek.hpp</innerfile>
+    <innerfile refid="GPSWeekSecond_8hpp">GPSWeekSecond.hpp</innerfile>
+    <innerfile refid="GPSWeekZcount_8cpp">GPSWeekZcount.cpp</innerfile>
+    <innerfile refid="GPSWeekZcount_8hpp">GPSWeekZcount.hpp</innerfile>
+    <innerfile refid="GPSZcount_8cpp">GPSZcount.cpp</innerfile>
+    <innerfile refid="GPSZcount_8hpp">GPSZcount.hpp</innerfile>
+    <innerfile refid="JulianDate_8cpp">JulianDate.cpp</innerfile>
+    <innerfile refid="JulianDate_8hpp">JulianDate.hpp</innerfile>
+    <innerfile refid="MJD_8cpp">MJD.cpp</innerfile>
+    <innerfile refid="MJD_8hpp">MJD.hpp</innerfile>
+    <innerfile refid="QZSWeekSecond_8hpp">QZSWeekSecond.hpp</innerfile>
+    <innerfile refid="SystemTime_8cpp">SystemTime.cpp</innerfile>
+    <innerfile refid="SystemTime_8hpp">SystemTime.hpp</innerfile>
+    <innerfile refid="TimeConstants_8hpp">TimeConstants.hpp</innerfile>
+    <innerfile refid="TimeConverters_8cpp">TimeConverters.cpp</innerfile>
+    <innerfile refid="TimeConverters_8hpp">TimeConverters.hpp</innerfile>
+    <innerfile refid="TimeString_8cpp">TimeString.cpp</innerfile>
+    <innerfile refid="TimeString_8hpp">TimeString.hpp</innerfile>
+    <innerfile refid="TimeTag_8cpp">TimeTag.cpp</innerfile>
+    <innerfile refid="TimeTag_8hpp">TimeTag.hpp</innerfile>
+    <innerfile refid="UnixTime_8cpp">UnixTime.cpp</innerfile>
+    <innerfile refid="UnixTime_8hpp">UnixTime.hpp</innerfile>
+    <innerfile refid="Week_8cpp">Week.cpp</innerfile>
+    <innerfile refid="Week_8hpp">Week.hpp</innerfile>
+    <innerfile refid="WeekSecond_8cpp">WeekSecond.cpp</innerfile>
+    <innerfile refid="WeekSecond_8hpp">WeekSecond.hpp</innerfile>
+    <innerfile refid="YDSTime_8cpp">YDSTime.cpp</innerfile>
+    <innerfile refid="YDSTime_8hpp">YDSTime.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/TimeHandling/"/>
+  </compounddef>
+</doxygen>

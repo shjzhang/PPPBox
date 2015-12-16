@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/shjzhang/Documents/Develop/rocket/pppbox/apps/clocktools/tallandev.cpp
+iostream
+-
+vector
+-
+string
+-
+stdio.h
+-
+string.h
+-
+math.h
+-
+

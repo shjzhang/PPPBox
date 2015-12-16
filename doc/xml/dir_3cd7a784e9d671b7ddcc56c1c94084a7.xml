@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_3cd7a784e9d671b7ddcc56c1c94084a7" kind="dir">
+    <compoundname>Utilities</compoundname>
+    <innerfile refid="BinUtils_8cpp">BinUtils.cpp</innerfile>
+    <innerfile refid="BinUtils_8hpp">BinUtils.hpp</innerfile>
+    <innerfile refid="Exception_8cpp">Exception.cpp</innerfile>
+    <innerfile refid="Exception_8hpp">Exception.hpp</innerfile>
+    <innerfile refid="expandtilde_8cpp">expandtilde.cpp</innerfile>
+    <innerfile refid="expandtilde_8hpp">expandtilde.hpp</innerfile>
+    <innerfile refid="gpstkplatform_8h">gpstkplatform.h</innerfile>
+    <innerfile refid="Utilities_2logstream_8hpp">Utilities/logstream.hpp</innerfile>
+    <innerfile refid="Utilities_2singleton_8hpp">Utilities/singleton.hpp</innerfile>
+    <innerfile refid="stl__helpers_8hpp">stl_helpers.hpp</innerfile>
+    <innerfile refid="StringUtils_8hpp">StringUtils.hpp</innerfile>
+    <innerfile refid="ValidType_8hpp">ValidType.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Utilities/"/>
+  </compounddef>
+</doxygen>

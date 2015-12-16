@@ -1,0 +1,616 @@
+#pragma ident "$Id: SolverPPPWL.hpp 2645 2011-06-08 03:23:24Z shjzhang $"
+
+/**
+ * @file SolverPPPWL.hpp
+ * Class to Fixing the widelane ambiguities using single-differenced 
+ * MW combinations.
+ */
+
+#ifndef GPSTK_SOLVER_PPP_WL_HPP
+#define GPSTK_SOLVER_PPP_WL_HPP
+
+//============================================================================
+//
+//  This file is part of GPSTk, the GPS Toolkit.
+//
+//  The GPSTk is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published
+//  by the Free Software Foundation; either version 2.1 of the License, or
+//  any later version.
+//
+//  The GPSTk is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public
+//  License along with GPSTk; if not, write to the Free Software Foundation,
+//  Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+//  Shoujian Zhang - Wuhan University, 2012
+//
+//============================================================================
+
+
+#include "CodeKalmanSolver.hpp"
+#include "AmbiguityDatumPPP.hpp"
+
+
+namespace gpstk
+{
+
+
+      /** @addtogroup GPSsolutions */
+      /// @ingroup math
+
+      //@{
+
+      /** This class will fix the widelane ambiguities based on the single
+       * difference Meloubne-Wubbena (MW) combination given the MW satellite
+       * unclabrated biases. 
+       *
+       * This class may be used either in a Vector- and Matrix-oriented way,
+       * or with GNSS data structure objects from "DataStructures" class (much
+       * more simple to use it this way).
+       *
+       * A typical way to use this class with GNSS data structures follows:
+       *
+       * @code
+       *      // INITIALIZATION PART
+       *
+       *      // EBRE station nominal position
+       *   RinexObsStream rin("ebre0300.02o");  // Data stream
+       *
+       *      // Objects to compute the tropospheric data
+       *   CorrectPhaseBiases correctPhaseBiases;
+       *
+       *      // More declarations here: ComputeMOPSWeights, SimpleFilter,
+       *      // LICSDetector, MWCSDetector, SolidTides, OceanLoading, 
+       *      // PoleTides, CorrectObservables, ComputeWindUp, ComputeLinear,
+       *      // LinearCombinations, etc.
+       *
+       *      // Declare a SolverPPPWL object
+       *   SolverPPPWL ambFixWL;
+       *
+       *     // PROCESSING PART
+       *
+       *   gnssRinex gRin;
+       *
+       *   while(rin >> gRin)
+       *   {
+       *      try
+       *      {
+       *         gRin  >> basicM
+       *               >> linear1      // Compute combinations
+       *               >> markCSLI2
+       *               >> markCSMW
+       *               >> markArc
+       *               >> linear2      // Compute prefit residuals
+       *               >> phaseAlign
+       *               >> ambFixWL;
+       *      }
+       *      catch(...)
+       *      {
+       *         cerr << "Unknown exception at epoch: " << time << endl;
+       *         continue;
+       *      }
+       *
+       *         // Print results
+       *      cout << time.DOYsecond()      << "  "; // Output field #1
+       *      cout << pppSolver.solution[2] << "  "; // dy: Output field #3
+       *      cout << pppSolver.solution[3] << "  "; // dz: Output field #4
+       *      cout << pppSolver.solution[0] << "  "; // wetTropo: Out field #5
+       *      cout << endl;
+       *   }
+       * @endcode
+       *
+       * The "SolverPPPWL" object will extract all the data it needs from the
+       * GNSS data structure that is "gRin" and will try to solve the PPP
+       * system of equations using a Kalman filter. It will also insert back
+       * 'fixed' widelane ambiguity into "gRin" .
+       *
+       * This class expects some weights assigned to each satellite. That can
+       * be achieved with objects from classes such as "ComputeIURAWeights",
+       * "ComputeMOPSWeights", etc.
+       *
+       * If these weights are not assigned, then the "SolverPPPWL" object will
+       * set a value of "1.0" to code measurements, and "weightFactor" to phase
+       * measurements. The default value of "weightFactor" is "10000.0". This
+       * implies that code sigma is 1 m, and phase sigma is 1 cm.
+       *
+       * By default, the stochastic models used for each type of variable are:
+       *
+       *    \li Fractional widelane ambiguity biases are modeled as white noise  
+       *        (WhiteNoiseModel).
+       *    \li Widelane ambiguity biases are modeled as white noise when cycle slips
+       *        happen, and as constants between cycle slips
+       *        (PhaseAmbiguityModel).
+       *
+       * \warning "SolverPPPWL" is based on a Kalman filter, and Kalman filters
+       * are objets that store their internal state, so you MUST NOT use the
+       * SAME object to process DIFFERENT data streams.
+       *
+       * @sa SolverBase.hpp, SolverLMS.hpp and CodeKalmanSolver.hpp for
+       * base classes.
+       *
+       */
+   class SolverPPPWL : public CodeKalmanSolver
+   {
+   public:
+
+         /** Common constructor.
+          */
+      SolverPPPWL();
+
+
+         /** Code to be executed before 'Compute()' method.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssRinex& preCompute( gnssRinex& gData )
+         throw(ProcessingException, SVNumException);
+
+
+         /** Code to be executed after 'Compute()' method.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssRinex& postCompute( gnssRinex& gData )
+         throw(ProcessingException);
+
+
+         /** Returns a reference to a gnssRinex object after computing .
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssRinex& Compute( gnssRinex& gData )
+         throw(InvalidSolver);
+
+
+         /** Time Update of the kalman filter.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual int TimeUpdate( const Matrix<double>& phiMatrix,
+                              const Matrix<double>& processNoiseCovariance  )
+         throw(InvalidSolver);
+
+
+         /** Measurement Update of the kalman filter.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual int MeasUpdate( const Vector<double>& prefitResiduals,
+                              const Matrix<double>& designMatrix,
+                              const Matrix<double>& weightMatrix  )
+         throw(InvalidSolver);
+
+
+         /** Returns a reference to a gnnsRinex object after applying
+          *  ambiguity constraint.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssRinex& AmbiguityConstr(gnssRinex& gData)
+         throw(ProcessingException);
+
+
+         /** Returns a reference to a gnnsRinex object after fixing 
+          *  all the potential ambiguities  
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssRinex& AmbiguityFixing(gnssRinex& gData)
+         throw(ProcessingException);
+
+
+         /** Update the free unknonws' solution and covariance after
+          *  fixing the ambiguities
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual int AmbiguityUpdate(Vector<double>& state,
+                                  Matrix<double>& covariance,
+                                  Vector<double>& fixedFlag,
+                                  int& index,
+                                  double& fixedValue)
+         throw(ProcessingException);
+
+
+
+         /** Returns a reference to a gnnsSatTypeValue object after
+          *  solving the previously defined equation system.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssSatTypeValue& Process(gnssSatTypeValue& gData)
+         throw(ProcessingException, SVNumException);
+
+
+         /** Returns a reference to a gnnsRinex object after solving
+          *  the previously defined equation system.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssRinex& Process(gnssRinex& gData)
+         throw(ProcessingException, SVNumException);
+
+
+
+         /// Get receiver fractional-cycle bias stochastic model pointer
+      virtual StochasticModel* getReceiverBiasModel(void) const
+      { return pClockStoModel; };
+
+
+         /** Set receiver bias stochastic model
+          *
+          * @param pModel      Pointer to StochasticModel associated with
+          *                    receiver fractional-cycle bias.
+          *
+          * \warning Be aware that some stochastic models store their internal
+          * state (for instance, 'RandomWalkModel' and 'PhaseAmbiguityModel').
+          * If that is your case, you MUST NOT use the SAME model in DIFFERENT
+          * solver objects.
+          */
+      virtual SolverPPPWL& setReceiverBiasModel(StochasticModel* pModel)
+      { pClockStoModel = pModel; return (*this); };
+
+
+         /// Get phase biases stochastic model pointer
+      virtual StochasticModel* getPhaseBiasesModel(void) const
+      { return pAmbiguityStoModel; };
+
+
+         /** Set phase biases stochastic model.
+          *
+          * @param pModel      Pointer to StochasticModel associated with
+          *                    phase biases.
+          *
+          * \warning Be aware that some stochastic models store their internal
+          * state (for instance, 'RandomWalkModel' and 'PhaseAmbiguityModel').
+          * If that is your case, you MUST NOT use the SAME model in DIFFERENT
+          * solver objects.
+          *
+          * \warning This method should be used with caution, because model
+          * must be of PhaseAmbiguityModel class in order to make sense.
+          */
+      virtual SolverPPPWL& setPhaseBiasesModel(PhaseAmbiguityModel* pModel)
+      { pAmbiguityStoModel = pModel; return (*this); };
+
+
+         /// Get the State Transition Matrix (phiMatrix)
+      virtual Matrix<double> getPhiMatrix(void) const
+      { return phiMatrix; };
+
+
+         /** Set the State Transition Matrix (phiMatrix)
+          *
+          * @param pMatrix     State Transition matrix.
+          *
+          * \warning Process() methods set phiMatrix and qMatrix according to
+          * the stochastic models already defined. Therefore, you must use
+          * the Compute() methods directly if you use this method.
+          *
+          */
+      virtual SolverPPPWL& setPhiMatrix(const Matrix<double> & pMatrix)
+      { phiMatrix = pMatrix; return (*this); };
+
+
+         /// Get the Noise covariance matrix (QMatrix)
+      virtual Matrix<double> getQMatrix(void) const
+      { return qMatrix; };
+
+
+         /** Set the Noise Covariance Matrix (QMatrix)
+          *
+          * @param pMatrix     Noise Covariance matrix.
+          *
+          * \warning Process() methods set phiMatrix and qMatrix according to
+          * the stochastic models already defined. Therefore, you must use
+          * the Compute() methods directly if you use this method.
+          *
+          */
+      virtual SolverPPPWL& setQMatrix(const Matrix<double> & pMatrix)
+      { qMatrix = pMatrix; return (*this); };
+
+
+         /** Get the weight factor multiplying the phase measurements sigmas.
+          *  This factor is the code_sigma/phase_sigma ratio.
+          */
+      virtual double getWeightFactor(void) const
+      { return std::sqrt(weightFactor); };
+
+
+         /** Set the weight factor multiplying the phase measurement sigma
+          *
+          * @param factor      Factor multiplying the phase measurement sigma
+          *
+          * \warning This factor should be the code_sigma/phase_sigma ratio.
+          * For instance, if we assign a code sigma of 1 m and a phase sigma
+          * of 10 cm, the ratio is 100, and so should be "factor".
+          */
+      virtual SolverPPPWL& setWeightFactor(double factor)
+      { weightFactor= (factor*factor); return (*this); };
+
+
+
+         /// Get stochastic model pointer for dx (or dLat) coordinate
+      StochasticModel* getXCoordinatesModel() const
+      { return pCoordXStoModel; };
+
+
+         /** Set coordinates stochastic model for dx (or dLat) coordinate
+          *
+          * @param pModel      Pointer to StochasticModel associated with
+          *                    dx (or dLat) coordinate.
+          */
+      SolverPPPWL& setXCoordinatesModel(StochasticModel* pModel)
+      { pCoordXStoModel = pModel; return (*this); };
+
+
+         /// Get stochastic model pointer for dy (or dLon) coordinate
+      StochasticModel* getYCoordinatesModel() const
+      { return pCoordYStoModel; };
+
+
+         /** Set coordinates stochastic model for dy (or dLon) coordinate
+          *
+          * @param pModel      Pointer to StochasticModel associated with
+          *                    dy (or dLon) coordinate.
+          */
+      SolverPPPWL& setYCoordinatesModel(StochasticModel* pModel)
+      { pCoordYStoModel = pModel; return (*this); };
+
+
+         /// Get stochastic model pointer for dz (or dH) coordinate
+      StochasticModel* getZCoordinatesModel() const
+      { return pCoordZStoModel; };
+
+
+         /** Set coordinates stochastic model for dz (or dH) coordinate
+          *
+          * @param pModel      Pointer to StochasticModel associated with
+          *                    dz (or dH) coordinate.
+          */
+      SolverPPPWL& setZCoordinatesModel(StochasticModel* pModel)
+      { pCoordZStoModel = pModel; return (*this); };
+
+
+         /** Set a single coordinates stochastic model to ALL coordinates.
+          *
+          * @param pModel      Pointer to StochasticModel associated with
+          *                    coordinates.
+          *
+          * @warning Do NOT use this method to set the SAME state-aware
+          * stochastic model (like RandomWalkModel, for instance) to ALL
+          * coordinates, because the results will certainly be erroneous. Use
+          * this method only with non-state-aware stochastic models like
+          * 'StochasticModel' (constant coordinates) or 'WhiteNoiseModel'.
+          */
+      virtual SolverPPPWL& setCoordinatesModel(StochasticModel* pModel);
+
+
+         /** Sets the defalut variables for the equation
+          *
+          */
+      virtual SolverPPPWL& setEqu();
+
+
+         /** Set constraint system for the equationSystem.
+          *
+          * @param constrSystem  Object holding the constraint system
+          */
+      virtual SolverPPPWL& setAmbiguityDatum( 
+                                    const AmbiguityDatumPPP& ambDatum)
+      { ambiguityDatum = ambDatum; return (*this); };
+
+
+          /** Set the positioning mode, kinematic or static.
+           */
+      virtual SolverPPPWL& setKinematic( bool kinematicMode = true,
+                                         double sigmaX = 100.0,
+                                         double sigmaY = 100.0,
+                                         double sigmaZ = 100.0 );
+
+
+         /** Returns the solution associated to a given TypeID.
+          *
+          * @param type    TypeID of the solution we are looking for.
+          */
+      virtual double getSolution(const TypeID& type) const
+         throw(InvalidRequest);
+
+
+         /** Returns the variance associated to a given TypeID.
+          *
+          * @param type    TypeID of the variance we are looking for.
+          */
+      virtual double getVariance(const TypeID& type) const
+         throw(InvalidRequest);
+
+
+         /** Return the CURRENT number of satellite.
+          */
+      virtual int getCurrentSatNumber() const
+         throw(InvalidRequest);
+
+
+         /** Return the CURRENT number of satellite.
+          */
+      virtual int getCurrentFixedSatNumber() const
+         throw(InvalidRequest);
+
+
+
+         /// Returns an index identifying this object.
+      virtual int getIndex(void) const;
+
+
+         /// Returns a string identifying this object.
+      virtual std::string getClassName(void) const;
+
+
+         /// Destructor.
+      virtual ~SolverPPPWL() {};
+
+
+   private:
+
+
+         /// Constraint equation system
+      AmbiguityDatumPPP ambiguityDatum;
+
+         /// TypeIDSet to be differenced
+      TypeIDSet diffTypes;
+
+      Matrix<double> diffData;
+
+         /// Reference satellite
+      SatID datumSat;
+
+         /// Number of variables
+      int numVar;
+
+         /// Number of unknowns
+      int numUnknowns;
+
+         /// Number of measurements
+      int numMeas;
+
+         /// Number of measurements
+      int numCurrentSV;
+
+         /// Number of measurements
+      int numWLFixed;
+
+         /// Weight factor for phase measurements
+      double weightFactor;
+
+         // Predicted state
+      Vector<double> xhatminus;
+
+         // Predicted covariance.
+      Matrix<double> Pminus;
+
+         // A posteriori state
+      Vector<double> xhat;
+
+         // A posteriori covariance.
+      Matrix<double> P;
+
+         // The updated state 
+      Vector<double> newSol; 
+
+         // The updated covariance
+      Matrix<double> newCov;
+
+         /// Pointer to stochastic model for dx (or dLat) coordinate
+      StochasticModel* pCoordXStoModel;
+
+         /// Pointer to stochastic model for dy (or dLon) coordinate
+      StochasticModel* pCoordYStoModel;
+
+         /// Pointer to stochastic model for dz (or dH) coordinate
+      StochasticModel* pCoordZStoModel;
+
+         /// Pointer to stochastic model for receiver clock
+      StochasticModel* pClockPwStoModel;
+
+         /// Pointer to stochastic model for receiver clock
+      StochasticModel* pClockStoModel;
+
+         /// Pointer to stochastic model for phase biases
+      PhaseAmbiguityModel* pAmbiguityStoModel;
+
+         /// State Transition Matrix (PhiMatrix)
+      Matrix<double> phiMatrix;
+
+         /// Noise covariance matrix (QMatrix)
+      Matrix<double> qMatrix;
+
+         /// Geometry matrix
+      Matrix<double> hMatrix;
+
+         /// Weights matrix
+      Matrix<double> rMatrix;
+
+         /// Measurements vector (Prefit-residuals)
+      Vector<double> measVector;
+
+         /// Map holding the information regarding every satellite
+      std::map<SatID, double> ambDatumMap;
+
+         /// Boolean indicating if this filter was run at least once
+      bool firstTime;
+
+         /// Set with all satellites being processed this epoch
+      SatIDSet currSatSet;
+
+         /// Set with all satellites being processed this epoch
+      SatIDSet satSet;
+
+         /// A structure used to store Kalman filter data.
+      struct filterData
+      {
+            // Default constructor initializing the data in the structure
+         filterData() : ambiguity(0.0) {};
+
+         double ambiguity;                  ///< Ambiguity value.
+         std::map<SatID,  double> aCovMap;  ///< Ambiguities covariance values.
+
+      };
+
+         /// Map holding the information regarding every satellite
+      std::map<SatID, filterData> KalmanData;
+
+         /// General Kalman filter object
+      SimpleKalmanFilter kFilter;
+
+         /// Initializing method.
+      void Init(void);
+
+         /// Constant stochastic model
+      StochasticModel constantModel;
+
+         /// White noise stochastic model for position
+      WhiteNoiseModel whitenoiseModelX;
+      WhiteNoiseModel whitenoiseModelY;
+      WhiteNoiseModel whitenoiseModelZ;
+
+         /// White noise stochastic model
+      WhiteNoiseModel whitenoiseModel;
+
+         /// Phase ambiguity stochastic model (constant + white noise)
+      PhaseAmbiguityModel ambiguityModel;
+
+         /// Initial index assigned to this class.
+      static int classIndex;
+
+         /// Index belonging to this object.
+      int index;
+
+         /// Sets the index and increment classIndex.
+      void setIndex(void)
+      { index = classIndex++; };
+
+
+         // Some methods that we want to hide
+      virtual int Compute( const Vector<double>& prefitResiduals,
+                           const Matrix<double>& designMatrix )
+         throw(InvalidSolver)
+      { return 0; };
+
+
+      virtual SolverPPPWL& setDefaultEqDefinition(
+                                       const gnssEquationDefinition& eqDef )
+      { return (*this); };
+
+
+
+   }; // End of class 'SolverPPPWL'
+
+      //@}
+
+}  // End of namespace gpstk
+
+#endif   // GPSTK_SOLVER_PPP_WL_HPP

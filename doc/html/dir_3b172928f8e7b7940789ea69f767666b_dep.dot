@@ -1,0 +1,11 @@
+digraph "removed" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_3b172928f8e7b7940789ea69f767666b {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_3b172928f8e7b7940789ea69f767666b.html"];
+    dir_3b172928f8e7b7940789ea69f767666b [shape=plaintext label="removed"];
+    dir_188d85ae8653fe09e3113cb286086d0e [shape=box label="apps" color="red" fillcolor="white" style="filled" URL="dir_188d85ae8653fe09e3113cb286086d0e.html"];
+    dir_71b9bb2bc081d1cc57a33c8a109a0398 [shape=box label="lib" color="red" fillcolor="white" style="filled" URL="dir_71b9bb2bc081d1cc57a33c8a109a0398.html"];
+  }
+}

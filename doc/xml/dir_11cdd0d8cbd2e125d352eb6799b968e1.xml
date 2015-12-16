@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_11cdd0d8cbd2e125d352eb6799b968e1" kind="dir">
+    <compoundname>Matrix</compoundname>
+    <innerfile refid="Matrix_8hpp">Matrix.hpp</innerfile>
+    <innerfile refid="MatrixBase_8hpp">MatrixBase.hpp</innerfile>
+    <innerfile refid="MatrixBaseOperators_8hpp">MatrixBaseOperators.hpp</innerfile>
+    <innerfile refid="MatrixFunctors_8hpp">MatrixFunctors.hpp</innerfile>
+    <innerfile refid="MatrixImplementation_8hpp">MatrixImplementation.hpp</innerfile>
+    <innerfile refid="MatrixOperators_8hpp">MatrixOperators.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/Math/Matrix/"/>
+  </compounddef>
+</doxygen>

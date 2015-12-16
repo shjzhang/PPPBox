@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_04e7357021f9a6dfda885736601ebaa8" kind="dir">
+    <compoundname>qa</compoundname>
+    <innerfile refid="removed_2apps_2qa_2Expression_8cpp">removed/apps/qa/Expression.cpp</innerfile>
+    <innerfile refid="removed_2apps_2qa_2Expression_8hpp">removed/apps/qa/Expression.hpp</innerfile>
+    <innerfile refid="LinearCombination_8cpp">LinearCombination.cpp</innerfile>
+    <innerfile refid="LinearCombination_8hpp">LinearCombination.hpp</innerfile>
+    <innerfile refid="obsrip_8cpp">obsrip.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/removed/apps/qa/"/>
+  </compounddef>
+</doxygen>

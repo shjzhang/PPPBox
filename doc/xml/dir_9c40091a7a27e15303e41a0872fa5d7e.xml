@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="dir_9c40091a7a27e15303e41a0872fa5d7e" kind="dir">
+    <compoundname>RefTime</compoundname>
+    <innerfile refid="HelmertTransform_8cpp">HelmertTransform.cpp</innerfile>
+    <innerfile refid="HelmertTransform_8hpp">HelmertTransform.hpp</innerfile>
+    <innerfile refid="ReferenceFrame_8cpp">ReferenceFrame.cpp</innerfile>
+    <innerfile refid="ReferenceFrame_8hpp">ReferenceFrame.hpp</innerfile>
+    <innerfile refid="TimeSystem_8cpp">TimeSystem.cpp</innerfile>
+    <innerfile refid="TimeSystem_8hpp">TimeSystem.hpp</innerfile>
+    <innerfile refid="TimeSystemCorr_8hpp">TimeSystemCorr.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/shjzhang/Documents/Develop/rocket/lib/RefTime/"/>
+  </compounddef>
+</doxygen>

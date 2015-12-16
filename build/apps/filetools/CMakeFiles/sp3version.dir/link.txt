@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/sp3version.dir/sp3version.cpp.o  -o sp3version  ../../libpppbox.dylib 
