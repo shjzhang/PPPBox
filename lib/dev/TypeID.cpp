@@ -163,6 +163,11 @@ namespace gpstk
       tStrings[ionoL7]     = "slantIonoL7";
       tStrings[ionoL8]     = "slantIonoL8";
       tStrings[ionoL1Weight] = "ionoWeightL1";
+      tStrings[ionoL2Weight] = "ionoWeightL2";
+      tStrings[ionoL5Weight] = "ionoWeightL5";
+      tStrings[ionoL6Weight] = "ionoWeightL6";
+      tStrings[ionoL7Weight] = "ionoWeightL7";
+      tStrings[ionoL8Weight] = "ionoWeightL8";
       tStrings[windUp]     = "windup";
       tStrings[eclipse]    = "eclipse";
       tStrings[satPCenter] = "satPhaseCenter";

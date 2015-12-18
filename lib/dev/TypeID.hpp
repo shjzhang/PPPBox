@@ -212,6 +212,11 @@ namespace gpstk
          ionoL7,    ///< Slant ionospheric delay, frequency L7
          ionoL8,    ///< Slant ionospheric delay, frequency L8
          ionoL1Weight, ///< Weight for slant ionospheric delay on frequency L1  
+         ionoL2Weight, ///< Weight for slant ionospheric delay on frequency L2  
+         ionoL5Weight, ///< Weight for slant ionospheric delay on frequency L5  
+         ionoL6Weight, ///< Weight for slant ionospheric delay on frequency L6  
+         ionoL7Weight, ///< Weight for slant ionospheric delay on frequency L7  
+         ionoL8Weight, ///< Weight for slant ionospheric delay on frequency L8  
          windUp,    ///< Wind-up effect (in radians)
          eclipse,   ///< Eclipse indicator
          satPCenter,///< Satellite antenna phase center correction
