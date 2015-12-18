@@ -36,8 +36,14 @@
 //  2015/12/09
 //  The unknown ionospheric delay in the equation is 'slantIonoL1'
 //
+//  2015/12/17
+//  real-time ionospheric delays based on 'Broadcast Ionospheric delays!'
+//  real-time ionospheric delays based on 'ionospheric tomography!'
+//  (1) mapping function
+//  (2) spatial constraints
+//  (3) receiver bias constraints
+//
 //============================================================================
-
 
 #include "SolverPPPUCAR.hpp"
 #include "MatrixFunctors.hpp"
