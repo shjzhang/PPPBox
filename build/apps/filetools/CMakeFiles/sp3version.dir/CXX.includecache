@@ -76,6 +76,8 @@ FFTextStream.hpp
 SP3Header.hpp
 ../lib/FileHandling/SP3/SP3Header.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/SP3SatID.hpp
 iostream
 -
@@ -151,8 +153,6 @@ regex.h
 -
 Exception.hpp
 ../lib/Utilities/Exception.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/filetools/sp3version.cpp
 iostream

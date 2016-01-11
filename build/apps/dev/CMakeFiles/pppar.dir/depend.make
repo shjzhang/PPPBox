@@ -48,6 +48,7 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -73,6 +74,7 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Math/Matrix/MatrixImplementati
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Math/MiscMath.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
+apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Math/SpecialFunctions.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Math/Stats.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Math/Triple.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -115,8 +117,8 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Utilities/Exception.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/ARRound.hpp
+apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/AmbiDatum.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/Arc.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/BasicModel.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/ClockSatStore.hpp
@@ -125,7 +127,6 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/ComputeElevWeights.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/CorrectUPDs.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/DataHeaders.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/DataStructures.hpp
-apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/DatumPPP.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/Decimate.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/EOPDataStore.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/GDSUtils.hpp
@@ -150,7 +151,6 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/SolverLMS.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/SolverPPPAR.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/SolverPPPARFB.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/SourceID.hpp
-apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/SpecialFunctions.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/StochasticModel.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/TabularSatStore.hpp
 apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o: ../lib/dev/TypeID.hpp

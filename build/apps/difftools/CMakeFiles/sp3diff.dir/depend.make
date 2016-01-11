@@ -33,6 +33,7 @@ apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/GNSSEph/SP3SatID.hpp
@@ -60,7 +61,6 @@ apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/TimeHandling/TimeTag
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/Utilities/Exception.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/dev/DataHeaders.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/dev/DataStructures.hpp
 apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o: ../lib/dev/RinexObsData.hpp

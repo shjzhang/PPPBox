@@ -26,6 +26,7 @@ apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/GNSSCore/W
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -87,7 +88,6 @@ apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/Utilities/
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/DDBase.dir/DDBase.cpp.o: ../lib/dev/RinexObsData.hpp

@@ -29,6 +29,7 @@ apps/converters/CMakeFiles/ash2xyz.dir/ash2xyz.cpp.o
  ../lib/GNSSCore/WxObsMap.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -84,7 +85,6 @@ apps/converters/CMakeFiles/ash2xyz.dir/ash2xyz.cpp.o
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/ValidType.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/converters/ash2xyz.cpp

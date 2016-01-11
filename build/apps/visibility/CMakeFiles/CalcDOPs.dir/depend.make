@@ -33,6 +33,7 @@ apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/GNSSCore/WGS84Ell
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -76,6 +77,5 @@ apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/Utilities/BinUtil
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/Utilities/Exception.hpp
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/visibility/CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o: ../apps/visibility/CalcDOPs.cpp
 

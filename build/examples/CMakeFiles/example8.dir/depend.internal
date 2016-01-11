@@ -44,6 +44,7 @@ examples/CMakeFiles/example8.dir/example8.cpp.o
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
  ../lib/GNSSCore/geometry.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
  ../lib/GNSSEph/EngEphemeris.hpp
@@ -109,7 +110,6 @@ examples/CMakeFiles/example8.dir/example8.cpp.o
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/ValidType.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/BasicModel.hpp
  ../lib/dev/ClockSatStore.hpp
  ../lib/dev/CodeKalmanSolver.hpp

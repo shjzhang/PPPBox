@@ -19,6 +19,7 @@ apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/FileHandlin
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/FileHandling/RINEX/RinexObsFilterOperators.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
+apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/Math/MathBase.hpp
@@ -36,7 +37,6 @@ apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/TimeHandlin
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/TimeHandling/UnixTime.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/Utilities/Exception.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o: ../apps/mergetools/MergeFrame.hpp

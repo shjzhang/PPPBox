@@ -33,6 +33,7 @@ apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -87,7 +88,6 @@ apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o: ../apps/DataAvailability/DataAvailabilityAnalyzer.cpp
@@ -111,6 +111,7 @@ apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/GNSSCore/TropModel.hp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -140,7 +141,6 @@ apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/Utilities/Exception.h
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../apps/DataAvailability/DataAvailabilityAnalyzer.hpp
 apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o: ../apps/DataAvailability/daa.cpp
 

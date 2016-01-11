@@ -258,6 +258,8 @@ ReferenceFrame.hpp
 GNSSconstants.hpp
 ../lib/GNSSCore/GNSSconstants.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/BrcClockCorrection.hpp
 EngNav.hpp
 ../lib/GNSSEph/EngNav.hpp
@@ -753,8 +755,6 @@ iomanip
 -
 singleton.hpp
 ../lib/Utilities/singleton.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/ClockSatStore.hpp
 map

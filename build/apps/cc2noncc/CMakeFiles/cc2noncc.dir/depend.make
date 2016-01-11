@@ -23,6 +23,7 @@ apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -49,7 +50,6 @@ apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/TimeHandling/TimeTa
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/Utilities/Exception.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/dev/CC2NONCC.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/dev/DataHeaders.hpp
 apps/cc2noncc/CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o: ../lib/dev/DataStructures.hpp

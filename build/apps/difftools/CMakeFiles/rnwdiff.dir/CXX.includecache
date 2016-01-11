@@ -238,6 +238,8 @@ ReferenceFrame.hpp
 GNSSconstants.hpp
 ../lib/GNSSCore/GNSSconstants.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/BrcClockCorrection.hpp
 EngNav.hpp
 ../lib/GNSSEph/EngNav.hpp
@@ -549,8 +551,6 @@ sys/timeb.h
 -
 stdint.h
 -
-
-../lib/deprecate/gps_constants.hpp
 
 /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/difftools/DiffFrame.hpp
 CommandOptionWithTimeArg.hpp

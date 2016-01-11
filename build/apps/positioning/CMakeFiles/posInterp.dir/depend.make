@@ -12,6 +12,7 @@ apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/FileHandling/F
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/Math/MathBase.hpp
@@ -45,7 +46,6 @@ apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/TimeHandling/W
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/Utilities/Exception.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/positioning/CMakeFiles/posInterp.dir/posInterp.cpp.o: ../apps/positioning/posInterp.cpp

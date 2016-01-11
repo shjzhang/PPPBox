@@ -196,6 +196,8 @@ GNSSconstants.hpp
 
 ../lib/GNSSCore/geometry.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/RinexSatID.hpp
 iostream
 -
@@ -409,8 +411,6 @@ regex.h
 -
 Exception.hpp
 ../lib/Utilities/Exception.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/ClockSatStore.hpp
 map

@@ -138,6 +138,8 @@ ReferenceFrame.hpp
 GNSSconstants.hpp
 ../lib/GNSSCore/GNSSconstants.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/SatID.hpp
 iostream
 -
@@ -325,8 +327,6 @@ regex.h
 -
 Exception.hpp
 ../lib/Utilities/Exception.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/visibility/svvis.cpp
 iostream

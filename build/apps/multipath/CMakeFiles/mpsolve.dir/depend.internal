@@ -32,6 +32,7 @@ apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o
  ../lib/GNSSCore/WxObsMap.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BDSEphemeris.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
@@ -90,7 +91,6 @@ apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/ValidType.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/multipath/ObsArray.cpp
@@ -126,6 +126,7 @@ apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o
  ../lib/GNSSCore/WGS84Ellipsoid.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/BDSEphemeris.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -217,7 +218,6 @@ apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o
  ../lib/Vplot/Plot.hpp
  ../lib/Vplot/SeriesList.hpp
  ../lib/Vplot/SurfacePlot.hpp
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/multipath/DenseBinnedStats.hpp

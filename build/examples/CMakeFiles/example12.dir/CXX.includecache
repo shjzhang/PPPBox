@@ -62,6 +62,8 @@ ObsIDInitializer.hpp
 ObsID.hpp
 ../lib/GNSSCore/ObsID.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/RinexObsID.hpp
 ObsID.hpp
 ../lib/GNSSEph/ObsID.hpp
@@ -187,8 +189,6 @@ regex.h
 -
 Exception.hpp
 ../lib/Utilities/Exception.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/RinexObsHeader.hpp
 vector

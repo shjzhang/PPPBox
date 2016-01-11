@@ -14,6 +14,7 @@ apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/FileHandling/RINEX3
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -50,7 +51,6 @@ apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/Utilities/StringUti
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/Utilities/expandtilde.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/Utilities/logstream.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/Utilities/singleton.hpp
-apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o: ../apps/Rinextools/RinEdit.cpp
 

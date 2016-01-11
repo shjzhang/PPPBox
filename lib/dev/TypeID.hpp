@@ -195,10 +195,10 @@ namespace gpstk
          rel,       ///< Relativistic delay
          gravDelay, ///< Gravitational delay
          tropo,     ///< Vertical tropospheric delay, total
-         tropoWeight, ///< Vertical tropospheric delay weight, total
          dryTropo,  ///< Vertical tropospheric delay, dry component
          dryMap,    ///< Tropospheric mapping function, dry component
          wetTropo,  ///< Vertical tropospheric delay, wet component
+         wetTropoVar,  ///< Vertical tropospheric delay var, wet component
          wetMap,    ///< Tropospheric mapping function, wet component
          tropoSlant, ///< Slant tropospheric delay, total
          iono,      ///< Vertical ionospheric delay
@@ -211,12 +211,12 @@ namespace gpstk
          ionoL6,    ///< Slant ionospheric delay, frequency L6
          ionoL7,    ///< Slant ionospheric delay, frequency L7
          ionoL8,    ///< Slant ionospheric delay, frequency L8
-         ionoL1Weight, ///< Weight for slant ionospheric delay on frequency L1  
-         ionoL2Weight, ///< Weight for slant ionospheric delay on frequency L2  
-         ionoL5Weight, ///< Weight for slant ionospheric delay on frequency L5  
-         ionoL6Weight, ///< Weight for slant ionospheric delay on frequency L6  
-         ionoL7Weight, ///< Weight for slant ionospheric delay on frequency L7  
-         ionoL8Weight, ///< Weight for slant ionospheric delay on frequency L8  
+         ionoL1Var, ///< Var for slant ionospheric delay on frequency L1  
+         ionoL2Var, ///< Var for slant ionospheric delay on frequency L2  
+         ionoL5Var, ///< Var for slant ionospheric delay on frequency L5  
+         ionoL6Var, ///< Var for slant ionospheric delay on frequency L6  
+         ionoL7Var, ///< Var for slant ionospheric delay on frequency L7  
+         ionoL8Var, ///< Var for slant ionospheric delay on frequency L8  
          windUp,    ///< Wind-up effect (in radians)
          eclipse,   ///< Eclipse indicator
          satPCenter,///< Satellite antenna phase center correction
@@ -293,15 +293,19 @@ namespace gpstk
          instC8,    ///< Instrumental delay, C8
          instP1,    ///< Instrumental delay, P1
          instP2,    ///< Instrumental delay, P2
-         instPdelta,    ///< Instrumental delay, Pdelta
          instL1,    ///< Instrumental delay, L1
          instL2,    ///< Instrumental delay, L2
-         instLdelta,    ///< Instrumental delay, Ldelta
-         instMWubbena,    ///< Instrumental delay, MWubbena
          instL5,    ///< Instrumental delay, L5
          instL6,    ///< Instrumental delay, L6
          instL7,    ///< Instrumental delay, L7
          instL8,    ///< Instrumental delay, L8
+
+         recInstC1, ///< Instrumental delay for receiver
+         recInstP1, ///< Instrumental delay for receiver
+         recInstP2, ///< Instrumental delay for receiver
+         recInstC1Var, ///< Instrumental delay for receiver
+         recInstP1Var, ///< Instrumental delay for receiver
+         recInstP2Var, ///< Instrumental delay for receiver
 
             // Corrections for different observations for RTK positioning
             // shjzhang
@@ -382,8 +386,8 @@ namespace gpstk
          cdt,       ///< In the position domain: Receiver clock offset, meters; in the range domain: cdt coefficient
          cdtSat,    ///< In the position domain: Satellite clock offset, meters; in the range domain: cdt coefficient
 
-         dLatIPP,      ///< position difference between IPP and station location, Latitude component
-         dLonIPP,      ///< Position difference between IPP and station location, Longitude component
+         diffLat,      ///< position difference between IPP and station location, Latitude component
+         diffLon,      ///< Position difference between IPP and station location, Longitude component
 
          dSatX,     ///< dSatX coefficient for satellite position in XYZ
          dSatY,     ///< dSatY coefficient for satellite position in XYZ
@@ -462,6 +466,14 @@ namespace gpstk
          sigma,     ///< Standard deviation
          iura,      ///< Index User Range Accuracy
          Action,    ///< Flag for quality control
+
+         a0,        ///< polynominal coefficient
+         a1,        ///< polynominal coefficient
+         a2,        ///< polynominal coefficient
+         a3,        ///< polynominal coefficient
+         a4,        ///< polynominal coefficient
+         a5,        ///< polynominal coefficient
+
             // Handy dummy types for non-standard processing
          dummy0,    ///< Generic, undefined type #0
          dummy1,    ///< Generic, undefined type #1

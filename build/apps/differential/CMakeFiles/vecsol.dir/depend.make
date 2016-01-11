@@ -32,6 +32,7 @@ apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/GNSSCore/WxObsMap.h
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -79,7 +80,6 @@ apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/Utilities/Exception
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/differential/CMakeFiles/vecsol.dir/vecsol.cpp.o: ../lib/dev/RinexObsData.hpp

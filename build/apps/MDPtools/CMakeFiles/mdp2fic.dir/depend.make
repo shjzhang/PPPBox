@@ -29,6 +29,7 @@ apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/GNSSCore/ObsIDInitial
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -72,7 +73,6 @@ apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/Utilities/BinUtils.hp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/Utilities/Exception.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/MDPtools/CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o: ../apps/MDPtools/BELogEntry.hpp

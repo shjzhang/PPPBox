@@ -448,6 +448,8 @@ GNSSconstants.hpp
 
 ../lib/GNSSCore/geometry.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/BrcClockCorrection.hpp
 EngNav.hpp
 ../lib/GNSSEph/EngNav.hpp
@@ -1103,8 +1105,6 @@ sys/timeb.h
 -
 stdint.h
 -
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/BasicModel.hpp
 ProcessingClass.hpp

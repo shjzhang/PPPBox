@@ -5,6 +5,7 @@ apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/GNS
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -27,6 +28,5 @@ apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/Tim
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/Utilities/Exception.hpp
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/Utilities/logstream.hpp
-apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/JPLeph/CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o: ../apps/geomatics/JPLeph/convertSSEph.cpp
 

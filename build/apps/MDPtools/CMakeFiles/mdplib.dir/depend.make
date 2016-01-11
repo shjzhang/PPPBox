@@ -9,6 +9,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/GNSSCore/ObsIDIniti
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -38,7 +39,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/Utilities/BinUtils.
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/Utilities/Exception.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../apps/MDPtools/BELogEntry.cpp
 apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o: ../apps/MDPtools/BELogEntry.hpp
 
@@ -50,6 +50,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/FileHandling/RIN
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/Math/MathBase.hpp
@@ -79,7 +80,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/Utilities/BinUti
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/Utilities/Exception.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o: ../apps/MDPtools/MDPProcessors.cpp
@@ -101,6 +101,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -153,7 +154,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/Utilities/BinUtils.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/Utilities/Exception.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o: ../apps/MDPtools/CNAVMessageAsm.hpp
@@ -170,6 +170,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/FileHandling/RINE
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/Math/MathBase.hpp
@@ -202,7 +203,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/Utilities/BinUtil
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/Utilities/Exception.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o: ../apps/MDPtools/Histogram.hpp
@@ -224,6 +224,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/GNSSCore/Position.
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -273,7 +274,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/Utilities/BinUtils
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/Utilities/Exception.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o: ../apps/MDPtools/CNAVMessageAsm.hpp
@@ -292,6 +292,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/GNSSCore/EllipsoidMo
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/Math/MathBase.hpp
@@ -320,7 +321,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/Utilities/BinUtils.h
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/Utilities/Exception.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o: ../apps/MDPtools/MDPProcessors.hpp
@@ -347,6 +347,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/GNSSCore/ObsIDI
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -382,7 +383,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/Utilities/BinUt
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/Utilities/Exception.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o: ../apps/MDPtools/UniqueAlmStore.cpp

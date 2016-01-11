@@ -3,6 +3,7 @@
 
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/RefTime/TimeSystem.hpp
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/TimeHandling/CommonTime.hpp
@@ -11,7 +12,6 @@ apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/TimeHandling/TimeS
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/Utilities/Exception.hpp
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../apps/reszilla/CycleSlipList.cpp
 apps/reszilla/CMakeFiles/rlib.dir/CycleSlipList.cpp.o: ../apps/reszilla/CycleSlipList.hpp
 
@@ -20,6 +20,7 @@ apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/GNSSCore/GNSSconstants.h
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/GNSSEph/XvtStore.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/Geomatics/RobustStats.hpp
@@ -43,7 +44,6 @@ apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/Utilities/Exception.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/Utilities/stl_helpers.hpp
-apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../apps/reszilla/CycleSlipList.hpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../apps/reszilla/DDEpoch.cpp
 apps/reszilla/CMakeFiles/rlib.dir/DDEpoch.cpp.o: ../apps/reszilla/DDEpoch.hpp
@@ -67,6 +67,7 @@ apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/GNSSCore/TropModel.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -100,7 +101,6 @@ apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/Utilities/Exception.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../apps/reszilla/OrdApp.cpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdApp.cpp.o: ../apps/reszilla/OrdApp.hpp
 
@@ -116,6 +116,7 @@ apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/GNSSCore/TropModel.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -149,7 +150,6 @@ apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/Utilities/Exception.hp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../apps/reszilla/OrdEngine.cpp
 apps/reszilla/CMakeFiles/rlib.dir/OrdEngine.cpp.o: ../apps/reszilla/OrdEngine.hpp
 
@@ -158,6 +158,7 @@ apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/GNSSCore/GNSSconsta
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/GNSSEph/XvtStore.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/Math/MathBase.hpp
@@ -179,7 +180,6 @@ apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/Utilities/Exception
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/Utilities/stl_helpers.hpp
-apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../apps/reszilla/CycleSlipList.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../apps/reszilla/DDEpoch.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../apps/reszilla/ElevationRange.hpp
@@ -190,6 +190,7 @@ apps/reszilla/CMakeFiles/rlib.dir/PhaseCleaner.cpp.o: ../apps/reszilla/SvElevati
 
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/Math/MathBase.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/Math/MiscMath.hpp
@@ -205,7 +206,6 @@ apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/TimeHandling/TimeS
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/Utilities/Exception.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../apps/reszilla/CycleSlipList.hpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../apps/reszilla/PhaseResidual.cpp
 apps/reszilla/CMakeFiles/rlib.dir/PhaseResidual.cpp.o: ../apps/reszilla/PhaseResidual.hpp
@@ -219,6 +219,7 @@ apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/GNSSCore/ObsID.hp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/GNSSEph/XvtStore.hpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/Math/MathBase.hpp
@@ -235,7 +236,6 @@ apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/TimeHandling/Time
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/Utilities/Exception.hpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/Utilities/ValidType.hpp
-apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../apps/reszilla/SvElevationMap.cpp
 apps/reszilla/CMakeFiles/rlib.dir/SvElevationMap.cpp.o: ../apps/reszilla/SvElevationMap.hpp
 

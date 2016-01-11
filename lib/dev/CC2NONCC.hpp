@@ -26,6 +26,13 @@
 //  Q.Liu, Wuhan Uniersity, 2015 
 //
 //============================================================================
+//  
+//  Revision
+//
+//  2016/01/04
+//  add 'setCorrectObservables' method, which will be convienent for usages.
+//
+//============================================================================
 
 #include "ProcessingClass.hpp"
 #include "RecTypeDataReader.hpp"
@@ -59,6 +66,7 @@ namespace gpstk
 	 * A typical way to use this class follows:
 	 *
 	 * @code
+    *
 	 * rnssRinex gRin;
 	 * CC2NONCC cc2noncc;
 	 * cc2noncc.setRecType("TRIMBLE 4000SSE");
@@ -67,10 +75,13 @@ namespace gpstk
 	 *
 	 * while(rin >> gRin)
 	 * {
-	 *	 gRin >> cc2noncc;
+	 *	   gRin >> cc2noncc;
 	 * }
-	 *
+    *
 	 * @endcode
+    *
+    * @sa IonexModel for P1P2 DCB corrections. 
+    *
 	 */
 	class CC2NONCC : public ProcessingClass
 	{
@@ -78,7 +89,7 @@ namespace gpstk
 
 			  // Default constructr
 			CC2NONCC()
-            :copyC1ToP1(false)
+            :copyC1ToP1(false)                          
          {};
 
 			
@@ -92,8 +103,8 @@ namespace gpstk
 			   */
 			virtual CC2NONCC& setDCBFile(const std::string& fileP1C1);
 
-			  /** Sets name of file containing DCBs data.
-			   * @param  fileP1C1    Name of the file containing DCB(P1-C1)
+			  /** Sets whether to create P1 .
+			   * @param copy    boolean to indiate whether copy P1
 			   */
 			virtual CC2NONCC& setCopyC1ToP1(bool copy)
          { copyC1ToP1 = copy; return (*this); }
@@ -112,7 +123,7 @@ namespace gpstk
 			   * @param  gData    Data object holding the data.
 			   */
 			virtual satTypeValueMap& Process( const CommonTime& time,
-					                          satTypeValueMap& gData)
+					                            satTypeValueMap& gData)
 				throw(ProcessingException);
 
 			  /** Returns a gnssSatTypeValue object, adding the new data
@@ -122,7 +133,7 @@ namespace gpstk
 			   */
 			virtual gnssSatTypeValue& Process(gnssSatTypeValue& gData)
 				throw(ProcessingException)
-				{ Process(gData.header.epoch, gData.body); return gData; };
+		   { Process(gData.header.epoch, gData.body); return gData; };
 
 			  /** Returns a gnssRinex object, adding the new data generated
 			   *  when calling this object.
@@ -131,7 +142,7 @@ namespace gpstk
 			   */
 			virtual gnssRinex& Process(gnssRinex& gData)
 				throw(ProcessingException)
-				{ Process(gData.header.epoch, gData.body); return gData; };
+		   { Process(gData.header.epoch, gData.body); return gData; };
 
 
 			  // Returns a string identifying this object.
@@ -140,6 +151,7 @@ namespace gpstk
 
 			  // Default deconstructr
 			~CC2NONCC(){};
+
 
 		private:
 

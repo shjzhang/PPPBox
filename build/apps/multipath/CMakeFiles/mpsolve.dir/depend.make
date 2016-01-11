@@ -31,6 +31,7 @@ apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/GNSSCore/WGS84Ellip
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
@@ -89,7 +90,6 @@ apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/Utilities/Exception
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o: ../apps/multipath/ObsArray.cpp
@@ -125,6 +125,7 @@ apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/GNSSCore/PZ90Ellipso
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -216,7 +217,6 @@ apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/Vplot/AxisStyle.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/Vplot/Plot.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/Vplot/SeriesList.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/Vplot/SurfacePlot.hpp
-apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o: ../apps/multipath/DenseBinnedStats.hpp

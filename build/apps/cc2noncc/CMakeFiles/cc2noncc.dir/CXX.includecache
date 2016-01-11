@@ -222,6 +222,8 @@ ReferenceFrame.hpp
 GNSSconstants.hpp
 ../lib/GNSSCore/GNSSconstants.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/RinexObsID.hpp
 ObsID.hpp
 ../lib/GNSSEph/ObsID.hpp
@@ -435,8 +437,6 @@ regex.h
 -
 Exception.hpp
 ../lib/Utilities/Exception.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/CC2NONCC.hpp
 ProcessingClass.hpp

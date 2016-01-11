@@ -43,6 +43,7 @@ apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
  ../lib/GNSSCore/geometry.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/BDSEphemeris.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -114,7 +115,6 @@ apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o
  ../lib/Utilities/gpstkplatform.h
  ../lib/Utilities/logstream.hpp
  ../lib/Utilities/singleton.hpp
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/ClockSatStore.hpp
  ../lib/dev/PositionSatStore.hpp
  ../lib/dev/RinexObsHeader.hpp

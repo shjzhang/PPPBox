@@ -10,6 +10,7 @@ apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/FileHandling/FFS
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/FileHandling/FFTextStream.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
+apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/Math/MathBase.hpp
@@ -25,7 +26,6 @@ apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/TimeHandling/Tim
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/Utilities/Exception.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o: ../apps/filetools/RinexThin.cpp

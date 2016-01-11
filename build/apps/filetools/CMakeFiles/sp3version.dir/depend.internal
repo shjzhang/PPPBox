@@ -10,6 +10,7 @@ apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o
  ../lib/FileHandling/SP3/SP3Data.hpp
  ../lib/FileHandling/SP3/SP3Header.hpp
  ../lib/FileHandling/SP3/SP3Stream.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SP3SatID.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/RefTime/TimeSystem.hpp
@@ -17,5 +18,4 @@ apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o
  ../lib/TimeHandling/TimeConstants.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/filetools/sp3version.cpp

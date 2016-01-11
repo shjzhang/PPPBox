@@ -32,6 +32,7 @@ apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -88,7 +89,6 @@ apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/Utilities/Exception.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/reszilla/CMakeFiles/ordGen.dir/ordGen.cpp.o: ../apps/reszilla/OrdApp.hpp

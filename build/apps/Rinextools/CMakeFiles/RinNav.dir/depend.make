@@ -22,6 +22,7 @@ apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/GNSSCore/PZ90Ellipsoi
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -77,6 +78,5 @@ apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/Utilities/gpstkplatfo
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/Utilities/logstream.hpp
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/Utilities/singleton.hpp
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/Utilities/stl_helpers.hpp
-apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o: ../apps/Rinextools/RinNav.cpp
 

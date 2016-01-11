@@ -1,3 +1,4 @@
 *.clk
 *.clk_30s
 *.log
+build/

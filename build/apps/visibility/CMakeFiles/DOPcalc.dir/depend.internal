@@ -27,6 +27,7 @@ apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o
  ../lib/GNSSCore/TropModel.hpp
  ../lib/GNSSCore/WxObsMap.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/RinexSatID.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/GNSSEph/XvtStore.hpp
@@ -71,7 +72,6 @@ apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/ValidType.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/visibility/DOPcalc.cpp

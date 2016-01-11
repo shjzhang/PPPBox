@@ -16,6 +16,7 @@ apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/GNSSCore/Obs
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -48,7 +49,6 @@ apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/Utilities/Bi
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/Utilities/Exception.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o: ../apps/receiver/AshtechMessage.cpp
@@ -86,6 +86,7 @@ apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/GNSSCore/ObsIDIni
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -119,7 +120,6 @@ apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/Utilities/BinUtil
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/Utilities/Exception.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o: ../apps/receiver/AshtechMessage.hpp

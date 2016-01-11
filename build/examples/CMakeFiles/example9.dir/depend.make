@@ -44,6 +44,7 @@ examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/GNSSCore/Xv.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/GNSSCore/Xvt.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/GNSSCore/geometry.hpp
+examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -109,7 +110,6 @@ examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/Utilities/Exception.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/Utilities/StringUtils.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/Utilities/ValidType.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/Utilities/gpstkplatform.h
-examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/deprecate/gps_constants.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/dev/BasicModel.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/dev/ClockSatStore.hpp
 examples/CMakeFiles/example9.dir/example9.cpp.o: ../lib/dev/CodeKalmanSolver.hpp

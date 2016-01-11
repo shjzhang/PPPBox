@@ -34,6 +34,7 @@ apps/difftools/CMakeFiles/ephdiff.dir/ephdiff.cpp.o
  ../lib/GNSSCore/WGS84Ellipsoid.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -65,5 +66,4 @@ apps/difftools/CMakeFiles/ephdiff.dir/ephdiff.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/difftools/ephdiff.cpp

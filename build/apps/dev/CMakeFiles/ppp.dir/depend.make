@@ -48,6 +48,7 @@ apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -114,7 +115,6 @@ apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/Utilities/Exception.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/dev/BasicModel.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o: ../lib/dev/CodeKalmanSolver.hpp

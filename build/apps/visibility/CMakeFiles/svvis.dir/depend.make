@@ -17,6 +17,7 @@ apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/GNSSCore/EllipsoidModel
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/GNSSEph/XvtStore.hpp
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/Math/MathBase.hpp
@@ -40,6 +41,5 @@ apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/TimeHandling/WeekSecond
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/Utilities/Exception.hpp
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o: ../apps/visibility/svvis.cpp
 

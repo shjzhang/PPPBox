@@ -152,6 +152,8 @@ FFTextStream.hpp
 RinexObsHeader.hpp
 ../lib/FileHandling/RINEX/RinexObsHeader.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/RinexSatID.hpp
 iostream
 -
@@ -271,8 +273,6 @@ regex.h
 -
 Exception.hpp
 ../lib/Utilities/Exception.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/RinexObsData.hpp
 vector

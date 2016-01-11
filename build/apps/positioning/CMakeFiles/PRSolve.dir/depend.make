@@ -42,6 +42,7 @@ apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/GNSSCore/WxObsMap.
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -113,7 +114,6 @@ apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/Utilities/expandti
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/Utilities/gpstkplatform.h
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/Utilities/logstream.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/Utilities/singleton.hpp
-apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/positioning/CMakeFiles/PRSolve.dir/PRSolve.cpp.o: ../lib/dev/RinexObsHeader.hpp

@@ -21,6 +21,7 @@ apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/GNSSCore/ObsIDInitiali
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -56,6 +57,5 @@ apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/Utilities/BinUtils.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/Utilities/Exception.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o: ../apps/filetools/bc2sp3.cpp
 

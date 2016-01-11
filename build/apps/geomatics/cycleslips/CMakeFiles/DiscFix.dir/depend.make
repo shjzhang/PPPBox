@@ -10,6 +10,7 @@ apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/FileHandl
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/FileHandling/FFTextStream.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
+apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/Geomatics/DiscCorr.hpp
@@ -36,7 +37,6 @@ apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/TimeHandl
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/Utilities/Exception.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o: ../apps/geomatics/cycleslips/DiscFix.cpp

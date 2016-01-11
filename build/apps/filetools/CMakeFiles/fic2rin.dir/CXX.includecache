@@ -252,6 +252,8 @@ ReferenceFrame.hpp
 GNSSconstants.hpp
 ../lib/GNSSCore/GNSSconstants.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/AlmOrbit.hpp
 map
 -
@@ -585,8 +587,6 @@ sys/timeb.h
 -
 stdint.h
 -
-
-../lib/deprecate/gps_constants.hpp
 
 /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/filetools/fic2rin.cpp
 FICStream.hpp

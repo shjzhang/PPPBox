@@ -12,6 +12,8 @@ Exception.hpp
 SatID.hpp
 ../lib/GNSSCore/SatID.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/SatID.hpp
 iostream
 -
@@ -209,8 +211,6 @@ fstream
 -
 logstream.hpp
 ../lib/Utilities/logstream.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/geomatics/kalman/tkalm.cpp
 iostream

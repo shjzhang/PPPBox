@@ -23,6 +23,7 @@ apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -48,7 +49,6 @@ apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/TimeHandling/TimeTag
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/Utilities/Exception.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/dev/DataHeaders.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/dev/DataStructures.hpp
 apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o: ../lib/dev/RinexObsData.hpp

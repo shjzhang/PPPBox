@@ -8,6 +8,7 @@ apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/GNSSCore/Ellipsoi
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/GNSSEph/XvtStore.hpp
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/Math/MathBase.hpp
@@ -30,6 +31,5 @@ apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/TimeHandling/Week
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/Utilities/Exception.hpp
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/visibility/CMakeFiles/wheresat.dir/WhereSat.cpp.o: ../apps/visibility/WhereSat.cpp
 

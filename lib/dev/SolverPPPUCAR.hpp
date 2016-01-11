@@ -35,7 +35,7 @@
 #include "CodeKalmanSolver.hpp"
 #include "GNSSconstants.hpp"
 #include "Variable.hpp"
-#include "DatumPPP.hpp"
+#include "AmbiDatum.hpp"
 #include "ARMLambda.hpp"
 #include <vector>
 
@@ -58,6 +58,10 @@ namespace gpstk
        * A typical way to use this class with GNSS data structures follows:
        *
        * @code
+       *
+       * gnssRinex gRin;
+       * SolverPPPUCAR pppSolver;
+       * pppSolver.Process(gRin);
        *
        * @endcode
        *
@@ -87,7 +91,7 @@ namespace gpstk
           * @param useNEU   If true, will compute dLat, dLon, dH coordinates;
           *                 if false (the default), will compute dx, dy, dz.
           */
-      SolverPPPUCAR(bool useNEU = false);
+      SolverPPPUCAR(bool useNEU = false, int polyOrder = 2);
 
 
          /** Returns a reference to a gnnsSatTypeValue object after
@@ -190,7 +194,7 @@ namespace gpstk
           *                be used
           *
           */
-      virtual SolverPPPUCAR& setNEU( bool useNEU );
+      virtual SolverPPPUCAR& setNEU( bool useNEU, int polyOrder );
 
 
          /** Set ambiguity resolution method
@@ -198,8 +202,16 @@ namespace gpstk
           * @param method  enum value
           *
           */
-      virtual SolverPPPUCAR& setARMethod( ARMethod method)
+      virtual SolverPPPUCAR& setARMethod( string method)
       { ARMethod=method ;return (*this);} ;
+
+         /** Set ambiguity resolution method
+          *
+          * @param method  enum value
+          *
+          */
+      virtual SolverPPPUCAR& setUsingC1( bool useC1)
+      { usingC1=useC1; return (*this);} ;
 
 
          /** Set a single coordinates stochastic model to ALL coordinates.
@@ -239,6 +251,14 @@ namespace gpstk
           */
       SolverPPPUCAR& setInitialIonoVar(double variance)
       { aprioriIonoVar = variance; return (*this); };
+
+
+         /** Set value of initial variance for apriori ionospheric values.
+          *
+          * @param variance      Initial variance assigned to this variable.
+          */
+      SolverPPPUCAR& setInitialSpatialVar(double variance)
+      { aprioriSpatialVar = variance; return (*this); };
 
 
          /** Set reinitialize interval.
@@ -297,13 +317,13 @@ namespace gpstk
 
          /** Return the CURRENT number of satellite.
           */
-      virtual int getAmbFixedNumL1() const
+      virtual int getFixedAmbNumL1() const
          throw(InvalidRequest);
 
 
          /** Return the CURRENT number of satellite.
           */
-      virtual int getAmbFixedNumWL() const
+      virtual int getFixedAmbNumWL() const
          throw(InvalidRequest);
 
       
@@ -339,11 +359,17 @@ namespace gpstk
    private:
 
          /// Constraint equation system
-      DatumPPP datumL1;
-      DatumPPP datumL2;
+      AmbiDatum datumL1;
+      AmbiDatum datumL2;
+
+         /// ploynominal order
+      int polyOrder;
 
          /// Whether turn on the 'reInitialize' or not
       bool reInitialize;
+
+         /// Using C1 or P1 ?
+      bool usingC1;
 
          /// Interval to reinitialize the filter
       double reInitialInterval;
@@ -395,7 +421,7 @@ namespace gpstk
       TypeIDSet srcIndexedTypes;
 
          /// Observable-independent TypeID set
-      TypeIDSet commonUnkTypes;
+      TypeIDSet coreTypes;
 
          /// Satellite-indexed TypeID set
       TypeIDSet satIndexedTypes;
@@ -429,6 +455,9 @@ namespace gpstk
          /// The variance of the apriori ionospheric delays and wet tropo 
       double aprioriTropoVar;
       double aprioriIonoVar;
+      double aprioriSpatialVar;
+      double aprioriDCBVar;
+      double aprioriUPDVar;
 
       bool resetWL;
       bool resetL1;
@@ -503,6 +532,21 @@ namespace gpstk
          /// White noise stochastic model
       WhiteNoiseModel whitenoiseModel;
 
+         /// Random walk model for dcb
+      RandomWalkModel dcbModel;
+
+         /// Random walk model for upd on L1/L2
+      RandomWalkModel updModelL1;
+      RandomWalkModel updModelL2;
+
+         /// Random walk model for upd on L1/L2
+      RandomWalkModel A0Model;
+      RandomWalkModel A1Model;
+      RandomWalkModel A2Model;
+      RandomWalkModel A3Model;
+      RandomWalkModel A4Model;
+      RandomWalkModel A5Model;
+
          /// Phase Ambiguity models
       PhaseAmbiguityModel ambiModelL2;
       PhaseAmbiguityModel ambiModelL1;
@@ -520,9 +564,16 @@ namespace gpstk
 
          /// Pointer to stochastic model for receiver clock
       StochasticModel* pClockStoModel;
-      StochasticModel* pClockStoModelP2;
-      StochasticModel* pClockStoModelL1;
-      StochasticModel* pClockStoModelL2;
+      StochasticModel* pDCBStoModel;
+      StochasticModel* pUPDStoModelL1;
+      StochasticModel* pUPDStoModelL2;
+
+      StochasticModel* pA0StoModel;
+      StochasticModel* pA1StoModel;
+      StochasticModel* pA2StoModel;
+      StochasticModel* pA3StoModel;
+      StochasticModel* pA4StoModel;
+      StochasticModel* pA5StoModel;
 
          /// Pointer to stochastic model for ambiguity on L1
       PhaseAmbiguityModel* pAmbiModelL1; // for L1 ambiguity

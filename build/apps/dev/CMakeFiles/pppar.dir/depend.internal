@@ -49,6 +49,7 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
  ../lib/GNSSCore/geometry.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
  ../lib/GNSSEph/EngEphemeris.hpp
@@ -74,6 +75,7 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o
  ../lib/Math/Matrix/MatrixOperators.hpp
  ../lib/Math/MiscMath.hpp
  ../lib/Math/SimpleKalmanFilter.hpp
+ ../lib/Math/SpecialFunctions.hpp
  ../lib/Math/Stats.hpp
  ../lib/Math/Triple.hpp
  ../lib/Math/Vector/Vector.hpp
@@ -116,8 +118,8 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/ValidType.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/ARRound.hpp
+ ../lib/dev/AmbiDatum.hpp
  ../lib/dev/Arc.hpp
  ../lib/dev/BasicModel.hpp
  ../lib/dev/ClockSatStore.hpp
@@ -126,7 +128,6 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o
  ../lib/dev/CorrectUPDs.hpp
  ../lib/dev/DataHeaders.hpp
  ../lib/dev/DataStructures.hpp
- ../lib/dev/DatumPPP.hpp
  ../lib/dev/Decimate.hpp
  ../lib/dev/EOPDataStore.hpp
  ../lib/dev/GDSUtils.hpp
@@ -151,7 +152,6 @@ apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o
  ../lib/dev/SolverPPPAR.hpp
  ../lib/dev/SolverPPPARFB.hpp
  ../lib/dev/SourceID.hpp
- ../lib/dev/SpecialFunctions.hpp
  ../lib/dev/StochasticModel.hpp
  ../lib/dev/TabularSatStore.hpp
  ../lib/dev/TypeID.hpp

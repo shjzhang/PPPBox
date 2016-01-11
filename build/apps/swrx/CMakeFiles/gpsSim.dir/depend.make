@@ -18,6 +18,7 @@ apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/FileHandling/FFStreamError.
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/Math/MathBase.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/Misc/mergePCodeWords.h
@@ -45,7 +46,6 @@ apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/Utilities/Exception.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../apps/swrx/CACodeGenerator.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../apps/swrx/CodeGenerator.hpp
 apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o: ../apps/swrx/ConstLinearRecurrentSequence.hpp

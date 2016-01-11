@@ -9,6 +9,7 @@ apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/FileHandling/S
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/FileHandling/SP3/SP3Data.hpp
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/FileHandling/SP3/SP3Header.hpp
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/FileHandling/SP3/SP3Stream.hpp
+apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/GNSSEph/SP3SatID.hpp
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -16,6 +17,5 @@ apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/TimeHandling/C
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/Utilities/Exception.hpp
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o: ../apps/filetools/sp3version.cpp
 

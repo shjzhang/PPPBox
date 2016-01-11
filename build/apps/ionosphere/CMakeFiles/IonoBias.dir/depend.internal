@@ -31,6 +31,7 @@ apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
  ../lib/GNSSCore/geometry.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
  ../lib/GNSSEph/EngEphemeris.hpp
@@ -85,7 +86,6 @@ apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/ClockSatStore.hpp
  ../lib/dev/PositionSatStore.hpp
  ../lib/dev/RinexObsData.hpp

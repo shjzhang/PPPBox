@@ -31,6 +31,7 @@ apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/GNSSCore/PZ90Ellipso
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -67,6 +68,5 @@ apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/Utilities/BinUtils.h
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/Utilities/Exception.hpp
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o: ../apps/filetools/GloDump.cpp
 

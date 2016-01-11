@@ -22,6 +22,7 @@ apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/GNSSCore/ObsID.h
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -48,7 +49,6 @@ apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/TimeHandling/Tim
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/Utilities/Exception.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/dev/DataHeaders.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/dev/DataStructures.hpp
 apps/rnxfilter/CMakeFiles/rnxfilter.dir/rnxfilter.cpp.o: ../lib/dev/RinexObsData.hpp

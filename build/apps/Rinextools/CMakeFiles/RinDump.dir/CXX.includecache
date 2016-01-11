@@ -358,6 +358,8 @@ ReferenceFrame.hpp
 GNSSconstants.hpp
 ../lib/GNSSCore/GNSSconstants.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/BDSEphemeris.hpp
 string
 -
@@ -1031,8 +1033,6 @@ iomanip
 -
 singleton.hpp
 ../lib/Utilities/singleton.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/ClockSatStore.hpp
 map

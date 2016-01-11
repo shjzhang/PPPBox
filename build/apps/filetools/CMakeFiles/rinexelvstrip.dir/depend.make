@@ -32,6 +32,7 @@ apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/GNSSCore
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -66,7 +67,6 @@ apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/Utilitie
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/Utilities/Exception.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o: ../apps/filetools/RinexElvStrip.cpp

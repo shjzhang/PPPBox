@@ -352,6 +352,8 @@ GNSSconstants.hpp
 
 ../lib/GNSSCore/geometry.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/AlmOrbit.hpp
 map
 -
@@ -1055,8 +1057,6 @@ sys/timeb.h
 -
 stdint.h
 -
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/DataHeaders.hpp
 string

@@ -26,6 +26,7 @@ apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -54,7 +55,6 @@ apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/Utilities/Exception.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/dev/DataHeaders.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/dev/DataStructures.hpp
 apps/ssc/CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o: ../lib/dev/RinexObsData.hpp

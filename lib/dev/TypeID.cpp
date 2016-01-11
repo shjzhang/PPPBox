@@ -146,10 +146,10 @@ namespace gpstk
       tStrings[rel]        = "rel";
       tStrings[gravDelay]  = "gravDelay";
       tStrings[tropo]      = "tropo";
-      tStrings[tropoWeight]   = "tropoWeight";
       tStrings[dryTropo]   = "dryTropo";
       tStrings[dryMap]     = "dryTropoMap";
       tStrings[wetTropo]   = "wetTropo";
+      tStrings[wetTropoVar]   = "wetTropoVar";
       tStrings[wetMap]     = "wetTropoMap";
       tStrings[tropoSlant] = "slantTropo";
       tStrings[iono]       = "verticalIono";
@@ -162,12 +162,12 @@ namespace gpstk
       tStrings[ionoL6]     = "slantIonoL6";
       tStrings[ionoL7]     = "slantIonoL7";
       tStrings[ionoL8]     = "slantIonoL8";
-      tStrings[ionoL1Weight] = "ionoWeightL1";
-      tStrings[ionoL2Weight] = "ionoWeightL2";
-      tStrings[ionoL5Weight] = "ionoWeightL5";
-      tStrings[ionoL6Weight] = "ionoWeightL6";
-      tStrings[ionoL7Weight] = "ionoWeightL7";
-      tStrings[ionoL8Weight] = "ionoWeightL8";
+      tStrings[ionoL1Var] = "ionoVarL1";
+      tStrings[ionoL2Var] = "ionoVarL2";
+      tStrings[ionoL5Var] = "ionoVarL5";
+      tStrings[ionoL6Var] = "ionoVarL6";
+      tStrings[ionoL7Var] = "ionoVarL7";
+      tStrings[ionoL8Var] = "ionoVarL8";
       tStrings[windUp]     = "windup";
       tStrings[eclipse]    = "eclipse";
       tStrings[satPCenter] = "satPhaseCenter";
@@ -238,15 +238,19 @@ namespace gpstk
       tStrings[instC8]       = "instrumentalC8";
       tStrings[instP1]       = "instrumentalP1";
       tStrings[instP2]       = "instrumentalP2";
-      tStrings[instPdelta]   = "instrumentalPdelta";
       tStrings[instL1]       = "instrumentalL1";
       tStrings[instL2]       = "instrumentalL2";
-      tStrings[instLdelta]   = "instrumentalLdelta";
-      tStrings[instMWubbena] = "instrumentalMWubbena";
       tStrings[instL5]       = "instrumentalL5";
       tStrings[instL6]       = "instrumentalL6";
       tStrings[instL7]       = "instrumentalL7";
       tStrings[instL8]       = "instrumentalL8";
+
+      tStrings[recInstC1]    = "recInstC1";
+      tStrings[recInstP1]    = "recInstP1";
+      tStrings[recInstP2]    = "recInstP2";
+      tStrings[recInstC1Var] = "recInstC1Var";
+      tStrings[recInstP1Var] = "recInstP1Var";
+      tStrings[recInstP2Var] = "recInstP2Var";
 
       tStrings[updL1]        = "updL1";
       tStrings[updL2]        = "updL2";
@@ -325,8 +329,8 @@ namespace gpstk
       tStrings[dH]         = "dH";
       tStrings[cdt]        = "cdt";
       tStrings[cdtSat]     = "cdtSat";
-      tStrings[dLatIPP]    = "dLatIPP";
-      tStrings[dLonIPP]    = "dLonIPP";
+      tStrings[diffLat]    = "diffLat";
+      tStrings[diffLon]    = "diffLon";
       tStrings[dSatX]      = "dSatX";
       tStrings[dSatY]      = "dSatY";
       tStrings[dSatZ]      = "dSatZ";
@@ -406,6 +410,14 @@ namespace gpstk
       tStrings[sigma]      = "sigma";
       tStrings[iura]       = "iura";
       tStrings[Action]     = "Action";
+
+      tStrings[a0]         = "a0";
+      tStrings[a1]         = "a1";
+      tStrings[a2]         = "a2";
+      tStrings[a3]         = "a3";
+      tStrings[a4]         = "a4";
+      tStrings[a5]         = "a5";
+
       tStrings[dummy0]     = "dummy0";
       tStrings[dummy1]     = "dummy1";
       tStrings[dummy2]     = "dummy2";

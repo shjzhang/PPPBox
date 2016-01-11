@@ -33,6 +33,7 @@ apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -90,7 +91,6 @@ apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/Utilities/Exception.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../apps/swrx/CACodeGenerator.hpp
 apps/swrx/CMakeFiles/RX.dir/RX.cpp.o: ../apps/swrx/CCReplica.hpp

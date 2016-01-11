@@ -4,6 +4,7 @@ ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/OCEAN-GOT00.dat OCEAN-GO
 ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/msc.txt msc.txt
 ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/URL_LIST.txt url.list
 ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/igs08.atx igs08.atx
+ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/receiver_bernese.lis recType.list
 
 proj="igs16577"
 

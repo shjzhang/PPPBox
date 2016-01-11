@@ -26,6 +26,7 @@ apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/GNSSCore/Position.h
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/GNSSCore/TropModel.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/GNSSEph/XvtStore.hpp
@@ -70,7 +71,6 @@ apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/Utilities/Exception
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/visibility/CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o: ../apps/visibility/DOPcalc.cpp

@@ -4,6 +4,7 @@ ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/OCEAN-GOT00.dat OCEAN-GO
 ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/msc.txt msc.txt
 ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/URL_LIST.txt url.list
 ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/igs08.atx igs08.atx
+ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/receiver_bernese.lis recType.list
 
 proj="igs16577"
 
@@ -20,7 +21,7 @@ do
 done
 
 rm msc.txt
-# now, let's merge all the msc files together for pppar positioning
+# now, let's merge all the msc files together for pppucar positioning
 ls *.msc | while read line
 do
   cat $line >> msc.txt
@@ -34,4 +35,4 @@ do
 done
 
 # ppp with ambiguity resolution
-pppar -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -u $proj.updlist -m msc.txt -o $proj.outlist
+pppucar -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -u $proj.updlist -d $proj.p1c1list -i $proj.ionlist -m msc.txt -o $proj.outlist

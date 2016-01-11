@@ -28,7 +28,6 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "../lib/AppFrame"
   "../lib/AstroEph"
   "../lib/CodeGen"
-  "../lib/deprecate"
   "../lib/dev"
   "../lib/FileDirProc"
   "../lib/FileHandling/Binex"

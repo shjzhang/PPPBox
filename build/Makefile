@@ -1573,6 +1573,19 @@ pppar/fast:
 .PHONY : pppar/fast
 
 #=============================================================================
+# Target rules for targets named pppucar
+
+# Build rule for target.
+pppucar: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pppucar
+.PHONY : pppucar
+
+# fast build rule for target.
+pppucar/fast:
+	$(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/build
+.PHONY : pppucar/fast
+
+#=============================================================================
 # Target rules for targets named ephint
 
 # Build rule for target.
@@ -6019,6 +6032,30 @@ lib/Math/SimpleKalmanFilter.cpp.s:
 	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/Math/SimpleKalmanFilter.cpp.s
 .PHONY : lib/Math/SimpleKalmanFilter.cpp.s
 
+lib/Math/SpecialFunctions.o: lib/Math/SpecialFunctions.cpp.o
+.PHONY : lib/Math/SpecialFunctions.o
+
+# target to build an object file
+lib/Math/SpecialFunctions.cpp.o:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.o
+.PHONY : lib/Math/SpecialFunctions.cpp.o
+
+lib/Math/SpecialFunctions.i: lib/Math/SpecialFunctions.cpp.i
+.PHONY : lib/Math/SpecialFunctions.i
+
+# target to preprocess a source file
+lib/Math/SpecialFunctions.cpp.i:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.i
+.PHONY : lib/Math/SpecialFunctions.cpp.i
+
+lib/Math/SpecialFunctions.s: lib/Math/SpecialFunctions.cpp.s
+.PHONY : lib/Math/SpecialFunctions.s
+
+# target to generate assembly for a file
+lib/Math/SpecialFunctions.cpp.s:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.s
+.PHONY : lib/Math/SpecialFunctions.cpp.s
+
 lib/Math/StudentDistribution.o: lib/Math/StudentDistribution.cpp.o
 .PHONY : lib/Math/StudentDistribution.o
 
@@ -9547,390 +9584,6 @@ lib/Vplot/SurfacePlot.cpp.s:
 	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/Vplot/SurfacePlot.cpp.s
 .PHONY : lib/Vplot/SurfacePlot.cpp.s
 
-lib/deprecate/CorrectUPDXs.o: lib/deprecate/CorrectUPDXs.cpp.o
-.PHONY : lib/deprecate/CorrectUPDXs.o
-
-# target to build an object file
-lib/deprecate/CorrectUPDXs.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o
-.PHONY : lib/deprecate/CorrectUPDXs.cpp.o
-
-lib/deprecate/CorrectUPDXs.i: lib/deprecate/CorrectUPDXs.cpp.i
-.PHONY : lib/deprecate/CorrectUPDXs.i
-
-# target to preprocess a source file
-lib/deprecate/CorrectUPDXs.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.i
-.PHONY : lib/deprecate/CorrectUPDXs.cpp.i
-
-lib/deprecate/CorrectUPDXs.s: lib/deprecate/CorrectUPDXs.cpp.s
-.PHONY : lib/deprecate/CorrectUPDXs.s
-
-# target to generate assembly for a file
-lib/deprecate/CorrectUPDXs.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.s
-.PHONY : lib/deprecate/CorrectUPDXs.cpp.s
-
-lib/deprecate/CycleSlipSimulation.o: lib/deprecate/CycleSlipSimulation.cpp.o
-.PHONY : lib/deprecate/CycleSlipSimulation.o
-
-# target to build an object file
-lib/deprecate/CycleSlipSimulation.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o
-.PHONY : lib/deprecate/CycleSlipSimulation.cpp.o
-
-lib/deprecate/CycleSlipSimulation.i: lib/deprecate/CycleSlipSimulation.cpp.i
-.PHONY : lib/deprecate/CycleSlipSimulation.i
-
-# target to preprocess a source file
-lib/deprecate/CycleSlipSimulation.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.i
-.PHONY : lib/deprecate/CycleSlipSimulation.cpp.i
-
-lib/deprecate/CycleSlipSimulation.s: lib/deprecate/CycleSlipSimulation.cpp.s
-.PHONY : lib/deprecate/CycleSlipSimulation.s
-
-# target to generate assembly for a file
-lib/deprecate/CycleSlipSimulation.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.s
-.PHONY : lib/deprecate/CycleSlipSimulation.cpp.s
-
-lib/deprecate/RinexUPDXData.o: lib/deprecate/RinexUPDXData.cpp.o
-.PHONY : lib/deprecate/RinexUPDXData.o
-
-# target to build an object file
-lib/deprecate/RinexUPDXData.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o
-.PHONY : lib/deprecate/RinexUPDXData.cpp.o
-
-lib/deprecate/RinexUPDXData.i: lib/deprecate/RinexUPDXData.cpp.i
-.PHONY : lib/deprecate/RinexUPDXData.i
-
-# target to preprocess a source file
-lib/deprecate/RinexUPDXData.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.i
-.PHONY : lib/deprecate/RinexUPDXData.cpp.i
-
-lib/deprecate/RinexUPDXData.s: lib/deprecate/RinexUPDXData.cpp.s
-.PHONY : lib/deprecate/RinexUPDXData.s
-
-# target to generate assembly for a file
-lib/deprecate/RinexUPDXData.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.s
-.PHONY : lib/deprecate/RinexUPDXData.cpp.s
-
-lib/deprecate/RinexUPDXHeader.o: lib/deprecate/RinexUPDXHeader.cpp.o
-.PHONY : lib/deprecate/RinexUPDXHeader.o
-
-# target to build an object file
-lib/deprecate/RinexUPDXHeader.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o
-.PHONY : lib/deprecate/RinexUPDXHeader.cpp.o
-
-lib/deprecate/RinexUPDXHeader.i: lib/deprecate/RinexUPDXHeader.cpp.i
-.PHONY : lib/deprecate/RinexUPDXHeader.i
-
-# target to preprocess a source file
-lib/deprecate/RinexUPDXHeader.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.i
-.PHONY : lib/deprecate/RinexUPDXHeader.cpp.i
-
-lib/deprecate/RinexUPDXHeader.s: lib/deprecate/RinexUPDXHeader.cpp.s
-.PHONY : lib/deprecate/RinexUPDXHeader.s
-
-# target to generate assembly for a file
-lib/deprecate/RinexUPDXHeader.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.s
-.PHONY : lib/deprecate/RinexUPDXHeader.cpp.s
-
-lib/deprecate/RinexUPDXStore.o: lib/deprecate/RinexUPDXStore.cpp.o
-.PHONY : lib/deprecate/RinexUPDXStore.o
-
-# target to build an object file
-lib/deprecate/RinexUPDXStore.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o
-.PHONY : lib/deprecate/RinexUPDXStore.cpp.o
-
-lib/deprecate/RinexUPDXStore.i: lib/deprecate/RinexUPDXStore.cpp.i
-.PHONY : lib/deprecate/RinexUPDXStore.i
-
-# target to preprocess a source file
-lib/deprecate/RinexUPDXStore.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.i
-.PHONY : lib/deprecate/RinexUPDXStore.cpp.i
-
-lib/deprecate/RinexUPDXStore.s: lib/deprecate/RinexUPDXStore.cpp.s
-.PHONY : lib/deprecate/RinexUPDXStore.s
-
-# target to generate assembly for a file
-lib/deprecate/RinexUPDXStore.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.s
-.PHONY : lib/deprecate/RinexUPDXStore.cpp.s
-
-lib/deprecate/SVExclusionList.o: lib/deprecate/SVExclusionList.cpp.o
-.PHONY : lib/deprecate/SVExclusionList.o
-
-# target to build an object file
-lib/deprecate/SVExclusionList.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o
-.PHONY : lib/deprecate/SVExclusionList.cpp.o
-
-lib/deprecate/SVExclusionList.i: lib/deprecate/SVExclusionList.cpp.i
-.PHONY : lib/deprecate/SVExclusionList.i
-
-# target to preprocess a source file
-lib/deprecate/SVExclusionList.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.i
-.PHONY : lib/deprecate/SVExclusionList.cpp.i
-
-lib/deprecate/SVExclusionList.s: lib/deprecate/SVExclusionList.cpp.s
-.PHONY : lib/deprecate/SVExclusionList.s
-
-# target to generate assembly for a file
-lib/deprecate/SVExclusionList.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.s
-.PHONY : lib/deprecate/SVExclusionList.cpp.s
-
-lib/deprecate/SolverPPP2.o: lib/deprecate/SolverPPP2.cpp.o
-.PHONY : lib/deprecate/SolverPPP2.o
-
-# target to build an object file
-lib/deprecate/SolverPPP2.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o
-.PHONY : lib/deprecate/SolverPPP2.cpp.o
-
-lib/deprecate/SolverPPP2.i: lib/deprecate/SolverPPP2.cpp.i
-.PHONY : lib/deprecate/SolverPPP2.i
-
-# target to preprocess a source file
-lib/deprecate/SolverPPP2.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.i
-.PHONY : lib/deprecate/SolverPPP2.cpp.i
-
-lib/deprecate/SolverPPP2.s: lib/deprecate/SolverPPP2.cpp.s
-.PHONY : lib/deprecate/SolverPPP2.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverPPP2.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.s
-.PHONY : lib/deprecate/SolverPPP2.cpp.s
-
-lib/deprecate/SolverPPPUC.o: lib/deprecate/SolverPPPUC.cpp.o
-.PHONY : lib/deprecate/SolverPPPUC.o
-
-# target to build an object file
-lib/deprecate/SolverPPPUC.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o
-.PHONY : lib/deprecate/SolverPPPUC.cpp.o
-
-lib/deprecate/SolverPPPUC.i: lib/deprecate/SolverPPPUC.cpp.i
-.PHONY : lib/deprecate/SolverPPPUC.i
-
-# target to preprocess a source file
-lib/deprecate/SolverPPPUC.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.i
-.PHONY : lib/deprecate/SolverPPPUC.cpp.i
-
-lib/deprecate/SolverPPPUC.s: lib/deprecate/SolverPPPUC.cpp.s
-.PHONY : lib/deprecate/SolverPPPUC.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverPPPUC.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.s
-.PHONY : lib/deprecate/SolverPPPUC.cpp.s
-
-lib/deprecate/SolverPPPX.o: lib/deprecate/SolverPPPX.cpp.o
-.PHONY : lib/deprecate/SolverPPPX.o
-
-# target to build an object file
-lib/deprecate/SolverPPPX.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o
-.PHONY : lib/deprecate/SolverPPPX.cpp.o
-
-lib/deprecate/SolverPPPX.i: lib/deprecate/SolverPPPX.cpp.i
-.PHONY : lib/deprecate/SolverPPPX.i
-
-# target to preprocess a source file
-lib/deprecate/SolverPPPX.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.i
-.PHONY : lib/deprecate/SolverPPPX.cpp.i
-
-lib/deprecate/SolverPPPX.s: lib/deprecate/SolverPPPX.cpp.s
-.PHONY : lib/deprecate/SolverPPPX.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverPPPX.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.s
-.PHONY : lib/deprecate/SolverPPPX.cpp.s
-
-lib/deprecate/SolverPPPX2.o: lib/deprecate/SolverPPPX2.cpp.o
-.PHONY : lib/deprecate/SolverPPPX2.o
-
-# target to build an object file
-lib/deprecate/SolverPPPX2.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o
-.PHONY : lib/deprecate/SolverPPPX2.cpp.o
-
-lib/deprecate/SolverPPPX2.i: lib/deprecate/SolverPPPX2.cpp.i
-.PHONY : lib/deprecate/SolverPPPX2.i
-
-# target to preprocess a source file
-lib/deprecate/SolverPPPX2.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.i
-.PHONY : lib/deprecate/SolverPPPX2.cpp.i
-
-lib/deprecate/SolverPPPX2.s: lib/deprecate/SolverPPPX2.cpp.s
-.PHONY : lib/deprecate/SolverPPPX2.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverPPPX2.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.s
-.PHONY : lib/deprecate/SolverPPPX2.cpp.s
-
-lib/deprecate/SolverPPPXAR2.o: lib/deprecate/SolverPPPXAR2.cpp.o
-.PHONY : lib/deprecate/SolverPPPXAR2.o
-
-# target to build an object file
-lib/deprecate/SolverPPPXAR2.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o
-.PHONY : lib/deprecate/SolverPPPXAR2.cpp.o
-
-lib/deprecate/SolverPPPXAR2.i: lib/deprecate/SolverPPPXAR2.cpp.i
-.PHONY : lib/deprecate/SolverPPPXAR2.i
-
-# target to preprocess a source file
-lib/deprecate/SolverPPPXAR2.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.i
-.PHONY : lib/deprecate/SolverPPPXAR2.cpp.i
-
-lib/deprecate/SolverPPPXAR2.s: lib/deprecate/SolverPPPXAR2.cpp.s
-.PHONY : lib/deprecate/SolverPPPXAR2.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverPPPXAR2.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.s
-.PHONY : lib/deprecate/SolverPPPXAR2.cpp.s
-
-lib/deprecate/SolverRTKLc.o: lib/deprecate/SolverRTKLc.cpp.o
-.PHONY : lib/deprecate/SolverRTKLc.o
-
-# target to build an object file
-lib/deprecate/SolverRTKLc.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o
-.PHONY : lib/deprecate/SolverRTKLc.cpp.o
-
-lib/deprecate/SolverRTKLc.i: lib/deprecate/SolverRTKLc.cpp.i
-.PHONY : lib/deprecate/SolverRTKLc.i
-
-# target to preprocess a source file
-lib/deprecate/SolverRTKLc.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.i
-.PHONY : lib/deprecate/SolverRTKLc.cpp.i
-
-lib/deprecate/SolverRTKLc.s: lib/deprecate/SolverRTKLc.cpp.s
-.PHONY : lib/deprecate/SolverRTKLc.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverRTKLc.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.s
-.PHONY : lib/deprecate/SolverRTKLc.cpp.s
-
-lib/deprecate/SolverRTKLw.o: lib/deprecate/SolverRTKLw.cpp.o
-.PHONY : lib/deprecate/SolverRTKLw.o
-
-# target to build an object file
-lib/deprecate/SolverRTKLw.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o
-.PHONY : lib/deprecate/SolverRTKLw.cpp.o
-
-lib/deprecate/SolverRTKLw.i: lib/deprecate/SolverRTKLw.cpp.i
-.PHONY : lib/deprecate/SolverRTKLw.i
-
-# target to preprocess a source file
-lib/deprecate/SolverRTKLw.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.i
-.PHONY : lib/deprecate/SolverRTKLw.cpp.i
-
-lib/deprecate/SolverRTKLw.s: lib/deprecate/SolverRTKLw.cpp.s
-.PHONY : lib/deprecate/SolverRTKLw.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverRTKLw.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.s
-.PHONY : lib/deprecate/SolverRTKLw.cpp.s
-
-lib/deprecate/SolverRTKUC.o: lib/deprecate/SolverRTKUC.cpp.o
-.PHONY : lib/deprecate/SolverRTKUC.o
-
-# target to build an object file
-lib/deprecate/SolverRTKUC.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o
-.PHONY : lib/deprecate/SolverRTKUC.cpp.o
-
-lib/deprecate/SolverRTKUC.i: lib/deprecate/SolverRTKUC.cpp.i
-.PHONY : lib/deprecate/SolverRTKUC.i
-
-# target to preprocess a source file
-lib/deprecate/SolverRTKUC.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.i
-.PHONY : lib/deprecate/SolverRTKUC.cpp.i
-
-lib/deprecate/SolverRTKUC.s: lib/deprecate/SolverRTKUC.cpp.s
-.PHONY : lib/deprecate/SolverRTKUC.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverRTKUC.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.s
-.PHONY : lib/deprecate/SolverRTKUC.cpp.s
-
-lib/deprecate/SolverRTKX.o: lib/deprecate/SolverRTKX.cpp.o
-.PHONY : lib/deprecate/SolverRTKX.o
-
-# target to build an object file
-lib/deprecate/SolverRTKX.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o
-.PHONY : lib/deprecate/SolverRTKX.cpp.o
-
-lib/deprecate/SolverRTKX.i: lib/deprecate/SolverRTKX.cpp.i
-.PHONY : lib/deprecate/SolverRTKX.i
-
-# target to preprocess a source file
-lib/deprecate/SolverRTKX.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.i
-.PHONY : lib/deprecate/SolverRTKX.cpp.i
-
-lib/deprecate/SolverRTKX.s: lib/deprecate/SolverRTKX.cpp.s
-.PHONY : lib/deprecate/SolverRTKX.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverRTKX.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.s
-.PHONY : lib/deprecate/SolverRTKX.cpp.s
-
-lib/deprecate/SolverRTKX2.o: lib/deprecate/SolverRTKX2.cpp.o
-.PHONY : lib/deprecate/SolverRTKX2.o
-
-# target to build an object file
-lib/deprecate/SolverRTKX2.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o
-.PHONY : lib/deprecate/SolverRTKX2.cpp.o
-
-lib/deprecate/SolverRTKX2.i: lib/deprecate/SolverRTKX2.cpp.i
-.PHONY : lib/deprecate/SolverRTKX2.i
-
-# target to preprocess a source file
-lib/deprecate/SolverRTKX2.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.i
-.PHONY : lib/deprecate/SolverRTKX2.cpp.i
-
-lib/deprecate/SolverRTKX2.s: lib/deprecate/SolverRTKX2.cpp.s
-.PHONY : lib/deprecate/SolverRTKX2.s
-
-# target to generate assembly for a file
-lib/deprecate/SolverRTKX2.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.s
-.PHONY : lib/deprecate/SolverRTKX2.cpp.s
-
 lib/dev/ARLambda.o: lib/dev/ARLambda.cpp.o
 .PHONY : lib/dev/ARLambda.o
 
@@ -9978,6 +9631,30 @@ lib/dev/ARMLambda.s: lib/dev/ARMLambda.cpp.s
 lib/dev/ARMLambda.cpp.s:
 	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/ARMLambda.cpp.s
 .PHONY : lib/dev/ARMLambda.cpp.s
+
+lib/dev/AmbiDatum.o: lib/dev/AmbiDatum.cpp.o
+.PHONY : lib/dev/AmbiDatum.o
+
+# target to build an object file
+lib/dev/AmbiDatum.cpp.o:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o
+.PHONY : lib/dev/AmbiDatum.cpp.o
+
+lib/dev/AmbiDatum.i: lib/dev/AmbiDatum.cpp.i
+.PHONY : lib/dev/AmbiDatum.i
+
+# target to preprocess a source file
+lib/dev/AmbiDatum.cpp.i:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.i
+.PHONY : lib/dev/AmbiDatum.cpp.i
+
+lib/dev/AmbiDatum.s: lib/dev/AmbiDatum.cpp.s
+.PHONY : lib/dev/AmbiDatum.s
+
+# target to generate assembly for a file
+lib/dev/AmbiDatum.cpp.s:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.s
+.PHONY : lib/dev/AmbiDatum.cpp.s
 
 lib/dev/Ambiguity.o: lib/dev/Ambiguity.cpp.o
 .PHONY : lib/dev/Ambiguity.o
@@ -10291,78 +9968,6 @@ lib/dev/DataStructures.cpp.s:
 	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.s
 .PHONY : lib/dev/DataStructures.cpp.s
 
-lib/dev/DatumPPP.o: lib/dev/DatumPPP.cpp.o
-.PHONY : lib/dev/DatumPPP.o
-
-# target to build an object file
-lib/dev/DatumPPP.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o
-.PHONY : lib/dev/DatumPPP.cpp.o
-
-lib/dev/DatumPPP.i: lib/dev/DatumPPP.cpp.i
-.PHONY : lib/dev/DatumPPP.i
-
-# target to preprocess a source file
-lib/dev/DatumPPP.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.i
-.PHONY : lib/dev/DatumPPP.cpp.i
-
-lib/dev/DatumPPP.s: lib/dev/DatumPPP.cpp.s
-.PHONY : lib/dev/DatumPPP.s
-
-# target to generate assembly for a file
-lib/dev/DatumPPP.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.s
-.PHONY : lib/dev/DatumPPP.cpp.s
-
-lib/dev/DatumPPPNL.o: lib/dev/DatumPPPNL.cpp.o
-.PHONY : lib/dev/DatumPPPNL.o
-
-# target to build an object file
-lib/dev/DatumPPPNL.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o
-.PHONY : lib/dev/DatumPPPNL.cpp.o
-
-lib/dev/DatumPPPNL.i: lib/dev/DatumPPPNL.cpp.i
-.PHONY : lib/dev/DatumPPPNL.i
-
-# target to preprocess a source file
-lib/dev/DatumPPPNL.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.i
-.PHONY : lib/dev/DatumPPPNL.cpp.i
-
-lib/dev/DatumPPPNL.s: lib/dev/DatumPPPNL.cpp.s
-.PHONY : lib/dev/DatumPPPNL.s
-
-# target to generate assembly for a file
-lib/dev/DatumPPPNL.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.s
-.PHONY : lib/dev/DatumPPPNL.cpp.s
-
-lib/dev/DatumPPPWL.o: lib/dev/DatumPPPWL.cpp.o
-.PHONY : lib/dev/DatumPPPWL.o
-
-# target to build an object file
-lib/dev/DatumPPPWL.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o
-.PHONY : lib/dev/DatumPPPWL.cpp.o
-
-lib/dev/DatumPPPWL.i: lib/dev/DatumPPPWL.cpp.i
-.PHONY : lib/dev/DatumPPPWL.i
-
-# target to preprocess a source file
-lib/dev/DatumPPPWL.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.i
-.PHONY : lib/dev/DatumPPPWL.cpp.i
-
-lib/dev/DatumPPPWL.s: lib/dev/DatumPPPWL.cpp.s
-.PHONY : lib/dev/DatumPPPWL.s
-
-# target to generate assembly for a file
-lib/dev/DatumPPPWL.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.s
-.PHONY : lib/dev/DatumPPPWL.cpp.s
-
 lib/dev/Decimate.o: lib/dev/Decimate.cpp.o
 .PHONY : lib/dev/Decimate.o
 
@@ -10386,6 +9991,30 @@ lib/dev/Decimate.s: lib/dev/Decimate.cpp.s
 lib/dev/Decimate.cpp.s:
 	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.s
 .PHONY : lib/dev/Decimate.cpp.s
+
+lib/dev/Distance.o: lib/dev/Distance.cpp.o
+.PHONY : lib/dev/Distance.o
+
+# target to build an object file
+lib/dev/Distance.cpp.o:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o
+.PHONY : lib/dev/Distance.cpp.o
+
+lib/dev/Distance.i: lib/dev/Distance.cpp.i
+.PHONY : lib/dev/Distance.i
+
+# target to preprocess a source file
+lib/dev/Distance.cpp.i:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.i
+.PHONY : lib/dev/Distance.cpp.i
+
+lib/dev/Distance.s: lib/dev/Distance.cpp.s
+.PHONY : lib/dev/Distance.s
+
+# target to generate assembly for a file
+lib/dev/Distance.cpp.s:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.s
+.PHONY : lib/dev/Distance.cpp.s
 
 lib/dev/EOPDataStore.o: lib/dev/EOPDataStore.cpp.o
 .PHONY : lib/dev/EOPDataStore.o
@@ -11203,30 +10832,6 @@ lib/dev/SourceID.cpp.s:
 	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.s
 .PHONY : lib/dev/SourceID.cpp.s
 
-lib/dev/SpecialFunctions.o: lib/dev/SpecialFunctions.cpp.o
-.PHONY : lib/dev/SpecialFunctions.o
-
-# target to build an object file
-lib/dev/SpecialFunctions.cpp.o:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.o
-.PHONY : lib/dev/SpecialFunctions.cpp.o
-
-lib/dev/SpecialFunctions.i: lib/dev/SpecialFunctions.cpp.i
-.PHONY : lib/dev/SpecialFunctions.i
-
-# target to preprocess a source file
-lib/dev/SpecialFunctions.cpp.i:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.i
-.PHONY : lib/dev/SpecialFunctions.cpp.i
-
-lib/dev/SpecialFunctions.s: lib/dev/SpecialFunctions.cpp.s
-.PHONY : lib/dev/SpecialFunctions.s
-
-# target to generate assembly for a file
-lib/dev/SpecialFunctions.cpp.s:
-	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.s
-.PHONY : lib/dev/SpecialFunctions.cpp.s
-
 lib/dev/StochasticModel.o: lib/dev/StochasticModel.cpp.o
 .PHONY : lib/dev/StochasticModel.o
 
@@ -11445,6 +11050,7 @@ help:
 	@echo "... wheresat"
 	@echo "... ppp"
 	@echo "... pppar"
+	@echo "... pppucar"
 	@echo "... ephint"
 	@echo "... ssc2msc"
 	@echo "... cc2noncc"
@@ -11989,6 +11595,9 @@ help:
 	@echo "... lib/Math/SimpleKalmanFilter.o"
 	@echo "... lib/Math/SimpleKalmanFilter.i"
 	@echo "... lib/Math/SimpleKalmanFilter.s"
+	@echo "... lib/Math/SpecialFunctions.o"
+	@echo "... lib/Math/SpecialFunctions.i"
+	@echo "... lib/Math/SpecialFunctions.s"
 	@echo "... lib/Math/StudentDistribution.o"
 	@echo "... lib/Math/StudentDistribution.i"
 	@echo "... lib/Math/StudentDistribution.s"
@@ -12430,60 +12039,15 @@ help:
 	@echo "... lib/Vplot/SurfacePlot.o"
 	@echo "... lib/Vplot/SurfacePlot.i"
 	@echo "... lib/Vplot/SurfacePlot.s"
-	@echo "... lib/deprecate/CorrectUPDXs.o"
-	@echo "... lib/deprecate/CorrectUPDXs.i"
-	@echo "... lib/deprecate/CorrectUPDXs.s"
-	@echo "... lib/deprecate/CycleSlipSimulation.o"
-	@echo "... lib/deprecate/CycleSlipSimulation.i"
-	@echo "... lib/deprecate/CycleSlipSimulation.s"
-	@echo "... lib/deprecate/RinexUPDXData.o"
-	@echo "... lib/deprecate/RinexUPDXData.i"
-	@echo "... lib/deprecate/RinexUPDXData.s"
-	@echo "... lib/deprecate/RinexUPDXHeader.o"
-	@echo "... lib/deprecate/RinexUPDXHeader.i"
-	@echo "... lib/deprecate/RinexUPDXHeader.s"
-	@echo "... lib/deprecate/RinexUPDXStore.o"
-	@echo "... lib/deprecate/RinexUPDXStore.i"
-	@echo "... lib/deprecate/RinexUPDXStore.s"
-	@echo "... lib/deprecate/SVExclusionList.o"
-	@echo "... lib/deprecate/SVExclusionList.i"
-	@echo "... lib/deprecate/SVExclusionList.s"
-	@echo "... lib/deprecate/SolverPPP2.o"
-	@echo "... lib/deprecate/SolverPPP2.i"
-	@echo "... lib/deprecate/SolverPPP2.s"
-	@echo "... lib/deprecate/SolverPPPUC.o"
-	@echo "... lib/deprecate/SolverPPPUC.i"
-	@echo "... lib/deprecate/SolverPPPUC.s"
-	@echo "... lib/deprecate/SolverPPPX.o"
-	@echo "... lib/deprecate/SolverPPPX.i"
-	@echo "... lib/deprecate/SolverPPPX.s"
-	@echo "... lib/deprecate/SolverPPPX2.o"
-	@echo "... lib/deprecate/SolverPPPX2.i"
-	@echo "... lib/deprecate/SolverPPPX2.s"
-	@echo "... lib/deprecate/SolverPPPXAR2.o"
-	@echo "... lib/deprecate/SolverPPPXAR2.i"
-	@echo "... lib/deprecate/SolverPPPXAR2.s"
-	@echo "... lib/deprecate/SolverRTKLc.o"
-	@echo "... lib/deprecate/SolverRTKLc.i"
-	@echo "... lib/deprecate/SolverRTKLc.s"
-	@echo "... lib/deprecate/SolverRTKLw.o"
-	@echo "... lib/deprecate/SolverRTKLw.i"
-	@echo "... lib/deprecate/SolverRTKLw.s"
-	@echo "... lib/deprecate/SolverRTKUC.o"
-	@echo "... lib/deprecate/SolverRTKUC.i"
-	@echo "... lib/deprecate/SolverRTKUC.s"
-	@echo "... lib/deprecate/SolverRTKX.o"
-	@echo "... lib/deprecate/SolverRTKX.i"
-	@echo "... lib/deprecate/SolverRTKX.s"
-	@echo "... lib/deprecate/SolverRTKX2.o"
-	@echo "... lib/deprecate/SolverRTKX2.i"
-	@echo "... lib/deprecate/SolverRTKX2.s"
 	@echo "... lib/dev/ARLambda.o"
 	@echo "... lib/dev/ARLambda.i"
 	@echo "... lib/dev/ARLambda.s"
 	@echo "... lib/dev/ARMLambda.o"
 	@echo "... lib/dev/ARMLambda.i"
 	@echo "... lib/dev/ARMLambda.s"
+	@echo "... lib/dev/AmbiDatum.o"
+	@echo "... lib/dev/AmbiDatum.i"
+	@echo "... lib/dev/AmbiDatum.s"
 	@echo "... lib/dev/Ambiguity.o"
 	@echo "... lib/dev/Ambiguity.i"
 	@echo "... lib/dev/Ambiguity.s"
@@ -12523,18 +12087,12 @@ help:
 	@echo "... lib/dev/DataStructures.o"
 	@echo "... lib/dev/DataStructures.i"
 	@echo "... lib/dev/DataStructures.s"
-	@echo "... lib/dev/DatumPPP.o"
-	@echo "... lib/dev/DatumPPP.i"
-	@echo "... lib/dev/DatumPPP.s"
-	@echo "... lib/dev/DatumPPPNL.o"
-	@echo "... lib/dev/DatumPPPNL.i"
-	@echo "... lib/dev/DatumPPPNL.s"
-	@echo "... lib/dev/DatumPPPWL.o"
-	@echo "... lib/dev/DatumPPPWL.i"
-	@echo "... lib/dev/DatumPPPWL.s"
 	@echo "... lib/dev/Decimate.o"
 	@echo "... lib/dev/Decimate.i"
 	@echo "... lib/dev/Decimate.s"
+	@echo "... lib/dev/Distance.o"
+	@echo "... lib/dev/Distance.i"
+	@echo "... lib/dev/Distance.s"
 	@echo "... lib/dev/EOPDataStore.o"
 	@echo "... lib/dev/EOPDataStore.i"
 	@echo "... lib/dev/EOPDataStore.s"
@@ -12637,9 +12195,6 @@ help:
 	@echo "... lib/dev/SourceID.o"
 	@echo "... lib/dev/SourceID.i"
 	@echo "... lib/dev/SourceID.s"
-	@echo "... lib/dev/SpecialFunctions.o"
-	@echo "... lib/dev/SpecialFunctions.i"
-	@echo "... lib/dev/SpecialFunctions.s"
 	@echo "... lib/dev/StochasticModel.o"
 	@echo "... lib/dev/StochasticModel.i"
 	@echo "... lib/dev/StochasticModel.s"

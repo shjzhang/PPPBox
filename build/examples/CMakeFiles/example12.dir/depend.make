@@ -7,6 +7,7 @@ examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/FileHandling/FFStreamE
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/GNSSCore/ObsID.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -21,7 +22,6 @@ examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/TimeHandling/CommonTim
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/Utilities/Exception.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/Utilities/StringUtils.hpp
-examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/deprecate/gps_constants.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../lib/dev/RinexObsHeader.hpp
 examples/CMakeFiles/example12.dir/example12.cpp.o: ../examples/example12.cpp
 

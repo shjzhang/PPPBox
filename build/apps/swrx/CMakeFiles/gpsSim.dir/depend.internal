@@ -19,6 +19,7 @@ apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/ObsID.hpp
  ../lib/GNSSCore/ObsIDInitializer.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Math/MathBase.hpp
  ../lib/Misc/mergePCodeWords.h
@@ -46,7 +47,6 @@ apps/swrx/CMakeFiles/gpsSim.dir/gpsSim.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CACodeGenerator.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CodeGenerator.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/ConstLinearRecurrentSequence.hpp

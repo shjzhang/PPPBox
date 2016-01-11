@@ -106,6 +106,8 @@ ObsIDInitializer.hpp
 ObsID.hpp
 ../lib/GNSSCore/ObsID.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/SatID.hpp
 iostream
 -
@@ -323,8 +325,6 @@ sys/timeb.h
 -
 stdint.h
 -
-
-../lib/deprecate/gps_constants.hpp
 
 /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CACodeGenerator.hpp
 iostream

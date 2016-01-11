@@ -30,6 +30,7 @@ apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/GNSSCore/WGS84Ell
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -84,7 +85,6 @@ apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/Utilities/BinUtil
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/Utilities/Exception.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/ionosphere/CMakeFiles/IonoBias.dir/IonoBias.cpp.o: ../lib/dev/RinexObsData.hpp

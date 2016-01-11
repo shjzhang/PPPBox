@@ -57,6 +57,7 @@ apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
  ../lib/GNSSCore/geometry.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -109,7 +110,6 @@ apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/ClockSatStore.hpp
  ../lib/dev/PositionSatStore.hpp
  ../lib/dev/SP3EphemerisStore.hpp

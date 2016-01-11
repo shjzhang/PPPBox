@@ -27,6 +27,7 @@ apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -74,7 +75,6 @@ apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/Utilities/Exception.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/swrx/CMakeFiles/position.dir/position.cpp.o: ../apps/swrx/position.cpp
 

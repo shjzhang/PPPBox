@@ -37,6 +37,7 @@ apps/Rinextools/CMakeFiles/RinDump.dir/RinDump.cpp.o
  ../lib/GNSSCore/WxObsMap.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/BDSEphemeris.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -103,7 +104,6 @@ apps/Rinextools/CMakeFiles/RinDump.dir/RinDump.cpp.o
  ../lib/Utilities/gpstkplatform.h
  ../lib/Utilities/logstream.hpp
  ../lib/Utilities/singleton.hpp
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/ClockSatStore.hpp
  ../lib/dev/PositionSatStore.hpp
  ../lib/dev/RinexObsHeader.hpp

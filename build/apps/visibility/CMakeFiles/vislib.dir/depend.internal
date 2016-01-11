@@ -7,6 +7,7 @@ apps/visibility/CMakeFiles/vislib.dir/DiscreteVisibleCounts.cpp.o
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/visibility/DiscreteVisibleCounts.cpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/visibility/DiscreteVisibleCounts.hpp
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/Math/MathBase.hpp
  ../lib/Math/MiscMath.hpp
  ../lib/Math/Stats.hpp
@@ -15,7 +16,6 @@ apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o
  ../lib/Math/Vector/VectorBaseOperators.hpp
  ../lib/Math/Vector/VectorOperators.hpp
  ../lib/Utilities/Exception.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/visibility/StaStats.cpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/visibility/StaStats.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o
@@ -70,6 +70,7 @@ apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
  ../lib/GNSSCore/geometry.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -119,7 +120,6 @@ apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/ClockSatStore.hpp
  ../lib/dev/PositionSatStore.hpp
  ../lib/dev/SP3EphemerisStore.hpp

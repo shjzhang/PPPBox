@@ -10,6 +10,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o
  ../lib/GNSSCore/WGS84Ellipsoid.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
  ../lib/GNSSEph/EngEphemeris.hpp
@@ -39,7 +40,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/BELogEntry.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/MDPtools/BELogEntry.cpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/MDPtools/BELogEntry.hpp
 apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o
@@ -51,6 +51,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o
  ../lib/GNSSCore/EllipsoidModel.hpp
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/RinexSatID.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Math/MathBase.hpp
@@ -80,7 +81,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/MDPProcessors.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/MDPtools/MDPProcessors.cpp
@@ -102,6 +102,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o
  ../lib/GNSSCore/WGS84Ellipsoid.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -154,7 +155,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/NavProc.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/MDPtools/CNAVMessageAsm.hpp
@@ -171,6 +171,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o
  ../lib/GNSSCore/EllipsoidModel.hpp
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/RinexSatID.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Math/MathBase.hpp
@@ -203,7 +204,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/SubframeProc.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/MDPtools/Histogram.hpp
@@ -225,6 +225,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o
  ../lib/GNSSCore/WGS84Ellipsoid.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -274,7 +275,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/SummaryProc.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/MDPtools/CNAVMessageAsm.hpp
@@ -293,6 +293,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/Position.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/RinexSatID.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Math/MathBase.hpp
@@ -321,7 +322,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/TrackProc.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/MDPtools/MDPProcessors.hpp
@@ -348,6 +348,7 @@ apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o
  ../lib/GNSSCore/WGS84Ellipsoid.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
  ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -383,7 +384,6 @@ apps/MDPtools/CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/MDPtools/UniqueAlmStore.cpp

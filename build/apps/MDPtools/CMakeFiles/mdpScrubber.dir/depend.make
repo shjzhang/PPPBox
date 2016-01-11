@@ -28,6 +28,7 @@ apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/GNSSCore/WGS8
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -87,7 +88,6 @@ apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/Utilities/Exc
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/MDPtools/CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o: ../apps/MDPtools/mdpScrubber.cpp

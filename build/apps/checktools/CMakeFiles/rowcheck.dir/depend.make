@@ -18,6 +18,7 @@ apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/FileHandling/FFSt
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/FileHandling/FFTextStream.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
+apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/Math/MathBase.hpp
@@ -31,7 +32,6 @@ apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/TimeHandling/Comm
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/Utilities/Exception.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o: ../apps/checktools/CheckFrame.hpp

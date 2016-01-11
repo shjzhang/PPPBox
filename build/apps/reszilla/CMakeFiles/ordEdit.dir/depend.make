@@ -24,6 +24,7 @@ apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/GNSSCore/WGS84Ellipso
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -76,7 +77,6 @@ apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/Utilities/Exception.h
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../apps/reszilla/OrdApp.hpp
 apps/reszilla/CMakeFiles/ordEdit.dir/ordEdit.cpp.o: ../apps/reszilla/ordEdit.cpp
 

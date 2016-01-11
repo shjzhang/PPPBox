@@ -488,6 +488,8 @@ GNSSconstants.hpp
 
 ../lib/GNSSCore/geometry.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/BrcClockCorrection.hpp
 EngNav.hpp
 ../lib/GNSSEph/EngNav.hpp
@@ -777,6 +779,14 @@ Vector.hpp
 ../lib/Math/Vector.hpp
 SolverBase.hpp
 ../lib/Math/SolverBase.hpp
+
+../lib/Math/SpecialFunctions.hpp
+cmath
+-
+GNSSconstants.hpp
+../lib/Math/GNSSconstants.hpp
+Exception.hpp
+../lib/Math/Exception.hpp
 
 ../lib/Math/Stats.hpp
 MiscMath.hpp
@@ -1172,8 +1182,6 @@ sys/timeb.h
 stdint.h
 -
 
-../lib/deprecate/gps_constants.hpp
-
 ../lib/dev/ARRound.hpp
 Matrix.hpp
 ../lib/dev/Matrix.hpp
@@ -1181,6 +1189,20 @@ Exception.hpp
 ../lib/dev/Exception.hpp
 SpecialFunctions.hpp
 ../lib/dev/SpecialFunctions.hpp
+
+../lib/dev/AmbiDatum.hpp
+algorithm
+-
+Arc.hpp
+../lib/dev/Arc.hpp
+ARRound.hpp
+../lib/dev/ARRound.hpp
+DataStructures.hpp
+../lib/dev/DataStructures.hpp
+StochasticModel.hpp
+../lib/dev/StochasticModel.hpp
+Stats.hpp
+../lib/dev/Stats.hpp
 
 ../lib/dev/Arc.hpp
 set
@@ -1305,20 +1327,6 @@ YDSTime.hpp
 ../lib/dev/YDSTime.hpp
 GNSSconstants.hpp
 ../lib/dev/GNSSconstants.hpp
-
-../lib/dev/DatumPPP.hpp
-algorithm
--
-Arc.hpp
-../lib/dev/Arc.hpp
-ARRound.hpp
-../lib/dev/ARRound.hpp
-DataStructures.hpp
-../lib/dev/DataStructures.hpp
-StochasticModel.hpp
-../lib/dev/StochasticModel.hpp
-Stats.hpp
-../lib/dev/Stats.hpp
 
 ../lib/dev/Decimate.hpp
 Exception.hpp
@@ -1553,8 +1561,8 @@ GNSSconstants.hpp
 ../lib/dev/GNSSconstants.hpp
 Variable.hpp
 ../lib/dev/Variable.hpp
-DatumPPP.hpp
-../lib/dev/DatumPPP.hpp
+AmbiDatum.hpp
+../lib/dev/AmbiDatum.hpp
 
 ../lib/dev/SolverPPPARFB.hpp
 SolverPPPAR.hpp
@@ -1579,14 +1587,6 @@ Position.hpp
 ../lib/dev/Position.hpp
 TypeID.hpp
 ../lib/dev/TypeID.hpp
-
-../lib/dev/SpecialFunctions.hpp
-cmath
--
-GNSSconstants.hpp
-../lib/dev/GNSSconstants.hpp
-Exception.hpp
-../lib/dev/Exception.hpp
 
 ../lib/dev/StochasticModel.hpp
 CommonTime.hpp

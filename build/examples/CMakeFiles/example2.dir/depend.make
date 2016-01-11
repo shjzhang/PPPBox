@@ -12,6 +12,7 @@ examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/FileHandling/RINEX3/Rine
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/GNSSCore/ObsID.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -28,7 +29,6 @@ examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/TimeHandling/TimeConstan
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/Utilities/Exception.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/Utilities/StringUtils.hpp
-examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/deprecate/gps_constants.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../lib/dev/RinexObsHeader.hpp
 examples/CMakeFiles/example2.dir/example2.cpp.o: ../examples/example2.cpp
 

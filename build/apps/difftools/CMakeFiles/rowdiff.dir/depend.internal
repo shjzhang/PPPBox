@@ -21,6 +21,7 @@ apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o
  ../lib/FileHandling/RINEX/RinexObsBase.hpp
  ../lib/FileHandling/RINEX/RinexObsFilterOperators.hpp
  ../lib/FileHandling/RINEX/RinexObsStream.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/RinexSatID.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Math/MathBase.hpp
@@ -36,7 +37,6 @@ apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o
  ../lib/TimeHandling/YDSTime.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/difftools/DiffFrame.hpp

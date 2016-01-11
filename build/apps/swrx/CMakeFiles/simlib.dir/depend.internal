@@ -5,9 +5,9 @@ apps/swrx/CMakeFiles/simlib.dir/CCReplica.cpp.o
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/ObsID.hpp
  ../lib/GNSSCore/ObsIDInitializer.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Utilities/Exception.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CCReplica.cpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CCReplica.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CodeGenerator.hpp
@@ -16,9 +16,9 @@ apps/swrx/CMakeFiles/simlib.dir/EMLTracker.cpp.o
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/ObsID.hpp
  ../lib/GNSSCore/ObsIDInitializer.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Utilities/Exception.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CCReplica.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CodeGenerator.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/EMLTracker.cpp
@@ -39,12 +39,12 @@ apps/swrx/CMakeFiles/simlib.dir/NavFramer.cpp.o
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/ObsID.hpp
  ../lib/GNSSCore/ObsIDInitializer.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/EngNav.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Utilities/BinUtils.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CCReplica.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/CodeGenerator.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/swrx/EMLTracker.hpp

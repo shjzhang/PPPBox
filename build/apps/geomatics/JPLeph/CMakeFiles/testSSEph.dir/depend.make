@@ -5,6 +5,7 @@ apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/GNSSCore/
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -27,6 +28,5 @@ apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/TimeHandl
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/Utilities/Exception.hpp
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/Utilities/logstream.hpp
-apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/JPLeph/CMakeFiles/testSSEph.dir/testSSEph.cpp.o: ../apps/geomatics/JPLeph/testSSEph.cpp
 

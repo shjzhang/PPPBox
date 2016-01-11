@@ -48,6 +48,8 @@ Exception.hpp
 SatID.hpp
 ../lib/GNSSCore/SatID.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/SatID.hpp
 iostream
 -
@@ -143,8 +145,6 @@ regex.h
 -
 Exception.hpp
 ../lib/Utilities/Exception.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationDefinition.cpp
 stdio.h

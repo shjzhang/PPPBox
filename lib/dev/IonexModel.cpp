@@ -1,18 +1,10 @@
-#pragma ident "$Id$"
-
-/**
- * @file IonexModel.cpp
- * This is a class to compute the main values related to a given
- * GNSS IONEX model, i.e., the ionospheric correction and DCB values
- */
-
 //============================================================================
 //
 //  This file is part of GPSTk, the GPS Toolkit.
 //
 //  The GPSTk is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
-//  by the Free Software Foundation; either version 2.1 of the License, or
+//  by the Free Software Foundation; either version 3.0 of the License, or
 //  any later version.
 //
 //  The GPSTk is distributed in the hope that it will be useful,
@@ -23,27 +15,40 @@
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-//
+//  
+//  Copyright 2004, The University of Texas at Austin
 //  Octavian Andrei - FGI ( http://www.fgi.fi ). 2008, 2009, 2011
 //
 //============================================================================
-//
-//  Revision
-//
-//  2014/04/14      Compute instrumental delays for P1/P2/Pdelta/L1/L2/Ldelta
-//                  , insert 'instP1/instP2/instPdelta/instL1/instL2/instLdelta' 
-//                  to the gData.
-//
-//============================================================================
 
+//============================================================================
+//
+//This software developed by Applied Research Laboratories at the University of
+//Texas at Austin, under contract to an agency or agencies within the U.S. 
+//Department of Defense. The U.S. Government retains all rights to use,
+//duplicate, distribute, disclose, or release this software. 
+//
+//Pursuant to DoD Directive 523024 
+//
+// DISTRIBUTION STATEMENT A: This software has been approved for public 
+//                           release, distribution is unlimited.
+//
+//=============================================================================
+
+/**
+ * @file IonexModel.cpp
+ * This is a class to compute the main values related to a given
+ * GNSS IONEX model, i.e., the ionospheric correction and DCB values
+ */
 
 #include "IonexModel.hpp"
 #include "GNSSconstants.hpp"          // C_MPS
 
-using namespace std;
 
 namespace gpstk
 {
+
+   using namespace std;
 
       // Returns a string identifying this object.
    std::string IonexModel::getClassName() const
@@ -149,7 +154,7 @@ namespace gpstk
                double ionexL1(0.0), ionexL2(0.0), ionexL5(0.0);   // GPS
                double ionexL6(0.0), ionexL7(0.0), ionexL8(0.0);   // Galileo
 
-                  // calculate the position of the ionospheric pierce-point
+                  //	calculate the position of the ionospheric pierce-point
                   // corresponding to the receiver-satellite ray
                Position IPP = rxPos.getIonosphericPiercePoint( elevation,
                                                                azimuth,
@@ -158,11 +163,62 @@ namespace gpstk
                   // TODO
                   // Checking the collinearity of rxPos, IPP and SV
 
+                  // Convert coordinate system
+               Position pos(IPP);
+               pos.transformTo(Position::Geocentric);
+
+                  // Compute the IPP position directly above the place of the
+                  // receiver. 
+               Position rxIPP = rxPos.getIonosphericPiercePoint( 90,
+                                                                 0,
+                                                                 ionoHeight);
+
+                  // Now, Let's compute the difference of the latitude between 
+                  // the IPP and rxIPP
+               double latIPP = IPP.getGeocentricLatitude(); 
+               double latRxIPP = rxIPP.getGeocentricLatitude(); 
+
+                  // Now, compute the difference of the longitude between
+                  // the IPP and rxIPP
+               double lonIPP = pos.getLongitude(); 
+               double lonRxIPP = rxIPP.getLongitude(); 
+
+                  // Get the radius
+               double radius = rxIPP.getRadius();
+
+                  /////////////////////////////////////////
+                  //
+                  //   (rxIPP2) +         + (IPP) 
+                  //
+                  //            dB
+                  //
+                  //    (rxIPP) +   dL    + (rxIPP3)
+                  //
+                  // The coordinate of the rxIPP2 and rxIPP3 are as follows:
+                  // rxIPP2: lonRxIPP, latIPP
+                  // rxIPP3: lonIPP,   latRxIPP
+                  //
+                  /////////////////////////////////////////
+
+               Position rxIPP2,rxIPP3;
+               rxIPP2.setGeocentric( latIPP, lonRxIPP, radius);
+               rxIPP3.setGeocentric( latRxIPP, lonIPP, radius);
+
+               double diffLat, diffLon;
+
+                  // The range of dB with unit of meters.
+               diffLat = range(rxIPP, rxIPP2);
+               diffLon = range(rxIPP, rxIPP3);
+
+               cout << "diffLat" << diffLat << endl;
+               cout << "diffLon" << diffLon << endl;
+
+                  // Insert the range difference in latitude and longitude
+               (*stv).second[TypeID::diffLat]  = diffLat;
+               (*stv).second[TypeID::diffLon]  = diffLon;
 
                   // Let's get TEC, RMS and ionosphere height for IPP
                   // at current epoch
-               Position pos(IPP);
-               pos.transformTo(Position::Geocentric);
                Triple val = pDefaultMaps->getIonexValue( time, pos );
 
                   // just to make it handy for useage
@@ -211,74 +267,11 @@ namespace gpstk
 
                }
 
-                  // DCB corrections for P1 measurements and satellite clock
-                  // values should be considered because precise ephemerides
-                  // and satellite clock information for SP3 orbit file always
-                  // refers to the ionosphere-free linear combination (LC)
-                  // see Appendix B, pg.14 of the Ionex manual
-                  // Useful link:
-
-                  // http://www.ngs.noaa.gov/IGSWorkshop2008/docs/...
-                  // Schaer_DCB_IGSWS2008.ppt
-
-                  // Computing Differential Code Biases (DCB - nanoseconds)
-               double tempDCB( getDCBCorrections( time,
-                                                 (*pDefaultMaps),
-                                                  stv->first) );
-
-                  // add to the GDS the  corresponding correction,
-                  // if appropriate
-               if(useDCB)
-               {
-
-                     // Convert from nano second to meters
-                  double dcb(tempDCB * C_MPS * 1e-9);  // meters
-
-                     // the second LC factor (see gpstk::LinearCombinations.cpp)
-                     // see pg.14, Ionex manual
-                  double kappa1(-1.0/0.646944444);
-                  double kappa2(-1.646944444/0.646944444);
-
-                     /**
-                      * instP1 <=> ( kappa1 * dcb);
-                      * instP2 <=> ( kappa2 * dcb);
-                      */
-
-                     // If found 'instC1', it means the c12p1 bias has been
-                     // inserted, i.e. the c1 is used instead of P1.
-                  if( stv->second.find(TypeID::instC1) == stv->second.end() )
-                  {
-                     stv->second[TypeID::instC1] = (kappa1 * dcb);
-                  }
-                  else
-                  {
-                     stv->second[TypeID::instC1] += (kappa1 * dcb);
-                  }
-
-               }  // End of 'if(useDCB)...'
-
-                  // get the instrumental delays
-               double instC1 = stv->second[TypeID::instC1];
-
-               cout << "sat:" <<  stv->first 
-                    << "instC1:" << instC1 << endl;
-
                   // Now we have to add the new values (i.e., ionosphere delays)
                   // to the data structure
                (*stv).second[TypeID::ionoTEC] = tecval;
                (*stv).second[TypeID::ionoMap] = ionoMap;
-
-                  // Warning: here will add the ionospheric instrumental delays
-                  // on the ionoL1, by shjzhang, 2014/07/21.
-                  // Warning: The DCB will be different for different model
-                  // when using C1 observable.
-                  //
-                  // P1,L1, Pw,Lw  <NOT EQUAL> PC,LC,Pw,Lw
-                  //
-                  // TO BE Modified, 2014/11/17
-                  //
-               (*stv).second[TypeID::ionoL1]  = ionexL1 + instC1;
-
+               (*stv).second[TypeID::ionoL1]  = ionexL1;
                (*stv).second[TypeID::ionoL2]  = ionexL2;
                (*stv).second[TypeID::ionoL5]  = ionexL5;
                (*stv).second[TypeID::ionoL6]  = ionexL6;
@@ -286,10 +279,51 @@ namespace gpstk
                (*stv).second[TypeID::ionoL8]  = ionexL8;
 
 
+                  // DCB corrections for P1 measurements and satellite clock
+                  // values should be considered because precise ephemerides
+                  // and satellite clock information for SP3 orbit file always
+                  // refers to the ionosphere-free linear combination (LC)
+                  // see Appendix B, pg.14 of the Ionex manual
+                  // Useful link:
+
+// http://www.ngs.noaa.gov/IGSWorkshop2008/docs/Schaer_DCB_IGSWS2008.ppt
+
+                  // Computing Differential Code Biases (DCB - nanoseconds)
+               double tempDCB( getDCBCorrections( time,
+                                                 (*pDefaultMaps),
+                                                  stv->first) );
+
+
+                  // add to the GDS the  corresponding correction,
+                  // if appropriate
+               if(useDCB)
+               {
+
+                     // the second LC factor (see gpstk::LinearCombinations.cpp)
+                     // see pg.14, Ionex manual
+                  double kappa2(-1.0/0.646944444);  // -f2^2/(f1^2-f2^2)
+                  double kappa1(-1.0/0.392814977);  // -f1^2/(f1^2-f2^2)
+                  double dcb(tempDCB * C_MPS * 1e-9);  // p1-p2, meters
+
+                     // If instC1 is found, it means the C1 is used instead of P1
+                  if( stv->second.find(TypeID::instC1) != stv->second.end() )
+                  {
+                     stv->second[TypeID::instC1] += (kappa2 * dcb);
+                  }
+                  else
+                  {
+                     stv->second[TypeID::instC1]  = (kappa2 * dcb);
+                  }
+
+                     // the DCB corrections for P1/P2 observable
+                  stv->second[TypeID::instP1] = (kappa2 * dcb);
+                  stv->second[TypeID::instP2] = (kappa1 * dcb);
+
+               }  // End of 'if(useDCB)...'
+
             }  // End of 'if( stv->second.find(TypeID::elevation) == ... '
 
          }  // End of loop 'for(stv = gData.begin()...'
-
 
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);

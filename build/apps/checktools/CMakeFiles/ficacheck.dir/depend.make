@@ -29,6 +29,7 @@ apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/GNSSCore/ObsIDI
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -58,7 +59,6 @@ apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/Utilities/BinUt
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/Utilities/Exception.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../apps/checktools/CheckFrame.hpp
 apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o: ../apps/checktools/ficacheck.cpp
 

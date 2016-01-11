@@ -46,6 +46,7 @@ apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/GNSSCore/WGS84El
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -97,7 +98,6 @@ apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/Utilities/Except
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/positioning/CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o: ../lib/dev/RinexObsData.hpp

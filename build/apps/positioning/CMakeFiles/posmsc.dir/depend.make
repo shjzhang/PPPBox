@@ -20,6 +20,7 @@ apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/GNSSCore/EllipsoidMo
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/GNSSEph/MSCStore.hpp
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/GNSSEph/XvtStore.hpp
@@ -39,6 +40,5 @@ apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/TimeHandling/UnixTim
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/Utilities/Exception.hpp
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/positioning/CMakeFiles/posmsc.dir/posmsc.cpp.o: ../apps/positioning/posmsc.cpp
 

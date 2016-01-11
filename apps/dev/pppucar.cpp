@@ -18,6 +18,16 @@
 //    Collins, (2009)
 //    Ge, M, (2009)
 //    Laurichesse, (2009)
+//
+// Warning:
+//
+// You MUST take care that the model used in this program should
+// be consistent with the model that are used in the UPD estimation.
+//
+// To be clear:
+//
+// The P1P2 DCB should be corrected for the MW/LC model in the UPD
+// estimation.
 // 
 // Copyright 
 //
@@ -30,10 +40,11 @@
 // Revision
 //
 // 2015/12/10
-//
 // Create this program for PPP using raw observations 
 // with ambiguity resolution
 //
+// 2016/01/04
+// Debug the SolverPPPUCAR.
 //
 //============================================================================
 
@@ -156,8 +167,15 @@
    // Class to store satellite precise navigation data
 #include "MSCStore.hpp"
 
+   // Class to correct the P1C1 dcb 
+#include "CC2NONCC.hpp"
+
    // Class to correct satellite biases
 #include "CorrectUPDs.hpp"
+
+   // Class to compute ionosphere
+#include "IonexModel.hpp"
+#include "IonexStore.hpp"
 
    // Class to correct satellite biases
 #include "GDSUtils.hpp"
@@ -214,6 +232,9 @@ private:
       // Option for eop file list
    CommandOptionWithAnyArg ionFileListOpt;
 
+      // Option for p1c1 dcb file 
+   CommandOptionWithAnyArg dcbFileOpt;
+
       // Option for monitor coordinate file
    CommandOptionWithAnyArg mscFileOpt;
 
@@ -229,6 +250,7 @@ private:
    string eopFileListName;
    string updFileListName;
    string ionFileListName;
+   string dcbFileName;
    string mscFileName;
    string outputFileListName;
 
@@ -311,6 +333,10 @@ pppucar::pppucar(char* arg0)
                    "eopFileList",
    "file storing a list of IGS erp file name ",
                    true),
+   dcbFileOpt(    'd',
+                  "dcbFile",
+   "file storing the p1c1 dcb file name ",
+                   false),
    outputFileListOpt( 'o',
                    "outputFileList",
    "file storing the list of output file name ",
@@ -535,6 +561,10 @@ void pppucar::spinUp()
    {
       ionFileListName = ionFileListOpt.getValue()[0];
    }
+   if(dcbFileOpt.getCount())
+   {
+      dcbFileName = dcbFileOpt.getValue()[0];
+   }
    if(outputFileListOpt.getCount())
    {
       outputFileListName = outputFileListOpt.getValue()[0];
@@ -680,44 +710,61 @@ void pppucar::process()
       // Let's read ion files
       //***********************
       
-//    // Declare a "RinexUPDStore" object to handle satellite bias
-// RinexUPDStore updStore;
+      // Declare a "IonexStore" object to handle satellite bias
+   IonexStore ionexStore;
 
-//    // Now read upd files from 'updFileList'
-// ifstream updFileListStream;
+      // Now read ionex files from 'ionFileList'
+   ifstream ionFileListStream;
 
-//    // Open updFileList File
-// updFileListStream.open(updFileListName, ios::in);
-// if( !updFileListStream )
-// {
-//       // If file doesn't exist, issue a warning
-//    cerr << "UPD file List Name'" << updFileListName << "' doesn't exist or you don't "
-//         << "have permission to read it. Skipping it." << endl;
-//    exit(-1);
-// }
+      // Open updFileList File
+   ionFileListStream.open(ionFileListName, ios::in);
+   if( !ionFileListStream )
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "ION file List Name'" << ionFileListName << "' doesn't exist or you don't "
+           << "have permission to read it. Skipping it." << endl;
+      exit(-1);
+   }
 
-// string updFile;
-// while( updFileListStream >> updFile )
-// {
-//    try
-//    {
-//       updStore.loadFile( updFile );
-//    }
-//    catch (FileMissingException& e)
-//    {
-//          // If file doesn't exist, issue a warning
-//       cerr << "rinex UPD file '" << updFile << "' doesn't exist or you don't "
-//            << "have permission to read it. Skipping it." << endl;
-//       continue;
-//    }
-// }
+   string ionFile;
+   while( ionFileListStream >> ionFile )
+   {
+      try
+      {
+         ionexStore.loadFile( ionFile );
+      }
+      catch (FileMissingException& e)
+      {
+            // If file doesn't exist, issue a warning
+         cerr << "IONEX file '" << ionFile << "' doesn't exist or you don't "
+              << "have permission to read it. Skipping it." << endl;
+         continue;
+      }
+   }
 
-//    // Close file
-// updFileListStream.close();
+      // Close file
+   ionFileListStream.close();
 
-//////////////////////////////////////////////////////////////////////////
+      //***********************
+      // Let's read dcb files
+      //***********************
+      
+      // Read if we should use C1 instead of P1
+   bool usingC1( confReader.getValueAsBoolean( "useC1" ) );
+
+      // Read P1C1 DCB File
+   if(usingC1 && ( dcbFileOpt.getCount() == 0 ) )
+   {
+      cerr << " you must feed the dcb files" << endl;
+      exit(-1);
+   }
+
+      // If dcb file is given, then read them 
+   if(dcbFileOpt.getCount())
+   {
+      dcbFileName = dcbFileOpt.getCount();
+   }                     
    
-
       //***********************
       // Let's read eop files
       //***********************
@@ -743,7 +790,18 @@ void pppucar::process()
    {
       try
       {
-         eopStore.loadIGSFile( eopFile );
+         if( upperCase(eopFile.substr(0,3)) == "IGS" )
+         {
+            eopStore.loadIGSFile( eopFile );
+         }
+//       else if( upperCase(eopFile.substr(0,3)) == "COD" )
+//       {
+//          eopStore.loadCODFile( eopFile );
+//       }
+         else
+         {
+            cerr << "File type not supported!" << endl;
+         }
       }
       catch (FileMissingException& e)
       {
@@ -853,9 +911,10 @@ void pppucar::process()
       }
    }
 
-         // ===================
-         // Let's read rinex file list !!!!
-         // ===================
+
+         // ===========================================
+         // Let's process the rinex files one by one !!!
+         // ===========================================
 
       // We will read each rinex file
    vector<string>::const_iterator rnxit = rnxFileListVec.begin();
@@ -959,8 +1018,6 @@ void pppucar::process()
       SimpleFilter pObsFilter;
       pObsFilter.setFilteredType(TypeID::P2);
 
-         // Read if we should use C1 instead of P1
-      bool usingC1( confReader.getValueAsBoolean( "useC1" ) );
       if ( usingC1 )
       {
          requireObs.addRequiredType(TypeID::C1);
@@ -1050,6 +1107,20 @@ void pppucar::process()
          // Add to processing list
       pList.push_back(basic);
 
+
+         // Object to apply the P1C1 corrections for some receivers
+      CC2NONCC p1c1Corr;
+         // recType.list is given in the configuration file
+      p1c1Corr.setRecTypeFile( confReader.getValue( "recType.list" ) );
+         // dcb file name is given from the command line
+      p1c1Corr.setDCBFile( dcbFileName );
+
+         // If you use C1 code, and the dcb file is given, then
+         // correct the observables!
+      if(usingC1)
+      {
+         pList.push_back(p1c1Corr);
+      }
 
          // Object to correct the satellite biases.
       CorrectUPDs updCorr(updStore);
@@ -1178,6 +1249,12 @@ void pppucar::process()
       pList.push_back(computeTropo);       // Add to processing list
 
 
+         // Declare a IonexModel object to compute the ionospheric delays
+         // and the P1P2 instrumental biases at the same time 
+      IonexModel ionex(nominalPos, 
+                       ionexStore);
+      pList.push_back(ionex); // Add to processing list
+
          // Object to compute code combination with minus ionospheric delays
          // for L1/L2 calibration
       ComputeLinear linear2;
@@ -1264,28 +1341,8 @@ void pppucar::process()
          pList.push_back(pcFilter);       // Add to processing list
       }
 
-         // Update the Pn/Lw comb
-      ComputeLinear linear5;
-      if ( usingC1 )
-      {
-         linear5.addLinear(comb.pdeltaCombWithC1);
-      }
-      else
-      {
-         linear5.addLinear(comb.pdeltaCombination);
-      }
-      linear5.addLinear(comb.ldeltaCombination);
-      pList.push_back(linear5);       // Add to processing list
-
-
-         // Object to compute prefit-residuals
+         // Object to compute c1 or p1/p2/l1/l2 prefit-residuals
       ComputeLinear linear6;
-      linear6.addLinear(comb.mwubbenaPrefit);
-      linear6.addLinear(comb.pcPrefit);
-      linear6.addLinear(comb.lcPrefit);
-      linear6.addLinear(comb.pdeltaPrefit);
-      linear6.addLinear(comb.ldeltaPrefit);
-
       if( usingC1 )
       {
          linear6.addLinear(comb.c1Prefit);
@@ -1359,7 +1416,7 @@ void pppucar::process()
          if(reInitialize)
          {
             fbpppucarSolver.setReInitialize(reInitialize);
-            fbpppucarSolver.setRestartInterval(reInitialInterv);
+            fbpppucarSolver.setReInitInterv(reInitialInterv);
          }
 
             // Set Ambiguity fixing method for PPP
@@ -1370,6 +1427,12 @@ void pppucar::process()
          else if(ambMethod==2)
          {
             fbpppucarSolver.setARMethod("LAMBDA");
+         }
+
+            // Set whether using C1.
+         if(usingC1)
+         {
+            fbpppucarSolver.setUsingC1(usingC1);
          }
 
             // Add solver to processing list
@@ -1390,7 +1453,7 @@ void pppucar::process()
          if(reInitialize)
          {
             pppucarSolver.setReInitialize(reInitialize);
-            pppucarSolver.setRestartInterval(reInitialInterv);
+            pppucarSolver.setReInitInterv(reInitialInterv);
          }
 
             // Set Ambiguity fixing method for PPP
@@ -1401,6 +1464,12 @@ void pppucar::process()
          else if(ambMethod==2)
          {
             pppucarSolver.setARMethod("LAMBDA");
+         }
+
+            // Set if use C1 instead of P1
+         if(usingC1)
+         {
+            pppucarSolver.setUsingC1(usingC1);
          }
 
             // Add solver to processing list

@@ -140,6 +140,8 @@ ObsIDInitializer.hpp
 ObsID.hpp
 ../lib/GNSSCore/ObsID.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/RinexObsID.hpp
 ObsID.hpp
 ../lib/GNSSEph/ObsID.hpp
@@ -437,8 +439,6 @@ iomanip
 -
 singleton.hpp
 ../lib/Utilities/singleton.hpp
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/RinexObsHeader.hpp
 vector

@@ -29,6 +29,7 @@ apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/GNSSCore/Ob
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -61,7 +62,6 @@ apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/Utilities/B
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/Utilities/Exception.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../apps/mergetools/MergeFrame.hpp
 apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o: ../apps/mergetools/mergeRinNav.cpp
 

@@ -26,6 +26,7 @@ apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/GNSSCore/WGS84Ellipso
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -71,7 +72,6 @@ apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/Utilities/Exception.h
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/swrx/CMakeFiles/simpleNav.dir/simpleNav.cpp.o: ../apps/swrx/simpleNav.cpp
 

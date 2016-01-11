@@ -18,6 +18,7 @@ apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/FileHandling/FFStream
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/GNSSCore/ObsID.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/Math/MathBase.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/Misc/mergePCodeWords.h
@@ -45,7 +46,6 @@ apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/TimeHandling/YDSTime.
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/Utilities/Exception.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../apps/swrx/CACodeGenerator.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../apps/swrx/CCReplica.hpp
 apps/swrx/CMakeFiles/trackerMT.dir/trackerMT.cpp.o: ../apps/swrx/CodeGenerator.hpp

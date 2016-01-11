@@ -20,6 +20,7 @@ apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/FileHandling/FFTextS
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/FileHandling/RINEX/RinexObsFilterOperators.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
+apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/Math/MathBase.hpp
@@ -35,7 +36,6 @@ apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/TimeHandling/TimeTag
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/Utilities/Exception.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o: ../apps/difftools/DiffFrame.hpp

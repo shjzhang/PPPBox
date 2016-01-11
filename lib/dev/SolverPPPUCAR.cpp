@@ -43,6 +43,19 @@
 //  (2) spatial constraints
 //  (3) receiver bias constraints
 //
+//  2015/12/21
+//  estiamte one clock plus 3 instrumental biases.
+//
+//  2016/01/02
+//  finish the whole codes for the undifferenced uncombined PPP with 
+//  ambiguity fixing.
+//
+//  2016/01/02
+//  to be tested!
+//
+//  2016/01/11
+//  finish the code.
+//
 //============================================================================
 
 #include "SolverPPPUCAR.hpp"
@@ -77,14 +90,16 @@ namespace gpstk
        * @param useNEU   If true, will compute dLat, dLon, dH coordinates;
        *                 if false (the default), will compute dx, dy, dz.
        */
-   SolverPPPUCAR::SolverPPPUCAR(bool useNEU)
+   SolverPPPUCAR::SolverPPPUCAR(bool useNEU, int polyOrder)
       : firstTime(true), converged(false), bufferSize(4),
-        aprioriIonoVar(100.0), aprioriTropoVar(1.0),
-        reInitialize(false), reInitialInterval(864000000.0)
+        aprioriIonoVar(100.0), aprioriSpatialVar(0.09),aprioriTropoVar(1.0),
+        aprioriDCBVar(0.01),
+        reInitialize(false), reInitialInterval(864000000.0),
+        usingC1(false)
    {
 
          // Set the equation system structure
-      setNEU(useNEU);
+      setNEU(useNEU,polyOrder);
 
          // Set the class index
       setIndex();
@@ -106,10 +121,33 @@ namespace gpstk
       setCoordinatesModel( &constantModel );
 
          // Pointer to default receiver clock stochastic model (white noise)
-      pClockStoModel   = &whitenoiseModel;
-      pClockStoModelP2 = &whitenoiseModel;
-      pClockStoModelL1 = &whitenoiseModel;
-      pClockStoModelL2 = &whitenoiseModel;
+      pClockStoModel = &whitenoiseModel;
+
+         // Set the process noise for dcb and upd.
+      dcbModel.setQprime(3.0e-4);
+      updModelL1.setQprime(3.0e-4);
+      updModelL2.setQprime(3.0e-4);
+
+         // Pointer to default dcb stochastic model(white noise)
+      pDCBStoModel   = &dcbModel;
+      pUPDStoModelL1 = &updModelL1;
+      pUPDStoModelL2 = &updModelL2;
+
+         // Should be adjusted in the later version!
+      A0Model.setQprime(3.0e-4);
+      A1Model.setQprime(3.0e-4);
+      A2Model.setQprime(3.0e-4);
+      A3Model.setQprime(3.0e-4);
+      A4Model.setQprime(3.0e-4);
+      A5Model.setQprime(3.0e-4);
+
+         // Pointer to stochastic model for spatial constraints
+      pA0StoModel    = &A0Model;
+      pA1StoModel    = &A1Model;
+      pA2StoModel    = &A2Model;
+      pA3StoModel    = &A3Model;
+      pA4StoModel    = &A4Model;
+      pA5StoModel    = &A5Model;
 
          // Pointer to stochastic model for phase biases
       pAmbiModelL1 = &ambiModelL1;
@@ -275,9 +313,7 @@ namespace gpstk
                     ionoUnks.insert(var);
                  }
              }
-
          }
-
 
          for( VariableSet::const_iterator itVar = varUnknowns.begin();
               itVar != varUnknowns.end();
@@ -291,50 +327,65 @@ namespace gpstk
          numCurrentSV =  gData.numSats();
 
             // Total measurement number
-            // P1/P2/L1/L2/IonoL1/Trop
-         numMeas = 4 * numCurrentSV + numCurrentSV + 1;
+            // 4*numCurrentSV  P1/P2/L1/L2
+            // numCurrentSV    IonoConstraint
+            // 1               TropConstranit
+            // numCurrentSV    SpatialConstraits
+            // 1               receiver dcb constraints
+         numMeas =   numCurrentSV*4 +   // raw observations
+                     numCurrentSV   +   // iono constraints
+                     numCurrentSV   +   // spatial constraints
+                     1              +   // tropo constraints
+                     1;                 // dcb constraints
 
-            // Number of 'src-indexed' variables i.e.  
-            // 1 trospheric delay + 3 coordinates + 4 receiver clock 
+            // Number of 'src_indexed' variables i.e.  
+            // 1 trospheric delay 
+            // 3 coordinates 
+            // 1 receiver clock 
+            // 3 inst bias
+            // 3 or 6 polynomial coefficients according to the 'polyOrder'
          numVar = srcIndexedTypes.size();
 
             // Total number of unknowns is defined as :
-            // numVar + 
-            // numCurrentSV of ionospheric delays + 
-            // numCurrentSV of L1 ambiguities
-            // numCurrentSV of L2 ambiguities
+            // src indexed variables   numVar 
+            // ionospheric delays      numCurrentSV
+            // L1 ambiguities          numCurrentSV
+            // L2 ambiguities          numCurrentSV
          numUnknowns = numVar + 3*numCurrentSV;
 
             //=============================================
-            //
             // Now, fill the measVector
-            //
             //=============================================
 
             // Build the vector of measurements (Prefit-residuals): Code + phase
          measVector.resize(numMeas, 0.0);
 
-  
-         satTypeValueMap dummyC1(gData.body.extractTypeID(TypeID::prefitC1));
-         satTypeValueMap dummyP1(gData.body.extractTypeID(TypeID::prefitP1));
-
-            // Firstly, let's check the satellite number of C1 and P1 observables
-         if( dummyC1.numSats() == 0 && dummyP1.numSats() ==0 )
-         {
-            GPSTK_THROW(ValueNotFound("Both C1 and P1 is not found in gRin!"));
-         }
-
-            // Get the prefit residuals from 'gData'
          Vector<double> prefitC;
-
-            // If C1 is not empty, then use C1
-         if ( dummyC1.numSats() == numCurrentSV )
+            // Get the prefit residuals from 'gData'
+         satTypeValueMap dummyCode;
+         if(usingC1)
          {
-             prefitC = gData.getVectorOfTypeID(TypeID::prefitC1);
+            dummyCode = gData.body.extractTypeID(TypeID::prefitC1);
+
+              // Check size
+            if( dummyCode.numSats() != numCurrentSV )
+            {
+               GPSTK_THROW(ValueNotFound("C1 is not found in gRin!"));
+            }
+
+            prefitC = gData.getVectorOfTypeID(TypeID::prefitC1);
          }
          else
          {
-             prefitC = gData.getVectorOfTypeID(TypeID::prefitP1);
+            dummyCode = gData.body.extractTypeID(TypeID::prefitP1);
+
+              // Check size
+            if( dummyCode.numSats() != numCurrentSV )
+            {
+               GPSTK_THROW(ValueNotFound("P1 is not found in gRin!"));
+            }
+
+            prefitC = gData.getVectorOfTypeID(TypeID::prefitP1);
          }
 
          Vector<double> prefitP2(gData.getVectorOfTypeID(TypeID::prefitP2));
@@ -349,40 +400,63 @@ namespace gpstk
             measVector( i + 3*numCurrentSV ) = prefitL2(i);
          }
             
-         ////////////// ///////////////////////////////////////////////////
-         //            
-         //  Warning:
-         //  The input ionospheric delays constraints should be match!
-         //
-         //  slant_iono_L1    = 1.0*slant_iono_type;
-         //  vertical_iono_L1 = 1.0/iono_map*slant_iono_type;
-         //
-         //  slant_iono_L1    = 1.0*iono_map*vertical_iono_type;
-         //  vertical_iono_L1 = 1.0*vertical_iono_type; 
-         //
-         ////////////// ///////////////////////////////////////////////////
+            //*********************************************
+            //  Now, The apriori ionospheric delays
+            //*********************************************
 
             // Get apriori initial ionospheric delays from 'gData'
          Vector<double> aprioriIono(gData.getVectorOfTypeID(TypeID::ionoL1));
 
-            // Warning: if there are no iono data, 'ZERO' data will be assigned
-            //          to 'measVector'
+            // Warning
+            // if there are no iono data, 'ZERO' data will be assigned
+            // to 'measVector'
          for( int i=0; i<numCurrentSV; i++ )
          {
             measVector( i + 4*numCurrentSV ) = aprioriIono(i);
          }
-         cout << "aprioriIono" << aprioriIono << endl;
 
+            //*********************************************
+            //  Now, The spatial constraints
+            //  0 = a0 + a1*dL + a2*dB + ..., sigma
+            //*********************************************
+         for( int i=0; i<numCurrentSV; i++ )
+         {
+            measVector( i + 5*numCurrentSV ) = 0.0;
+         }
+
+            //*********************************************
+            //  Now, The apriori tropospheric delays
+            //*********************************************
             // Get tropospheric delays from 'gData.header.source'
          double aprioriTropo( gData.header.source.zwdMap[TypeID::wetTropo] );
 
-            // Warning: if there are no 'wetTropo' data, 'ZERO' data will be assigned
-            //          to 'measVector'
-         measVector( 5*numCurrentSV ) = aprioriTropo;
+            // Warning
+            // if there are no 'wetTropo' data, 'ZERO' data will be assigned
+            // to 'measVector'
+         measVector( 6*numCurrentSV ) = aprioriTropo;
 
-         cout << "aprioriTropo" << aprioriTropo << endl;
+         if(debugLevel)
+         {
+            cout << "aprioriTropo" << aprioriTropo << endl;
+         }
 
-            //>Now, Fill the rMatrix
+            //*********************************************
+            //  Now, The apriori dcb delays
+            //*********************************************
+            
+            // Get tropospheric delays from 'gData.header.source'
+         double aprioriDCB;
+
+         aprioriDCB = ( gData.header.source.zwdMap[TypeID::recInstP2] );
+
+            // Warning
+            // if there are no 'aprioriDCB' data, 'ZERO' data will be assigned
+            // to 'measVector'
+         measVector( 6*numCurrentSV + 1) = aprioriDCB;
+
+            //=============================================
+            // Now, Fill the rMatrix
+            //=============================================
 
             // Weights matrix
          rMatrix.resize(numMeas, numMeas, 0.0);
@@ -390,9 +464,9 @@ namespace gpstk
             // Now, get the weight from 'gData'
          satTypeValueMap dummy(gData.body.extractTypeID(TypeID::weight));
 
-            // 
+            //************************* 
             // Weight for observations
-            //
+            //************************* 
          if ( dummy.numSats() == numCurrentSV )
          {
 
@@ -431,18 +505,18 @@ namespace gpstk
             }
          }
 
-            // 
+            //************************* 
             // Weight for ionospheric delays
-            //
-         satTypeValueMap dummyIonoWeight(gData.body.extractTypeID(TypeID::ionoL1Weight));
+            //************************* 
+         satTypeValueMap dummyIonoWeight(gData.body.extractTypeID(TypeID::ionoL1Var));
          if ( dummyIonoWeight.numSats() == numCurrentSV )
          {
                // If we have weights information, let's load it
-            Vector<double> wVec(gData.getVectorOfTypeID(TypeID::ionoL1Weight));
+            Vector<double> varVec(gData.getVectorOfTypeID(TypeID::ionoL1Var));
 
             for( int i=0; i<numCurrentSV; i++ )
             {
-               rMatrix( i + 4*numCurrentSV, i + 4*numCurrentSV ) = wVec(i); 
+               rMatrix( i + 4*numCurrentSV, i + 4*numCurrentSV ) = 1.0/varVec(i); 
             }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
          }
          else
@@ -453,16 +527,44 @@ namespace gpstk
             }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
          }
 
-         double tropoWeight(gData.header.source.zwdMap[TypeID::tropoWeight]);
+            //************************* 
+            // Weight for spatial constraints
+            //************************* 
+         for( int i=0; i<numCurrentSV; i++ )
+         {
+            rMatrix( i + 5*numCurrentSV, i + 5*numCurrentSV ) = 1.0/aprioriSpatialVar; 
+         }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
+
+
+            //************************* 
+            // Weight for tropo constraints
+            //************************* 
+         double tropoVar(gData.header.source.zwdMap[TypeID::wetTropoVar]);
 
            // If initial trop weight is given
-         if ( tropoWeight != 0.0 )
+         if ( tropoVar != 0.0 )
          {
-            rMatrix(5*numCurrentSV, 5*numCurrentSV) = tropoWeight ;
+            rMatrix(6*numCurrentSV, 6*numCurrentSV) = 1.0/tropoVar ;
          }
          else
          {
-            rMatrix(5*numCurrentSV, 5*numCurrentSV) = 1.0/aprioriTropoVar ;
+            rMatrix(6*numCurrentSV, 6*numCurrentSV) = 1.0/aprioriTropoVar ;
+         }
+
+            //************************* 
+            // Weight for dcb constraints
+            //************************* 
+         double dcbVar;
+         dcbVar= (gData.header.source.zwdMap[TypeID::recInstP2Var]);
+
+           // If initial trop weight is given
+         if ( dcbVar!= 0.0 )
+         {
+            rMatrix(6*numCurrentSV+1, 6*numCurrentSV+1) = 1.0/dcbVar;
+         }
+         else
+         {
+            rMatrix(6*numCurrentSV+1, 6*numCurrentSV+1) = 1.0/aprioriDCBVar ;
          }
 
             /////////////////////////////////
@@ -472,14 +574,16 @@ namespace gpstk
             // Generate the corresponding geometry/design matrix
          hMatrix.resize(numMeas, numUnknowns, 0.0);
 
-            // Get the values corresponding to 'core' variables
-         Matrix<double> dMatrix(gData.body.getMatrixOfTypes(commonUnkTypes));
+            //*********************************** 
+            // hMatrix for P1/P2/L1/L2
+            //*********************************** 
 
-            // Warning:
-            // The common unknow type number is 4!
-         if(commonUnkTypes.size() != 4)
+            // Get the values corresponding to 'core' variables
+         Matrix<double> dMatrix(gData.body.getMatrixOfTypes(coreTypes));
+
+         if(coreTypes.size() != 4)
          {
-            InvalidSolver e("The common unknown type size is not equal with 4!");
+            InvalidSolver e("The core types size is not equal with 4!");
             GPSTK_THROW(e);
          }
 
@@ -496,37 +600,46 @@ namespace gpstk
                hMatrix( i + 3*numCurrentSV, j ) = dMatrix(i,j); // L2
             }
 
-               // Now, fill the reciever clock's coefficients for P1, P2, L1, L2
-               // Warning: receiver clock for P1 and P2 should be the same ( ??? )
+               // Now, fill the reciever clock's coefficients 
+               // we have common clock for all observables, C1 or P1/P2/L1/L2
             hMatrix( i                 , 4 ) = 1.0; // P1
+            hMatrix( i +   numCurrentSV, 4 ) = 1.0; // P2
+            hMatrix( i + 2*numCurrentSV, 4 ) = 1.0; // L1
+            hMatrix( i + 3*numCurrentSV, 4 ) = 1.0; // L2
+               // receiver dcb for P2
             hMatrix( i +   numCurrentSV, 5 ) = 1.0; // P2
-               // Warning: receiver clock for L1 and L2 are different from 
-               //          the common clock on Pc
+               // receiver upd for L1
             hMatrix( i + 2*numCurrentSV, 6 ) = 1.0; // L1
+               // receiver upd for L2
             hMatrix( i + 3*numCurrentSV, 7 ) = 1.0; // L2
 
          }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
 
-         ////////////// ///////////////////////////////////////////////////
-         //            
-         //             Furture plan
-         //
-         //  The mapping function for ionospheric delays should be
-         //  applied to convert the slant ionospheric delays 
-         //  to vertical ionospheric delays.
-         //            
-         ////////////// ///////////////////////////////////////////////////
+            //                                                              
+            // Now, fill the coefficients related to vertical ionospheric 
+            // delays on L1 
+            //                                                              
+         satTypeValueMap dummyIonoMap(gData.body.extractTypeID(TypeID::ionoMap));
+         if(dummyIonoMap.numSats() != numCurrentSV)
+         {
+            GPSTK_THROW(ValueNotFound("ionoMap can't be found in gRin!"));
+         }
 
-            // Now, fill the coefficients related to ionospheric delays (ionoL1)
+            // load ionomap
+         Vector<double> ionoMapVec(gData.getVectorOfTypeID(TypeID::ionoMap));
+            
+            // Stec = Vtec * ionoMap;
          for( int i=0; i<numCurrentSV; i++ )
          {
-            hMatrix( i                 , numVar + i ) =  1.0; // P1
-            hMatrix( i +   numCurrentSV, numVar + i ) =  GAMMA_GPS; // P2 
-            hMatrix( i + 2*numCurrentSV, numVar + i ) = -1.0; // L1
-            hMatrix( i + 3*numCurrentSV, numVar + i ) = -GAMMA_GPS; // L2 
+            hMatrix( i                 , numVar + i ) =  1.0*ionoMapVec(i); // P1
+            hMatrix( i +   numCurrentSV, numVar + i ) =  GAMMA_GPS*ionoMapVec(i); // P2 
+            hMatrix( i + 2*numCurrentSV, numVar + i ) = -1.0*ionoMapVec(i); // L1
+            hMatrix( i + 3*numCurrentSV, numVar + i ) = -GAMMA_GPS*ionoMapVec(i); // L2 
          }  
 
-            // Now, fill the coefficients related to the ambiguities
+            //                                                              
+            // Now, Let's fix the coefficients related to the ambiguities
+            //                                                              
          for( int i=0; i<numCurrentSV; i++ )
          {
                // ambL1 are listed after ( numVar + ionoL1 )
@@ -537,14 +650,82 @@ namespace gpstk
                 = -0.244210213425;
          }                                                    
 
-            // Now, fill the coefficients for 'aprioriIono'
+            //*************************************** 
+            // hMatrix for the aprioriIono equation 
+            //*************************************** 
+
+            // Now, fill the coefficients related to 'ionoL1' 
          for(int i=0; i<numCurrentSV;i++)
          {
-            hMatrix(i + 4*numCurrentSV, numVar + i ) = 1.0;
+            hMatrix(i + 4*numCurrentSV, numVar + i ) = ionoMapVec(i);
+         }
+
+            //******************************************** 
+            // hMatrix for the spatial constraint equation 
+            //******************************************** 
+         satTypeValueMap dummyDiffLatMap(gData.body.extractTypeID(TypeID::diffLat));
+         if(dummyDiffLatMap.numSats() != numCurrentSV)
+         {
+            GPSTK_THROW(ValueNotFound("diffLat can't be found in gRin!"));
+         }
+
+            // longitude difference
+         Vector<double> diffLonVec(gData.getVectorOfTypeID(TypeID::diffLon));
+         Vector<double> diffLatVec(gData.getVectorOfTypeID(TypeID::diffLat));
+
+         cout << "numVar" << numVar << endl;
+         cout << "polyOrder" << polyOrder << endl;
+
+            // Now, fill the coefficients related to 'ai(i=0,...,5)'
+         for(int i=0; i<numCurrentSV;i++)
+         {
+            double dL = diffLonVec(i);
+            double dB = diffLatVec(i);
+
+               // 0(i) = a0 + a1*dL(i) + a2*dB(i) - I(i)
+            if(polyOrder == 1)
+            {
+               hMatrix(i + 5*numCurrentSV, 8  ) = 1.0;           // a0
+               hMatrix(i + 5*numCurrentSV, 9  ) = dL; // a1
+               hMatrix(i + 5*numCurrentSV, 10 ) = dB; // a2
+            }
+               // 0(i) = a0 + a1*dL(i) + a2*dB(i) + a3*dL(i)*dL(i)
+               //           + a4*dL(i)*dB(i) + a5*dB(i)^2 - I(i)
+            else if (polyOrder == 2 )
+            {
+               hMatrix(i + 5*numCurrentSV, 8  ) = 1.0;
+               hMatrix(i + 5*numCurrentSV, 9  ) = dL;
+               hMatrix(i + 5*numCurrentSV, 10 ) = dB;
+               hMatrix(i + 5*numCurrentSV, 11 ) = dL*dL;
+               hMatrix(i + 5*numCurrentSV, 12 ) = dL*dB;
+               hMatrix(i + 5*numCurrentSV, 13 ) = dB*dB;
+            }
          }
             
+            // Now, fill the coefficients related to the vertical 'ionoL1' 
+         for(int i=0; i<numCurrentSV;i++)
+         {
+            hMatrix(i + 5*numCurrentSV, numVar + i ) = -1.0;
+         }
+
+            //******************************************** 
+            // hMatrix for the trop constraints 
+            //******************************************** 
+            
             // Now, fill the coefficients for 'aprioriTropo'
-         hMatrix( 5*numCurrentSV, 0 ) = 1.0;
+            // WARNING: the tropospheric delays should be 'WET_TROP'
+         hMatrix( 6*numCurrentSV, 0 ) = 1.0;
+
+
+            //******************************************** 
+            // hMatrix for the receiver DCB constraints 
+            //******************************************** 
+            // 1 trop
+            // 3 coordinates
+            // 1 receiver clock
+            // 3 inst bias
+            // Now, fill the coefficients for 'recInstP2'
+         hMatrix( 6*numCurrentSV + 1, 5 ) = 1.0;
 
             ////////////////////////////////////////////////
             //          
@@ -588,22 +769,65 @@ namespace gpstk
          qMatrix(4,4)   = pClockStoModel->getQ();
 
             // Fourth, the P2 receiver clock 
-         pClockStoModelP2->Prepare( dummySat,
+         pDCBStoModel->Prepare( dummySat,
                                   gData );
-         phiMatrix(5,5) = pClockStoModelP2->getPhi();
-         qMatrix(5,5)   = pClockStoModelP2->getQ();
+         phiMatrix(5,5) = pDCBStoModel->getPhi();
+         qMatrix(5,5)   = pDCBStoModel->getQ();
 
             // Fifth, the L1 receiver clock 
-         pClockStoModelL1->Prepare( dummySat,
+         pUPDStoModelL1->Prepare( dummySat,
                                   gData );
-         phiMatrix(6,6) = pClockStoModelL1->getPhi();
-         qMatrix(6,6)   = pClockStoModelL1->getQ();
+         phiMatrix(6,6) = pUPDStoModelL1->getPhi();
+         qMatrix(6,6)   = pUPDStoModelL1->getQ();
 
             // Sixth, the receiver clock on L2
-         pClockStoModelL2->Prepare( dummySat,
+         pUPDStoModelL2->Prepare( dummySat,
                                   gData );
-         phiMatrix(7,7) = pClockStoModelL2->getPhi();
-         qMatrix(7,7)   = pClockStoModelL2->getQ();
+         phiMatrix(7,7) = pUPDStoModelL2->getPhi();
+         qMatrix(7,7)   = pUPDStoModelL2->getQ();
+
+            // Now, fill the polynomial coefficients
+         if(polyOrder==1)
+         {
+            pA0StoModel->Prepare(dummySat, gData);
+            pA1StoModel->Prepare(dummySat, gData);
+            pA2StoModel->Prepare(dummySat, gData);
+
+            phiMatrix(8,8)   = pA0StoModel->getPhi();
+            phiMatrix(9,9)   = pA1StoModel->getPhi();
+            phiMatrix(10,10) = pA2StoModel->getPhi();
+
+            qMatrix(8,8)     = pA0StoModel->getQ();
+            qMatrix(9,9)     = pA1StoModel->getQ();
+            qMatrix(10,10)   = pA2StoModel->getQ();
+
+         }
+         else if(polyOrder==2)
+         {
+            pA0StoModel->Prepare(dummySat, gData);
+            pA1StoModel->Prepare(dummySat, gData);
+            pA2StoModel->Prepare(dummySat, gData);
+            pA3StoModel->Prepare(dummySat, gData);
+            pA4StoModel->Prepare(dummySat, gData);
+            pA5StoModel->Prepare(dummySat, gData);
+
+                // Phi 
+            phiMatrix(8,8)   = pA0StoModel->getPhi();
+            phiMatrix(9,9)   = pA1StoModel->getPhi();
+            phiMatrix(10,10) = pA2StoModel->getPhi();
+            phiMatrix(11,11) = pA3StoModel->getPhi();
+            phiMatrix(12,12) = pA4StoModel->getPhi();
+            phiMatrix(13,13) = pA5StoModel->getPhi();
+
+                // Q
+            qMatrix(8,8)     = pA0StoModel->getQ();
+            qMatrix(9,9)     = pA1StoModel->getQ();
+            qMatrix(10,10)   = pA2StoModel->getQ();
+            qMatrix(11,11)   = pA3StoModel->getQ();
+            qMatrix(12,12)   = pA4StoModel->getQ();
+            qMatrix(13,13)   = pA5StoModel->getQ();
+
+         }
 
 
             // Now, fill the ionospheric delays
@@ -682,6 +906,22 @@ namespace gpstk
             initialErrorCovariance(5,5) = 9.0e10;
             initialErrorCovariance(6,6) = 9.0e10;
             initialErrorCovariance(7,7) = 9.0e10;
+
+            if(polyOrder==1)
+            {
+               initialErrorCovariance(8,8)   = 9.0e10;
+               initialErrorCovariance(9,9)   = 9.0e10;
+               initialErrorCovariance(10,10) = 9.0e10;
+            }
+            else if(polyOrder==2)
+            {
+               initialErrorCovariance(8,8)   = 9.0e10;
+               initialErrorCovariance(9,9)   = 9.0e10;
+               initialErrorCovariance(10,10) = 9.0e10;
+               initialErrorCovariance(11,11) = 9.0e10;
+               initialErrorCovariance(12,12) = 9.0e10;
+               initialErrorCovariance(13,13) = 9.0e10;
+            }
 
                // Third, the ionospheric delays
             for( int i=numVar; i<numVar+numCurrentSV; i++ )
@@ -836,7 +1076,7 @@ namespace gpstk
                }  // End of for( VariableSet::const_iterator itVar1 = ionoUnks...'
 
 
-                  // Then, reset the ambiguity, which is equivalent
+                  // Then, reset the ambiguities, which is equivalent
                   // to introducing cycle slips for all satellites.
                for( int i=numVar+numCurrentSV; i<numUnknowns; i++ )
                {
@@ -875,14 +1115,11 @@ namespace gpstk
                   
                   // We need a copy of 'varUnknowns'
                VariableSet tempSet( varUnknowns );
-
                c1 = numVar;         // Reset 'c1' index
-
                for( VariableSet::const_iterator itVar1 = varUnknowns.begin();
                     itVar1 != varUnknowns.end();
                     ++itVar1 )
                {
-
                         // Check if '(*itVar2)' belongs to 'covarianceMap'
                   if( covarianceMap.find( (*itVar1) ) != covarianceMap.end()  )
                   {
@@ -1084,7 +1321,7 @@ of qMatrix");
       try
       {
 
-            // Firstly,  get the float ambiguities and corresponding covariance 
+            // Firstly, get the float ambiguities and corresponding covariance 
             // from 'predicted' state and covariance matrix.
          std::map<SatID, double> ambL1Map;
          std::map<SatID, double> ambL2Map;
@@ -1140,7 +1377,7 @@ of qMatrix");
 
             // Now, Let's get the constraint equation
 
-            // Number of Fixed widelane ambiguities
+            // Number of fixed L1 ambiguities
          int numBL1( ambL1FixedMap.size() );
         
             // Equation matrix
@@ -1249,7 +1486,7 @@ of qMatrix");
          }
 
 
-            // Now, Let's store the bw 
+            // Now, Let's store the BL1 constraint equation
          int rowStart(numMeas) ;
          for(int i=0; i<numBL1; i++)
          {
@@ -1317,7 +1554,6 @@ of qMatrix");
 
       try
       {
-
          Vector<double> ambWLFixed(numCurrentSV, 0.0);
          Vector<double> ambWLFlag(numCurrentSV,0.0);
 
@@ -1371,7 +1607,7 @@ of qMatrix");
 
          Matrix<double> mapMatrix(numUnknowns,numUnknowns,0.0);
            
-            // For trop,coord,rcv clk,iono,and BL1
+            // For trop,coord,rcv clk, inst bias,poly ceoff,iono,and BL1
             // don't change
          for(int i=0; i<numVar + 2*numCurrentSV;i++)
          {
@@ -1882,6 +2118,9 @@ of qMatrix");
              ambL2Flag(i)  = ambL1Flag(i);
          }
 
+         cout << "ambL1Fixed" << ambL1Fixed << endl;
+         cout << "ambL2Fixed" << ambL2Fixed << endl;
+
             //
             // Now, convert the transformed newState/newCov to the
             // raw values.
@@ -1899,6 +2138,9 @@ of qMatrix");
 
          newState = tempState;
          newCov = tempCov;
+
+            // check
+         cout << "newState" << newState << endl;
 
             //
             // Now, Let's compute the postfit-residual                  
@@ -1924,9 +2166,7 @@ of qMatrix");
          }
 
             ////////////////////////////////////////////////////////
-            //
             // Postfit residual testing is to be applied in the future!
-            //
             ////////////////////////////////////////////////////////
 
             //*************************************************
@@ -1937,30 +2177,42 @@ of qMatrix");
 
             // Firstly, insert the wet tropospheric delays
             
-         double wetTropo(0.0);
+         double wetTropo, wetTropoVar;
          wetTropo = newState(0);
+         wetTropoVar = newCov(0,0);
+
          gData.header.source.zwdMap[TypeID::wetTropo] = wetTropo;
+         gData.header.source.zwdMap[TypeID::wetTropoVar] = wetTropoVar;
 
             // Secondly, insert the ionospheric delays into body of the 'gnssRinex'
 
             // Now, get the ionoL1 from 'currentState'
          Vector<double> ionoL1(numCurrentSV,0.0);
+         Vector<double> ionoL1Var(numCurrentSV,0.0);
+         Vector<double> ionoMapVec(gData.getVectorOfTypeID(TypeID::ionoMap));
 
-            // Get ionospheric delays from solution
+            // Get slant ionospheric delays from solution
+            // Warning: 
+            // Convert the 'vertical' ionoL1 to 'slant' ionoL1 using formula:
+            // sIonoL1 = vIonoL1 * ionoMap ;
          for( int i=0; i<numCurrentSV; i++ )
          {
-             ionoL1(i) = newState( numVar + i );
+            double ionoMap;
+            ionoMap = ionoMapVec(i);
+            ionoL1(i) = ionoMap * newState( numVar + i ) ;
+            ionoL1Var(i) = ionoMap * newCov( numVar+i, numVar+i ) * ionoMap;
          }
+
          gData.insertTypeIDVector(TypeID::ionoL1, ionoL1);
+         gData.insertTypeIDVector(TypeID::ionoL1Var, ionoL1Var);
 
             // Insert the fixed ambiguity flags for RTX positioning
          gData.insertTypeIDVector(TypeID::BL1Flag, ambL1Flag);
+         gData.insertTypeIDVector(TypeID::BL2Flag, ambL2Flag);
 
-         //*******************************************************
-         //                                                       
-         //  Only the float solution/covMatrix are transferred    
-         //                                                       
-         //*******************************************************
+           //****************************************************
+           //  Only the float solution/covMatrix are transferred    
+           //****************************************************
   
             // Return 
          return gData;
@@ -2291,7 +2543,7 @@ matrix and a priori state estimation vector do not match.");
        *                be used
        *
        */
-   SolverPPPUCAR& SolverPPPUCAR::setNEU( bool useNEU )
+   SolverPPPUCAR& SolverPPPUCAR::setNEU( bool useNEU, int polyOrder )
    {
          //
          //  Firstly, let's clear all the set that storing the variable types.
@@ -2302,7 +2554,7 @@ matrix and a priori state estimation vector do not match.");
 
       srcIndexedTypes.clear();
       satIndexedTypes.clear();
-      commonUnkTypes.clear();
+      coreTypes.clear();
 
          //>Firstly, fill the types that are source-indexed 
 
@@ -2323,10 +2575,26 @@ matrix and a priori state estimation vector do not match.");
          srcIndexedTypes.insert(TypeID::dz);   // #4
       }
 
-      srcIndexedTypes.insert(TypeID::cdt); // #5
-      srcIndexedTypes.insert(TypeID::cdtP2); // #5
-      srcIndexedTypes.insert(TypeID::cdtL1); // #6  
-      srcIndexedTypes.insert(TypeID::cdtL2); // #7
+      srcIndexedTypes.insert(TypeID::cdt);     // #5
+      srcIndexedTypes.insert(TypeID::recInstP2);  // #6
+      srcIndexedTypes.insert(TypeID::updL1);  // #7  
+      srcIndexedTypes.insert(TypeID::updL2);  // #8
+
+      if ( polyOrder == 1 )
+      {
+         srcIndexedTypes.insert(TypeID::a0);
+         srcIndexedTypes.insert(TypeID::a1);
+         srcIndexedTypes.insert(TypeID::a2);
+      }
+      else if( polyOrder == 2)
+      {
+         srcIndexedTypes.insert(TypeID::a0);
+         srcIndexedTypes.insert(TypeID::a1);
+         srcIndexedTypes.insert(TypeID::a2);
+         srcIndexedTypes.insert(TypeID::a3);
+         srcIndexedTypes.insert(TypeID::a4);
+         srcIndexedTypes.insert(TypeID::a5);
+      }
 
          //>Then, fill the types that are satellite-indexed
 
@@ -2337,19 +2605,19 @@ matrix and a priori state estimation vector do not match.");
 
 
          //>Firstly, fill the types that are common for all observables
-      commonUnkTypes.insert(TypeID::wetMap);
+      coreTypes.insert(TypeID::wetMap);
 
       if (useNEU)
       {
-         commonUnkTypes.insert(TypeID::dLat); // #2
-         commonUnkTypes.insert(TypeID::dLon); // #3
-         commonUnkTypes.insert(TypeID::dH);   // #4
+         coreTypes.insert(TypeID::dLat); // #2
+         coreTypes.insert(TypeID::dLon); // #3
+         coreTypes.insert(TypeID::dH);   // #4
       }
       else
       {
-         commonUnkTypes.insert(TypeID::dx);   // #2
-         commonUnkTypes.insert(TypeID::dy);   // #3
-         commonUnkTypes.insert(TypeID::dz);   // #4
+         coreTypes.insert(TypeID::dx);   // #2
+         coreTypes.insert(TypeID::dy);   // #3
+         coreTypes.insert(TypeID::dz);   // #4
       }
 
          // Now, we build the basic equation definition
@@ -2558,7 +2826,7 @@ matrix and a priori state estimation vector do not match.");
 
       /** Return the CURRENT number of satellite.
        */
-   int SolverPPPUCAR::getAmbFixedNumWL() const
+   int SolverPPPUCAR::getFixedAmbNumWL() const
       throw(InvalidRequest)
    {
          // Return current fixed satellite number
@@ -2567,7 +2835,7 @@ matrix and a priori state estimation vector do not match.");
 
       /** Return the CURRENT number of satellite.
        */
-   int SolverPPPUCAR::getAmbFixedNumL1() const
+   int SolverPPPUCAR::getFixedAmbNumL1() const
       throw(InvalidRequest)
    {
          // Return current fixed satellite number

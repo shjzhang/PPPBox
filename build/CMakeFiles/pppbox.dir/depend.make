@@ -26,6 +26,7 @@ CMakeFiles/pppbox.dir/lib/AppFrame/LoopedFramework.cpp.o: ../lib/AppFrame/Looped
 CMakeFiles/pppbox.dir/lib/AppFrame/LoopedFramework.cpp.o: ../lib/AppFrame/MainAdapter.hpp
 
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/Math/Triple.hpp
@@ -41,11 +42,11 @@ CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/TimeHandl
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/AstroEph/AstronomicalFunctions.cpp
 CMakeFiles/pppbox.dir/lib/AstroEph/AstronomicalFunctions.cpp.o: ../lib/AstroEph/AstronomicalFunctions.hpp
 
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -69,7 +70,6 @@ CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/TimeHandling/TimeC
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/AstroEph/AstronomicalFunctions.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/AstroEph/MoonPosition.cpp
 CMakeFiles/pppbox.dir/lib/AstroEph/MoonPosition.cpp.o: ../lib/AstroEph/MoonPosition.hpp
@@ -98,6 +98,7 @@ CMakeFiles/pppbox.dir/lib/AstroEph/PlanetEphemeris.cpp.o: ../lib/AstroEph/Planet
 CMakeFiles/pppbox.dir/lib/AstroEph/PlanetEphemeris.cpp.o: ../lib/AstroEph/PlanetEphemeris.hpp
 
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/Math/Triple.hpp
@@ -113,7 +114,6 @@ CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/TimeHandling/TimeTa
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/AstroEph/AstronomicalFunctions.hpp
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/AstroEph/SunPosition.cpp
 CMakeFiles/pppbox.dir/lib/AstroEph/SunPosition.cpp.o: ../lib/AstroEph/SunPosition.hpp
@@ -170,6 +170,7 @@ CMakeFiles/pppbox.dir/lib/CodeGen/X2Sequence.cpp.o: ../lib/CodeGen/PCodeConst.hp
 CMakeFiles/pppbox.dir/lib/CodeGen/X2Sequence.cpp.o: ../lib/CodeGen/X2Sequence.cpp
 CMakeFiles/pppbox.dir/lib/CodeGen/X2Sequence.cpp.o: ../lib/CodeGen/X2Sequence.hpp
 
+CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/Utilities/Exception.hpp
@@ -177,7 +178,6 @@ CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/Utilities/String
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/Utilities/expandtilde.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/Utilities/logstream.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/Utilities/stl_helpers.hpp
-CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/CommandLine/CommandLine.cpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandLine.cpp.o: ../lib/CommandLine/CommandLine.hpp
 
@@ -210,6 +210,7 @@ CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/Math/Triple.hpp
@@ -220,7 +221,6 @@ CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/CommandLine/CommandOption.hpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/CommandLine/CommandOptionWithPositionArg.cpp
 CMakeFiles/pppbox.dir/lib/CommandLine/CommandOptionWithPositionArg.cpp.o: ../lib/CommandLine/CommandOptionWithPositionArg.hpp
@@ -327,10 +327,10 @@ CMakeFiles/pppbox.dir/lib/FileHandling/ConfDataWriter.cpp.o: ../lib/FileHandling
 CMakeFiles/pppbox.dir/lib/FileHandling/ConfDataWriter.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/ConfDataWriter.cpp.o: ../lib/FileHandling/FFTextStream.hpp
 
+CMakeFiles/pppbox.dir/lib/FileHandling/DCBDataReader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/DCBDataReader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/DCBDataReader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/DCBDataReader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/DCBDataReader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/DCBDataReader.cpp.o: ../lib/FileHandling/DCBDataReader.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/DCBDataReader.cpp.o: ../lib/FileHandling/DCBDataReader.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/DCBDataReader.cpp.o: ../lib/FileHandling/FFData.hpp
@@ -365,6 +365,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/GNSSCore/ObsIDI
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -395,7 +396,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/Utilities/BinUt
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/FileHandling/FIC/FICAStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/FileHandling/FIC/FICBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData.cpp.o: ../lib/FileHandling/FIC/FICData.cpp
@@ -415,6 +415,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/GNSSCore/Obs
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -444,7 +445,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/Utilities/Bi
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/FileHandling/FIC/FICBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/FileHandling/FIC/FICData.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData109.cpp.o: ../lib/FileHandling/FIC/FICData109.cpp
@@ -461,6 +461,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/GNSSCore/Obs
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -490,7 +491,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/Utilities/Bi
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/FileHandling/FIC/FICBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/FileHandling/FIC/FICData.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData162.cpp.o: ../lib/FileHandling/FIC/FICData162.cpp
@@ -507,6 +507,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/GNSSCore/ObsI
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -536,7 +537,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/Utilities/Bin
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/FileHandling/FIC/FICBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/FileHandling/FIC/FICData.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData62.cpp.o: ../lib/FileHandling/FIC/FICData162.hpp
@@ -554,6 +554,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/GNSSCore/ObsID
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -583,7 +584,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/Utilities/BinU
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/FileHandling/FIC/FICBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/FileHandling/FIC/FICData.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/FIC/FICData9.cpp.o: ../lib/FileHandling/FIC/FICData109.hpp
@@ -613,6 +613,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/GNSSCore/GN
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/Math/Triple.hpp
@@ -628,7 +629,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/TimeHandlin
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/FileHandling/Ionex/IonexBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/FileHandling/Ionex/IonexData.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexData.cpp.o: ../lib/FileHandling/Ionex/IonexData.hpp
@@ -639,6 +639,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/FileHandl
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -648,7 +649,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/TimeHandl
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/FileHandling/Ionex/IonexBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/FileHandling/Ionex/IonexHeader.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexHeader.cpp.o: ../lib/FileHandling/Ionex/IonexHeader.hpp
@@ -665,6 +665,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/GNSSCore/P
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/Math/Triple.hpp
@@ -678,7 +679,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/TimeHandli
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/FileHandling/Ionex/IonexBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/FileHandling/Ionex/IonexData.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Ionex/IonexStore.cpp.o: ../lib/FileHandling/Ionex/IonexHeader.hpp
@@ -694,6 +694,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/GNSSCore/Ellips
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/Math/Triple.hpp
@@ -709,7 +710,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/TimeHandling/Ti
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/FileHandling/MSC/MSCData.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/FileHandling/MSC/MSCData.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/MSC/MSCData.cpp.o: ../lib/FileHandling/MSC/MSCStream.hpp
@@ -718,6 +718,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/FileHa
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -728,7 +729,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/TimeHa
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/FileHandling/RINEX/RinexClockBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/FileHandling/RINEX/RinexClockData.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockData.cpp.o: ../lib/FileHandling/RINEX/RinexClockData.hpp
@@ -739,6 +739,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/File
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -750,7 +751,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/Time
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/TimeHandling/UnixTime.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/FileHandling/RINEX/RinexClockBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/FileHandling/RINEX/RinexClockHeader.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexClockHeader.cpp.o: ../lib/FileHandling/RINEX/RinexClockHeader.hpp
@@ -815,6 +815,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/GNSSCore
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -845,7 +846,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/Utilitie
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/FileHandling/RINEX/RinexNavBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/FileHandling/RINEX/RinexNavData.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexNavData.cpp.o: ../lib/FileHandling/RINEX/RinexNavData.hpp
@@ -898,6 +898,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/GNSSCo
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -939,7 +940,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/Utilit
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/dev/PositionSatStore.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX/RinexUtilities.cpp.o: ../lib/dev/RinexObsHeader.hpp
@@ -957,6 +957,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/File
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/Math/MathBase.hpp
@@ -972,7 +973,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/Time
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ClockBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ClockData.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ClockData.hpp
@@ -983,6 +983,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/Fi
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/Math/MathBase.hpp
@@ -998,7 +999,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/Ti
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ClockBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ClockHeader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ClockHeader.hpp
@@ -1019,6 +1019,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/GNSSCo
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -1058,7 +1059,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/Utilit
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3NavBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3NavData.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3NavData.hpp
@@ -1070,6 +1070,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/File
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/FileHandling/FFTextStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -1088,7 +1089,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/Time
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3NavBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3NavHeader.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3NavHeader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3NavHeader.hpp
@@ -1101,6 +1101,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/FileHa
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -1118,7 +1119,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/TimeHa
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.cpp
@@ -1133,6 +1133,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/File
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -1152,7 +1153,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/Time
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/TimeHandling/UnixTime.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.cpp
@@ -1166,6 +1166,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/FileHandling/FF
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/Math/MathBase.hpp
@@ -1180,7 +1181,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/TimeHandling/Co
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/FileHandling/SEM/SEMBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/FileHandling/SEM/SEMData.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMData.cpp.o: ../lib/FileHandling/SEM/SEMData.hpp
@@ -1194,6 +1194,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/FileHandling/
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/Math/MathBase.hpp
@@ -1208,7 +1209,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/FileHandling/SEM/SEMBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/FileHandling/SEM/SEMHeader.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SEM/SEMHeader.cpp.o: ../lib/FileHandling/SEM/SEMHeader.hpp
@@ -1234,6 +1234,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/FileHandling/FF
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/GNSSEph/SP3SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -1247,7 +1248,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/TimeHandling/We
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/FileHandling/SP3/SP3Base.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/FileHandling/SP3/SP3Data.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Data.cpp.o: ../lib/FileHandling/SP3/SP3Data.hpp
@@ -1258,6 +1258,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/FileHandling/
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/GNSSEph/SP3SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -1272,7 +1273,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/FileHandling/SP3/SP3Base.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/FileHandling/SP3/SP3Header.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SP3/SP3Header.cpp.o: ../lib/FileHandling/SP3/SP3Header.hpp
@@ -1294,6 +1294,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/GNSSCore/ObsID.
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -1319,7 +1320,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/TimeHandling/Ti
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCData.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1348,6 +1348,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCHeader.cpp.o: ../lib/FileHandling/
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCHeader.cpp.o: ../lib/FileHandling/SSC/SSCHeader.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SSC/SSCHeader.cpp.o: ../lib/FileHandling/SSC/SSCStream.hpp
 
+CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/TimeHandling/CommonTime.hpp
@@ -1356,7 +1357,6 @@ CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/FileHandling/FFData.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/SatDataReader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
@@ -1371,6 +1371,7 @@ CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/FileHandling/
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/Math/MathBase.hpp
@@ -1385,13 +1386,13 @@ CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/FileHandling/Yuma/YumaBase.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/FileHandling/Yuma/YumaData.cpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/FileHandling/Yuma/YumaData.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/FileHandling/Yuma/YumaHeader.hpp
 CMakeFiles/pppbox.dir/lib/FileHandling/Yuma/YumaData.cpp.o: ../lib/FileHandling/Yuma/YumaStream.hpp
 
+CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -1408,7 +1409,6 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/Math/Vector/VectorBaseO
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/GNSSCore/ENUUtil.cpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/GNSSCore/ENUUtil.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
@@ -1416,6 +1416,7 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/GNSSCore/GNSSconstants.
 CMakeFiles/pppbox.dir/lib/GNSSCore/ENUUtil.cpp.o: ../lib/GNSSCore/Xvt.hpp
 
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -1436,7 +1437,6 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/Utilities/BinUtils.hp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSCore/IonoModel.cpp
@@ -1446,6 +1446,7 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModel.cpp.o: ../lib/GNSSCore/geometry.hpp
 
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -1464,13 +1465,13 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/Utilities/BinUti
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSCore/IonoModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSCore/IonoModelStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSCore/IonoModelStore.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/IonoModelStore.cpp.o: ../lib/GNSSCore/Position.hpp
 
+CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -1487,23 +1488,22 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/Math/Vector/VectorBaseO
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/GNSSCore/NEDUtil.cpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/GNSSCore/NEDUtil.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/NEDUtil.cpp.o: ../lib/GNSSCore/Xvt.hpp
 
+CMakeFiles/pppbox.dir/lib/GNSSCore/ObsID.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsID.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsID.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/ObsID.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsID.cpp.o: ../lib/GNSSCore/ObsID.cpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsID.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsID.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 
+CMakeFiles/pppbox.dir/lib/GNSSCore/ObsIDInitializer.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsIDInitializer.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsIDInitializer.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/ObsIDInitializer.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsIDInitializer.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsIDInitializer.cpp.o: ../lib/GNSSCore/ObsIDInitializer.cpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/ObsIDInitializer.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
@@ -1513,6 +1513,7 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/FileHandling/FFDat
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -1534,12 +1535,12 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/TimeHandling/TimeT
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/GNSSCore/OceanLoading.cpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/GNSSCore/OceanLoading.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/OceanLoading.cpp.o: ../lib/GNSSCore/geometry.hpp
 
+CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/Math/MiscMath.hpp
@@ -1551,7 +1552,6 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/Math/Vector/VectorOper
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/GNSSCore/Position.cpp
@@ -1563,6 +1563,7 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/Position.cpp.o: ../lib/GNSSCore/geometry.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/AstroEph/AstronomicalFunctions.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/AstroEph/MoonPosition.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/AstroEph/SunPosition.hpp
+CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -1583,7 +1584,6 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/TimeHandling/CommonT
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/GNSSCore/Position.hpp
@@ -1593,6 +1593,7 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/SolidTides.cpp.o: ../lib/GNSSCore/Xvt.hpp
 
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSEph/EphemerisRange.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSEph/XvtStore.hpp
@@ -1619,7 +1620,6 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/TimeHandling/YDSTime.
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/Utilities/ValidType.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/TropModel.cpp.o: ../lib/GNSSCore/GPSEllipsoid.hpp
@@ -1641,6 +1641,7 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/WxObsMap.cpp.o: ../lib/Utilities/StringUtils.
 CMakeFiles/pppbox.dir/lib/GNSSCore/WxObsMap.cpp.o: ../lib/GNSSCore/WxObsMap.cpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/WxObsMap.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 
+CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/Math/Triple.hpp
@@ -1650,7 +1651,6 @@ CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/Math/Vector/VectorBaseOpera
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSCore/Xvt.cpp.o: ../lib/GNSSCore/Xvt.cpp
@@ -1661,6 +1661,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/GNSSCore/GNSSconstants.
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/GNSSCore/GPSEllipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/Math/Triple.hpp
@@ -1679,7 +1680,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/TimeHandling/Week.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/GNSSEph/AlmOrbit.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/AlmOrbit.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 
@@ -1688,6 +1688,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/GNSSCore/GNSSconsta
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -1708,7 +1709,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/TimeHandling/Week.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/GNSSEph/BDSEphemeris.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemeris.cpp.o: ../lib/GNSSEph/OrbitEph.hpp
@@ -1719,6 +1719,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSCore/GNSSc
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -1736,7 +1737,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/TimeHandling/W
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSEph/BDSEphemerisStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSEph/BDSEphemerisStore.hpp
@@ -1748,6 +1748,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/BDSEphemerisStore.cpp.o: ../lib/GNSSEph/XvtSto
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/TimeHandling/CivilTime.hpp
@@ -1763,7 +1764,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/Utilities/Bin
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/GNSSEph/BrcClockCorrection.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcClockCorrection.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -1777,6 +1777,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSCore/ObsID.hp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSCore/Xv.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/Math/Triple.hpp
@@ -1798,7 +1799,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/Utilities/BinUtil
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/BrcKeplerOrbit.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -1813,6 +1813,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSCore/ObsIDInitia
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/Math/Triple.hpp
@@ -1835,7 +1836,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/Utilities/BinUtils.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSEph/CNAV2EphClk.cpp
@@ -1848,6 +1848,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNAV2EphClk.cpp.o: ../lib/GNSSEph/RinexSatID.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -1864,7 +1865,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/GNSSEph/CNAVClock.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVClock.cpp.o: ../lib/GNSSEph/CNAVClock.hpp
@@ -1880,6 +1880,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSCore/Xv.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/Math/Triple.hpp
@@ -1901,7 +1902,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/Utilities/BinUtils
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSEph/CNAVEphemeris.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSEph/CNAVEphemeris.hpp
@@ -1913,6 +1913,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNAVEphemeris.cpp.o: ../lib/GNSSEph/RinexSatID
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/Misc/SVNumXRef.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/TimeHandling/CivilTime.hpp
@@ -1929,7 +1930,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/TimeHandling/Wee
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/GNSSEph/CNavDataElement.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/GNSSEph/CNavDataElement.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -1937,6 +1937,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElement.cpp.o: ../lib/GNSSEph/SatID.hp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/TimeHandling/CommonTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/TimeHandling/GPSWeekSecond.hpp
@@ -1948,7 +1949,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/TimeHandlin
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/GNSSEph/CNavDataElement.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/GNSSEph/CNavDataElementStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/GNSSEph/CNavDataElementStore.hpp
@@ -1957,6 +1957,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavDataElementStore.cpp.o: ../lib/GNSSEph/Sat
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/TimeHandling/CommonTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/TimeHandling/GPSWeekSecond.hpp
@@ -1969,7 +1970,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/TimeHandling/WeekSecond.
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/GNSSEph/CNavDataElement.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/GNSSEph/CNavEOP.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/GNSSEph/CNavEOP.hpp
@@ -1979,6 +1979,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavEOP.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/TimeHandling/CommonTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/TimeHandling/GPSWeekSecond.hpp
@@ -1991,7 +1992,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/TimeHandling/WeekSecond
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/GNSSEph/CNavDataElement.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/GNSSEph/CNavGGTO.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/GNSSEph/CNavGGTO.hpp
@@ -2001,6 +2001,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavGGTO.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/TimeHandling/CommonTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/TimeHandling/GPSWeekSecond.hpp
@@ -2013,7 +2014,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/TimeHandling/WeekSecond.
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/GNSSEph/CNavDataElement.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/GNSSEph/CNavISC.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/GNSSEph/CNavISC.hpp
@@ -2023,6 +2023,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavISC.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/TimeHandling/CommonTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/TimeHandling/GPSWeekSecond.hpp
@@ -2035,7 +2036,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/TimeHandling/WeekSecond
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/GNSSEph/CNavDataElement.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/GNSSEph/CNavText.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/GNSSEph/CNavText.hpp
@@ -2045,6 +2045,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavText.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/TimeHandling/CommonTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/TimeHandling/GPSWeekSecond.hpp
@@ -2057,7 +2058,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/TimeHandling/WeekSecond.
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/GNSSEph/CNavDataElement.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/GNSSEph/CNavUTC.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/GNSSEph/CNavUTC.hpp
@@ -2067,6 +2067,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/CNavUTC.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2081,7 +2082,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/Utilities/BinUtils.hp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/GNSSEph/EngAlmanac.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngAlmanac.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
@@ -2096,6 +2096,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSCore/ObsIDIniti
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/Math/Triple.hpp
@@ -2122,7 +2123,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/Utilities/BinUtils.
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSEph/EngEphemeris.cpp
@@ -2132,11 +2132,11 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngEphemeris.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/GNSSEph/EngNav.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EngNav.cpp.o: ../lib/GNSSEph/EngNav.hpp
 
@@ -2147,6 +2147,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSCore/Position
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/Math/MiscMath.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/Math/Triple.hpp
@@ -2160,7 +2161,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/TimeHandling/Comm
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSEph/EphemerisRange.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSEph/EphemerisRange.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -2169,6 +2169,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/EphemerisRange.cpp.o: ../lib/GNSSEph/XvtStore.
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2183,7 +2184,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/Utilities/BinUti
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSAlmanacStore.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -2198,6 +2198,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/GNSSCore/GNSSconsta
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2220,7 +2221,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/TimeHandling/Week.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/GNSSEph/GPSEphemeris.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/GNSSEph/GPSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemeris.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
@@ -2241,6 +2241,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSCore/ObsID
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -2266,7 +2267,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/Utilities/BinU
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSEph/GPSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSEph/GPSEphemerisStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSEphemerisStore.cpp.o: ../lib/GNSSEph/GPSEphemerisStore.hpp
@@ -2282,6 +2282,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/GNSSCore/GNSScon
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2304,7 +2305,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/TimeHandling/Wee
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/GNSSEph/GPSOrbElemStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/GNSSEph/GPSOrbElemStore.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GPSOrbElemStore.cpp.o: ../lib/GNSSEph/OrbElem.hpp
@@ -2317,6 +2317,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/GNSSCore/GNSSconsta
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2339,7 +2340,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/TimeHandling/Week.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/GNSSEph/GalEphemeris.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/GNSSEph/GalEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemeris.cpp.o: ../lib/GNSSEph/OrbitEph.hpp
@@ -2350,6 +2350,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/GNSSCore/GNSSc
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2367,7 +2368,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/TimeHandling/W
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/GNSSEph/GalEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/GNSSEph/GalEphemerisStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GalEphemerisStore.cpp.o: ../lib/GNSSEph/GalEphemerisStore.hpp
@@ -2380,6 +2380,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/GNSSCore/EllipsoidM
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/GNSSCore/PZ90Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/Math/Triple.hpp
@@ -2396,7 +2397,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/TimeHandling/TimeTa
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/GNSSEph/GloEphemeris.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemeris.cpp.o: ../lib/GNSSEph/GloEphemeris.hpp
 
@@ -2419,6 +2419,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSCore/PZ90E
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -2454,7 +2455,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/Utilities/BinU
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSEph/GloEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSEph/GloEphemerisStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/GloEphemerisStore.cpp.o: ../lib/GNSSEph/GloEphemerisStore.hpp
@@ -2473,6 +2473,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSCore/EllipsoidModel
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/Math/Triple.hpp
@@ -2488,7 +2489,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/TimeHandling/TimeTag.hp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSEph/MSCStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSEph/MSCStore.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/MSCStore.cpp.o: ../lib/GNSSEph/XvtStore.hpp
@@ -2500,6 +2500,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2523,7 +2524,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/TimeHandling/WeekSecond.
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/GNSSEph/OrbElem.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/GNSSEph/OrbElem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElem.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -2541,6 +2541,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSCore/ObsIDInitia
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -2574,7 +2575,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/Utilities/BinUtils.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSEph/OrbElem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSEph/OrbElemCNAV.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV.cpp.o: ../lib/GNSSEph/OrbElemCNAV.hpp
@@ -2594,6 +2594,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSCore/ObsIDIniti
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -2627,7 +2628,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/Utilities/BinUtils.
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSEph/OrbElem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSEph/OrbElemCNAV2.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemCNAV2.cpp.o: ../lib/GNSSEph/OrbElemCNAV2.hpp
@@ -2647,6 +2647,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSCore/ObsIDInit
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -2677,7 +2678,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/Utilities/BinUtils
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSEph/EngNav.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC109.cpp.o: ../lib/GNSSEph/OrbElem.hpp
@@ -2699,6 +2699,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSCore/ObsIDInitia
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -2730,7 +2731,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/Utilities/BinUtils.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSEph/OrbElem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemFIC9.cpp.o: ../lib/GNSSEph/OrbElemFIC9.cpp
@@ -2751,6 +2751,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSCore/ObsIDInitial
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -2782,7 +2783,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/Utilities/BinUtils.hp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSEph/OrbElem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemICE.cpp.o: ../lib/GNSSEph/OrbElemICE.cpp
@@ -2802,6 +2802,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSCore/ObsIDInitia
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -2832,7 +2833,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/Utilities/BinUtils.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSEph/EngNav.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemLNav.cpp.o: ../lib/GNSSEph/OrbElem.hpp
@@ -2859,6 +2859,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSCore/PZ90Ellips
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -2896,7 +2897,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/Utilities/BinUtils.
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSEph/OrbElem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbElemRinex.cpp.o: ../lib/GNSSEph/OrbElemRinex.cpp
@@ -2910,6 +2910,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2932,7 +2933,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/TimeHandling/Week.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/GNSSEph/OrbitEph.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/GNSSEph/OrbitEph.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEph.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -2942,6 +2942,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSCore/GNSSconst
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -2957,7 +2958,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/TimeHandling/TimeS
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSEph/OrbitEph.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSEph/OrbitEphStore.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSEph/OrbitEphStore.hpp
@@ -2968,6 +2968,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/OrbitEphStore.cpp.o: ../lib/GNSSEph/XvtStore.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/TimeHandling/CommonTime.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/TimeHandling/GPSWeekSecond.hpp
@@ -2980,7 +2981,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/TimeHandling/WeekS
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/GNSSEph/PackedNavBits.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/GNSSEph/PackedNavBits.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/PackedNavBits.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -2990,6 +2990,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/GNSSCore/GNSSconsta
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -3010,7 +3011,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/TimeHandling/Week.h
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/GNSSEph/OrbitEph.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/GNSSEph/QZSEphemeris.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemeris.cpp.o: ../lib/GNSSEph/QZSEphemeris.hpp
@@ -3021,6 +3021,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/GNSSCore/GNSSc
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -3038,7 +3039,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/TimeHandling/W
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/GNSSEph/OrbitEph.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/GNSSEph/OrbitEphStore.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/QZSEphemerisStore.cpp.o: ../lib/GNSSEph/QZSEphemeris.hpp
@@ -3067,6 +3067,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSCore/PZ
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -3096,7 +3097,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/Utilities/B
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSEph/GPSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/Rinex3EphemerisStore.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
@@ -3127,6 +3127,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSCore/Obs
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -3154,7 +3155,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/Utilities/Bi
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSEph/GPSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSEph/GPSEphemerisStore.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexEphemerisStore.cpp.o: ../lib/GNSSEph/GPS_URA.hpp
@@ -3171,6 +3171,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/FileHandling/FFStream
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -3182,15 +3183,14 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/TimeHandling/CommonTi
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/GNSSEph/RinexObsID.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexObsID.cpp.o: ../lib/GNSSEph/SatID.hpp
 
+CMakeFiles/pppbox.dir/lib/GNSSEph/RinexSatID.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexSatID.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/RinexSatID.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexSatID.cpp.o: ../lib/GNSSEph/RinexSatID.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexSatID.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/RinexSatID.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -3207,6 +3207,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/FileHandling/SEM
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -3226,7 +3227,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/Utilities/BinUti
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -3237,8 +3237,8 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSEph/SEMAlman
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SEMAlmanacStore.cpp.o: ../lib/GNSSEph/XvtStore.hpp
 
+CMakeFiles/pppbox.dir/lib/GNSSEph/SP3SatID.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SP3SatID.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/GNSSEph/SP3SatID.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SP3SatID.cpp.o: ../lib/GNSSEph/SP3SatID.cpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SP3SatID.cpp.o: ../lib/GNSSEph/SP3SatID.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/SP3SatID.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -3255,6 +3255,7 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/FileHandling/Yu
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -3274,7 +3275,6 @@ CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/Utilities/BinUt
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 CMakeFiles/pppbox.dir/lib/GNSSEph/YumaAlmanacStore.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -3289,6 +3289,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/GNSSCore/Ellipsoi
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -3329,7 +3330,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/TimeHandling/Week
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/Geodyn/AtmosphericDrag.cpp
 CMakeFiles/pppbox.dir/lib/Geodyn/AtmosphericDrag.cpp.o: ../lib/Geodyn/AtmosphericDrag.hpp
@@ -3343,6 +3343,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/GNSSCore/Elli
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -3383,7 +3384,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/Geodyn/AtmosphericDrag.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/CiraExponentialDrag.cpp.o: ../lib/Geodyn/CiraExponentialDrag.cpp
@@ -3473,6 +3473,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/GNSSCore/Ellipsoid
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -3513,7 +3514,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/TimeHandling/WeekS
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/Geodyn/EarthOceanTide.cpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthOceanTide.cpp.o: ../lib/Geodyn/EarthOceanTide.hpp
@@ -3554,6 +3554,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/GNSSCore/Ellipsoid
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -3595,7 +3596,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/TimeHandling/WeekS
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/dev/EOPDataStore.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/EarthSolidTide.cpp.o: ../lib/Geodyn/EarthSolidTide.cpp
@@ -3652,6 +3652,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/GNSSCore/Ellip
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -3693,7 +3694,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/TimeHandling/W
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/dev/EOPDataStore.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/HarrisPriesterDrag.cpp.o: ../lib/Geodyn/AtmosphericDrag.hpp
@@ -3812,6 +3812,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/GNSSCore/EllipsoidMod
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -3852,7 +3853,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/TimeHandling/WeekSeco
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/Geodyn/KeplerOrbit.cpp
 CMakeFiles/pppbox.dir/lib/Geodyn/KeplerOrbit.cpp.o: ../lib/Geodyn/KeplerOrbit.hpp
@@ -3863,6 +3863,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/GNSSCore/EllipsoidModel
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -3903,7 +3904,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/TimeHandling/WeekSecond
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/Geodyn/EarthBody.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/MoonForce.cpp.o: ../lib/Geodyn/ForceModel.hpp
@@ -3918,6 +3918,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/GNSSCore/EllipsoidMod
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -3959,7 +3960,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/TimeHandling/WeekSeco
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/dev/EOPDataStore.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/Msise00Drag.cpp.o: ../lib/Geodyn/AtmosphericDrag.hpp
@@ -3993,6 +3993,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/GNSSCore/Ellipsoi
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -4034,7 +4035,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/TimeHandling/Week
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/dev/EOPDataStore.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/ReferenceFrames.cpp.o: ../lib/Geodyn/IERS.hpp
@@ -4168,6 +4168,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/GNSSCore/Ellip
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -4209,7 +4210,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/TimeHandling/W
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/dev/EOPDataStore.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SatOrbitPropagator.cpp.o: ../lib/Geodyn/AtmosphericDrag.hpp
@@ -4241,6 +4241,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/GNSSCore/E
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -4281,7 +4282,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/TimeHandli
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/Geodyn/EarthBody.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SolarRadiationPressure.cpp.o: ../lib/Geodyn/ForceModel.hpp
@@ -4335,6 +4335,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/GNSSCore
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -4346,6 +4347,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Math/Mat
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Math/MiscMath.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Math/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Math/Vector/Vector.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Math/Vector/VectorBase.hpp
@@ -4376,9 +4378,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/TimeHand
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/dev/EOPDataStore.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/dev/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Geodyn/EarthBody.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SphericalHarmonicGravity.cpp.o: ../lib/Geodyn/EarthOceanTide.hpp
@@ -4398,6 +4398,7 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/GNSSCore/EllipsoidModel.
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -4439,7 +4440,6 @@ CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/TimeHandling/WeekSecond.
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/dev/EOPDataStore.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/Geodyn/ASConstant.hpp
 CMakeFiles/pppbox.dir/lib/Geodyn/SunForce.cpp.o: ../lib/Geodyn/EarthBody.hpp
@@ -4532,9 +4532,9 @@ CMakeFiles/pppbox.dir/lib/Geomatics/AntexHeader.cpp.o: ../lib/Geomatics/AntexHea
 CMakeFiles/pppbox.dir/lib/Geomatics/AntexHeader.cpp.o: ../lib/Geomatics/AntexHeader.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/AntexHeader.cpp.o: ../lib/Geomatics/AntexStream.hpp
 
+CMakeFiles/pppbox.dir/lib/Geomatics/DDid.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DDid.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DDid.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/DDid.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DDid.cpp.o: ../lib/Geomatics/DDid.cpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DDid.cpp.o: ../lib/Geomatics/DDid.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DDid.cpp.o: ../lib/Geomatics/GSatID.hpp
@@ -4544,6 +4544,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/FileHandling/FFStream
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/Math/MathBase.hpp
@@ -4571,7 +4572,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/TimeHandling/TimeTag.
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/TimeHandling/UnixTime.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/Geomatics/DiscCorr.cpp
@@ -4581,6 +4581,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/Geomatics/RobustStats
 CMakeFiles/pppbox.dir/lib/Geomatics/DiscCorr.cpp.o: ../lib/Geomatics/SatPass.hpp
 
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/TimeHandling/CivilTime.hpp
@@ -4596,18 +4597,18 @@ CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/Geomatics/EarthOrientation.cpp
 CMakeFiles/pppbox.dir/lib/Geomatics/EarthOrientation.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 
+CMakeFiles/pppbox.dir/lib/Geomatics/GSatID.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GSatID.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GSatID.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/GSatID.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GSatID.cpp.o: ../lib/Geomatics/GSatID.cpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GSatID.cpp.o: ../lib/Geomatics/GSatID.hpp
 
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -4629,7 +4630,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/TimeHandling/Ti
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/Geomatics/GeodeticFrames.cpp
 CMakeFiles/pppbox.dir/lib/Geomatics/GeodeticFrames.cpp.o: ../lib/Geomatics/GeodeticFrames.hpp
 
@@ -4638,6 +4638,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/GNSSCore/GNSSconst
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -4661,7 +4662,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/TimeHandling/TimeC
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/Geomatics/PhaseWindup.cpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PhaseWindup.cpp.o: ../lib/Geomatics/PhaseWindup.hpp
@@ -4678,6 +4678,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/GNSSCore/Position
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/GNSSEph/XvtStore.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/Math/MathBase.hpp
@@ -4703,7 +4704,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/TimeHandling/Time
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/Geomatics/AntexBase.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/Geomatics/AntexData.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/PreciseRange.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
@@ -4817,6 +4817,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/GNSSCore/ObsIDInitiali
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -4854,7 +4855,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/dev/PositionSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SatPass.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -4871,6 +4871,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/GNSSCore/GNSScon
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/Math/Triple.hpp
@@ -4887,7 +4888,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/TimeHandling/Tim
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/Geomatics/SolarPosition.cpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarPosition.cpp.o: ../lib/Geomatics/SolarPosition.hpp
 
@@ -4895,6 +4895,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/GNSSCore/Ellipsoid
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -4920,7 +4921,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/TimeHandling/TimeT
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/Geomatics/GeodeticFrames.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolarSystem.cpp.o: ../lib/Geomatics/SolarSystem.cpp
@@ -4932,6 +4932,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/GNSSCore/GNSSc
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -4957,7 +4958,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/TimeHandling/T
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/Geomatics/GeodeticFrames.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SolidEarthTides.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -4970,6 +4970,7 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/GNSSCore/G
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -4993,7 +4994,6 @@ CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/TimeHandli
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/Geomatics/EarthOrientation.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/Geomatics/SolarPosition.hpp
 CMakeFiles/pppbox.dir/lib/Geomatics/SunEarthSatGeometry.cpp.o: ../lib/Geomatics/SolarSystem.hpp
@@ -5007,13 +5007,13 @@ CMakeFiles/pppbox.dir/lib/Geomatics/random.cpp.o: ../lib/Geomatics/random.cpp
 CMakeFiles/pppbox.dir/lib/Geomatics/random.cpp.o: ../lib/Geomatics/random.hpp
 
 CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/dev/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/Math/BaseDistribution.hpp
 CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/Math/Chi2Distribution.cpp
 CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/Math/Chi2Distribution.hpp
+CMakeFiles/pppbox.dir/lib/Math/Chi2Distribution.cpp.o: ../lib/Math/SpecialFunctions.hpp
 
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/FileHandling/FFData.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/FileHandling/FFStream.hpp
@@ -5022,6 +5022,7 @@ CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/FileHandling/RINEX/Rinex
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/Math/MathBase.hpp
@@ -5037,7 +5038,6 @@ CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/TimeHandling/TimeConstan
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/Utilities/ValidType.hpp
-CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Math/Expression.cpp.o: ../lib/Math/Expression.cpp
@@ -5061,13 +5061,13 @@ CMakeFiles/pppbox.dir/lib/Math/FIRDifferentiator5thOrder.cpp.o: ../lib/Math/FIRD
 CMakeFiles/pppbox.dir/lib/Math/FIRDifferentiator5thOrder.cpp.o: ../lib/Math/FilterBase.hpp
 
 CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/dev/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/Math/BaseDistribution.hpp
 CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/Math/GaussianDistribution.cpp
 CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/Math/GaussianDistribution.hpp
+CMakeFiles/pppbox.dir/lib/Math/GaussianDistribution.cpp.o: ../lib/Math/SpecialFunctions.hpp
 
 CMakeFiles/pppbox.dir/lib/Math/Namelist.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/Math/Namelist.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -5092,6 +5092,7 @@ CMakeFiles/pppbox.dir/lib/Math/PowerSum.cpp.o: ../lib/Math/PowerSum.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -5107,7 +5108,6 @@ CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/Math/Vector/VectorBaseO
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/Math/RACRotation.cpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/Math/RACRotation.hpp
 CMakeFiles/pppbox.dir/lib/Math/RACRotation.cpp.o: ../lib/Math/Triple.hpp
@@ -5145,12 +5145,19 @@ CMakeFiles/pppbox.dir/lib/Math/SimpleKalmanFilter.cpp.o: ../lib/Utilities/Except
 CMakeFiles/pppbox.dir/lib/Math/SimpleKalmanFilter.cpp.o: ../lib/Math/SimpleKalmanFilter.cpp
 CMakeFiles/pppbox.dir/lib/Math/SimpleKalmanFilter.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
 
+CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.o: ../lib/GNSSCore/gps_constants.hpp
+CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.o: ../lib/GNSSEph/SatID.hpp
+CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.o: ../lib/Utilities/Exception.hpp
+CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.o: ../lib/Math/SpecialFunctions.cpp
+CMakeFiles/pppbox.dir/lib/Math/SpecialFunctions.cpp.o: ../lib/Math/SpecialFunctions.hpp
+
 CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/dev/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/Math/BaseDistribution.hpp
+CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/Math/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/Math/StudentDistribution.cpp
 CMakeFiles/pppbox.dir/lib/Math/StudentDistribution.cpp.o: ../lib/Math/StudentDistribution.hpp
 
@@ -5221,6 +5228,7 @@ CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/GNSSCore/PZ90Ellipsoid
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -5258,7 +5266,6 @@ CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/Misc/GloFreqIndex.cpp
 CMakeFiles/pppbox.dir/lib/Misc/GloFreqIndex.cpp.o: ../lib/Misc/GloFreqIndex.hpp
 
@@ -5280,6 +5287,7 @@ CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -5323,7 +5331,6 @@ CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/dev/TabularSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Misc/MOPSWeight.cpp.o: ../lib/Misc/MOPSWeight.cpp
@@ -5348,6 +5355,7 @@ CMakeFiles/pppbox.dir/lib/Misc/RK4VehicleModel.cpp.o: ../lib/Utilities/Exception
 CMakeFiles/pppbox.dir/lib/Misc/RK4VehicleModel.cpp.o: ../lib/Misc/RK4VehicleModel.cpp
 CMakeFiles/pppbox.dir/lib/Misc/RK4VehicleModel.cpp.o: ../lib/Misc/RK4VehicleModel.hpp
 
+CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/TimeHandling/CivilTime.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/TimeHandling/CommonTime.hpp
@@ -5358,7 +5366,6 @@ CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/TimeHandling/UnixTime.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/Misc/SVNumXRef.cpp
 CMakeFiles/pppbox.dir/lib/Misc/SVNumXRef.cpp.o: ../lib/Misc/SVNumXRef.hpp
 
@@ -5380,6 +5387,7 @@ CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/GNSSCore/WxObsMap.
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -5423,7 +5431,6 @@ CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/Utilities/Exceptio
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/dev/TabularSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Misc/SimpleIURAWeight.cpp.o: ../lib/Misc/SimpleIURAWeight.cpp
@@ -5440,6 +5447,7 @@ CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/GNSSCore/TropModel.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/GNSSEph/XvtStore.hpp
@@ -5470,7 +5478,6 @@ CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/Utilities/StringUtils.
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/Utilities/logstream.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/Utilities/stl_helpers.hpp
-CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/PosSol/Combinations.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/PosSol/PRSolution.cpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution.cpp.o: ../lib/PosSol/PRSolution.hpp
@@ -5489,6 +5496,7 @@ CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/GNSSCore/TropModel.hp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/GNSSEph/EphemerisRange.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -5519,7 +5527,6 @@ CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/TimeHandling/WeekSeco
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/Utilities/ValidType.hpp
-CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/PosSol/PRSolution2.cpp
 CMakeFiles/pppbox.dir/lib/PosSol/PRSolution2.cpp.o: ../lib/PosSol/PRSolution2.hpp
@@ -5541,6 +5548,7 @@ CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/FileHandling/FFData.
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/Math/Triple.hpp
@@ -5555,7 +5563,6 @@ CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/TimeHandling/TimeCon
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/ProcLib/Antenna.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/ProcLib/AntexReader.cpp
 CMakeFiles/pppbox.dir/lib/ProcLib/AntexReader.cpp.o: ../lib/ProcLib/AntexReader.hpp
@@ -5569,6 +5576,7 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/FileHandl
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -5585,7 +5593,6 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/TimeHandl
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/ProcLib/CheckPRData.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractCombinationData.cpp.o: ../lib/ProcLib/ExtractCombinationData.cpp
@@ -5601,6 +5608,7 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/FileHandling/RINEX3/
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -5617,7 +5625,6 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/TimeHandling/TimeCon
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/ProcLib/CheckPRData.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ExtractData.cpp.o: ../lib/ProcLib/ExtractData.cpp
@@ -5635,6 +5642,7 @@ CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/GNSSCore/TropMo
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -5664,7 +5672,6 @@ CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/Utilities/Excep
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/ProcLib/ClockModel.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/ProcLib/LinearClockModel.cpp
 CMakeFiles/pppbox.dir/lib/ProcLib/LinearClockModel.cpp.o: ../lib/ProcLib/LinearClockModel.hpp
@@ -5684,6 +5691,7 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/GNSSCore/TropModel
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -5713,7 +5721,6 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/Utilities/Exceptio
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/ProcLib/ClockModel.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/ProcLib/ORDEpoch.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/ProcLib/ObsClockModel.cpp
@@ -5722,13 +5729,13 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ObsClockModel.cpp.o: ../lib/ProcLib/ObsRngDev.
 
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/RefTime/TimeSystem.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/TimeHandling/CommonTime.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/Utilities/ValidType.hpp
-CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/ProcLib/ObsEpochMap.cpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsEpochMap.cpp.o: ../lib/ProcLib/ObsEpochMap.hpp
 
@@ -5750,6 +5757,7 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/GNSSCore/WGS84Ellipsoi
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -5796,7 +5804,6 @@ CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/Utilities/Exception.hp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/ProcLib/ObsRngDev.cpp
 CMakeFiles/pppbox.dir/lib/ProcLib/ObsRngDev.cpp.o: ../lib/ProcLib/ObsRngDev.hpp
 
@@ -5816,6 +5823,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/GNSSCore/ObsID.hp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -5841,7 +5849,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/TimeHandling/Time
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CodeSmoother.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -5868,6 +5875,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/GNSSCore/Ob
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -5893,7 +5901,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/TimeHandlin
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeCombination.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -5920,6 +5927,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -5945,7 +5953,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/TimeHandling/TimeTa
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeDOP.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -5983,6 +5990,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/GNSSCore/Po
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -6027,7 +6035,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/Utilities/B
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIURAWeights.cpp.o: ../lib/dev/DataStructures.hpp
@@ -6080,6 +6087,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/GNSSCore/WGS8
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -6125,7 +6133,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/Utilities/Bin
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeIonoModel.cpp.o: ../lib/dev/DataStructures.hpp
@@ -6156,6 +6163,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6181,7 +6189,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/TimeHandling/TimeTag
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLC.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6209,6 +6216,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6234,7 +6242,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/TimeHandling/TimeTag
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLI.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6262,6 +6269,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/GNSSCore/ObsID.h
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6287,7 +6295,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/TimeHandling/Tim
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLdelta.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6315,6 +6322,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/GNSSCore/ObsID.h
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6340,7 +6348,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/TimeHandling/Tim
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeLinear.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6381,6 +6388,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/GNSSCore/Wx
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -6427,7 +6435,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/Utilities/E
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMOPSWeights.cpp.o: ../lib/dev/DataStructures.hpp
@@ -6459,6 +6466,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/GNSSCo
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6484,7 +6492,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/TimeHa
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeMelbourneWubbena.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6512,6 +6519,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6537,7 +6545,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/TimeHandling/TimeTag
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePC.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6565,6 +6572,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6590,7 +6598,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/TimeHandling/TimeTag
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePI.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6618,6 +6625,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/GNSSCore/ObsID.h
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6643,7 +6651,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/TimeHandling/Tim
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputePdelta.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6675,6 +6682,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/GNSSCore/Obs
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6703,7 +6711,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/TimeHandling
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSatPCenter.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6733,6 +6740,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/GNSSCore/
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6760,7 +6768,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/TimeHandl
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/Utilities/ValidType.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeSimpleWeights.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6789,6 +6796,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/GNSSCore/Posi
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/GNSSCore/TropModel.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6816,7 +6824,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/Utilities/ValidType.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeTropModel.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6847,6 +6854,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/GNSSCore/ObsIDIn
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6875,7 +6883,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/TimeHandling/Tim
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ComputeWindUp.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6903,6 +6910,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/GNSSCore/ObsID.h
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6928,7 +6936,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/TimeHandling/Tim
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ConvertC1ToP1.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -6956,6 +6963,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/GNSSCore/Ob
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -6983,7 +6991,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/TimeHandlin
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/CorrectObservables.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7010,6 +7017,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7035,7 +7043,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DeltaOp.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7062,6 +7069,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/GNSSCore/ObsID.
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7089,7 +7097,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/TimeHandling/Ti
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Differentiator.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7116,6 +7123,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7141,7 +7149,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/TimeHandling/TimeTag.
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/DoubleOp.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7170,6 +7177,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7195,7 +7203,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/TimeHandling/TimeTag.hp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Dumper.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7225,6 +7232,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/GNSSCore/Obs
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7250,7 +7258,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/TimeHandling
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatFilter.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7280,6 +7287,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/GNSSCore/Obs
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7305,7 +7313,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/TimeHandling
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/EclipsedSatMarker.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7332,6 +7339,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/GNSSCore/Ob
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7357,7 +7365,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/TimeHandlin
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/GravitationalDelay.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7384,6 +7391,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7409,7 +7417,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/TimeHandling/TimeTag.hp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Keeper.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7445,6 +7452,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/GNSSCore/WGS84Ellipso
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -7493,7 +7501,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/Utilities/Exception.h
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObs.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7530,6 +7537,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/GNSSCore/
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -7576,7 +7584,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/Utilities
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModelObsFixedStation.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7612,6 +7619,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/GNSSCore/WGS84Ellips
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -7661,7 +7669,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/Utilities/Exception.
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledPR.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7697,6 +7704,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/GNSSCore/WG
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -7744,7 +7752,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/Utilities/E
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ModeledReferencePR.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7770,6 +7777,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7795,7 +7803,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NablaOp.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7822,6 +7829,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/GNSSCore/Obs
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7847,7 +7855,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/TimeHandling
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/NetworkObsStreams.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7875,6 +7882,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/GNSSCore/Obs
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7900,7 +7908,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/TimeHandling
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/OneFreqCSDetector.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7927,6 +7934,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -7952,7 +7960,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/TimeHandling/TimeTa
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PCSmoother.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -7980,6 +7987,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/GNSSCore/Ob
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8005,7 +8013,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/TimeHandlin
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/PhaseCodeAlignment.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8032,6 +8039,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/GNSSCore/ObsI
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8057,7 +8065,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProblemSatFilter.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8084,6 +8091,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/GNSSCore/ObsID.
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8109,7 +8117,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/TimeHandling/Ti
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingList.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8136,6 +8143,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/GNSSCore/ObsI
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8161,7 +8169,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/ProcessingVector.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8188,6 +8195,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8213,7 +8221,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/TimeHandling/TimeTag.hp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Pruner.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8240,6 +8247,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/GNSSCore/Ob
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8265,7 +8273,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/TimeHandlin
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/RequireObservables.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8292,6 +8299,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/GNSSCore/ObsID.hp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8317,7 +8325,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/TimeHandling/Time
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SatArcMarker.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8344,6 +8351,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8371,7 +8379,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/TimeHandling/TimeTag
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/SolverWMS.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8398,6 +8405,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8423,7 +8431,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/TimeHandling/TimeT
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/Synchronize.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8451,6 +8458,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/GNSSCore/ObsIDInitiali
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8476,7 +8484,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NED.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8504,6 +8511,7 @@ CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/GNSSCore/ObsIDInitiali
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8529,7 +8537,6 @@ CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/Procframe/XYZ2NEU.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8545,6 +8552,7 @@ CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/GNSSCore/GNSSco
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/Math/Matrix/Matrix.hpp
@@ -8567,7 +8575,6 @@ CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/TimeHandling/Ti
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/RefTime/HelmertTransform.cpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/RefTime/HelmertTransform.hpp
 CMakeFiles/pppbox.dir/lib/RefTime/HelmertTransform.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
@@ -8585,6 +8592,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/FileHandling/FFData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/Math/MathBase.hpp
@@ -8600,7 +8608,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ATSData.cpp.o: ../lib/Rxio/ATSData.cpp
@@ -8655,12 +8662,12 @@ CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/FileHandling/FFData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/Rxio/AshtechData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/Rxio/AshtechMBEN.cpp
 CMakeFiles/pppbox.dir/lib/Rxio/AshtechMBEN.cpp.o: ../lib/Rxio/AshtechMBEN.hpp
@@ -8723,6 +8730,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/GNSSCore/PZ90Ellipsoid.hp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
@@ -8769,7 +8777,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/dev/PositionSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/EphReader.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8841,6 +8848,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/GNSSEph/BDSEphemeris.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
@@ -8888,7 +8896,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/dev/PositionSatStore.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/FFIdentifier.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -8915,6 +8922,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/FileHandling/FFData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/Math/MathBase.hpp
@@ -8936,7 +8944,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPHeader.cpp.o: ../lib/Rxio/DataStatus.hpp
@@ -8950,6 +8957,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/FileHandling/FFStrea
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/GNSSEph/EngNav.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -8966,7 +8974,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/Utilities/BinUtils.h
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPNavSubframe.cpp.o: ../lib/Rxio/DataStatus.hpp
@@ -8982,6 +8989,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/FileHandling/FFStream.h
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/Math/MathBase.hpp
@@ -8999,7 +9007,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPObsEpoch.cpp.o: ../lib/Rxio/DataStatus.hpp
@@ -9017,6 +9024,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/FileHandling/RINEX/R
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/Math/MathBase.hpp
@@ -9038,7 +9046,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/Utilities/BinUtils.h
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPPVTSolution.cpp.o: ../lib/Rxio/DataStatus.hpp
@@ -9055,6 +9062,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/FileHandling/RINE
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/Math/MathBase.hpp
@@ -9077,7 +9085,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/Utilities/BinUtil
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/MDPSelftestStatus.cpp.o: ../lib/Rxio/DataStatus.hpp
@@ -9126,6 +9133,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/GNSSCore/ObsIDInitializ
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -9158,7 +9166,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/NovatelData.cpp.o: ../lib/Rxio/NovatelData.cpp
@@ -9190,6 +9197,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/GNSSCore/Posi
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -9225,7 +9233,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/Utilities/Exc
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsEphReaderFramework.cpp.o: ../lib/Rxio/AshtechStream.hpp
@@ -9262,6 +9269,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.h
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -9296,7 +9304,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsReader.cpp.o: ../lib/Rxio/ATSData.hpp
@@ -9337,6 +9344,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -9372,7 +9380,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/Utilities/ValidType.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/ObsUtils.cpp.o: ../lib/Rxio/ATSData.hpp
@@ -9402,6 +9409,7 @@ CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/GNSSCore/ObsIDIniti
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -9435,7 +9443,6 @@ CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/Utilities/BinUtils.
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/Rxio/RinexConverters.cpp.o: ../lib/Rxio/DataStatus.hpp
@@ -10253,882 +10260,6 @@ CMakeFiles/pppbox.dir/lib/Vplot/SurfacePlot.cpp.o: ../lib/Vplot/SeriesList.hpp
 CMakeFiles/pppbox.dir/lib/Vplot/SurfacePlot.cpp.o: ../lib/Vplot/SurfacePlot.cpp
 CMakeFiles/pppbox.dir/lib/Vplot/SurfacePlot.cpp.o: ../lib/Vplot/SurfacePlot.hpp
 
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileDirProc/FileStore.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/TimeHandling/TimeString.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/dev/TabularSatStore.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/CorrectUPDXs.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/CorrectUPDXs.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/RinexUPDXBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/RinexUPDXData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/RinexUPDXHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/RinexUPDXStore.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/RinexUPDXStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CorrectUPDXs.cpp.o: ../lib/deprecate/SatUPDX.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/deprecate/CycleSlipSimulation.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/CycleSlipSimulation.cpp.o: ../lib/deprecate/CycleSlipSimulation.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/TimeHandling/TimeString.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/deprecate/RinexUPDXBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/deprecate/RinexUPDXData.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/deprecate/RinexUPDXData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/deprecate/RinexUPDXHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXData.cpp.o: ../lib/deprecate/RinexUPDXStream.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/BDSWeekSecond.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/Epoch.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/GALWeekSecond.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/GPSWeek.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/GPSWeekSecond.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/GPSWeekZcount.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/GPSZcount.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/JulianDate.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/MJD.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/QZSWeekSecond.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/SystemTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/TimeConverters.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/TimeString.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/UnixTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/Week.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/deprecate/RinexUPDXBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/deprecate/RinexUPDXHeader.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/deprecate/RinexUPDXHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXHeader.cpp.o: ../lib/deprecate/RinexUPDXStream.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/FileDirProc/FileStore.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/TimeHandling/TimeString.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/dev/TabularSatStore.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/deprecate/RinexUPDXBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/deprecate/RinexUPDXData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/deprecate/RinexUPDXHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/deprecate/RinexUPDXStore.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/deprecate/RinexUPDXStore.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/deprecate/RinexUPDXStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/RinexUPDXStore.cpp.o: ../lib/deprecate/SatUPDX.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/TimeHandling/TimeString.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/deprecate/SVExclusionList.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/deprecate/SVExclusionList.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SVExclusionList.cpp.o: ../lib/deprecate/gps_constants.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/deprecate/SolverPPP2.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPP2.cpp.o: ../lib/deprecate/SolverPPP2.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/deprecate/SolverPPPUC.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPUC.cpp.o: ../lib/deprecate/SolverPPPUC.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/deprecate/SolverPPPX.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX.cpp.o: ../lib/deprecate/SolverPPPX.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/deprecate/SolverPPPX2.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPX2.cpp.o: ../lib/deprecate/SolverPPPX2.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSCore/geometry.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/ARBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/ARLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/ARMLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/DatumPPP.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/DatumPPPNL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/DatumPPPWL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/Edge.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/dev/Vertex.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/deprecate/SolverPPPXAR2.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverPPPXAR2.cpp.o: ../lib/deprecate/SolverPPPXAR2.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/ARBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/ARLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/ARMLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/DatumPPP.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/dev/Vertex.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/deprecate/SolverRTKLc.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLc.cpp.o: ../lib/deprecate/SolverRTKLc.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSCore/geometry.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/ARBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/ARLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/ARMLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/DatumPPP.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/DatumPPPNL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/DatumPPPWL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/Edge.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/dev/Vertex.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/deprecate/SolverRTKLw.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKLw.cpp.o: ../lib/deprecate/SolverRTKLw.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSCore/geometry.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/ARBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/ARLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/ARMLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/DatumPPP.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/DatumPPPNL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/DatumPPPWL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/Edge.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/dev/Vertex.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/deprecate/SolverRTKUC.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKUC.cpp.o: ../lib/deprecate/SolverRTKUC.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSCore/geometry.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/PowerSum.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/ARBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/ARLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/ARMLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/DatumPPPNL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/DatumPPPWL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/Edge.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/dev/Vertex.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/deprecate/SolverRTKX.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX.cpp.o: ../lib/deprecate/SolverRTKX.hpp
-
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSCore/geometry.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/ProcLib/SolverBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Procframe/ProcessingClass.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/ARBase.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/ARLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/ARMLambda.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/DatumPPPNL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/DatumPPPWL.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/Edge.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/SolverLMS.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/dev/Vertex.hpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/deprecate/SolverRTKX2.cpp
-CMakeFiles/pppbox.dir/lib/deprecate/SolverRTKX2.cpp.o: ../lib/deprecate/SolverRTKX2.hpp
-
 CMakeFiles/pppbox.dir/lib/dev/ARLambda.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/ARLambda.cpp.o: ../lib/Math/Matrix/Matrix.hpp
 CMakeFiles/pppbox.dir/lib/dev/ARLambda.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
@@ -11164,9 +10295,68 @@ CMakeFiles/pppbox.dir/lib/dev/ARMLambda.cpp.o: ../lib/dev/ARLambda.hpp
 CMakeFiles/pppbox.dir/lib/dev/ARMLambda.cpp.o: ../lib/dev/ARMLambda.cpp
 CMakeFiles/pppbox.dir/lib/dev/ARMLambda.cpp.o: ../lib/dev/ARMLambda.hpp
 
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/FFData.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/FFStream.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/FFStreamError.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSCore/ObsID.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSCore/Position.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSCore/gps_constants.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/GNSSEph/SatID.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/MathBase.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Matrix/Matrix.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/MiscMath.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/SpecialFunctions.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Stats.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Triple.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Vector/Vector.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Vector/VectorBase.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/RefTime/TimeSystem.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/TimeHandling/CivilTime.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/TimeHandling/CommonTime.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/TimeHandling/SystemTime.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/TimeHandling/TimeTag.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/TimeHandling/UnixTime.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/TimeHandling/YDSTime.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Utilities/Exception.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/Utilities/StringUtils.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/RinexObsHeader.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/ARRound.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/AmbiDatum.cpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/AmbiDatum.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/Arc.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/DataHeaders.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/DataStructures.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/RinexObsData.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/SourceID.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/StochasticModel.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/TypeID.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiDatum.cpp.o: ../lib/dev/Vertex.hpp
+
+CMakeFiles/pppbox.dir/lib/dev/Ambiguity.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Ambiguity.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Ambiguity.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/dev/Ambiguity.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Ambiguity.cpp.o: ../lib/dev/Ambiguity.cpp
 CMakeFiles/pppbox.dir/lib/dev/Ambiguity.cpp.o: ../lib/dev/Ambiguity.hpp
 
@@ -11186,6 +10376,7 @@ CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11213,7 +10404,6 @@ CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/TimeHandling/TimeT
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/AmbiguitySmoother.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -11235,6 +10425,7 @@ CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11252,7 +10443,6 @@ CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/dev/Arc.cpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/dev/Arc.hpp
 CMakeFiles/pppbox.dir/lib/dev/Arc.cpp.o: ../lib/dev/RinexObsHeader.hpp
@@ -11282,6 +10472,7 @@ CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.h
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/GNSSCore/Xv.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -11325,7 +10516,6 @@ CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/Utilities/BinUtils.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/Utilities/StringUtils.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/Utilities/gpstkplatform.h
-CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/BasicModel.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -11352,6 +10542,7 @@ CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11378,7 +10569,6 @@ CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/CC2NONCC.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -11393,6 +10583,7 @@ CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/FileDirProc/FileStore.
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/Math/MiscMath.hpp
@@ -11426,7 +10617,6 @@ CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/TimeHandling/WeekSecon
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/dev/ClockSatStore.cpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/dev/ClockSatStore.cpp.o: ../lib/dev/TabularSatStore.hpp
@@ -11447,6 +10637,7 @@ CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11475,7 +10666,6 @@ CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/TimeHandling/TimeTa
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/dev/CodeKalmanSolver.cpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
 CMakeFiles/pppbox.dir/lib/dev/CodeKalmanSolver.cpp.o: ../lib/dev/DataHeaders.hpp
@@ -11504,6 +10694,7 @@ CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/GNSSCore/ObsI
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11531,7 +10722,6 @@ CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/TimeHandling/
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeDeltaCorrection.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -11558,6 +10748,7 @@ CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/GNSSCore/ObsIDIni
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11584,7 +10775,6 @@ CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/TimeHandling/Time
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/dev/ComputeElevWeights.cpp
 CMakeFiles/pppbox.dir/lib/dev/ComputeElevWeights.cpp.o: ../lib/dev/ComputeElevWeights.hpp
@@ -11611,6 +10801,7 @@ CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11637,7 +10828,6 @@ CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/TimeHandling/TimeT
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectCodeBiases.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -11664,6 +10854,7 @@ CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11691,7 +10882,6 @@ CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/CorrectUPDs.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -11720,6 +10910,7 @@ CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11737,7 +10928,6 @@ CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/TimeHandling/TimeConstan
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/dev/DataHeaders.cpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataHeaders.cpp.o: ../lib/dev/RinexObsHeader.hpp
@@ -11760,6 +10950,7 @@ CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -11785,7 +10976,6 @@ CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/TimeHandling/TimeTag.
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/dev/DataStructures.cpp
@@ -11793,189 +10983,6 @@ CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/dev/DataStructures.hp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/dev/SourceID.hpp
 CMakeFiles/pppbox.dir/lib/dev/DataStructures.cpp.o: ../lib/dev/TypeID.hpp
-
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/TimeHandling/SystemTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/TimeHandling/UnixTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/DatumPPP.cpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/DatumPPP.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPP.cpp.o: ../lib/dev/Vertex.hpp
-
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSCore/geometry.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/TimeHandling/SystemTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/TimeHandling/UnixTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/DatumPPPNL.cpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/DatumPPPNL.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/Edge.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPNL.cpp.o: ../lib/dev/Vertex.hpp
-
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/FFData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/FFStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/FFStreamError.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/FFTextStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsStream.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSCore/ObsID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSCore/Position.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSCore/Xvt.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSCore/geometry.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/MathBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Matrix/Matrix.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Matrix/MatrixBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Matrix/MatrixBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Matrix/MatrixFunctors.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Matrix/MatrixImplementation.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/MiscMath.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Stats.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Triple.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Vector/Vector.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Vector/VectorBase.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/RefTime/TimeSystem.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/TimeHandling/CivilTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/TimeHandling/CommonTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/TimeHandling/SystemTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/TimeHandling/TimeTag.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/TimeHandling/UnixTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/TimeHandling/YDSTime.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/RinexObsHeader.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/ARRound.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/Arc.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/DataHeaders.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/DatumPPPWL.cpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/DatumPPPWL.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/Edge.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/RinexObsData.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/SpecialFunctions.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/StochasticModel.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/TypeID.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/Variable.hpp
-CMakeFiles/pppbox.dir/lib/dev/DatumPPPWL.cpp.o: ../lib/dev/Vertex.hpp
 
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/FileHandling/FFData.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/FileHandling/FFStream.hpp
@@ -11993,6 +11000,7 @@ CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12019,7 +11027,6 @@ CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -12028,6 +11035,24 @@ CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/dev/SourceID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/dev/TypeID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/dev/Decimate.cpp
 CMakeFiles/pppbox.dir/lib/dev/Decimate.cpp.o: ../lib/dev/Decimate.hpp
+
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/GNSSCore/Position.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/GNSSCore/gps_constants.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/GNSSEph/SatID.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/Math/MathBase.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/Math/Triple.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/Math/Vector/Vector.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/Math/Vector/VectorBase.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/Utilities/Exception.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/Utilities/StringUtils.hpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/dev/Distance.cpp
+CMakeFiles/pppbox.dir/lib/dev/Distance.cpp.o: ../lib/dev/Distance.hpp
 
 CMakeFiles/pppbox.dir/lib/dev/EOPDataStore.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/EOPDataStore.cpp.o: ../lib/Math/MiscMath.hpp
@@ -12064,6 +11089,7 @@ CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12089,7 +11115,6 @@ CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/dev/Arc.hpp
 CMakeFiles/pppbox.dir/lib/dev/Edge.cpp.o: ../lib/dev/DataHeaders.hpp
@@ -12119,6 +11144,7 @@ CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12145,7 +11171,6 @@ CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/EpochDiffOp.cpp.o: ../lib/dev/EpochDiffOp.cpp
@@ -12171,6 +11196,7 @@ CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12196,7 +11222,6 @@ CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/Equation.cpp.o: ../lib/dev/DataStructures.hpp
@@ -12224,6 +11249,7 @@ CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12265,7 +11291,6 @@ CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/TimeHandling/WeekSeco
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/EquationSystem.cpp.o: ../lib/dev/DataStructures.hpp
@@ -12295,6 +11320,7 @@ CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12338,7 +11364,6 @@ CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/TimeHandling/WeekSe
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/InterpCorrection.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -12372,6 +11397,7 @@ CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12398,7 +11424,6 @@ CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/IonexModel.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -12424,6 +11449,7 @@ CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12450,7 +11476,6 @@ CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/TimeHandling/TimeTag.hp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -12476,6 +11501,7 @@ CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12502,7 +11528,6 @@ CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/LICSDetector2.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -12528,6 +11553,7 @@ CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/GNSSCore/ObsID.hp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12553,7 +11579,6 @@ CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/TimeHandling/Time
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/LinearCombinations.cpp.o: ../lib/dev/DataStructures.hpp
@@ -12579,6 +11604,7 @@ CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12605,7 +11631,6 @@ CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/TimeHandling/TimeTag.hp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -12631,6 +11656,7 @@ CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12657,7 +11683,6 @@ CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/MWFilter.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -12672,6 +11697,7 @@ CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/GNSSCore/Xvt.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/GNSSCore/geometry.hpp
+CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/Math/MathBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/Math/MiscMath.hpp
@@ -12690,7 +11716,6 @@ CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/TimeHandling/TimeConstants
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/dev/EOPDataStore.hpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/dev/PoleTides.cpp
 CMakeFiles/pppbox.dir/lib/dev/PoleTides.cpp.o: ../lib/dev/PoleTides.hpp
@@ -12702,6 +11727,7 @@ CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/FileHandling/SP3/SP
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/GNSSEph/SP3SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/Math/MathBase.hpp
@@ -12721,7 +11747,6 @@ CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/TimeHandling/TimeTa
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/dev/PositionSatStore.cpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/dev/PositionSatStore.hpp
 CMakeFiles/pppbox.dir/lib/dev/PositionSatStore.cpp.o: ../lib/dev/TabularSatStore.hpp
@@ -12742,6 +11767,7 @@ CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12769,7 +11795,6 @@ CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/TimeHandling/TimeTag.hp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/PrefitFilter.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -12788,6 +11813,7 @@ CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/FileHandling/RINEX
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12804,7 +11830,6 @@ CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/TimeHandling/TimeC
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/dev/RecTypeDataReader.cpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/dev/RecTypeDataReader.hpp
 CMakeFiles/pppbox.dir/lib/dev/RecTypeDataReader.cpp.o: ../lib/dev/RinexObsHeader.hpp
@@ -12816,6 +11841,7 @@ CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/FileHandling/FFStreamEr
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/FileHandling/FFTextStream.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
+CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/Math/MathBase.hpp
@@ -12831,7 +11857,6 @@ CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/TimeHandling/TimeConsta
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/dev/RinexObsData.cpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsData.cpp.o: ../lib/dev/RinexObsHeader.hpp
@@ -12842,6 +11867,7 @@ CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/FileHandling/FFStream
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/FileHandling/FFTextStream.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/FileHandling/RINEX/RinexObsBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/FileHandling/RINEX/RinexObsStream.hpp
+CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/Math/MathBase.hpp
@@ -12859,7 +11885,6 @@ CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/TimeHandling/TimeTag.
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/TimeHandling/UnixTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/dev/RinexObsHeader.cpp
 CMakeFiles/pppbox.dir/lib/dev/RinexObsHeader.cpp.o: ../lib/dev/RinexObsHeader.hpp
 
@@ -12867,6 +11892,7 @@ CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/FileHandling/FFData.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/RefTime/TimeSystem.hpp
@@ -12877,7 +11903,6 @@ CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/TimeHandling/TimeString
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/dev/RinexUPDBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/dev/RinexUPDData.cpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDData.cpp.o: ../lib/dev/RinexUPDData.hpp
@@ -12888,6 +11913,7 @@ CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/FileHandling/FFData.h
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/FileHandling/FFStream.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/FileHandling/FFStreamError.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/FileHandling/FFTextStream.hpp
+CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/Math/MathBase.hpp
@@ -12915,7 +11941,6 @@ CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/TimeHandling/WeekSeco
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/dev/RinexUPDBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/dev/RinexUPDHeader.cpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDHeader.cpp.o: ../lib/dev/RinexUPDHeader.hpp
@@ -12929,6 +11954,7 @@ CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/FileHandling/FFTextStr
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/GNSSEph/SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/Math/MathBase.hpp
@@ -12948,7 +11974,6 @@ CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/dev/RinexUPDBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/dev/RinexUPDData.hpp
 CMakeFiles/pppbox.dir/lib/dev/RinexUPDStore.cpp.o: ../lib/dev/RinexUPDHeader.hpp
@@ -12974,6 +11999,7 @@ CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/FileHandling/SP3/S
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/GNSSEph/SP3SatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -12994,7 +12020,6 @@ CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/TimeHandling/TimeT
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/dev/ClockSatStore.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/dev/PositionSatStore.hpp
 CMakeFiles/pppbox.dir/lib/dev/SP3EphemerisStore.cpp.o: ../lib/dev/SP3EphemerisStore.cpp
@@ -13017,6 +12042,7 @@ CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13043,7 +12069,6 @@ CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/SatArcMarker2.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -13069,6 +12094,7 @@ CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13095,7 +12121,6 @@ CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/TimeHandling/TimeTag.hp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/SimpleFilter.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -13121,6 +12146,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13151,7 +12177,6 @@ CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/TimeHandling/UnixTime.
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneral.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -13181,6 +12206,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13209,7 +12235,6 @@ CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/TimeHandling/TimeTag
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverGeneralFB.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -13240,6 +12265,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13267,7 +12293,6 @@ CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/dev/DataStructures.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverLMS.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -13293,6 +12318,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13321,7 +12347,6 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPP.cpp.o: ../lib/dev/DataStructures.hpp
@@ -13350,6 +12375,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13362,6 +12388,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Math/Matrix/MatrixImplem
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Math/MiscMath.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Math/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Math/Stats.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -13395,23 +12422,21 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/TimeHandling/WeekSecond.
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/ARBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/ARLambda.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/ARMLambda.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/ARRound.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/AmbiDatum.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/Arc.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/DatumPPP.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/SolverLMS.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/SolverPPPAR.cpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/SolverPPPAR.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/StochasticModel.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/TypeID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPAR.cpp.o: ../lib/dev/Variable.hpp
@@ -13433,6 +12458,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13445,6 +12471,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Math/Matrix/MatrixImpl
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Math/MiscMath.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Math/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Math/Stats.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -13462,13 +12489,12 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/ARRound.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/AmbiDatum.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/Arc.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/DatumPPP.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/SolverLMS.hpp
@@ -13476,7 +12502,6 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/SolverPPPAR.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/SolverPPPARFB.cpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/SolverPPPARFB.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/StochasticModel.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/TypeID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPARFB.cpp.o: ../lib/dev/Variable.hpp
@@ -13498,6 +12523,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13526,7 +12552,6 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPFB.cpp.o: ../lib/dev/DataStructures.hpp
@@ -13556,6 +12581,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13569,6 +12595,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Math/Matrix/MatrixOper
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Math/MiscMath.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Math/PowerSum.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Math/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Math/Stats.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -13586,23 +12613,21 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/TimeHandling/TimeTag.h
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/ARBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/ARLambda.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/ARMLambda.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/ARRound.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/AmbiDatum.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/Arc.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/DatumPPP.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/SolverLMS.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/SolverPPPUCAR.cpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/SolverPPPUCAR.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/StochasticModel.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/TypeID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCAR.cpp.o: ../lib/dev/Variable.hpp
@@ -13624,6 +12649,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13636,6 +12662,7 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Math/Matrix/MatrixIm
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Math/Matrix/MatrixOperators.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Math/MiscMath.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Math/SimpleKalmanFilter.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Math/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Math/Stats.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Math/Triple.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Math/Vector/Vector.hpp
@@ -13653,16 +12680,15 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/TimeHandling/TimeTag
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/ARBase.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/ARLambda.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/ARMLambda.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/ARRound.hpp
+CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/AmbiDatum.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/Arc.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/CodeKalmanSolver.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/DataStructures.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/DatumPPP.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/RinexObsData.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/SolverLMS.hpp
@@ -13670,7 +12696,6 @@ CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/SolverPPPUCAR.hp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/SolverPPPUCARFB.cpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/SolverPPPUCARFB.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/SourceID.hpp
-CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/SpecialFunctions.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/StochasticModel.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/TypeID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SolverPPPUCARFB.cpp.o: ../lib/dev/Variable.hpp
@@ -13688,6 +12713,7 @@ CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13705,18 +12731,10 @@ CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/TimeHandling/TimeConstants.
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/dev/SourceID.cpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/dev/SourceID.hpp
 CMakeFiles/pppbox.dir/lib/dev/SourceID.cpp.o: ../lib/dev/TypeID.hpp
-
-CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
-CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.o: ../lib/GNSSEph/SatID.hpp
-CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.o: ../lib/Utilities/Exception.hpp
-CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.o: ../lib/deprecate/gps_constants.hpp
-CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.o: ../lib/dev/SpecialFunctions.cpp
-CMakeFiles/pppbox.dir/lib/dev/SpecialFunctions.cpp.o: ../lib/dev/SpecialFunctions.hpp
 
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/FileHandling/FFData.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/FileHandling/FFStream.hpp
@@ -13734,6 +12752,7 @@ CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13759,7 +12778,6 @@ CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/TimeHandling/TimeTag
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/StochasticModel.cpp.o: ../lib/dev/DataStructures.hpp
@@ -13777,6 +12795,7 @@ CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/FileHandling/RINEX3/Rinex3Obs
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/FileHandling/RINEX3/Rinex3ObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
+CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13793,7 +12812,6 @@ CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/TimeHandling/TimeConstants.hp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/dev/TypeID.cpp
 CMakeFiles/pppbox.dir/lib/dev/TypeID.cpp.o: ../lib/dev/TypeID.hpp
@@ -13814,6 +12832,7 @@ CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13839,7 +12858,6 @@ CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/dev/DataHeaders.hpp
 CMakeFiles/pppbox.dir/lib/dev/Variable.cpp.o: ../lib/dev/DataStructures.hpp
@@ -13862,6 +12880,7 @@ CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/GNSSCore/ObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/GNSSCore/ObsIDInitializer.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/GNSSCore/Position.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/GNSSCore/Xvt.hpp
+CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/GNSSEph/RinexObsID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -13879,7 +12898,6 @@ CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/TimeHandling/TimeConstants.hp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/Utilities/Exception.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/Utilities/StringUtils.hpp
-CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/deprecate/gps_constants.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/dev/RinexObsHeader.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/dev/SourceID.hpp
 CMakeFiles/pppbox.dir/lib/dev/Vertex.cpp.o: ../lib/dev/TypeID.hpp

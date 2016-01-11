@@ -20,6 +20,7 @@ apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o
  ../lib/FileHandling/RINEX/RinexObsBase.hpp
  ../lib/FileHandling/RINEX/RinexObsFilterOperators.hpp
  ../lib/FileHandling/RINEX/RinexObsStream.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/RinexSatID.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/Math/MathBase.hpp
@@ -37,7 +38,6 @@ apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o
  ../lib/TimeHandling/UnixTime.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
- ../lib/deprecate/gps_constants.hpp
  ../lib/dev/RinexObsData.hpp
  ../lib/dev/RinexObsHeader.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/mergetools/MergeFrame.hpp

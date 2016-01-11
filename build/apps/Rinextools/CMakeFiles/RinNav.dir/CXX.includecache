@@ -204,6 +204,8 @@ ReferenceFrame.hpp
 GNSSconstants.hpp
 ../lib/GNSSCore/GNSSconstants.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/BDSEphemeris.hpp
 string
 -
@@ -785,8 +787,6 @@ algorithm
 -
 list
 -
-
-../lib/deprecate/gps_constants.hpp
 
 /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/Rinextools/RinNav.cpp
 string

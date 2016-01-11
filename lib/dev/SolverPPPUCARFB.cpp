@@ -84,9 +84,9 @@ namespace gpstk
       }
 
       keepTypeSet.insert(TypeID::cdt);
-      keepTypeSet.insert(TypeID::cdtP2);
-      keepTypeSet.insert(TypeID::cdtL1);
-      keepTypeSet.insert(TypeID::cdtL2);
+      keepTypeSet.insert(TypeID::instP2);
+      keepTypeSet.insert(TypeID::updL1);
+      keepTypeSet.insert(TypeID::updL2);
 
       keepTypeSet.insert(TypeID::ionoL1);    // #3
       keepTypeSet.insert(TypeID::BL1);    // #3
@@ -606,7 +606,7 @@ namespace gpstk
    {
 
          // Set the SolverPPP filter
-      SolverPPPUCAR::setNEU(useNEU);
+      SolverPPPUCAR::setNEU(useNEU, 2);
 
 
          // Clear current 'keepTypeSet' and indicate the TypeID's that
@@ -631,11 +631,12 @@ namespace gpstk
       }
 
       keepTypeSet.insert(TypeID::cdt);
-      keepTypeSet.insert(TypeID::cdtP2);
-      keepTypeSet.insert(TypeID::cdtL1);
-      keepTypeSet.insert(TypeID::cdtL2);
+      keepTypeSet.insert(TypeID::instP2);
+      keepTypeSet.insert(TypeID::updL1);
+      keepTypeSet.insert(TypeID::updL2);
 
       keepTypeSet.insert(TypeID::ionoL1);    // #3
+      keepTypeSet.insert(TypeID::ionoMap);    // #3
       keepTypeSet.insert(TypeID::BL1);    // #3
       keepTypeSet.insert(TypeID::BL2);    // #4
 

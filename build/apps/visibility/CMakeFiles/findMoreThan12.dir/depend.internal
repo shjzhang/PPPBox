@@ -8,6 +8,7 @@ apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o
  ../lib/GNSSCore/EllipsoidModel.hpp
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/GNSSEph/XvtStore.hpp
  ../lib/Math/MathBase.hpp
@@ -29,5 +30,4 @@ apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o
  ../lib/TimeHandling/WeekSecond.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/visibility/findMoreThan12.cpp

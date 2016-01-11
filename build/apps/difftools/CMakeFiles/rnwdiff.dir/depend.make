@@ -29,6 +29,7 @@ apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/GNSSCore/ObsIDInitia
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -59,7 +60,6 @@ apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/Utilities/BinUtils.h
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/Utilities/Exception.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../apps/difftools/DiffFrame.hpp
 apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o: ../apps/difftools/rnwdiff.cpp
 

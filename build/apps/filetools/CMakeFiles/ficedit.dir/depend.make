@@ -23,6 +23,7 @@ apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/GNSSCore/ObsIDInitia
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -53,6 +54,5 @@ apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/Utilities/BinUtils.h
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/Utilities/Exception.hpp
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o: ../apps/filetools/ficedit.cpp
 

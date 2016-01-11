@@ -32,6 +32,7 @@ apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.h
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -91,7 +92,6 @@ apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/Utilities/gpstkplatform.h
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/Utilities/stl_helpers.hpp
-apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/reszilla/CMakeFiles/ddGen.dir/ddGen.cpp.o: ../apps/reszilla/CycleSlipList.hpp

@@ -11,6 +11,7 @@ apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/GNSSCore/EllipsoidMo
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/Math/MathBase.hpp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/Math/Triple.hpp
@@ -21,6 +22,5 @@ apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/Math/Vector/VectorOp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/RefTime/ReferenceFrame.hpp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/Utilities/Exception.hpp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/positioning/CMakeFiles/poscvt.dir/poscvt.cpp.o: ../apps/positioning/poscvt.cpp
 

@@ -94,6 +94,7 @@
 /Users/shjzhang/Documents/Develop/rocket/pppbox/build/apps/dev/CMakeFiles/ppp.dir
 /Users/shjzhang/Documents/Develop/rocket/pppbox/build/apps/dev/CMakeFiles/pppar.dir
 /Users/shjzhang/Documents/Develop/rocket/pppbox/build/CMakeFiles/pppbox.dir
+/Users/shjzhang/Documents/Develop/rocket/pppbox/build/apps/dev/CMakeFiles/pppucar.dir
 /Users/shjzhang/Documents/Develop/rocket/pppbox/build/apps/rfw/CMakeFiles/rfw.dir
 /Users/shjzhang/Documents/Develop/rocket/pppbox/build/apps/filetools/CMakeFiles/rinexelvstrip.dir
 /Users/shjzhang/Documents/Develop/rocket/pppbox/build/apps/positioning/CMakeFiles/rinexpvt.dir

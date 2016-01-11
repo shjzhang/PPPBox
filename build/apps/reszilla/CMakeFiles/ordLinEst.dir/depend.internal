@@ -19,6 +19,7 @@ apps/reszilla/CMakeFiles/ordLinEst.dir/ordLinEst.cpp.o
  ../lib/GNSSCore/WGS84Ellipsoid.hpp
  ../lib/GNSSCore/WxObsMap.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/EngAlmanac.hpp
  ../lib/GNSSEph/EngNav.hpp
@@ -53,7 +54,6 @@ apps/reszilla/CMakeFiles/ordLinEst.dir/ordLinEst.cpp.o
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/ValidType.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/reszilla/OrdApp.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/reszilla/RobustLinearEstimator.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/reszilla/ordLinEst.cpp

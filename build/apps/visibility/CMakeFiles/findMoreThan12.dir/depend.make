@@ -7,6 +7,7 @@ apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/Comma
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/GNSSCore/EllipsoidModel.hpp
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/GNSSCore/GNSSconstants.hpp
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/GNSSEph/XvtStore.hpp
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/Math/MathBase.hpp
@@ -28,6 +29,5 @@ apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/TimeH
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/TimeHandling/WeekSecond.hpp
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/Utilities/Exception.hpp
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/visibility/CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o: ../apps/visibility/findMoreThan12.cpp
 

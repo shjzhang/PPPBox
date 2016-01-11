@@ -18,6 +18,7 @@ apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/GNSSCore/TropModel.
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/GNSSEph/EngAlmanac.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/GNSSEph/EngNav.hpp
@@ -52,7 +53,6 @@ apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/Utilities/Exception
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../apps/reszilla/OrdApp.hpp
 apps/reszilla/CMakeFiles/ordClock.dir/ordClock.cpp.o: ../apps/reszilla/ordClock.cpp
 

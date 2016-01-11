@@ -12,6 +12,7 @@ apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/GNSSCore/GNSS
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/GNSSEph/SatID.hpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/Math/MathBase.hpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/Math/Triple.hpp
@@ -27,7 +28,6 @@ apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/TimeHandling/
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/TimeHandling/TimeConstants.hpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/Utilities/Exception.hpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../apps/ephint/ComputeSatPCOffset.cpp
 apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o: ../apps/ephint/ComputeSatPCOffset.hpp
 
@@ -53,6 +53,7 @@ apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/GNSSCore/GNSSconstants.hp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/GNSSCore/Position.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/GNSSEph/RinexSatID.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/GNSSEph/SP3SatID.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/GNSSEph/SatID.hpp
@@ -75,7 +76,6 @@ apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/TimeHandling/TimeTag.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/TimeHandling/YDSTime.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/Utilities/Exception.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/Utilities/StringUtils.hpp
-apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o: ../lib/dev/SP3EphemerisStore.hpp

@@ -30,6 +30,7 @@ apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/GNSSCore/ObsIDInitia
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -59,7 +60,6 @@ apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/Utilities/BinUtils.h
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/Utilities/Exception.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../apps/difftools/DiffFrame.hpp
 apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o: ../apps/difftools/ficdiff.cpp
 

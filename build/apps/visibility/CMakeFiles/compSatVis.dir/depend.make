@@ -56,6 +56,7 @@ apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/GNSSCore/WGS8
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -108,7 +109,6 @@ apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/Utilities/Bin
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/Utilities/Exception.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/visibility/CMakeFiles/compSatVis.dir/compSatVis.cpp.o: ../lib/dev/SP3EphemerisStore.hpp

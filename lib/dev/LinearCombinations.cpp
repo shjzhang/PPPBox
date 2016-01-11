@@ -88,8 +88,8 @@ namespace gpstk
       c1Prefit.body[TypeID::gravDelay]    = -1.0;
       c1Prefit.body[TypeID::satPCenter]   = -1.0;
       c1Prefit.body[TypeID::tropoSlant]   = -1.0;
-         // The DCB for C1
-//    c1Prefit.body[TypeID::instC1]       = -1.0;
+         // The instrumental delay for C1 is not exactly TGD, but it is close
+      c1Prefit.body[TypeID::instC1]       = -1.0;
          // Corrections interpolated from reference 
       c1Prefit.body[TypeID::corrC1]       = -1.0;
 
@@ -103,8 +103,8 @@ namespace gpstk
       p1Prefit.body[TypeID::gravDelay]    = -1.0;
       p1Prefit.body[TypeID::satPCenter]   = -1.0;
       p1Prefit.body[TypeID::tropoSlant]   = -1.0;
-         // DCB for P1
-//    p1Prefit.body[TypeID::instP1]       = -1.0;
+         // Differential code biases (DCBs) for P1-P2
+      p1Prefit.body[TypeID::instP1]       = -1.0;
          // Interpolated from reference stations
       p1Prefit.body[TypeID::corrP1]       = -1.0;
     
@@ -119,9 +119,8 @@ namespace gpstk
       p2Prefit.body[TypeID::gravDelay]    = -1.0;
       p2Prefit.body[TypeID::satPCenter]   = -1.0;
       p2Prefit.body[TypeID::tropoSlant]   = -1.0;
-
-         // DCB for P2
-//    p2Prefit.body[TypeID::instP2]       = -1.0;
+         // Differential code biases (DCBs) for P1-P2
+      p2Prefit.body[TypeID::instP2]       = -1.0;
          // Interpolated from reference stations
       p2Prefit.body[TypeID::corrP2]       = -1.0;
 

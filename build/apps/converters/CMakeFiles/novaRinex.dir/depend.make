@@ -24,6 +24,7 @@ apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/GNSSCore/ObsIDI
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -59,7 +60,6 @@ apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/Utilities/BinUt
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/Utilities/Exception.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/dev/RinexObsData.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../lib/dev/RinexObsHeader.hpp
 apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o: ../apps/converters/novaRinex.cpp

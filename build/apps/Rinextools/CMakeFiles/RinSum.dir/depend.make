@@ -28,6 +28,7 @@ apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/GNSSCore/ObsIDInitial
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -78,7 +79,6 @@ apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/Utilities/expandtilde
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/Utilities/gpstkplatform.h
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/Utilities/logstream.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/Utilities/singleton.hpp
-apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o: ../lib/dev/RinexObsHeader.hpp

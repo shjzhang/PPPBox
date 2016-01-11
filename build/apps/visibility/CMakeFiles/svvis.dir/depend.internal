@@ -18,6 +18,7 @@ apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o
  ../lib/GNSSCore/GNSSconstants.hpp
  ../lib/GNSSCore/Position.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/GNSSEph/XvtStore.hpp
  ../lib/Math/MathBase.hpp
@@ -41,5 +42,4 @@ apps/visibility/CMakeFiles/svvis.dir/svvis.cpp.o
  ../lib/TimeHandling/YDSTime.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/visibility/svvis.cpp

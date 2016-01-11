@@ -40,6 +40,7 @@ apps/filetools/CMakeFiles/navdmp.dir/navdmp.cpp.o
  ../lib/GNSSCore/WGS84Ellipsoid.hpp
  ../lib/GNSSCore/Xv.hpp
  ../lib/GNSSCore/Xvt.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/AlmOrbit.hpp
  ../lib/GNSSEph/BDSEphemeris.hpp
  ../lib/GNSSEph/BrcClockCorrection.hpp
@@ -84,5 +85,4 @@ apps/filetools/CMakeFiles/navdmp.dir/navdmp.cpp.o
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
  ../lib/Utilities/gpstkplatform.h
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/filetools/navdmp.cpp

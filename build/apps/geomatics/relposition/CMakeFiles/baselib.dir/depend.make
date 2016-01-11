@@ -26,6 +26,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/GNSSC
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -88,7 +89,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/Utili
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ClockModel.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -129,6 +129,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/GNS
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -192,7 +193,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/Uti
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/CommandInput.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -230,6 +230,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -291,7 +292,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ComputeRAIMSolution.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -330,6 +330,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/GNSSCo
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -391,7 +392,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/Utilit
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Configure.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -429,6 +429,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/GNSSC
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -490,7 +491,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/Utili
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataOutput.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -528,6 +528,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/G
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -589,7 +590,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/U
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DataStructures.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -627,6 +627,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -688,7 +689,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/DoubleDifference.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -726,6 +726,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/GNSSCore
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -788,7 +789,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/Utilitie
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditDDs.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -826,6 +826,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../l
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -887,7 +888,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../l
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EditRawDataBuffers.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -926,6 +926,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/GN
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -989,7 +990,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/Ut
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ElevationMask.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1027,6 +1027,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ..
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -1088,7 +1089,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ..
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/EphemerisImprovement.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1127,6 +1127,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/GNSSC
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -1199,7 +1200,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/Utili
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Estimation.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1237,6 +1237,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/G
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -1300,7 +1301,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/U
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ProcessRawData.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1338,6 +1338,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/GNS
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -1399,7 +1400,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/Uti
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadObsFiles.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1437,6 +1437,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/GNSS
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -1498,7 +1499,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/Util
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/ReadRawData.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1537,6 +1537,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -1601,7 +1602,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/StochasticModels.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1640,6 +1640,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -1707,7 +1708,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Synchronization.cpp.o: ../lib/dev/RinexObsData.hpp
@@ -1745,6 +1745,7 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/GNSSCo
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/GNSSCore/WxObsMap.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/GNSSEph/EngEphemeris.hpp
@@ -1807,7 +1808,6 @@ apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/Utilit
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/Utilities/ValidType.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/geomatics/relposition/CMakeFiles/baselib.dir/Timetable.cpp.o: ../lib/dev/RinexObsData.hpp

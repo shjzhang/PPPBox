@@ -266,6 +266,8 @@ ReferenceFrame.hpp
 GNSSconstants.hpp
 ../lib/GNSSCore/GNSSconstants.hpp
 
+../lib/GNSSCore/gps_constants.hpp
+
 ../lib/GNSSEph/AlmOrbit.hpp
 map
 -
@@ -879,8 +881,6 @@ algorithm
 -
 list
 -
-
-../lib/deprecate/gps_constants.hpp
 
 ../lib/dev/RinexObsData.hpp
 vector

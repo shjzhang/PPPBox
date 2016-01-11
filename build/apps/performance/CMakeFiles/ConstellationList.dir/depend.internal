@@ -3,6 +3,7 @@
 
 apps/performance/CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.o
  ../lib/GNSSCore/GNSSconstants.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/RefTime/TimeSystem.hpp
  ../lib/TimeHandling/CommonTime.hpp
@@ -12,7 +13,6 @@ apps/performance/CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.o
  ../lib/TimeHandling/YDSTime.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationDefinition.cpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationDefinition.hpp
 apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.o
@@ -22,6 +22,7 @@ apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.o
  ../lib/CommandLine/CommandOptionParser.hpp
  ../lib/CommandLine/getopt.h
  ../lib/GNSSCore/GNSSconstants.hpp
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/RefTime/TimeSystem.hpp
  ../lib/TimeHandling/CommonTime.hpp
@@ -30,11 +31,11 @@ apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.o
  ../lib/TimeHandling/YDSTime.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationDefinition.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationList.cpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationSet.hpp
 apps/performance/CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.o
+ ../lib/GNSSCore/gps_constants.hpp
  ../lib/GNSSEph/SatID.hpp
  ../lib/RefTime/TimeSystem.hpp
  ../lib/TimeHandling/CivilTime.hpp
@@ -45,7 +46,6 @@ apps/performance/CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.o
  ../lib/TimeHandling/YDSTime.hpp
  ../lib/Utilities/Exception.hpp
  ../lib/Utilities/StringUtils.hpp
- ../lib/deprecate/gps_constants.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationDefinition.hpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationSet.cpp
  /Users/shjzhang/Documents/Develop/rocket/pppbox/apps/performance/ConstellationSet.hpp

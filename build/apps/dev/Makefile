@@ -170,6 +170,20 @@ pppar/fast:
 	cd /Users/shjzhang/Documents/Develop/rocket/pppbox/build && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/build
 .PHONY : pppar/fast
 
+# Convenience name for target.
+apps/dev/CMakeFiles/pppucar.dir/rule:
+	cd /Users/shjzhang/Documents/Develop/rocket/pppbox/build && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/CMakeFiles/pppucar.dir/rule
+.PHONY : apps/dev/CMakeFiles/pppucar.dir/rule
+
+# Convenience name for target.
+pppucar: apps/dev/CMakeFiles/pppucar.dir/rule
+.PHONY : pppucar
+
+# fast build rule for target.
+pppucar/fast:
+	cd /Users/shjzhang/Documents/Develop/rocket/pppbox/build && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/build
+.PHONY : pppucar/fast
+
 ppp.o: ppp.cpp.o
 .PHONY : ppp.o
 
@@ -218,6 +232,30 @@ pppar.cpp.s:
 	cd /Users/shjzhang/Documents/Develop/rocket/pppbox/build && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/pppar.cpp.s
 .PHONY : pppar.cpp.s
 
+pppucar.o: pppucar.cpp.o
+.PHONY : pppucar.o
+
+# target to build an object file
+pppucar.cpp.o:
+	cd /Users/shjzhang/Documents/Develop/rocket/pppbox/build && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.o
+.PHONY : pppucar.cpp.o
+
+pppucar.i: pppucar.cpp.i
+.PHONY : pppucar.i
+
+# target to preprocess a source file
+pppucar.cpp.i:
+	cd /Users/shjzhang/Documents/Develop/rocket/pppbox/build && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.i
+.PHONY : pppucar.cpp.i
+
+pppucar.s: pppucar.cpp.s
+.PHONY : pppucar.s
+
+# target to generate assembly for a file
+pppucar.cpp.s:
+	cd /Users/shjzhang/Documents/Develop/rocket/pppbox/build && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.s
+.PHONY : pppucar.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -231,6 +269,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... ppp"
 	@echo "... pppar"
+	@echo "... pppucar"
 	@echo "... rebuild_cache"
 	@echo "... ppp.o"
 	@echo "... ppp.i"
@@ -238,6 +277,9 @@ help:
 	@echo "... pppar.o"
 	@echo "... pppar.i"
 	@echo "... pppar.s"
+	@echo "... pppucar.o"
+	@echo "... pppucar.i"
+	@echo "... pppucar.s"
 .PHONY : help
 
 

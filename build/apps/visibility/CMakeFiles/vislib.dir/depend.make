@@ -6,6 +6,7 @@ apps/visibility/CMakeFiles/vislib.dir/DiscreteVisibleCounts.cpp.o: ../lib/Utilit
 apps/visibility/CMakeFiles/vislib.dir/DiscreteVisibleCounts.cpp.o: ../apps/visibility/DiscreteVisibleCounts.cpp
 apps/visibility/CMakeFiles/vislib.dir/DiscreteVisibleCounts.cpp.o: ../apps/visibility/DiscreteVisibleCounts.hpp
 
+apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/Math/MathBase.hpp
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/Math/MiscMath.hpp
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/Math/Stats.hpp
@@ -14,7 +15,6 @@ apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/Math/Vector/VectorB
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/Math/Vector/VectorBaseOperators.hpp
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/Math/Vector/VectorOperators.hpp
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/Utilities/Exception.hpp
-apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../apps/visibility/StaStats.cpp
 apps/visibility/CMakeFiles/vislib.dir/StaStats.cpp.o: ../apps/visibility/StaStats.hpp
 
@@ -69,6 +69,7 @@ apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/GNSSCore/WGS84Ell
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/GNSSCore/Xvt.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/GNSSCore/geometry.hpp
+apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -118,7 +119,6 @@ apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/Utilities/BinUtil
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/Utilities/Exception.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/dev/ClockSatStore.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/dev/PositionSatStore.hpp
 apps/visibility/CMakeFiles/vislib.dir/VisSupport.cpp.o: ../lib/dev/SP3EphemerisStore.hpp

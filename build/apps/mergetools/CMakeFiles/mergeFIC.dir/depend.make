@@ -30,6 +30,7 @@ apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/GNSSCore/ObsIDIni
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/GNSSCore/WGS84Ellipsoid.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/GNSSCore/Xv.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/GNSSCore/Xvt.hpp
+apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/GNSSCore/gps_constants.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/GNSSEph/AlmOrbit.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/GNSSEph/BrcClockCorrection.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/GNSSEph/BrcKeplerOrbit.hpp
@@ -59,7 +60,6 @@ apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/Utilities/BinUtil
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/Utilities/Exception.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/Utilities/StringUtils.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/Utilities/gpstkplatform.h
-apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../lib/deprecate/gps_constants.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../apps/mergetools/MergeFrame.hpp
 apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o: ../apps/mergetools/mergeFIC.cpp
 

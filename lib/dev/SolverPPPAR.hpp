@@ -44,7 +44,7 @@
 #include "CodeKalmanSolver.hpp"
 #include "GNSSconstants.hpp"
 #include "Variable.hpp"
-#include "DatumPPP.hpp"
+#include "AmbiDatum.hpp"
 
 namespace gpstk
 {
@@ -465,10 +465,10 @@ namespace gpstk
 
 
          /// Ambiguity datum
-      DatumPPP datumWL;
+      AmbiDatum datumWL;
 
          /// Ambiguity datum
-      DatumPPP datumNL;
+      AmbiDatum datumNL;
 
          /// Whether turn on the 'reInitialize' or not
       bool reInitialize;
@@ -684,4 +684,5 @@ namespace gpstk
       //@}
 
 }  // End of namespace gpstk
+
 #endif   // GPSTK_SOLVERPPPAR_HPP
