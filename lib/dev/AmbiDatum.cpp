@@ -19,8 +19,11 @@
 //
 //  Modification
 //
-//  2012/10/12  Modify this program for ambiguity datum determination in PPP.
-//  2012/10/20  Change this file name from "AmbDatumPos" to "AmbiDatum" 
+//  2012/10/12  
+//  Modify this program for ambiguity datum determination in PPP.
+//
+//  2012/10/20  
+//  Change this file name from "AmbDatumPos" to "AmbiDatum" 
 //
 //============================================================================
 

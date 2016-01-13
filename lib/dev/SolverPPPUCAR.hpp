@@ -25,9 +25,16 @@
 //
 //  Revision
 //
-//  2014/02/24  create to process mixed model for PPP
-//  2014/04/07  solve the ppp solution with extended model by fixing the 
-//              zero-difference ambiguities.
+//  2014/02/24  
+//  create to process mixed model for PPP
+//
+//  2014/04/07  
+//  solve the ppp solution with extended model by fixing the zero-difference 
+//  ambiguities.
+//
+//  2016/01/12  
+//  finish this class, but to be tested!
+//
 //
 //============================================================================
 
