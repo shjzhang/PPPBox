@@ -1,4 +1,5 @@
 *.clk
 *.clk_30s
 *.log
+.DS_Store
 build/
