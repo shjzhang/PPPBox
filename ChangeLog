@@ -1,3 +1,21 @@
+- install change by hwei, 2016/1/18
+- for workpalce/ppp/ppp.sh
+1. change such as "/Users/shjzhang/Documents/Develop/gpstk/tables/" to "usrfilename"
+2. add code to link shell get_data.sh which in "script"
+# by hwei add link  "sh for get data"
+ln -f -s /Users/whusgghwei/Desktop/gpstk_install/pppbox-master/script/get_data.sh get_data.sh
+ln -f -s /Users/whusgghwei/Desktop/gpstk_install/pppbox-master/script/get_eph.sh get_eph.sh
+ln -f -s /Users/whusgghwei/Desktop/gpstk_install/pppbox-master/script/get_rnx.sh get_rnx.sh
+# end by hwei
+
+3. as mabye you  installed  old gpstk ,you need to repalce tools  with new one .
+other tools such as
+
+cd build/apps/times/ 
+mv timeconvert /usr/local/bin/timeconvert 
+
+
+
 
 
 - first initial version, 2015/12/10
