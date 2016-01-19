@@ -140,12 +140,25 @@ namespace gpstk
       //  MJD         X        Y     UT1-UTC    LOD   Xsig   Ysig   UTsig LODsig  Nr Nf Nt     Xrt    Yrt  Xrtsig Yrtsig   dpsi    deps
       //               10**-6"        .1us    .1us/d    10**-6"     .1us  .1us/d                10**-6"/d    10**-6"/d        10**-6
 
-      string temp;
-      getline(inpf,temp);	
-      getline(inpf,temp);  
-      getline(inpf,temp);  
-      getline(inpf,temp);  
-
+//      string temp;
+//      getline(inpf,temp);	
+//      getline(inpf,temp);  
+//      getline(inpf,temp);  
+      string temp,tempm;
+      char tmpc[9],tmp[9];
+//        read eop file untils line show "MJD" in the first 8 char
+      do
+      {
+      getline(inpf,temp);
+      tempm=temp.substr(0,8);
+      strcpy(tmpc,tempm.c_str());
+      sscanf(tmpc,"%s",tmp);
+//      cout<<tmp<<endl;
+      }
+      while(strcmp(tmp, "MJD") != 0);
+//      skip the line show units
+      getline(inpf,temp);
+      
       bool ok (true);
       while(!inpf.eof() && inpf.good()) 
       {
