@@ -155,7 +155,8 @@ namespace gpstk
       sscanf(tmpc,"%s",tmp);
 //      cout<<tmp<<endl;
       }
-      while(strcmp(tmp, "MJD") != 0);
+      // consider "mjd" or "MJD"
+      while((strcmp(tmp, "MJD") != 0)&&(strcmp(tmp, "MJD") != 0));
 //      skip the line show units
       getline(inpf,temp);
       
