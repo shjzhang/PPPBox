@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/mdpscreenx.dir/mdpscreen.cpp.o CMakeFiles/mdpscreenx.dir/ScreenProc.cpp.o  -o mdpscreenx  libmdplib.a -lncurses ../../libpppbox.dylib 

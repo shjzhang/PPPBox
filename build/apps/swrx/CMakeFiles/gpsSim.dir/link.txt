@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   -lpthread CMakeFiles/gpsSim.dir/gpsSim.cpp.o  -o gpsSim  libsimlib.a ../../libpppbox.dylib 

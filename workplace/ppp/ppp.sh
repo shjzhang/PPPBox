@@ -15,18 +15,6 @@ get_rnx.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 24 -a IGS -u "url.list"
 # then, download the ephemeris files from IGS or IGS analysis center
 get_eph.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 24 -a IGS -u "url.list" -t "type.list" -l "$proj" -p "/Users/shjzhang/Documents/Data/IGS/data" > get_eph.log 
 
-# exclude the bad file
-rm $proj.rnxlist.good
-cat $proj.rnxlist | while read line
-do
-    found=`awk -v file="$line" 'BEGIN{ i=0; } { if(file==substr($0,1)) { i=i+1; } } END  {print i;}' "$proj".rnxlist.bad `
-
-    if [[ $found -eq 0 ]]
-    then
-       echo $line >> $proj.rnxlist.good
-    fi
-done
-
 # convert ssc2msc
 cat $proj.ssclist | while read line
 do
@@ -41,9 +29,9 @@ do
 done
 
 rm $proj.outlist
-cat $proj.rnxlist.good | while read line
+cat $proj.rnxlist | while read line
 do
-   echo "$line".out.04h.float.static >> $proj.outlist
+   echo "$line".out >> $proj.outlist
 done
 
 # now, Let's perform the ppp positioning

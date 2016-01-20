@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o  -o ssc2msc  ../../libpppbox.dylib 

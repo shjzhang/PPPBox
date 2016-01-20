@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/navdmp.dir/navdmp.cpp.o  -o navdmp  ../../libpppbox.dylib 

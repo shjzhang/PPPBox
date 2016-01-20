@@ -37,6 +37,7 @@
 namespace gpstk
 {
    using namespace std;
+   using namespace StringUtils;
   
       // Add to the store directly
    void EOPDataStore::addEOPData(const CommonTime& utc,
@@ -132,18 +133,21 @@ namespace gpstk
 
       clear();
 
-      // first we skip the header section
-      // skip the header
-
-      //version 2
-      //EOP  SOLUTION
-      //  MJD         X        Y     UT1-UTC    LOD   Xsig   Ysig   UTsig LODsig  Nr Nf Nt     Xrt    Yrt  Xrtsig Yrtsig   dpsi    deps
-      //               10**-6"        .1us    .1us/d    10**-6"     .1us  .1us/d                10**-6"/d    10**-6"/d        10**-6
-
+      // version 2
+      // EOP  SOLUTION
+      //   MJD         X        Y     UT1-UTC    LOD   ....
+      //               10**-6"        .1us    .1us/d    ...
+      
       string temp;
       getline(inpf,temp);	
-      getline(inpf,temp);  
-      getline(inpf,temp);  
+
+         // first we skip the header section
+         // skip the header
+      while( firstWord(temp) != "MJD" )
+      {
+        getline(inpf,temp);	
+      }
+         // pass the second line of the data
       getline(inpf,temp);  
 
       bool ok (true);
