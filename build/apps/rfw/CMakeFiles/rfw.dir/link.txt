@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/rfw.dir/rfw.cpp.o CMakeFiles/rfw.dir/FDStreamBuff.cpp.o CMakeFiles/rfw.dir/TCPStreamBuff.cpp.o  -o rfw  ../../libpppbox.dylib 

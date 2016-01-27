@@ -621,6 +621,7 @@ void ppp::process()
    {
       try
       {
+<<<<<<< HEAD
 //         if( upperCase(eopFile.substr(0,3)) == "IGS" )
 //         {
             eopStore.loadIGSFile( eopFile );
@@ -633,6 +634,9 @@ void ppp::process()
 //         {
 //            cerr << "File type not supported!" << endl;
 //         }
+=======
+         eopStore.loadIGSFile( eopFile );
+>>>>>>> dev
       }
       catch (FileMissingException& e)
       {

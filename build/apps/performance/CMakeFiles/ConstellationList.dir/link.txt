@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/ConstellationList.dir/ConstellationList.cpp.o CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.o CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.o  -o ConstellationList  ../../libpppbox.dylib 

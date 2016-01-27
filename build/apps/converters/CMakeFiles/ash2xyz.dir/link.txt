@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/ash2xyz.dir/ash2xyz.cpp.o  -o ash2xyz  ../../libpppbox.dylib 

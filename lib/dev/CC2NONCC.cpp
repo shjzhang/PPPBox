@@ -1,7 +1,7 @@
 #pragma ident "$Id$"
 
 /**
-* @file GPSTK_CC2NONCC_HPP
+* @file GPSTK_CC2NONCC_CPP
 * Class to convert CC(cross-correlation) to NONCC(non cross-correlation).
 */
 
@@ -27,8 +27,11 @@
 //
 //  Q.Liu, Wuhan Uniersity, 2015 
 //
+//  Modified
+//  2016-1-26 For C1/P2 receiver, the observable list maybe has P1(0),then
+//  this Satelite would be filtered, this result is unreasonable,so we delete
+//  the P1 filter.
 //============================================================================
-
 
 #include "CC2NONCC.hpp"
 
@@ -85,30 +88,30 @@ namespace gpstk
          SatIDSet satRejectedSet;
 
 
-			bool RecHasC1(false);
-			bool RecHasP1(false);	
-			bool RecHasP2(false);	
-			bool RecHasX2(false);	
+	 bool RecHasC1(false);
+	 bool RecHasP1(false);	
+	 bool RecHasP2(false);	
+	 bool RecHasX2(false);	
 
-            //
-            // Firstly, read the obs types that the 'recType' supports
-            //
-			set<string> recCodeSet = recTypeData.getCode(recType);
+         //
+         // Firstly, read the obs types that the 'recType' supports
+         //
+	 set<string> recCodeSet = recTypeData.getCode(recType);
 
          if( recCodeSet.size() == 0 )
          {
             GPSTK_THROW(RecTypeNotFound("receiver type is not found in bernese.lis"));
          }
 
-		   int C1Code = recCodeSet.count("C1");
-		   int P1Code = recCodeSet.count("P1");
-		   int P2Code = recCodeSet.count("P2");
-		   int X2Code = recCodeSet.count("X2");
+         int C1Code = recCodeSet.count("C1");
+	 int P1Code = recCodeSet.count("P1");
+         int P2Code = recCodeSet.count("P2");
+	 int X2Code = recCodeSet.count("X2");
 
-		   if(C1Code) RecHasC1 = true;
-		   if(P1Code) RecHasP1 = true;
-		   if(P2Code) RecHasP2 = true;
-		   if(X2Code) RecHasX2 = true;
+         if(C1Code) RecHasC1 = true;
+	 if(P1Code) RecHasP1 = true;
+	 if(P2Code) RecHasP2 = true;
+	 if(X2Code) RecHasX2 = true;
 
             // Loop through all the satellites
          satTypeValueMap::iterator it;
@@ -126,40 +129,42 @@ namespace gpstk
 
 
                // For receiver noncc (C1,P2)
-               // For the noncc: only c1 should be corrected
+               // For the noncc: only C1 should be corrected
+	       // C1->C1+(P1-C1)
             if( RecHasC1 && RecHasP2 )
             {
-               if( hasC1 && !hasP1 )
-               {
-                  double Bp1c1(0.0);      // in ns
-                  try
-                  {
-                     Bp1c1 = dcbP1C1.getDCB(sat);
-                  }
-                  catch(...)
-                  {
-                     Bp1c1 = 0.0;
-                  }
+		/* Changed in 2016-1-26, by Q.Liu
+		 * Because in some C1/P2 observable files,the observable
+		 * list has P1 */
+		if( hasC1 )
+		{
+                   double Bp1c1(0.0);      // in ns
+                   try
+                   {
+                      Bp1c1 = dcbP1C1.getDCB(sat);
+                   }
+                   catch(...)
+                   {
+                      Bp1c1 = 0.0;
+                   }
 
-			            // Correct
-				      it->second[TypeID::C1] = it->second[TypeID::C1] + 
-                                           Bp1c1 * C_MPS * 1.0e-9;
-
-			            // Convert C1 to P1
-                  if(copyC1ToP1)
-                  {
-				         it->second[TypeID::P1] = it->second[TypeID::C1]; 
-                  }
-                
-               }
-               else
-               {
-                  satRejectedSet.insert(it->first);
-               }
-
+		     // Correct
+		   it->second[TypeID::C1] = it->second[TypeID::C1] + 
+                                            Bp1c1 * C_MPS * 1.0e-9;
+		     // Copy C1 to P1
+                   if(copyC1ToP1)
+                   {
+		      it->second[TypeID::P1] = it->second[TypeID::C1]; 
+                   }
+		}
+		else 
+		{
+		    satRejectedSet.insert(it->first);
+	        }
             }
-               // For receiver noncc (C1,P2)
-			      // C1->C1+(P1-C1); X2->X2+(P1-C1)
+
+               // For receiver CC (C1,X2)
+	       // C1->C1+(P1-C1); X2->X2+(P1-C1)
             if( RecHasC1 && RecHasX2 )
             {
                if( hasC1 && hasP2 )
@@ -174,32 +179,28 @@ namespace gpstk
                      Bp1c1 = 0.0;
                   }
 
-			          // Correct
-				      it->second[TypeID::C1] = it->second[TypeID::C1] 
+		    // Correct
+		  it->second[TypeID::C1] = it->second[TypeID::C1] 
                                          + Bp1c1 * C_MPS * 1.0e-9;
 
-			             // Convert C1 to P1
+	          it->second[TypeID::P2] = it->second[TypeID::P2] 
+                                         + Bp1c1 * C_MPS * 1.0e-9;
+
+		    // Copy C1 to P1
                   if(copyC1ToP1)
                   {
-			          	 it->second[TypeID::P1] = it->second[TypeID::C1]; 
+		      it->second[TypeID::P1] = it->second[TypeID::C1]; 
                   }
-
-				      it->second[TypeID::P2] = it->second[TypeID::P2] 
-                                         + Bp1c1 * C_MPS * 1.0e-9;
                }
                else
                {
                   satRejectedSet.insert(it->first);
                }
-
             }
 
          }  // End of 'for (it = gData.begin(); it != gData.end(); ++it)'
-
          gData.removeSatID(satRejectedSet);
-
          return gData;
-            
       }
       catch(RecTypeNotFound& u)
       {
@@ -224,4 +225,3 @@ namespace gpstk
 
 
 }  // End of namespace gpstk
-
