@@ -47,8 +47,8 @@ namespace gpstk
      // recType gets a value
    CC2NONCC& CC2NONCC::setRecType(const string& rectype)
    {
-	recType = rectype;
-	return (*this);
+		recType = rectype;
+		return (*this);
    }
 
       /* Sets name of file containing DCBs data.
@@ -88,15 +88,15 @@ namespace gpstk
          SatIDSet satRejectedSet;
 
 
-		bool RecHasC1(false);
-		bool RecHasP1(false);	
-		bool RecHasP2(false);	
-		bool RecHasX2(false);	
+	 bool RecHasC1(false);
+	 bool RecHasP1(false);	
+	 bool RecHasP2(false);	
+	 bool RecHasX2(false);	
 
-            //
-            // Firstly, read the obs types that the 'recType' supports
-            //
-		   set<string> recCodeSet = recTypeData.getCode(recType);
+         //
+         // Firstly, read the obs types that the 'recType' supports
+         //
+	 set<string> recCodeSet = recTypeData.getCode(recType);
 
          if( recCodeSet.size() == 0 )
          {
@@ -104,14 +104,14 @@ namespace gpstk
          }
 
          int C1Code = recCodeSet.count("C1");
-		   int P1Code = recCodeSet.count("P1");
+	 int P1Code = recCodeSet.count("P1");
          int P2Code = recCodeSet.count("P2");
-	      int X2Code = recCodeSet.count("X2");
+	 int X2Code = recCodeSet.count("X2");
 
-		   if(C1Code) RecHasC1 = true;
-		   if(P1Code) RecHasP1 = true;
-		   if(P2Code) RecHasP2 = true;
-		   if(X2Code) RecHasX2 = true;
+         if(C1Code) RecHasC1 = true;
+	 if(P1Code) RecHasP1 = true;
+	 if(P2Code) RecHasP2 = true;
+	 if(X2Code) RecHasX2 = true;
 
             // Loop through all the satellites
          satTypeValueMap::iterator it;
@@ -130,34 +130,41 @@ namespace gpstk
 
                // For receiver noncc (C1,P2)
                // For the noncc: only C1 should be corrected
-				   // C1->C1+(P1-C1)
+	       // C1->C1+(P1-C1)
             if( RecHasC1 && RecHasP2 )
             {
-				   /* Modified in 2016-1-26, by Q.Liu
-				    * Because in some C1/P2 observable files,the observable
-				    * list has P1 */
-               double Bp1c1(0.0);      // in ns
-               try
-               {
-                  Bp1c1 = dcbP1C1.getDCB(sat);
-               }
-               catch(...)
-               {
-                  Bp1c1 = 0.0;
-               }
+		/* Changed in 2016-1-26, by Q.Liu
+		 * Because in some C1/P2 observable files,the observable
+		 * list has P1 */
+		if( hasC1 )
+		{
+                   double Bp1c1(0.0);      // in ns
+                   try
+                   {
+                      Bp1c1 = dcbP1C1.getDCB(sat);
+                   }
+                   catch(...)
+                   {
+                      Bp1c1 = 0.0;
+                   }
 
-			         // Correct
-				   it->second[TypeID::C1] = it->second[TypeID::C1] + 
-                                        Bp1c1 * C_MPS * 1.0e-9;
-			         // Convert C1 to P1
-               if(copyC1ToP1)
-               {
-				      it->second[TypeID::P1] = it->second[TypeID::C1]; 
-               }
+		     // Correct
+		   it->second[TypeID::C1] = it->second[TypeID::C1] + 
+                                            Bp1c1 * C_MPS * 1.0e-9;
+		     // Copy C1 to P1
+                   if(copyC1ToP1)
+                   {
+		      it->second[TypeID::P1] = it->second[TypeID::C1]; 
+                   }
+		}
+		else 
+		{
+		    satRejectedSet.insert(it->first);
+	        }
             }
 
                // For receiver CC (C1,X2)
-			      // C1->C1+(P1-C1); X2->X2+(P1-C1)
+	       // C1->C1+(P1-C1); X2->X2+(P1-C1)
             if( RecHasC1 && RecHasX2 )
             {
                if( hasC1 && hasP2 )
@@ -172,17 +179,17 @@ namespace gpstk
                      Bp1c1 = 0.0;
                   }
 
-			           // Correct
-			         it->second[TypeID::C1] = it->second[TypeID::C1] 
+		    // Correct
+		  it->second[TypeID::C1] = it->second[TypeID::C1] 
                                          + Bp1c1 * C_MPS * 1.0e-9;
 
-				      it->second[TypeID::P2] = it->second[TypeID::P2] 
+	          it->second[TypeID::P2] = it->second[TypeID::P2] 
                                          + Bp1c1 * C_MPS * 1.0e-9;
 
-			            // Convert C1 to P1
+		    // Copy C1 to P1
                   if(copyC1ToP1)
                   {
-			            it->second[TypeID::P1] = it->second[TypeID::C1]; 
+		      it->second[TypeID::P1] = it->second[TypeID::C1]; 
                   }
                }
                else
