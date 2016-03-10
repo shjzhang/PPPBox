@@ -9,10 +9,10 @@ ln -f -s /Users/shjzhang/Documents/Develop/gpstk/tables/receiver_bernese.lis rec
 proj="igs16577"
 
 # firstly, download the rnx files from IGS or IGS analysis center
-get_rnx.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 24 -a IGS -u "url.list" -s "$proj.stalist.test" -l "$proj" -p "/Users/shjzhang/Documents/Data/IGS/data"              
+get_rnx.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 4 -a IGS -u "url.list" -s "$proj.stalist.test" -l "$proj" -p "/Users/shjzhang/Documents/Data/IGS/data"              
 
 # then, download the ephemeris files from IGS or IGS analysis center
-get_eph.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 24 -a IGS -u "url.list" -t "type.list" -l "$proj" -p "/Users/shjzhang/Documents/Data/IGS/data"              
+get_eph.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 4 -a IGS -u "url.list" -t "type.list" -l "$proj" -p "/Users/shjzhang/Documents/Data/IGS/data"              
 
 # convert ssc2msc
 cat $proj.ssclist | while read line
@@ -31,7 +31,7 @@ done
 rm $proj.outlist
 cat $proj.rnxlist | while read line
 do
-  echo "$line".out.fix.kin.new >> $proj.outlist
+  echo "$line".out.fix.kin.3.9 >> $proj.outlist
 done
 
 # ppp with ambiguity resolution
