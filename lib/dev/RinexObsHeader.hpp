@@ -136,11 +136,14 @@ namespace gpstk
       static const std::string commentString;         ///< "COMMENT"
       static const std::string markerNameString;      ///< "MARKER NAME"
       static const std::string markerNumberString;    ///< "MARKER NUMBER"
+      static const std::string markerTypeString;      ///< "MARKER TYPE"
       static const std::string observerString;        ///< "OBSERVER / AGENCY"
       static const std::string receiverString;        ///< "REC # / TYPE / VERS"
       static const std::string antennaTypeString;     ///< "ANT # / TYPE"
       static const std::string antennaPositionString; ///< "APPROX POSITION XYZ"
       static const std::string antennaOffsetString;   ///< "ANTENNA: DELTA H/E/N"
+      static const std::string antennaDeltaString;    ///< "ANTENNA: DELTA X/Y/Z"
+      static const std::string antennaBsightString;   ///< "ANTENNA: B.SIGHT XYZ"
       static const std::string waveFactString;        ///< "WAVELENGTH FACT L1/2"
       static const std::string numObsString;          ///< "# / TYPES OF OBSERV"
       static const std::string intervalString;        ///< "INTERVAL"
@@ -176,6 +179,13 @@ namespace gpstk
          numSatsValid         = 0x0200000, ///< "# OF SATELLITES"       (optional)
          prnObsValid          = 0x0400000, ///< "PRN / # OF OBS"        (optional)
 
+            /// This‘s for required valid fields that RINEX 2.20 more than 2.11
+            /// added by hwei
+         markerTypeValid      = 0x01000000,     ///< "MARKER TYPE"
+         antennaDeltaValid    = 0x02000000,    ///< "ANTENNA: DELTA X/Y/Z"
+         antennaBsightValid   = 0x04000000,    ///< "ANTENNA: B.SIGHT XYZ"
+           ///
+
          endValid = 0x080000000,        ///< "END OF HEADER"
 
             /// This mask is for all required valid fields for RINEX 2.0
@@ -184,7 +194,8 @@ namespace gpstk
          allValid21 = 0x080002FEB,
             /// This mask is for all required valid fields for RINEX 2.11
          allValid211 = 0x080002BEB
-
+            /// This mask is for all required valid fields for RINEX 2.20
+         allValid220 = 0x087002CEB
       };
 
          /** @name Standard RINEX observation types
