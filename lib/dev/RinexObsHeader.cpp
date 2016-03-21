@@ -81,6 +81,11 @@ namespace gpstk
    const string RinexObsHeader::prnObsString =          "PRN / # OF OBS";
    const string RinexObsHeader::endOfHeader =           "END OF HEADER";
 
+      // for Rinex 2.20
+   const string RinexObsHeader::markerTypeString =      "MARKER TYPE";
+   const string RinexObsHeader::antennaDeltaString =    "ANTENNA: DELTA X/Y/Z";
+   const string RinexObsHeader::antennaBsightString =   "ANTENNA: B.SIGHT XYZ";
+
    const unsigned int RinexObsType::C1depend=0x01;
    const unsigned int RinexObsType::L1depend=0x02;
    const unsigned int RinexObsType::L2depend=0x04;
@@ -161,6 +166,8 @@ namespace gpstk
       if (version == 2.0)        allValid = allValid20;
       else if (version == 2.1)   allValid = allValid21;
       else if (version == 2.11)  allValid = allValid211;
+      // for rinex2.20
+      else if (version == 2.20)   allValid = allValid220;
       else
       {
          FFStreamError err("Unknown RINEX version: " + asString(version,2));
@@ -203,6 +210,11 @@ namespace gpstk
       if(valid & RinexObsHeader::antennaTypeValid) n++;
       if(valid & RinexObsHeader::antennaPositionValid) n++;
       if(valid & RinexObsHeader::antennaOffsetValid) n++;
+      //for Rinex 2.20
+      if(valid & RinexObsHeader::markerTypeValid) n++;
+      if(valid & RinexObsHeader::antennaDeltaValid) n++;
+      if(valid & RinexObsHeader::antennaBsightValid) n++;
+      
       if(valid & RinexObsHeader::waveFactValid) {
          n++;
          if(extraWaveFactList.size()) n += 1 + (extraWaveFactList.size()-1)/7;
@@ -273,6 +285,18 @@ namespace gpstk
          strm << line << endl;
          strm.lineNumber++;
       }
+      
+            // for Rinex 2.20
+      if (valid & markerTypeValid)
+      {
+            line  = leftJustify(markerType, 60);
+            line += markerTypeString;
+            strm << line << endl;
+            strm.lineNumber++;
+      }
+   
+      
+      
       if (valid & observerValid)
       {
          line  = leftJustify(observer, 20);
@@ -299,6 +323,30 @@ namespace gpstk
          strm << line << endl;
          strm.lineNumber++;
       }
+      
+      // for Rinex 2.20
+         
+      if (valid & antennaDeltaValid)
+      {
+         line  = rightJustify(asString(antennaDelta[0], 4), 14);
+         line += rightJustify(asString(antennaDelta[1], 4), 14);
+         line += rightJustify(asString(antennaDelta[2], 4), 14);
+         line += string(18, ' ');
+         line += antennaDeltaString;
+         strm << line << endl;
+         strm.lineNumber++;
+      }
+      if (valid & antennaBsightValid)
+      {
+         line  = rightJustify(asString(antennaBsight[0], 4), 14);
+         line += rightJustify(asString(antennaBsight[1], 4), 14);
+         line += rightJustify(asString(antennaBsight[2], 4), 14);
+         line += string(18, ' ');
+         line += antennaBsightString;
+         strm << line << endl;
+         strm.lineNumber++;
+      }
+      
       if (valid & antennaPositionValid)
       {
          line  = rightJustify(asString(antennaPosition[0], 4), 14);
@@ -609,6 +657,33 @@ namespace gpstk
          antennaOffset[2] = asDouble(line.substr(28, 14));
          valid |= antennaOffsetValid;
       }
+      
+         
+         // for Rinex 2.20
+      else if (label == markerTypeString)
+      {
+            markerType = strip(line.substr(0,20));
+            valid |= markerTypeValid;
+      }
+      else if (label == antennaDeltaString)
+      {
+            antennaDelta[0] = asDouble(line.substr(0,  14));
+            antennaDelta[1] = asDouble(line.substr(14, 14));
+            antennaDelta[2] = asDouble(line.substr(28, 14));
+            valid |= antennaDeltaValid;
+         //   cout << "R2ObsHeader:ParseHeaderRecord:antennaDelta = " << antennaDelta << endl;
+
+      }
+      else if (label == antennaBsightString)
+      {
+            antennaBsight[0] = asDouble(line.substr(0,  14));
+            antennaBsight[1] = asDouble(line.substr(14, 14));
+            antennaBsight[2] = asDouble(line.substr(28, 14));
+            valid |= antennaBsightValid;
+        //     cout << "R2ObsHeader:ParseHeaderRecord:antennaBsight = " << antennaBsight << endl;
+      }
+
+      
       else if (label == waveFactString)
       {
             // first time reading this
@@ -828,6 +903,8 @@ namespace gpstk
       if      (version == 2.0)      allValid = allValid20;
       else if (version == 2.1)      allValid = allValid21;
       else if (version == 2.11)     allValid = allValid211;
+      // for Rinex2.20
+      else if (version == 2.20)     allValid = allValid220;
       else
       {
          FFStreamError e("Unknown or unsupported RINEX version " +
@@ -948,6 +1025,11 @@ namespace gpstk
       if(!(valid & observerValid)) s << " Observer is NOT valid\n";
       if(!(valid & receiverValid)) s << " Receiver is NOT valid\n";
       if(!(valid & antennaTypeValid)) s << " Antenna Type is NOT valid\n";
+      // for Rinex 2.20
+      if(!(valid & markerTypeValid)) s << " Marker Type is NOT valid\n";
+      if(!(valid & antennaDeltaValid)) s << " Antenna Delta is NOT valid\n";
+      if(!(valid & antennaBsightValid)) s << "  Antenna Boresight is NOT valid\n";
+
       if(!(valid & antennaPositionValid)) s << " Ant Position is NOT valid\n";
       if(!(valid & antennaOffsetValid)) s << " Antenna Offset is NOT valid\n";
       if(!(valid & waveFactValid)) s << " Wavelength factor is NOT valid\n";
