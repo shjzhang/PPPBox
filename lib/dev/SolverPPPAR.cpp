@@ -1881,6 +1881,21 @@ of qMatrix");
             }  // End of 'if(ratioWL > 3.0)'
 
          }
+
+///////////////////////////////////////////////////////
+//
+//       PartialAR par;       
+//
+//       par(x,CovX,varUnknowns,partialVar);
+//
+//       par.setSolution();
+//       par.setCovariance();
+//       par.setTotalVars();
+//       par.setPartialVars();
+//
+//       PartialAR(x, CovX, varUnknowns, partialVar );
+//
+///////////////////////////////////////////////////////
             
              //
              // Insert ambiguity fixed flags
