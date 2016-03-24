@@ -525,7 +525,7 @@ void ppp::process()
       // Now read sp3 files from 'sp3FileList'
    ifstream sp3FileListStream;
 
-   sp3FileListStream.open(sp3FileListName, ios::in);
+   sp3FileListStream.open(sp3FileListName.c_str(), ios::in);
    if(!sp3FileListStream)
    {
          // If file doesn't exist, issue a warning
@@ -564,7 +564,7 @@ void ppp::process()
       ifstream clkFileListStream;
 
          // Open clkFileList File
-      clkFileListStream.open(clkFileListName, ios::in);
+      clkFileListStream.open(clkFileListName.c_str(), ios::in);
       if(!clkFileListStream)
       {
             // If file doesn't exist, issue a warning
@@ -606,7 +606,7 @@ void ppp::process()
    ifstream eopFileListStream;
 
       // Open eopFileList File
-   eopFileListStream.open(eopFileListName, ios::in);
+   eopFileListStream.open(eopFileListName.c_str(), ios::in);
    if(!eopFileListStream)
    {
          // If file doesn't exist, issue a warning
@@ -663,7 +663,7 @@ void ppp::process()
    ifstream rnxFileListStream;
 
       // Open eopFileList File
-   rnxFileListStream.open(rnxFileListName);
+   rnxFileListStream.open(rnxFileListName.c_str());
    if(!rnxFileListStream)
    {
          // If file doesn't exist, issue a warning
