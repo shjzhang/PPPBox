@@ -49,7 +49,7 @@ COD_EPH        ftp://cddis.gsfc.nasa.gov/gps/products/%W/cod%W%D.eph.Z          
 COD_CLK        ftp://cddis.gsfc.nasa.gov/gps/products/%W/cod%W%D.clk.Z          c:\GNSS_DATA\product\%W
 COD_CLK_5S     ftp://ftp.unibe.ch/aiub/CODE/%Y/COD%W%D.CLK_05S.Z                c:\GNSS_DATA\product\%W
 COD_ERP        ftp://cddis.gsfc.nasa.gov/gps/products/%W/cod%W7.erp.Z           c:\GNSS_DATA\product\%W
-COD_SSC        ftp://cddis.gsfc.nasa.gov/gps/products/%W/cod%W7.ssc.Z           c:\GNSS_DATA\product\%W
+COD_SSC        ftp://cddis.gsfc.nasa.gov/gps/products/%W/cod%W%D.ssc.Z          c:\GNSS_DATA\product\%W
 ESA_EPH        ftp://cddis.gsfc.nasa.gov/gps/products/%W/esa%W%D.sp3.Z          c:\GNSS_DATA\product\%W
 ESA_CLK        ftp://cddis.gsfc.nasa.gov/gps/products/%W/esa%W%D.clk.Z          c:\GNSS_DATA\product\%W
 ESA_ERP        ftp://cddis.gsfc.nasa.gov/gps/products/%W/esa%W7.erp.Z           c:\GNSS_DATA\product\%W
