@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kemin/develop/PPPBOX/apps/clocktools/rmoutlier.cpp
+iostream
+-
+vector
+-
+string
+-
+stdio.h
+-
+math.h
+-
+

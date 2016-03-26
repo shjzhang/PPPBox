@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/rstats.dir/rstats.cpp.o  -o rstats -rdynamic ../../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 
