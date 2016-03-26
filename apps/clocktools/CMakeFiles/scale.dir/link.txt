@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/scale.dir/scale.cpp.o  -o scale -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

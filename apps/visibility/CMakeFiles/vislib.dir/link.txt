@@ -1,0 +1,2 @@
+/usr/bin/ar cr libvislib.a  CMakeFiles/vislib.dir/StaStats.cpp.o CMakeFiles/vislib.dir/VisSupport.cpp.o CMakeFiles/vislib.dir/DiscreteVisibleCounts.cpp.o
+/usr/bin/ranlib libvislib.a

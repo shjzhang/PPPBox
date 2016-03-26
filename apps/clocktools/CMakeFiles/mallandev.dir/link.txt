@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/mallandev.dir/mallandev.cpp.o  -o mallandev -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

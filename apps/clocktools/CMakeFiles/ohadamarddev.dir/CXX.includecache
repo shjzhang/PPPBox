@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kemin/develop/PPPBOX/apps/clocktools/ohadamarddev.cpp
+iostream
+-
+vector
+-
+string
+-
+stdio.h
+-
+string.h
+-
+math.h
+-
+

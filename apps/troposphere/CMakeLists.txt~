@@ -1,0 +1,6 @@
+# apps/tropodelay/CMakeLists.txt
+
+add_executable(caltropodelay calTropoDelay.cpp)
+target_link_libraries(caltropodelay gpstk)
+install (TARGETS caltropodelay DESTINATION bin)
+add_test (caltropodelayTest caltropodelay)

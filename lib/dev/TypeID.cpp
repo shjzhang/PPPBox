@@ -407,6 +407,10 @@ namespace gpstk
       tStrings[AntOffU]    = "AntOffU";
       tStrings[AntOffN]    = "AntOffN";
       tStrings[AntOffE]    = "AntOffE";
+      tStrings[Temp]       = "Temp";
+      tStrings[Pres]       = "Pres";
+      tStrings[Rhum]       = "Rhum";
+      tStrings[Hgt]        = "Hgt";
       tStrings[sigma]      = "sigma";
       tStrings[iura]       = "iura";
       tStrings[Action]     = "Action";
