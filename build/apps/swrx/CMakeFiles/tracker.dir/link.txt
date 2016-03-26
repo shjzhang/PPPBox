@@ -1,0 +1,1 @@
+/usr/bin/c++       -lpthread CMakeFiles/tracker.dir/tracker.cpp.o  -o tracker -rdynamic libsimlib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build 

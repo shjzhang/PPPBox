@@ -201,6 +201,8 @@ namespace gpstk
          wetTropoVar,  ///< Vertical tropospheric delay var, wet component
          wetMap,    ///< Tropospheric mapping function, wet component
          tropoSlant, ///< Slant tropospheric delay, total
+         LatIPP,     /// Geocentric latitude of Ionoshere Pierce Point(IPP)
+         LonIPP,      /// longitude of Ionosphere Pierce Point(IPP)
          iono,      ///< Vertical ionospheric delay
          ionoTEC,   ///< Total Electron Content (in TECU), 1TECU = 1e+16 electrons per m**2
          ionoMap,   ///< Ionospheric mapping function
@@ -303,6 +305,8 @@ namespace gpstk
          recInstC1, ///< Instrumental delay for receiver
          recInstP1, ///< Instrumental delay for receiver
          recInstP2, ///< Instrumental delay for receiver
+         recP1P2DCB, ///< the difference between instrumental delays for receiver
+         satP1P2DCB, ///< the difference between instrumental delays for satellite
          recInstC1Var, ///< Instrumental delay for receiver
          recInstP1Var, ///< Instrumental delay for receiver
          recInstP2Var, ///< Instrumental delay for receiver
@@ -473,7 +477,6 @@ namespace gpstk
          a3,        ///< polynominal coefficient
          a4,        ///< polynominal coefficient
          a5,        ///< polynominal coefficient
-
             // Handy dummy types for non-standard processing
          dummy0,    ///< Generic, undefined type #0
          dummy1,    ///< Generic, undefined type #1

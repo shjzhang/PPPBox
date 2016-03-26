@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/trunc.dir/trunc.cpp.o  -o trunc -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

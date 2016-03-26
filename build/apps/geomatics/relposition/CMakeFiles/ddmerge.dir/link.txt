@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ddmerge.dir/ddmerge.cpp.o  -o ddmerge -rdynamic libbaselib.a ../../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

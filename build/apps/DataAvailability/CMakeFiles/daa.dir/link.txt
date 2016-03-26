@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/daa.dir/daa.cpp.o CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o  -o daa -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

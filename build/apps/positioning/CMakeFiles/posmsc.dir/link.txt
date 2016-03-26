@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/posmsc.dir/posmsc.cpp.o  -o posmsc -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

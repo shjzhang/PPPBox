@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/example14.dir/example14.cpp.o  -o example14 -rdynamic ../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

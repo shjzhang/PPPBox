@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/wheresat.dir/WhereSat.cpp.o  -o wheresat -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

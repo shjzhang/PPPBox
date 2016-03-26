@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/vecsol.dir/vecsol.cpp.o  -o vecsol -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

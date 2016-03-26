@@ -1,0 +1,1 @@
+/usr/bin/c++       -lpthread CMakeFiles/RX.dir/RX.cpp.o  -o RX -rdynamic libsimlib.a -lpthread ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build 

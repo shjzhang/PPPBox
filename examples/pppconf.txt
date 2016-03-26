@@ -17,7 +17,7 @@
 oceanLoadingFile = OCEAN-GOT00.dat  , file with ocean loading parameters
 satDataFile      = PRN_GPS          , constellation data file
 precision        = 4                , number of decimal places in output file
-cutOffElevation, minimum allowed satellite elevation = 0.0, in degrees
+cutOffElevation, minimum allowed satellite elevation = 10.0, in degrees
 
 
 # Change the following parameter to TRUE if your RINEX observation files
@@ -26,14 +26,14 @@ cutOffElevation, minimum allowed satellite elevation = 0.0, in degrees
 # will NOT cancel, introducing a bias that must be taken into account by
 # other means. This bias won't be corrected in this application.
 
-useC1 = FALSE
+useC1 = TRUE
 
 
 # The following parameters control some sanity checks for SP3 data. The values
 # are typical for 15-minutes-per-sample SP3 files
 
 checkGaps = TRUE, check for data gaps bigger than 901 seconds
-SP3GapInterval = 901, seconds
+SP3GapInterval = 30, seconds
 
 checkInterval = TRUE, don't allow interpolation intervals bigger than 8105 s
 maxSP3Interval = 8105, seconds
@@ -144,7 +144,7 @@ offsetARP, dH dLon dLat (UEN) = 0.004  0.000  0.000, meters
 
 # Solver-related variables
 
-coordinatesAsWhiteNoise = true # Static positioning
+coordinatesAsWhiteNoise = FALSE           # Static positioning
 
 forwardBackwardCycles = 4, an integer < 1 means forwards processing only
 
@@ -153,33 +153,28 @@ USENEU = TRUE, results will be given in dLat, dLon, dH
 # Output
 outputFile = coco2370-04.out
 
-printModel = TRUE
-modelFile  = coco2370-04.model
-
 
 
 [MADR]
 
-rinexObsFile, Rinex observation file = madr1480.08o
+rinexObsFile, Rinex observation file = cagz2230.12o
 
-dayOfYear = 148, days of year for May/27/2008.
+dayOfYear = 223 ,days of year for Aug/10/2012
 
 
-SP3List, SP3 ephemeris file list    = igs14811.sp3 igs14812.sp3 igs14813.sp3
+SP3List, SP3 ephemeris file list    = igs17004.sp3  igs17005.sp3 igs17006.sp3
 
 poleDisplacements, for May/27/2008  = 0.105648   0.541502, arcsec
 
-nominalPosition, ECEF-IGS = 4849202.3419  -360328.9019  4114913.2429, meters
+nominalPosition, ECEF-IGS =4893380.6374   772651.1384  4004182.0172,meters 
 
 
 # Antenna parameters
 useAntex          = TRUE                  # We will use Antex files
 
-antexFile      = igs05.atx                # Name of Antex file (absolute PC)
+antexFile      = igs08.atx                # Name of Antex file (absolute PC)
 antennaModel   = AOAD/M_T        NONE     # Antenna model (with radome), in
                                           # strict IGS format
-#dcbFile = ???                                         
-#recTypeFile = ???                                         
 
 # Should we use antenna phase variation patterns or just eccentricity?
 usePCPatterns = TRUE
@@ -187,12 +182,12 @@ usePCPatterns = TRUE
 # Should we use elevation/azimuth patterns or just elevation?
 useAzim = TRUE
 
-offsetARP, dH dLon dLat (UEN) = 0.0254  0.000  0.000, meters
+offsetARP, dH dLon dLat (UEN) = 0.000  0.000  0.000, meters
 
 
 # Solver-related variables
 
-coordinatesAsWhiteNoise = true # Static positioning
+coordinatesAsWhiteNoise = FALSE           # Static positioning
 
 forwardBackwardCycles = 0, an integer < 1 means forwards processing only
 
@@ -201,12 +196,12 @@ USENEU = TRUE, results will be given in dLat, dLon, dH
 
 
 # Output
-outputFile = madr1480-08.out
+outputFile = gras223.out
 
 
 printModel = TRUE
-modelFile  = madr1480-08.model
+modelFile  = madr201-10.model
 
 
 
-# End of configuration file
+# End of configuration fi

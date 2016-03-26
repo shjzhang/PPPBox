@@ -1,12 +1,10 @@
-#pragma ident "$Id$"
-
 //============================================================================
 //
 //  This file is part of GPSTk, the GPS Toolkit.
 //
 //  The GPSTk is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
-//  by the Free Software Foundation; either version 2.1 of the License, or
+//  by the Free Software Foundation; either version 3.0 of the License, or
 //  any later version.
 //
 //  The GPSTk is distributed in the hope that it will be useful,
@@ -17,10 +15,25 @@
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-//
-//  Copyright Dagoberto Salazar - gAGE ( http://www.gage.es ). 2010
+//  
+//  Copyright 2004, The University of Texas at Austin
+//  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2010
 //
 //============================================================================
+
+//============================================================================
+//
+//This software developed by Applied Research Laboratories at the University of
+//Texas at Austin, under contract to an agency or agencies within the U.S. 
+//Department of Defense. The U.S. Government retains all rights to use,
+//duplicate, distribute, disclose, or release this software. 
+//
+//Pursuant to DoD Directive 523024 
+//
+// DISTRIBUTION STATEMENT A: This software has been approved for public 
+//                           release, distribution is unlimited.
+//
+//=============================================================================
 
 // Example program Nro 14 for GPSTk
 //
@@ -146,17 +159,11 @@
    // Class to read configuration files.
 #include "ConfDataReader.hpp"
 
-   // Used to decimate data. This is important because RINEX observation
-   // data is provided with a 30 s sample rate, whereas SP3 files provide
-   // satellite clock information with a 900 s sample rate.
-#include "Decimate.hpp"
-
 
 
 using namespace std;
 using namespace gpstk;
 
-using namespace gpstk::StringUtils;
 
    // A new class is declared that will handle program behaviour
    // This class inherits from BasicFramework
@@ -216,20 +223,6 @@ private:
 
       // Data structure
    gnssDataMap gdsMap;
-
-
-      // Satellite sets for all the estimated satellite clocks
-   SatIDSet satSet;
-
-      // Source sets for all the estimated receiver clocks
-   SourceIDSet sourceSet;
-
-      // Mulitmap used to store the clock data line 
-   std::multimap<CommonTime, std::string> solutionMap;
-
-      // Method to extract solution
-   void getClockSoluts( const SolverGeneral& solverGen,
-                        const CommonTime& workEpoch );
 
 
 }; // End of 'example14' class declaration
@@ -626,22 +619,6 @@ void example14::process()
       markArc.setUnstablePeriod(151.0);
       pList.push_back(markArc);       // Add to processing list
 
-         // Add by shjzhang ,decimate
-         // Get initial time for 'Decimate' class
-      YDSTime yds( confReader.getValueAsInt("year", station),
-                   confReader.getValueAsInt("dayOfYear", station),
-                   confReader.getValueAsDouble("secOfDay", station), TimeSystem::GPS );
-      CommonTime initialTime( yds.convertToCommonTime() );
-
-
-         // Object to decimate data
-      Decimate decimateData(
-               confReader.getValueAsDouble( "decimationInterval", station ),
-               confReader.getValueAsDouble( "decimationTolerance", station ),
-               initialTime );
-      pList.push_back(decimateData);       // Add to processing list
-
-
 
          // Declare a basic modeler
       BasicModel basic(nominalPos, SP3EphList);
@@ -654,7 +631,6 @@ void example14::process()
       {
          basic.setDefaultObservable(TypeID::P1);
       }
-
 
 
          // Add to processing list
@@ -807,9 +783,8 @@ void example14::process()
 
 
          // Object to compute prefit-residuals
-///!!!!!!      // !!!!!
-      ComputeLinear linear3(comb.pcPrefitC);
-      linear3.addLinear(comb.lcPrefitC);
+      ComputeLinear linear3(comb.pcPrefit);
+      linear3.addLinear(comb.lcPrefit);
       pList.push_back(linear3);       // Add to processing list
 
 
@@ -871,11 +846,6 @@ void example14::process()
                // very simple and compact: Just one line of code!!!.
             gRin >> pList;
 
-         }
-         catch(DecimateEpoch& d)
-         {
-               // If we catch a DecimateEpoch exception, just continue.
-            continue;
          }
          catch(Exception& e)
          {
@@ -1025,9 +995,9 @@ void example14::shutDown()
    equPCRover.addVariable(dLat);
    equPCRover.addVariable(dLon);
    equPCRover.addVariable(dH);
-   equPCRover.addVariable(cdt, true, 1.0);
+   equPCRover.addVariable(cdt);
    equPCRover.addVariable(tropo);
-   equPCRover.addVariable(satClock, true, 1.0);
+   equPCRover.addVariable(satClock);
 
       // Set the source of the equation
    equPCRover.header.equationSource = rover;
@@ -1037,10 +1007,10 @@ void example14::shutDown()
    equLCRover.addVariable(dLat);
    equLCRover.addVariable(dLon);
    equLCRover.addVariable(dH);
-   equLCRover.addVariable(cdt, true, 1.0);
+   equLCRover.addVariable(cdt);
    equLCRover.addVariable(tropo);
-   equLCRover.addVariable(ambi, true, 1.0);
-   equLCRover.addVariable(satClock, true, 1.0);
+   equLCRover.addVariable(ambi);
+   equLCRover.addVariable(satClock);
 
       // Rover phase equation has more weight
    equLCRover.setWeight(10000.0);     // 100.0 * 100.0
@@ -1052,19 +1022,19 @@ void example14::shutDown()
 
       // Reference stations code equation description
    Equation equPCRef( prefitC );
-   equPCRef.addVariable(cdt, true, 1.0);
+   equPCRef.addVariable(cdt);
    equPCRef.addVariable(tropo);
-   equPCRef.addVariable(satClock, true, 1.0);
+   equPCRef.addVariable(satClock);
 
       // Set the source of the equation
    equPCRef.header.equationSource = Variable::someSources;
 
       // Reference stations phase equation description
    Equation equLCRef( prefitL );
-   equLCRef.addVariable(cdt, true, 1.0);
+   equLCRef.addVariable(cdt);
    equLCRef.addVariable(tropo);
-   equLCRef.addVariable(ambi, true, 1.0);
-   equLCRef.addVariable(satClock, true, 1.0);
+   equLCRef.addVariable(ambi);
+   equLCRef.addVariable(satClock);
 
       // Reference station phase equation has more weight
    equLCRef.setWeight(10000.0);     // 100.0 * 100.0
@@ -1085,7 +1055,7 @@ void example14::shutDown()
       // Master station code equation description
    Equation equPCMaster( prefitC );
    equPCMaster.addVariable(tropo);
-   equPCMaster.addVariable(satClock, true, 1.0);
+   equPCMaster.addVariable(satClock);
 
       // Set the source of the equation
    equPCMaster.header.equationSource = master;
@@ -1093,8 +1063,8 @@ void example14::shutDown()
       // Master station phase equation description
    Equation equLCMaster( prefitL );
    equLCMaster.addVariable(tropo);
-   equLCMaster.addVariable(ambi, true, 1.0);
-   equLCMaster.addVariable(satClock, true, 1.0);
+   equLCMaster.addVariable(ambi);
+   equLCMaster.addVariable(satClock);
 
       // Master station phase equation has more weight
    equLCMaster.setWeight(10000.0);     // 100.0 * 100.0
@@ -1146,16 +1116,12 @@ void example14::shutDown()
          // Let's print
       try
       {
-         cerr << static_cast<YDSTime>(workEpoch).sod << " "   // #1
+         cout << static_cast<YDSTime>(workEpoch).sod << " "                           // #1
               << solverGen.getSolution( TypeID::dLat, rover ) << " "    // #2
               << solverGen.getSolution( TypeID::dLon, rover ) << " "    // #3
               << solverGen.getSolution( TypeID::dH,   rover ) << " "    // #4
               << solverGen.getSolution( TypeID::wetMap, rover )
                  + 0.1 + tropoMap[ rover ] << endl;                     // #5
-
-            // Extract solutions from the solverGen and store it into string
-         getClockSoluts(solverGen, workEpoch);
-
       }
       catch(...)
       {
@@ -1172,125 +1138,6 @@ void example14::shutDown()
 
 
 }  // End of 'example14::shutDown()'
-
-
-   // Method to extract the solutions from solverGen and 
-   // temprorarily store them in the string, which will be 
-   // print out to the solutionfile in the method 'printClockData'
-void example14::getClockSoluts( const SolverGeneral& solverGen,
-                                const CommonTime& workEpoch )
-{
-      // Mulitmap used to store the clock data line 
-   std::string solutionRecord;
-
-      // Satellite sets for all the estimated satellite clocks
-   SatIDSet currentSatSet;
-
-      // Source sets for all the estimated receiver clocks
-   SourceIDSet currentSourceSet;
-
-      // Clock bias
-   double clockBias; 
-
-      //*Now, read and print the receiver clock data record
-      
-      // Read receiver clocks from the stateMap
-   currentSourceSet = solverGen.getCurrentSources();
-
-      // Insert the current sources into sourceSet
-   sourceSet.insert(currentSourceSet.begin(), currentSourceSet.end());
-
-      // Read the receiver clocks for the current sources
-   for(SourceIDSet::iterator itSource = currentSourceSet.begin();
-       itSource != currentSourceSet.end();
-       ++itSource)
-   {
-         // receiver clock bias
-      try
-      {
-         clockBias = solverGen.getSolution(TypeID::cdt, *itSource)/C_MPS;
-      }
-      catch(InvalidRequest& e)
-      {
-         continue;
-      }
-         // Minus sign
-      clockBias = -clockBias;
-
-         // Store the clock data record into solutionRecord
-      solutionRecord  = "AR";  // record flag
-      solutionRecord += string(1,' '); // parse space
-      solutionRecord += rightJustify((*itSource).sourceName,4); // Source name
-      solutionRecord += string(1,' '); // parse space
-      solutionRecord += printTime(workEpoch,"%4Y %02m %02d %02H %02M %9.6f"); // Time 
-      solutionRecord += rightJustify(asString(1),3); // clock data number
-      solutionRecord += string(3,' '); // parse space
-      solutionRecord += rightJustify(doub2sci(clockBias, 19, 2), 19); // clock bias
-      solutionRecord += string(1,' ');
-
-        // Store the data record line into 'solutionMap'
-      solutionMap.insert(make_pair(workEpoch, solutionRecord));
-
-   }
-
-      //*Now, read and print the receiver clock data record
-      
-      // Read satellite clocks from the stateMap
-   currentSatSet = solverGen.getCurrentSats();
-      
-      // Insert current satellites into satSet
-   satSet.insert(currentSatSet.begin(), currentSatSet.end());
-
-      // Read the receiver clocks for the current sources
-   for(SatIDSet::iterator itSat = currentSatSet.begin();
-       itSat != currentSatSet.end();
-       ++itSat)
-   {
-         // Satellite clock bias
-      try
-      {
-         clockBias = solverGen.getSolution(TypeID::dtSat, *itSat)/C_MPS;
-      }
-      catch(InvalidRequest& e)
-      {
-         continue;
-      }
-
-         // Minus sign
-      clockBias = -clockBias;
-
-         // Satellite ID for rinex
-      RinexSatID satID(*itSat);
-      satID.setfill('0'); // set the fill char for output
-
-         // Store the clock data record into solutionRecord
-      solutionRecord  = "AS";  // record flag
-      solutionRecord += string(1,' '); // parse space
-      solutionRecord += leftJustify(satID.toString(),4); // Source name
-      solutionRecord += string(1,' '); // parse space
-      solutionRecord += printTime(workEpoch,"%4Y %02m %02d %02H %02M %9.6f"); // Time 
-      solutionRecord += rightJustify(asString(1),3); // clock data number
-      solutionRecord += string(3,' '); // parse space
-      solutionRecord += rightJustify(doub2sci(clockBias, 19, 2), 19); // clock bias
-      solutionRecord += string(1,' ');
-
-        // Store the data record line into 'solutionMap'
-      solutionMap.insert(make_pair(workEpoch, solutionRecord));
-
-   }
-
-   multimap<CommonTime,string>::iterator begPos = 
-                                      solutionMap.lower_bound(workEpoch);
-   multimap<CommonTime,string>::iterator endPos = 
-                                      solutionMap.upper_bound(workEpoch);
-
-   while(begPos != endPos)
-   {
-       cout << begPos->second << endl;
-       ++ begPos;
-   }
-
-}  // End of method 'clkest::getClockSoluts()'
 
 
 

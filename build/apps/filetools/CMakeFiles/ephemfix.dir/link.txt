@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ephemfix.dir/ephemfix.cpp.o  -o ephemfix -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

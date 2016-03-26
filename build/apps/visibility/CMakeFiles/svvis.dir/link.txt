@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/svvis.dir/svvis.cpp.o  -o svvis -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

@@ -68,10 +68,10 @@ namespace gpstk
          // Pointer to default stochastic model for satellite DCBs
 	  
 	  satDCBModel.setQprime(3e-16);
-      pSatDCBStoModel = &satDCBModel;
+      pSatDCBStoModel = &constantModel;
          // for receiver DCBs
 	  recDCBModel.setQprime(3e-16);
-      pRecDCBStoModel = &recDCBModel;  
+      pRecDCBStoModel = &constantModel;  
 
       CoefModel.setQprime(3e-4);
 
@@ -426,7 +426,7 @@ covariance matrix.");
 
             // the DCBs of receiver
 
-		pRecDCBStoModel->Prepare(dummySat,gRin);
+	   // pRecDCBStoModel->Prepare(dummySat,gRin);
 		double recPhi = pRecDCBStoModel->getPhi();
 		double recQ= pRecDCBStoModel->getQ();
         cout<<"rec Q:  "<<recQ<<endl;
@@ -436,7 +436,7 @@ covariance matrix.");
          qMatrix(i,i)   = recQ;
          }
             // the DCBs of satellite
-		pSatDCBStoModel->Prepare(dummySat,gRin);
+	//	pSatDCBStoModel->Prepare(dummySat,gRin);
 		double satPhi = pSatDCBStoModel->getPhi();
 		double satQ= pSatDCBStoModel->getQ();
 		cout<<"sat Q: "<<satQ<<endl;

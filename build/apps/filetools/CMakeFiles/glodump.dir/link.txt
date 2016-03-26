@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/glodump.dir/GloDump.cpp.o  -o glodump -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

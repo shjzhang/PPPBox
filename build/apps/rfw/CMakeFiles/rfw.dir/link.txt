@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/rfw.dir/rfw.cpp.o CMakeFiles/rfw.dir/FDStreamBuff.cpp.o CMakeFiles/rfw.dir/TCPStreamBuff.cpp.o  -o rfw -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

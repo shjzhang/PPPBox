@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ORDPhaseParser.dir/ORDPhaseParser.cpp.o  -o ORDPhaseParser -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

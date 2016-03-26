@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/cc2noncc.dir/cc2noncc.cpp.o  -o cc2noncc -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

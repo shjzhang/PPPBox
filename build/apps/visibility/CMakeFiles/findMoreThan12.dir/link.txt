@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/findMoreThan12.dir/findMoreThan12.cpp.o  -o findMoreThan12 -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

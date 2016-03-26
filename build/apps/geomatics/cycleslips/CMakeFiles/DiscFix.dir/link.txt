@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/DiscFix.dir/DiscFix.cpp.o  -o DiscFix -rdynamic ../../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

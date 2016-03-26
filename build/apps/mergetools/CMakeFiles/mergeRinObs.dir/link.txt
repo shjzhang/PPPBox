@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o  -o mergeRinObs -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

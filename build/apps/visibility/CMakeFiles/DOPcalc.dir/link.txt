@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/DOPcalc.dir/DOPcalc.cpp.o  -o DOPcalc -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 
