@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ddGen.dir/ddGen.cpp.o  -o ddGen -rdynamic librlib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

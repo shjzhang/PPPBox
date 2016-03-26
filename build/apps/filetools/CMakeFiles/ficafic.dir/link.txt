@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ficafic.dir/ficafic.cpp.o  -o ficafic -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

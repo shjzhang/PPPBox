@@ -226,33 +226,6 @@ namespace gpstk
                            const Matrix<double>& measurementsNoiseCovariance )
          throw(InvalidSolver);
 
-         /** Compute the a posteriori estimate of the system state, as well
-          *  as the a posteriori estimate error covariance matrix. This
-          *  version assumes that no control inputs act on the system.
-          *
-          * @param phiMatrix         State transition matrix.
-          * @param processNoiseCovariance    Process noise covariance matrix.
-          * @param measurements      Measurements vector.
-          * @param measurementsMatrix    Measurements matrix. Called geometry
-          *                              matrix in GNSS.
-          * @param measurementsNoiseCovariance   Measurements noise covariance
-          *                                      matrix.
-          * @param constraintMatrix  the matrix of constraint conditions
-		  *
-		  * @param constraintVector  the vector of constriant conditions
-          * @return
-          *  0 if OK
-          *  -1 if problems arose
-          */
-      virtual int ComputeWithConstraint( const Matrix<double>& phiMatrix,
-                           const Matrix<double>& processNoiseCovariance,
-                           const Vector<double>& measurements,
-                           const Matrix<double>& measurementsMatrix,
-                           const Matrix<double>& measurementsNoiseCovariance,
-	                       const Matrix<double>& constraintMatrix,
-						   const Vector<double>& constraintVector)
-         throw(InvalidSolver);
-
 
          /** Compute the a posteriori estimate of the system state, as well
           *  as the a posteriori estimate error variance. Version for
@@ -514,12 +487,6 @@ namespace gpstk
                            const Matrix<double>& measurementsNoiseCovariance )
          throw(InvalidSolver);
 
-      virtual int CorrectWithConstraint( const Vector<double>& measurements,
-                           const Matrix<double>& measurementsMatrix,
-                           const Matrix<double>& measurementsNoiseCovariance,
-						   const Matrix<double>& constraintMatrix,
-						   const Vector<double>& constraintVector)
-         throw(InvalidSolver);
 
          /** Corrects (or "measurement updates") the a posteriori estimate
           *  of the system state value, as well as the a posteriori estimate

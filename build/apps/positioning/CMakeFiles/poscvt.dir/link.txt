@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/poscvt.dir/poscvt.cpp.o  -o poscvt -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

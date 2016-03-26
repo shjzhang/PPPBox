@@ -152,8 +152,6 @@ namespace gpstk
       tStrings[wetTropoVar]   = "wetTropoVar";
       tStrings[wetMap]     = "wetTropoMap";
       tStrings[tropoSlant] = "slantTropo";
-      tStrings[LatIPP]     = "LatitudeOfIPP";
-      tStrings[LonIPP]     = "LongitudeOfIPP";
       tStrings[iono]       = "verticalIono";
       tStrings[ionoTEC]    = "TotalElectronContent";
       tStrings[ionoMap]    = "ionoMap";
@@ -250,8 +248,6 @@ namespace gpstk
       tStrings[recInstC1]    = "recInstC1";
       tStrings[recInstP1]    = "recInstP1";
       tStrings[recInstP2]    = "recInstP2";
-      tStrings[recP1P2DCB]   = "recP1P2DCB";
-      tStrings[satP1P2DCB]   = "satP1P2DCB";
       tStrings[recInstC1Var] = "recInstC1Var";
       tStrings[recInstP1Var] = "recInstP1Var";
       tStrings[recInstP2Var] = "recInstP2Var";

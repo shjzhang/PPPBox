@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/convertSSEph.dir/convertSSEph.cpp.o  -o convertSSEph -rdynamic ../../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

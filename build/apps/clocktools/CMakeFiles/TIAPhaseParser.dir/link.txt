@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/TIAPhaseParser.dir/TIAPhaseParser.cpp.o  -o TIAPhaseParser -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

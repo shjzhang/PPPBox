@@ -92,7 +92,9 @@ namespace gpstk
           */
       virtual int Compute( const Vector<double>& prefitResiduals,
                            const Matrix<double>& designMatrix,
-                           const Matrix<double>& weightMatrix)
+                           const Matrix<double>& weightMatrix,
+						   const Matrix<double>& constraintMatrix,
+						   const Vector<double>& constraintVector)
          throw(InvalidSolver);
 
 

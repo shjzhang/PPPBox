@@ -1,10 +1,12 @@
+#pragma ident "$Id$"
+
 //============================================================================
 //
 //  This file is part of GPSTk, the GPS Toolkit.
 //
 //  The GPSTk is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
-//  by the Free Software Foundation; either version 3.0 of the License, or
+//  by the Free Software Foundation; either version 2.1 of the License, or
 //  any later version.
 //
 //  The GPSTk is distributed in the hope that it will be useful,
@@ -15,25 +17,10 @@
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-//  
-//  Copyright 2004, The University of Texas at Austin
-//  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2008, 2009
+//
+//  Copyright Dagoberto Salazar - gAGE ( http://www.gage.es ). 2008, 2009
 //
 //============================================================================
-
-//============================================================================
-//
-//This software developed by Applied Research Laboratories at the University of
-//Texas at Austin, under contract to an agency or agencies within the U.S. 
-//Department of Defense. The U.S. Government retains all rights to use,
-//duplicate, distribute, disclose, or release this software. 
-//
-//Pursuant to DoD Directive 523024 
-//
-// DISTRIBUTION STATEMENT A: This software has been approved for public 
-//                           release, distribution is unlimited.
-//
-//=============================================================================
 
 // Example program Nro 9 for GPSTk
 //
@@ -46,6 +33,8 @@
 //    Kouba, J. and P. Heroux. "Precise Point Positioning using IGS Orbit
 //       and Clock Products". GPS Solutions, vol 5, pp 2-28. October, 2001.
 //
+
+
 
 // Basic input/output C++ classes
 #include <iostream>
@@ -504,6 +493,11 @@ void example9::process()
 
       }  // End of 'try-catch' block
 
+           // ===================
+           // Let's read the header firstly!!!!
+           // ===================
+      RinexObsHeader roh;
+      rin >> roh;
 
          // Declare a "SP3EphemerisStore" object to handle precise ephemeris
       SP3EphemerisStore SP3EphList;
@@ -718,6 +712,7 @@ void example9::process()
       }
 
 
+
          // Object to compute satellite antenna phase center effect
       ComputeSatPCenter svPcenter(nominalPos);
       if( useantex )
@@ -727,6 +722,19 @@ void example9::process()
       }
 
       pList.push_back(svPcenter);       // Add to processing list
+
+
+//    string recType;  
+//    recType = roh.recType
+//    string dcbFile(confReader.getValue("dcbFile", station));
+//    string recTypeFile(confReader.getValue("recTypeFile", station));
+//
+//    CC2NOCC cc2nocc;
+//    cc2nocc.setReceiverType(recType);
+//    cc2nocc.setDCBFile(dcbFile); // c_str / string
+//    cc2nocc.setRecTypeFile(recTypeFile);
+
+//    pList.push_back(cc2noncc);
 
 
          // Declare an object to correct observables to monument

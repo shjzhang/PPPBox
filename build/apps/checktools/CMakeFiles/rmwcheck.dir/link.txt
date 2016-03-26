@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/rmwcheck.dir/rmwcheck.cpp.o  -o rmwcheck -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

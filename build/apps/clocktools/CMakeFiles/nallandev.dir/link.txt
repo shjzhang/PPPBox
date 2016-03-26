@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/nallandev.dir/nallandev.cpp.o  -o nallandev -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

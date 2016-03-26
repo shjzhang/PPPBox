@@ -699,7 +699,7 @@ void ppp::process()
    if(outputFileListOpt.getCount())
    {
          // Open ouputFileList File
-      outputFileListStream.open(outputFileListName.c_str());
+      outputFileListStream.open(outputFileListName);
       if( ! outputFileListStream.is_open() )
       {
             // If file doesn't exist, issue a warning

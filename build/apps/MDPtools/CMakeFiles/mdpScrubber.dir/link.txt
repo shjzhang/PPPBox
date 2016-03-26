@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/mdpScrubber.dir/mdpScrubber.cpp.o  -o mdpScrubber -rdynamic libmdplib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

@@ -177,38 +177,6 @@ namespace gpstk
       return 0;
 
    }  // End of method 'SimpleKalmanFilter::Compute()'
-   
-   int SimpleKalmanFilter::ComputeWithConstraint( const Matrix<double>& phiMatrix,
-                                 const Matrix<double>& processNoiseCovariance,
-                                    const Vector<double>& measurements,
-                                    const Matrix<double>& measurementsMatrix,
-                            const Matrix<double>& measurementsNoiseCovariance,
-							const Matrix<double>& constraintMatrix,
-							const Vector<double>& constraintVector)
-      throw(InvalidSolver)
-   {
-
-      try
-      {
-         Predict( phiMatrix,
-                  xhat,
-                  processNoiseCovariance );
-
-         CorrectWithConstraint( measurements,
-                  measurementsMatrix,
-                  measurementsNoiseCovariance,
-				  constraintMatrix,
-				  constraintVector);
-      }
-      catch(InvalidSolver e)
-      {
-         GPSTK_THROW(e);
-         return -1;
-      }
-
-      return 0;
-
-   }  // End of method 'SimpleKalmanFilter::ComputeWithConstraint()'
 
 
 
@@ -597,124 +565,6 @@ matrix and a priori state estimation vector do not match.");
       try
       {
 
-         invPMinus = inverseSVD(Pminus);
-
-      }
-      catch(...)
-      {
-         InvalidSolver e("Correct(): Unable to compute invPMinus matrix.");
-         GPSTK_THROW(e);
-         return -1;
-      }
-
-      try
-      {
-
-         Matrix<double> invTemp( measMatrixT*invR*measurementsMatrix +
-                                 invPMinus );
-
-            // Compute the a posteriori error covariance matrix
-         P = inverseSVD( invTemp );
-
-      }
-      catch(...)
-      {
-         InvalidSolver e("Correct(): Unable to compute P matrix.");
-         GPSTK_THROW(e);
-         return -1;
-      }
-
-      try
-      {
-
-            // Compute the a posteriori state estimation
-         xhat = P * ( (measMatrixT * invR * measurements) + 
-                      (invPMinus * xhatminus) );
-
-      }
-      catch(Exception e)
-      {
-         InvalidSolver eis("Correct(): Unable to compute xhat.");
-         GPSTK_THROW(eis);
-         return -1;
-      }
-
-      xhatminus = xhat;
-      Pminus = P;
-
-      return 0;
-
-   }  // End of method 'SimpleKalmanFilter::Correct()'
-
-   int SimpleKalmanFilter::CorrectWithConstraint( const Vector<double>& measurements,
-                                    const Matrix<double>& measurementsMatrix,
-                           const Matrix<double>& measurementsNoiseCovariance,
-						   const Matrix<double>& constraintMatrix,
-						   const Vector<double>& constraintVector)
-      throw(InvalidSolver)
-   {
-         // Let's check sizes before start
-      int measRow(measurements.size());
-      int aprioriStateRow(xhatminus.size());
-
-      int mMRow(measurementsMatrix.rows());
-
-      int mNCCol(measurementsNoiseCovariance.cols());
-      int mNCRow(measurementsNoiseCovariance.rows());
-
-      int pMCol(Pminus.cols());
-      int pMRow(Pminus.rows());
-
-      if ( ( mNCCol != mNCRow ) || 
-           ( pMCol != pMRow )      )
-      {
-         InvalidSolver e("Correct(): Either Pminus or measurement covariance \
-matrices are not square, and therefore not invertible.");
-         GPSTK_THROW(e);
-      }
-
-      if ( mMRow != mNCRow )
-      {
-         InvalidSolver e("Correct(): Sizes of measurements matrix and \
-measurements noise covariance matrix do not match.");
-         GPSTK_THROW(e);
-      }
-
-      if ( mNCCol != measRow )
-      {
-         InvalidSolver e("Correct(): Sizes of measurements matrix and \
-measurements vector do not match.");
-         GPSTK_THROW(e);
-      }
-
-      if ( pMCol != aprioriStateRow )
-      {
-         InvalidSolver e("Correct(): Sizes of a priori error covariance \
-matrix and a priori state estimation vector do not match.");
-         GPSTK_THROW(e);
-      }
-
-         // After checking sizes, let's do the real correction work
-      Matrix<double> invR;
-      Matrix<double> invPMinus;
-      Matrix<double> measMatrixT( transpose(measurementsMatrix) );
-      Matrix<double> consMatrixT( transpose(constraintMatrix) );
-      try
-      {
-
-         invR = inverseChol(measurementsNoiseCovariance);
-
-      }
-      catch(...)
-      {
-         InvalidSolver e("Correct(): Unable to compute invR matrix.");
-         GPSTK_THROW(e);
-         return -1;
-      }
-
-      try
-      {
-
          invPMinus = inverseChol(Pminus);
 
       }
@@ -748,10 +598,7 @@ matrix and a priori state estimation vector do not match.");
             // Compute the a posteriori state estimation
          xhat = P * ( (measMatrixT * invR * measurements) + 
                       (invPMinus * xhatminus) );
-         
-		 Matrix<double> temp = inverseChol(constraintMatrix * consMatrixT);
 
-		 xhat = xhat - consMatrixT * temp * (constraintMatrix * xhat - constraintVector);
       }
       catch(Exception e)
       {

@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/mdp2fic.dir/mdp2fic.cpp.o  -o mdp2fic -rdynamic libmdplib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

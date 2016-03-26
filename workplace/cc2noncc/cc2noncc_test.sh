@@ -37,6 +37,6 @@ Process()
 rnxlist="./igs1260.rnxlist"
 recTypeFile="./receiver_bernese.lis"
 p1c1bias="./p1c1bias.hist"
-P1C1DCBFile="/home/ww/P1C11404.DCB"
+P1C1DCBFile="./P1C10403.DCB"
 
 Main

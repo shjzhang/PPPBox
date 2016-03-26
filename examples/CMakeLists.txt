@@ -57,11 +57,5 @@ target_link_libraries(example15 pppbox)
 #add_executable(example18 example18.cpp)
 #target_link_libraries(example18 pppbox)
 
-add_executable(sfppp sfppp.cpp)
-target_link_libraries(sfppp pppbox)
-
-add_executable(testIonoDCB testIonoDCB.cpp)
-target_link_libraries(testIonoDCB  pppbox)
-
 
 

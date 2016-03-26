@@ -1,10 +1,12 @@
+#pragma ident "$Id$"
+
 //============================================================================
 //
 //  This file is part of GPSTk, the GPS Toolkit.
 //
 //  The GPSTk is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
-//  by the Free Software Foundation; either version 3.0 of the License, or
+//  by the Free Software Foundation; either version 2.1 of the License, or
 //  any later version.
 //
 //  The GPSTk is distributed in the hope that it will be useful,
@@ -15,25 +17,10 @@
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-//  
-//  Copyright 2004, The University of Texas at Austin
-//  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2008, 2009
+//
+//  Copyright Dagoberto Salazar - gAGE ( http://www.gage.es ). 2008, 2009
 //
 //============================================================================
-
-//============================================================================
-//
-//This software developed by Applied Research Laboratories at the University of
-//Texas at Austin, under contract to an agency or agencies within the U.S. 
-//Department of Defense. The U.S. Government retains all rights to use,
-//duplicate, distribute, disclose, or release this software. 
-//
-//Pursuant to DoD Directive 523024 
-//
-// DISTRIBUTION STATEMENT A: This software has been approved for public 
-//                           release, distribution is unlimited.
-//
-//=============================================================================
 
 // Example program Nro 8 for GPSTk
 //
@@ -136,6 +123,9 @@
 
 #include "geometry.hpp"                   // DEG_TO_RAD
 
+#include "IonexStore.hpp"
+#include "IonexModel.hpp"
+
 
 using namespace std;
 using namespace gpstk;
@@ -176,7 +166,10 @@ int main(void)
 
       // ONSA station nominal position
    Position nominalPos(3370658.5419, 711877.1496, 5349786.9542);
-
+   
+   IonexStore IonexMapList;
+   IonexMapList.loadFile("codg2240.05i");
+   IonexModel ionex(nominalPos, IonexMapList);
 
       // Declare a NeillTropModel object, setting the defaults
    NeillTropModel neillTM( nominalPos.getAltitude(),
@@ -358,6 +351,7 @@ int main(void)
               >> linear2         // Compute ionosphere-free combinations
               >> pcFilter        // Filter out spurious data
               >> phaseAlign      // Align phases with codes
+              >> ionex
               >> linear3         // Compute prefit residuals
               >> baseChange      // Prepare to use North-East-UP reference frame
               >> cDOP            // Compute DOP figures

@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/rowcheck.dir/rowcheck.cpp.o  -o rowcheck -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

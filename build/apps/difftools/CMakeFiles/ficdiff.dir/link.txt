@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ficdiff.dir/ficdiff.cpp.o  -o ficdiff -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

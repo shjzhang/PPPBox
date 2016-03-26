@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ffp.dir/ffp.cpp.o  -o ffp -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 

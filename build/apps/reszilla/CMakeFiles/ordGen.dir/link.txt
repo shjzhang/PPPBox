@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ordGen.dir/ordGen.cpp.o  -o ordGen -rdynamic librlib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox/build:::: 
