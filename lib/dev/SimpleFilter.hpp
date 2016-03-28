@@ -1,20 +1,10 @@
-#pragma ident "$Id$"
-
-/**
- * @file SimpleFilter.hpp
- * This class filters out satellites with observations grossly out of bounds.
- */
-
-#ifndef GPSTK_SIMPLEFILTER_HPP
-#define GPSTK_SIMPLEFILTER_HPP
-
 //============================================================================
 //
 //  This file is part of GPSTk, the GPS Toolkit.
 //
 //  The GPSTk is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
-//  by the Free Software Foundation; either version 2.1 of the License, or
+//  by the Free Software Foundation; either version 3.0 of the License, or
 //  any later version.
 //
 //  The GPSTk is distributed in the hope that it will be useful,
@@ -25,21 +15,33 @@
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-//
-//  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2007, 2008, 2011
-//
-//============================================================================
-//
-//  Revision
-//  ========
-//
-//  2014/10/15  Throw 'SVNumException' if the satellite number is less than 4.
-//
-//  Copywright(c) 2014 - ., Shoujian Zhang, Wuhan University 
+//  
+//  Copyright 2004, The University of Texas at Austin
+//  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2008, 2009, 2011
 //
 //============================================================================
 
+//============================================================================
+//
+//This software developed by Applied Research Laboratories at the University of
+//Texas at Austin, under contract to an agency or agencies within the U.S. 
+//Department of Defense. The U.S. Government retains all rights to use,
+//duplicate, distribute, disclose, or release this software. 
+//
+//Pursuant to DoD Directive 523024 
+//
+// DISTRIBUTION STATEMENT A: This software has been approved for public 
+//                           release, distribution is unlimited.
+//
+//=============================================================================
 
+/**
+ * @file SimpleFilter.hpp
+ * This class filters out satellites with observations grossly out of bounds.
+ */
+
+#ifndef GPSTK_SIMPLEFILTER_HPP
+#define GPSTK_SIMPLEFILTER_HPP
 
 #include "ProcessingClass.hpp"
 
@@ -70,12 +72,6 @@ namespace gpstk
        *      gRin >> myFilter;
        *   }
        * @endcode
-       *
-       * Warning:
-       * The filter will firstly check the satellite number stored
-       * in 'gRin', if the number is too small, e.g. less than 2, the 
-       * 'SVNumException' will be thrown, indicating data exception for current
-       * epoch.
        *
        * The "SimpleFilter" object will visit every satellite in the GNSS data
        * structure that is "gRin" and will check that the given code
@@ -161,28 +157,7 @@ namespace gpstk
           * @param gData     Data object holding the data.
           */
       virtual satTypeValueMap& Process(satTypeValueMap& gData)
-         throw(ProcessingException, SVNumException);
-
-
-         /** Returns a gnnsSatTypeValue object, filtering the target
-          *  observables.
-          *
-          * @param gData    Data object holding the data.
-          */
-      virtual gnssSatTypeValue& Process(gnssSatTypeValue& gData)
-         throw(ProcessingException, SVNumException)
-      { Process(gData.body); return gData; };
-
-
-
-         /** Returns a gnnsRinex object, filtering the target observables.
-          *
-          * @param gData    Data object holding the data.
-          */
-      virtual gnssRinex& Process(gnssRinex& gData)
-         throw(ProcessingException, SVNumException)
-      { Process(gData.body); return gData; };
-
+         throw(ProcessingException);
 
 
          /** Method to set the minimum limit.
@@ -235,6 +210,26 @@ namespace gpstk
          /// Method to get the set of TypeID's to be filtered.
       virtual TypeIDSet getFilteredType() const
       { return filterTypeSet; };
+
+
+         /** Returns a gnnsSatTypeValue object, filtering the target
+          *  observables.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssSatTypeValue& Process(gnssSatTypeValue& gData)
+         throw(ProcessingException)
+      { Process(gData.body); return gData; };
+
+
+
+         /** Returns a gnnsRinex object, filtering the target observables.
+          *
+          * @param gData    Data object holding the data.
+          */
+      virtual gnssRinex& Process(gnssRinex& gData)
+         throw(ProcessingException)
+      { Process(gData.body); return gData; };
 
 
          /// Returns a string identifying this object.

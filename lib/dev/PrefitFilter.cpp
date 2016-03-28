@@ -95,7 +95,7 @@ namespace gpstk
                   // for removal
                satRejectedSet.insert( (*it).first );
 
-//             cout << "prefitResidualFilter" << (*it).first << endl;
+		//			std::cout << "prefitResidualFilter" << (*it).first << std::endl;
             }
          }
 

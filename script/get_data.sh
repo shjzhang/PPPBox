@@ -715,12 +715,7 @@ Merge()
 	savefile="$savepath""$store_file"
 
 	  # Merge the observation files from the rnxlist.
-	if [[ -e $savefile ]]
-	then
-		echo "The file $savefile already exists!"
-	else
-		teqc $rnxlist > $savefile
-	fi
+	teqc $rnxlist > $savefile
 	if [[ -f $StationListFile ]]
 	then
 		MergeFile[j]=$savefile

@@ -95,7 +95,7 @@ add_library (pppbox ${STADYN} ${SOURCES} ${SOURCES2})
 
 # Install the pppbox library and headers
 install (TARGETS pppbox DESTINATION lib)
-install (FILES ${HEADERS} ${HEADERS2} DESTINATION include/pppbox )
+install (FILES ${HEADERS} ${HEADERS2} DESTINATION include )
 
 
 # GPSTk Subdirectories

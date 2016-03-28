@@ -13,10 +13,11 @@ add_subdirectory (mergetools)
 
 # If on UNIX, do these
 if (UNIX)
-	add_subdirectory (MDPtools)
+	#add_subdirectory (MDPtools)
 	add_subdirectory (rfw)
+	# error occurs on MAC OS X
 	add_subdirectory (swrx)
-	#add_subdirectory (receiver)
+	add_subdirectory (receiver)
 endif (UNIX)
 
 add_subdirectory (multipath)
@@ -26,4 +27,8 @@ add_subdirectory (reszilla)
 add_subdirectory (Rinextools)
 add_subdirectory (time)
 add_subdirectory (visibility)
-
+add_subdirectory (dev)
+add_subdirectory (ephint)
+add_subdirectory (ssc)
+add_subdirectory (cc2noncc)
+add_subdirectory (rnxfilter)

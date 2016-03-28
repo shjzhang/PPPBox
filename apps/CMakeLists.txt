@@ -13,7 +13,7 @@ add_subdirectory (mergetools)
 
 # If on UNIX, do these
 if (UNIX)
-	add_subdirectory (MDPtools)
+	#add_subdirectory (MDPtools)
 	add_subdirectory (rfw)
 	# error occurs on MAC OS X
 	add_subdirectory (swrx)
