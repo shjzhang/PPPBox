@@ -134,7 +134,7 @@ do
 		e)  e=$OPTARG;;
 		i)  intv=$OPTARG;;
 		u)  u=$OPTARG;;
-		a)  agencyini=$OPTARG;;
+		a)  agency=$OPTARG;;
 		t)  data_type_file=$OPTARG;;
 		p)  savepath=$OPTARG;;
 		l)  prefix=$OPTARG;;
