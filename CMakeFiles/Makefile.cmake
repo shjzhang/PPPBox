@@ -46,6 +46,11 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "apps/visibility/CMakeLists.txt"
   "examples/CMakeLists.txt"
   "script/CMakeLists.txt"
+<<<<<<< HEAD
+=======
+  "workplace/CMakeLists.txt"
+  "workplace/ppp/CMakeLists.txt"
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
   "/usr/share/cmake-2.8/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-2.8/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake"
@@ -105,6 +110,11 @@ SET(CMAKE_MAKEFILE_PRODUCTS
   "apps/rnxfilter/CMakeFiles/CMakeDirectoryInformation.cmake"
   "examples/CMakeFiles/CMakeDirectoryInformation.cmake"
   "script/CMakeFiles/CMakeDirectoryInformation.cmake"
+<<<<<<< HEAD
+=======
+  "workplace/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "workplace/ppp/CMakeFiles/CMakeDirectoryInformation.cmake"
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
   )
 
 # Dependency information for all targets:

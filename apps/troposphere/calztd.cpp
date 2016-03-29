@@ -145,6 +145,10 @@ void CalTropoDelay::process()
    try
    {
          // coordinates filename
+<<<<<<< HEAD
+=======
+    //cout << "1" << endl;
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
       string coords_filename = coordsFileOption.getValue()[0];
       ifstream coords( coords_filename.c_str(), ios::in);
       if( !coords.is_open() )
@@ -171,6 +175,7 @@ void CalTropoDelay::process()
       while (getline(coords, line))
       {
             // Read data : name, latitude, longtitude.
+<<<<<<< HEAD
          name = line.substr(0,4);
 
          lat = atof( line.substr(5,7).c_str() );
@@ -178,6 +183,27 @@ void CalTropoDelay::process()
          p_lat = lat;
 
          lon = atof( line.substr(13,7).c_str() );
+=======
+       //istringstream record(line);
+
+       //while (record >> word)
+       //{
+       //   tempvector.push_back(word);
+       //}         
+         name = line.substr(0,4);
+       //name = tempvector[0];
+       //cout << name << endl;
+
+         lat = atof( line.substr(5,7).c_str() );
+       //lat = atof( tempvector[1].c_str() );
+       //cout << lat << endl;
+
+         p_lat = lat;
+       //
+         lon = atof( line.substr(13,7).c_str() );
+       //lon = atof( tempvector[2].c_str() );
+       //cout << lon << endl; 
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
                
 
             // make sure the latitude and longtitude 
@@ -185,6 +211,10 @@ void CalTropoDelay::process()
          if (lat >= -90.0 && lat <= 90.0 &&
              lon >= 0.0 && lon < 360.0)
          {
+<<<<<<< HEAD
+=======
+          //cout << "2" << endl;
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
             // find the most proximal grid point and
             // store them in a vector.
             lat = proximal_grid(lat);
@@ -205,7 +235,10 @@ void CalTropoDelay::process()
             
             staLatMap[coordinates] = p_lat;
           //cout << "Map imported" << endl;
+<<<<<<< HEAD
           //
+=======
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
                // clear the vector.
             coordinates.clear();
          }
@@ -259,6 +292,10 @@ void CalTropoDelay::process()
 
       while (getline(temp, mline))
       {
+<<<<<<< HEAD
+=======
+       //cout << "temp2mline" << endl;
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
          if( mline[0] == '1')
          {
             istringstream record(mline);
@@ -267,6 +304,11 @@ void CalTropoDelay::process()
                interim_vector.push_back(mword);
             }
 
+<<<<<<< HEAD
+=======
+          //cout << "SIGN!" << endl;
+
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
             grid_lat = atof( interim_vector[1].c_str() );
           //cout << "grid_lat " << grid_lat << endl;
 
@@ -278,6 +320,10 @@ void CalTropoDelay::process()
 
             grid_t = atof( interim_vector[3].c_str() );
             
+<<<<<<< HEAD
+=======
+          //cout << "grid_t" << grid_t << endl;
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
             
             mtvMap[TypeID::Temp] = grid_t;
             coordsTypeValueMap[grid_coords] = mtvMap;
@@ -288,6 +334,20 @@ void CalTropoDelay::process()
          }
       }
 
+<<<<<<< HEAD
+=======
+         // test the mtvMap
+    //for (std::map<std::vector<double>, typeValueMap>::iterator ctvIter
+    //     = coordsTypeValueMap.begin();
+    //     ctvIter != coordsTypeValueMap.end();
+    //     ++ctvIter)
+    //{
+    //   cout << "T" << (*tvIter).second << endl;
+    //   std::vector<double> tv = (*ctvIter).first;
+    //   cout << "Lat&Lon " << tv[0] << " " << tv[1] << endl;
+    //   cout << "T " << (*ctvIter).second.getValue(TypeID::Temp) << endl;
+    //}
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
 
 
          // Now, read the pressure file
@@ -412,6 +472,10 @@ void CalTropoDelay::process()
            
          // Firstly, define a ofstream to store the results.
       std::string outFilename("ztd" + temp_filename.substr(4,7) + "out");
+<<<<<<< HEAD
+=======
+    //std::string outFilename("ztds.out");
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
       ofstream out(outFilename.c_str(), ios::out);
       if (out.is_open())
       {
@@ -423,6 +487,24 @@ void CalTropoDelay::process()
                << endl;
       }
 
+<<<<<<< HEAD
+=======
+         // We need test the map : coordsTypeValueMap
+    //for (std::map<std::vector<double>, typeValueMap>::iterator tctvIter
+    //     = coordsTypeValueMap.begin();
+    //     tctvIter != coordsTypeValueMap.end();
+    //     ++tctvIter)
+    //{
+    //   std::vector<double> tempvector = (*tctvIter).first;
+    //   cout << setw(5) << setfill(' ') << tempvector[0] << " " 
+    //        << setw(5) << tempvector[1] << " "
+    //        << setw(6) << (*tctvIter).second.getValue(TypeID::Temp) << " "
+    //        << setw(7) << (*tctvIter).second.getValue(TypeID::Pres) << " "
+    //        << setw(5) << (*tctvIter).second.getValue(TypeID::Rhum) << " "
+    //        << setw(4) << (*tctvIter).second.getValue(TypeID::Hgt) << " "
+    //        << endl;        
+    //}
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
          // We need a loop.
 
       for ( std::map<std::string, std::vector<double> >::iterator scIter
@@ -444,13 +526,21 @@ void CalTropoDelay::process()
             //    currHgt  : current height
             //
          double currLat, currTemp, currPres, currRhum, currHgt;
+<<<<<<< HEAD
 
+=======
+       //double currLat, currHgt;
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
          std::vector<double> temp_vector,
                              pres_vector,
                              rhum_vector;
                              
 
          double ztds;
+<<<<<<< HEAD
+=======
+       //currLat = currStation[0];
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
 
          std::map< std::vector<double>, typeValueMap >::iterator ctvIter
             = coordsTypeValueMap.find(currStation);
@@ -458,13 +548,25 @@ void CalTropoDelay::process()
          {
             
             currTemp = (*ctvIter).second.getValue(TypeID::Temp);
+<<<<<<< HEAD
          }
 
+=======
+          //cout << "temp " << currTemp << endl;
+          //temp_vector.push_back(currTemp);
+         }
+
+            // 
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
          std::map< std::vector<double>, typeValueMap >::iterator ctvIter2
             = coordsTypeValueMap2.find(currStation);
          if ( ctvIter2 != coordsTypeValueMap2.end() )
          {
             currPres = (*ctvIter2).second.getValue(TypeID::Pres);
+<<<<<<< HEAD
+=======
+          //pres_vector.push_back(currPres);
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
          }
          
 
@@ -473,6 +575,10 @@ void CalTropoDelay::process()
          if ( ctvIter3 != coordsTypeValueMap3.end() )
          {
             currRhum = (*ctvIter3).second.getValue(TypeID::Rhum);
+<<<<<<< HEAD
+=======
+          //rhum_vector.push_back(currRhum);
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
          }
 
 
@@ -499,11 +605,38 @@ void CalTropoDelay::process()
 
          if (out.is_open())
          {
+<<<<<<< HEAD
                // export the result
+=======
+
+          //out << setw(4) << name; 
+          //int j;
+          //for ( j=0; j<30; j++)
+          //{
+          //   ztds = calZTD(currLat, temp_vector[j], pres_vector[j], 
+          //                 rhum_vector[j], currHgt);
+         
+             //cout << j << ' ' 
+             //     << temp_vector[j] << ' ' 
+             //     << pres_vector[j] << ' ' 
+             //     << rhum_vector[j] << endl;
+             //     
+             //cout << ztds << endl;      
+            
+               // export the result
+            
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
             ztds = calZTD(currLat, currTemp, currPres, currRhum,currHgt);
             out  << setw(4) << name<< setfill(' ') 
                    << setprecision(5) << setw(8) 
                    << ztds << endl; 
+<<<<<<< HEAD
+=======
+            
+          //}         
+            
+          //out << endl;
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
          }
       }
    
@@ -511,7 +644,10 @@ void CalTropoDelay::process()
 
    } // end of try
    
+<<<<<<< HEAD
 
+=======
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
    catch(InvalidRequest& e)
    {
       cout << e << endl;
@@ -537,6 +673,11 @@ void CalTropoDelay::process()
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
 int main(int argc, char* argv[])
 {
    try
