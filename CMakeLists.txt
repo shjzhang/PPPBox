@@ -98,7 +98,7 @@ install (TARGETS pppbox DESTINATION lib)
 install (FILES ${HEADERS} ${HEADERS2} DESTINATION include/pppbox )
 
 
-# GPSTk Subdirectories
+# PPPBox Subdirectories
 add_subdirectory (apps)
 add_subdirectory (examples)
 
