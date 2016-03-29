@@ -1,6 +1,7 @@
 # Minimum Required CMake Version
 cmake_minimum_required(VERSION 2.8.4)
-
+set(CMAKE_C_COMPILER "/usr/bin/gcc-4.7")  
+set(CMAKE_CXX_COMPILER "/usr/bin/g++-4.7") 
 # Project Name
 project (pppbox)
 
@@ -96,7 +97,8 @@ add_library (pppbox ${STADYN} ${SOURCES} ${SOURCES2})
 # Install the pppbox library and headers
 install (TARGETS pppbox DESTINATION lib)
 install (FILES ${HEADERS} ${HEADERS2} DESTINATION include/pppbox )
-
+install (DIRECTORY examples/ DESTINATION examples)
+install (DIRECTORY workplace/ DESTINATION workplace)
 
 # GPSTk Subdirectories
 add_subdirectory (apps)
