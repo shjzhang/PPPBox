@@ -98,6 +98,7 @@ add_library (pppbox ${STADYN} ${SOURCES} ${SOURCES2})
 install (TARGETS pppbox DESTINATION lib)
 install (FILES ${HEADERS} ${HEADERS2} DESTINATION include/pppbox )
 install (DIRECTORY examples/ DESTINATION examples)
+install (DIRECTORY workplace/ DESTINATION workplace)
 
 # GPSTk Subdirectories
 add_subdirectory (apps)
