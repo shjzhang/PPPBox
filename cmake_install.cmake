@@ -591,11 +591,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-<<<<<<< HEAD
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/examples" TYPE DIRECTORY FILES "/home/kemin/develop/PPPBOX/examples/")
-=======
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/examples/tables" TYPE DIRECTORY FILES "/home/kemin/develop/PPPBOX/tables/")
->>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -603,10 +599,6 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("/home/kemin/develop/PPPBOX/apps/cmake_install.cmake")
   INCLUDE("/home/kemin/develop/PPPBOX/examples/cmake_install.cmake")
   INCLUDE("/home/kemin/develop/PPPBOX/script/cmake_install.cmake")
-<<<<<<< HEAD
-=======
-  INCLUDE("/home/kemin/develop/PPPBOX/workplace/cmake_install.cmake")
->>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

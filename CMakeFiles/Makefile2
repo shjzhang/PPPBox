@@ -5474,39 +5474,6 @@ script/preinstall:
 .PHONY : script/preinstall
 
 #=============================================================================
-<<<<<<< HEAD
-=======
-# Directory level rules for directory workplace
-
-# Convenience name for "all" pass in the directory.
-workplace/all: workplace/ppp/all
-.PHONY : workplace/all
-
-# Convenience name for "clean" pass in the directory.
-workplace/clean: workplace/ppp/clean
-.PHONY : workplace/clean
-
-# Convenience name for "preinstall" pass in the directory.
-workplace/preinstall: workplace/ppp/preinstall
-.PHONY : workplace/preinstall
-
-#=============================================================================
-# Directory level rules for directory workplace/ppp
-
-# Convenience name for "all" pass in the directory.
-workplace/ppp/all:
-.PHONY : workplace/ppp/all
-
-# Convenience name for "clean" pass in the directory.
-workplace/ppp/clean:
-.PHONY : workplace/ppp/clean
-
-# Convenience name for "preinstall" pass in the directory.
-workplace/ppp/preinstall:
-.PHONY : workplace/ppp/preinstall
-
-#=============================================================================
->>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.

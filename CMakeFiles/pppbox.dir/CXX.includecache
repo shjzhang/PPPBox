@@ -6,7 +6,6 @@
 
 #IncludeRegexTransform: 
 
-<<<<<<< HEAD
 /home/kemin/develop/PPPBOX/lib/FileHandling/SSC/SSCBase.hpp
 FFData.hpp
 /home/kemin/develop/PPPBOX/lib/FileHandling/SSC/FFData.hpp
@@ -2897,5 +2896,3 @@ lib/dev/Rinex3ObsHeader.hpp
 RinexObsID.hpp
 lib/dev/RinexObsID.hpp
 
-=======
->>>>>>> db60d49790d3824f5b45c978fdc1cf2aef1bc553
