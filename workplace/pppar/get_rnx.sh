@@ -1,0 +1,1 @@
+../../script/get_rnx.sh

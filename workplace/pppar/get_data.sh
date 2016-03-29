@@ -1,0 +1,1 @@
+../../script/get_data.sh
