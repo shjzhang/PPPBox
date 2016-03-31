@@ -47,17 +47,6 @@ cat igs1656.msc >> msc.txt
 cat igs1657.msc >> msc.txt
 cat igs1658.msc >> msc.txt
 
-> ppp_example.outlist
-echo "./cagz2831.11o.out" >> ppp_example.outlist
-echo "./cagz2832.11o.out" >> ppp_example.outlist
-echo "./cagz2833.11o.out" >> ppp_example.outlist
-echo "./cagz2834.11o.out" >> ppp_example.outlist
-
-echo "./brus2871.11o.out" >> ppp_example.outlist
-echo "./brus2872.11o.out" >> ppp_example.outlist
-echo "./brus2873.11o.out" >> ppp_example.outlist
-echo "./brus2874.11o.out" >> ppp_example.outlist
-
 # now, Let's perform the ppp positioning
-ppp -r ppp_example.rnxlist -s ppp_example.ephlist -k ppp_example.clklist -e ppp_example.erplist -m msc.txt -o ppp_example.outlist
+ppp -r ppp_example.rnxlist -s ppp_example.ephlist -k ppp_example.clklist -e ppp_example.erplist -m msc.txt 
 

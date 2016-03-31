@@ -723,24 +723,6 @@ void ppp::process()
               << endl;
       }
    }
-   else // If the output file name is not given
-   {
-      for( vector<string>::const_iterator rnxit = rnxFileListVec.begin();
-           rnxit != rnxFileListVec.end();
-           ++rnxit )
-      {
-            // create output file from the input rinex file!
-         string rnxFile = (*rnxit);
-         string outFile = rnxFile + ".out";
-         outputFileListVec.push_back(outFile);
-      }
-
-      if(outputFileListVec.size() == 0 )
-      {
-         cerr << outputFileListName  << "outputFileList is empty!! "
-              << endl;
-      }
-   }
 
          // ===================
          // Let's read rinex file list !!!!

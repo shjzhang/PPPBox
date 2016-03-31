@@ -48,19 +48,6 @@ ssc2msc -s igs11P1658.ssc
 cat igs1656.msc >> msc.txt
 cat igs1657.msc >> msc.txt
 cat igs1658.msc >> msc.txt
-
-> pppar_example.outlist
-echo "./cagz2831.11o.fix.out" >> pppar_example.outlist
-echo "./cagz2832.11o.fix.out" >> pppar_example.outlist
-echo "./cagz2833.11o.fix.out" >> pppar_example.outlist
-echo "./cagz2834.11o.fix.out" >> pppar_example.outlist
-
-echo "./brus2871.11o.fix.out" >> pppar_example.outlist
-echo "./brus2872.11o.fix.out" >> pppar_example.outlist
-echo "./brus2873.11o.fix.out" >> pppar_example.outlist
-echo "./brus2874.11o.fix.out" >> pppar_example.outlist
-
-# now, Let's perform the ppp positioning
-pppar -r pppar_example.rnxlist -s pppar_example.ephlist -k pppar_example.clklist -e pppar_example.erplist -u pppar_example.updlist -m msc.txt -o pppar_example.outlist
+pppar -r pppar_example.rnxlist -s pppar_example.ephlist -k pppar_example.clklist -e pppar_example.erplist -u pppar_example.updlist -m msc.txt 
 
 
