@@ -278,18 +278,6 @@ void SSC2MSC::process()
 			}
 		}	
 		
-		/// test if we store the antenna type data in the map
-
-		//for( std::map<std::string, std::string>::iterator t_saIter
-		//		 = stationAntypeMap.begin();
-      //       t_saIter != stationAntypeMap.end();
-      //       ++t_saIter )
-		//{
-		//   cout << "MapStation: " << (*t_saIter).first << endl;
-		//	  cout << "MapAntennaType: " << (*t_saIter).second << endl;
-		//}
-		
-
       	// take data out of the map to the output stream
 		for( std::map<std::string, std::string>::iterator saIter
 				= stationAntypeMap.begin();
@@ -298,7 +286,6 @@ void SSC2MSC::process()
 		{
 				// the current station we process now
 			std::string currStation = (*saIter).first;
-			//cout << "2 Current Station:" << (*saIter).first << endl;
 			 
 			//@param:
 			//	STAX : station X coordinate

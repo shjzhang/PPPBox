@@ -1394,7 +1394,7 @@ void pppar::process()
       }
       else
       {
-        outputFileName = ( rnxFile + ".out" );
+        outputFileName = ( rnxFile + ".fix.out" );
       }
 
 
