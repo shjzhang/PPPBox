@@ -97,7 +97,8 @@ add_library (pppbox ${STADYN} ${SOURCES} ${SOURCES2})
 # Install the pppbox library and headers
 install (TARGETS pppbox DESTINATION lib)
 install (FILES ${HEADERS} ${HEADERS2} DESTINATION include/pppbox )
-install (DIRECTORY tables/ DESTINATION examples/)
+install (DIRECTORY examples/ DESTINATION examples)
+install (DIRECTORY workplace/ DESTINATION workplace)
 
 # PPPBox Subdirectories
 add_subdirectory (apps)
