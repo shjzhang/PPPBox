@@ -99,6 +99,8 @@ install (TARGETS pppbox DESTINATION lib)
 install (FILES ${HEADERS} ${HEADERS2} DESTINATION include/pppbox )
 install (DIRECTORY examples/ DESTINATION examples)
 install (DIRECTORY workplace/ DESTINATION workplace)
+install (DIRECTORY tables/ DESTINATION tables)
+
 
 # PPPBox Subdirectories
 add_subdirectory (apps)
