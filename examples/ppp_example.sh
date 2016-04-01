@@ -39,13 +39,13 @@ echo "./igs16577.erp" >> ppp_example.erplist
 
 > msc.txt
 # convert ssc2msc
-ssc2msc -s igs11P1656.ssc 
-ssc2msc -s igs11P1657.ssc 
-ssc2msc -s igs11P1658.ssc
+ ssc2msc -s igs11P1656.ssc 
+ ssc2msc -s igs11P1657.ssc 
+#ssc2msc -s igs11P1658.ssc
 # now, let's merge all the msc files together for pppar positioning
-cat igs1656.msc >> msc.txt
-cat igs1657.msc >> msc.txt
-cat igs1658.msc >> msc.txt
+ cat igs1656.msc >> msc.txt
+ cat igs1657.msc >> msc.txt
+#cat igs1658.msc >> msc.txt
 
 # now, Let's perform the ppp positioning
 ppp -r ppp_example.rnxlist -s ppp_example.ephlist -k ppp_example.clklist -e ppp_example.erplist -m msc.txt 
