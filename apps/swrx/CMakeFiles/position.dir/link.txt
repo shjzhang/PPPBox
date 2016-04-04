@@ -1,0 +1,1 @@
+/usr/bin/c++       -lpthread CMakeFiles/position.dir/position.cpp.o  -o position -rdynamic libsimlib.a ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX 

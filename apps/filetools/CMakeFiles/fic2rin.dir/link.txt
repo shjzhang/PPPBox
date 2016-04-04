@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/fic2rin.dir/fic2rin.cpp.o  -o fic2rin -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

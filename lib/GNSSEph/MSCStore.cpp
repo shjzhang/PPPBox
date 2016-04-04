@@ -308,12 +308,18 @@ namespace gpstk
             // with a key <= the time of interest.  
             //
          StaMSCMap::const_reverse_iterator smmir;
+       //for (smmir = mm->second.rbegin(); smmir != mm->second.rend(); ++smmir)
+       //{
+       //   const CommonTime& dtr = smmir->first;
+       //   if (dtr<=t) return( smmir->second );
+       //}
+
          for (smmir = mm->second.rbegin(); smmir != mm->second.rend(); ++smmir)
          {
             const CommonTime& dtr = smmir->first;
-            if (dtr<=t) return( smmir->second );
+            return( smmir->second );
+            break;
          }
-
             // If we reach this point, there's no time-approprate entry for 
             // this station
          InvalidRequest e("No station coordinates for station " + 

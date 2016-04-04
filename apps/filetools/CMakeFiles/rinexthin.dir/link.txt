@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/rinexthin.dir/RinexThin.cpp.o  -o rinexthin -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 
