@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/example4.dir/example4.cpp.o  -o example4 -rdynamic ../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX 
