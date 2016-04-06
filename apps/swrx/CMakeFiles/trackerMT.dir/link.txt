@@ -1,1 +1,0 @@
-/usr/bin/c++       -lpthread CMakeFiles/trackerMT.dir/trackerMT.cpp.o  -o trackerMT -rdynamic libsimlib.a -lpthread ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX 

@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/mpsolve.dir/mpsolve.cpp.o CMakeFiles/mpsolve.dir/ObsArray.cpp.o  -o mpsolve -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

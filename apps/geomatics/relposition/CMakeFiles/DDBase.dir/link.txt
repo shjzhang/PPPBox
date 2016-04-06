@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/DDBase.dir/DDBase.cpp.o  -o DDBase -rdynamic libbaselib.a ../../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

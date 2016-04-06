@@ -1,2 +1,0 @@
-/usr/bin/ar cr libmdplib.a  CMakeFiles/mdplib.dir/BELogEntry.cpp.o CMakeFiles/mdplib.dir/MDPProcessors.cpp.o CMakeFiles/mdplib.dir/SummaryProc.cpp.o CMakeFiles/mdplib.dir/TrackProc.cpp.o CMakeFiles/mdplib.dir/NavProc.cpp.o CMakeFiles/mdplib.dir/SubframeProc.cpp.o CMakeFiles/mdplib.dir/UniqueAlmStore.cpp.o
-/usr/bin/ranlib libmdplib.a

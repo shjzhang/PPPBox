@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ordEdit.dir/ordEdit.cpp.o  -o ordEdit -rdynamic librlib.a ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

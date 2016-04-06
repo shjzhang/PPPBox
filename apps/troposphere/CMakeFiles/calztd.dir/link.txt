@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/calztd.dir/calztd.cpp.o  -o calztd -rdynamic -lgpstk -Wl,-rpath,:::::::::::::::::::::::::: 

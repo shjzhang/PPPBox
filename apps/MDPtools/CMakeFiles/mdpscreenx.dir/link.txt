@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/mdpscreenx.dir/mdpscreen.cpp.o CMakeFiles/mdpscreenx.dir/ScreenProc.cpp.o  -o mdpscreenx -rdynamic libmdplib.a -lncurses ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 
