@@ -30,14 +30,13 @@
 // if rinex header is not valid, then skip the rinex files, and then continue
 // processing the other files.
 //
-// 2016/04/05
-// if station is not included in MSC file, then skip the rinex files, and then
-// continue processing other files.
+// 2016/03/30
+// Q.Liu    Add the DCB correction for the C1/P2 and C1/X2 receiver
 //============================================================================
 
 
 
-// Basic input/output C++ classes
+	// Basic input/output C++ classes
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -151,10 +150,16 @@
    // Class to compute the elevation weights
 #include "ComputeElevWeights.hpp"
 
-
-
    // Class to store satellite precise navigation data
 #include "MSCStore.hpp"
+
+   // Class to convert the CC to NONCC.
+#include "CC2NONCC.hpp"
+
+   // Class to read and store the receiver type.
+#include "RecTypeDataReader.hpp"
+
+
 
 
 using namespace std;
@@ -203,6 +208,9 @@ private:
       // Option for monitor coordinate file
    CommandOptionWithAnyArg mscFileOpt;
 
+      // Option for P1C1 DCB file
+   CommandOptionWithAnyArg dcbFileOpt;
+
       // Option for monitor coordinate file
    CommandOptionWithAnyArg outputFileListOpt;
 
@@ -214,6 +222,7 @@ private:
    string clkFileListName;
    string eopFileListName;
    string mscFileName;
+   string dcbFileName;
    string outputFileListName;
 
       // Configuration file reader
@@ -294,7 +303,11 @@ ppp::ppp(char* arg0)
    mscFileOpt( 'm',
                "mscFile",
    "file storing monitor station coordinates ",
-               true)
+               true),
+   dcbFileOpt('D',
+             "dcbfile",
+   "file storing the P1C1 DCB file.",
+             false)
 {
 
       // This option may appear just once at CLI
@@ -505,6 +518,10 @@ void ppp::spinUp()
    {
       mscFileName = mscFileOpt.getValue()[0];
    }
+   if(dcbFileOpt.getCount())
+   {
+      dcbFileName = dcbFileOpt.getValue()[0];
+   }
 
 }  // End of method 'ppp::spinUp()'
 
@@ -636,6 +653,53 @@ void ppp::process()
    }
       // Close file
    eopFileListStream.close();
+
+      //***********************
+      // Let's read DCB files
+      //***********************
+
+      // Now read dcb file from 'dcbFileName'
+   ifstream dcbFileStream;
+
+      // Open eopFileList File
+   dcbFileStream.open(dcbFileName.c_str(), ios::in);
+
+		// Declare a CC2NONCC object
+	CC2NONCC cc2noncc;
+	bool hasDCBFile(false);
+	if(dcbFileStream)
+	{
+		string dcbFile;
+		while( dcbFileStream >> dcbFile )
+		{
+			try
+			{
+					// Read the receiver type file.
+				string recTypeFile(confReader.getValue("recTypeFile"));
+		
+					// Read the DCB file.
+				cc2noncc.setDCBFile(dcbFile); 
+				hasDCBFile=true;
+				cc2noncc.setRecTypeFile(recTypeFile);
+			}
+				// There is a problam !!!
+			catch (...)
+			{
+					// If file doesn't exist, issue a warning
+				cerr << "DCB file '" << dcbFile << "' doesn't exist or you don't "
+					<< "have permission to read it. Skipping it." << endl;
+			}
+		}
+	}
+
+	else
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "dcb file List Name'" << dcbFileName << "' doesn't exist or you don't "
+           << "have permission to read it. Skipping it." << endl;
+   }
+	dcbFileStream.close();
+
 
       //**********************************************
       // Now, Let's read MSC data
@@ -789,7 +853,7 @@ void ppp::process()
             // Close current Rinex observation stream
          rin.close();
 
-            // Index for rinex file iterator.
+           // Index for rinex file iterator.
          ++rnxit;
 
          continue;
@@ -797,6 +861,7 @@ void ppp::process()
 
          // Get the station name for current rinex file 
       string station = roh.markerName;
+
 
          // First time for this rinex file
       CommonTime initialTime( roh.firstObs ) ;
@@ -806,7 +871,7 @@ void ppp::process()
 
          // MSC data for this station
       initialTime.setTimeSystem(TimeSystem::Unknown);
-      MSCData mscData;
+		MSCData mscData;
 		try
 		{
 			mscData = mscStore.findMSC( station, initialTime );
@@ -824,15 +889,27 @@ void ppp::process()
          // The former peculiar code is possible because each time we
          // call a 'fetchListValue' method, it takes out the first element
          // and deletes it from the given variable list.
-
       Position nominalPos( mscData.coordinates );
 
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order
       ProcessingList pList;
 
+			// If the DCB file exists, then we add 'cc2noncc' to processing list
+		if(hasDCBFile)
+		{
+				// Get the receiver type
+			string recType = roh.recType;
+				// Convert CC to NONCC 
+			cc2noncc.setRecType(recType);
+			   // Copy C1 to P1
+			cc2noncc.setCopyC1ToP1(true);
+			pList.push_back(cc2noncc); 
+		}
+
          // This object will check that all required observables are present
       RequireObservables requireObs;
+      requireObs.addRequiredType(TypeID::P1);
       requireObs.addRequiredType(TypeID::P2);
       requireObs.addRequiredType(TypeID::L1);
       requireObs.addRequiredType(TypeID::L2);
@@ -841,19 +918,7 @@ void ppp::process()
          // reasonable limits
       SimpleFilter pObsFilter;
       pObsFilter.setFilteredType(TypeID::P2);
-
-         // Read if we should use C1 instead of P1
-      bool usingC1( confReader.getValueAsBoolean( "useC1" ) );
-      if ( usingC1 )
-      {
-         requireObs.addRequiredType(TypeID::C1);
-         pObsFilter.addFilteredType(TypeID::C1);
-      }
-      else
-      {
-         requireObs.addRequiredType(TypeID::P1);
-         pObsFilter.addFilteredType(TypeID::P1);
-      }
+      pObsFilter.addFilteredType(TypeID::P1);
 
          // Add 'requireObs' to processing list (it is the first)
       pList.push_back(requireObs);
@@ -884,17 +949,8 @@ void ppp::process()
          // Object to compute linear combinations for cycle slip detection
       ComputeLinear linear1;
 
-         // Read if we should use C1 instead of P1
-      if ( usingC1 )
-      {
-         linear1.addLinear(comb.pdeltaCombWithC1);
-         linear1.addLinear(comb.mwubbenaCombWithC1);
-      }
-      else
-      {
-         linear1.addLinear(comb.pdeltaCombination);
-         linear1.addLinear(comb.mwubbenaCombination);
-      }
+      linear1.addLinear(comb.pdeltaCombination);
+      linear1.addLinear(comb.mwubbenaCombination);
       linear1.addLinear(comb.ldeltaCombination);
       linear1.addLinear(comb.liCombination);
       pList.push_back(linear1);       // Add to processing list
@@ -926,10 +982,7 @@ void ppp::process()
          // Set the minimum elevation
       basic.setMinElev(confReader.getValueAsDouble("cutOffElevation"));
          // If we are going to use P1 instead of C1, we must reconfigure 'basic'
-      if ( !usingC1 )
-      {
-         basic.setDefaultObservable(TypeID::P1);
-      }
+      basic.setDefaultObservable(TypeID::P1);
          // Add to processing list
       pList.push_back(basic);
 
@@ -1061,17 +1114,8 @@ void ppp::process()
          // for L1/L2 calibration
       ComputeLinear linear2;
 
-         // Read if we should use C1 instead of P1
-      if ( usingC1 )
-      {
-         linear2.addLinear(comb.q1CombWithC1);
-         linear2.addLinear(comb.q2CombWithC1);
-      }
-      else
-      {
-         linear2.addLinear(comb.q1Combination);
-         linear2.addLinear(comb.q2Combination);
-      }
+      linear2.addLinear(comb.q1Combination);
+      linear2.addLinear(comb.q2Combination);
       pList.push_back(linear2);       // Add to processing list
 
 
@@ -1095,20 +1139,7 @@ void ppp::process()
          // as observables in the PPP processing
       ComputeLinear linear3;
 
-         // Read if we should use C1 instead of P1
-      if ( usingC1 )
-      {
-            // WARNING: When using C1 instead of P1 to compute PC combination,
-            //          be aware that instrumental errors will NOT cancel,
-            //          introducing a bias that must be taken into account by
-            //          other means. This won't be taken into account in this
-            //          example.
-         linear3.addLinear(comb.pcCombWithC1);
-      }
-      else
-      {
-         linear3.addLinear(comb.pcCombination);
-      }
+      linear3.addLinear(comb.pcCombination);
       linear3.addLinear(comb.lcCombination);
       pList.push_back(linear3);       // Add to processing list
 
@@ -1131,14 +1162,7 @@ void ppp::process()
 
 
       ComputeLinear linear5;
-      if(usingC1)
-      {
-         linear5.addLinear(comb.mwubbenaCombWithC1);
-      }
-      else
-      {
-         linear5.addLinear(comb.mwubbenaCombination);
-      }
+      linear5.addLinear(comb.mwubbenaCombination);
       pList.push_back(linear5);       // Add to processing list
 
 
@@ -1250,7 +1274,7 @@ void ppp::process()
 
          // print out the header
       outfile << "# col  1 -  3: year/doy/sod \n" 
-              << "# col  4 -  7: dLat/dLon/dH/ZTD \n" 
+              << "# col  4 -  7: dN/dE/dU/ZTD \n" 
               << "# col  8 - 11: TotalSatNumber/Converged/GDOP/PDOP \n"
               << "# END OF HEADER" << endl;
 
@@ -1290,6 +1314,17 @@ void ppp::process()
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
             gRin >> pList;
+			//cout << fixed << setprecision(3);
+				
+            // Only keep the necessary types for 'SolverGeneralFB' 
+         //TypeIDSet types;
+         //types.insert(TypeID::C1);
+         //types.insert(TypeID::P1);
+         //types.insert(TypeID::P2);
+
+            // Delete the types not in 'types' to save the memory
+         //gRin.keepOnlyTypeID(types);
+			//cout << time << "\t" << gRin.body << endl;
 
          }
          catch(DecimateEpoch& d)
