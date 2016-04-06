@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/TECMaps.dir/TECMaps.cpp.o CMakeFiles/TECMaps.dir/VTECMap.cpp.o  -o TECMaps -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

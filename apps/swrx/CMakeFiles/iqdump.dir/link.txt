@@ -1,1 +1,0 @@
-/usr/bin/c++       -lpthread CMakeFiles/iqdump.dir/iqdump.cpp.o  -o iqdump -rdynamic libsimlib.a ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX 

@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/RinDump.dir/RinDump.cpp.o  -o RinDump -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

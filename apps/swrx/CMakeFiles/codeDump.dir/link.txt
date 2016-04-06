@@ -1,1 +1,0 @@
-/usr/bin/c++       -lpthread CMakeFiles/codeDump.dir/codeDump.cpp.o  -o codeDump -rdynamic libsimlib.a ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX 

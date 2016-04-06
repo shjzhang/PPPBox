@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/rinexpvt.dir/rinexpvt.cpp.o  -o rinexpvt -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

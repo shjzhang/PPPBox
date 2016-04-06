@@ -1,1 +1,0 @@
-/usr/bin/c++       -lpthread CMakeFiles/simpleNav.dir/simpleNav.cpp.o  -o simpleNav -rdynamic libsimlib.a ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX 

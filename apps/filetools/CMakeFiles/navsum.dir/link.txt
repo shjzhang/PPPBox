@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/navsum.dir/navsum.cpp.o  -o navsum -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

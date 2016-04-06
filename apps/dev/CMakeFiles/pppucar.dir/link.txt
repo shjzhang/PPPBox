@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/pppucar.dir/pppucar.cpp.o  -o pppucar -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 
