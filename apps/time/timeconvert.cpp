@@ -38,6 +38,8 @@
 //		
 //		2015/11/09	K.M.Zhu	Add an output of week of year
 //
+//    2016/04/06  Q.Liu    Add the detailed description for output format.
+//
 //=============================================================================
 #include "BasicFramework.hpp"
 
@@ -92,9 +94,9 @@ private:
 
 	CommandOptionNoArg outputWeekOfYearOption;
 	
-   CommandOptionWithAnyArg formatOption;
    CommandOptionWithNumberArg addOption;
    CommandOptionWithNumberArg subOption;
+   CommandOptionWithAnyArg formatOption;
    CommandOptionMutex mutexOption;
 
    string stringToParse;
@@ -105,6 +107,7 @@ TimCvt::TimCvt(char* arg0)
       : BasicFramework(arg0, "Converts from a given input time specification"
                        " to other time formats.  Include the quotation marks."
                        "  All year values are four digit years."),
+
         ANSITimeOption('A', "ansi", "%K", "\"ANSI-Second\""),
         CivilTimeOption('c', "civil", "%m %d %Y %H:%M:%f",
                         "\"Month(numeric) DayOfMonth Year Hour:Minute:Second\""),
@@ -125,11 +128,61 @@ TimCvt::TimCvt(char* arg0)
         inputFormatOption(0, "input-format", "Time format to use on input"),
         inputTimeOption(0, "input-time",
                         "Time to be parsed by \"input-format\" option"),
-        formatOption('F', "format", "Time format to use on output"),
 		  outputWeekOfYearOption( 'W', "woy", "A switch to print week of year with no argument"),
         addOption('a', "add-offset", "add NUM seconds to specified time"),
         subOption('s', "sub-offset",
-                  "subtract NUM seconds from specified time")
+                  "subtract NUM seconds from specified time"),
+        formatOption('F', "format", "  -F, --format           Time format to use on output, detailed"
+				         " are as follows:\n"
+				         "\t--ANSITime:\n"
+				         "\t      %K         integer seconds since Unix Epoch (00:00, Jan 1, 1970 UTC)\n"
+							"\t--CivilTime:\n"
+							"\t      %Y         integer 4-digit year\n"
+							"\t      %y         integer 2-digit year\n"
+							"\t      %m         integer month\n"
+							"\t      %b         abbreviated month name string (e.g. \"Jan\")\n"
+							"\t      %B         full month name string (e.g.\"January\")\n"
+							"\t      %d         integer day-of-month\n"
+							"\t      %H         integer hour-of-day\n"
+							"\t      %M         integer minute-of-hour\n"
+							"\t      %S         integer second-of-minute\n"
+							"\t      %f         float second-of-minute\n"
+							"\t--Week (GPS/BDS/GAL/QZS):\n"
+							"\t      %E         integer GPS Epoch\n"
+							"\t      %F         integer full (13-bit) GPS Week\n"
+							"\t      %G         integer mod (10-bit) GPS Week\n"
+							"\t      %R         integer BDS Epoch\n"
+							"\t      %D         integer full BDS Week\n"
+							"\t      %e         integer mod BDS Week\n"
+							"\t      %T         integer GAL Epoch\n"
+							"\t      %L         integer full GAL Week\n"
+							"\t      %l         integer mod GAL Week\n"
+							"\t      %V         integer QZS Epoch\n"
+							"\t      %I         integer full QZS Week\n"
+							"\t      %i         integer mod QZS Week\n"
+							"\t--WeekSecond (GPS/BDS/GAL/QZS):\n"
+							"\t      %w         integer GPS day-of-week\n"
+							"\t      %g         float GPS second-of-week\n"
+							"\t--GPSWeekZcount:\n"
+							"\t      %w         integer GPS day-of-week\n"
+							"\t      %z         integer GPS Z-count\n"
+							"\t      %Z         integer GPS Z-count\n"
+							"\t      %c         integer 29-bit Z-count\n"
+							"\t      %C         integer 32-bit Z-count\n"
+							"\t--JulianDate:\n"
+							"\t      %J         float Julian Date\n"
+							"\t--MJD:\n"
+							"\t      %Q         float Modified Julian Date\n"
+							"\t--UnixTime:\n"
+							"\t      %U         integer seconds since Unix Epoch (00:00, Jan 1, 1970 UTC)\n"
+							"\t      %u         integer microseconds\n"
+							"\t--YDSTime:\n"
+							"\t      %Y         integer 4-digit year\n"
+							"\t      %y         integer 2-digit year\n"
+							"\t      %j         integer day-of-year\n"
+							"\t      %s         integer second-of-day\n"
+							"\t--Common Identifiers:\n"
+							"\t      %P         string TimeSystem\n")
 {
    ANSITimeOption.setMaxCount(1);
    CivilTimeOption.setMaxCount(1);
