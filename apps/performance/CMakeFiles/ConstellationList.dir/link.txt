@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ConstellationList.dir/ConstellationList.cpp.o CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.o CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.o  -o ConstellationList -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

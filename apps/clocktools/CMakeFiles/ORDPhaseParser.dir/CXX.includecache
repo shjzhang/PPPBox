@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kemin/develop/PPPBOX/apps/clocktools/ORDPhaseParser.cpp
+iostream
+-
+string
+-
+cstdio
+-
+cstring
+-
+cstdlib
+-
+

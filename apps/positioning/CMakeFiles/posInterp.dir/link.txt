@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/posInterp.dir/posInterp.cpp.o  -o posInterp -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

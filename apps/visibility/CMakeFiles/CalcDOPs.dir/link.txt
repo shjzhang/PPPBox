@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/CalcDOPs.dir/CalcDOPs.cpp.o  -o CalcDOPs -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

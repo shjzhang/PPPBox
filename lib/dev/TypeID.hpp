@@ -463,6 +463,10 @@ namespace gpstk
 			AntOffU,
 			AntOffN,
 			AntOffE,
+         Temp,
+         Pres,
+         Rhum,
+         Hgt,
          sigma,     ///< Standard deviation
          iura,      ///< Index User Range Accuracy
          Action,    ///< Flag for quality control
