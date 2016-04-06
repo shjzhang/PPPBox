@@ -30,6 +30,9 @@
 // if rinex header is not valid, then skip the rinex files, and then continue
 // processing the other files.
 //
+// 2016/04/05
+// if station is not included in MSC file, then skip the rinex files, and then
+// continue processing other files.
 //============================================================================
 
 
@@ -803,7 +806,19 @@ void ppp::process()
 
          // MSC data for this station
       initialTime.setTimeSystem(TimeSystem::Unknown);
-      MSCData mscData( mscStore.findMSC( station, initialTime ) );
+      MSCData mscData;
+		try
+		{
+			mscData = mscStore.findMSC( station, initialTime );
+		}
+		catch (InvalidRequest& ie)
+		{
+				// If file doesn't exist, issue a warning
+			cerr << "The station " << station 
+				  << " isn't included in MSC file." << endl;
+         ++rnxit;
+			continue;
+		}
       initialTime.setTimeSystem(TimeSystem::GPS);
 
          // The former peculiar code is possible because each time we
