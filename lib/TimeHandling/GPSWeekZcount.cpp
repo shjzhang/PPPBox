@@ -77,7 +77,7 @@ namespace gpstk
       if (ct < MIN_CT)
       {
          InvalidRequest ir("Unable to convert CommonTime to GPSWeekZcount,"
-					            " the time must be ahead of \"1980/1/6/ 0:0:0\".");
+		           " the time must atfer \"1980/1/6/ 0:0:0\".");
          GPSTK_THROW(ir);
       }
 
