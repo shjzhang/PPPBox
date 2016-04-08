@@ -201,6 +201,8 @@ namespace gpstk
          wetTropoVar,  ///< Vertical tropospheric delay var, wet component
          wetMap,    ///< Tropospheric mapping function, wet component
          tropoSlant, ///< Slant tropospheric delay, total
+         LatIPP,     /// Geocentric latitude of Ionoshere Pierce Point(IPP)
+         LonIPP,      /// longitude of Ionosphere Pierce Point(IPP)
          iono,      ///< Vertical ionospheric delay
          ionoTEC,   ///< Total Electron Content (in TECU), 1TECU = 1e+16 electrons per m**2
          ionoMap,   ///< Ionospheric mapping function
@@ -303,6 +305,8 @@ namespace gpstk
          recInstC1, ///< Instrumental delay for receiver
          recInstP1, ///< Instrumental delay for receiver
          recInstP2, ///< Instrumental delay for receiver
+         recP1P2DCB, ///< the difference between instrumental delays for receiver
+         satP1P2DCB, ///< the difference between instrumental delays for satellite
          recInstC1Var, ///< Instrumental delay for receiver
          recInstP1Var, ///< Instrumental delay for receiver
          recInstP2Var, ///< Instrumental delay for receiver
@@ -473,6 +477,33 @@ namespace gpstk
          a3,        ///< polynominal coefficient
          a4,        ///< polynominal coefficient
          a5,        ///< polynominal coefficient
+
+         A00,       ///< Sphereical harmonic coefficent, 
+                    ///< used for ionosphere modeling
+         A10,       ///< Sphereical harmonic coefficent
+         A11,       ///< Sphereical harmonic coefficent
+         B11,       ///< Sphereical harmonic coefficent
+         A20,       ///< Sphereical harmonic coefficent
+	 A21,       ///< Sphereical harmonic coefficent
+	 B21,       ///< Sphereical harmonic coefficent
+	 A22,       ///< Sphereical harmonic coefficent
+	 B22,       ///< Sphereical harmonic coefficent
+	 A30,       ///< Sphereical harmonic coefficent
+	 A31,       ///< Sphereical harmonic coefficent
+	 B31,       ///< Sphereical harmonic coefficent
+	 A32,       ///< Sphereical harmonic coefficent
+	 B32,       ///< Sphereical harmonic coefficent
+	 A33,       ///< Sphereical harmonic coefficent
+	 B33,       ///< Sphereical harmonic coefficent
+	 A40,       ///< Sphereical harmonic coefficent
+         A41,       ///< Sphereical harmonic coefficent
+         B41,       ///< Sphereical harmonic coefficent
+         A42,       ///< Sphereical harmonic coefficent
+	 B42,       ///< Sphereical harmonic coefficent
+	 A43,       ///< Sphereical harmonic coefficent
+	 B43,       ///< Sphereical harmonic coefficent
+	 A44,       ///< Sphereical harmonic coefficent
+	 B44,       ///< Sphereical harmonic coefficent
 
             // Handy dummy types for non-standard processing
          dummy0,    ///< Generic, undefined type #0

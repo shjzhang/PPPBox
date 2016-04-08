@@ -152,6 +152,8 @@ namespace gpstk
       tStrings[wetTropoVar]   = "wetTropoVar";
       tStrings[wetMap]     = "wetTropoMap";
       tStrings[tropoSlant] = "slantTropo";
+      tStrings[LatIPP]     = "LatitudeOfIPP";
+      tStrings[LonIPP]     = "LongitudeOfIPP";
       tStrings[iono]       = "verticalIono";
       tStrings[ionoTEC]    = "TotalElectronContent";
       tStrings[ionoMap]    = "ionoMap";
@@ -248,6 +250,8 @@ namespace gpstk
       tStrings[recInstC1]    = "recInstC1";
       tStrings[recInstP1]    = "recInstP1";
       tStrings[recInstP2]    = "recInstP2";
+      tStrings[recP1P2DCB]   = "recP1P2DCB";
+      tStrings[satP1P2DCB]   = "satP1P2DCB";
       tStrings[recInstC1Var] = "recInstC1Var";
       tStrings[recInstP1Var] = "recInstP1Var";
       tStrings[recInstP2Var] = "recInstP2Var";
@@ -417,6 +421,33 @@ namespace gpstk
       tStrings[a3]         = "a3";
       tStrings[a4]         = "a4";
       tStrings[a5]         = "a5";
+      
+      tStrings[A00]         = "A00";
+      tStrings[A10]         = "A10";
+      tStrings[A11]         = "A11";
+      tStrings[B11]         = "B11";
+      tStrings[A20]         = "A20";
+      tStrings[A21]         = "A21";
+      tStrings[B21]         = "B21";
+      tStrings[A22]         = "A22";
+      tStrings[B22]         = "B22";
+      tStrings[A30]         = "A30";
+      tStrings[A31]         = "A31";
+      tStrings[B31]         = "B31";
+      tStrings[A32]         = "A32";
+      tStrings[B32]         = "B32";
+      tStrings[A33]         = "A33";
+      tStrings[B33]         = "B33";
+      tStrings[A40]         = "A40";
+      tStrings[A41]         = "A41";
+      tStrings[B41]         = "B41";
+      tStrings[A42]         = "A42";
+      tStrings[B42]         = "B42";
+      tStrings[A43]         = "A43";
+      tStrings[B43]         = "B43";
+      tStrings[A44]         = "A44";
+      tStrings[B44]         = "B44";
+    
 
       tStrings[dummy0]     = "dummy0";
       tStrings[dummy1]     = "dummy1";
