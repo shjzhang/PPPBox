@@ -92,10 +92,8 @@ namespace gpstk
           */
       virtual int Compute( const Vector<double>& prefitResiduals,
                            const Matrix<double>& designMatrix,
-                           const Matrix<double>& weightMatrix,
-						   const Matrix<double>& constraintMatrix,
-						   const Vector<double>& constraintVector)
-         throw(InvalidSolver);
+                           const Matrix<double>& weightMatrix )
+        throw(InvalidSolver);
 
 
          /** Returns a reference to a gnssDataMap object after
@@ -243,10 +241,6 @@ namespace gpstk
 
          /// Measurements vector (Prefit-residuals)
       Vector<double> measVector;
-         /// Constraint vector of satellite DCBs
-      Matrix<double> consMatrix;
-	     /// Constrain Vector 
-	  Vector<double> consVector;
 
       /// Set with all satellites being processed this epoch
       SatIDSet currSatSet;

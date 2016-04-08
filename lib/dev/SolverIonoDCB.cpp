@@ -237,7 +237,7 @@ covariance matrix.");
 
             // Get the number of satellites currently visible
         int numCurrentSV( currSatSet.size() );
-        //cout<<"Current SVs " << numCurrentSV<<endl;    
+        cout<<"Current SVs " << numCurrentSV<<endl;    
 	     // Get the number of receivers
 	 	SourceIDSet recSet(gData.getSourceIDSet());
           
@@ -285,11 +285,11 @@ covariance matrix.");
 		 }  
 
      	}
-	//	for ( VariableSet::const_iterator itVar = satUnknowns.begin();
-	//		  itVar != satUnknowns.end(); ++itVar)
-	//	{
-	//		cout<<asString(*itVar)<<endl;	
-	//	}
+		for ( VariableSet::const_iterator itVar = satUnknowns.begin();
+			  itVar != satUnknowns.end(); ++itVar)
+		{
+			cout<<asString(*itVar)<<endl;	
+		}
             //get the number of measurements
          for (gnssDataMap::const_iterator itEpoch = gData.begin();
 			  itEpoch != gData.end(); ++itEpoch)
