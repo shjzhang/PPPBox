@@ -41,6 +41,7 @@ namespace gpstk
 
 
 
+
       /* Returns a satTypeValueMap object, adding the new data generated
        * when calling this object.
        *
@@ -63,15 +64,17 @@ namespace gpstk
 
             // Loop through all satellites
          satTypeValueMap::iterator it;
+
          for (it = gData.begin(); it != gData.end(); ++it)
          {
-
             try
             {
 
                   // Try to extract the values
+                  // attention: PI in pppbox is defined as P2-P1, whereas LI is L1-L2
                codeObs  = (*it).second(codeType);
-               phaseObs = (*it).second(phaseType);
+                  // using L2-L1 smoothing P2-P1
+               phaseObs = -(*it).second(phaseType);
 
             }
             catch(...)
@@ -145,6 +148,7 @@ namespace gpstk
          return gData;
 
       }
+
       catch(Exception& u)
       {
             // Throw an exception if something unexpected happens
@@ -198,7 +202,9 @@ namespace gpstk
                                     double& weight)
    {
 
-      double varPI(1.0);
+
+    double varPI(1.0);
+    
 
          // In case we have a cycle slip either in L1 or L2
       if ( (flag1!=0.0) || (flag2!=0.0) )
@@ -216,7 +222,7 @@ namespace gpstk
 
          // In case we didn't have cycle slip
          // Increment size of window and check limit
-      ++SmoothingData[sat].windowSize;
+     
       if (SmoothingData[sat].windowSize > maxWindowSize)
       {
          SmoothingData[sat].windowSize = maxWindowSize;
@@ -241,8 +247,16 @@ namespace gpstk
          // As window size "n" increases, the former formula gives more
          // weight to the previous smoothed code CSn-1 plus the phase bias
          // (Ln - Ln-1), and less weight to the current code observation Cn
-      smoothedCode = (code + (wSize-1.0)*( prevCode + (phase-prevPhase) ) ) / wSize;
 
+      if ((std::abs(phase-prevPhase)) > 20.0 ) // set a limit between phase and prePhase
+      {
+           smoothedCode = code ;     
+      } 
+      else
+      {
+        smoothedCode = (code + (wSize-1.0)*( prevCode + (phase-prevPhase) ) ) / wSize;
+       
+      }
          // The variance of PI is 1.0m;
       varSmCode = (varPI + (wSize-1.0)*(wSize-1.0)*prevVar ) /(wSize*wSize);
 
@@ -254,6 +268,7 @@ namespace gpstk
       SmoothingData[sat].previousPhase = phase;
       SmoothingData[sat].previousVar = varSmCode;
 
+      ++SmoothingData[sat].windowSize;
       return smoothedCode;
 
    }  // End of method 'PISmoother::getSmoothing()'
