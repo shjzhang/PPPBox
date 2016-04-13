@@ -24,7 +24,13 @@
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
 //
-//  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2007, 2008, 2011
+//  HuiWei - Wuhan University, 2016
+//
+//  Revisions
+//
+//  2016/04/13
+//
+//  Test this programs,  shjzhang
 //
 //============================================================================
 
