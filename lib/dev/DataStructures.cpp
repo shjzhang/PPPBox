@@ -3100,11 +3100,11 @@ in matrix and number of types do not match") );
                   data.lli = 0;
 
                   const int n = GetCarrierBand(*obsTypeItr);
-						double waveLength=getWavelength(rsat,n);
+                  double waveLength=getWavelength(rsat,n);
 
                   if( (type == TypeID::P1) || (type == TypeID::L1) )
-						{
-							if(type == TypeID::L1)
+                  {
+                     if(type == TypeID::L1)
                      {
                         data.data /= waveLength;
                         data.ssi = f.body[*itSat][TypeID::SSI1];
