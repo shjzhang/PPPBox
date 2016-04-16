@@ -361,7 +361,8 @@ covariance matrix.");
               {
 				 int satPos=std::distance(currSatSet.begin(),currSatSet.find(*itSat)); 
 				 measVector(count) = piCom(seq)/mapFun(seq)*(-9.52437); 
-				// cout<<"P4 : "<<measVector(seq+count);
+				 if (std::abs(piCom(seq))>=50)
+					 cout<<rec<<" "<<*itSat<<" "<<piCom(seq)<<endl;
 				 // the weight 
                  rMatrix(count,count) = 10000.0;
 				   // the coefficient of DCB for receiver
