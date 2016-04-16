@@ -146,7 +146,7 @@ namespace gpstk
             case systemTransit: return 'T';
             case systemQZSS:    return 'J';
             case systemBeiDou:  return 'C';
-				case systemMixed:   return 'M';
+			   case systemMixed:   return 'M';
             default:            return '?';
          }
       };
@@ -166,7 +166,7 @@ namespace gpstk
             case systemTransit: return "Transit";
             case systemQZSS:    return "QZSS";
             case systemBeiDou:  return "BeiDou";
-				case systemMixed:   return "MIXED";
+			   case systemMixed:   return "MIXED";
             default:            return "Unknown";
          }
       };
@@ -185,7 +185,7 @@ namespace gpstk
             case systemTransit: return "TRN";     // RINEX ver 2
             case systemQZSS:    return "QZS";
             case systemBeiDou:  return "BDS";
-				case systemMixed:   return "MIX";
+			   case systemMixed:   return "MIX";
             default:            return "Unk";
          }
       };
