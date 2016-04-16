@@ -39,6 +39,8 @@
 //  2014/07/15   Define a temporary 'source' to initialize the value of 
 //               the source in header; (shjzhang)
 //
+//  2016/04/16   When we output the RINEX file, the phase observation(m) must
+//               divide its related wave length.(Q.Liu)
 //============================================================================
 
 
@@ -3089,19 +3091,22 @@ in matrix and number of types do not match") );
 
                while (obsTypeItr != strm.header.obsTypeList.end())
                {
-                  TypeID type = ConvertToTypeID( *obsTypeItr,
-                     RinexSatID(itSat->id,itSat->system));
+                  RinexSatID rsat(itSat->id,itSat->system);
+                  TypeID type = ConvertToTypeID( *obsTypeItr,rsat);
 
                   RinexDatum data;
                   data.data = f.body[*itSat][type];
                   data.ssi = 0;
                   data.lli = 0;
 
+                  const int n = GetCarrierBand(*obsTypeItr);
+						double waveLength=getWavelength(rsat,n);
+
                   if( (type == TypeID::P1) || (type == TypeID::L1) )
-                  {
-                     if(type == TypeID::L1)
+						{
+							if(type == TypeID::L1)
                      {
-                        data.data /= L1_WAVELENGTH_GAL;
+                        data.data /= waveLength;
                         data.ssi = f.body[*itSat][TypeID::SSI1];
                      }
 
@@ -3112,7 +3117,7 @@ in matrix and number of types do not match") );
                   {
                      if(type == TypeID::L2)
                      {
-                        data.data /= L2_WAVELENGTH_GPS;
+                        data.data /= waveLength;
                         data.ssi = f.body[*itSat][TypeID::SSI2];
                      }
 
@@ -3123,7 +3128,7 @@ in matrix and number of types do not match") );
                   {
                      if(type == TypeID::L5)
                      {
-                        data.data /= L5_WAVELENGTH_GAL;
+                        data.data /= waveLength;
                         data.ssi = f.body[*itSat][TypeID::SSI5];
                      }
 
@@ -3134,7 +3139,7 @@ in matrix and number of types do not match") );
                   {
                      if(type == TypeID::L6)
                      {
-                        data.data /= L6_WAVELENGTH_GAL;
+                        data.data /= waveLength;
                         data.ssi = f.body[*itSat][TypeID::SSI6];
                      }
 
@@ -3145,7 +3150,7 @@ in matrix and number of types do not match") );
                   {
                      if(type == TypeID::L7)
                      {
-                        data.data /= L7_WAVELENGTH_GAL;
+                        data.data /= waveLength;
                         data.ssi = f.body[*itSat][TypeID::SSI7];
                      }
 
@@ -3156,7 +3161,7 @@ in matrix and number of types do not match") );
                   {
                      if(type == TypeID::L8)
                      {
-                        data.data /= L8_WAVELENGTH_GAL;
+                        data.data /= waveLength;
                         data.ssi = f.body[*itSat][TypeID::SSI8];
                      }
 
