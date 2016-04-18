@@ -760,9 +760,8 @@ namespace gpstk
        Matrix<T> LI(N,N, 0.0);      // Here we will first store L^-1, and later m^-1
 
        // Let's call CholeskyCrout class to decompose matrix "m" in L*LT
-       gpstk::CholeskyCrout<double> CC;
+       gpstk::CholeskyCrout<double> CC;  
        CC(m);
-
        // Let's find the inverse of L (the LI from above)
        for(i=0; i<N; i++) {
            LI(i,i) = 1.0 / CC.L(i,i);
@@ -776,7 +775,6 @@ namespace gpstk
        // Now, let's remember that m^-1 = transpose(LI)*LI
        LI = transpose(LI) * LI;
        return LI;
-
    }  // end inverseChol
 
 

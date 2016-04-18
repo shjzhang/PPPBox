@@ -63,7 +63,7 @@ namespace gpstk
       setTimeConst(tc);
    }
 
-
+    
 
       /* Returns a satTypeValueMap object, adding the new data generated
        *  when calling this object.
@@ -78,6 +78,7 @@ namespace gpstk
       throw(ProcessingException)
    {
 
+
       try
       {
 
@@ -91,6 +92,7 @@ namespace gpstk
          satTypeValueMap::iterator it;
          for (it = gData.begin(); it != gData.end(); ++it)
          {
+
             try
             {
                   // Try to extract the values
@@ -328,6 +330,7 @@ namespace gpstk
 
          // Get current buffer size
       size_t s( LIData[sat].LIEpoch.size() );
+  
 
          // Get the difference between current epoch and LAST epoch,
          // in seconds, but first test if we have epoch data inside LIData

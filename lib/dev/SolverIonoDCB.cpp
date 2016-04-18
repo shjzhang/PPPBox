@@ -12,12 +12,15 @@
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU Lesser General Public License for more details.
 //
-//
+//=============================================================================
 //  Wei Wang, Wuhan University, 2016/03/08
 //  Reference :Jin R,Jin S,Feng G (2012) M_DCB:Matlab code for estimating GNSS
 //  satellite and receiver differential code biases. GPS Solu(16):541-548
-//=============================================================================
-
+//  
+//  
+//  2016/4/11
+//  fix bugs, adjust the sequence of parameters to be estimated.
+//
 /**
  * @file SolverIonoDCB.cpp
  */
@@ -67,14 +70,11 @@ namespace gpstk
 
          // Pointer to default stochastic model for satellite DCBs
 	  
-	  satDCBModel.setQprime(3e-16);
-      pSatDCBStoModel = &satDCBModel;
+      pSatDCBStoModel = &constantModel;
          // for receiver DCBs
-	  recDCBModel.setQprime(3e-16);
-      pRecDCBStoModel = &recDCBModel;  
+      pRecDCBStoModel = &constantModel;  
 
-      CoefModel.setQprime(3e-4);
-
+      CoefModel.setQprime(3e-6);
 	  pCoefStoModel = &CoefModel;
        
    }  // End of method 'SolverIonoDCB::Init()'
@@ -210,8 +210,8 @@ covariance matrix.");
        *
        * @param gData     Data object holding the data.
        */
-   gnssDataMap & SolverIonoDCB::Process(CommonTime& epoch, gnssDataMap& gData)
-      throw(ProcessingException)
+   gnssDataMap & SolverIonoDCB::Process(CommonTime& epoch,gnssDataMap& gData)
+   throw(ProcessingException)
    {
 
       try
@@ -226,20 +226,13 @@ covariance matrix.");
             //   related with the number of unknowns.
            //
             // Get a set with all satellites present in this GDS
-       // SatIDSet currSatSet( gData.getSatIDSet() );
-
-         for (int i = 1;i<=32;i++)
-       {
-	     SatID sat(i,SatID::systemGPS);
-		 currSatSet.insert(sat);
-	    }
-
+        currSatSet = gData.getSatIDSet();
 
             // Get the number of satellites currently visible
         int numCurrentSV( currSatSet.size() );
         cout<<"Current SVs " << numCurrentSV<<endl;    
 	     // Get the number of receivers
-	 	SourceIDSet recSet(gData.getSourceIDSet());
+	 	recSet = gData.getSourceIDSet();
           
 	 	int numRec(recSet.size());
 		 // Number of SH coefficients
@@ -285,19 +278,17 @@ covariance matrix.");
 		 }  
 
      	}
-		for ( VariableSet::const_iterator itVar = satUnknowns.begin();
-			  itVar != satUnknowns.end(); ++itVar)
-		{
-			cout<<asString(*itVar)<<endl;	
-		}
+
             //get the number of measurements
          for (gnssDataMap::const_iterator itEpoch = gData.begin();
 			  itEpoch != gData.end(); ++itEpoch)
 		{
+ 
 			for (sourceDataMap::const_iterator itSour = (itEpoch->second).begin();
 			     itSour != (itEpoch->second).end(); ++itSour)
 			{
-		      numMeas += (itSour->second).numSats();		
+		      numMeas += (itSour->second).numSats();
+	
 			}
 
         }
@@ -324,28 +315,39 @@ covariance matrix.");
          hMatrix.resize(numMeas, numUnknowns,0.0); 
 
          int count = 0;
-        for (gnssDataMap::const_iterator itEpoch = gData.begin();
-			  itEpoch != gData.end(); ++itEpoch)
-		{
-			CommonTime epoch(itEpoch->first);
+        	
+ 
+        for (SourceIDSet::const_iterator itSour = recSet.begin();
+			     itSour != recSet.end(); ++itSour)
+		 {
+			SourceID rec(*(itSour));
+              // get the sequence number of this receiver in the recSet
+			int recPos= std::distance(recSet.begin(),recSet.find(rec));
+              // extract the gnssDataMap of this receiver
+            gnssDataMap tempMap(gData.extractSourceID(rec));
+            
+              // loop epochs
+            for (gnssDataMap::const_iterator itEpoch = tempMap.begin();
+			     itEpoch != tempMap.end(); ++itEpoch)
+		   {
+			  CommonTime epoch(itEpoch->first);
 			  // get the second of this epoch , will be used to transform geographic
 			  // longitude into Sun-fixed longitude
-			double second = epoch.getSecondOfDay();
-			  // loop epochs
-			for (sourceDataMap::const_iterator itSour = (itEpoch->second).begin();
-			     itSour != (itEpoch->second).end(); ++itSour)
-			{
-			  SourceID rec(itSour->first);
-			   // get the sequence number of this receiver in the recSet
-			  int recPos= std::distance(recSet.begin(),recSet.find(rec));
-		      satTypeValueMap dummy(itSour->second);
-			   // the SatIDSet corresponding to this receiver
-	          SatIDSet tempSatSet= dummy.getSatID();
-			  int seq = 0;
+			  double second = epoch.getSecondOfDay();
 
+              sourceDataMap tempSourMap(itEpoch->second);
+			   // the SatIDSet corresponding to this receiver
+	          SatIDSet tempSatSet = tempSourMap.getSatIDSet();
+                
+			  int seq = 0;
+          
+              satTypeValueMap dummy(tempSourMap[rec]);
+            
                // extract the PI combination
 			  Vector<double> piCom(dummy.getVectorOfTypeID(TypeID::PI));
-
+               // extract the weight
+			  Vector<double> wVec(dummy.getVectorOfTypeID(TypeID::weight));
+             
 		 	  // the latitude of ionospheric pierce points
 			  Vector<double> lat(dummy.getVectorOfTypeID(TypeID::LatIPP));
 
@@ -360,19 +362,30 @@ covariance matrix.");
 			       itSat != tempSatSet.end(); ++ itSat)
               {
 				 int satPos=std::distance(currSatSet.begin(),currSatSet.find(*itSat)); 
-				 measVector(count) = piCom(seq)/mapFun(seq)*(-9.52437); 
-				 if (std::abs(piCom(seq))>=50)
-					 cout<<rec<<" "<<*itSat<<" "<<piCom(seq)<<endl;
-				 // the weight 
-                 rMatrix(count,count) = 10000.0;
-				   // the coefficient of DCB for receiver
-				 hMatrix(count,recPos)= 1.0/mapFun(seq)*(-9.52437);
-                   // the coefficient of DCB for satellite
-				 hMatrix(count,satPos+numRec)= 1.0/mapFun(seq)*(-9.52437);
+					// attention : PI is defined as P2-P1 , there we using -PI(P1-P2)
+					// as measVector
+				 measVector(count) = -piCom(seq)/mapFun(seq)*(-9.52437); 
+				// cout<<"P4 : "<<measVector(seq+count);
+				 
+				 if (wVec(seq)==0.0)
+                 {
+                  rMatrix(count,count) = 1.0;
+                 }
+                  else
+                 {
+                  rMatrix(count,count) = wVec(seq);
+                 }
+				  
 				   // fill the SH coefficients	
                  double Lat = DEG_TO_RAD*lat(seq);
+                 Lat = std::asin(std::sin(DEG_TO_RAD*NGPLat)*std::sin(Lat)
+                                +std::cos(DEG_TO_RAD*NGPLat)*std::cos(Lat)
+                               *std::cos(DEG_TO_RAD*lon(seq)-DEG_TO_RAD*NGPLon));
+				 if (lon(seq)>=180.0)
+				 {
+					 lon(seq)-=360.0;
+			     }
                  double SunFixedLon = DEG_TO_RAD*lon(seq)+second*M_PI/43200.0 - M_PI;
-				  
 	             double u = std::sin(Lat);
 				 int i = 0;
 			   for (int n=0;n<=order;n++)
@@ -381,22 +394,26 @@ covariance matrix.");
 	        
                  if (m==0)
 			    {
-                 hMatrix(count,numCurrentSV+numRec+i)=
+                 hMatrix(count,i)=
 				               legendrePoly(n,m,u)*norm(n,m);//An0
 			    }
 	             else   
                  {
-                  hMatrix(count,numCurrentSV+numRec+i)=
+                  hMatrix(count,i)=
 								legendrePoly(n,m,u)*norm(n,m)*std::cos(m*SunFixedLon);//Anm
 
                   i++;
-                  hMatrix(count,numCurrentSV+numRec+i)=
+                  hMatrix(count,i)=
 								legendrePoly(n,m,u)*norm(n,m)*std::sin(m*SunFixedLon);//Bnm
                   }
                   i++;
      		
 				}
-                 
+                   // the coefficient of DCB for receiver
+				 hMatrix(count,recPos+numIonoCoef)=1.0/mapFun(seq)*(-9.52437);
+                   // the coefficient of DCB for satellite
+				 hMatrix(count,satPos+numRec+numIonoCoef)= 1.0/mapFun(seq)*(-9.52437);
+               
 				 seq++; 
 				 count++;
 				 }  // End of 'for (SatIDSet::...)'       
@@ -410,7 +427,7 @@ covariance matrix.");
 		// consMatrix.resize(1,numUnknowns,0.0);
 		 for (int i = 0;i<numCurrentSV;i++)
          {
-		   hMatrix(numMeas-1,i+numRec) = 1.0;	 
+		   hMatrix(numMeas-1,i+numRec+numIonoCoef) = 1.0;	 
 		 }
          
 		//consVector.resize(1,0.0);
@@ -424,40 +441,35 @@ covariance matrix.");
          gnssDataMap tempMap;
 		 tempMap.insert(make_pair(it->first,it->second));
 		 gnssRinex gRin = tempMap.getGnssRinex(*(recSet.begin()));
-
+ 
+		// the SH coefficients 
+        pCoefStoModel->Prepare(dummySat,gRin);
+		double phi = pCoefStoModel->getPhi();
+		double q = pCoefStoModel->getQ();
+        for (int i=0;i<numIonoCoef;i++)
+		{	
+         phiMatrix(i,i) = phi;
+         qMatrix(i,i)   = q;
+         }
             // the DCBs of receiver
 
 		pRecDCBStoModel->Prepare(dummySat,gRin);
 		double recPhi = pRecDCBStoModel->getPhi();
 		double recQ= pRecDCBStoModel->getQ();
-        cout<<"rec Q:  "<<recQ<<endl;
-		for (int i=0;i<numRec;i++)
-		{	
-         phiMatrix(i,i) = recPhi;
-         qMatrix(i,i)   = recQ;
-         }
+		for (int j=numIonoCoef;j<numIonoCoef+numRec;j++)
+		{
+         phiMatrix(j,j) = recPhi;
+         qMatrix(j,j)   = recQ;
+		 }
             // the DCBs of satellite
 		pSatDCBStoModel->Prepare(dummySat,gRin);
 		double satPhi = pSatDCBStoModel->getPhi();
 		double satQ= pSatDCBStoModel->getQ();
-		cout<<"sat Q: "<<satQ<<endl;
-		for (int j=0;j<numCurrentSV;j++)
+		for (int s= numIonoCoef+numRec; s<numUnknowns;s++)
 		{
-         phiMatrix(j+numRec,j+numRec) = satPhi;
-         qMatrix(j+numRec,j+numRec)   = satQ;
-		 }
-         
-		 // the SH coefficients 
-        pCoefStoModel->Prepare(dummySat,gRin);
-		double phi = pCoefStoModel->getPhi();
-		double q = pCoefStoModel->getQ();
-		cout<< "q iono : "<<q<<endl;
-		for (int s= 0; s<numIonoCoef;s++)
-		{
-		  phiMatrix(s+numRec+numCurrentSV,s+numRec+numCurrentSV) = phi;
-		  qMatrix(s+numRec+numCurrentSV,s+numRec+numCurrentSV) = q;
-		}
-
+		  phiMatrix(s,s) = satPhi;
+		  qMatrix(s,s) = satQ;
+         }
             // Feed the filter with the correct state and covariance matrix
          if(firstTime)
          {
@@ -469,21 +481,23 @@ covariance matrix.");
 
 
                // Fill the initialErrorCovariance matrix
-
+               // the ionospheric coefficients
+            for (int i=0;i<numIonoCoef;i++)
+            { 
+               initialErrorCovariance(i,i) = 10000.0;     // (100 m)**2; 
+            } 
                // DCBs for reciever
-			for( int i=0; i<numRec; i++ )
+			for( int i=numIonoCoef; i<numRec+numIonoCoef; i++ )
             {
                initialErrorCovariance(i,i) = 10000.0;    // (100 m)**2
             }
 
                // DCBs for satellite    
-            for( int i=numRec; i<numRec+numCurrentSV; i++ )
+            for( int i=numRec+numIonoCoef; i<numUnknowns; i++ )
             {
                initialErrorCovariance(i,i) = 10000.0;     // (100 m)**2
             }
-               // the ionospheric coefficients
-             for (int i=numRec+numCurrentSV;i<numUnknowns;i++)
-               initialErrorCovariance(i,i) = 10000.0;         // (100 m)**2;    
+                 
 
                // Reset Kalman filter
             kFilter.Reset( initialState, initialErrorCovariance );
@@ -494,41 +508,48 @@ covariance matrix.");
          }
          else
          {
-             //std::cout<<"Cov size "<<covMatrix.rows()<<std::endl;
+            // std::cout<<"Cov size "<<covMatrix.rows()<<std::endl;
             // std::cout<<std::endl<<covMatrix<<std::endl;
                // Adapt the size to the current number of unknowns
             Vector<double> currentState(numUnknowns, 0.0);
             Matrix<double> currentErrorCov(numUnknowns, numUnknowns, 0.0);
-            
 
                // Set first part of current state vector and covariance matrix
-            for( int i=0; i<numRec;i++ )
+               // the numIonoCoef and numRec is fixed at different epochs
+            for( int i=0; i<numIonoCoef;i++ )
             {
                currentState(i) = solution(i);
-     		   cout<<"rec dcb : "<<solution(i)*(-3.3356)<<endl;
-
+     		 
                   // This fills the upper left quadrant of covariance matrix
-               for( int j=0; j<numRec; j++ )
+               for( int j=0; j<numIonoCoef;j++ )
                {
                   currentErrorCov(i,j) =  covMatrix(i,j);
                }
             }
+            for( int i=numIonoCoef; i<numIonoCoef+numRec;i++ )
+            {
+               currentState(i) = solution(i);
+     		 
+                  // This fills the upper left quadrant of covariance matrix
+               for( int j=numIonoCoef; j<numIonoCoef+numRec;j++ )
+               {
 
+                  currentErrorCov(i,j) =  covMatrix(i,j);
+               }
+            }
                // Fill in the rest of state vector and covariance matrix
                // These are values that depend on satellites being processed
-            int c1(numRec);
+            int c1(numIonoCoef+numRec);
             for( VariableSet::const_iterator itVar = satUnknowns.begin();
                  itVar != satUnknowns.end();
                  ++itVar )
             {
-
                currentState(c1) = satState[(*itVar)];
-			   cout<<"sat DCB : "<<satState[(*itVar)]*(-3.3356)<<endl;
                ++c1;
             }
               // Fill the convariance matrix
 			VariableSet tempSet(satUnknowns);
-			c1 = numRec; //Reset 'c1'
+			c1 = numIonoCoef+numRec; //Reset 'c1'
             for( VariableSet::const_iterator itVar1 = satUnknowns.begin();
                  itVar1 != satUnknowns.end();
                  ++itVar1 )
@@ -537,16 +558,27 @@ covariance matrix.");
 			   {
 			    currentErrorCov(c1,c1)
 				            =covarianceMap[(*itVar1)].satIndexedVarCov[(*itVar1)];	 	   
-				   
+				 for (int i= 0; i < numIonoCoef; i++)
+
+               {
+			
+                currentErrorCov(c1,i)=
+				   currentErrorCov(i,c1) =
+				                covarianceMap[(*itVar1)].ionoCoefVarCov(i);
+          
+			    } 
+
 			   }
-			  
+			  else if (satState.find(*itVar1)!=satState.end())
+				{
+		         currentErrorCov(c1,c1) = 0.01;			
+				}
               else
 				{
 					// gives a initial variance
 		         currentErrorCov(c1,c1) = 10000.0;			
 		   			
 				}
-
                int c2(c1+1);
 			     // remove current variable from 'tempSet'
                tempSet.erase(*itVar1);
@@ -559,7 +591,7 @@ covariance matrix.");
                  ++c2;
 	   		  }
 
-              int c3 = 0;
+              int c3 = numIonoCoef;
               for (VariableSet::const_iterator itVar3 = recUnknowns.begin();
 			       itVar3 != recUnknowns.end();
 				   ++itVar3) 
@@ -572,49 +604,35 @@ covariance matrix.");
 			    ++c3;	  
 			   }
                
-			  
-			  for (int i= 0; i < numIonoCoef; i++)
-              {
-			    currentErrorCov(c1,i+numRec+numCurrentSV)=
-				   currentErrorCov(i+numRec+numCurrentSV,c1) =
-				                  covarianceMap[(*itVar1)].ionoCoefVarCov[i];
-				  
-			   }     
-
+			
+               
               ++c1;
             } // End of 'for (VariableSet::...)'
 
-            for (int j = numRec+numCurrentSV;j<numUnknowns;j++)
-			
-			{
-			 currentState(j)= IonoCoef[j-numRec-numCurrentSV];
-
-			 for (int s = numRec+numCurrentSV;s<numUnknowns;s++)
-             {
-			   currentErrorCov(j,s)= covMatrix(j,s);
-			
-		     }
-				
-			}
+       
           
-		   int k(0);
+		   int k(numIonoCoef);
            for (VariableSet::const_iterator itVar4 = recUnknowns.begin();
 		        itVar4 != recUnknowns.end();
 				++itVar4)
             {
 				
-		    for (int i = numRec+numCurrentSV;i<numUnknowns;i++)	
+		    for (int i = 0;i<numIonoCoef;i++)	
 				
 				{
-			      currentErrorCov(k,i)=
+			      
+                 currentErrorCov(k,i)=
 				    currentErrorCov(i,k)=
-					  covarianceMap[(*itVar4)].ionoCoefVarCov[i-numRec-numCurrentSV];
+					  covarianceMap[(*itVar4)].ionoCoefVarCov(i);
 					
 				}
 		     ++k;		
 			}
         
-               // Reset Kalman filter to current state and covariance matrix
+            // cout<<currentErrorCov.size()<<endl;
+			// cout<<"currEV"<<std::endl<<currentErrorCov<<endl;
+
+			 // Reset Kalman filter to current state and covariance matrix
             kFilter.Reset( currentState, currentErrorCov );
 
          }  // End of 'if(firstTime)'
@@ -631,12 +649,10 @@ covariance matrix.");
 
             // Store those values of current state and covariance matrix
             // that depend on satellites currently in view
-		 satState.clear();
-		 recState.clear();
-		 IonoCoef.resize(numIonoCoef,0.0);
+	     //satState.clear();
+	     IonoCoef.resize(numIonoCoef,0.0);
 		 covarianceMap.clear();
-
-         int c1(numRec);
+         int c1(numIonoCoef+numRec);
          for(VariableSet::const_iterator itVar = satUnknowns.begin();
 		     itVar != satUnknowns.end();
 			 ++itVar)
@@ -648,7 +664,7 @@ covariance matrix.");
             // store convariance matrix
          VariableSet tempSet(satUnknowns);        
          
-		 c1 = numRec;
+		 c1 = numIonoCoef+numRec;
         
          for (VariableSet::const_iterator itVar1 = satUnknowns.begin();
 		      itVar1 != satUnknowns.end();
@@ -671,7 +687,7 @@ covariance matrix.");
 		     ++c2;
 		   }		
             
-		   int c3(0);
+		   int c3(numIonoCoef);
          
            for (VariableSet::const_iterator itVar3 = recUnknowns.begin();
 		        itVar3 != recUnknowns.end();
@@ -685,12 +701,12 @@ covariance matrix.");
 			 ++c3;
 		   }
 
-           
-		   for (int c4= numRec+numCurrentSV; c4< numUnknowns;++c4)
+           covarianceMap[*(itVar1)].ionoCoefVarCov.resize(numIonoCoef,0.0);
+		   for (int c4 = 0; c4 < numIonoCoef;++c4)
            {
 			   //store the covariance matrix between satellite Dcbs
 			   //and SH coefficients
-		     covarianceMap[*(itVar1)].ionoCoefVarCov.push_back(covMatrix(c1,c4));  
+		     covarianceMap[*(itVar1)].ionoCoefVarCov(c4)=covMatrix(c1,c4);  
 		   
 		   }
 
@@ -698,20 +714,23 @@ covariance matrix.");
 		 }
          
            // store the SH coefficients  
-         for (int i = numRec+numCurrentSV;i<numUnknowns;i++)
+         for (int i = 0;i<numIonoCoef;i++)
            {
-		     IonoCoef(i-numRec-numCurrentSV) = solution(i);	   
+		     IonoCoef(i) = solution(i);	   
 		   }
            // store the covariance matrix between receiver DCBs 
 		   // and SH coefficents
-        int k(0);
+        int k(numIonoCoef);
 		for (VariableSet::const_iterator itVar4 = recUnknowns.begin();
 		     itVar4 != recUnknowns.end();
 			 ++itVar4)
          {
-		   for (int j= numRec+numCurrentSV;j<numUnknowns;j++)  
+		    recState[(*itVar4)] = solution(k);
+			covarianceMap[*(itVar4)].ionoCoefVarCov.resize(numIonoCoef,0.0);
+
+		   for (int j= 0;j<numIonoCoef;j++)  
 	    	 {
-			  covarianceMap[(*itVar4)].ionoCoefVarCov.push_back(covMatrix(k,j));
+			  covarianceMap[(*itVar4)].ionoCoefVarCov(j) = covMatrix(k,j);
 			 }
 		  ++k;	 
 		 }
@@ -745,9 +764,29 @@ covariance matrix.");
 	 // fill the types that are satellite-indexded
 	satIndexedTypes.insert(TypeID::satP1P2DCB);
     
-      return (*this);
+    return (*this);
 
    }  // End of method 'SolverIonoDCB::prepare()'
+
+	SolverIonoDCB& SolverIonoDCB::getSolution(void)
+   {
+    for (VariableSet::const_iterator itVar = recUnknowns.begin();
+		 itVar!= recUnknowns.end();
+	     ++itVar)
+    {
+     cout<<asString(*itVar)<<" "<<recState[(*itVar)]*3.3356<<endl;
+
+    }
+  
+    for (VariableDataMap::const_iterator itVar2 = satState.begin();
+		 itVar2!= satState.end();
+	     ++itVar2)
+    {
+     cout<<asString(itVar2->first)<<" "<<(itVar2->second)*3.3356<<endl;
+
+    }
+    cout<< "A00 : "<<IonoCoef(0)<<endl;
+   }
 
 	double SolverIonoDCB::norm( int n, int m ) 
     {

@@ -1,17 +1,15 @@
-#pragma ident "$Id$"
-
 //============================================================================
 //
 // This program shows how to use GNSS Data Structures (GDS) and other classes
-// to model regional ionsphere together with estimating DCBs of satellite 
+// to model regional ionosphere together with estimating DCBs of satellite 
 // and receivers.
 //
 // Wei Wang , Wuhan University, 2016/03/09
 //
 //============================================================================
-
-
-
+// 
+//
+//
 // Basic input/output C++ classes
 #include <iostream>
 #include <iomanip>
@@ -40,7 +38,6 @@
    // Class to filter out satellites without required observables
 #include "RequireObservables.hpp"
 
-#include "ConvertC1ToP1.hpp"
   // Class to smooth PI using LI combination
 #include "PISmoother.hpp"
 
@@ -51,7 +48,7 @@
 #include "SimpleFilter.hpp"
 
    // Class to detect cycle slips using LI combination
-#include "LICSDetector2.hpp"
+#include "LICSDetector.hpp"
 
    // Class to detect cycle slips using the Melbourne-Wubbena combination
 #include "MWCSDetector.hpp"
@@ -134,8 +131,10 @@ private:
 
      // Option for ionex file list
    CommandOptionWithAnyArg dcbFileListOpt;
-      // Option for monitor coordinate file
+      // Option for output file
    CommandOptionWithAnyArg outputFileListOpt;
+     // Option for the max order of SH
+   CommandOptionWithAnyArg maxOrderOpt;
 
       // If you want to share objects and variables among methods, you'd
       // better declare them here
@@ -145,6 +144,7 @@ private:
    string inxFileListName;
    string dcbFileListName;
    string outputFileListName;
+   string maxOrder;
 
      
 }; // End of 'IonoDCB' class declaration
@@ -169,6 +169,10 @@ IonoDCB::IonoDCB(char* arg0)
    inxFileListOpt( 'i',
                    "inxFileList",
    "file storing a list of ionex file name ",
+                   true),
+   maxOrderOpt ( 'O',
+                 "maxOrder",
+   "max order of the spherical harmonic expansion",
                    true),
    dcbFileListOpt( 'D',
                    "dcbFileList",
@@ -199,6 +203,10 @@ void IonoDCB::spinUp()
    if(inxFileListOpt.getCount())
    {
       inxFileListName = inxFileListOpt.getValue()[0];
+   }
+   if(maxOrderOpt.getCount())
+   {
+      maxOrder = maxOrderOpt.getValue()[0];
    }
    if(dcbFileListOpt.getCount())
    {
@@ -301,7 +309,7 @@ void IonoDCB::process()
 
       // Read P1-C1 DCB files
    CC2NONCC cc2noncc;
-
+   bool hasDCBFile(false);
    ifstream dcbFileListStream;
       // Open dcbFileList File
    dcbFileListStream.open(dcbFileListName.c_str(), ios::in);
@@ -327,6 +335,7 @@ void IonoDCB::process()
 	cc2noncc.setDCBFile(dcbFile); 
 	
 	cc2noncc.setRecTypeFile(recTypeFile);    
+	hasDCBFile = true;
       }
       catch (FileMissingException& e)
       {
@@ -492,15 +501,16 @@ void IonoDCB::process()
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order
       ProcessingList pList;
-
+      if (hasDCBFile)
+	  {
       	 // Get the receiver type
-      string recType = roh.recType;
+       string recType = roh.recType;
 	    // Convert CC to NONCC 
-      cc2noncc.setRecType(recType);
+       cc2noncc.setRecType(recType);
 	    // Copy C1 to P1
-	  cc2noncc.setCopyC1ToP1(true);
-	  pList.push_back(cc2noncc); 
-
+	   cc2noncc.setCopyC1ToP1(true);
+ 	   pList.push_back(cc2noncc); 
+      }
          // This object will check that all required observables are present
       RequireObservables requireObs;
       requireObs.addRequiredType(TypeID::P2);
@@ -570,7 +580,7 @@ void IonoDCB::process()
       pList.push_back(linear1);       // Add to processing list
 
          // Objects to mark cycle slips
-      LICSDetector2 markCSLI;         // Checks LI cycle slips
+      LICSDetector markCSLI;         // Checks LI cycle slips
       pList.push_back(markCSLI);      // Add to processing list
       MWCSDetector markCSMW;          // Checks Merbourne-Wubbena cycle slips
       pList.push_back(markCSMW);       // Add to processing list
@@ -648,10 +658,8 @@ void IonoDCB::process()
 	 typeNeed.insert(TypeID::LonIPP);
 	 typeNeed.insert(TypeID::ionoMap);
 	 typeNeed.insert(TypeID::weight);
-	 typeNeed.insert(TypeID::recP1P2DCB);
 	 typeNeed.insert(TypeID::satP1P2DCB);
-       // just for debug
-     //SatID sat(2,SatID::systemGPS);
+	 typeNeed.insert(TypeID::recP1P2DCB);
 
          // Loop over all data epochs
      while(rin >> gRin)
@@ -675,20 +683,8 @@ void IonoDCB::process()
 	         satDCB[sat] = tempDCB;
 			}
 			 // add gRin into gnssDataMap
-		    gRin.keepOnlyTypeID(typeNeed);
+     	    gRin.keepOnlyTypeID(typeNeed);
             gData.addGnssRinex(gRin); 
-           /* cout << static_cast<YDSTime>(time).sod<< "  ";
-            cout << gData.getValue(time,source,sat,TypeID::PI)<<" ";
-            cout << gData.getValue(time,source,sat,TypeID::LI)<<" ";
-			
-            double p1( gData.getValue(time,source,sat,TypeID::P1));
-            double p2( gData.getValue(time,source,sat,TypeID::P2));
-			cout<<"PI: "<<p2-p1<<" ";
-            cout << gData.getValue(time,source,sat,TypeID::CSL1)<<" ";
-            cout << gData.getValue(time,source,sat,TypeID::CSL2)<<" ";
-            cout << endl;
-
-            */
          }
          catch(DecimateEpoch& d)
          {
@@ -729,36 +725,41 @@ void IonoDCB::process()
    SP3EphList.clear();
    IonexMapList.clear();
    
-
-   int order = 10;
-   SolverIonoDCB ionoDcbSolver(order);
-
-   SolverIonoDCB2 ionoDcbSolver2(order);
-  // ionoDcbSolver2.Process(gData,satDCB);
+    // initial the class 
+   SolverIonoDCB ionoDcbSolver(asInt(maxOrder));
+   //int order2=2;
+  // SolverIonoDCB2 ionoDcbSolver2(order2);
+   //ionoDcbSolver2.Process(gData,satDCB);
      // define a tolerance(1 hour) for gnssDataMap 
      // the Data in (epoch-tolerance,epoch+tolerance) will be extracted
-   double tol=3600.0;
-   gData.setTolerance(tol);
+ //  double tol=0.1;
+ //  gData.setTolerance(tol);
    SourceIDSet sourSet = gData.getSourceIDSet();
     // loop epochs
   for (gnssDataMap::const_iterator it= gData.begin();
        it!= gData.end(); )
    {
-	  CommonTime epoch = it->first;
+	  CommonTime epoch = it->first; 
+	  cout<<epoch<<endl;
       double second = epoch.getSecondOfDay();
-     if ((static_cast<int>(second)%7200)==0)
-     {
-      cout<<it->first<<endl;	   
+   //  if ((static_cast<int>(second)%static_cast<int>(2*tol))==0)
+    // {
 	  gnssDataMap gMap = gData.getDataFromEpoch(epoch);
-    //  ionoDcbSolver.Process(epoch, gMap);
-
-      ionoDcbSolver2.Process(gMap,satDCB);
-     }
+	  SourceIDSet tempSet = gMap.getSourceIDSet();
+	    
+	  if (tempSet.size()==sourSet.size())
+	  {
+      	ionoDcbSolver.Process(epoch, gMap);
+	  	ionoDcbSolver.getSolution();
+      }
+		  
+    //  ionoDcbSolver2.Process(gMap,satDCB);
+    // }
 	 // move the iterator to the next epoch
-	 std::advance(it,sourSet.size());
+	 std::advance(it,tempSet.size());
   }
-  
-   return;
+ 
+  return;
 
 }  // End of 'IonoDCB::process()'
 

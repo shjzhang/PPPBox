@@ -48,14 +48,19 @@ install (TARGETS example14 DESTINATION bin)
 add_executable(example15 example15.cpp)
 target_link_libraries(example15 pppbox)
 
-#add_executable(example16 example16.cpp)
-#target_link_libraries(example16 pppbox)
+add_executable(sfppp sfppp.cpp)
+target_link_libraries(sfppp pppbox)
 
 #add_executable(example17 example17.cpp)
 #target_link_libraries(example17 pppbox)
 
 #add_executable(example18 example18.cpp)
 #target_link_libraries(example18 pppbox)
+
+add_executable(IonoDCB IonoDCB.cpp)
+target_link_libraries(IonoDCB pppbox)
+
+
 
 
 

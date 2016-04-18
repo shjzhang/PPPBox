@@ -73,7 +73,7 @@ namespace gpstk
    {
    public:
 
-      SolverIonoDCB(int SHOrder = 4);
+      SolverIonoDCB(int SHOrder = 2);
 
          /** Compute the PPP Solution of the given equations set.
           *
@@ -158,7 +158,9 @@ namespace gpstk
       { qMatrix = pMatrix; return (*this); };
 
          /// prepare before the filter
-      SolverIonoDCB&  prepare(void);
+      SolverIonoDCB& prepare(void);
+
+      SolverIonoDCB& getSolution(void);
         /// Norm Factor
       double norm(int n, int m);
         /// Legendre Polynomial
@@ -178,7 +180,7 @@ namespace gpstk
 
    private:
      
-          // the max order of spherical harmonic(SH), dedault 4;
+          // the max order of spherical harmonic(SH), dedault 2;
       int order;
          /// Number of SH coefficents
       int numIonoCoef;
@@ -186,7 +188,10 @@ namespace gpstk
       int numUnknowns;
          /// Number of measurements
       int numMeas;
-
+         /// the geographic latitude of geomagnetic north pole
+      static const double NGPLat = 80.27;
+         /// the geographic longitude of geomagnetic north pole
+      static const double NGPLon = -72.58;
         /// Source-indexed(receiver-indexed) TypeID set
       TypeIDSet recIndexedTypes;
          /// Satellite-indexed TypeID set
@@ -195,9 +200,9 @@ namespace gpstk
       VariableSet recUnknowns;
          /// Global set of unknowns
       VariableSet satUnknowns;
-         /// Map holding the state information for reciver related varialbes
-	  VariableDataMap  recState;
-         /// Map holding state information for satellite related variables
+         /// Map holding state information for receiver related variables
+      VariableDataMap recState;
+         /// The value of  ionospheric coefficients 
       VariableDataMap satState;
          /// The value of  ionospheric coefficients 
 		 /// the sequence is A00,A10,A11,B11,A20,A21,B21,...
@@ -211,7 +216,7 @@ namespace gpstk
 
          std::map<Variable, double> recIndexedVarCov;  ///< source indexed variables' covariance values.
          std::map<Variable, double> satIndexedVarCov;  ///< satellite indexed variables' covariance values.
-         std::vector<double> ionoCoefVarCov;     ///< ionospheric coefficents covariance values 
+         Vector<double> ionoCoefVarCov;     ///< ionospheric coefficents covariance values 
       };
 
          /// Map holding covariance information
@@ -246,6 +251,8 @@ namespace gpstk
       SatIDSet currSatSet;
          /// Set with all satellites being processed this epoch
       SatIDSet satSet;
+     /// Set with all satellites which are not in view 
+      SatIDSet satNotInView;
 	  /// Set with all receivers being processed with epoch
 	  SourceIDSet recSet;
          /// Boolean indicating if this filter was run at least once

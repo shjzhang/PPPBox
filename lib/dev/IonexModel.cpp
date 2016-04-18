@@ -211,10 +211,8 @@ namespace gpstk
 
               // cout << "diffLat : " << diffLat << endl;
               // cout << "diffLon : " << diffLon << endl;
-
-                  // Insert the range difference in latitude and longitude
-               (*stv).second[TypeID::diffLat]  = diffLat;
-               (*stv).second[TypeID::diffLon]  = diffLon;
+               (*stv).second[TypeID::diffLat]  = lonIPP-lonRxIPP;
+               (*stv).second[TypeID::diffLon]  = lonIPP-lonRxIPP;
                   // Insert the latitude and longitude of IPP
                (*stv).second[TypeID::LatIPP]  = latIPP;
                (*stv).second[TypeID::LonIPP]  = lonIPP;

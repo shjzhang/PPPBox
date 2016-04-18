@@ -251,6 +251,7 @@ namespace gpstk
       if ((std::abs(phase-prevPhase)) > 20.0 ) // set a limit between phase and prePhase
       {
            smoothedCode = code ;     
+		   SmoothingData[sat].windowSize = 1;
       } 
       else
       {

@@ -561,7 +561,7 @@ void pppar::process()
       // Now read sp3 files from 'sp3FileList'
    ifstream sp3FileListStream;
 
-   sp3FileListStream.open(sp3FileListName, ios::in);
+   sp3FileListStream.open(sp3FileListName.c_str(), ios::in);
    if(!sp3FileListStream)
    {
          // If file doesn't exist, issue a warning
@@ -600,7 +600,7 @@ void pppar::process()
       ifstream clkFileListStream;
 
          // Open clkFileList File
-      clkFileListStream.open(clkFileListName, ios::in);
+      clkFileListStream.open(clkFileListName.c_str(), ios::in);
       if(!clkFileListStream)
       {
             // If file doesn't exist, issue a warning
@@ -642,7 +642,7 @@ void pppar::process()
    ifstream updFileListStream;
 
       // Open updFileList File
-   updFileListStream.open(updFileListName, ios::in);
+   updFileListStream.open(updFileListName.c_str(), ios::in);
    if( !updFileListStream )
    {
          // If file doesn't exist, issue a warning
@@ -682,7 +682,7 @@ void pppar::process()
    ifstream eopFileListStream;
 
       // Open eopFileList File
-   eopFileListStream.open(eopFileListName, ios::in);
+   eopFileListStream.open(eopFileListName.c_str(), ios::in);
    if( !eopFileListStream )
    {
          // If file doesn't exist, issue a warning
@@ -696,7 +696,18 @@ void pppar::process()
    {
       try
       {
-         eopStore.loadIGSFile( eopFile );
+         if( upperCase(eopFile.substr(0,3)) == "IGS" )
+         {
+            eopStore.loadIGSFile( eopFile );
+         }
+//       else if( upperCase(eopFile.substr(0,3)) == "COD" )
+//       {
+//          eopStore.loadCODFile( eopFile );
+//       }
+         else
+         {
+            cerr << "File type not supported!" << endl;
+         }
       }
       catch (FileMissingException& e)
       {
@@ -746,7 +757,7 @@ void pppar::process()
    ifstream rnxFileListStream;
 
       // Open eopFileList File
-   rnxFileListStream.open(rnxFileListName, ios::in);
+   rnxFileListStream.open(rnxFileListName.c_str(), ios::in);
    if( !rnxFileListStream )
    {
          // If file doesn't exist, issue a warning
@@ -781,7 +792,7 @@ void pppar::process()
    if(outputFileListOpt.getCount())
    {
          // Open ouputFileList File
-      outputFileListStream.open(outputFileListName);
+      outputFileListStream.open(outputFileListName.c_str());
       if( ! outputFileListStream.is_open() )
       {
             // If file doesn't exist, issue a warning
