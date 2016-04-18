@@ -1,12 +1,10 @@
-#pragma ident "$Id$"
-
 //============================================================================
 //
 //  This file is part of GPSTk, the GPS Toolkit.
 //
 //  The GPSTk is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
-//  by the Free Software Foundation; either version 2.1 of the License, or
+//  by the Free Software Foundation; either version 3.0 of the License, or
 //  any later version.
 //
 //  The GPSTk is distributed in the hope that it will be useful,
@@ -17,7 +15,7 @@
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-//
+//  
 //  Copyright 2004, The University of Texas at Austin
 //
 //============================================================================
@@ -25,13 +23,13 @@
 //============================================================================
 //
 //This software developed by Applied Research Laboratories at the University of
-//Texas at Austin, under contract to an agency or agencies within the U.S.
+//Texas at Austin, under contract to an agency or agencies within the U.S. 
 //Department of Defense. The U.S. Government retains all rights to use,
-//duplicate, distribute, disclose, or release this software.
+//duplicate, distribute, disclose, or release this software. 
 //
-//Pursuant to DoD Directive 523024
+//Pursuant to DoD Directive 523024 
 //
-// DISTRIBUTION STATEMENT A: This software has been approved for public
+// DISTRIBUTION STATEMENT A: This software has been approved for public 
 //                           release, distribution is unlimited.
 //
 //=============================================================================
@@ -136,11 +134,14 @@ namespace gpstk
       static const std::string commentString;         ///< "COMMENT"
       static const std::string markerNameString;      ///< "MARKER NAME"
       static const std::string markerNumberString;    ///< "MARKER NUMBER"
+      static const std::string markerTypeString;      ///< "MARKER TYPE"
       static const std::string observerString;        ///< "OBSERVER / AGENCY"
       static const std::string receiverString;        ///< "REC # / TYPE / VERS"
       static const std::string antennaTypeString;     ///< "ANT # / TYPE"
       static const std::string antennaPositionString; ///< "APPROX POSITION XYZ"
       static const std::string antennaOffsetString;   ///< "ANTENNA: DELTA H/E/N"
+      static const std::string antennaDeltaString;    ///< "ANTENNA: DELTA X/Y/Z"
+      static const std::string antennaBsightString;   ///< "ANTENNA: B.SIGHT XYZ"
       static const std::string waveFactString;        ///< "WAVELENGTH FACT L1/2"
       static const std::string numObsString;          ///< "# / TYPES OF OBSERV"
       static const std::string intervalString;        ///< "INTERVAL"
@@ -160,22 +161,33 @@ namespace gpstk
          runByValid           = 0x02,      ///< "PGM / RUN BY / DATE"
          commentValid         = 0x04,      ///< "COMMENT"               (optional)
          markerNameValid      = 0x08,      ///< "MARKER NAME"
+            
          markerNumberValid    = 0x010,     ///< "MARKER NUMBER"         (optional)
          observerValid        = 0x020,     ///< "OBSERVER / AGENCY"
          receiverValid        = 0x040,     ///< "REC # / TYPE / VERS"
          antennaTypeValid     = 0x080,     ///< "ANT # / TYPE"
+            
          antennaPositionValid = 0x0100,    ///< "APPROX POSITION XYZ"
          antennaOffsetValid   = 0x0200,    ///< "ANTENNA: DELTA H/E/N"
          waveFactValid        = 0x0400,    ///< "WAVELENGTH FACT L1/2"
          obsTypeValid         = 0x0800,    ///< "# / TYPES OF OBSERV"
+            
          intervalValid        = 0x01000,   ///< "INTERVAL"              (optional)
          firstTimeValid       = 0x02000,   ///< "TIME OF FIRST OBS"
          lastTimeValid        = 0x04000,   ///< "TIME OF LAST OBS"      (optional)
          receiverOffsetValid  = 0x08000,   ///< "RCV CLOCK OFFS APPL"   (optional)
+            
          leapSecondsValid     = 0x0100000, ///< "LEAP SECONDS"          (optional)
          numSatsValid         = 0x0200000, ///< "# OF SATELLITES"       (optional)
          prnObsValid          = 0x0400000, ///< "PRN / # OF OBS"        (optional)
 
+            /// This‘s for required valid fields that RINEX 2.20 more than 2.11
+            /// added 2015.10.21 by hwei
+         markerTypeValid      = 0x01000000,     ///< "MARKER TYPE"
+         antennaDeltaValid    = 0x02000000,    ///< "ANTENNA: DELTA X/Y/Z"
+         antennaBsightValid   = 0x04000000,    ///< "ANTENNA: B.SIGHT XYZ"
+            
+            
          endValid = 0x080000000,        ///< "END OF HEADER"
 
             /// This mask is for all required valid fields for RINEX 2.0
@@ -183,8 +195,9 @@ namespace gpstk
             /// This mask is for all required valid fields for RINEX 2.1
          allValid21 = 0x080002FEB,
             /// This mask is for all required valid fields for RINEX 2.11
-         allValid211 = 0x080002BEB
-
+         allValid211 = 0x080002BEB,
+            /// This mask is for all required valid fields for RINEX 2.20
+         allValid220 = 0x087002CEB
       };
 
          /** @name Standard RINEX observation types
@@ -239,7 +252,8 @@ namespace gpstk
          date;                               ///< When the program was run.
       std::vector<std::string> commentList;  ///< Comments in header (optional)
       std::string markerName,                ///< MARKER NAME
-         markerNumber;                       ///< MARKER NUMBER (optional)
+         markerNumber,                       ///< MARKER NUMBER (optional)
+         markerType;                         ///< MARKER TYPE
       std::string observer,                  ///< OBSERVER : who collected the data
          agency;                             ///< OBSERVER'S AGENCY
       std::string recNo,                     ///< RECEIVER NUMBER
@@ -249,6 +263,8 @@ namespace gpstk
          antType;                            ///< ANTENNA TYPE
       gpstk::Triple antennaPosition;         ///< APPROXIMATE POSITION XYZ
       gpstk::Triple antennaOffset;           ///< ANTENNA: DELTA H/E/N
+      gpstk::Triple antennaDelta;            ///< ANTENNA: DELTA X/Y/Z
+      gpstk::Triple antennaBsight;           ///< ANTENNA: B.SIGHT XYZ
       short wavelengthFactor[2];             ///< default WAVELENGTH FACTORS
       std::vector<ExtraWaveFact> extraWaveFactList; ///< extra (per PRN) WAVELENGTH FACTORS
       std::vector<RinexObsType> obsTypeList; ///< NUMBER & TYPES OF OBSERV

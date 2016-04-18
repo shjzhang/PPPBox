@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/pff.dir/pff.cpp.o  -o pff -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

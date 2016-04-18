@@ -1,12 +1,10 @@
-#pragma ident "$Id$"
-
 //============================================================================
 //
 //  This file is part of GPSTk, the GPS Toolkit.
 //
 //  The GPSTk is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
-//  by the Free Software Foundation; either version 2.1 of the License, or
+//  by the Free Software Foundation; either version 3.0 of the License, or
 //  any later version.
 //
 //  The GPSTk is distributed in the hope that it will be useful,
@@ -17,7 +15,7 @@
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-//
+//  
 //  Copyright 2004, The University of Texas at Austin
 //
 //============================================================================
@@ -25,22 +23,14 @@
 //============================================================================
 //
 //This software developed by Applied Research Laboratories at the University of
-//Texas at Austin, under contract to an agency or agencies within the U.S.
+//Texas at Austin, under contract to an agency or agencies within the U.S. 
 //Department of Defense. The U.S. Government retains all rights to use,
-//duplicate, distribute, disclose, or release this software.
+//duplicate, distribute, disclose, or release this software. 
 //
-//Pursuant to DoD Directive 523024
+//Pursuant to DoD Directive 523024 
 //
-// DISTRIBUTION STATEMENT A: This software has been approved for public
+// DISTRIBUTION STATEMENT A: This software has been approved for public 
 //                           release, distribution is unlimited.
-//
-//=============================================================================
-//
-//  Revision
-//
-//  2014/03/25 change "markerName = strip(line.substr(0,60));"
-//             to     "markerName = strip(line.substr(0,4));"
-//
 //
 //=============================================================================
 
@@ -70,6 +60,7 @@ namespace gpstk
    const string RinexObsHeader::antennaTypeString =     "ANT # / TYPE";
    const string RinexObsHeader::antennaPositionString = "APPROX POSITION XYZ";
    const string RinexObsHeader::antennaOffsetString =   "ANTENNA: DELTA H/E/N";
+
    const string RinexObsHeader::waveFactString =        "WAVELENGTH FACT L1/2";
    const string RinexObsHeader::numObsString =          "# / TYPES OF OBSERV";
    const string RinexObsHeader::intervalString =        "INTERVAL";
@@ -80,7 +71,12 @@ namespace gpstk
    const string RinexObsHeader::numSatsString =         "# OF SATELLITES";
    const string RinexObsHeader::prnObsString =          "PRN / # OF OBS";
    const string RinexObsHeader::endOfHeader =           "END OF HEADER";
-
+      
+      // for Rinex 2.20
+   const string RinexObsHeader::markerTypeString =      "MARKER TYPE";
+   const string RinexObsHeader::antennaDeltaString =    "ANTENNA: DELTA X/Y/Z";
+   const string RinexObsHeader::antennaBsightString =   "ANTENNA: B.SIGHT XYZ";
+      
    const unsigned int RinexObsType::C1depend=0x01;
    const unsigned int RinexObsType::L1depend=0x02;
    const unsigned int RinexObsType::L2depend=0x04;
@@ -161,6 +157,7 @@ namespace gpstk
       if (version == 2.0)        allValid = allValid20;
       else if (version == 2.1)   allValid = allValid21;
       else if (version == 2.11)  allValid = allValid211;
+      else if (version == 2.2)  allValid = allValid220;
       else
       {
          FFStreamError err("Unknown RINEX version: " + asString(version,2));
@@ -203,6 +200,11 @@ namespace gpstk
       if(valid & RinexObsHeader::antennaTypeValid) n++;
       if(valid & RinexObsHeader::antennaPositionValid) n++;
       if(valid & RinexObsHeader::antennaOffsetValid) n++;
+      //for Rinex 2.20
+      if(valid & RinexObsHeader::markerTypeValid) n++;
+      if(valid & RinexObsHeader::antennaDeltaValid) n++;
+      if(valid & RinexObsHeader::antennaBsightValid) n++;
+      //
       if(valid & RinexObsHeader::waveFactValid) {
          n++;
          if(extraWaveFactList.size()) n += 1 + (extraWaveFactList.size()-1)/7;
@@ -273,6 +275,19 @@ namespace gpstk
          strm << line << endl;
          strm.lineNumber++;
       }
+      
+      // for Rinex 2.20
+      if (valid & markerTypeValid)
+         {
+            line  = leftJustify(markerType, 60);
+            line += markerTypeString;
+            strm << line << endl;
+            strm.lineNumber++;
+         }
+   
+         
+         
+         
       if (valid & observerValid)
       {
          line  = leftJustify(observer, 20);
@@ -319,6 +334,33 @@ namespace gpstk
          strm << line << endl;
          strm.lineNumber++;
       }
+         
+         // for Rinex 2.20
+         
+      if (valid & antennaDeltaValid)
+      {
+         line  = rightJustify(asString(antennaDelta[0], 4), 14);
+         line += rightJustify(asString(antennaDelta[1], 4), 14);
+         line += rightJustify(asString(antennaDelta[2], 4), 14);
+         line += string(18, ' ');
+         line += antennaDeltaString;
+         strm << line << endl;
+         strm.lineNumber++;
+      }
+      if (valid & antennaBsightValid)
+      {
+         line  = rightJustify(asString(antennaBsight[0], 4), 14);
+         line += rightJustify(asString(antennaBsight[1], 4), 14);
+         line += rightJustify(asString(antennaBsight[2], 4), 14);
+         line += string(18, ' ');
+         line += antennaBsightString;
+         strm << line << endl;
+         strm.lineNumber++;
+      }
+         
+      //
+         
+         
       if (valid & waveFactValid)
       {
          line  = rightJustify(asString<short>(wavelengthFactor[0]),6);
@@ -533,7 +575,8 @@ namespace gpstk
       if (label == versionString)
       {
          version = asDouble(line.substr(0,20));
-//         cout << "R2ObsHeader:ParseHeaderRecord:version = " << version << endl;
+            
+      //   cout << "R2ObsHeader:ParseHeaderRecord:version = " << version << endl;
          fileType = strip(line.substr(20, 20));
          if ( (fileType[0] != 'O') &&
               (fileType[0] != 'o'))
@@ -567,15 +610,17 @@ namespace gpstk
       }
       else if (label == markerNameString)
       {
-            // shjzhang
-         markerName = strip(line.substr(0,4));
+         markerName = strip(line.substr(0,60));
          valid |= markerNameValid;
+       //     cout << "R2ObsHeader:ParseHeaderRecord:markerName = " << markerName << endl;
       }
       else if (label == markerNumberString)
       {
          markerNumber = strip(line.substr(0,20));
          valid |= markerNumberValid;
       }
+
+         
       else if (label == observerString)
       {
          observer = strip(line.substr(0,20));
@@ -609,6 +654,32 @@ namespace gpstk
          antennaOffset[2] = asDouble(line.substr(28, 14));
          valid |= antennaOffsetValid;
       }
+         
+         // for Rinex 2.20
+      else if (label == markerTypeString)
+      {
+            markerType = strip(line.substr(0,20));
+            valid |= markerTypeValid;
+      }
+      else if (label == antennaDeltaString)
+      {
+            antennaDelta[0] = asDouble(line.substr(0,  14));
+            antennaDelta[1] = asDouble(line.substr(14, 14));
+            antennaDelta[2] = asDouble(line.substr(28, 14));
+            valid |= antennaDeltaValid;
+         //   cout << "R2ObsHeader:ParseHeaderRecord:antennaDelta = " << antennaDelta << endl;
+
+      }
+      else if (label == antennaBsightString)
+      {
+            antennaBsight[0] = asDouble(line.substr(0,  14));
+            antennaBsight[1] = asDouble(line.substr(14, 14));
+            antennaBsight[2] = asDouble(line.substr(28, 14));
+            valid |= antennaBsightValid;
+        //     cout << "R2ObsHeader:ParseHeaderRecord:antennaBsight = " << antennaBsight << endl;
+      }
+         //
+         
       else if (label == waveFactString)
       {
             // first time reading this
@@ -685,24 +756,14 @@ namespace gpstk
       else if (label == firstTimeString)
       {
          firstObs = parseTime(line);
-         if(line.substr(48,3)=="GPS") firstObs.setTimeSystem(TimeSystem::GPS);
-         if(line.substr(48,3)=="GLO") firstObs.setTimeSystem(TimeSystem::GLO);
-         if(line.substr(48,3)=="GAL") firstObs.setTimeSystem(TimeSystem::GAL);
-
          firstSystem.system = RinexSatID::systemGPS;
          if(line.substr(48,3)=="GLO") firstSystem.system=RinexSatID::systemGlonass;
          if(line.substr(48,3)=="GAL") firstSystem.system=RinexSatID::systemGalileo;
-
-         
          valid |= firstTimeValid;
       }
       else if (label == lastTimeString)
       {
          lastObs = parseTime(line);
-         if(line.substr(48,3)=="GPS") firstObs.setTimeSystem(TimeSystem::GPS);
-         if(line.substr(48,3)=="GLO") firstObs.setTimeSystem(TimeSystem::GLO);
-         if(line.substr(48,3)=="GAL") firstObs.setTimeSystem(TimeSystem::GAL);
-
          lastSystem.system = RinexSatID::systemGPS;
          if(line.substr(48,3)=="GLO") lastSystem.system=RinexSatID::systemGlonass;
          if(line.substr(48,3)=="GAL") lastSystem.system=RinexSatID::systemGalileo;
@@ -828,6 +889,8 @@ namespace gpstk
       if      (version == 2.0)      allValid = allValid20;
       else if (version == 2.1)      allValid = allValid21;
       else if (version == 2.11)     allValid = allValid211;
+      // for Rinex2.20
+      else if (version == 2.20)     allValid = allValid220;
       else
       {
          FFStreamError e("Unknown or unsupported RINEX version " +
@@ -939,6 +1002,10 @@ namespace gpstk
       if((valid & allValid211) == allValid211) s << "VALID 2.11";
       else if((valid & allValid21) == allValid21) s << "VALID 2.1";
       else if((valid & allValid20) == allValid20) s << "VALID 2.0";
+         
+         // for Rinex 2.20
+      else if((valid & allValid220) == allValid220) s << "VALID 2.20";
+         
       else s << "NOT VALID";
       s << " Rinex.)\n";
 
@@ -954,6 +1021,11 @@ namespace gpstk
       if(!(valid & obsTypeValid)) s << " Obs Type is NOT valid\n";
       if(!(valid & firstTimeValid)) s << " First time is NOT valid\n";
       if(!(valid & endValid)) s << " End is NOT valid\n";
+      // for Rinex 2.20
+      if(!(valid & markerTypeValid)) s << " Marker Type is NOT valid\n";
+      if(!(valid & antennaDeltaValid)) s << " Antenna Delta is NOT valid\n";
+      if(!(valid & antennaBsightValid)) s << "  Antenna Boresight is NOT valid\n";
+         
 
       s << "---------------------------------- OPTIONAL ----------------------------------\n";
       if(valid & markerNumberValid) s << "Marker number : " << markerNumber << endl;

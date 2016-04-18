@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/sp3diff.dir/sp3diff.cpp.o  -o sp3diff -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

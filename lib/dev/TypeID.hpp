@@ -467,6 +467,10 @@ namespace gpstk
 			AntOffU,
 			AntOffN,
 			AntOffE,
+         Temp,
+         Pres,
+         Rhum,
+         Hgt,
          sigma,     ///< Standard deviation
          iura,      ///< Index User Range Accuracy
          Action,    ///< Flag for quality control
@@ -477,33 +481,6 @@ namespace gpstk
          a3,        ///< polynominal coefficient
          a4,        ///< polynominal coefficient
          a5,        ///< polynominal coefficient
-
-         A00,       ///< Sphereical harmonic coefficent, 
-                    ///< used for ionosphere modeling
-         A10,       ///< Sphereical harmonic coefficent
-         A11,       ///< Sphereical harmonic coefficent
-         B11,       ///< Sphereical harmonic coefficent
-         A20,       ///< Sphereical harmonic coefficent
-	 A21,       ///< Sphereical harmonic coefficent
-	 B21,       ///< Sphereical harmonic coefficent
-	 A22,       ///< Sphereical harmonic coefficent
-	 B22,       ///< Sphereical harmonic coefficent
-	 A30,       ///< Sphereical harmonic coefficent
-	 A31,       ///< Sphereical harmonic coefficent
-	 B31,       ///< Sphereical harmonic coefficent
-	 A32,       ///< Sphereical harmonic coefficent
-	 B32,       ///< Sphereical harmonic coefficent
-	 A33,       ///< Sphereical harmonic coefficent
-	 B33,       ///< Sphereical harmonic coefficent
-	 A40,       ///< Sphereical harmonic coefficent
-         A41,       ///< Sphereical harmonic coefficent
-         B41,       ///< Sphereical harmonic coefficent
-         A42,       ///< Sphereical harmonic coefficent
-	 B42,       ///< Sphereical harmonic coefficent
-	 A43,       ///< Sphereical harmonic coefficent
-	 B43,       ///< Sphereical harmonic coefficent
-	 A44,       ///< Sphereical harmonic coefficent
-	 B44,       ///< Sphereical harmonic coefficent
 
             // Handy dummy types for non-standard processing
          dummy0,    ///< Generic, undefined type #0

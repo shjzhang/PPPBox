@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ssc2msc.dir/ssc2msc.cpp.o  -o ssc2msc -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

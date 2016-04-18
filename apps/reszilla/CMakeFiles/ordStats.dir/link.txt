@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ordStats.dir/ordStats.cpp.o  -o ordStats -rdynamic librlib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

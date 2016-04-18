@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ephdiff.dir/ephdiff.cpp.o  -o ephdiff -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

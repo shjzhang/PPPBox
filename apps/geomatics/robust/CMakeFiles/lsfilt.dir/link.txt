@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/lsfilt.dir/lsfilt.cpp.o  -o lsfilt -rdynamic ../../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

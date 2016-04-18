@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/compStaVis.dir/compStaVis.cpp.o  -o compStaVis -rdynamic ../../libpppbox.so libvislib.a -Wl,-rpath,/home/ww/pppbox:::::::::: 

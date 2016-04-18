@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/mdptool.dir/mdptool.cpp.o CMakeFiles/mdptool.dir/CNAVMessageAsm.cpp.o  -o mdptool -rdynamic libmdplib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

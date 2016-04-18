@@ -84,8 +84,7 @@ namespace gpstk
       //  -1 if problems arose
       //
    int SolverIonoDCB2::Compute( const Vector<double>& prefitResiduals,
-                           const Matrix<double>& designMatrix,
-                           const Matrix<double>& consMatrix)
+                           const Matrix<double>& designMatrix)
       throw(InvalidSolver)
    {
 
@@ -109,6 +108,7 @@ of designMatrix");
 
          // Temporary storage for covMatrix. It will be inverted later
       covMatrix = AT * designMatrix;
+
       // Let's try to invert AT*A   matrix
       try
       {
@@ -140,7 +140,7 @@ of designMatrix");
 
         // ... and the postfit residuals Vector
       postfitResiduals = prefitResiduals - designMatrix * solution;
- 
+
          // If everything is fine so far, then the results should be valid
       valid = true;
 
@@ -333,19 +333,20 @@ of designMatrix");
 			       itSat != tempSatSet.end(); ++ itSat)
               {
 				 int satPos=std::distance(currSatSet.begin(),currSatSet.find(*itSat)); 
+				 if (std::abs(piCom(seq))>= 100)
+					 cout<<"The P4 is error!!!!"<<epoch<<endl<<
+					 rec<<" "<<*(itSat)<<" "<<piCom(seq)<<endl;
 					// attention : PI is defined as P2-P1 , there we using -PI(P1-P2)
 					// as measVector
 				 measVector(count) = -piCom(seq)/mapFun(seq)*(-9.52437); 
 				// cout<<"P4 : "<<measVector(seq+count);
-		
+				 
+				   // the coefficient of DCB for receiver
+				 hMatrix(count,recPos)=1.0/mapFun(seq)*(-9.52437);
+                   // the coefficient of DCB for satellite
+				 hMatrix(count,satPos+numRec)= 1.0/mapFun(seq)*(-9.52437);
 				   // fill the SH coefficients	
                  double Lat = DEG_TO_RAD*lat(seq);
-              
-				
-				 if (lon(seq)>=180.0)
-				 {
-					 lon(seq)=lon(seq)-360.0;
-				 }
                  double SunFixedLon = DEG_TO_RAD*lon(seq)+second*M_PI/43200.0 - M_PI;
 	             double u = std::sin(Lat);
 				 int i = 0;
@@ -355,25 +356,22 @@ of designMatrix");
 	        
                  if (m==0)
 			    {
-                 hMatrix(count,i)=
+                 hMatrix(count,numCurrentSV+numRec+i)=
 				               legendrePoly(n,m,u)*norm(n,m);//An0
 			    }
 	             else   
                  {
-                  hMatrix(count,i)=
+                  hMatrix(count,numCurrentSV+numRec+i)=
 								legendrePoly(n,m,u)*norm(n,m)*std::cos(m*SunFixedLon);//Anm
 
                   i++;
-                  hMatrix(count,i)=
+                  hMatrix(count,numCurrentSV+numRec+i)=
 								legendrePoly(n,m,u)*norm(n,m)*std::sin(m*SunFixedLon);//Bnm
                   }
                   i++;
      		
 				}
-                   // the coefficient of DCB for receiver
-				 hMatrix(count,recPos+numIonoCoef)=1.0/mapFun(seq)*(-9.52437);
-                   // the coefficient of DCB for satellite
-				 hMatrix(count,satPos+numRec+numIonoCoef)= 1.0/mapFun(seq)*(-9.52437);
+                 
 				 seq++; 
 				 count++;
 				 }  // End of 'for (SatIDSet::...)'       
@@ -384,22 +382,22 @@ of designMatrix");
         
             // Finally, only one constraint condition: 
 			// the sum of satellite DCBs is zero
-		//	consMatrix.resize(1,numUnknowns,0.0);
 		 for (int i = 0;i<numCurrentSV;i++)
          {
-		  // consMatrix(0,i+numRec) = 1.0;	 
-		   
 		   hMatrix(numMeas-1,i+numRec) = 1.0;	 
 		 }
          
 		
         measVector(numMeas-1)= 0.0;
+
+        //cout<< "hMatrix : "<<endl<<hMatrix<<endl;
         
+		//cout<<"MeasVector: "<<endl<<measVector<<endl;
             // Call the Compute() method with the defined equation model.
             // This equation model MUST HAS BEEN previously set, usually when
             // creating the SolverIonoDCB2 object with the appropriate
             // constructor.
-         Compute( measVector,hMatrix,consMatrix);
+         Compute( measVector,hMatrix);
 
 
 

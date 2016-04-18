@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/clkdiff.dir/clkdiff.cpp.o  -o clkdiff -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

@@ -1,1 +1,0 @@
-/Users/shjzhang/Documents/Develop/gpstk/tables/get_tables.sh

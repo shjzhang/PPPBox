@@ -98,7 +98,7 @@ namespace gpstk
       RinexSatID sat;         ///< Satellite ID        (if AS)
       std::string site;       ///< Site label (4-char) (if AR)
       CommonTime time;        ///< Time of epoch for this record
-      double updSatMW;          ///< Melboune-wubbena upd in meters 
+      double updSatMW;          ///< Melbourne-wubbena upd in meters 
       double updSatLC;          ///< LC upd sigma in meters 
 
          //@}

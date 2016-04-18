@@ -175,7 +175,6 @@ namespace gpstk
          /// Flag indicating whehter this station is static or kinematic 
       bool staticFlag;
 
-
          /// Zenith wet delay
       std::map<TypeID, double> zwdMap;
 

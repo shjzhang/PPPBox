@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/sp3version.dir/sp3version.cpp.o  -o sp3version -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

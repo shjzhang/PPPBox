@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/mergeSRI.dir/mergeSRI.cpp.o  -o mergeSRI -rdynamic ../../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

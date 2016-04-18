@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o CMakeFiles/rtAshtech.dir/ScreenControl.cpp.o CMakeFiles/rtAshtech.dir/FDStreamBuff.cpp.o CMakeFiles/rtAshtech.dir/TCPStreamBuff.cpp.o  -o rtAshtech -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

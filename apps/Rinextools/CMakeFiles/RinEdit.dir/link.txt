@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/RinEdit.dir/RinEdit.cpp.o  -o RinEdit -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

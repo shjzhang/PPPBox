@@ -25,13 +25,13 @@ Help()
 	echo "用法: bash get_eph.sh [起始时间][终止时间][时间间隔][机构][类型文件][URL路径][保存路径]...[选项]"
 	echo "参数说明："
 	echo "  -h,  --help                      获取帮助信息"
-	echo "  -b,  --bigining of time span     需要的产品的起始时间,格式为民用时(年 月 日 时 分 秒)"
-	echo "  -e,  --ending of time span       需要的产品的终止时间,格式为民用时(年 月 日 时 分 秒)"
-	echo "  -i,  --interval of time span     时间间隔(单位:小时,必须为整数,默认为24) "
+	echo "  -b,  --bigining of time span     需要的产品的起始时间，格式为民用时（年 月 日 时 分 秒）"
+	echo "  -e,  --ending of time span       需要的产品的终止时间，格式为民用时（年 月 日 时 分 秒）"
+	echo "  -i,  --interval of time span     时间间隔（单位：小时，必须为整数） "
 	echo "  -a,  --agency of GNSS product    发布GNSS产品的机构(IGS,IGR,ESA,COD,JPL,etc)"
 	echo "  -t,  --data type list file       需要下载的产品类型列表文件"
 	echo "  -u,  --the path of url_list file 保存有各种产品的url列表文件路径"
-	echo "  -p,  --the data save path        数据保存路径(默认为当前路径)"
+	echo "  -p,  --the data save path        数据保存路径"
 	echo "  -l,  --the prefix of list file   保存下载数据文件名的文件前缀"
 	echo "示例: bash get_eph.sh -b \"2014 3 1 0 0 0\" -e \"2014 3 3 0 0 0\" -i 24 -a IGS -t type.list -u url_list.txt -p ./data"
 	echo "    : bash get_eph.sh -b \"2014 3 1 0 0 0\" -e \"2014 3 3 0 0 0\" -i 24 -a IGS -t type.list -u url_list.txt -l igs1781 -p ./data"
@@ -75,7 +75,6 @@ ArgJudge()
 		echo "Must give parameter 'u' a value"
 		exit 1
 	fi
-	echo savepath:$savepath
 	if [ -z $savepath ]
 	then 
 		savepath="./"

@@ -26,7 +26,8 @@
 //		2015/11/05 : Correct the GPS week we print in output file name to be 
 //						 in accordance with the solution	time. 
 //						 add a message of generating file successfully.
-//
+//    2015/03/26 : K.M.Zhu, fix the bug of generating a wrong file name of 
+//                          GPS week.
 //
 //==========================================================================
 //
@@ -118,7 +119,7 @@ void SSC2MSC::process()
 		CommonTime commonReleTime(sh.releaseTime.convertToCommonTime());
 
 		std::string GPSWeek = printTime(commonReleTime, "%4F");
-		//cout << "GPSWeek: " << GPSWeek << endl;
+	///cout << "GPSWeek: " << GPSWeek << endl;
 		 
 		
 		YDSTime RefEpoch, EarliestEffect;
@@ -240,7 +241,7 @@ void SSC2MSC::process()
 			
 			catch(...)
 			{
-				cerr << "Problem opening file "
+				cerr << "Problem in opening file "
 					  << outputFileOption.getValue()[0]
 					  << endl;
 				exit (-1);
@@ -253,27 +254,17 @@ void SSC2MSC::process()
 		
 		else
 		{
-			if (filename[5] == 'P')
-			{
-				int GPSWeek_int;
-					/// The GPS week we get from the header's release time 
-					/// in weekly igs SSC file is always 2 weeks later 
-					/// than the solution time, so we need to minus 2 to 
-					/// get the correct SOLUTION WEEK!
-				GPSWeek_int = atoi(GPSWeek.c_str())-2;
-				//itoa(GPSWeek_int, GPSWeek.c_str(), 10);
-				char temp[256];
-				sprintf(temp, "%d", GPSWeek_int);
-				GPSWeek = temp;
-				//cout << "GPS week of solution: " << GPSWeek << endl;
+			   int GPSWeek_int;
+			   	/// The GPS week we get from the header's release time 
+			   	/// in weekly igs SSC file is always 2 weeks later 
+			   	/// than the solution time, so we need to minus 2 to 
+			   	/// get the correct SOLUTION WEEK!
+			   GPSWeek_int = atoi(GPSWeek.c_str())-2;
+			   char temp[256];
+			   sprintf(temp, "%d", GPSWeek_int);
+			   GPSWeek = temp;
 				std::string outputFileName("igs" + GPSWeek + ".msc");
 				msc.open( outputFileName.c_str(), ios::out );
-			}
-			else 
-			{
-				std::string outputFileName("igs" + GPSWeek + ".msc");
-				msc.open( outputFileName.c_str(), ios::out );
-			}
 
 				/// check out output file is opening, if true, deliver 
 				/// a message
@@ -287,18 +278,6 @@ void SSC2MSC::process()
 			}
 		}	
 		
-		/// test if we store the antenna type data in the map
-
-		//for( std::map<std::string, std::string>::iterator t_saIter
-		//		 = stationAntypeMap.begin();
-      //       t_saIter != stationAntypeMap.end();
-      //       ++t_saIter )
-		//{
-		//   cout << "MapStation: " << (*t_saIter).first << endl;
-		//	  cout << "MapAntennaType: " << (*t_saIter).second << endl;
-		//}
-		
-
       	// take data out of the map to the output stream
 		for( std::map<std::string, std::string>::iterator saIter
 				= stationAntypeMap.begin();
@@ -307,7 +286,6 @@ void SSC2MSC::process()
 		{
 				// the current station we process now
 			std::string currStation = (*saIter).first;
-			//cout << "2 Current Station:" << (*saIter).first << endl;
 			 
 			//@param:
 			//	STAX : station X coordinate

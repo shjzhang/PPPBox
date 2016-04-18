@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/rowdiff.dir/rowdiff.cpp.o  -o rowdiff -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

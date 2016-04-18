@@ -91,9 +91,8 @@ namespace gpstk
           *  -1 if problems arose
           */
       virtual int Compute( const Vector<double>& prefitResiduals,
-                           const Matrix<double>& designMatrix,
+                           const Matrix<double>& designMatrix)
 						   
-                           const Matrix<double>& consMatrix)
          throw(InvalidSolver);
 
 

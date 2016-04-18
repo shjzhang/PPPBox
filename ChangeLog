@@ -1,4 +1,22 @@
 
+-by hwei 2016/1/19
+To use workplace/ppp/ppp.sh
+1. while cmake 
+cmake -DCMAKE_INSTALL_PREFIX=/usrpath ../
+to and alltools available as systemtools
+
+2 add script/get*.sh  and exe "teqc" and "RNXCMP_4.0.5" path into bash PATH by:
+PATH=$PATH:/usrpathbin
+which will be used in ppp.sh
+
+3.change data &data link path in ppp.sh as the path you need 
+such as:
+link data:(OCEANdatapath and so on)
+ln -f -s ../../tables/OCEAN-GOT00.dat OCEAN-GOT00.dat
+get data:(usrpathdata)
+get_rnx.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 24 -a IGS -u "url.list" 
+-s "$proj.stalist.test" -l "$proj" -p "/usrpathdata" > get_rnx.log
+___________________
 
 - first initial version, 2015/12/10
 

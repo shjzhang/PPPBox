@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/mergeRinMet.dir/mergeRinMet.cpp.o  -o mergeRinMet -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

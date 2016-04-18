@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/IonoBias.dir/IonoBias.cpp.o  -o IonoBias -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 
