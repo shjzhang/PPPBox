@@ -57,8 +57,6 @@ target_link_libraries(example15 pppbox)
 #add_executable(example18 example18.cpp)
 #target_link_libraries(example18 pppbox)
 
-add_executable(IonoDCB IonoDCB.cpp)
-target_link_libraries(IonoDCB pppbox)
 
 if (UNIX)
   execute_process(COMMAND sh -c "chmod u+x ${CMAKE_CURRENT_SOURCE_DIR}/*.sh")
