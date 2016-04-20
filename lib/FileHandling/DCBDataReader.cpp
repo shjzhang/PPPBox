@@ -29,10 +29,9 @@
 //
 //  Revision
 //
-//  2015/12/09
-//
-//  Throw error if the input file does not exist!
-//
+//  2015/12/09   Throw error if the input file does not exist!
+//  2016/04/18   Throw the exception when DCB file doesn't exist, but not exit
+//               the program.(Q.Liu)
 //============================================================================
 
 
@@ -98,7 +97,6 @@ namespace gpstk
                else
                {
                   // Unexpected and we do nothing here
-                  
 
                }
                
@@ -150,20 +148,28 @@ namespace gpstk
 
       // Method to open AND load DCB data file. 
    void DCBDataReader::open(const char* fn)
+		throw( FileMissingException )
    {
 
       // We need to be sure current data stream is closed
       (*this).close();
 
-      // Open data stream
-      FFTextStream::open(fn, std::ios::in);
-      if( !FFTextStream::is_open() )
+		try
+		{
+         // Open data stream
+         FFTextStream::open(fn, std::ios::in);
+         if( !FFTextStream::is_open() )
+         {
+            FileMissingException fm("The DCB file " + std::string(fn) + 
+					                     " doesn't exist!");
+            GPSTK_THROW(fm);
+         }
+		   loadData();
+		}
+      catch(FileMissingException& e)
       {
-         std::cerr << "The file " << fn << "doesn't exist!"
-                   << std::endl;
-         exit(-1);
+         GPSTK_RETHROW(e);
       }
-      loadData();
 
       return;
 
@@ -174,20 +180,28 @@ namespace gpstk
       // Method to open AND load DCB data file. It doesn't
       // clear data previously loaded.
    void DCBDataReader::open(const string& fn)
+		throw( FileMissingException )
    {
 
       // We need to be sure current data stream is closed
       (*this).close();
 
-      // Open data stream
-      FFTextStream::open(fn.c_str(), std::ios::in);
-      if( !FFTextStream::is_open() )
+		try
+		{
+           // Open data stream
+         FFTextStream::open(fn.c_str(), std::ios::in);
+         if( !FFTextStream::is_open() )
+         {
+            FileMissingException fm("The DCB file " + fn +
+							               " doesn't exist!");
+            GPSTK_THROW(fm);
+         }
+		   loadData();
+		}
+      catch(FileMissingException& e)
       {
-         std::cerr << "The file " << fn << "doesn't exist!"
-                   << std::endl;
-         exit(-1);
+         GPSTK_RETHROW(e);
       }
-      loadData();
 
       return;
    }  // End of method 'DCBDataReader::open()'
@@ -195,14 +209,15 @@ namespace gpstk
       // return P1-P2 or P1-C1 depend what you have loaded
    double DCBDataReader::getDCB(const SatID& sat)
    {
-
-//    std::map<SatID,double>::iterator it=allDCB.satDCB.find(sat);
-//    if(it!=allDCB.satDCB.end())
-//    {
-//      return allDCB.satDCB[sat];     
-//    }
-
-      return allDCB.satDCB[sat];     
+      std::map<SatID,double>::iterator it=allDCB.satDCB.find(sat);
+      if(it!=allDCB.satDCB.end())
+      {
+         return allDCB.satDCB[sat];     
+      }
+		else 
+		{ 
+			return 0.0;
+		}
    }
 
       // Get DCB data of a satellite
@@ -211,7 +226,15 @@ namespace gpstk
       const SatID::SatelliteSystem& system)
    {
       SatID sat(prn,system);
-      return allDCB.satDCB[sat];
+      std::map<SatID,double>::iterator it=allDCB.satDCB.find(sat);
+      if(it!=allDCB.satDCB.end())
+      {
+         return allDCB.satDCB[sat];     
+      }
+		else 
+		{ 
+			return 0.0;
+		}
    }
 
       // Get DCB data of aReceiver

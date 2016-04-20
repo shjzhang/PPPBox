@@ -27,7 +27,11 @@
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
 //
 //  Wei Yan - Chinese Academy of Sciences  2009, 2010
+//============================================================================
 //
+//  Modification
+//  2016/4/11     
+//  Q.Liu          Add the exception when the DCB file doesn't exist.
 //============================================================================
 
 
@@ -60,7 +64,7 @@ namespace gpstk
        *
        * @code
        *      // Declare some Antenna objects
-       *   DCBDataReader dcbP1P2("P1P21002_ALL.DCB");
+       *   DCBDataReader dcbP1P2("P1P21002.DCB");
        *   DCBDataReader dcbP1C1("P1C11002.DCB");
        *   
        *   double p1p2Sat1 = dcbP1P2.getDCB(1, SatID::systemGPS);
@@ -72,6 +76,8 @@ namespace gpstk
        *
        * @sa DCBDataReader.hpp
        */
+
+
    class DCBDataReader : public FFTextStream
    {
    public:
@@ -86,16 +92,22 @@ namespace gpstk
           *
           */
       DCBDataReader(const char* fn)
-         : FFTextStream(fn, std::ios::in)
+         throw( FileMissingException )
       { 
-         FFTextStream(fn, std::ios::in);
-         if( !FFTextStream::is_open() )
+			try
+			{
+			   FFTextStream(fn, std::ios::in);
+            if( !FFTextStream::is_open() )
+            {
+					GPSTK_THROW(FileMissingException("The DCB file " + std::string(fn) + 
+								   "  does not exist!"));
+            }
+            loadData(); 
+			}
+			catch(FileMissingException& e)
          {
-            std::cerr << "The file " << fn << "doesn't exist!"
-                      << std::endl;
-            exit(-1);
+            GPSTK_RETHROW(e);
          }
-         loadData(); 
       };
 
 
@@ -106,26 +118,35 @@ namespace gpstk
           *
           */
       DCBDataReader(const std::string& fn)
+         throw( FileMissingException )
       { 
-         FFTextStream(fn, std::ios::in);
-         if( !FFTextStream::is_open() )
+			try
+			{
+			   FFTextStream(fn, std::ios::in);
+            if( !FFTextStream::is_open() )
+            {
+					GPSTK_THROW(FileMissingException("The DCB file " + fn + 
+								   "  does not exist!"));
+            }
+            loadData(); 
+			}
+			catch(FileMissingException& e)
          {
-            std::cerr << "The file " << fn << "doesn't exist!"
-                      << std::endl;
-            exit(-1);
+            GPSTK_RETHROW(e);
          }
-         loadData(); 
       };
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Woverloaded-virtual"
          /// Method to open AND load DCB data file.
-      virtual void open(const char* fn);
+      virtual void open(const char* fn)
+         throw( FileMissingException );
 
 
          /// Method to open AND load DCB data file. It doesn't
          /// clear data previously loaded.
-      virtual void open(const std::string& fn);
+      virtual void open(const std::string& fn)
+         throw( FileMissingException );
 #pragma clang diagnostic pop
 
          /// Get DCB data of a satellite
