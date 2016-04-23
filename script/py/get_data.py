@@ -156,7 +156,7 @@ def processWget(argDict):
 
 def processTime(argDict):
     if argDict['status'] == 0:
-        if argDict['-t'].lower().find('erp') != -1:
+        if argDict['-t'].lower().find('erp') != -1 or argDict['-t'].lower().find('ssc') != -1:
             argDict['-bn'] = timeconvert.ADD_HOUR( argDict['-b'], -7*24)
             argDict['-en'] = timeconvert.ADD_HOUR( argDict['-e'],  7*24)
         elif argDict['-t'].lower().find('clk') != -1:

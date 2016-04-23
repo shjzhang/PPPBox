@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/filetools/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/filetools/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/bc2sp3.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/bc2sp3.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/bc2sp3.dir/rule
 .PHONY : apps/filetools/CMakeFiles/bc2sp3.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ bc2sp3: apps/filetools/CMakeFiles/bc2sp3.dir/rule
 
 # fast build rule for target.
 bc2sp3/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/bc2sp3.dir/build.make apps/filetools/CMakeFiles/bc2sp3.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/bc2sp3.dir/build.make apps/filetools/CMakeFiles/bc2sp3.dir/build
 .PHONY : bc2sp3/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/ephemfix.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ephemfix.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ephemfix.dir/rule
 .PHONY : apps/filetools/CMakeFiles/ephemfix.dir/rule
 
 # Convenience name for target.
@@ -164,12 +164,12 @@ ephemfix: apps/filetools/CMakeFiles/ephemfix.dir/rule
 
 # fast build rule for target.
 ephemfix/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ephemfix.dir/build.make apps/filetools/CMakeFiles/ephemfix.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ephemfix.dir/build.make apps/filetools/CMakeFiles/ephemfix.dir/build
 .PHONY : ephemfix/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/ephsum.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ephsum.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ephsum.dir/rule
 .PHONY : apps/filetools/CMakeFiles/ephsum.dir/rule
 
 # Convenience name for target.
@@ -178,12 +178,12 @@ ephsum: apps/filetools/CMakeFiles/ephsum.dir/rule
 
 # fast build rule for target.
 ephsum/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ephsum.dir/build.make apps/filetools/CMakeFiles/ephsum.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ephsum.dir/build.make apps/filetools/CMakeFiles/ephsum.dir/build
 .PHONY : ephsum/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/fic2rin.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/fic2rin.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/fic2rin.dir/rule
 .PHONY : apps/filetools/CMakeFiles/fic2rin.dir/rule
 
 # Convenience name for target.
@@ -192,12 +192,12 @@ fic2rin: apps/filetools/CMakeFiles/fic2rin.dir/rule
 
 # fast build rule for target.
 fic2rin/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/fic2rin.dir/build.make apps/filetools/CMakeFiles/fic2rin.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/fic2rin.dir/build.make apps/filetools/CMakeFiles/fic2rin.dir/build
 .PHONY : fic2rin/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/ficafic.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ficafic.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ficafic.dir/rule
 .PHONY : apps/filetools/CMakeFiles/ficafic.dir/rule
 
 # Convenience name for target.
@@ -206,12 +206,12 @@ ficafic: apps/filetools/CMakeFiles/ficafic.dir/rule
 
 # fast build rule for target.
 ficafic/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficafic.dir/build.make apps/filetools/CMakeFiles/ficafic.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficafic.dir/build.make apps/filetools/CMakeFiles/ficafic.dir/build
 .PHONY : ficafic/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/ficedit.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ficedit.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ficedit.dir/rule
 .PHONY : apps/filetools/CMakeFiles/ficedit.dir/rule
 
 # Convenience name for target.
@@ -220,12 +220,12 @@ ficedit: apps/filetools/CMakeFiles/ficedit.dir/rule
 
 # fast build rule for target.
 ficedit/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficedit.dir/build.make apps/filetools/CMakeFiles/ficedit.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficedit.dir/build.make apps/filetools/CMakeFiles/ficedit.dir/build
 .PHONY : ficedit/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/ficfica.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ficfica.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/ficfica.dir/rule
 .PHONY : apps/filetools/CMakeFiles/ficfica.dir/rule
 
 # Convenience name for target.
@@ -234,12 +234,12 @@ ficfica: apps/filetools/CMakeFiles/ficfica.dir/rule
 
 # fast build rule for target.
 ficfica/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficfica.dir/build.make apps/filetools/CMakeFiles/ficfica.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficfica.dir/build.make apps/filetools/CMakeFiles/ficfica.dir/build
 .PHONY : ficfica/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/glodump.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/glodump.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/glodump.dir/rule
 .PHONY : apps/filetools/CMakeFiles/glodump.dir/rule
 
 # Convenience name for target.
@@ -248,12 +248,12 @@ glodump: apps/filetools/CMakeFiles/glodump.dir/rule
 
 # fast build rule for target.
 glodump/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/glodump.dir/build.make apps/filetools/CMakeFiles/glodump.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/glodump.dir/build.make apps/filetools/CMakeFiles/glodump.dir/build
 .PHONY : glodump/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/navdmp.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/navdmp.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/navdmp.dir/rule
 .PHONY : apps/filetools/CMakeFiles/navdmp.dir/rule
 
 # Convenience name for target.
@@ -262,12 +262,12 @@ navdmp: apps/filetools/CMakeFiles/navdmp.dir/rule
 
 # fast build rule for target.
 navdmp/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/navdmp.dir/build.make apps/filetools/CMakeFiles/navdmp.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/navdmp.dir/build.make apps/filetools/CMakeFiles/navdmp.dir/build
 .PHONY : navdmp/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/navsum.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/navsum.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/navsum.dir/rule
 .PHONY : apps/filetools/CMakeFiles/navsum.dir/rule
 
 # Convenience name for target.
@@ -276,12 +276,12 @@ navsum: apps/filetools/CMakeFiles/navsum.dir/rule
 
 # fast build rule for target.
 navsum/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/navsum.dir/build.make apps/filetools/CMakeFiles/navsum.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/navsum.dir/build.make apps/filetools/CMakeFiles/navsum.dir/build
 .PHONY : navsum/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/rinexelvstrip.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/rinexelvstrip.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/rinexelvstrip.dir/rule
 .PHONY : apps/filetools/CMakeFiles/rinexelvstrip.dir/rule
 
 # Convenience name for target.
@@ -290,12 +290,12 @@ rinexelvstrip: apps/filetools/CMakeFiles/rinexelvstrip.dir/rule
 
 # fast build rule for target.
 rinexelvstrip/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/rinexelvstrip.dir/build.make apps/filetools/CMakeFiles/rinexelvstrip.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/rinexelvstrip.dir/build.make apps/filetools/CMakeFiles/rinexelvstrip.dir/build
 .PHONY : rinexelvstrip/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/rinexthin.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/rinexthin.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/rinexthin.dir/rule
 .PHONY : apps/filetools/CMakeFiles/rinexthin.dir/rule
 
 # Convenience name for target.
@@ -304,12 +304,12 @@ rinexthin: apps/filetools/CMakeFiles/rinexthin.dir/rule
 
 # fast build rule for target.
 rinexthin/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/rinexthin.dir/build.make apps/filetools/CMakeFiles/rinexthin.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/rinexthin.dir/build.make apps/filetools/CMakeFiles/rinexthin.dir/build
 .PHONY : rinexthin/fast
 
 # Convenience name for target.
 apps/filetools/CMakeFiles/sp3version.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/sp3version.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/filetools/CMakeFiles/sp3version.dir/rule
 .PHONY : apps/filetools/CMakeFiles/sp3version.dir/rule
 
 # Convenience name for target.
@@ -318,7 +318,7 @@ sp3version: apps/filetools/CMakeFiles/sp3version.dir/rule
 
 # fast build rule for target.
 sp3version/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/sp3version.dir/build.make apps/filetools/CMakeFiles/sp3version.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/sp3version.dir/build.make apps/filetools/CMakeFiles/sp3version.dir/build
 .PHONY : sp3version/fast
 
 EphSum.o: EphSum.cpp.o
@@ -326,7 +326,7 @@ EphSum.o: EphSum.cpp.o
 
 # target to build an object file
 EphSum.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ephsum.dir/build.make apps/filetools/CMakeFiles/ephsum.dir/EphSum.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ephsum.dir/build.make apps/filetools/CMakeFiles/ephsum.dir/EphSum.cpp.o
 .PHONY : EphSum.cpp.o
 
 EphSum.i: EphSum.cpp.i
@@ -334,7 +334,7 @@ EphSum.i: EphSum.cpp.i
 
 # target to preprocess a source file
 EphSum.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ephsum.dir/build.make apps/filetools/CMakeFiles/ephsum.dir/EphSum.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ephsum.dir/build.make apps/filetools/CMakeFiles/ephsum.dir/EphSum.cpp.i
 .PHONY : EphSum.cpp.i
 
 EphSum.s: EphSum.cpp.s
@@ -342,7 +342,7 @@ EphSum.s: EphSum.cpp.s
 
 # target to generate assembly for a file
 EphSum.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ephsum.dir/build.make apps/filetools/CMakeFiles/ephsum.dir/EphSum.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ephsum.dir/build.make apps/filetools/CMakeFiles/ephsum.dir/EphSum.cpp.s
 .PHONY : EphSum.cpp.s
 
 GloDump.o: GloDump.cpp.o
@@ -350,7 +350,7 @@ GloDump.o: GloDump.cpp.o
 
 # target to build an object file
 GloDump.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/glodump.dir/build.make apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/glodump.dir/build.make apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.o
 .PHONY : GloDump.cpp.o
 
 GloDump.i: GloDump.cpp.i
@@ -358,7 +358,7 @@ GloDump.i: GloDump.cpp.i
 
 # target to preprocess a source file
 GloDump.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/glodump.dir/build.make apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/glodump.dir/build.make apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.i
 .PHONY : GloDump.cpp.i
 
 GloDump.s: GloDump.cpp.s
@@ -366,7 +366,7 @@ GloDump.s: GloDump.cpp.s
 
 # target to generate assembly for a file
 GloDump.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/glodump.dir/build.make apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/glodump.dir/build.make apps/filetools/CMakeFiles/glodump.dir/GloDump.cpp.s
 .PHONY : GloDump.cpp.s
 
 RinexElvStrip.o: RinexElvStrip.cpp.o
@@ -374,7 +374,7 @@ RinexElvStrip.o: RinexElvStrip.cpp.o
 
 # target to build an object file
 RinexElvStrip.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/rinexelvstrip.dir/build.make apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/rinexelvstrip.dir/build.make apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o
 .PHONY : RinexElvStrip.cpp.o
 
 RinexElvStrip.i: RinexElvStrip.cpp.i
@@ -382,7 +382,7 @@ RinexElvStrip.i: RinexElvStrip.cpp.i
 
 # target to preprocess a source file
 RinexElvStrip.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/rinexelvstrip.dir/build.make apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/rinexelvstrip.dir/build.make apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.i
 .PHONY : RinexElvStrip.cpp.i
 
 RinexElvStrip.s: RinexElvStrip.cpp.s
@@ -390,7 +390,7 @@ RinexElvStrip.s: RinexElvStrip.cpp.s
 
 # target to generate assembly for a file
 RinexElvStrip.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/rinexelvstrip.dir/build.make apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/rinexelvstrip.dir/build.make apps/filetools/CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.s
 .PHONY : RinexElvStrip.cpp.s
 
 RinexThin.o: RinexThin.cpp.o
@@ -398,7 +398,7 @@ RinexThin.o: RinexThin.cpp.o
 
 # target to build an object file
 RinexThin.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/rinexthin.dir/build.make apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/rinexthin.dir/build.make apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.o
 .PHONY : RinexThin.cpp.o
 
 RinexThin.i: RinexThin.cpp.i
@@ -406,7 +406,7 @@ RinexThin.i: RinexThin.cpp.i
 
 # target to preprocess a source file
 RinexThin.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/rinexthin.dir/build.make apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/rinexthin.dir/build.make apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.i
 .PHONY : RinexThin.cpp.i
 
 RinexThin.s: RinexThin.cpp.s
@@ -414,7 +414,7 @@ RinexThin.s: RinexThin.cpp.s
 
 # target to generate assembly for a file
 RinexThin.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/rinexthin.dir/build.make apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/rinexthin.dir/build.make apps/filetools/CMakeFiles/rinexthin.dir/RinexThin.cpp.s
 .PHONY : RinexThin.cpp.s
 
 bc2sp3.o: bc2sp3.cpp.o
@@ -422,7 +422,7 @@ bc2sp3.o: bc2sp3.cpp.o
 
 # target to build an object file
 bc2sp3.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/bc2sp3.dir/build.make apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/bc2sp3.dir/build.make apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o
 .PHONY : bc2sp3.cpp.o
 
 bc2sp3.i: bc2sp3.cpp.i
@@ -430,7 +430,7 @@ bc2sp3.i: bc2sp3.cpp.i
 
 # target to preprocess a source file
 bc2sp3.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/bc2sp3.dir/build.make apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/bc2sp3.dir/build.make apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.i
 .PHONY : bc2sp3.cpp.i
 
 bc2sp3.s: bc2sp3.cpp.s
@@ -438,7 +438,7 @@ bc2sp3.s: bc2sp3.cpp.s
 
 # target to generate assembly for a file
 bc2sp3.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/bc2sp3.dir/build.make apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/bc2sp3.dir/build.make apps/filetools/CMakeFiles/bc2sp3.dir/bc2sp3.cpp.s
 .PHONY : bc2sp3.cpp.s
 
 ephemfix.o: ephemfix.cpp.o
@@ -446,7 +446,7 @@ ephemfix.o: ephemfix.cpp.o
 
 # target to build an object file
 ephemfix.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ephemfix.dir/build.make apps/filetools/CMakeFiles/ephemfix.dir/ephemfix.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ephemfix.dir/build.make apps/filetools/CMakeFiles/ephemfix.dir/ephemfix.cpp.o
 .PHONY : ephemfix.cpp.o
 
 ephemfix.i: ephemfix.cpp.i
@@ -454,7 +454,7 @@ ephemfix.i: ephemfix.cpp.i
 
 # target to preprocess a source file
 ephemfix.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ephemfix.dir/build.make apps/filetools/CMakeFiles/ephemfix.dir/ephemfix.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ephemfix.dir/build.make apps/filetools/CMakeFiles/ephemfix.dir/ephemfix.cpp.i
 .PHONY : ephemfix.cpp.i
 
 ephemfix.s: ephemfix.cpp.s
@@ -462,7 +462,7 @@ ephemfix.s: ephemfix.cpp.s
 
 # target to generate assembly for a file
 ephemfix.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ephemfix.dir/build.make apps/filetools/CMakeFiles/ephemfix.dir/ephemfix.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ephemfix.dir/build.make apps/filetools/CMakeFiles/ephemfix.dir/ephemfix.cpp.s
 .PHONY : ephemfix.cpp.s
 
 fic2rin.o: fic2rin.cpp.o
@@ -470,7 +470,7 @@ fic2rin.o: fic2rin.cpp.o
 
 # target to build an object file
 fic2rin.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/fic2rin.dir/build.make apps/filetools/CMakeFiles/fic2rin.dir/fic2rin.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/fic2rin.dir/build.make apps/filetools/CMakeFiles/fic2rin.dir/fic2rin.cpp.o
 .PHONY : fic2rin.cpp.o
 
 fic2rin.i: fic2rin.cpp.i
@@ -478,7 +478,7 @@ fic2rin.i: fic2rin.cpp.i
 
 # target to preprocess a source file
 fic2rin.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/fic2rin.dir/build.make apps/filetools/CMakeFiles/fic2rin.dir/fic2rin.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/fic2rin.dir/build.make apps/filetools/CMakeFiles/fic2rin.dir/fic2rin.cpp.i
 .PHONY : fic2rin.cpp.i
 
 fic2rin.s: fic2rin.cpp.s
@@ -486,7 +486,7 @@ fic2rin.s: fic2rin.cpp.s
 
 # target to generate assembly for a file
 fic2rin.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/fic2rin.dir/build.make apps/filetools/CMakeFiles/fic2rin.dir/fic2rin.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/fic2rin.dir/build.make apps/filetools/CMakeFiles/fic2rin.dir/fic2rin.cpp.s
 .PHONY : fic2rin.cpp.s
 
 ficafic.o: ficafic.cpp.o
@@ -494,7 +494,7 @@ ficafic.o: ficafic.cpp.o
 
 # target to build an object file
 ficafic.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficafic.dir/build.make apps/filetools/CMakeFiles/ficafic.dir/ficafic.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficafic.dir/build.make apps/filetools/CMakeFiles/ficafic.dir/ficafic.cpp.o
 .PHONY : ficafic.cpp.o
 
 ficafic.i: ficafic.cpp.i
@@ -502,7 +502,7 @@ ficafic.i: ficafic.cpp.i
 
 # target to preprocess a source file
 ficafic.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficafic.dir/build.make apps/filetools/CMakeFiles/ficafic.dir/ficafic.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficafic.dir/build.make apps/filetools/CMakeFiles/ficafic.dir/ficafic.cpp.i
 .PHONY : ficafic.cpp.i
 
 ficafic.s: ficafic.cpp.s
@@ -510,7 +510,7 @@ ficafic.s: ficafic.cpp.s
 
 # target to generate assembly for a file
 ficafic.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficafic.dir/build.make apps/filetools/CMakeFiles/ficafic.dir/ficafic.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficafic.dir/build.make apps/filetools/CMakeFiles/ficafic.dir/ficafic.cpp.s
 .PHONY : ficafic.cpp.s
 
 ficedit.o: ficedit.cpp.o
@@ -518,7 +518,7 @@ ficedit.o: ficedit.cpp.o
 
 # target to build an object file
 ficedit.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficedit.dir/build.make apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficedit.dir/build.make apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.o
 .PHONY : ficedit.cpp.o
 
 ficedit.i: ficedit.cpp.i
@@ -526,7 +526,7 @@ ficedit.i: ficedit.cpp.i
 
 # target to preprocess a source file
 ficedit.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficedit.dir/build.make apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficedit.dir/build.make apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.i
 .PHONY : ficedit.cpp.i
 
 ficedit.s: ficedit.cpp.s
@@ -534,7 +534,7 @@ ficedit.s: ficedit.cpp.s
 
 # target to generate assembly for a file
 ficedit.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficedit.dir/build.make apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficedit.dir/build.make apps/filetools/CMakeFiles/ficedit.dir/ficedit.cpp.s
 .PHONY : ficedit.cpp.s
 
 ficfica.o: ficfica.cpp.o
@@ -542,7 +542,7 @@ ficfica.o: ficfica.cpp.o
 
 # target to build an object file
 ficfica.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficfica.dir/build.make apps/filetools/CMakeFiles/ficfica.dir/ficfica.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficfica.dir/build.make apps/filetools/CMakeFiles/ficfica.dir/ficfica.cpp.o
 .PHONY : ficfica.cpp.o
 
 ficfica.i: ficfica.cpp.i
@@ -550,7 +550,7 @@ ficfica.i: ficfica.cpp.i
 
 # target to preprocess a source file
 ficfica.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficfica.dir/build.make apps/filetools/CMakeFiles/ficfica.dir/ficfica.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficfica.dir/build.make apps/filetools/CMakeFiles/ficfica.dir/ficfica.cpp.i
 .PHONY : ficfica.cpp.i
 
 ficfica.s: ficfica.cpp.s
@@ -558,7 +558,7 @@ ficfica.s: ficfica.cpp.s
 
 # target to generate assembly for a file
 ficfica.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/ficfica.dir/build.make apps/filetools/CMakeFiles/ficfica.dir/ficfica.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/ficfica.dir/build.make apps/filetools/CMakeFiles/ficfica.dir/ficfica.cpp.s
 .PHONY : ficfica.cpp.s
 
 navdmp.o: navdmp.cpp.o
@@ -566,7 +566,7 @@ navdmp.o: navdmp.cpp.o
 
 # target to build an object file
 navdmp.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/navdmp.dir/build.make apps/filetools/CMakeFiles/navdmp.dir/navdmp.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/navdmp.dir/build.make apps/filetools/CMakeFiles/navdmp.dir/navdmp.cpp.o
 .PHONY : navdmp.cpp.o
 
 navdmp.i: navdmp.cpp.i
@@ -574,7 +574,7 @@ navdmp.i: navdmp.cpp.i
 
 # target to preprocess a source file
 navdmp.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/navdmp.dir/build.make apps/filetools/CMakeFiles/navdmp.dir/navdmp.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/navdmp.dir/build.make apps/filetools/CMakeFiles/navdmp.dir/navdmp.cpp.i
 .PHONY : navdmp.cpp.i
 
 navdmp.s: navdmp.cpp.s
@@ -582,7 +582,7 @@ navdmp.s: navdmp.cpp.s
 
 # target to generate assembly for a file
 navdmp.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/navdmp.dir/build.make apps/filetools/CMakeFiles/navdmp.dir/navdmp.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/navdmp.dir/build.make apps/filetools/CMakeFiles/navdmp.dir/navdmp.cpp.s
 .PHONY : navdmp.cpp.s
 
 navsum.o: navsum.cpp.o
@@ -590,7 +590,7 @@ navsum.o: navsum.cpp.o
 
 # target to build an object file
 navsum.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/navsum.dir/build.make apps/filetools/CMakeFiles/navsum.dir/navsum.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/navsum.dir/build.make apps/filetools/CMakeFiles/navsum.dir/navsum.cpp.o
 .PHONY : navsum.cpp.o
 
 navsum.i: navsum.cpp.i
@@ -598,7 +598,7 @@ navsum.i: navsum.cpp.i
 
 # target to preprocess a source file
 navsum.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/navsum.dir/build.make apps/filetools/CMakeFiles/navsum.dir/navsum.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/navsum.dir/build.make apps/filetools/CMakeFiles/navsum.dir/navsum.cpp.i
 .PHONY : navsum.cpp.i
 
 navsum.s: navsum.cpp.s
@@ -606,7 +606,7 @@ navsum.s: navsum.cpp.s
 
 # target to generate assembly for a file
 navsum.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/navsum.dir/build.make apps/filetools/CMakeFiles/navsum.dir/navsum.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/navsum.dir/build.make apps/filetools/CMakeFiles/navsum.dir/navsum.cpp.s
 .PHONY : navsum.cpp.s
 
 sp3version.o: sp3version.cpp.o
@@ -614,7 +614,7 @@ sp3version.o: sp3version.cpp.o
 
 # target to build an object file
 sp3version.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/sp3version.dir/build.make apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/sp3version.dir/build.make apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.o
 .PHONY : sp3version.cpp.o
 
 sp3version.i: sp3version.cpp.i
@@ -622,7 +622,7 @@ sp3version.i: sp3version.cpp.i
 
 # target to preprocess a source file
 sp3version.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/sp3version.dir/build.make apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/sp3version.dir/build.make apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.i
 .PHONY : sp3version.cpp.i
 
 sp3version.s: sp3version.cpp.s
@@ -630,7 +630,7 @@ sp3version.s: sp3version.cpp.s
 
 # target to generate assembly for a file
 sp3version.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/filetools/CMakeFiles/sp3version.dir/build.make apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/filetools/CMakeFiles/sp3version.dir/build.make apps/filetools/CMakeFiles/sp3version.dir/sp3version.cpp.s
 .PHONY : sp3version.cpp.s
 
 # Help Target
@@ -708,6 +708,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

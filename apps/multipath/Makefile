@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/multipath/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/multipath/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/multipath/CMakeFiles/mpsolve.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/CMakeFiles/mpsolve.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/multipath/CMakeFiles/mpsolve.dir/rule
 .PHONY : apps/multipath/CMakeFiles/mpsolve.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ mpsolve: apps/multipath/CMakeFiles/mpsolve.dir/rule
 
 # fast build rule for target.
 mpsolve/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/build
 .PHONY : mpsolve/fast
 
 ObsArray.o: ObsArray.cpp.o
@@ -158,7 +158,7 @@ ObsArray.o: ObsArray.cpp.o
 
 # target to build an object file
 ObsArray.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.o
 .PHONY : ObsArray.cpp.o
 
 ObsArray.i: ObsArray.cpp.i
@@ -166,7 +166,7 @@ ObsArray.i: ObsArray.cpp.i
 
 # target to preprocess a source file
 ObsArray.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.i
 .PHONY : ObsArray.cpp.i
 
 ObsArray.s: ObsArray.cpp.s
@@ -174,7 +174,7 @@ ObsArray.s: ObsArray.cpp.s
 
 # target to generate assembly for a file
 ObsArray.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/ObsArray.cpp.s
 .PHONY : ObsArray.cpp.s
 
 mpsolve.o: mpsolve.cpp.o
@@ -182,7 +182,7 @@ mpsolve.o: mpsolve.cpp.o
 
 # target to build an object file
 mpsolve.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.o
 .PHONY : mpsolve.cpp.o
 
 mpsolve.i: mpsolve.cpp.i
@@ -190,7 +190,7 @@ mpsolve.i: mpsolve.cpp.i
 
 # target to preprocess a source file
 mpsolve.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.i
 .PHONY : mpsolve.cpp.i
 
 mpsolve.s: mpsolve.cpp.s
@@ -198,7 +198,7 @@ mpsolve.s: mpsolve.cpp.s
 
 # target to generate assembly for a file
 mpsolve.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/multipath/CMakeFiles/mpsolve.dir/build.make apps/multipath/CMakeFiles/mpsolve.dir/mpsolve.cpp.s
 .PHONY : mpsolve.cpp.s
 
 # Help Target
@@ -231,6 +231,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

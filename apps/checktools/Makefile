@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/checktools/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/checktools/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/checktools/CMakeFiles/ficacheck.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/ficacheck.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/ficacheck.dir/rule
 .PHONY : apps/checktools/CMakeFiles/ficacheck.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ ficacheck: apps/checktools/CMakeFiles/ficacheck.dir/rule
 
 # fast build rule for target.
 ficacheck/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/ficacheck.dir/build.make apps/checktools/CMakeFiles/ficacheck.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/ficacheck.dir/build.make apps/checktools/CMakeFiles/ficacheck.dir/build
 .PHONY : ficacheck/fast
 
 # Convenience name for target.
 apps/checktools/CMakeFiles/ficcheck.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/ficcheck.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/ficcheck.dir/rule
 .PHONY : apps/checktools/CMakeFiles/ficcheck.dir/rule
 
 # Convenience name for target.
@@ -164,12 +164,12 @@ ficcheck: apps/checktools/CMakeFiles/ficcheck.dir/rule
 
 # fast build rule for target.
 ficcheck/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/ficcheck.dir/build.make apps/checktools/CMakeFiles/ficcheck.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/ficcheck.dir/build.make apps/checktools/CMakeFiles/ficcheck.dir/build
 .PHONY : ficcheck/fast
 
 # Convenience name for target.
 apps/checktools/CMakeFiles/rmwcheck.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/rmwcheck.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/rmwcheck.dir/rule
 .PHONY : apps/checktools/CMakeFiles/rmwcheck.dir/rule
 
 # Convenience name for target.
@@ -178,12 +178,12 @@ rmwcheck: apps/checktools/CMakeFiles/rmwcheck.dir/rule
 
 # fast build rule for target.
 rmwcheck/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rmwcheck.dir/build.make apps/checktools/CMakeFiles/rmwcheck.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rmwcheck.dir/build.make apps/checktools/CMakeFiles/rmwcheck.dir/build
 .PHONY : rmwcheck/fast
 
 # Convenience name for target.
 apps/checktools/CMakeFiles/rnwcheck.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/rnwcheck.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/rnwcheck.dir/rule
 .PHONY : apps/checktools/CMakeFiles/rnwcheck.dir/rule
 
 # Convenience name for target.
@@ -192,12 +192,12 @@ rnwcheck: apps/checktools/CMakeFiles/rnwcheck.dir/rule
 
 # fast build rule for target.
 rnwcheck/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rnwcheck.dir/build.make apps/checktools/CMakeFiles/rnwcheck.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rnwcheck.dir/build.make apps/checktools/CMakeFiles/rnwcheck.dir/build
 .PHONY : rnwcheck/fast
 
 # Convenience name for target.
 apps/checktools/CMakeFiles/rowcheck.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/rowcheck.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/checktools/CMakeFiles/rowcheck.dir/rule
 .PHONY : apps/checktools/CMakeFiles/rowcheck.dir/rule
 
 # Convenience name for target.
@@ -206,7 +206,7 @@ rowcheck: apps/checktools/CMakeFiles/rowcheck.dir/rule
 
 # fast build rule for target.
 rowcheck/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rowcheck.dir/build.make apps/checktools/CMakeFiles/rowcheck.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rowcheck.dir/build.make apps/checktools/CMakeFiles/rowcheck.dir/build
 .PHONY : rowcheck/fast
 
 ficacheck.o: ficacheck.cpp.o
@@ -214,7 +214,7 @@ ficacheck.o: ficacheck.cpp.o
 
 # target to build an object file
 ficacheck.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/ficacheck.dir/build.make apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/ficacheck.dir/build.make apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.o
 .PHONY : ficacheck.cpp.o
 
 ficacheck.i: ficacheck.cpp.i
@@ -222,7 +222,7 @@ ficacheck.i: ficacheck.cpp.i
 
 # target to preprocess a source file
 ficacheck.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/ficacheck.dir/build.make apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/ficacheck.dir/build.make apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.i
 .PHONY : ficacheck.cpp.i
 
 ficacheck.s: ficacheck.cpp.s
@@ -230,7 +230,7 @@ ficacheck.s: ficacheck.cpp.s
 
 # target to generate assembly for a file
 ficacheck.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/ficacheck.dir/build.make apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/ficacheck.dir/build.make apps/checktools/CMakeFiles/ficacheck.dir/ficacheck.cpp.s
 .PHONY : ficacheck.cpp.s
 
 ficcheck.o: ficcheck.cpp.o
@@ -238,7 +238,7 @@ ficcheck.o: ficcheck.cpp.o
 
 # target to build an object file
 ficcheck.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/ficcheck.dir/build.make apps/checktools/CMakeFiles/ficcheck.dir/ficcheck.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/ficcheck.dir/build.make apps/checktools/CMakeFiles/ficcheck.dir/ficcheck.cpp.o
 .PHONY : ficcheck.cpp.o
 
 ficcheck.i: ficcheck.cpp.i
@@ -246,7 +246,7 @@ ficcheck.i: ficcheck.cpp.i
 
 # target to preprocess a source file
 ficcheck.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/ficcheck.dir/build.make apps/checktools/CMakeFiles/ficcheck.dir/ficcheck.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/ficcheck.dir/build.make apps/checktools/CMakeFiles/ficcheck.dir/ficcheck.cpp.i
 .PHONY : ficcheck.cpp.i
 
 ficcheck.s: ficcheck.cpp.s
@@ -254,7 +254,7 @@ ficcheck.s: ficcheck.cpp.s
 
 # target to generate assembly for a file
 ficcheck.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/ficcheck.dir/build.make apps/checktools/CMakeFiles/ficcheck.dir/ficcheck.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/ficcheck.dir/build.make apps/checktools/CMakeFiles/ficcheck.dir/ficcheck.cpp.s
 .PHONY : ficcheck.cpp.s
 
 rmwcheck.o: rmwcheck.cpp.o
@@ -262,7 +262,7 @@ rmwcheck.o: rmwcheck.cpp.o
 
 # target to build an object file
 rmwcheck.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rmwcheck.dir/build.make apps/checktools/CMakeFiles/rmwcheck.dir/rmwcheck.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rmwcheck.dir/build.make apps/checktools/CMakeFiles/rmwcheck.dir/rmwcheck.cpp.o
 .PHONY : rmwcheck.cpp.o
 
 rmwcheck.i: rmwcheck.cpp.i
@@ -270,7 +270,7 @@ rmwcheck.i: rmwcheck.cpp.i
 
 # target to preprocess a source file
 rmwcheck.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rmwcheck.dir/build.make apps/checktools/CMakeFiles/rmwcheck.dir/rmwcheck.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rmwcheck.dir/build.make apps/checktools/CMakeFiles/rmwcheck.dir/rmwcheck.cpp.i
 .PHONY : rmwcheck.cpp.i
 
 rmwcheck.s: rmwcheck.cpp.s
@@ -278,7 +278,7 @@ rmwcheck.s: rmwcheck.cpp.s
 
 # target to generate assembly for a file
 rmwcheck.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rmwcheck.dir/build.make apps/checktools/CMakeFiles/rmwcheck.dir/rmwcheck.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rmwcheck.dir/build.make apps/checktools/CMakeFiles/rmwcheck.dir/rmwcheck.cpp.s
 .PHONY : rmwcheck.cpp.s
 
 rnwcheck.o: rnwcheck.cpp.o
@@ -286,7 +286,7 @@ rnwcheck.o: rnwcheck.cpp.o
 
 # target to build an object file
 rnwcheck.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rnwcheck.dir/build.make apps/checktools/CMakeFiles/rnwcheck.dir/rnwcheck.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rnwcheck.dir/build.make apps/checktools/CMakeFiles/rnwcheck.dir/rnwcheck.cpp.o
 .PHONY : rnwcheck.cpp.o
 
 rnwcheck.i: rnwcheck.cpp.i
@@ -294,7 +294,7 @@ rnwcheck.i: rnwcheck.cpp.i
 
 # target to preprocess a source file
 rnwcheck.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rnwcheck.dir/build.make apps/checktools/CMakeFiles/rnwcheck.dir/rnwcheck.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rnwcheck.dir/build.make apps/checktools/CMakeFiles/rnwcheck.dir/rnwcheck.cpp.i
 .PHONY : rnwcheck.cpp.i
 
 rnwcheck.s: rnwcheck.cpp.s
@@ -302,7 +302,7 @@ rnwcheck.s: rnwcheck.cpp.s
 
 # target to generate assembly for a file
 rnwcheck.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rnwcheck.dir/build.make apps/checktools/CMakeFiles/rnwcheck.dir/rnwcheck.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rnwcheck.dir/build.make apps/checktools/CMakeFiles/rnwcheck.dir/rnwcheck.cpp.s
 .PHONY : rnwcheck.cpp.s
 
 rowcheck.o: rowcheck.cpp.o
@@ -310,7 +310,7 @@ rowcheck.o: rowcheck.cpp.o
 
 # target to build an object file
 rowcheck.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rowcheck.dir/build.make apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rowcheck.dir/build.make apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.o
 .PHONY : rowcheck.cpp.o
 
 rowcheck.i: rowcheck.cpp.i
@@ -318,7 +318,7 @@ rowcheck.i: rowcheck.cpp.i
 
 # target to preprocess a source file
 rowcheck.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rowcheck.dir/build.make apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rowcheck.dir/build.make apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.i
 .PHONY : rowcheck.cpp.i
 
 rowcheck.s: rowcheck.cpp.s
@@ -326,7 +326,7 @@ rowcheck.s: rowcheck.cpp.s
 
 # target to generate assembly for a file
 rowcheck.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/checktools/CMakeFiles/rowcheck.dir/build.make apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/checktools/CMakeFiles/rowcheck.dir/build.make apps/checktools/CMakeFiles/rowcheck.dir/rowcheck.cpp.s
 .PHONY : rowcheck.cpp.s
 
 # Help Target
@@ -372,6 +372,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

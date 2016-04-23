@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/geomatics/cycleslips/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/geomatics/cycleslips/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/rule
 .PHONY : apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ DiscFix: apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/rule
 
 # fast build rule for target.
 DiscFix/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build.make apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build.make apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build
 .PHONY : DiscFix/fast
 
 DiscFix.o: DiscFix.cpp.o
@@ -158,7 +158,7 @@ DiscFix.o: DiscFix.cpp.o
 
 # target to build an object file
 DiscFix.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build.make apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build.make apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.o
 .PHONY : DiscFix.cpp.o
 
 DiscFix.i: DiscFix.cpp.i
@@ -166,7 +166,7 @@ DiscFix.i: DiscFix.cpp.i
 
 # target to preprocess a source file
 DiscFix.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build.make apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build.make apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.i
 .PHONY : DiscFix.cpp.i
 
 DiscFix.s: DiscFix.cpp.s
@@ -174,7 +174,7 @@ DiscFix.s: DiscFix.cpp.s
 
 # target to generate assembly for a file
 DiscFix.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build.make apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/build.make apps/geomatics/cycleslips/CMakeFiles/DiscFix.dir/DiscFix.cpp.s
 .PHONY : DiscFix.cpp.s
 
 # Help Target
@@ -204,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/DataAvailability/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/DataAvailability/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/DataAvailability/CMakeFiles/daa.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/CMakeFiles/daa.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/DataAvailability/CMakeFiles/daa.dir/rule
 .PHONY : apps/DataAvailability/CMakeFiles/daa.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ daa: apps/DataAvailability/CMakeFiles/daa.dir/rule
 
 # fast build rule for target.
 daa/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/build
 .PHONY : daa/fast
 
 DataAvailabilityAnalyzer.o: DataAvailabilityAnalyzer.cpp.o
@@ -158,7 +158,7 @@ DataAvailabilityAnalyzer.o: DataAvailabilityAnalyzer.cpp.o
 
 # target to build an object file
 DataAvailabilityAnalyzer.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.o
 .PHONY : DataAvailabilityAnalyzer.cpp.o
 
 DataAvailabilityAnalyzer.i: DataAvailabilityAnalyzer.cpp.i
@@ -166,7 +166,7 @@ DataAvailabilityAnalyzer.i: DataAvailabilityAnalyzer.cpp.i
 
 # target to preprocess a source file
 DataAvailabilityAnalyzer.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.i
 .PHONY : DataAvailabilityAnalyzer.cpp.i
 
 DataAvailabilityAnalyzer.s: DataAvailabilityAnalyzer.cpp.s
@@ -174,7 +174,7 @@ DataAvailabilityAnalyzer.s: DataAvailabilityAnalyzer.cpp.s
 
 # target to generate assembly for a file
 DataAvailabilityAnalyzer.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/DataAvailabilityAnalyzer.cpp.s
 .PHONY : DataAvailabilityAnalyzer.cpp.s
 
 daa.o: daa.cpp.o
@@ -182,7 +182,7 @@ daa.o: daa.cpp.o
 
 # target to build an object file
 daa.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.o
 .PHONY : daa.cpp.o
 
 daa.i: daa.cpp.i
@@ -190,7 +190,7 @@ daa.i: daa.cpp.i
 
 # target to preprocess a source file
 daa.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.i
 .PHONY : daa.cpp.i
 
 daa.s: daa.cpp.s
@@ -198,7 +198,7 @@ daa.s: daa.cpp.s
 
 # target to generate assembly for a file
 daa.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/DataAvailability/CMakeFiles/daa.dir/build.make apps/DataAvailability/CMakeFiles/daa.dir/daa.cpp.s
 .PHONY : daa.cpp.s
 
 # Help Target
@@ -231,6 +231,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/dev/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/dev/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/dev/CMakeFiles/ppp.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/CMakeFiles/ppp.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/CMakeFiles/ppp.dir/rule
 .PHONY : apps/dev/CMakeFiles/ppp.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ ppp: apps/dev/CMakeFiles/ppp.dir/rule
 
 # fast build rule for target.
 ppp/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/ppp.dir/build.make apps/dev/CMakeFiles/ppp.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/ppp.dir/build.make apps/dev/CMakeFiles/ppp.dir/build
 .PHONY : ppp/fast
 
 # Convenience name for target.
 apps/dev/CMakeFiles/pppar.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/CMakeFiles/pppar.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/CMakeFiles/pppar.dir/rule
 .PHONY : apps/dev/CMakeFiles/pppar.dir/rule
 
 # Convenience name for target.
@@ -164,12 +164,12 @@ pppar: apps/dev/CMakeFiles/pppar.dir/rule
 
 # fast build rule for target.
 pppar/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/build
 .PHONY : pppar/fast
 
 # Convenience name for target.
 apps/dev/CMakeFiles/pppucar.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/CMakeFiles/pppucar.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/dev/CMakeFiles/pppucar.dir/rule
 .PHONY : apps/dev/CMakeFiles/pppucar.dir/rule
 
 # Convenience name for target.
@@ -178,7 +178,7 @@ pppucar: apps/dev/CMakeFiles/pppucar.dir/rule
 
 # fast build rule for target.
 pppucar/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/build
 .PHONY : pppucar/fast
 
 ppp.o: ppp.cpp.o
@@ -186,7 +186,7 @@ ppp.o: ppp.cpp.o
 
 # target to build an object file
 ppp.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/ppp.dir/build.make apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/ppp.dir/build.make apps/dev/CMakeFiles/ppp.dir/ppp.cpp.o
 .PHONY : ppp.cpp.o
 
 ppp.i: ppp.cpp.i
@@ -194,7 +194,7 @@ ppp.i: ppp.cpp.i
 
 # target to preprocess a source file
 ppp.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/ppp.dir/build.make apps/dev/CMakeFiles/ppp.dir/ppp.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/ppp.dir/build.make apps/dev/CMakeFiles/ppp.dir/ppp.cpp.i
 .PHONY : ppp.cpp.i
 
 ppp.s: ppp.cpp.s
@@ -202,7 +202,7 @@ ppp.s: ppp.cpp.s
 
 # target to generate assembly for a file
 ppp.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/ppp.dir/build.make apps/dev/CMakeFiles/ppp.dir/ppp.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/ppp.dir/build.make apps/dev/CMakeFiles/ppp.dir/ppp.cpp.s
 .PHONY : ppp.cpp.s
 
 pppar.o: pppar.cpp.o
@@ -210,7 +210,7 @@ pppar.o: pppar.cpp.o
 
 # target to build an object file
 pppar.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/pppar.cpp.o
 .PHONY : pppar.cpp.o
 
 pppar.i: pppar.cpp.i
@@ -218,7 +218,7 @@ pppar.i: pppar.cpp.i
 
 # target to preprocess a source file
 pppar.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/pppar.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/pppar.cpp.i
 .PHONY : pppar.cpp.i
 
 pppar.s: pppar.cpp.s
@@ -226,7 +226,7 @@ pppar.s: pppar.cpp.s
 
 # target to generate assembly for a file
 pppar.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/pppar.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/pppar.dir/build.make apps/dev/CMakeFiles/pppar.dir/pppar.cpp.s
 .PHONY : pppar.cpp.s
 
 pppucar.o: pppucar.cpp.o
@@ -234,7 +234,7 @@ pppucar.o: pppucar.cpp.o
 
 # target to build an object file
 pppucar.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.o
 .PHONY : pppucar.cpp.o
 
 pppucar.i: pppucar.cpp.i
@@ -242,7 +242,7 @@ pppucar.i: pppucar.cpp.i
 
 # target to preprocess a source file
 pppucar.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.i
 .PHONY : pppucar.cpp.i
 
 pppucar.s: pppucar.cpp.s
@@ -250,7 +250,7 @@ pppucar.s: pppucar.cpp.s
 
 # target to generate assembly for a file
 pppucar.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/dev/CMakeFiles/pppucar.dir/build.make apps/dev/CMakeFiles/pppucar.dir/pppucar.cpp.s
 .PHONY : pppucar.cpp.s
 
 # Help Target
@@ -288,6 +288,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

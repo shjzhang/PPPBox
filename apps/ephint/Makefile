@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/ephint/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/ephint/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/ephint/CMakeFiles/ephint.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/CMakeFiles/ephint.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/ephint/CMakeFiles/ephint.dir/rule
 .PHONY : apps/ephint/CMakeFiles/ephint.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ ephint: apps/ephint/CMakeFiles/ephint.dir/rule
 
 # fast build rule for target.
 ephint/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/build
 .PHONY : ephint/fast
 
 ComputeSatPCOffset.o: ComputeSatPCOffset.cpp.o
@@ -158,7 +158,7 @@ ComputeSatPCOffset.o: ComputeSatPCOffset.cpp.o
 
 # target to build an object file
 ComputeSatPCOffset.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o
 .PHONY : ComputeSatPCOffset.cpp.o
 
 ComputeSatPCOffset.i: ComputeSatPCOffset.cpp.i
@@ -166,7 +166,7 @@ ComputeSatPCOffset.i: ComputeSatPCOffset.cpp.i
 
 # target to preprocess a source file
 ComputeSatPCOffset.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.i
 .PHONY : ComputeSatPCOffset.cpp.i
 
 ComputeSatPCOffset.s: ComputeSatPCOffset.cpp.s
@@ -174,7 +174,7 @@ ComputeSatPCOffset.s: ComputeSatPCOffset.cpp.s
 
 # target to generate assembly for a file
 ComputeSatPCOffset.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.s
 .PHONY : ComputeSatPCOffset.cpp.s
 
 ephint.o: ephint.cpp.o
@@ -182,7 +182,7 @@ ephint.o: ephint.cpp.o
 
 # target to build an object file
 ephint.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.o
 .PHONY : ephint.cpp.o
 
 ephint.i: ephint.cpp.i
@@ -190,7 +190,7 @@ ephint.i: ephint.cpp.i
 
 # target to preprocess a source file
 ephint.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.i
 .PHONY : ephint.cpp.i
 
 ephint.s: ephint.cpp.s
@@ -198,7 +198,7 @@ ephint.s: ephint.cpp.s
 
 # target to generate assembly for a file
 ephint.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/ephint/CMakeFiles/ephint.dir/build.make apps/ephint/CMakeFiles/ephint.dir/ephint.cpp.s
 .PHONY : ephint.cpp.s
 
 # Help Target
@@ -231,6 +231,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
