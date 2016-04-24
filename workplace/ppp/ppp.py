@@ -6,7 +6,7 @@ import sys
 
 proj='igs16578'
 station='%s/%s.stalist.test'%(sys.path[0],proj)
-print station
+#print station
 workdir='/home/rinex/Documents/data/IGS/%s'%(proj)
 beginTime = '20111009000000'
 endTime = '20111012000000'
@@ -55,7 +55,7 @@ def processSSC2MSC(argDict):
         msc_file.write( msc_item_file.read() )
         msc_item_file.close()
     msc_file.close()
-    print  msc_file_path
+    #print  msc_file_path
     argDict['-m']=msc_file_path
 
 def processDir(argDict):
@@ -79,15 +79,15 @@ def processPPP(argDict):
     pppCmd = 'ppp '
     for k, v in argDict.items():
         pppCmd = pppCmd + ' %s %s'%(k, v)
-    print pppCmd
+    #print pppCmd
     os.system(pppCmd)
 
 def main():
     argDict={}
-    #processData(argDict)
-    processSSC2MSC(argDict)
-    processDir(argDict)
-    print argDict
+    processData(argDict)
+    #processSSC2MSC(argDict)
+    #processDir(argDict)
+    #print argDict
     processPPP(argDict)
 
 if __name__ == '__main__':
