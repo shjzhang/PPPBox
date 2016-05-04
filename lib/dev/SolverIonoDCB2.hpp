@@ -19,20 +19,6 @@
 //  Copyright 2004, The University of Texas at Austin
 //  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2008, 2009, 2011
 //
-//============================================================================
-
-//============================================================================
-//
-//This software developed by Applied Research Laboratories at the University of
-//Texas at Austin, under contract to an agency or agencies within the U.S. 
-//Department of Defense. The U.S. Government retains all rights to use,
-//duplicate, distribute, disclose, or release this software. 
-//
-//Pursuant to DoD Directive 523024 
-//
-// DISTRIBUTION STATEMENT A: This software has been approved for public 
-//                           release, distribution is unlimited.
-//
 //=============================================================================
 
 /**
@@ -49,74 +35,59 @@
 #include "SolverBase.hpp"
 #include "Variable.hpp"
 #include <vector>
+#include <map>
+
 namespace gpstk
 {
 
-      /** @addtogroup GPSsolutions */
-      /// @ingroup math
-
-      //@{
-
-      /** This class computes the Precise Point Positioning (PPP) solution
-       *  using a Kalman solver that combines ionosphere-free code and phase
-       *  measurements.
-       *
-       * \warning "SolverIonoDCB2" is based on a Kalman filter, and Kalman filters
-       * are objets that store their internal state, so you MUST NOT use the
-       * SAME object to process DIFFERENT data streams.
-       *
-       * @sa SolverBase.hpp, SolverLMS.hpp and CodeKalmanSolver.hpp for
-       * base classes.
-       *
-       */
    class SolverIonoDCB2 :  public SolverBase
    {
    public:
+         // Constructor
+      SolverIonoDCB2(int SHOrder = 2);
 
-      SolverIonoDCB2(int SHOrder = 4);
-
-         /** Compute the PPP Solution of the given equations set.
-          *
-          * @param prefitResiduals   Vector of prefit residuals
-          * @param designMatrix      Design matrix for the equation system
-          * @param weightVector      Vector of weights assigned to each
-          *                          satellite.
-          *
-          * \warning A typical Kalman filter works with the measurements noise
-          * covariance matrix, instead of the vector of weights. Beware of this
-          * detail, because this method uses the later.
-          *
-          * @return
-          *  0 if OK
-          *  -1 if problems arose
+         /** Compute the LMS solution
+          *  NormMatrix = AT*P*A
+          *  wVector = AT*P*L
           */
-      virtual int Compute( const Vector<double>& prefitResiduals,
-                           const Matrix<double>& designMatrix)
+      virtual int Compute( const Matrix<double>& normMatrix,
+                           const Vector<double>& wVector )
 						   
-         throw(InvalidSolver);
-
+      throw(InvalidSolver);
 
          /** Returns a reference to a gnssDataMap object after
           *  solving the previously defined equation system.
           *
-          * @param gData    Data object holding the data.
+          * @param gData          Data object holding the data.
+          * @param interval       Data of a few hours are used once,
+          *                       if interval = 24, use data of one day
           */
-      virtual gnssDataMap& Process(gnssDataMap& gData, satValueMap& satMap);
+      virtual gnssDataMap& Process(gnssDataMap& gData, int interval );
 
-
+         // prepare before the Process
       SolverIonoDCB2&  prepare(void);
+
+        // get the ionosphereic coefficients
+      Vector<double>  getIonoCoef(void)
+      { return IonoCoef; }
+
+        // get the DCB for receivers
+      double getRecDCB( const SourceID& rec ); 
+
+        // get the DCB for satellites
+      double getSatDCB( const SatID& sat );
+
         /// Norm Factor
       double norm(int n, int m);
+
         /// Legendre Polynomial
       double legendrePoly(int n, int m, double u);
 
          /// Returns an index identifying this object.
       virtual int getIndex(void) const;
 
-
          /// Returns a string identifying this object.
       virtual std::string getClassName(void) const;
-
 
          /// Destructor.
       virtual ~SolverIonoDCB2() {};
@@ -132,7 +103,10 @@ namespace gpstk
       int numUnknowns;
          /// Number of measurements
       int numMeas;
-
+       /// the geographic latitude of geomagnetic north pole
+      static const double NGPLat = 80.27;
+         /// the geographic longitude of geomagnetic north pole
+      static const double NGPLon = -72.58;
         /// Source-indexed(receiver-indexed) TypeID set
       TypeIDSet recIndexedTypes;
          /// Satellite-indexed TypeID set
@@ -141,28 +115,32 @@ namespace gpstk
       VariableSet recUnknowns;
          /// Global set of unknowns
       VariableSet satUnknowns;
-         /// Map holding the state information for reciver related varialbes
-	  VariableDataMap  recState;
-         /// Map holding state information for satellite related variables
-      VariableDataMap satState;
+         /// Map holding the state information for reciver 
+      std::map<SourceID,double> recState;
+         /// Map holding state information for satellite 
+      std::map<SatID,double> satState;
          /// The value of  ionospheric coefficients 
-		 /// the sequence is A00,A10,A11,B11,A20,A21,B21,...
-	  Vector<double> IonoCoef;
-
-      Matrix<double> hMatrix;
-         /// Measurements vector (Prefit-residuals)
+	/// the sequence is A00,A10,A11,B11,A20,A21,B21,...
+      Vector<double> IonoCoef;
+         /// design Vector, 1*numUnknowns
+      Vector<double> hVector;
+         /// Measurements vector (Prefit-residuals),numMeas*1
       Vector<double> measVector;
-         /// Constraint vector of satellite DCBs
-      Matrix<double> consMatrix;
-	     /// Constrain Vector 
-	  Vector<double> consVector;
-
+         /// Covariance Matrix, numUnknowns*numUnknowns
+      Matrix<double> NormMatrix;
+           /// AT*P*L , numUnkonwns*1
+      Vector<double> wVector;
+         /// solution Vector
+      Vector<double> sol;
+         ///Precison 
+      Vector<double> sigma;
+      
+      double sigma0;
+       
       /// Set with all satellites being processed this epoch
       SatIDSet currSatSet;
-         /// Set with all satellites which are not in view 
-      SatIDSet satNotInView;
 	  /// Set with all receivers being processed with epoch
-	  SourceIDSet recSet;
+      SourceIDSet recSet;
          /// Boolean indicating if this filter was run at least once
 
          /// Initializing method.
@@ -178,8 +156,6 @@ namespace gpstk
       void setIndex(void)
       { index = classIndex++; };
 
-
-     
 
    }; // End of class 'SolverIonoDCB2'
 
