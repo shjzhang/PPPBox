@@ -14,8 +14,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-
-
+#include <time.h>
    // Basic framework for programs in the GPSTk. 'process()' method MUST
    // be implemented
 #include "BasicFramework.hpp"
@@ -129,12 +128,16 @@ private:
       // Option for ionex file list
    CommandOptionWithAnyArg inxFileListOpt;
 
-     // Option for ionex file list
+     // Option for dcb file list
    CommandOptionWithAnyArg dcbFileListOpt;
       // Option for output file
    CommandOptionWithAnyArg outputFileListOpt;
      // Option for the max order of SH
    CommandOptionWithAnyArg maxOrderOpt;
+     // Option for the interval(unit: h)
+   CommandOptionWithAnyArg intervalOpt;
+
+ 
 
       // If you want to share objects and variables among methods, you'd
       // better declare them here
@@ -144,7 +147,16 @@ private:
    string inxFileListName;
    string dcbFileListName;
    string outputFileListName;
-   string maxOrder;
+   int maxOrder;
+   int interval;
+
+   void printSolution(  ofstream& outfile,
+                        int interval,
+                        int order,
+                        SolverIonoDCB2& solver,
+                        const CommonTime& time1,
+                        const CommonTime& time2,
+                        const gnssDataMap& gData );
 
      
 }; // End of 'IonoDCB' class declaration
@@ -174,6 +186,10 @@ IonoDCB::IonoDCB(char* arg0)
                  "maxOrder",
    "max order of the spherical harmonic expansion",
                    true),
+   intervalOpt ( 'I',
+                 "interval",
+   "the interval of estimating DCBs,usually 6 hours above",
+                   false),
    dcbFileListOpt( 'D',
                    "dcbFileList",
    "file storing a list of P1-C1 DCB file name ",
@@ -206,7 +222,11 @@ void IonoDCB::spinUp()
    }
    if(maxOrderOpt.getCount())
    {
-      maxOrder = maxOrderOpt.getValue()[0];
+      maxOrder = asInt(maxOrderOpt.getValue()[0]);
+   }
+   if(intervalOpt.getCount())
+   {
+      interval = asInt(intervalOpt.getValue()[0]);
    }
    if(dcbFileListOpt.getCount())
    {
@@ -219,6 +239,78 @@ void IonoDCB::spinUp()
    
 
 }  // End of method 'IonoDCB::spinUp()'
+
+  // Method to print solution values
+void IonoDCB::printSolution(  ofstream& outfile,
+                              int interval,
+                              int order,
+                              SolverIonoDCB2& solver,
+                              const CommonTime& time1,
+                              const CommonTime& time2,
+                              const gnssDataMap& gData )
+{
+
+      // Prepare for printing
+   outfile << fixed << setprecision(3);
+     
+     // Print results
+   CivilTime civtime1(time1);
+   CivilTime civtime2(time2);
+
+   SourceIDSet recSet = gData.getSourceIDSet();
+   SatIDSet satSet = gData.getSatIDSet();
+
+   outfile<<"Start time : "<<civtime1<<endl
+	  <<"End   time : "<<civtime2<<endl;
+   outfile<<"DCBs for satellite and receiver (unit : ns)"<<endl;
+   for (SatIDSet::iterator it = satSet.begin();
+        it != satSet.end(); it++)
+   {  
+      outfile<<asString(*it)<<setw(8)<<solver.getSatDCB(*it)<<endl;
+   }     
+   for (SourceIDSet::iterator it2 = recSet.begin();
+        it2 != recSet.end(); it2++)
+   {
+      outfile<<asString(*it2).substr(0,10)<<setw(8)<<solver.getRecDCB(*it2)<<endl;
+   }
+   outfile<<endl;
+   Vector<double> ionoCoef = solver.getIonoCoef();
+   int sum = ionoCoef.size();
+   int count = interval/2 + 1;
+   int i = 0;
+   for (int index = 1;index <= count;index++)
+   {
+      outfile<<index<<endl;
+      outfile<<"coefficients of ionosphere (unit : TECU)"<<endl
+             <<"order    degree    value"<<endl;
+     for (int n = 0;n <=order;n++)
+     {
+       for (int m = 0; m <=n;m++)
+      {
+      
+       if (m == 0)
+       { 
+        outfile<<setw(3)<<n<<setw(9)<<m<<setw(12)<<ionoCoef(i)<<endl;
+       }
+      
+       else
+       {
+         outfile<<setw(3)<<n<<setw(9)<<m<<setw(12)<<ionoCoef(i)<<endl;
+         i++;
+         outfile<<setw(3)<<n<<setw(9)<<-m<<setw(12)<<ionoCoef(i)<<endl;
+       }
+      i++;
+     }
+     
+   }
+
+  }
+    
+
+    return;
+
+
+}  // End of method 'IonoDCB::printSolution()'
 
 
 
@@ -418,7 +510,6 @@ void IonoDCB::process()
               << endl;
       }
    }
-
          // ===================
          // Let's read rinex file list !!!!
          // ===================
@@ -427,9 +518,7 @@ void IonoDCB::process()
    vector<string>::const_iterator rnxit = rnxFileListVec.begin();
    vector<string>::const_iterator outit = outputFileListVec.begin();
       // store the information of plural stations
-   gnssDataMap gData;
-      // store all the GPS satellte DCBs from Ionex files
-   satValueMap satDCB;
+   gnssDataMap gdsMap;
 
    while( rnxit != rnxFileListVec.end() )
    {
@@ -494,7 +583,7 @@ void IonoDCB::process()
       string station = roh.markerName;
 
       Triple antennaPos= roh.antennaPosition;
-      cout<<"Begin to process station : "<<station<<endl;
+      cout<<"Start to process station : "<<station.substr(0,4)<<endl;
       
       Position nominalPos( antennaPos[0],antennaPos[1],antennaPos[2] );
 
@@ -502,14 +591,14 @@ void IonoDCB::process()
          // the processing objects in order
       ProcessingList pList;
       if (hasDCBFile)
-	  {
+      {
       	 // Get the receiver type
        string recType = roh.recType;
 	    // Convert CC to NONCC 
        cc2noncc.setRecType(recType);
 	    // Copy C1 to P1
-	   cc2noncc.setCopyC1ToP1(true);
- 	   pList.push_back(cc2noncc); 
+       cc2noncc.setCopyC1ToP1(true);
+       pList.push_back(cc2noncc); 
       }
          // This object will check that all required observables are present
       RequireObservables requireObs;
@@ -649,8 +738,8 @@ void IonoDCB::process()
          // GNSS-related information
      gnssRinex gRin;
         // just store the type needed to reduce the memory consumption
-		// if using global stations to compute, the memory consumption
-		// is very huge
+	// if using global stations to compute, the memory consumption
+	// is very huge
      TypeIDSet typeNeed;
 
      typeNeed.insert(TypeID::PI);
@@ -658,8 +747,7 @@ void IonoDCB::process()
      typeNeed.insert(TypeID::LonIPP);
      typeNeed.insert(TypeID::ionoMap);
      typeNeed.insert(TypeID::weight);
-     typeNeed.insert(TypeID::satP1P2DCB);
-     typeNeed.insert(TypeID::recP1P2DCB);
+     
 
          // Loop over all data epochs
      while(rin >> gRin)
@@ -673,9 +761,10 @@ void IonoDCB::process()
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
             gRin >> pList;
-			 // add gRin into gnssDataMap
+	      // add gRin into gnssDataMap
      	    gRin.keepOnlyTypeID(typeNeed);
-            gData.addGnssRinex(gRin); 
+
+            gdsMap.addGnssRinex(gRin); 
          }
          catch(DecimateEpoch& d)
          {
@@ -715,19 +804,70 @@ void IonoDCB::process()
       //***********************************************
    SP3EphList.clear();
    IonexMapList.clear();
+
+  while ( outit != outputFileListVec.end() )
+  {
+      string outputFileName;
+
+       // Let's open the output file
+     if( outputFileListOpt.getCount() )
+     {
+       outputFileName = (*outit);
+     }
+     else
+     {
+      outputFileName = string("IonoDCB.out");
+     }
+
+     ofstream outfile;
+     outfile.open( outputFileName.c_str(), ios::out );
+
+    // initialize the class 
+    // SolverIonoDCB ionoDCBSolver(maxOrder);
+     SolverIonoDCB2 ionoDCBSolver2(maxOrder);
+
+     CommonTime epochFirst( gdsMap.begin()->first );
+     CommonTime epochLast( (--gdsMap.end())->first );
    
-    // initial the class 
-   SolverIonoDCB ionoDcbSolver(asInt(maxOrder));
-   SolverIonoDCB2 ionoDcbSolver2(asInt(maxOrder));
-   //ionoDcbSolver2.Process(gData);
+
+     if (intervalOpt.getCount())
+     {
+       int count = 24/interval; 
+       double intervals = interval * 3600.0;  
+ 
+      for (int i = 0;i<count;i++) 
+      {
+        CommonTime epoch1(epochFirst + intervals*i);
+        CommonTime epoch2(epochFirst + intervals*(i+1)-30.0);
+        if (epoch2 > epochLast)
+        {
+           epoch2 = epochLast;
+        }
+       
+       gnssDataMap gData(gdsMap.getDataFromTimeSpan(epoch1,epoch2));
+       
+       ionoDCBSolver2.Process(gData,interval);
+       printSolution(outfile,interval,maxOrder,ionoDCBSolver2,epoch1,epoch2,gData);     
+      }    
+   } 
+   else // using the data of one day to estimate DCBs
+   {
+    ionoDCBSolver2.Process(gdsMap,24);
+   
+    printSolution(outfile,24,maxOrder,ionoDCBSolver2,epochFirst,epochLast,gdsMap); 
+   } 
+   
+   outit++;
+
+  } // End of while(...)
      // define a tolerance(1 hour) for gnssDataMap 
      // the Data in (epoch-tolerance,epoch+tolerance) will be extracted
  //  double tol=0.1;
  //  gData.setTolerance(tol);
-   SourceIDSet sourSet = gData.getSourceIDSet();
-   SatIDSet satSet = gData.getSatIDSet();
+ //  SourceIDSet sourSet = gData.getSourceIDSet();
+ //  SatIDSet satSet = gData.getSatIDSet();
     // loop epochs
-   for (gnssDataMap::const_iterator it= gData.begin();
+  /*for (gnssDataMap::const_iterator it= gData.begin();
        it!= gData.end(); )
    {
      CommonTime epoch = it->first; 
@@ -743,13 +883,14 @@ void IonoDCB::process()
           // ionoDcbSolver.Process(epoch, gMap,satSet);
 	  // ionoDcbSolver.getSolution();
            ionoDcbSolver2.Process(gMap,satSet);
+           ionoDcbSolver2.getSolution();
           }
 		  
     // }
 	 // move the iterator to the next epoch
      std::advance(it,tempSet.size());
   }
- 
+ */
   return;
 
 }  // End of 'IonoDCB::process()'
@@ -759,7 +900,6 @@ void IonoDCB::process()
    // Main function
 int main(int argc, char* argv[])
 {
-
    try
    {
 
@@ -780,23 +920,22 @@ int main(int argc, char* argv[])
       return 0;
 
    }
-   catch(Exception& e)
+  catch(Exception& e)
    {
 
-      cerr << "Problem: " << e << endl;
+     cerr << "Problem: " << e << endl;
 
-      return 1;
+     return 1;
 
    }
    catch(...)
    {
 
-      cerr << "Unknown error." << endl;
+     cerr << "Unknown error." << endl;
 
-      return 1;
+     return 1;
 
    }
 
    return 0;
-
 }  // End of 'main()'
