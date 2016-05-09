@@ -42,7 +42,7 @@ namespace gpstk
 
    class SolverIonoDCB2 :  public SolverBase
    {
-   public:
+     public:
          // Constructor
       SolverIonoDCB2(int SHOrder = 2);
 

@@ -26,9 +26,6 @@
 #include "MatrixFunctors.hpp"
 #include "geometry.hpp"      // DEG_TO_RAD
 #include <cmath> 
-#include <time.h>
-
-
 
 using namespace std;
 using namespace gpstk::StringUtils;
@@ -59,18 +56,7 @@ namespace gpstk
 
    }
 
-
-
       // Compute the solution of the given equations set.
-      //
-      // @param prefitResiduals   Vector of prefit residuals
-      // @param designMatrix      Design matrix for equation system
-      // @param weightMatrix      Matrix of weights
-      //
-      // \warning A typical Kalman filter works with the measurements noise
-      // covariance matrix, instead of the matrix of weights. Beware of this
-      // detail, because this method uses the later.
-      //
       // @return
       //  0 if OK
       //  -1 if problems arose
@@ -114,7 +100,7 @@ namespace gpstk
        * @param gData     Data object holding the data.
        */
    gnssDataMap & SolverIonoDCB2::Process( gnssDataMap& gData, int interval )
-    {
+   {
 
 
           // Please note that there are two different sets being defined:
@@ -136,7 +122,8 @@ namespace gpstk
 	  // Number of SH coefficients
           // there are 13 sets of coefficients in a day,
           // correspnding to the 0h, 2h, 4h...,24h respectively
-      int numIonoCoef = (order+1)*(order+1)*(interval/2+1);
+      int numSH = (order+1) * (order+1);
+      int numIonoCoef = numSH * (interval/2+1);
 
       numMeas = 0; //Reset numMeas
 
@@ -277,55 +264,53 @@ namespace gpstk
               double Lat = DEG_TO_RAD*lat(seq);
                    //geomagnetic latitude
               Lat = std::asin(std::sin(DEG_TO_RAD*NGPLat)*std::sin(Lat)
-                                 +std::cos(DEG_TO_RAD*NGPLat)*std::cos(Lat)
-                                 *std::cos(DEG_TO_RAD*lon(seq)-DEG_TO_RAD*NGPLon));
+                              + std::cos(DEG_TO_RAD*NGPLat)*std::cos(Lat)
+                              * std::cos(DEG_TO_RAD*lon(seq)-DEG_TO_RAD*NGPLon));
 	   
 	        // transform geographic longitude into Sun-fixed longitude 
-               double SunFixedLon = DEG_TO_RAD*lon(seq)+second*M_PI/43200.0 - M_PI;
+               double lonFixed = DEG_TO_RAD*lon(seq)+second*M_PI/43200.0 - M_PI;
 
 	       double u = std::sin(Lat);
                int i = 0;
 	         // the start position of ionosphereic coefficient
-               int CoefStart = numCurrentSV+numRec+(order+1)*(order+1)*(t1-timeBegin);
+               int CoefStart = numCurrentSV+numRec+numSH*(t1-timeBegin);
+	       
+	       double tp1 = (t2-t)/(t2-t1);
+	       double tp2 = (t-t1)/(t2-t1);
+
 	       for (int n=0;n<=order;n++)
-	       for (int m=0;m<=n;m++)
-               {
-	        
-                 if (m==0)
-		 {
-                    hVector(CoefStart+i)=
-                                  legendrePoly(n,m,u)*norm(n,m)*(t2-t)/(t2-t1);//An0
-                    hVector(CoefStart+i+(order+1)*(order+1))=
-                                  legendrePoly(n,m,u)*norm(n,m)*(t-t1)/(t2-t1);//An0
+	       {
+		  for (int m=0;m<=n;m++)
+                {
+	           double p = legendrePoly(n,m,u)*norm(n,m);
+                   if (m==0)
+		   {
+                      hVector(CoefStart+i) = p * tp1;//An0
+                      hVector(CoefStart+i+numSH) = p * tp2;// Next An0
 
-                   index.push_back(CoefStart+i);
-                   index.push_back(CoefStart+i+(order+1)*(order+1));
+                      index.push_back(CoefStart+i);
+                      index.push_back(CoefStart+i+numSH);
                     
-		 }
-	         else   
-                 {
-                   hVector(CoefStart+i)=
-		     legendrePoly(n,m,u)*norm(n,m)*std::cos(m*SunFixedLon)*(t2-t)/(t2-t1);//Anm
-                   hVector(CoefStart+i+(order+1)*(order+1))=
-		     legendrePoly(n,m,u)*norm(n,m)*std::cos(m*SunFixedLon)*(t-t1)/(t2-t1);//Anm
+		   }
+	           else   
+                   {
+                      hVector(CoefStart+i)= p*std::cos(m*lonFixed)*tp1;//Anm
+                      hVector(CoefStart+i+numSH)=p*std::cos(m*lonFixed)*tp2;// Next Anm
 
-                   index.push_back(CoefStart+i);
-                   index.push_back(CoefStart+i+(order+1)*(order+1));
+                      index.push_back(CoefStart+i);
+                      index.push_back(CoefStart+i+numSH);
 
+                      i++;
+
+                      hVector(CoefStart+i)= p*std::sin(m*lonFixed)*tp1;//Bnm
+                      hVector(CoefStart+i+numSH)=p*std::sin(m*lonFixed)*tp2;//Next Bnm
+
+                      index.push_back(CoefStart+i);
+                      index.push_back(CoefStart+i+numSH);
+                   }
                    i++;
-
-                   hVector(CoefStart+i)=
-		     legendrePoly(n,m,u)*norm(n,m)*std::sin(m*SunFixedLon)*(t2-t)/(t2-t1);//Bnm
-                   hVector(CoefStart+i+(order+1)*(order+1))=
-		     legendrePoly(n,m,u)*norm(n,m)*std::sin(m*SunFixedLon)*(t-t1)/(t2-t1);//Bnm
-
-                   index.push_back(CoefStart+i);
-                   index.push_back(CoefStart+i+(order+1)*(order+1));
-                 }
-
-                  i++;
-     		
-		 }
+		  }
+	       }
 		  //in order to reduce the memory consumption
 		  //and speed up the process of matrix mutiplication
 		for (std::vector<int>::iterator it = index.begin();
@@ -396,8 +381,6 @@ namespace gpstk
 
 
    }  // End of method 'SolverIonoDCB2::Process()'
-
-
 
    SolverIonoDCB2& SolverIonoDCB2::prepare(void)
    {
@@ -492,3 +475,4 @@ namespace gpstk
 
 
 }  // End of namespace gpstk
+
