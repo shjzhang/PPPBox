@@ -46,5 +46,5 @@ do
 done
 
 # now, Let's perform the ppp positioning
-ppp -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -m msc.txt -o $proj.outlist
+ppp -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -m msc.txt -D $proj.dcb_p1c1list -o $proj.outlist
 
