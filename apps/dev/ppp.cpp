@@ -32,7 +32,7 @@
 //
 // 2016/03/30
 // Q.Liu    Add the DCB correction for the C1/P2 and C1/X2 receiver.
-//          If the station is not found in ths MSC file, then continue.
+// Q.Liu    If the station is not found in ths MSC file, then continue.
 //============================================================================
 
 
@@ -883,16 +883,16 @@ void ppp::process()
 
          // MSC data for this station
       initialTime.setTimeSystem(TimeSystem::Unknown);
-		MSCData mscData;
-		try
-		{
-   	   mscData = mscStore.findMSC( station, initialTime );
-		}
-		catch (InvalidRequest& ie)
-		{
+      MSCData mscData;
+      try
+      {
+         mscData = mscStore.findMSC( station, initialTime );
+      }
+      catch (InvalidRequest& ie)
+      {
          	// If file doesn't exist, issue a warning
          cerr << "The station " << station 
-         	  << " isn't included in MSC file." << endl;
+              << " isn't included in MSC file." << endl;
 
          ++rnxit;
          if(outputFileListOpt.getCount())
@@ -900,7 +900,7 @@ void ppp::process()
             ++outit;
          }
          continue;
-		}
+      }
       initialTime.setTimeSystem(TimeSystem::GPS);
 
          // The former peculiar code is possible because each time we
