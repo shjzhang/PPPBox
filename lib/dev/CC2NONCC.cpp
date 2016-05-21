@@ -26,11 +26,15 @@
 //  Copyright (c)
 //
 //  Q.Liu, Wuhan Uniersity, 2015 
+//============================================================================
+//  Modification
+//  2016-1-26    For C1/P2 receiver, the observable list maybe has P1(0),then
+//               this Satelite would be filtered, this result is unreasonable,
+//               so we delete the P1 filter.(Q.Liu)
 //
-//  Modified
-//  2016-1-26 For C1/P2 receiver, the observable list maybe has P1(0),then
-//  this Satelite would be filtered, this result is unreasonable,so we delete
-//  the P1 filter.
+//  2016-4-18    Add the exception when DCB file does not exist, and we will
+//               not do the DCB correction and will output the error message, 
+//               but not stop the data processing work.(Q.Liu)
 //============================================================================
 
 #include "CC2NONCC.hpp"
@@ -47,28 +51,43 @@ namespace gpstk
      // recType gets a value
    CC2NONCC& CC2NONCC::setRecType(const string& rectype)
    {
-		recType = rectype;
-		return (*this);
+	   recType = rectype;
+	   return (*this);
    }
 
       /* Sets name of file containing DCBs data.
        * @param name      Name of the file containing DCB(P1-C1)
        */
    CC2NONCC& CC2NONCC::setDCBFile(const string& fileP1C1)
+      throw(FileMissingException)
    {
-      dcbP1C1.open(fileP1C1);
-      
-      return (*this);
+      try
+      {
+         dcbP1C1.open(fileP1C1);
+         return (*this);
+      }
+      catch(FileMissingException e)
+      {
+         if(fileP1C1=="")
+         {
+            std::cerr << "Warning! The DCB file is not provided!" 
+                      <<std::endl;
+         }
+         if(fileP1C1!="")
+         {
+            std::cerr << "Warning! The DCB file '" << fileP1C1 <<"' does not exist!" 
+                      <<std::endl;
+         }
+      }
    }
 
       /* Sets name of file containing receiver code observable type.
-       * @param name      Name of the file containing receiver code
-	   *                  observable type
+       * @param name     Name of the file containing receiver code
+      *                  observable type
        */
    CC2NONCC& CC2NONCC::setRecTypeFile(const string& recfile)
    {
       recTypeData.open(recfile);
-      
       return (*this);
    }
    
@@ -87,16 +106,13 @@ namespace gpstk
       {
          SatIDSet satRejectedSet;
 
+         bool RecHasC1(false);
+         bool RecHasP1(false);	
+         bool RecHasP2(false);	
+         bool RecHasX2(false);	
 
-	 bool RecHasC1(false);
-	 bool RecHasP1(false);	
-	 bool RecHasP2(false);	
-	 bool RecHasX2(false);	
-
-         //
-         // Firstly, read the obs types that the 'recType' supports
-         //
-	 set<string> recCodeSet = recTypeData.getCode(recType);
+            // Firstly, read the code types that the 'recType' supports
+         set<string> recCodeSet = recTypeData.getCode(recType);
 
          if( recCodeSet.size() == 0 )
          {
@@ -104,14 +120,14 @@ namespace gpstk
          }
 
          int C1Code = recCodeSet.count("C1");
-	 int P1Code = recCodeSet.count("P1");
+         int P1Code = recCodeSet.count("P1");
          int P2Code = recCodeSet.count("P2");
-	 int X2Code = recCodeSet.count("X2");
+         int X2Code = recCodeSet.count("X2");
 
          if(C1Code) RecHasC1 = true;
-	 if(P1Code) RecHasP1 = true;
-	 if(P2Code) RecHasP2 = true;
-	 if(X2Code) RecHasX2 = true;
+         if(P1Code) RecHasP1 = true;
+         if(P2Code) RecHasP2 = true;
+         if(X2Code) RecHasX2 = true;
 
             // Loop through all the satellites
          satTypeValueMap::iterator it;
@@ -119,6 +135,17 @@ namespace gpstk
          {
             SatID sat = it->first;
             
+              // Get the Sat's DCB value
+            double Bp1c1(0.0);      // in ns
+            try
+            {
+               Bp1c1 = dcbP1C1.getDCB(sat);
+            }
+            catch(...)
+            {
+               Bp1c1 = 0.0;
+            }
+
             typeValueMap::iterator ittC1 = it->second.find(TypeID::C1);
             typeValueMap::iterator ittP1 = it->second.find(TypeID::P1);
             typeValueMap::iterator ittP2 = it->second.find(TypeID::P2);
@@ -126,71 +153,35 @@ namespace gpstk
             bool hasC1( ittC1 != it->second.end() );
             bool hasP1( ittP1 != it->second.end() );
             bool hasP2( ittP2 != it->second.end() );
-
-
+           
                // For receiver noncc (C1,P2)
                // For the noncc: only C1 should be corrected
-	       // C1->C1+(P1-C1)
+            	// C1->C1+(P1-C1)
             if( RecHasC1 && RecHasP2 )
             {
-		/* Changed in 2016-1-26, by Q.Liu
-		 * Because in some C1/P2 observable files,the observable
-		 * list has P1 */
-		if( hasC1 )
-		{
-                   double Bp1c1(0.0);      // in ns
-                   try
-                   {
-                      Bp1c1 = dcbP1C1.getDCB(sat);
-                   }
-                   catch(...)
-                   {
-                      Bp1c1 = 0.0;
-                   }
 
-		     // Correct
-		   it->second[TypeID::C1] = it->second[TypeID::C1] + 
-                                            Bp1c1 * C_MPS * 1.0e-9;
-		     // Copy C1 to P1
-                   if(copyC1ToP1)
-                   {
-		      it->second[TypeID::P1] = it->second[TypeID::C1]; 
-                   }
-		}
-		else 
-		{
-		    satRejectedSet.insert(it->first);
-	        }
+               if( hasC1 )
+               {
+                     // Correct
+                  it->second[TypeID::C1] = it->second[TypeID::C1] + 
+                                           Bp1c1 * C_MPS * 1.0e-9;
+               }
+               else 
+               {
+                  satRejectedSet.insert(it->first);
+               }
             }
-
-               // For receiver CC (C1,X2)
-	       // C1->C1+(P1-C1); X2->X2+(P1-C1)
+                 // For receiver CC (C1,X2)
+                 // C1->C1+(P1-C1); X2->X2+(P1-C1)
             if( RecHasC1 && RecHasX2 )
             {
                if( hasC1 && hasP2 )
                {
-                  double Bp1c1(0.0);      // in ns
-                  try
-                  {
-                     Bp1c1 = dcbP1C1.getDCB(sat);
-                  }
-                  catch(...)
-                  {
-                     Bp1c1 = 0.0;
-                  }
-
-		    // Correct
-		  it->second[TypeID::C1] = it->second[TypeID::C1] 
-                                         + Bp1c1 * C_MPS * 1.0e-9;
-
-	          it->second[TypeID::P2] = it->second[TypeID::P2] 
-                                         + Bp1c1 * C_MPS * 1.0e-9;
-
-		    // Copy C1 to P1
-                  if(copyC1ToP1)
-                  {
-		      it->second[TypeID::P1] = it->second[TypeID::C1]; 
-                  }
+                     // Correct
+                  it->second[TypeID::C1] = it->second[TypeID::C1] +
+                                           Bp1c1 * C_MPS * 1.0e-9;
+                  it->second[TypeID::P2] = it->second[TypeID::P2] +
+                                           Bp1c1 * C_MPS * 1.0e-9;
                }
                else
                {
@@ -198,6 +189,12 @@ namespace gpstk
                }
             }
 
+               // Copy C1 to P1
+            if( copyC1ToP1 && it->second[TypeID::P1] == 0.0 )
+            {
+               it->second[TypeID::P1] = it->second[TypeID::C1]; 
+            }
+   
          }  // End of 'for (it = gData.begin(); it != gData.end(); ++it)'
          gData.removeSatID(satRejectedSet);
          return gData;
@@ -225,3 +222,4 @@ namespace gpstk
 
 
 }  // End of namespace gpstk
+
