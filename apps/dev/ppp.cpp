@@ -684,6 +684,7 @@ void ppp::process()
    	// Read the receiver type file.
    string recTypeFile(confReader.getValue("recTypeFile"));
    cc2noncc.setRecTypeFile(recTypeFile);
+
    bool hasDCBFile(false);
    if(dcbFileStream)
    {

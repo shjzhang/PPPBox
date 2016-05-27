@@ -4,13 +4,13 @@
 import os
 import sys
 
-proj='igs16578'
+proj='igs16577'
 station='%s/%s.stalist.test'%(sys.path[0],proj)
 #print station
-workdir='/home/rinex/Documents/data/IGS/%s'%(proj)
+workdir='/Users/shjzhang/Documents/Develop/CynoNav/PPPBox/workplace/ppp'
 beginTime = '20111009000000'
-endTime = '20111012000000'
-agency='IGS'
+endTime = '20111010000000'
+agency = 'IGS'
 
 
 def processData(argDict):
