@@ -551,7 +551,7 @@ void ppp::process()
    {
          // If file doesn't exist, issue a warning
       cerr << "SP3 file List Name'" << sp3FileListName << "' doesn't exist or you don't "
-           << "have permission to read it. Skipping it." << endl;
+           << "have permission to read it." << endl;
 
       exit(-1);
    }
@@ -590,7 +590,7 @@ void ppp::process()
       {
             // If file doesn't exist, issue a warning
          cerr << "clock file List Name'" << clkFileListName << "' doesn't exist or you don't "
-              << "have permission to read it. Skipping it." << endl;
+              << "have permission to read it." << endl;
 
          exit(-1);
       }
@@ -632,7 +632,7 @@ void ppp::process()
    {
          // If file doesn't exist, issue a warning
       cerr << "erp file List Name'" << eopFileListName << "' doesn't exist or you don't "
-           << "have permission to read it. Skipping it." << endl;
+           << "have permission to read it." << endl;
 
       exit(-1);
    }
@@ -662,53 +662,68 @@ void ppp::process()
       // Now read dcb file from 'dcbFileName'
    ifstream dcbFileStream;
 
-      // Open eopFileList File
+      // Read and store dcb data
+   DCBDataReader dcbP1C1;
+      // Open dcbFileList File
    dcbFileStream.open(dcbFileName.c_str(), ios::in);
    if(!dcbFileStream)
    {
-		if(dcbFileName=="")
-		{
+      if(dcbFileName=="")
+      {
          cerr << "Warning: dcb file List Name is not provided, "
               << "We will not do the DCB correction!" << endl;
-		}
-		else
-		{
+      }
+      else
+      {
             // If file doesn't exist, issue a warning
          cerr << "Warning: dcb file List Name '" << dcbFileName << "' doesn't exist or you don't "
-              << "have permission to read it. Skipping it." << endl;
-		}
+              << "have permission to read it." << endl;
+         exit(-1);
+      }
    }
 
+<<<<<<< HEAD
    	// Declare a CC2NONCC object
    CC2NONCC cc2noncc;
    	// Read the receiver type file.
    string recTypeFile(confReader.getValue("recTypeFile"));
    cc2noncc.setRecTypeFile(recTypeFile);
 
+=======
+>>>>>>> 7d2be119065f55a89dc1edb690e09a5c308107df
    bool hasDCBFile(false);
    if(dcbFileStream)
    {
       string dcbFile;
          // Here is just a dcb file, we only read one month's dcb data.
       dcbFileStream >> dcbFile;
+
       try
       {
-      		// Read the DCB file.
-      	cc2noncc.setDCBFile(dcbFile); 
-      	hasDCBFile = true;
+         dcbP1C1.open(dcbFile);
       }
-
       catch(FileMissingException e)
       {
-      	cerr << e << endl;
-      }
-      catch (...)
-      {
-      	cerr << "Unknown error! " << endl;
+         if(dcbFile=="")
+         {
+            cerr << "Warning! The DCB file is not provided!" 
+                 << endl;
+         }
+         if(dcbFile!="")
+         {
+            cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
+                 << endl;
+            exit(-1);
+         }
       }
    }
-	dcbFileStream.close();
+   dcbFileStream.close();
 
+   	// Declare a CC2NONCC object
+   CC2NONCC cc2noncc(dcbP1C1);
+      // Read the receiver type file.
+   string recTypeFile(confReader.getValue("recTypeFile"));
+   cc2noncc.loadRecTypeFile(recTypeFile);
 
       //**********************************************
       // Now, Let's read MSC data
@@ -725,7 +740,7 @@ void ppp::process()
    {
          // If file doesn't exist, issue a warning
       cerr << "MSC file '" << mscFileName << "' doesn't exist or you don't "
-           << "have permission to read it. Skipping it." << endl;
+           << "have permission to read it." << endl;
       exit(-1);
    }
 
@@ -744,7 +759,7 @@ void ppp::process()
    {
          // If file doesn't exist, issue a warning
       cerr << "rinex file List Name'" << rnxFileListName << "' doesn't exist or you don't "
-           << "have permission to read it. Skipping it." << endl;
+           << "have permission to read it." << endl;
 
       exit(-1);
    }
@@ -780,7 +795,7 @@ void ppp::process()
       {
             // If file doesn't exist, issue a warning
          cerr << "output file List Name'" << outputFileListName << "' doesn't exist or you don't "
-              << "have permission to read it. Skipping it." << endl;
+              << "have permission to read it." << endl;
 
          exit(-1);
       }

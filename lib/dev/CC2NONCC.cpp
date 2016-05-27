@@ -32,7 +32,7 @@
 //               this Satelite would be filtered, this result is unreasonable,
 //               so we delete the P1 filter.(Q.Liu)
 //
-//  2016-4-18    Add the exception when DCB file does not exist, and we will
+//  2016-4-18    Add the exception when DCB file is not provided, and we will
 //               not do the DCB correction and will output the error message, 
 //               but not stop the data processing work.(Q.Liu)
 //============================================================================
@@ -51,41 +51,16 @@ namespace gpstk
      // recType gets a value
    CC2NONCC& CC2NONCC::setRecType(const string& rectype)
    {
-	   recType = rectype;
-	   return (*this);
+      recType = rectype;
+      return (*this);
    }
 
-      /* Sets name of file containing DCBs data.
-       * @param name      Name of the file containing DCB(P1-C1)
-       */
-   CC2NONCC& CC2NONCC::setDCBFile(const string& fileP1C1)
-      throw(FileMissingException)
-   {
-      try
-      {
-         dcbP1C1.open(fileP1C1);
-         return (*this);
-      }
-      catch(FileMissingException e)
-      {
-         if(fileP1C1=="")
-         {
-            std::cerr << "Warning! The DCB file is not provided!" 
-                      <<std::endl;
-         }
-         if(fileP1C1!="")
-         {
-            std::cerr << "Warning! The DCB file '" << fileP1C1 <<"' does not exist!" 
-                      <<std::endl;
-         }
-      }
-   }
-
-      /* Sets name of file containing receiver code observable type.
+      /* Add the file containing receiver type information.
+       *
        * @param name     Name of the file containing receiver code
-      *                  observable type
+       *                 observable type
        */
-   CC2NONCC& CC2NONCC::setRecTypeFile(const string& recfile)
+   CC2NONCC& CC2NONCC::loadRecTypeFile(const string& recfile)
    {
       recTypeData.open(recfile);
       return (*this);
@@ -139,7 +114,7 @@ namespace gpstk
             double Bp1c1(0.0);      // in ns
             try
             {
-               Bp1c1 = dcbP1C1.getDCB(sat);
+               Bp1c1 = (*dcbP1C1).getDCB(sat);
             }
             catch(...)
             {
