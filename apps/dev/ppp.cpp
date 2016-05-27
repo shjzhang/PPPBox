@@ -682,15 +682,6 @@ void ppp::process()
       }
    }
 
-<<<<<<< HEAD
-   	// Declare a CC2NONCC object
-   CC2NONCC cc2noncc;
-   	// Read the receiver type file.
-   string recTypeFile(confReader.getValue("recTypeFile"));
-   cc2noncc.setRecTypeFile(recTypeFile);
-
-=======
->>>>>>> 7d2be119065f55a89dc1edb690e09a5c308107df
    bool hasDCBFile(false);
    if(dcbFileStream)
    {
