@@ -37,6 +37,6 @@ get_eph.sh -b "2011 10 07 0 0 0" -e "2011 10 10 0 0 0" -i 24 -a "IGS" -u "url.li
 #done
 
 # now, Let's perform the ppp positioning
-pod -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -m msc.txt -o $proj.outlist
+podforgrace -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -m msc.txt -o $proj.outlist
 
 
