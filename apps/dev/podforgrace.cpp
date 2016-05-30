@@ -1757,24 +1757,24 @@ void pod::process()
 //            cout<<endl;
             
             
-            
-            time.get(wday,wsod,wfsod);
-            SatIDSet currSatSet= gRin.body.getSatID();
-            Vector<double> prefitL(gRin.getVectorOfTypeID(TypeID::prefitL));
-            
-
-            cout<<wsod<<" " << fixed << setprecision( precision );
-            int i=0;
-            for( SatIDSet::const_iterator itSat = currSatSet.begin();
-                itSat != currSatSet.end();
-                ++itSat )
-            {
-
-                  double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
-                  cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i);
-                  ++i;
-            }
-            cout<<endl;
+//            
+//            time.get(wday,wsod,wfsod);
+//            SatIDSet currSatSet= gRin.body.getSatID();
+//            Vector<double> prefitL(gRin.getVectorOfTypeID(TypeID::prefitL));
+//            
+//
+//            cout<<wsod<<" " << fixed << setprecision( precision );
+//            int i=0;
+//            for( SatIDSet::const_iterator itSat = currSatSet.begin();
+//                itSat != currSatSet.end();
+//                ++itSat )
+//            {
+//
+//                  double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
+//                  cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i);
+//                  ++i;
+//            }
+//            cout<<endl;
             
             // Print out the solution
             printSolution( outfile,
