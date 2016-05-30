@@ -688,10 +688,10 @@ void pod::process()
       // Load all the receiver position files
       char attfile1[100]="GO_CONS_SST_PRM_2__20091101T000000_20091131T235959_0101.GGT";
       char attfile2[100]="GO_CONS_EGG_NOM_2__20091101T000000_20091131T235959_0101.IAQ";
-<<<<<<< HEAD
+
       // the attfile isn't read. as I didn't use correction of PCV
-=======
->>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
+
+
       char prdfile[100]="grace07_09a.col";
       //file time start month in J.D.day
       double tmonth0= 2.4551365E6;  // here is 2009.11.1.0
@@ -964,14 +964,6 @@ void pod::process()
          pList.push_back(pObsFilter);       // Add to processing list
       }
 
-
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
          // Declare a basic modeler
       BasicModel basic(nominalPos, SP3EphList);
          // Set the minimum elevation
@@ -1160,8 +1152,7 @@ void pod::process()
       phaseAlignL2.setPhaseWavelength(0.244210213425);
       pList.push_back(phaseAlignL2);       // Add to processing list
 //
-<<<<<<< HEAD
-=======
+
          ///////////////////////////////////////////////////
          //
          //  Cycle slip detection
@@ -1174,7 +1165,7 @@ void pod::process()
          //          after the corrections, because the the corrections
          //          will be subtracted in the raw observables.
          //
->>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
+
       ComputeLinear linear2;
       linear2.addLinear(comb.pcCombination);
       linear2.addLinear(comb.lcCombination);
@@ -1182,8 +1173,7 @@ void pod::process()
       linear2.addLinear(comb.lcPrefit);
       pList.push_back(linear2);       // Add to processing list
          
-<<<<<<< HEAD
-=======
+
 //         PrefitCSDetector prefitCSDetector;
 //         pList.push_back( prefitCSDetector );
 //         
@@ -1198,8 +1188,7 @@ void pod::process()
 //         pList.push_back(markArc);       // Add to processing list
          
          
-      
->>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
+
          
          // Declare a simple filter object to screen PC
       SimpleFilter pcFilter;
@@ -1229,8 +1218,6 @@ void pod::process()
       //PrefitFilter prefitFilter;
       //pList.push_back(prefitFilter);
          
-<<<<<<< HEAD
-=======
          
          ///////////////////////////////////////////////////
          //
@@ -1284,18 +1271,13 @@ void pod::process()
 //      linear4.addLinear(comb.lcPrefit);
 //      pList.push_back(linear4);       // Add to processing list
          
->>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
          ///////////////////////////////////////////////////
          //
          //  Now, the solver configuration !!!
          //
          ///////////////////////////////////////////////////
          
-         
-<<<<<<< HEAD
-=======
-         
->>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
+
          // Get if we want results in ECEF or RAC reference system
       bool isRAC( confReader.getValueAsBoolean( "USERAC") );
          
@@ -1458,10 +1440,6 @@ void pod::process()
                   dtr=gRin.header.dtreciver;
                   //dtr=0.0E-3;
                   
-<<<<<<< HEAD
-=======
-                  
->>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
                   // Store update current epoch
                   gRin.header.epoch +=dtr;
                   //update time for position and offsetRicivert
@@ -1757,7 +1735,6 @@ void pod::process()
             
             offset = (offset.R3(lon)).R2(-lat);
             
-<<<<<<< HEAD
 //            
 //            
 //            // cout prefit of epoch obs.
@@ -1778,7 +1755,6 @@ void pod::process()
 //                  ++i;
 //            }
 //            cout<<endl;
-=======
             
             
             
@@ -1799,7 +1775,6 @@ void pod::process()
                   ++i;
             }
             cout<<endl;
->>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
             
             // Print out the solution
             printSolution( outfile,
