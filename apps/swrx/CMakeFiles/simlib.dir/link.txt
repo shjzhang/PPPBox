@@ -1,2 +1,0 @@
-/usr/bin/ar cr libsimlib.a  CMakeFiles/simlib.dir/normal.cpp.o CMakeFiles/simlib.dir/CCReplica.cpp.o CMakeFiles/simlib.dir/IQStream.cpp.o CMakeFiles/simlib.dir/EMLTracker.cpp.o CMakeFiles/simlib.dir/NavFramer.cpp.o
-/usr/bin/ranlib libsimlib.a

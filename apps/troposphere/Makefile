@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/troposphere/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/troposphere/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/troposphere/CMakeFiles/calztd.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/CMakeFiles/calztd.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/troposphere/CMakeFiles/calztd.dir/rule
 .PHONY : apps/troposphere/CMakeFiles/calztd.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ calztd: apps/troposphere/CMakeFiles/calztd.dir/rule
 
 # fast build rule for target.
 calztd/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/troposphere/CMakeFiles/calztd.dir/build.make apps/troposphere/CMakeFiles/calztd.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/troposphere/CMakeFiles/calztd.dir/build.make apps/troposphere/CMakeFiles/calztd.dir/build
 .PHONY : calztd/fast
 
 calztd.o: calztd.cpp.o
@@ -158,7 +158,7 @@ calztd.o: calztd.cpp.o
 
 # target to build an object file
 calztd.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/troposphere/CMakeFiles/calztd.dir/build.make apps/troposphere/CMakeFiles/calztd.dir/calztd.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/troposphere/CMakeFiles/calztd.dir/build.make apps/troposphere/CMakeFiles/calztd.dir/calztd.cpp.o
 .PHONY : calztd.cpp.o
 
 calztd.i: calztd.cpp.i
@@ -166,7 +166,7 @@ calztd.i: calztd.cpp.i
 
 # target to preprocess a source file
 calztd.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/troposphere/CMakeFiles/calztd.dir/build.make apps/troposphere/CMakeFiles/calztd.dir/calztd.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/troposphere/CMakeFiles/calztd.dir/build.make apps/troposphere/CMakeFiles/calztd.dir/calztd.cpp.i
 .PHONY : calztd.cpp.i
 
 calztd.s: calztd.cpp.s
@@ -174,7 +174,7 @@ calztd.s: calztd.cpp.s
 
 # target to generate assembly for a file
 calztd.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/troposphere/CMakeFiles/calztd.dir/build.make apps/troposphere/CMakeFiles/calztd.dir/calztd.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/troposphere/CMakeFiles/calztd.dir/build.make apps/troposphere/CMakeFiles/calztd.dir/calztd.cpp.s
 .PHONY : calztd.cpp.s
 
 # Help Target
@@ -204,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

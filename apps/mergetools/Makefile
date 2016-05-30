@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/mergetools/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/mergetools/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/mergetools/CMakeFiles/mergeFIC.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/CMakeFiles/mergeFIC.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/CMakeFiles/mergeFIC.dir/rule
 .PHONY : apps/mergetools/CMakeFiles/mergeFIC.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ mergeFIC: apps/mergetools/CMakeFiles/mergeFIC.dir/rule
 
 # fast build rule for target.
 mergeFIC/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeFIC.dir/build.make apps/mergetools/CMakeFiles/mergeFIC.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeFIC.dir/build.make apps/mergetools/CMakeFiles/mergeFIC.dir/build
 .PHONY : mergeFIC/fast
 
 # Convenience name for target.
 apps/mergetools/CMakeFiles/mergeRinMet.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/CMakeFiles/mergeRinMet.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/CMakeFiles/mergeRinMet.dir/rule
 .PHONY : apps/mergetools/CMakeFiles/mergeRinMet.dir/rule
 
 # Convenience name for target.
@@ -164,12 +164,12 @@ mergeRinMet: apps/mergetools/CMakeFiles/mergeRinMet.dir/rule
 
 # fast build rule for target.
 mergeRinMet/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinMet.dir/build.make apps/mergetools/CMakeFiles/mergeRinMet.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinMet.dir/build.make apps/mergetools/CMakeFiles/mergeRinMet.dir/build
 .PHONY : mergeRinMet/fast
 
 # Convenience name for target.
 apps/mergetools/CMakeFiles/mergeRinNav.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/CMakeFiles/mergeRinNav.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/CMakeFiles/mergeRinNav.dir/rule
 .PHONY : apps/mergetools/CMakeFiles/mergeRinNav.dir/rule
 
 # Convenience name for target.
@@ -178,12 +178,12 @@ mergeRinNav: apps/mergetools/CMakeFiles/mergeRinNav.dir/rule
 
 # fast build rule for target.
 mergeRinNav/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinNav.dir/build.make apps/mergetools/CMakeFiles/mergeRinNav.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinNav.dir/build.make apps/mergetools/CMakeFiles/mergeRinNav.dir/build
 .PHONY : mergeRinNav/fast
 
 # Convenience name for target.
 apps/mergetools/CMakeFiles/mergeRinObs.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/CMakeFiles/mergeRinObs.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/mergetools/CMakeFiles/mergeRinObs.dir/rule
 .PHONY : apps/mergetools/CMakeFiles/mergeRinObs.dir/rule
 
 # Convenience name for target.
@@ -192,7 +192,7 @@ mergeRinObs: apps/mergetools/CMakeFiles/mergeRinObs.dir/rule
 
 # fast build rule for target.
 mergeRinObs/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinObs.dir/build.make apps/mergetools/CMakeFiles/mergeRinObs.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinObs.dir/build.make apps/mergetools/CMakeFiles/mergeRinObs.dir/build
 .PHONY : mergeRinObs/fast
 
 mergeFIC.o: mergeFIC.cpp.o
@@ -200,7 +200,7 @@ mergeFIC.o: mergeFIC.cpp.o
 
 # target to build an object file
 mergeFIC.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeFIC.dir/build.make apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeFIC.dir/build.make apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o
 .PHONY : mergeFIC.cpp.o
 
 mergeFIC.i: mergeFIC.cpp.i
@@ -208,7 +208,7 @@ mergeFIC.i: mergeFIC.cpp.i
 
 # target to preprocess a source file
 mergeFIC.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeFIC.dir/build.make apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeFIC.dir/build.make apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.i
 .PHONY : mergeFIC.cpp.i
 
 mergeFIC.s: mergeFIC.cpp.s
@@ -216,7 +216,7 @@ mergeFIC.s: mergeFIC.cpp.s
 
 # target to generate assembly for a file
 mergeFIC.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeFIC.dir/build.make apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeFIC.dir/build.make apps/mergetools/CMakeFiles/mergeFIC.dir/mergeFIC.cpp.s
 .PHONY : mergeFIC.cpp.s
 
 mergeRinMet.o: mergeRinMet.cpp.o
@@ -224,7 +224,7 @@ mergeRinMet.o: mergeRinMet.cpp.o
 
 # target to build an object file
 mergeRinMet.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinMet.dir/build.make apps/mergetools/CMakeFiles/mergeRinMet.dir/mergeRinMet.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinMet.dir/build.make apps/mergetools/CMakeFiles/mergeRinMet.dir/mergeRinMet.cpp.o
 .PHONY : mergeRinMet.cpp.o
 
 mergeRinMet.i: mergeRinMet.cpp.i
@@ -232,7 +232,7 @@ mergeRinMet.i: mergeRinMet.cpp.i
 
 # target to preprocess a source file
 mergeRinMet.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinMet.dir/build.make apps/mergetools/CMakeFiles/mergeRinMet.dir/mergeRinMet.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinMet.dir/build.make apps/mergetools/CMakeFiles/mergeRinMet.dir/mergeRinMet.cpp.i
 .PHONY : mergeRinMet.cpp.i
 
 mergeRinMet.s: mergeRinMet.cpp.s
@@ -240,7 +240,7 @@ mergeRinMet.s: mergeRinMet.cpp.s
 
 # target to generate assembly for a file
 mergeRinMet.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinMet.dir/build.make apps/mergetools/CMakeFiles/mergeRinMet.dir/mergeRinMet.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinMet.dir/build.make apps/mergetools/CMakeFiles/mergeRinMet.dir/mergeRinMet.cpp.s
 .PHONY : mergeRinMet.cpp.s
 
 mergeRinNav.o: mergeRinNav.cpp.o
@@ -248,7 +248,7 @@ mergeRinNav.o: mergeRinNav.cpp.o
 
 # target to build an object file
 mergeRinNav.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinNav.dir/build.make apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinNav.dir/build.make apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o
 .PHONY : mergeRinNav.cpp.o
 
 mergeRinNav.i: mergeRinNav.cpp.i
@@ -256,7 +256,7 @@ mergeRinNav.i: mergeRinNav.cpp.i
 
 # target to preprocess a source file
 mergeRinNav.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinNav.dir/build.make apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinNav.dir/build.make apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.i
 .PHONY : mergeRinNav.cpp.i
 
 mergeRinNav.s: mergeRinNav.cpp.s
@@ -264,7 +264,7 @@ mergeRinNav.s: mergeRinNav.cpp.s
 
 # target to generate assembly for a file
 mergeRinNav.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinNav.dir/build.make apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinNav.dir/build.make apps/mergetools/CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.s
 .PHONY : mergeRinNav.cpp.s
 
 mergeRinObs.o: mergeRinObs.cpp.o
@@ -272,7 +272,7 @@ mergeRinObs.o: mergeRinObs.cpp.o
 
 # target to build an object file
 mergeRinObs.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinObs.dir/build.make apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinObs.dir/build.make apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.o
 .PHONY : mergeRinObs.cpp.o
 
 mergeRinObs.i: mergeRinObs.cpp.i
@@ -280,7 +280,7 @@ mergeRinObs.i: mergeRinObs.cpp.i
 
 # target to preprocess a source file
 mergeRinObs.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinObs.dir/build.make apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinObs.dir/build.make apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.i
 .PHONY : mergeRinObs.cpp.i
 
 mergeRinObs.s: mergeRinObs.cpp.s
@@ -288,7 +288,7 @@ mergeRinObs.s: mergeRinObs.cpp.s
 
 # target to generate assembly for a file
 mergeRinObs.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinObs.dir/build.make apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/mergetools/CMakeFiles/mergeRinObs.dir/build.make apps/mergetools/CMakeFiles/mergeRinObs.dir/mergeRinObs.cpp.s
 .PHONY : mergeRinObs.cpp.s
 
 # Help Target
@@ -330,6 +330,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

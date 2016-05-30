@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/oallandev.dir/oallandev.cpp.o  -o oallandev -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

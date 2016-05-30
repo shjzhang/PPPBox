@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/receiver/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/receiver/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/receiver/CMakeFiles/rtAshtech.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/CMakeFiles/rtAshtech.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/receiver/CMakeFiles/rtAshtech.dir/rule
 .PHONY : apps/receiver/CMakeFiles/rtAshtech.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ rtAshtech: apps/receiver/CMakeFiles/rtAshtech.dir/rule
 
 # fast build rule for target.
 rtAshtech/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/build
 .PHONY : rtAshtech/fast
 
 AshtechMessage.o: AshtechMessage.cpp.o
@@ -158,7 +158,7 @@ AshtechMessage.o: AshtechMessage.cpp.o
 
 # target to build an object file
 AshtechMessage.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.o
 .PHONY : AshtechMessage.cpp.o
 
 AshtechMessage.i: AshtechMessage.cpp.i
@@ -166,7 +166,7 @@ AshtechMessage.i: AshtechMessage.cpp.i
 
 # target to preprocess a source file
 AshtechMessage.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.i
 .PHONY : AshtechMessage.cpp.i
 
 AshtechMessage.s: AshtechMessage.cpp.s
@@ -174,7 +174,7 @@ AshtechMessage.s: AshtechMessage.cpp.s
 
 # target to generate assembly for a file
 AshtechMessage.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/AshtechMessage.cpp.s
 .PHONY : AshtechMessage.cpp.s
 
 FDStreamBuff.o: FDStreamBuff.cpp.o
@@ -182,7 +182,7 @@ FDStreamBuff.o: FDStreamBuff.cpp.o
 
 # target to build an object file
 FDStreamBuff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/FDStreamBuff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/FDStreamBuff.cpp.o
 .PHONY : FDStreamBuff.cpp.o
 
 FDStreamBuff.i: FDStreamBuff.cpp.i
@@ -190,7 +190,7 @@ FDStreamBuff.i: FDStreamBuff.cpp.i
 
 # target to preprocess a source file
 FDStreamBuff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/FDStreamBuff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/FDStreamBuff.cpp.i
 .PHONY : FDStreamBuff.cpp.i
 
 FDStreamBuff.s: FDStreamBuff.cpp.s
@@ -198,7 +198,7 @@ FDStreamBuff.s: FDStreamBuff.cpp.s
 
 # target to generate assembly for a file
 FDStreamBuff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/FDStreamBuff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/FDStreamBuff.cpp.s
 .PHONY : FDStreamBuff.cpp.s
 
 ScreenControl.o: ScreenControl.cpp.o
@@ -206,7 +206,7 @@ ScreenControl.o: ScreenControl.cpp.o
 
 # target to build an object file
 ScreenControl.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/ScreenControl.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/ScreenControl.cpp.o
 .PHONY : ScreenControl.cpp.o
 
 ScreenControl.i: ScreenControl.cpp.i
@@ -214,7 +214,7 @@ ScreenControl.i: ScreenControl.cpp.i
 
 # target to preprocess a source file
 ScreenControl.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/ScreenControl.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/ScreenControl.cpp.i
 .PHONY : ScreenControl.cpp.i
 
 ScreenControl.s: ScreenControl.cpp.s
@@ -222,7 +222,7 @@ ScreenControl.s: ScreenControl.cpp.s
 
 # target to generate assembly for a file
 ScreenControl.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/ScreenControl.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/ScreenControl.cpp.s
 .PHONY : ScreenControl.cpp.s
 
 TCPStreamBuff.o: TCPStreamBuff.cpp.o
@@ -230,7 +230,7 @@ TCPStreamBuff.o: TCPStreamBuff.cpp.o
 
 # target to build an object file
 TCPStreamBuff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/TCPStreamBuff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/TCPStreamBuff.cpp.o
 .PHONY : TCPStreamBuff.cpp.o
 
 TCPStreamBuff.i: TCPStreamBuff.cpp.i
@@ -238,7 +238,7 @@ TCPStreamBuff.i: TCPStreamBuff.cpp.i
 
 # target to preprocess a source file
 TCPStreamBuff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/TCPStreamBuff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/TCPStreamBuff.cpp.i
 .PHONY : TCPStreamBuff.cpp.i
 
 TCPStreamBuff.s: TCPStreamBuff.cpp.s
@@ -246,7 +246,7 @@ TCPStreamBuff.s: TCPStreamBuff.cpp.s
 
 # target to generate assembly for a file
 TCPStreamBuff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/TCPStreamBuff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/TCPStreamBuff.cpp.s
 .PHONY : TCPStreamBuff.cpp.s
 
 rtAshtech.o: rtAshtech.cpp.o
@@ -254,7 +254,7 @@ rtAshtech.o: rtAshtech.cpp.o
 
 # target to build an object file
 rtAshtech.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.o
 .PHONY : rtAshtech.cpp.o
 
 rtAshtech.i: rtAshtech.cpp.i
@@ -262,7 +262,7 @@ rtAshtech.i: rtAshtech.cpp.i
 
 # target to preprocess a source file
 rtAshtech.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.i
 .PHONY : rtAshtech.cpp.i
 
 rtAshtech.s: rtAshtech.cpp.s
@@ -270,7 +270,7 @@ rtAshtech.s: rtAshtech.cpp.s
 
 # target to generate assembly for a file
 rtAshtech.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/receiver/CMakeFiles/rtAshtech.dir/build.make apps/receiver/CMakeFiles/rtAshtech.dir/rtAshtech.cpp.s
 .PHONY : rtAshtech.cpp.s
 
 # Help Target
@@ -312,6 +312,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

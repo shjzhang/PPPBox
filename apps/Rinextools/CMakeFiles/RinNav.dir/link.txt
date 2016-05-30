@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/RinNav.dir/RinNav.cpp.o  -o RinNav -rdynamic ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

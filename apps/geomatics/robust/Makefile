@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/geomatics/robust/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/geomatics/robust/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/geomatics/robust/CMakeFiles/lsfilt.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/CMakeFiles/lsfilt.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/CMakeFiles/lsfilt.dir/rule
 .PHONY : apps/geomatics/robust/CMakeFiles/lsfilt.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ lsfilt: apps/geomatics/robust/CMakeFiles/lsfilt.dir/rule
 
 # fast build rule for target.
 lsfilt/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/robust/CMakeFiles/lsfilt.dir/build.make apps/geomatics/robust/CMakeFiles/lsfilt.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/robust/CMakeFiles/lsfilt.dir/build.make apps/geomatics/robust/CMakeFiles/lsfilt.dir/build
 .PHONY : lsfilt/fast
 
 # Convenience name for target.
 apps/geomatics/robust/CMakeFiles/rstats.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/CMakeFiles/rstats.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/robust/CMakeFiles/rstats.dir/rule
 .PHONY : apps/geomatics/robust/CMakeFiles/rstats.dir/rule
 
 # Convenience name for target.
@@ -164,7 +164,7 @@ rstats: apps/geomatics/robust/CMakeFiles/rstats.dir/rule
 
 # fast build rule for target.
 rstats/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/robust/CMakeFiles/rstats.dir/build.make apps/geomatics/robust/CMakeFiles/rstats.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/robust/CMakeFiles/rstats.dir/build.make apps/geomatics/robust/CMakeFiles/rstats.dir/build
 .PHONY : rstats/fast
 
 lsfilt.o: lsfilt.cpp.o
@@ -172,7 +172,7 @@ lsfilt.o: lsfilt.cpp.o
 
 # target to build an object file
 lsfilt.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/robust/CMakeFiles/lsfilt.dir/build.make apps/geomatics/robust/CMakeFiles/lsfilt.dir/lsfilt.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/robust/CMakeFiles/lsfilt.dir/build.make apps/geomatics/robust/CMakeFiles/lsfilt.dir/lsfilt.cpp.o
 .PHONY : lsfilt.cpp.o
 
 lsfilt.i: lsfilt.cpp.i
@@ -180,7 +180,7 @@ lsfilt.i: lsfilt.cpp.i
 
 # target to preprocess a source file
 lsfilt.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/robust/CMakeFiles/lsfilt.dir/build.make apps/geomatics/robust/CMakeFiles/lsfilt.dir/lsfilt.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/robust/CMakeFiles/lsfilt.dir/build.make apps/geomatics/robust/CMakeFiles/lsfilt.dir/lsfilt.cpp.i
 .PHONY : lsfilt.cpp.i
 
 lsfilt.s: lsfilt.cpp.s
@@ -188,7 +188,7 @@ lsfilt.s: lsfilt.cpp.s
 
 # target to generate assembly for a file
 lsfilt.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/robust/CMakeFiles/lsfilt.dir/build.make apps/geomatics/robust/CMakeFiles/lsfilt.dir/lsfilt.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/robust/CMakeFiles/lsfilt.dir/build.make apps/geomatics/robust/CMakeFiles/lsfilt.dir/lsfilt.cpp.s
 .PHONY : lsfilt.cpp.s
 
 rstats.o: rstats.cpp.o
@@ -196,7 +196,7 @@ rstats.o: rstats.cpp.o
 
 # target to build an object file
 rstats.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/robust/CMakeFiles/rstats.dir/build.make apps/geomatics/robust/CMakeFiles/rstats.dir/rstats.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/robust/CMakeFiles/rstats.dir/build.make apps/geomatics/robust/CMakeFiles/rstats.dir/rstats.cpp.o
 .PHONY : rstats.cpp.o
 
 rstats.i: rstats.cpp.i
@@ -204,7 +204,7 @@ rstats.i: rstats.cpp.i
 
 # target to preprocess a source file
 rstats.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/robust/CMakeFiles/rstats.dir/build.make apps/geomatics/robust/CMakeFiles/rstats.dir/rstats.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/robust/CMakeFiles/rstats.dir/build.make apps/geomatics/robust/CMakeFiles/rstats.dir/rstats.cpp.i
 .PHONY : rstats.cpp.i
 
 rstats.s: rstats.cpp.s
@@ -212,7 +212,7 @@ rstats.s: rstats.cpp.s
 
 # target to generate assembly for a file
 rstats.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/robust/CMakeFiles/rstats.dir/build.make apps/geomatics/robust/CMakeFiles/rstats.dir/rstats.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/robust/CMakeFiles/rstats.dir/build.make apps/geomatics/robust/CMakeFiles/rstats.dir/rstats.cpp.s
 .PHONY : rstats.cpp.s
 
 # Help Target
@@ -246,6 +246,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

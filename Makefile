@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,9 +110,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -10290,6 +10290,30 @@ lib/dev/MWCSDetector.cpp.s:
 	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/MWCSDetector.cpp.s
 .PHONY : lib/dev/MWCSDetector.cpp.s
 
+lib/dev/MWCSDetector2.o: lib/dev/MWCSDetector2.cpp.o
+.PHONY : lib/dev/MWCSDetector2.o
+
+# target to build an object file
+lib/dev/MWCSDetector2.cpp.o:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/MWCSDetector2.cpp.o
+.PHONY : lib/dev/MWCSDetector2.cpp.o
+
+lib/dev/MWCSDetector2.i: lib/dev/MWCSDetector2.cpp.i
+.PHONY : lib/dev/MWCSDetector2.i
+
+# target to preprocess a source file
+lib/dev/MWCSDetector2.cpp.i:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/MWCSDetector2.cpp.i
+.PHONY : lib/dev/MWCSDetector2.cpp.i
+
+lib/dev/MWCSDetector2.s: lib/dev/MWCSDetector2.cpp.s
+.PHONY : lib/dev/MWCSDetector2.s
+
+# target to generate assembly for a file
+lib/dev/MWCSDetector2.cpp.s:
+	$(MAKE) -f CMakeFiles/pppbox.dir/build.make CMakeFiles/pppbox.dir/lib/dev/MWCSDetector2.cpp.s
+.PHONY : lib/dev/MWCSDetector2.cpp.s
+
 lib/dev/MWFilter.o: lib/dev/MWFilter.cpp.o
 .PHONY : lib/dev/MWFilter.o
 
@@ -12161,6 +12185,9 @@ help:
 	@echo "... lib/dev/MWCSDetector.o"
 	@echo "... lib/dev/MWCSDetector.i"
 	@echo "... lib/dev/MWCSDetector.s"
+	@echo "... lib/dev/MWCSDetector2.o"
+	@echo "... lib/dev/MWCSDetector2.i"
+	@echo "... lib/dev/MWCSDetector2.s"
 	@echo "... lib/dev/MWFilter.o"
 	@echo "... lib/dev/MWFilter.i"
 	@echo "... lib/dev/MWFilter.s"

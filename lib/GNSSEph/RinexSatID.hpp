@@ -38,6 +38,11 @@
 //                           release, distribution is unlimited.
 //
 //=============================================================================
+// Modification:
+// 2016/4/16   Add the satellite system "MIXED" case, or when we write the Rinex
+//             file, we will not find the "MIXED" system case.(Q.Liu)
+//
+//=============================================================================
 
 #include <iostream>
 #include <sstream>
@@ -141,6 +146,7 @@ namespace gpstk
             case systemTransit: return 'T';
             case systemQZSS:    return 'J';
             case systemBeiDou:  return 'C';
+			   case systemMixed:   return 'M';
             default:            return '?';
          }
       };
@@ -160,6 +166,7 @@ namespace gpstk
             case systemTransit: return "Transit";
             case systemQZSS:    return "QZSS";
             case systemBeiDou:  return "BeiDou";
+			   case systemMixed:   return "MIXED";
             default:            return "Unknown";
          }
       };
@@ -178,6 +185,7 @@ namespace gpstk
             case systemTransit: return "TRN";     // RINEX ver 2
             case systemQZSS:    return "QZS";
             case systemBeiDou:  return "BDS";
+			   case systemMixed:   return "MIX";
             default:            return "Unk";
          }
       };

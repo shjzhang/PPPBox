@@ -75,6 +75,8 @@
    // Class to filter out satellites without required observables
 #include "RequireObservables.hpp"
 
+#include "RequireObservables.hpp"
+
    // Class to filter out observables grossly out of limits
 #include "SimpleFilter.hpp"
 

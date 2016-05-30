@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/converters/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/converters/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/converters/CMakeFiles/ash2mdp.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/CMakeFiles/ash2mdp.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/CMakeFiles/ash2mdp.dir/rule
 .PHONY : apps/converters/CMakeFiles/ash2mdp.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ ash2mdp: apps/converters/CMakeFiles/ash2mdp.dir/rule
 
 # fast build rule for target.
 ash2mdp/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/ash2mdp.dir/build.make apps/converters/CMakeFiles/ash2mdp.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/ash2mdp.dir/build.make apps/converters/CMakeFiles/ash2mdp.dir/build
 .PHONY : ash2mdp/fast
 
 # Convenience name for target.
 apps/converters/CMakeFiles/ash2xyz.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/CMakeFiles/ash2xyz.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/CMakeFiles/ash2xyz.dir/rule
 .PHONY : apps/converters/CMakeFiles/ash2xyz.dir/rule
 
 # Convenience name for target.
@@ -164,12 +164,12 @@ ash2xyz: apps/converters/CMakeFiles/ash2xyz.dir/rule
 
 # fast build rule for target.
 ash2xyz/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/ash2xyz.dir/build.make apps/converters/CMakeFiles/ash2xyz.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/ash2xyz.dir/build.make apps/converters/CMakeFiles/ash2xyz.dir/build
 .PHONY : ash2xyz/fast
 
 # Convenience name for target.
 apps/converters/CMakeFiles/novaRinex.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/CMakeFiles/novaRinex.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/converters/CMakeFiles/novaRinex.dir/rule
 .PHONY : apps/converters/CMakeFiles/novaRinex.dir/rule
 
 # Convenience name for target.
@@ -178,7 +178,7 @@ novaRinex: apps/converters/CMakeFiles/novaRinex.dir/rule
 
 # fast build rule for target.
 novaRinex/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/novaRinex.dir/build.make apps/converters/CMakeFiles/novaRinex.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/novaRinex.dir/build.make apps/converters/CMakeFiles/novaRinex.dir/build
 .PHONY : novaRinex/fast
 
 ash2mdp.o: ash2mdp.cpp.o
@@ -186,7 +186,7 @@ ash2mdp.o: ash2mdp.cpp.o
 
 # target to build an object file
 ash2mdp.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/ash2mdp.dir/build.make apps/converters/CMakeFiles/ash2mdp.dir/ash2mdp.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/ash2mdp.dir/build.make apps/converters/CMakeFiles/ash2mdp.dir/ash2mdp.cpp.o
 .PHONY : ash2mdp.cpp.o
 
 ash2mdp.i: ash2mdp.cpp.i
@@ -194,7 +194,7 @@ ash2mdp.i: ash2mdp.cpp.i
 
 # target to preprocess a source file
 ash2mdp.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/ash2mdp.dir/build.make apps/converters/CMakeFiles/ash2mdp.dir/ash2mdp.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/ash2mdp.dir/build.make apps/converters/CMakeFiles/ash2mdp.dir/ash2mdp.cpp.i
 .PHONY : ash2mdp.cpp.i
 
 ash2mdp.s: ash2mdp.cpp.s
@@ -202,7 +202,7 @@ ash2mdp.s: ash2mdp.cpp.s
 
 # target to generate assembly for a file
 ash2mdp.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/ash2mdp.dir/build.make apps/converters/CMakeFiles/ash2mdp.dir/ash2mdp.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/ash2mdp.dir/build.make apps/converters/CMakeFiles/ash2mdp.dir/ash2mdp.cpp.s
 .PHONY : ash2mdp.cpp.s
 
 ash2xyz.o: ash2xyz.cpp.o
@@ -210,7 +210,7 @@ ash2xyz.o: ash2xyz.cpp.o
 
 # target to build an object file
 ash2xyz.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/ash2xyz.dir/build.make apps/converters/CMakeFiles/ash2xyz.dir/ash2xyz.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/ash2xyz.dir/build.make apps/converters/CMakeFiles/ash2xyz.dir/ash2xyz.cpp.o
 .PHONY : ash2xyz.cpp.o
 
 ash2xyz.i: ash2xyz.cpp.i
@@ -218,7 +218,7 @@ ash2xyz.i: ash2xyz.cpp.i
 
 # target to preprocess a source file
 ash2xyz.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/ash2xyz.dir/build.make apps/converters/CMakeFiles/ash2xyz.dir/ash2xyz.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/ash2xyz.dir/build.make apps/converters/CMakeFiles/ash2xyz.dir/ash2xyz.cpp.i
 .PHONY : ash2xyz.cpp.i
 
 ash2xyz.s: ash2xyz.cpp.s
@@ -226,7 +226,7 @@ ash2xyz.s: ash2xyz.cpp.s
 
 # target to generate assembly for a file
 ash2xyz.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/ash2xyz.dir/build.make apps/converters/CMakeFiles/ash2xyz.dir/ash2xyz.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/ash2xyz.dir/build.make apps/converters/CMakeFiles/ash2xyz.dir/ash2xyz.cpp.s
 .PHONY : ash2xyz.cpp.s
 
 novaRinex.o: novaRinex.cpp.o
@@ -234,7 +234,7 @@ novaRinex.o: novaRinex.cpp.o
 
 # target to build an object file
 novaRinex.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/novaRinex.dir/build.make apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/novaRinex.dir/build.make apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.o
 .PHONY : novaRinex.cpp.o
 
 novaRinex.i: novaRinex.cpp.i
@@ -242,7 +242,7 @@ novaRinex.i: novaRinex.cpp.i
 
 # target to preprocess a source file
 novaRinex.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/novaRinex.dir/build.make apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/novaRinex.dir/build.make apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.i
 .PHONY : novaRinex.cpp.i
 
 novaRinex.s: novaRinex.cpp.s
@@ -250,7 +250,7 @@ novaRinex.s: novaRinex.cpp.s
 
 # target to generate assembly for a file
 novaRinex.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/converters/CMakeFiles/novaRinex.dir/build.make apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/converters/CMakeFiles/novaRinex.dir/build.make apps/converters/CMakeFiles/novaRinex.dir/novaRinex.cpp.s
 .PHONY : novaRinex.cpp.s
 
 # Help Target
@@ -288,6 +288,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

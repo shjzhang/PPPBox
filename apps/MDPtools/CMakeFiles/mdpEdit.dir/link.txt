@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/mdpEdit.dir/mdpEdit.cpp.o  -o mdpEdit -rdynamic libmdplib.a ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX: 

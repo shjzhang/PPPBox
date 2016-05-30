@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/performance/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/performance/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/performance/CMakeFiles/ConstellationList.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/CMakeFiles/ConstellationList.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/performance/CMakeFiles/ConstellationList.dir/rule
 .PHONY : apps/performance/CMakeFiles/ConstellationList.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ ConstellationList: apps/performance/CMakeFiles/ConstellationList.dir/rule
 
 # fast build rule for target.
 ConstellationList/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/build
 .PHONY : ConstellationList/fast
 
 ConstellationDefinition.o: ConstellationDefinition.cpp.o
@@ -158,7 +158,7 @@ ConstellationDefinition.o: ConstellationDefinition.cpp.o
 
 # target to build an object file
 ConstellationDefinition.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.o
 .PHONY : ConstellationDefinition.cpp.o
 
 ConstellationDefinition.i: ConstellationDefinition.cpp.i
@@ -166,7 +166,7 @@ ConstellationDefinition.i: ConstellationDefinition.cpp.i
 
 # target to preprocess a source file
 ConstellationDefinition.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.i
 .PHONY : ConstellationDefinition.cpp.i
 
 ConstellationDefinition.s: ConstellationDefinition.cpp.s
@@ -174,7 +174,7 @@ ConstellationDefinition.s: ConstellationDefinition.cpp.s
 
 # target to generate assembly for a file
 ConstellationDefinition.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationDefinition.cpp.s
 .PHONY : ConstellationDefinition.cpp.s
 
 ConstellationList.o: ConstellationList.cpp.o
@@ -182,7 +182,7 @@ ConstellationList.o: ConstellationList.cpp.o
 
 # target to build an object file
 ConstellationList.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.o
 .PHONY : ConstellationList.cpp.o
 
 ConstellationList.i: ConstellationList.cpp.i
@@ -190,7 +190,7 @@ ConstellationList.i: ConstellationList.cpp.i
 
 # target to preprocess a source file
 ConstellationList.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.i
 .PHONY : ConstellationList.cpp.i
 
 ConstellationList.s: ConstellationList.cpp.s
@@ -198,7 +198,7 @@ ConstellationList.s: ConstellationList.cpp.s
 
 # target to generate assembly for a file
 ConstellationList.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationList.cpp.s
 .PHONY : ConstellationList.cpp.s
 
 ConstellationSet.o: ConstellationSet.cpp.o
@@ -206,7 +206,7 @@ ConstellationSet.o: ConstellationSet.cpp.o
 
 # target to build an object file
 ConstellationSet.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.o
 .PHONY : ConstellationSet.cpp.o
 
 ConstellationSet.i: ConstellationSet.cpp.i
@@ -214,7 +214,7 @@ ConstellationSet.i: ConstellationSet.cpp.i
 
 # target to preprocess a source file
 ConstellationSet.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.i
 .PHONY : ConstellationSet.cpp.i
 
 ConstellationSet.s: ConstellationSet.cpp.s
@@ -222,7 +222,7 @@ ConstellationSet.s: ConstellationSet.cpp.s
 
 # target to generate assembly for a file
 ConstellationSet.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/performance/CMakeFiles/ConstellationList.dir/build.make apps/performance/CMakeFiles/ConstellationList.dir/ConstellationSet.cpp.s
 .PHONY : ConstellationSet.cpp.s
 
 # Help Target
@@ -258,6 +258,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

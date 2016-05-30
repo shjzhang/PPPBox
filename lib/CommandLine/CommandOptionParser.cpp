@@ -36,6 +36,12 @@
 // DISTRIBUTION STATEMENT A: This software has been approved for public 
 //                           release, distribution is unlimited.
 //
+// Modification
+// 2016/4/6   Q.Liu   Added the judgment for the description of the command 
+//                    option, when we want to add the detailed information to 
+//                    the option description,the description string's outputing 
+//                    format will be set as normal.
+//           
 //=============================================================================
 
 
@@ -336,9 +342,16 @@ namespace gpstk
                string desc(optionVec[index]->description);
                string indent(maxlen, ' ');
 
+					int desclen = desc.length();
                if(doPretty) {
                   leftJustify(optstr, maxlen);
-                  prettyPrint(desc, "\n", indent, optstr, columns);
+
+						   // If the description string is short, we will use the specific 
+							// output format; otherwise, we use the normal output format.    
+						if (desclen < columns)
+						{
+							prettyPrint(desc, "\n", indent, optstr, columns);
+						}
                }
                out << desc;
                if(!doPretty) out << endl;

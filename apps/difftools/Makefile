@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/difftools/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/difftools/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/difftools/CMakeFiles/clkdiff.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/clkdiff.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/clkdiff.dir/rule
 .PHONY : apps/difftools/CMakeFiles/clkdiff.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ clkdiff: apps/difftools/CMakeFiles/clkdiff.dir/rule
 
 # fast build rule for target.
 clkdiff/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/clkdiff.dir/build.make apps/difftools/CMakeFiles/clkdiff.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/clkdiff.dir/build.make apps/difftools/CMakeFiles/clkdiff.dir/build
 .PHONY : clkdiff/fast
 
 # Convenience name for target.
 apps/difftools/CMakeFiles/ephdiff.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/ephdiff.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/ephdiff.dir/rule
 .PHONY : apps/difftools/CMakeFiles/ephdiff.dir/rule
 
 # Convenience name for target.
@@ -164,12 +164,12 @@ ephdiff: apps/difftools/CMakeFiles/ephdiff.dir/rule
 
 # fast build rule for target.
 ephdiff/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/ephdiff.dir/build.make apps/difftools/CMakeFiles/ephdiff.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/ephdiff.dir/build.make apps/difftools/CMakeFiles/ephdiff.dir/build
 .PHONY : ephdiff/fast
 
 # Convenience name for target.
 apps/difftools/CMakeFiles/ficdiff.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/ficdiff.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/ficdiff.dir/rule
 .PHONY : apps/difftools/CMakeFiles/ficdiff.dir/rule
 
 # Convenience name for target.
@@ -178,12 +178,12 @@ ficdiff: apps/difftools/CMakeFiles/ficdiff.dir/rule
 
 # fast build rule for target.
 ficdiff/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/ficdiff.dir/build.make apps/difftools/CMakeFiles/ficdiff.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/ficdiff.dir/build.make apps/difftools/CMakeFiles/ficdiff.dir/build
 .PHONY : ficdiff/fast
 
 # Convenience name for target.
 apps/difftools/CMakeFiles/rmwdiff.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/rmwdiff.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/rmwdiff.dir/rule
 .PHONY : apps/difftools/CMakeFiles/rmwdiff.dir/rule
 
 # Convenience name for target.
@@ -192,12 +192,12 @@ rmwdiff: apps/difftools/CMakeFiles/rmwdiff.dir/rule
 
 # fast build rule for target.
 rmwdiff/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rmwdiff.dir/build.make apps/difftools/CMakeFiles/rmwdiff.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rmwdiff.dir/build.make apps/difftools/CMakeFiles/rmwdiff.dir/build
 .PHONY : rmwdiff/fast
 
 # Convenience name for target.
 apps/difftools/CMakeFiles/rnwdiff.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/rnwdiff.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/rnwdiff.dir/rule
 .PHONY : apps/difftools/CMakeFiles/rnwdiff.dir/rule
 
 # Convenience name for target.
@@ -206,12 +206,12 @@ rnwdiff: apps/difftools/CMakeFiles/rnwdiff.dir/rule
 
 # fast build rule for target.
 rnwdiff/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rnwdiff.dir/build.make apps/difftools/CMakeFiles/rnwdiff.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rnwdiff.dir/build.make apps/difftools/CMakeFiles/rnwdiff.dir/build
 .PHONY : rnwdiff/fast
 
 # Convenience name for target.
 apps/difftools/CMakeFiles/rnxdiff.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/rnxdiff.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/rnxdiff.dir/rule
 .PHONY : apps/difftools/CMakeFiles/rnxdiff.dir/rule
 
 # Convenience name for target.
@@ -220,12 +220,12 @@ rnxdiff: apps/difftools/CMakeFiles/rnxdiff.dir/rule
 
 # fast build rule for target.
 rnxdiff/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rnxdiff.dir/build.make apps/difftools/CMakeFiles/rnxdiff.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rnxdiff.dir/build.make apps/difftools/CMakeFiles/rnxdiff.dir/build
 .PHONY : rnxdiff/fast
 
 # Convenience name for target.
 apps/difftools/CMakeFiles/rowdiff.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/rowdiff.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/rowdiff.dir/rule
 .PHONY : apps/difftools/CMakeFiles/rowdiff.dir/rule
 
 # Convenience name for target.
@@ -234,12 +234,12 @@ rowdiff: apps/difftools/CMakeFiles/rowdiff.dir/rule
 
 # fast build rule for target.
 rowdiff/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rowdiff.dir/build.make apps/difftools/CMakeFiles/rowdiff.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rowdiff.dir/build.make apps/difftools/CMakeFiles/rowdiff.dir/build
 .PHONY : rowdiff/fast
 
 # Convenience name for target.
 apps/difftools/CMakeFiles/sp3diff.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/sp3diff.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/difftools/CMakeFiles/sp3diff.dir/rule
 .PHONY : apps/difftools/CMakeFiles/sp3diff.dir/rule
 
 # Convenience name for target.
@@ -248,7 +248,7 @@ sp3diff: apps/difftools/CMakeFiles/sp3diff.dir/rule
 
 # fast build rule for target.
 sp3diff/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/sp3diff.dir/build.make apps/difftools/CMakeFiles/sp3diff.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/sp3diff.dir/build.make apps/difftools/CMakeFiles/sp3diff.dir/build
 .PHONY : sp3diff/fast
 
 clkdiff.o: clkdiff.cpp.o
@@ -256,7 +256,7 @@ clkdiff.o: clkdiff.cpp.o
 
 # target to build an object file
 clkdiff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/clkdiff.dir/build.make apps/difftools/CMakeFiles/clkdiff.dir/clkdiff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/clkdiff.dir/build.make apps/difftools/CMakeFiles/clkdiff.dir/clkdiff.cpp.o
 .PHONY : clkdiff.cpp.o
 
 clkdiff.i: clkdiff.cpp.i
@@ -264,7 +264,7 @@ clkdiff.i: clkdiff.cpp.i
 
 # target to preprocess a source file
 clkdiff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/clkdiff.dir/build.make apps/difftools/CMakeFiles/clkdiff.dir/clkdiff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/clkdiff.dir/build.make apps/difftools/CMakeFiles/clkdiff.dir/clkdiff.cpp.i
 .PHONY : clkdiff.cpp.i
 
 clkdiff.s: clkdiff.cpp.s
@@ -272,7 +272,7 @@ clkdiff.s: clkdiff.cpp.s
 
 # target to generate assembly for a file
 clkdiff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/clkdiff.dir/build.make apps/difftools/CMakeFiles/clkdiff.dir/clkdiff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/clkdiff.dir/build.make apps/difftools/CMakeFiles/clkdiff.dir/clkdiff.cpp.s
 .PHONY : clkdiff.cpp.s
 
 ephdiff.o: ephdiff.cpp.o
@@ -280,7 +280,7 @@ ephdiff.o: ephdiff.cpp.o
 
 # target to build an object file
 ephdiff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/ephdiff.dir/build.make apps/difftools/CMakeFiles/ephdiff.dir/ephdiff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/ephdiff.dir/build.make apps/difftools/CMakeFiles/ephdiff.dir/ephdiff.cpp.o
 .PHONY : ephdiff.cpp.o
 
 ephdiff.i: ephdiff.cpp.i
@@ -288,7 +288,7 @@ ephdiff.i: ephdiff.cpp.i
 
 # target to preprocess a source file
 ephdiff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/ephdiff.dir/build.make apps/difftools/CMakeFiles/ephdiff.dir/ephdiff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/ephdiff.dir/build.make apps/difftools/CMakeFiles/ephdiff.dir/ephdiff.cpp.i
 .PHONY : ephdiff.cpp.i
 
 ephdiff.s: ephdiff.cpp.s
@@ -296,7 +296,7 @@ ephdiff.s: ephdiff.cpp.s
 
 # target to generate assembly for a file
 ephdiff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/ephdiff.dir/build.make apps/difftools/CMakeFiles/ephdiff.dir/ephdiff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/ephdiff.dir/build.make apps/difftools/CMakeFiles/ephdiff.dir/ephdiff.cpp.s
 .PHONY : ephdiff.cpp.s
 
 ficdiff.o: ficdiff.cpp.o
@@ -304,7 +304,7 @@ ficdiff.o: ficdiff.cpp.o
 
 # target to build an object file
 ficdiff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/ficdiff.dir/build.make apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/ficdiff.dir/build.make apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.o
 .PHONY : ficdiff.cpp.o
 
 ficdiff.i: ficdiff.cpp.i
@@ -312,7 +312,7 @@ ficdiff.i: ficdiff.cpp.i
 
 # target to preprocess a source file
 ficdiff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/ficdiff.dir/build.make apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/ficdiff.dir/build.make apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.i
 .PHONY : ficdiff.cpp.i
 
 ficdiff.s: ficdiff.cpp.s
@@ -320,7 +320,7 @@ ficdiff.s: ficdiff.cpp.s
 
 # target to generate assembly for a file
 ficdiff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/ficdiff.dir/build.make apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/ficdiff.dir/build.make apps/difftools/CMakeFiles/ficdiff.dir/ficdiff.cpp.s
 .PHONY : ficdiff.cpp.s
 
 rmwdiff.o: rmwdiff.cpp.o
@@ -328,7 +328,7 @@ rmwdiff.o: rmwdiff.cpp.o
 
 # target to build an object file
 rmwdiff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rmwdiff.dir/build.make apps/difftools/CMakeFiles/rmwdiff.dir/rmwdiff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rmwdiff.dir/build.make apps/difftools/CMakeFiles/rmwdiff.dir/rmwdiff.cpp.o
 .PHONY : rmwdiff.cpp.o
 
 rmwdiff.i: rmwdiff.cpp.i
@@ -336,7 +336,7 @@ rmwdiff.i: rmwdiff.cpp.i
 
 # target to preprocess a source file
 rmwdiff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rmwdiff.dir/build.make apps/difftools/CMakeFiles/rmwdiff.dir/rmwdiff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rmwdiff.dir/build.make apps/difftools/CMakeFiles/rmwdiff.dir/rmwdiff.cpp.i
 .PHONY : rmwdiff.cpp.i
 
 rmwdiff.s: rmwdiff.cpp.s
@@ -344,7 +344,7 @@ rmwdiff.s: rmwdiff.cpp.s
 
 # target to generate assembly for a file
 rmwdiff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rmwdiff.dir/build.make apps/difftools/CMakeFiles/rmwdiff.dir/rmwdiff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rmwdiff.dir/build.make apps/difftools/CMakeFiles/rmwdiff.dir/rmwdiff.cpp.s
 .PHONY : rmwdiff.cpp.s
 
 rnwdiff.o: rnwdiff.cpp.o
@@ -352,7 +352,7 @@ rnwdiff.o: rnwdiff.cpp.o
 
 # target to build an object file
 rnwdiff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rnwdiff.dir/build.make apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rnwdiff.dir/build.make apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o
 .PHONY : rnwdiff.cpp.o
 
 rnwdiff.i: rnwdiff.cpp.i
@@ -360,7 +360,7 @@ rnwdiff.i: rnwdiff.cpp.i
 
 # target to preprocess a source file
 rnwdiff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rnwdiff.dir/build.make apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rnwdiff.dir/build.make apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.i
 .PHONY : rnwdiff.cpp.i
 
 rnwdiff.s: rnwdiff.cpp.s
@@ -368,7 +368,7 @@ rnwdiff.s: rnwdiff.cpp.s
 
 # target to generate assembly for a file
 rnwdiff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rnwdiff.dir/build.make apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rnwdiff.dir/build.make apps/difftools/CMakeFiles/rnwdiff.dir/rnwdiff.cpp.s
 .PHONY : rnwdiff.cpp.s
 
 rnxdiff.o: rnxdiff.cpp.o
@@ -376,7 +376,7 @@ rnxdiff.o: rnxdiff.cpp.o
 
 # target to build an object file
 rnxdiff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rnxdiff.dir/build.make apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rnxdiff.dir/build.make apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.o
 .PHONY : rnxdiff.cpp.o
 
 rnxdiff.i: rnxdiff.cpp.i
@@ -384,7 +384,7 @@ rnxdiff.i: rnxdiff.cpp.i
 
 # target to preprocess a source file
 rnxdiff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rnxdiff.dir/build.make apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rnxdiff.dir/build.make apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.i
 .PHONY : rnxdiff.cpp.i
 
 rnxdiff.s: rnxdiff.cpp.s
@@ -392,7 +392,7 @@ rnxdiff.s: rnxdiff.cpp.s
 
 # target to generate assembly for a file
 rnxdiff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rnxdiff.dir/build.make apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rnxdiff.dir/build.make apps/difftools/CMakeFiles/rnxdiff.dir/rnxdiff.cpp.s
 .PHONY : rnxdiff.cpp.s
 
 rowdiff.o: rowdiff.cpp.o
@@ -400,7 +400,7 @@ rowdiff.o: rowdiff.cpp.o
 
 # target to build an object file
 rowdiff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rowdiff.dir/build.make apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rowdiff.dir/build.make apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.o
 .PHONY : rowdiff.cpp.o
 
 rowdiff.i: rowdiff.cpp.i
@@ -408,7 +408,7 @@ rowdiff.i: rowdiff.cpp.i
 
 # target to preprocess a source file
 rowdiff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rowdiff.dir/build.make apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rowdiff.dir/build.make apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.i
 .PHONY : rowdiff.cpp.i
 
 rowdiff.s: rowdiff.cpp.s
@@ -416,7 +416,7 @@ rowdiff.s: rowdiff.cpp.s
 
 # target to generate assembly for a file
 rowdiff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/rowdiff.dir/build.make apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/rowdiff.dir/build.make apps/difftools/CMakeFiles/rowdiff.dir/rowdiff.cpp.s
 .PHONY : rowdiff.cpp.s
 
 sp3diff.o: sp3diff.cpp.o
@@ -424,7 +424,7 @@ sp3diff.o: sp3diff.cpp.o
 
 # target to build an object file
 sp3diff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/sp3diff.dir/build.make apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/sp3diff.dir/build.make apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.o
 .PHONY : sp3diff.cpp.o
 
 sp3diff.i: sp3diff.cpp.i
@@ -432,7 +432,7 @@ sp3diff.i: sp3diff.cpp.i
 
 # target to preprocess a source file
 sp3diff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/sp3diff.dir/build.make apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/sp3diff.dir/build.make apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.i
 .PHONY : sp3diff.cpp.i
 
 sp3diff.s: sp3diff.cpp.s
@@ -440,7 +440,7 @@ sp3diff.s: sp3diff.cpp.s
 
 # target to generate assembly for a file
 sp3diff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/difftools/CMakeFiles/sp3diff.dir/build.make apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/difftools/CMakeFiles/sp3diff.dir/build.make apps/difftools/CMakeFiles/sp3diff.dir/sp3diff.cpp.s
 .PHONY : sp3diff.cpp.s
 
 # Help Target
@@ -498,6 +498,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/rfw/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/rfw/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/rfw/CMakeFiles/rfw.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/CMakeFiles/rfw.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/rfw/CMakeFiles/rfw.dir/rule
 .PHONY : apps/rfw/CMakeFiles/rfw.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ rfw: apps/rfw/CMakeFiles/rfw.dir/rule
 
 # fast build rule for target.
 rfw/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/build
 .PHONY : rfw/fast
 
 FDStreamBuff.o: FDStreamBuff.cpp.o
@@ -158,7 +158,7 @@ FDStreamBuff.o: FDStreamBuff.cpp.o
 
 # target to build an object file
 FDStreamBuff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/FDStreamBuff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/FDStreamBuff.cpp.o
 .PHONY : FDStreamBuff.cpp.o
 
 FDStreamBuff.i: FDStreamBuff.cpp.i
@@ -166,7 +166,7 @@ FDStreamBuff.i: FDStreamBuff.cpp.i
 
 # target to preprocess a source file
 FDStreamBuff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/FDStreamBuff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/FDStreamBuff.cpp.i
 .PHONY : FDStreamBuff.cpp.i
 
 FDStreamBuff.s: FDStreamBuff.cpp.s
@@ -174,7 +174,7 @@ FDStreamBuff.s: FDStreamBuff.cpp.s
 
 # target to generate assembly for a file
 FDStreamBuff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/FDStreamBuff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/FDStreamBuff.cpp.s
 .PHONY : FDStreamBuff.cpp.s
 
 TCPStreamBuff.o: TCPStreamBuff.cpp.o
@@ -182,7 +182,7 @@ TCPStreamBuff.o: TCPStreamBuff.cpp.o
 
 # target to build an object file
 TCPStreamBuff.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/TCPStreamBuff.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/TCPStreamBuff.cpp.o
 .PHONY : TCPStreamBuff.cpp.o
 
 TCPStreamBuff.i: TCPStreamBuff.cpp.i
@@ -190,7 +190,7 @@ TCPStreamBuff.i: TCPStreamBuff.cpp.i
 
 # target to preprocess a source file
 TCPStreamBuff.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/TCPStreamBuff.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/TCPStreamBuff.cpp.i
 .PHONY : TCPStreamBuff.cpp.i
 
 TCPStreamBuff.s: TCPStreamBuff.cpp.s
@@ -198,7 +198,7 @@ TCPStreamBuff.s: TCPStreamBuff.cpp.s
 
 # target to generate assembly for a file
 TCPStreamBuff.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/TCPStreamBuff.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/TCPStreamBuff.cpp.s
 .PHONY : TCPStreamBuff.cpp.s
 
 rfw.o: rfw.cpp.o
@@ -206,7 +206,7 @@ rfw.o: rfw.cpp.o
 
 # target to build an object file
 rfw.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/rfw.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/rfw.cpp.o
 .PHONY : rfw.cpp.o
 
 rfw.i: rfw.cpp.i
@@ -214,7 +214,7 @@ rfw.i: rfw.cpp.i
 
 # target to preprocess a source file
 rfw.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/rfw.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/rfw.cpp.i
 .PHONY : rfw.cpp.i
 
 rfw.s: rfw.cpp.s
@@ -222,7 +222,7 @@ rfw.s: rfw.cpp.s
 
 # target to generate assembly for a file
 rfw.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/rfw.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/rfw/CMakeFiles/rfw.dir/build.make apps/rfw/CMakeFiles/rfw.dir/rfw.cpp.s
 .PHONY : rfw.cpp.s
 
 # Help Target
@@ -258,6 +258,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

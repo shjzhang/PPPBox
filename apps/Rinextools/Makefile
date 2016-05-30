@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/Rinextools/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/Rinextools/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/Rinextools/CMakeFiles/RinDump.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/CMakeFiles/RinDump.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/CMakeFiles/RinDump.dir/rule
 .PHONY : apps/Rinextools/CMakeFiles/RinDump.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ RinDump: apps/Rinextools/CMakeFiles/RinDump.dir/rule
 
 # fast build rule for target.
 RinDump/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinDump.dir/build.make apps/Rinextools/CMakeFiles/RinDump.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinDump.dir/build.make apps/Rinextools/CMakeFiles/RinDump.dir/build
 .PHONY : RinDump/fast
 
 # Convenience name for target.
 apps/Rinextools/CMakeFiles/RinEdit.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/CMakeFiles/RinEdit.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/CMakeFiles/RinEdit.dir/rule
 .PHONY : apps/Rinextools/CMakeFiles/RinEdit.dir/rule
 
 # Convenience name for target.
@@ -164,12 +164,12 @@ RinEdit: apps/Rinextools/CMakeFiles/RinEdit.dir/rule
 
 # fast build rule for target.
 RinEdit/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinEdit.dir/build.make apps/Rinextools/CMakeFiles/RinEdit.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinEdit.dir/build.make apps/Rinextools/CMakeFiles/RinEdit.dir/build
 .PHONY : RinEdit/fast
 
 # Convenience name for target.
 apps/Rinextools/CMakeFiles/RinNav.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/CMakeFiles/RinNav.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/CMakeFiles/RinNav.dir/rule
 .PHONY : apps/Rinextools/CMakeFiles/RinNav.dir/rule
 
 # Convenience name for target.
@@ -178,12 +178,12 @@ RinNav: apps/Rinextools/CMakeFiles/RinNav.dir/rule
 
 # fast build rule for target.
 RinNav/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinNav.dir/build.make apps/Rinextools/CMakeFiles/RinNav.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinNav.dir/build.make apps/Rinextools/CMakeFiles/RinNav.dir/build
 .PHONY : RinNav/fast
 
 # Convenience name for target.
 apps/Rinextools/CMakeFiles/RinSum.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/CMakeFiles/RinSum.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/Rinextools/CMakeFiles/RinSum.dir/rule
 .PHONY : apps/Rinextools/CMakeFiles/RinSum.dir/rule
 
 # Convenience name for target.
@@ -192,7 +192,7 @@ RinSum: apps/Rinextools/CMakeFiles/RinSum.dir/rule
 
 # fast build rule for target.
 RinSum/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinSum.dir/build.make apps/Rinextools/CMakeFiles/RinSum.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinSum.dir/build.make apps/Rinextools/CMakeFiles/RinSum.dir/build
 .PHONY : RinSum/fast
 
 RinDump.o: RinDump.cpp.o
@@ -200,7 +200,7 @@ RinDump.o: RinDump.cpp.o
 
 # target to build an object file
 RinDump.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinDump.dir/build.make apps/Rinextools/CMakeFiles/RinDump.dir/RinDump.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinDump.dir/build.make apps/Rinextools/CMakeFiles/RinDump.dir/RinDump.cpp.o
 .PHONY : RinDump.cpp.o
 
 RinDump.i: RinDump.cpp.i
@@ -208,7 +208,7 @@ RinDump.i: RinDump.cpp.i
 
 # target to preprocess a source file
 RinDump.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinDump.dir/build.make apps/Rinextools/CMakeFiles/RinDump.dir/RinDump.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinDump.dir/build.make apps/Rinextools/CMakeFiles/RinDump.dir/RinDump.cpp.i
 .PHONY : RinDump.cpp.i
 
 RinDump.s: RinDump.cpp.s
@@ -216,7 +216,7 @@ RinDump.s: RinDump.cpp.s
 
 # target to generate assembly for a file
 RinDump.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinDump.dir/build.make apps/Rinextools/CMakeFiles/RinDump.dir/RinDump.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinDump.dir/build.make apps/Rinextools/CMakeFiles/RinDump.dir/RinDump.cpp.s
 .PHONY : RinDump.cpp.s
 
 RinEdit.o: RinEdit.cpp.o
@@ -224,7 +224,7 @@ RinEdit.o: RinEdit.cpp.o
 
 # target to build an object file
 RinEdit.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinEdit.dir/build.make apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinEdit.dir/build.make apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.o
 .PHONY : RinEdit.cpp.o
 
 RinEdit.i: RinEdit.cpp.i
@@ -232,7 +232,7 @@ RinEdit.i: RinEdit.cpp.i
 
 # target to preprocess a source file
 RinEdit.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinEdit.dir/build.make apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinEdit.dir/build.make apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.i
 .PHONY : RinEdit.cpp.i
 
 RinEdit.s: RinEdit.cpp.s
@@ -240,7 +240,7 @@ RinEdit.s: RinEdit.cpp.s
 
 # target to generate assembly for a file
 RinEdit.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinEdit.dir/build.make apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinEdit.dir/build.make apps/Rinextools/CMakeFiles/RinEdit.dir/RinEdit.cpp.s
 .PHONY : RinEdit.cpp.s
 
 RinNav.o: RinNav.cpp.o
@@ -248,7 +248,7 @@ RinNav.o: RinNav.cpp.o
 
 # target to build an object file
 RinNav.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinNav.dir/build.make apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinNav.dir/build.make apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.o
 .PHONY : RinNav.cpp.o
 
 RinNav.i: RinNav.cpp.i
@@ -256,7 +256,7 @@ RinNav.i: RinNav.cpp.i
 
 # target to preprocess a source file
 RinNav.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinNav.dir/build.make apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinNav.dir/build.make apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.i
 .PHONY : RinNav.cpp.i
 
 RinNav.s: RinNav.cpp.s
@@ -264,7 +264,7 @@ RinNav.s: RinNav.cpp.s
 
 # target to generate assembly for a file
 RinNav.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinNav.dir/build.make apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinNav.dir/build.make apps/Rinextools/CMakeFiles/RinNav.dir/RinNav.cpp.s
 .PHONY : RinNav.cpp.s
 
 RinSum.o: RinSum.cpp.o
@@ -272,7 +272,7 @@ RinSum.o: RinSum.cpp.o
 
 # target to build an object file
 RinSum.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinSum.dir/build.make apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinSum.dir/build.make apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.o
 .PHONY : RinSum.cpp.o
 
 RinSum.i: RinSum.cpp.i
@@ -280,7 +280,7 @@ RinSum.i: RinSum.cpp.i
 
 # target to preprocess a source file
 RinSum.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinSum.dir/build.make apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinSum.dir/build.make apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.i
 .PHONY : RinSum.cpp.i
 
 RinSum.s: RinSum.cpp.s
@@ -288,7 +288,7 @@ RinSum.s: RinSum.cpp.s
 
 # target to generate assembly for a file
 RinSum.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/Rinextools/CMakeFiles/RinSum.dir/build.make apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/Rinextools/CMakeFiles/RinSum.dir/build.make apps/Rinextools/CMakeFiles/RinSum.dir/RinSum.cpp.s
 .PHONY : RinSum.cpp.s
 
 # Help Target
@@ -330,6 +330,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

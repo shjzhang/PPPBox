@@ -688,7 +688,10 @@ void pod::process()
       // Load all the receiver position files
       char attfile1[100]="GO_CONS_SST_PRM_2__20091101T000000_20091131T235959_0101.GGT";
       char attfile2[100]="GO_CONS_EGG_NOM_2__20091101T000000_20091131T235959_0101.IAQ";
+<<<<<<< HEAD
       // the attfile isn't read. as I didn't use correction of PCV
+=======
+>>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
       char prdfile[100]="grace07_09a.col";
       //file time start month in J.D.day
       double tmonth0= 2.4551365E6;  // here is 2009.11.1.0
@@ -962,6 +965,13 @@ void pod::process()
       }
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
          // Declare a basic modeler
       BasicModel basic(nominalPos, SP3EphList);
          // Set the minimum elevation
@@ -1150,6 +1160,21 @@ void pod::process()
       phaseAlignL2.setPhaseWavelength(0.244210213425);
       pList.push_back(phaseAlignL2);       // Add to processing list
 //
+<<<<<<< HEAD
+=======
+         ///////////////////////////////////////////////////
+         //
+         //  Cycle slip detection
+         //
+         ///////////////////////////////////////////////////
+         
+         // Object to compute ionosphere-free combinations to be used
+         // as observables in the PPP processing
+         // WARNING: The LC and PC combination should be computed
+         //          after the corrections, because the the corrections
+         //          will be subtracted in the raw observables.
+         //
+>>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
       ComputeLinear linear2;
       linear2.addLinear(comb.pcCombination);
       linear2.addLinear(comb.lcCombination);
@@ -1157,6 +1182,24 @@ void pod::process()
       linear2.addLinear(comb.lcPrefit);
       pList.push_back(linear2);       // Add to processing list
          
+<<<<<<< HEAD
+=======
+//         PrefitCSDetector prefitCSDetector;
+//         pList.push_back( prefitCSDetector );
+//         
+//         MWCSDetector2 markCSMW;          // Checks Merbourne-Wubbena cycle slips
+//         pList.push_back(markCSMW);       // Add to processing list
+//         
+//         
+//         // Object to keep track of satellite arcs
+//         SatArcMarker markArc;
+//         markArc.setDeleteUnstableSats(false);
+//         markArc.setUnstablePeriod(11.0);
+//         pList.push_back(markArc);       // Add to processing list
+         
+         
+      
+>>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
          
          // Declare a simple filter object to screen PC
       SimpleFilter pcFilter;
@@ -1186,6 +1229,62 @@ void pod::process()
       //PrefitFilter prefitFilter;
       //pList.push_back(prefitFilter);
          
+<<<<<<< HEAD
+=======
+         
+         ///////////////////////////////////////////////////
+         //
+         //  Warning: you MUST NOT delete any satellites between the cycle
+         //  slip detection object and the satArcMarker, or else you may
+         //  delete the cycle slip flags, which will make wrong arc marking
+         //  in 'satArcMarker'
+         //
+         ///////////////////////////////////////////////////
+         
+         // Object to detect cycle slips using the prefit-residuals
+         // @author Shoujian Zhang
+//      PrefitCSDetector prefitCSDetector;
+//      pList.push_back( prefitCSDetector );
+         
+         // Objects to mark cycle slips
+//      MWCSDetector2  markCSMW;          // Checks Merbourne-Wubbena cycle slips
+//      pList.push_back(markCSMW);       // Add to processing list
+//         
+//         ///////////////////////////////////////////////////
+//         //
+//         //  Satellite arc marker
+//         //
+//         ///////////////////////////////////////////////////
+//         
+//         
+//         // Object to keep track of satellite arcs
+//         // Notes: The SatArcMarker class should be run
+//         //        immediately AFTER the cycle slip detector class. And any class
+//         //        between cycleslip detector and "SatArcMarker", which delelte
+//         //        satellite, will destroy the arc continuity.
+//      SatArcMarker2 markArc;
+//      markArc.setDeleteUnstableSats(false);
+//      markArc.setUnstablePeriod(151.0);
+//      pList.push_back(markArc);       // Add to processing list
+//         
+         // Object to remove eclipsed satellites
+//      EclipsedSatFilter eclipsedSV;
+//      pList.push_back(eclipsedSV);       // Add to processing list
+//         ///////////////////////////////////////////////////
+//         //
+//         //  Now, Compute the prefit for solver !!!!
+//         //
+//         ///////////////////////////////////////////////////
+//         
+//         // Compute the prefit for the solver
+//         // Warning: compute the pc and lc prefit again for the solver,
+//         //          after computing all the related corrections.
+//      ComputeLinear linear4;
+//      linear4.addLinear(comb.pcPrefit);
+//      linear4.addLinear(comb.lcPrefit);
+//      pList.push_back(linear4);       // Add to processing list
+         
+>>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
          ///////////////////////////////////////////////////
          //
          //  Now, the solver configuration !!!
@@ -1193,6 +1292,10 @@ void pod::process()
          ///////////////////////////////////////////////////
          
          
+<<<<<<< HEAD
+=======
+         
+>>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
          // Get if we want results in ECEF or RAC reference system
       bool isRAC( confReader.getValueAsBoolean( "USERAC") );
          
@@ -1355,6 +1458,10 @@ void pod::process()
                   dtr=gRin.header.dtreciver;
                   //dtr=0.0E-3;
                   
+<<<<<<< HEAD
+=======
+                  
+>>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
                   // Store update current epoch
                   gRin.header.epoch +=dtr;
                   //update time for position and offsetRicivert
@@ -1650,6 +1757,7 @@ void pod::process()
             
             offset = (offset.R3(lon)).R2(-lat);
             
+<<<<<<< HEAD
 //            
 //            
 //            // cout prefit of epoch obs.
@@ -1670,6 +1778,28 @@ void pod::process()
 //                  ++i;
 //            }
 //            cout<<endl;
+=======
+            
+            
+            
+            time.get(wday,wsod,wfsod);
+            SatIDSet currSatSet= gRin.body.getSatID();
+            Vector<double> prefitL(gRin.getVectorOfTypeID(TypeID::prefitL));
+            
+
+            cout<<wsod<<" " << fixed << setprecision( precision );
+            int i=0;
+            for( SatIDSet::const_iterator itSat = currSatSet.begin();
+                itSat != currSatSet.end();
+                ++itSat )
+            {
+
+                  double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
+                  cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i);
+                  ++i;
+            }
+            cout<<endl;
+>>>>>>> 6e4bc04193f59cc7c49d3d4c3887348ff9c71e68
             
             // Print out the solution
             printSolution( outfile,

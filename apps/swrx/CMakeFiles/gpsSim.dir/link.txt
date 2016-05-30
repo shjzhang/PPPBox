@@ -1,1 +1,0 @@
-/usr/bin/c++       -lpthread CMakeFiles/gpsSim.dir/gpsSim.cpp.o  -o gpsSim -rdynamic libsimlib.a ../../libpppbox.so -Wl,-rpath,/home/kemin/develop/PPPBOX 

@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kemin/develop/PPPBOX
+CMAKE_SOURCE_DIR = /home/rinex/Documents/gps/PPPBox
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kemin/develop/PPPBOX
+CMAKE_BINARY_DIR = /home/rinex/Documents/gps/PPPBox
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles /home/kemin/develop/PPPBOX/apps/geomatics/kalman/CMakeFiles/progress.marks
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kemin/develop/PPPBOX/CMakeFiles 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles /home/rinex/Documents/gps/PPPBox/apps/geomatics/kalman/CMakeFiles/progress.marks
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rinex/Documents/gps/PPPBox/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/clean
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/preinstall
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/rule
 .PHONY : apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ mergeSRI: apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/rule
 
 # fast build rule for target.
 mergeSRI/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build.make apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build.make apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build
 .PHONY : mergeSRI/fast
 
 # Convenience name for target.
 apps/geomatics/kalman/CMakeFiles/tkalm.dir/rule:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/CMakeFiles/tkalm.dir/rule
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f CMakeFiles/Makefile2 apps/geomatics/kalman/CMakeFiles/tkalm.dir/rule
 .PHONY : apps/geomatics/kalman/CMakeFiles/tkalm.dir/rule
 
 # Convenience name for target.
@@ -164,7 +164,7 @@ tkalm: apps/geomatics/kalman/CMakeFiles/tkalm.dir/rule
 
 # fast build rule for target.
 tkalm/fast:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/tkalm.dir/build.make apps/geomatics/kalman/CMakeFiles/tkalm.dir/build
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/tkalm.dir/build.make apps/geomatics/kalman/CMakeFiles/tkalm.dir/build
 .PHONY : tkalm/fast
 
 mergeSRI.o: mergeSRI.cpp.o
@@ -172,7 +172,7 @@ mergeSRI.o: mergeSRI.cpp.o
 
 # target to build an object file
 mergeSRI.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build.make apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/mergeSRI.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build.make apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/mergeSRI.cpp.o
 .PHONY : mergeSRI.cpp.o
 
 mergeSRI.i: mergeSRI.cpp.i
@@ -180,7 +180,7 @@ mergeSRI.i: mergeSRI.cpp.i
 
 # target to preprocess a source file
 mergeSRI.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build.make apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/mergeSRI.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build.make apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/mergeSRI.cpp.i
 .PHONY : mergeSRI.cpp.i
 
 mergeSRI.s: mergeSRI.cpp.s
@@ -188,7 +188,7 @@ mergeSRI.s: mergeSRI.cpp.s
 
 # target to generate assembly for a file
 mergeSRI.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build.make apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/mergeSRI.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/build.make apps/geomatics/kalman/CMakeFiles/mergeSRI.dir/mergeSRI.cpp.s
 .PHONY : mergeSRI.cpp.s
 
 tkalm.o: tkalm.cpp.o
@@ -196,7 +196,7 @@ tkalm.o: tkalm.cpp.o
 
 # target to build an object file
 tkalm.cpp.o:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/tkalm.dir/build.make apps/geomatics/kalman/CMakeFiles/tkalm.dir/tkalm.cpp.o
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/tkalm.dir/build.make apps/geomatics/kalman/CMakeFiles/tkalm.dir/tkalm.cpp.o
 .PHONY : tkalm.cpp.o
 
 tkalm.i: tkalm.cpp.i
@@ -204,7 +204,7 @@ tkalm.i: tkalm.cpp.i
 
 # target to preprocess a source file
 tkalm.cpp.i:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/tkalm.dir/build.make apps/geomatics/kalman/CMakeFiles/tkalm.dir/tkalm.cpp.i
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/tkalm.dir/build.make apps/geomatics/kalman/CMakeFiles/tkalm.dir/tkalm.cpp.i
 .PHONY : tkalm.cpp.i
 
 tkalm.s: tkalm.cpp.s
@@ -212,7 +212,7 @@ tkalm.s: tkalm.cpp.s
 
 # target to generate assembly for a file
 tkalm.cpp.s:
-	cd /home/kemin/develop/PPPBOX && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/tkalm.dir/build.make apps/geomatics/kalman/CMakeFiles/tkalm.dir/tkalm.cpp.s
+	cd /home/rinex/Documents/gps/PPPBox && $(MAKE) -f apps/geomatics/kalman/CMakeFiles/tkalm.dir/build.make apps/geomatics/kalman/CMakeFiles/tkalm.dir/tkalm.cpp.s
 .PHONY : tkalm.cpp.s
 
 # Help Target
@@ -246,6 +246,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kemin/develop/PPPBOX && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/rinex/Documents/gps/PPPBox && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
