@@ -185,7 +185,9 @@ namespace gpstk
          /// String describing the antenna type
       std::string antennaType;
 
-
+         /// Reciver clock error dtreciver，only need for pod.
+         double dtreciver;
+         
          /// Triple holding the antenna position
       Triple antennaPosition;
 
@@ -195,7 +197,7 @@ namespace gpstk
 
 
          /// Default constructor
-      sourceEpochRinexHeader() {};
+         sourceEpochRinexHeader():dtreciver(0.0){};
 
 
          /// Explicit constructor
