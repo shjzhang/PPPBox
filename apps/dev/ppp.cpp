@@ -710,12 +710,6 @@ void ppp::process()
    }
    dcbFileStream.close();
 
-   	// Declare a CC2NONCC object
-   CC2NONCC cc2noncc(dcbP1C1);
-      // Read the receiver type file.
-   string recTypeFile(confReader.getValue("recTypeFile"));
-   cc2noncc.loadRecTypeFile(recTypeFile);
-
       //**********************************************
       // Now, Let's read MSC data
       //**********************************************
@@ -919,13 +913,21 @@ void ppp::process()
          // the processing objects in order
       ProcessingList pList;
 
-         // If the DCB file exists, then we add 'cc2noncc' to processing list
-         // Get the receiver type
+
+      	// Declare a CC2NONCC object
+      CC2NONCC cc2noncc(dcbP1C1);
+
+         // Read the receiver type file.
+      string recTypeFile(confReader.getValue("recTypeFile"));
+      cc2noncc.loadRecTypeFile(recTypeFile);
+
+         // set the receiver type
       string recType = roh.recType;
-      	// Convert CC to NONCC 
       cc2noncc.setRecType(recType);
+
          // Copy C1 to P1
       cc2noncc.setCopyC1ToP1(true);
+
       pList.push_back(cc2noncc); 
 
          // This object will check that all required observables are present
