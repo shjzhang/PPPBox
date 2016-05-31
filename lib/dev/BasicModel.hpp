@@ -206,7 +206,14 @@ namespace gpstk
       virtual BasicModel& setMinElev(double newElevation)
       { minElev = newElevation; return (*this); };
 
-
+         /// Method to get reciver position. dynamic in kinematics positioning
+      virtual Position getrxPos() const
+      { return rxPos; };
+         
+         /// Method to set reciver position. dynamic in kinematics positioning
+      virtual BasicModel& setrxPos(Position dynamicPos)
+      { rxPos = dynamicPos; return (*this); };
+         
          /// Method to get the default observable for computations.
       virtual TypeID getDefaultObservable() const
       { return defaultObservable; };

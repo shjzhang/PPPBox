@@ -275,7 +275,7 @@ pod::pod(char* arg0)
 "\nThis program reads parameters from a configuration file, \n"
 "reads GPS receiver data and ephemeris data from command line, \n"
 "then process the data using the PPP strategy.\n\n"
-"Please consult the default configuration file, 'ppp.conf', for \n"
+"Please consult the default configuration file, 'pod.conf', for \n"
 "further details.\n\n"
 "The output file format is as follows:\n"
 "\n 1) Year"
@@ -292,7 +292,7 @@ pod::pod(char* arg0)
    confFile( CommandOption::stdType,
              'c',
              "conffile",
-   "Name of configuration file ('ppp.conf' by default).",
+   "Name of configuration file ('pod.conf' by default).",
              false),
       // Option for rinex file list reading
    rnxFileListOpt( 'r',
@@ -483,12 +483,12 @@ void pod::spinUp()
       try
       {
             // Try to open default configuration file
-         confReader.open( "ppp.conf" );
+         confReader.open( "pod.conf" );
       }
       catch(...)
       {
 
-         cerr << "Problem opening default configuration file 'ppp.conf'"
+         cerr << "Problem opening default configuration file 'pod.conf'"
               << endl;
          cerr << "Maybe it doesn't exist or you don't have proper read "
               << "permissions. Try providing a configuration file with "
@@ -1411,7 +1411,8 @@ void pod::process()
             offsetRecivert = (offsetRecivert.R3(lon)).R2(-lat);
             
             // Declare a basic modeler
-            basic.rxPos = nominalPos;
+      //      basic.rxPos = nominalPos;
+            basic.setrxPos(nominalPos);
             // Object to compute gravitational delay effects
             grDelay.setNominalPosition( nominalPos );
             
@@ -1468,7 +1469,8 @@ void pod::process()
                   //offsetRecivert=Triple(0.0,0.0,0.0);
                  // cout<<offsetRecivert<<endl;
                   // Declare a basic modeler
-                  basic.rxPos = nominalPos;
+                  //basic.rxPos = nominalPos;
+                  basic.setrxPos(nominalPos);
                   // Object to compute gravitational delay effects
                   grDelay.setNominalPosition( nominalPos );
                   
