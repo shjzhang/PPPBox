@@ -165,7 +165,9 @@ namespace gpstk
              
                   // If some problem appears, then schedule this satellite
                   // for removal
-               satRejectedSet.insert( (*stv).first );
+               cout<<"Invalid Request:"<<e.what()<<std::endl;
+
+			   satRejectedSet.insert( (*stv).first );
 
                continue;    // Skip this SV if problems arise
 
@@ -244,6 +246,9 @@ namespace gpstk
 
 
          } // End of loop for(stv = gData.begin()...
+
+
+		 //cerr<<endl<<"before satNum="<<gData.numSats()<<",after satNum="<<satRejectedSet.size()<<endl;
 
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);
