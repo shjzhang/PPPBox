@@ -14,7 +14,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <time.h>
+
    // Basic framework for programs in the GPSTk. 'process()' method MUST
    // be implemented
 #include "BasicFramework.hpp"
@@ -41,7 +41,7 @@
 #include "PISmoother.hpp"
 
    // Class to get IPP position and ionosphere mapping function
-#include "IonexModel.hpp"
+#include "GetIPP.hpp"
 
    // Class to filter out observables grossly out of limits
 #include "SimpleFilter.hpp"
@@ -78,7 +78,7 @@
    // Class to estimate the DCBs and ionosphere models using a Spherical
    // Harmonic expansion
    // Kalman filter method
-#include "SolverIonoDCB.hpp"
+//#include "SolverIonoDCB.hpp"
    //LS method
 #include "SolverIonoDCB2.hpp"
    // Class to compute the elevation weights
@@ -86,6 +86,8 @@
 
    // Class to convert the CC to NONCC.
 #include "CC2NONCC.hpp"
+
+#include "RecTypeDataReader.hpp"
 
    // Class to read and store the receiver type.
 #include "RecTypeDataReader.hpp"
@@ -124,16 +126,19 @@ private:
 
       // Option for sp3 file list
    CommandOptionWithAnyArg sp3FileListOpt;
-
-      // Option for ionex file list
-   CommandOptionWithAnyArg inxFileListOpt;
+     
+     // Option for clk file list
+   CommandOptionWithAnyArg clkFileListOpt;
 
      // Option for dcb file list
    CommandOptionWithAnyArg dcbFileListOpt;
+
       // Option for output file
    CommandOptionWithAnyArg outputFileListOpt;
+
      // Option for the max order of SH
    CommandOptionWithAnyArg maxOrderOpt;
+
      // Option for the interval(unit: h)
    CommandOptionWithAnyArg intervalOpt;
 
@@ -144,7 +149,7 @@ private:
    
    string rnxFileListName;
    string sp3FileListName;
-   string inxFileListName;
+   string clkFileListName;
    string dcbFileListName;
    string outputFileListName;
    int maxOrder;
@@ -178,10 +183,10 @@ IonoDCB::IonoDCB(char* arg0)
                    "sp3FileList",
    "file storing a list of rinex SP3 file name ",
                    true),
-   inxFileListOpt( 'i',
-                   "inxFileList",
-   "file storing a list of ionex file name ",
-                   true),
+   clkFileListOpt( 'k',
+                   "clkFileList",
+   "file storing a list of rinex clk file name ",
+                   false),
    maxOrderOpt ( 'O',
                  "maxOrder",
    "max order of the spherical harmonic expansion",
@@ -216,9 +221,9 @@ void IonoDCB::spinUp()
    {
       sp3FileListName = sp3FileListOpt.getValue()[0];
    }
-   if(inxFileListOpt.getCount())
+   if(clkFileListOpt.getCount())
    {
-      inxFileListName = inxFileListOpt.getValue()[0];
+      clkFileListName = clkFileListOpt.getValue()[0];
    }
    if(maxOrderOpt.getCount())
    {
@@ -262,16 +267,27 @@ void IonoDCB::printSolution(  ofstream& outfile,
 
    outfile<<"Start time : "<<civtime1<<endl
 	  <<"End   time : "<<civtime2<<endl;
-   outfile<<"DCBs for satellite and receiver (unit : ns)"<<endl;
+   outfile<<"DCBs for satellite and receiver (unit : ns)"<<endl
+          <<"Satellite  P1-P2     P1-C1"<<endl;
    for (SatIDSet::iterator it = satSet.begin();
         it != satSet.end(); it++)
    {  
-      outfile<<asString(*it)<<setw(8)<<solver.getSatDCB(*it)<<endl;
-   }     
+      outfile<<asString(*it)<<setw(10)<<solver.getSatDCB(*it)
+             <<setw(10)<<solver.getSatP1C1DCB(*it)<<endl;
+   }
+   outfile<<endl<<"Station    P1-P2"<<endl;    
    for (SourceIDSet::iterator it2 = recSet.begin();
         it2 != recSet.end(); it2++)
    {
-      outfile<<asString(*it2).substr(0,10)<<setw(8)<<solver.getRecDCB(*it2)<<endl;
+      if (asString(*it2).substr(0,1) == "G")  // GPS receiver
+      {
+        outfile<<asString(*it2).substr(4,4)<<setw(12)<<solver.getRecDCB(*it2)<<endl;
+      }
+      
+      else if (asString(*it2).substr(0,1) == "M")  // Mixed receiver
+      {
+        outfile<<asString(*it2).substr(6,4)<<setw(12)<<solver.getRecDCB(*it2)<<endl;
+      }
    }
    outfile<<endl;
    Vector<double> ionoCoef = solver.getIonoCoef();
@@ -280,9 +296,13 @@ void IonoDCB::printSolution(  ofstream& outfile,
    int i = 0;
    for (int index = 1;index <= count;index++)
    {
+      CommonTime epoch(time1+(index-1)*7200.0);
+      CivilTime time(epoch);
+
       outfile<<index<<endl;
-      outfile<<"coefficients of ionosphere (unit : TECU)"<<endl
-             <<"order    degree    value"<<endl;
+      outfile<<"Time : "<<time<<endl
+             <<"Coefficients of ionosphere (unit : TECU)"<<endl 
+             <<"Order    Degree    Value"<<endl;
      for (int n = 0;n <=order;n++)
      {
        for (int m = 0; m <=n;m++)
@@ -304,9 +324,8 @@ void IonoDCB::printSolution(  ofstream& outfile,
      
    }
 
-  }
-    
-
+  }  // End for (int index ...)
+     
     return;
 
 
@@ -359,49 +378,54 @@ void IonoDCB::process()
    }
       // Close file
    sp3FileListStream.close();
-
+       //***********************
+      // Let's read clock files
       //***********************
-      // Let's read ionex files
-      //***********************
-   
-     // Object to get IPP position and mapping function
-   IonexStore IonexMapList;
-      // Now read eop files from 'inxFileList'
-   ifstream inxFileListStream;
 
-      // Open inxFileList File
-   inxFileListStream.open(inxFileListName.c_str(), ios::in);
-   if(!inxFileListStream)
+      // If rinex clock file list is given, then use rinex clock
+   if(clkFileListOpt.getCount())
    {
-         // If file doesn't exist, issue a warning
-      cerr << "ionex file List Name'" << inxFileListName << "' doesn't exist or you don't "
-           << "have permission to read it. Skipping it." << endl;
+         // Now read clk files from 'clkFileList'
+      ifstream clkFileListStream;
 
-      exit(-1);
-   }
-
-   string inxFile;
-   while( inxFileListStream >> inxFile )
-   {
-      try
-      {
-         
-         IonexMapList.loadFile(inxFile);     
-      }
-      catch (FileMissingException& e)
+         // Open clkFileList File
+      clkFileListStream.open(clkFileListName.c_str(), ios::in);
+      if(!clkFileListStream)
       {
             // If file doesn't exist, issue a warning
-         cerr << "Ionex file '" << inxFile << "' doesn't exist or you don't "
+         cerr << "clock file List Name'" << clkFileListName << "' doesn't exist or you don't "
               << "have permission to read it. Skipping it." << endl;
-         continue;
+
+         exit(-1);
       }
-   }
-      // Close file
-   inxFileListStream.close();
+
+      string clkFile;
+      while( clkFileListStream >> clkFile )
+      {
+         try
+         {
+            SP3EphList.loadRinexClockFile( clkFile );
+         }
+         catch (FileMissingException& e)
+         {
+               // If file doesn't exist, issue a warning
+            cerr << "rinex CLK file '" << clkFile << "' doesn't exist or you don't "
+                 << "have permission to read it. Skipping it." << endl;
+            continue;
+         }
+      }
+
+         // Close file
+      clkFileListStream.close();
+
+   }  // End of 'if(...)'
+
 
       // Read P1-C1 DCB files
    CC2NONCC cc2noncc;
    bool hasDCBFile(false);
+   if(dcbFileListOpt.getCount())
+  {
    ifstream dcbFileListStream;
       // Open dcbFileList File
    dcbFileListStream.open(dcbFileListName.c_str(), ios::in);
@@ -439,6 +463,7 @@ void IonoDCB::process()
    }
       // Close file
    dcbFileListStream.close();
+  }
 
       //**********************************************************
       // Now, Let's perform the IonoDCB for each rinex files
@@ -520,6 +545,10 @@ void IonoDCB::process()
       // store the information of plural stations
    gnssDataMap gdsMap;
 
+     // store the receiver
+   SourceIDSet P1P2RecSet;
+   SourceIDSet C1P2RecSet;
+
    while( rnxit != rnxFileListVec.end() )
    {
          // Read rinex file from the vector!
@@ -579,12 +608,29 @@ void IonoDCB::process()
          continue;
       }
 
+      bool usingC1(false);
          // Get the station name for current rinex file 
       string station = roh.markerName;
+         // Get the receiver type  
+      string RecType = roh.recType;
 
-      Triple antennaPos= roh.antennaPosition;
-      cout<<"Start to process station : "<<station.substr(0,4)<<endl;
+      string recTypeFile("recType.list");
+      RecTypeDataReader recTypeData;
+      recTypeData.open(recTypeFile);
       
+      set<string> recCodeSet = recTypeData.getCode(RecType);
+      int C1 = recCodeSet.count("C1");
+      int P1 = recCodeSet.count("P1");
+      int P2 = recCodeSet.count("P2");
+      int X2 = recCodeSet.count("X2");
+
+      if (C1)
+      {
+         usingC1 = true;	  
+      }
+      Triple antennaPos= roh.antennaPosition;
+      cout<<"Processing station : "<<station.substr(0,4)<<endl;
+
       Position nominalPos( antennaPos[0],antennaPos[1],antennaPos[2] );
 
          // Create a 'ProcessingList' object where we'll store
@@ -612,7 +658,6 @@ void IonoDCB::process()
       pObsFilter.setFilteredType(TypeID::P2);
 
          // Read if we should use C1 instead of P1
-      bool usingC1( false );
       if ( usingC1 )
       {
          requireObs.addRequiredType(TypeID::C1);
@@ -730,9 +775,9 @@ void IonoDCB::process()
      smoothPI.setMaxWindowSize(35);
      pList.push_back(smoothPI);       // Add to processing list
 
-      // Initialize the ionex model
-     IonexModel ionex(nominalPos, IonexMapList);
-     pList.push_back(ionex);       // Add to processing list
+      // Initialize the GetIPP
+     GetIPP getIPP(nominalPos);
+     pList.push_back(getIPP);       // Add to processing list
 
          // This is the GNSS data structure that will hold all the
          // GNSS-related information
@@ -741,21 +786,31 @@ void IonoDCB::process()
 	// if using global stations to compute, the memory consumption
 	// is very huge
      TypeIDSet typeNeed;
-
      typeNeed.insert(TypeID::PI);
+     typeNeed.insert(TypeID::P1);
+     typeNeed.insert(TypeID::C1);
      typeNeed.insert(TypeID::LatIPP);
      typeNeed.insert(TypeID::LonIPP);
      typeNeed.insert(TypeID::ionoMap);
      typeNeed.insert(TypeID::weight);
      
-
          // Loop over all data epochs
      while(rin >> gRin)
-      {
+     {
 
             // Store current epoch
-         CommonTime time(gRin.header.epoch);
-         
+       CommonTime time(gRin.header.epoch);
+            // Store source
+       SourceID source(gRin.header.source);
+       if (usingC1)
+       {
+        C1P2RecSet.insert(source); 	   
+       }
+       else
+       {
+        P1P2RecSet.insert(source);	   
+       }
+
        try
          {
                // Let's process data. Thanks to 'ProcessingList' this is
@@ -803,35 +858,35 @@ void IonoDCB::process()
       //
       //***********************************************
    SP3EphList.clear();
-   IonexMapList.clear();
 
-  while ( outit != outputFileListVec.end() )
-  {
-      string outputFileName;
+   cout<<"Preprocessing done ! Start to estimate DCBs ..."<<endl;
+     // initialize the class 
+   SolverIonoDCB2 ionoDCBSolver2(maxOrder);
+
+  
+    outit = outputFileListVec.begin();
+   
+    string outputFileName;
 
        // Let's open the output file
-     if( outputFileListOpt.getCount() )
-     {
-       outputFileName = (*outit);
-     }
-     else
-     {
-      outputFileName = string("IonoDCB.out");
-     }
+    if( outputFileListOpt.getCount() )
+    {
+      outputFileName = (*outit);
+    }
+    else
+    {
+     outputFileName = string("IonoDCB.out");
+    }
 
-     ofstream outfile;
-     outfile.open( outputFileName.c_str(), ios::out );
+    ofstream outfile;
+    outfile.open( outputFileName.c_str(), ios::out );
 
-    // initialize the class 
-    // SolverIonoDCB ionoDCBSolver(maxOrder);
-     SolverIonoDCB2 ionoDCBSolver2(maxOrder);
-
-     CommonTime epochFirst( gdsMap.begin()->first );
-     CommonTime epochLast( (--gdsMap.end())->first );
+    CommonTime epochFirst( gdsMap.begin()->first );
+    CommonTime epochLast( (--gdsMap.end())->first );
    
 
-     if (intervalOpt.getCount())
-     {
+    if (intervalOpt.getCount())
+    {
        int count = 24/interval; 
        double intervals = interval * 3600.0;  
  
@@ -846,53 +901,57 @@ void IonoDCB::process()
        
        gnssDataMap gData(gdsMap.getDataFromTimeSpan(epoch1,epoch2));
        
-       ionoDCBSolver2.Process(gData,interval);
-       printSolution(outfile,interval,maxOrder,ionoDCBSolver2,epoch1,epoch2,gData);     
+       ionoDCBSolver2.Process(gData,P1P2RecSet,C1P2RecSet,interval);
+       printSolution(outfile,interval,maxOrder,ionoDCBSolver2,
+                     epoch1,epoch2,gData);     
       }    
    } 
    else // using the data of one day to estimate DCBs
    {
-    ionoDCBSolver2.Process(gdsMap,24);
+    ionoDCBSolver2.Process(gdsMap,P1P2RecSet,C1P2RecSet,24);
    
-    printSolution(outfile,24,maxOrder,ionoDCBSolver2,epochFirst,epochLast,gdsMap); 
+    printSolution(outfile,24,maxOrder,ionoDCBSolver2,
+                  epochFirst,epochLast,gdsMap); 
    } 
    
-   outit++;
+   cout<<"Esitmating DCBs done ! Results have been written into "
+       <<outputFileName.c_str()<<endl;
+  
 
-  } // End of while(...)
+ 
+
      // define a tolerance(1 hour) for gnssDataMap 
      // the Data in (epoch-tolerance,epoch+tolerance) will be extracted
  //  double tol=0.1;
  //  gData.setTolerance(tol);
- //  SourceIDSet sourSet = gData.getSourceIDSet();
- //  SatIDSet satSet = gData.getSatIDSet();
+//SourceIDSet sourSet = gdsMap.getSourceIDSet();
+// SatIDSet satSet = gdsMap.getSatIDSet();
     // loop epochs
-  /*for (gnssDataMap::const_iterator it= gData.begin();
-       it!= gData.end(); )
+ /* for (gnssDataMap::const_iterator it= gdsMap.begin();
+       it!= gdsMap.end(); )
    {
      CommonTime epoch = it->first; 
      cout<<epoch<<endl;
      double second = epoch.getSecondOfDay();
    //  if ((static_cast<int>(second)%static_cast<int>(2*tol))==0)
     // {
-	  gnssDataMap gMap = gData.getDataFromEpoch(epoch);
-	  SourceIDSet tempSet = gMap.getSourceIDSet();
+	  gnssDataMap gData = gdsMap.getDataFromEpoch(epoch);
+	  SourceIDSet tempSet = gData.getSourceIDSet();
   	    
          if (tempSet.size()==sourSet.size())
 	  {
-          // ionoDcbSolver.Process(epoch, gMap,satSet);
-	  // ionoDcbSolver.getSolution();
-           ionoDcbSolver2.Process(gMap,satSet);
-           ionoDcbSolver2.getSolution();
+           ionoDCBSolver.Process(epoch, gData,satSet);
+	   ionoDCBSolver.getSolution();
+        
           }
 		  
     // }
 	 // move the iterator to the next epoch
      std::advance(it,tempSet.size());
   }
- */
+ 
   return;
-
+*/
 }  // End of 'IonoDCB::process()'
 
 
