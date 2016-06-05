@@ -698,8 +698,8 @@ void pod::process()
       //      const Triple offsetReciver(0.0,0.0,0.0 );
       
       // give start time  and end time for compute to cut GOCE att and position file
-      CivilTime StartOfKD(2009,11,26,6,0,0.0, TimeSystem::GPS);
-      CivilTime   EndOfKD(2009,11,26,9,30,0.0, TimeSystem::GPS);
+      CivilTime StartOfKD(2009,11,26,0,0,0.0, TimeSystem::GPS);
+      CivilTime   EndOfKD(2009,11,27,0,30,0.0, TimeSystem::GPS);
       
       //***********************
       //**********************************
@@ -909,6 +909,14 @@ void pod::process()
          // the processing objects in order
       ProcessingList pList,pListppp;
          
+      Decimate ObsDecimate;
+         // to decimate data process data each 30 second.,
+         //none of business of sample interval of data
+      ObsDecimate.setSampleInterval(30.0);
+      ObsDecimate.setTolerance(0.5);
+         ObsDecimate.setInitialEpoch(initialTime);
+      //pList.push_back(ObsDecimate);
+         
          // This object will check that all required observables are present
       RequireObservables requireObs;
       requireObs.addRequiredType(TypeID::P2);
@@ -1090,8 +1098,8 @@ void pod::process()
          
          
          // Objects to mark cycle slips
-         LICSDetector markCSLI;         // Checks LI cycle slips
-         pList.push_back(markCSLI);      // Add to processing list
+         //LICSDetector markCSLI;         // Checks LI cycle slips
+         //pList.push_back(markCSLI);      // Add to processing list
          
          //PrefitCSDetector prefitCSDetector;
          //pList.push_back( prefitCSDetector );
@@ -1119,7 +1127,7 @@ void pod::process()
             windup.setAntexReader( antexReader );
       }
          
-      pList.push_back(windup);       // Add to processing list
+     // pList.push_back(windup);       // Add to processing list
          
 
          
@@ -1197,7 +1205,6 @@ void pod::process()
       {
             pList.push_back(pcFilter);       // Add to processing list
       }
-         
       
          // Object to compute DOP values
       ComputeDOP cDOP;
@@ -1370,17 +1377,29 @@ void pod::process()
          
          Triple offsetReciver( roh.antennaDelta);
          Triple offsetRecivert;
+      
          //// *** Now comes the REAL forwards processing part *** ////
          // Loop over all data epochs
       while(rin >> gRin)
       {
             
         //add by hwei
-            
+
             // Store current epoch
             CommonTime time(gRin.header.epoch);
             double ttagatt,ttagprd,dtr;
             double lat,lon;
+            CorrectObstime corrt;
+            try
+            {
+                  gRin >>ObsDecimate;
+            }
+            catch(DecimateEpoch& d)
+            {
+                  // If we catch a DecimateEpoch exception, just continue.
+                  continue;
+            }
+            
             time.get(wday,wsod,wfsod);
             //here epoch.get(wday) is +0.5  ,youneed to reduce it
             ttagatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0;
@@ -1389,7 +1408,7 @@ void pod::process()
             rxAtt.GetGOCEpostime(ttagprd,vGOCEprdpositions,vGOCEptag);
             // get GOCE position with time and give it to Position by hwei
             nominalPos=Position(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
-      //*******************************************************************
+            //*******************************************************************
             // updata model or parameters according to nominalPos
             // Compute station latitude and longitude
             lat=nominalPos.geodeticLatitude();
@@ -1412,23 +1431,37 @@ void pod::process()
             // Object to compute wind-up effect
             windup.setNominalPosition( nominalPos );
             
-            CorrectObstime corrt;
-            
-      //*******************************************************************
-            
+            //*******************************************************************
+
             gnssRinex gRintmp;
-            
             gRintmp=gRin;
             try
             {
-
             gRintmp >> pListppp
                     >>pppSolver;
-                  //
+            }
+            catch(SVNumException& s)
+            {
+                  // If we catch a SVNumException, just continue.
+                  continue;
+            }
+            catch(Exception& e)
+            {
+                  cerr << "Exception for receiver '" << station <<
+                  "' at epoch: " << time << "; " << e << endl;
+                  continue;
+            }
+            catch(...)
+            {
+                  cerr << "Unknown exception for receiver '" << station <<
+                  " at epoch: " << time << endl;
+                  continue;
+            }
+            
                   // reviver cloclk bias from pppSlover,only need for pod GOCE
                   gRin.header.dtreciver=-pppSolver.getSolution(TypeID::cdt)/ellipsoid.c();
                   dtr=gRin.header.dtreciver;
-                  dtr=2.74E-3;
+                  //dtr=2.74E-3;
                   //cout<<dtr<<endl;
                   
                   // Store update current epoch
@@ -1469,42 +1502,23 @@ void pod::process()
                   // correct Observablest with Reciver clock error only need for GOCE pod
                   corrt.setExtraDtr(dtr);
                   //*******************************************************************
-                  
-            }
-            catch(DecimateEpoch& d)
+
+                  // Let's process data. Thanks to 'ProcessingList' this is
+                  // very simple and compact: Just one line of code!!!.
+            try
             {
-                  // If we catch a DecimateEpoch exception, just continue.
-                  continue;
+                  gRin  >>corrt
+                        >>pList
+                        >>fbpodSolver;
             }
             catch(SVNumException& s)
             {
                   // If we catch a SVNumException, just continue.
                   continue;
             }
-            catch(Exception& e)
-            {
-                  cerr << "Exception for receiver '" << station <<
-                  "' at epoch: " << time << "; " << e << endl;
-                  continue;
-            }
-            catch(...)
-            {
-                  cerr << "Unknown exception for receiver '" << station <<
-                  " at epoch: " << time << endl;
-                  continue;
-            }
-            
-            
-            try
-            {
-                  // Let's process data. Thanks to 'ProcessingList' this is
-                  // very simple and compact: Just one line of code!!!.
 
-                  gRin  >>corrt
-                        >>pList
-                        >>fbpodSolver;
-                        // >>pppSolver;
-                  
+
+            
                   //cout time SatID satArc ,prefitLC
                   
 //                  SatIDSet currSatSet= gRin.body.getSatID();
@@ -1522,30 +1536,8 @@ void pod::process()
 //                        ++i;
 //                  }
 //                  cout<<endl;
-            }
+ 
             
-         catch(DecimateEpoch& d)
-         {
-               // If we catch a DecimateEpoch exception, just continue.
-            continue;
-         }
-         catch(SVNumException& s)
-         {
-               // If we catch a SVNumException, just continue.
-            continue;
-         }
-         catch(Exception& e)
-         {
-            cerr << "Exception for receiver '" << station <<
-                    "' at epoch: " << time << "; " << e << endl;
-            continue;
-         }
-         catch(...)
-         {
-            cerr << "Unknown exception for receiver '" << station <<
-                    " at epoch: " << time << endl;
-            continue;
-         }
             // Ask if we are going to print the model
          if ( printmodel )
          {
@@ -1576,7 +1568,7 @@ void pod::process()
 
 
          // The given epoch hass been processed. Let's get the next one
-
+      
       }  // End of 'while(rin >> gRin)'
 
 
@@ -1750,8 +1742,8 @@ void pod::process()
                         cDOP,
                         isRAC,
                         gRin.numSats(),
-                        offset,
-                      //  gRin.header.antennaPosition,
+                      //  offset,
+                        gRin.header.antennaPosition,
                         precision );
                
       } while ( valid );
