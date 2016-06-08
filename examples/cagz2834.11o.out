@@ -1,5 +1,5 @@
 # col  1 -  3: year/doy/sod 
-# col  4 -  7: dLat/dLon/dH/ZTD 
+# col  4 -  7: dN/dE/dU/ZTD 
 # col  8 - 11: TotalSatNumber/Converged/GDOP/PDOP 
 # END OF HEADER
 2011    283    43200.0000    0.3706   -0.4757   -5.5765    4.5979  9  0  2.0020  1.7859  
