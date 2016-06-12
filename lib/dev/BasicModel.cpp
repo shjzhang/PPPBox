@@ -145,7 +145,7 @@ namespace gpstk
               stv != gData.end();
               ++stv )
          {
-	    SatID::SatelliteSystem system = stv->fisrt.system;
+	    SatID::SatelliteSystem system = stv->first.system;
                  // for BeiDou B1
 	    if (system == SatID::systemBeiDou)
 	    {
