@@ -527,11 +527,11 @@ namespace gpstk
       // 1 2 5 6 7 8
      if(roi.band == ObsID::cbL1) return 1;
      if(roi.band == ObsID::cbG1) return 1;
-     if(roi.band == ObsID::cbB1) return 1;
+   //  if(roi.band == ObsID::cbB1) return 1;
 
      if(roi.band == ObsID::cbL2) return 2;
      if(roi.band == ObsID::cbG2) return 2;
-     if(roi.band == ObsID::cbB1) return 2;      // TD this is not correct
+     if(roi.band == ObsID::cbB1) return 2; // For BeiDou L1, return 2
 
      if(roi.band == ObsID::cbL5) return 5;
 
@@ -539,6 +539,8 @@ namespace gpstk
      if(roi.band == ObsID::cbB3) return 6;
 
      if(roi.band == ObsID::cbE5b) return 7;
+       // add B2 
+     if(roi.band == ObsID::cbB2) return 7;
 
      if(roi.band == ObsID::cbE5ab) return 8;
 
@@ -782,21 +784,21 @@ namespace gpstk
 
          // For E2-B1
          //if(roi.band == ObsID::cbE1) return TypeID::Unknown;
-         if(roi.band == ObsID::cbB3)         // TD is cbB3 correct?
+         if(roi.band == ObsID::cbB1)         
          {
             if(roi.type == ObsID::otRange) return TypeID::C2;
             if(roi.type == ObsID::otPhase) return TypeID::L2;
             if(roi.type == ObsID::otDoppler) return TypeID::D2;
             if(roi.type == ObsID::otSNR) return TypeID::S2;
          }
-         else if(roi.band == ObsID::cbE5b)
+         else if(roi.band == ObsID::cbB2)
          {
             if(roi.type == ObsID::otRange) return TypeID::C7;
             if(roi.type == ObsID::otPhase) return TypeID::L7;
             if(roi.type == ObsID::otDoppler) return TypeID::D7;
             if(roi.type == ObsID::otSNR) return TypeID::S7;
          }
-         else if(roi.band == ObsID::cbE6)
+         else if(roi.band == ObsID::cbB3)
          {
             if(roi.type == ObsID::otRange) return TypeID::C6;
             if(roi.type == ObsID::otPhase) return TypeID::L6;
