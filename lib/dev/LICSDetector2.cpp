@@ -90,8 +90,26 @@ namespace gpstk
 
             // Loop through all the satellites
          satTypeValueMap::iterator it;
+
          for (it = gData.begin(); it != gData.end(); ++it)
          {
+            SatID::SatelliteSystem system = (*it).first.system;
+                  // for Galileo E1/E5a 
+	    if (system == SatID::systemGalileo)
+            {
+	      lliType1 = TypeID::LLI1;
+	      lliType2 = TypeID::LLI5;
+	      resultType1 = TypeID::CSL1;
+	      resultType2 = TypeID::CSL5;
+       	    }
+                 // for BeiDou B1/B2
+	    else if (system == SatID::systemBeiDou)
+            {
+	      lliType1 = TypeID::LLI2;
+	      lliType2 = TypeID::LLI7;
+	      resultType1 = TypeID::CSL2;
+	      resultType2 = TypeID::CSL7;
+       	    }
 
             try
             {
@@ -112,6 +130,7 @@ namespace gpstk
                {
                      // Try to get the LLI1 index
                   lli1  = (*it).second(lliType1);
+		  
                }
                catch(...)
                {
@@ -136,14 +155,13 @@ namespace gpstk
                // If everything is OK, then get the new values inside the
                // structure. This way of computing it allows concatenation of
                // several different cycle slip detectors
-            (*it).second[resultType1] += getDetection( epoch,
+              (*it).second[resultType1] += getDetection( epoch,
                                                        (*it).first,
                                                        (*it).second,
                                                        epochflag,
                                                        value1,
                                                        lli1,
                                                        lli2 );
-
             if ( (*it).second[resultType1] > 1.0 )
             {
                (*it).second[resultType1] = 1.0;
@@ -153,9 +171,14 @@ namespace gpstk
             (*it).second[resultType2] = (*it).second[resultType1];
 
          }
-
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);
+
+            // default
+         lliType1 = TypeID::LLI1;
+	 lliType2 = TypeID::LLI2;
+	 resultType1 = TypeID::CSL1;
+	 resultType2 = TypeID::CSL2;
 
          return gData;
 
@@ -281,7 +304,6 @@ namespace gpstk
 
       try
       {
-
          Process(gData.header.epoch, gData.body, gData.header.epochFlag);
 
          return gData;
@@ -320,7 +342,6 @@ namespace gpstk
    {
 
       bool reportCS(false);
-
          // Difference between current and former epochs, in sec
       double currentDeltaT(0.0);
 
@@ -331,7 +352,6 @@ namespace gpstk
          // Get current buffer size
       size_t s( LIData[sat].LIEpoch.size() );
   
-
          // Get the difference between current epoch and LAST epoch,
          // in seconds, but first test if we have epoch data inside LIData
       if(s > 0)
@@ -344,7 +364,6 @@ namespace gpstk
          currentDeltaT = ( epoch - CommonTime::BEGINNING_OF_TIME );
       }
 
-
          // Check if receiver already declared cycle slip or too much time
          // has elapsed
          // Note: If tvMap(lliType1) or tvMap(lliType2) don't exist, then 0
@@ -356,7 +375,6 @@ namespace gpstk
       {
          tempLLI1 = 1.0;
       }
-
       if ( (tvMap(lliType2)==1.0) ||
            (tvMap(lliType2)==3.0) ||
            (tvMap(lliType2)==5.0) ||
@@ -382,7 +400,6 @@ namespace gpstk
             // Report cycle slip
          reportCS = true;
       }
-
          // Check if we have enough data to start processing.
       if (s >= minBufferSize)
       {

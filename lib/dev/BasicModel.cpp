@@ -145,9 +145,14 @@ namespace gpstk
               stv != gData.end();
               ++stv )
          {
+	    SatID::SatelliteSystem system = stv->fisrt.system;
+                 // for BeiDou B1
+	    if (system == SatID::systemBeiDou)
+	    {
+	       defaultObservable = TypeID::C2;	
+	    }
                // Scalar to hold temporal value
             double observable( (*stv).second(defaultObservable) );
-
                // A lot of the work is done by a CorrectedEphemerisRange object
             CorrectedEphemerisRange cerange;
 
@@ -247,6 +252,9 @@ namespace gpstk
 
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);
+
+            // default C1
+	 defaultObservable = TypeID::C1;
 
          return gData;
 
