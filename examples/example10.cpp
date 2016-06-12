@@ -217,8 +217,10 @@ int main(void)
       // Object to compute tidal effects
    SolidTides  solid;
 
+   BLQDataReader blqStore("OCEAN-GOT00.dat");
+
       // Ocean loading model
-   OceanLoading ocean("OCEAN-GOT00.dat");
+   OceanLoading ocean(blqStore);
 
       // Numerical values are x,y pole displacements for Jan/30/2002 (arcsec).
    PoleTides   pole(-0.17153, 0.38661);

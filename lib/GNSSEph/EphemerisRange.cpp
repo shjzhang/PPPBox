@@ -58,10 +58,11 @@ namespace gpstk
    // routine does not intrinsicly account for the receiver clock error
    // like the ComputeAtTransmitTime routine does.
    double CorrectedEphemerisRange::ComputeAtReceiveTime(
-      const CommonTime& tr_nom,
-      const Position& Rx,
-      const SatID sat,
-      const XvtStore<SatID>& Eph)
+                              const CommonTime& tr_nom,
+                              const Position& Rx,
+                              const SatID sat,
+                              const XvtStore<SatID>& Eph)
+      throw(InvalidRequest, Exception)
    {
       try {
          int nit;
@@ -96,6 +97,9 @@ namespace gpstk
 
          return (rawrange-svclkbias-relativity);
       }
+      catch(InvalidRequest& e) {
+         GPSTK_RETHROW(e);
+      }
       catch(gpstk::Exception& e) {
          GPSTK_RETHROW(e);
       }
@@ -107,11 +111,12 @@ namespace gpstk
       // given the nominal receive time tr_nom and an EphemerisStore, as well as
       // the raw measured pseudorange.
    double CorrectedEphemerisRange::ComputeAtTransmitTime(
-      const CommonTime& tr_nom,
-      const double& pr,
-      const Position& Rx,
-      const SatID sat,
-      const XvtStore<SatID>& Eph)
+                        const CommonTime& tr_nom,
+                        const double& pr,
+                        const Position& Rx,
+                        const SatID sat,
+                        const XvtStore<SatID>& Eph)
+      throw(InvalidRequest, Exception)
    {
       try {
          CommonTime tt;
@@ -147,6 +152,9 @@ namespace gpstk
 
          return (rawrange-svclkbias-relativity);
       }
+      catch(InvalidRequest& e) {
+         GPSTK_RETHROW(e);
+      }
       catch(gpstk::Exception& e) {
          GPSTK_RETHROW(e);
       }
@@ -154,16 +162,20 @@ namespace gpstk
 
 
    double CorrectedEphemerisRange::ComputeAtTransmitTime(
-      const CommonTime& tr_nom,
-      const Position& Rx,
-      const SatID sat,
-      const XvtStore<SatID>& Eph)
+                           const CommonTime& tr_nom,
+                           const Position& Rx,
+                           const SatID sat,
+                           const XvtStore<SatID>& Eph)
+      throw(InvalidRequest, Exception)
    {
       try {
          gpstk::GPSEllipsoid gm;
          svPosVel = Eph.getXvt(sat, tr_nom);
          double pr = svPosVel.preciseRho(Rx, gm);
          return ComputeAtTransmitTime(tr_nom, pr, Rx, sat, Eph);
+      }
+      catch(InvalidRequest& e) {
+         GPSTK_RETHROW(e);
       }
       catch(gpstk::Exception& e) {
          GPSTK_RETHROW(e);
@@ -172,11 +184,12 @@ namespace gpstk
 
 
    double CorrectedEphemerisRange::ComputeAtTransmitSvTime(
-      const CommonTime& tt_nom,
-      const double& pr,
-      const Position& rx,
-      const SatID sat,
-      const XvtStore<SatID>& eph)
+                           const CommonTime& tt_nom,
+                           const double& pr,
+                           const Position& rx,
+                           const SatID sat,
+                           const XvtStore<SatID>& eph)
+      throw(InvalidRequest, Exception)
    {
       try {
          svPosVel = eph.getXvt(sat, tt_nom);
@@ -201,6 +214,9 @@ namespace gpstk
          updateCER(rx);
 
          return rawrange - svclkbias - relativity;
+      }
+      catch(InvalidRequest& e) {
+         GPSTK_RETHROW(e);
       }
       catch (Exception& e) {
          GPSTK_RETHROW(e);

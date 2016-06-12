@@ -914,10 +914,10 @@ void example9::process()
       SolidTides solid;
 
 
-         // Configure ocean loading model
-      OceanLoading ocean;
-      ocean.setFilename( confReader.getValue( "oceanLoadingFile", station ) );
+      BLQDataReader blqStore(confReader.getValue( "oceanLoadingFile", station ));
 
+         // Configure ocean loading model
+      OceanLoading ocean(blqStore);
 
          // Numerical values (xp, yp) are pole displacements (arcsec).
       double xp( confReader.fetchListValueAsDouble( "poleDisplacements",

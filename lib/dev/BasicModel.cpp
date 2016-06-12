@@ -165,9 +165,9 @@ namespace gpstk
              
                   // If some problem appears, then schedule this satellite
                   // for removal
-               cout<<"Invalid Request:"<<e.what()<<std::endl;
+//             cout<<"Invalid Request:"<<e.what()<<std::endl;
 
-			   satRejectedSet.insert( (*stv).first );
+			      satRejectedSet.insert( (*stv).first );
 
                continue;    // Skip this SV if problems arise
 
