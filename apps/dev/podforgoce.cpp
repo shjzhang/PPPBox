@@ -698,7 +698,7 @@ void pod::process()
       //      const Triple offsetReciver(0.0,0.0,0.0 );
       
       // give start time  and end time for compute to cut GOCE att and position file
-      CivilTime StartOfKD(2009,11,26,0,0,0.0, TimeSystem::GPS);
+      CivilTime StartOfKD(2009,11,25,23,0,0.0, TimeSystem::GPS);
       CivilTime   EndOfKD(2009,11,27,0,30,0.0, TimeSystem::GPS);
       
       //***********************
@@ -914,7 +914,7 @@ void pod::process()
          //none of business of sample interval of data
       ObsDecimate.setSampleInterval(30.0);
       ObsDecimate.setTolerance(0.5);
-         ObsDecimate.setInitialEpoch(initialTime);
+      ObsDecimate.setInitialEpoch(initialTime);
       //pList.push_back(ObsDecimate);
          
          // This object will check that all required observables are present
@@ -1464,8 +1464,7 @@ void pod::process()
                   //dtr=2.74E-3;
                   //cout<<dtr<<endl;
                   
-                  // Store update current epoch
-                  gRin.header.epoch +=dtr;
+
                   //update time for position and offsetRicivert
                   ttagatt +=dtr;
                   ttagprd +=dtr;
@@ -1498,9 +1497,12 @@ void pod::process()
                   corr.setMonument( offsetRecivert );
                   // Object to compute wind-up effect
                   windup.setNominalPosition( nominalPos );
-                  
-                  // correct Observablest with Reciver clock error only need for GOCE pod
+            
+                      // Store update current epoch
+                  gRin.header.epoch +=dtr;
+                      // correct Observablest with Reciver clock error only need for GOCE pod
                   corrt.setExtraDtr(dtr);
+            
                   //*******************************************************************
 
                   // Let's process data. Thanks to 'ProcessingList' this is
@@ -1668,6 +1670,7 @@ void pod::process()
          // End of 'try-catch' block
 
       cout << "Last processing ... ... " << endl;
+      cout<<"time  (*itSat)  satArc prefitL(i) postprefitL_nodX tempcdt tempamb"<<endl;
 
          // Reprocess is over. Let's finish with the last processing
 
@@ -1723,6 +1726,10 @@ void pod::process()
             
 
             cout<<wsod<<" " << fixed << setprecision( precision );
+      
+            double tempcdt=fbpodSolver.getSolution(TypeID::cdt);
+            double tempamb;
+            
             int i=0;
             for( SatIDSet::const_iterator itSat = currSatSet.begin();
                 itSat != currSatSet.end();
@@ -1730,10 +1737,15 @@ void pod::process()
             {
 
                   double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
-                  cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i);
+                  
+                  tempamb=fbpodSolver.solution(4+i);
+                  cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i)<<" "<<prefitL(i)-tempcdt-tempamb
+                        <<" "<<tempcdt<<" "<<tempamb;
                   ++i;
             }
             cout<<endl;
+            
+            
             
             // Print out the solution
             printSolution( outfile,
