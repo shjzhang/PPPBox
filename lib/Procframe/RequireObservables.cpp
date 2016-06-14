@@ -94,8 +94,9 @@ namespace gpstk
                   satRejectedSet.insert( (*satIt).first );
 
                      // It is not necessary to keep looking
-                  typeIt = requiredTypeSet.end();
-                  --typeIt;
+                  //typeIt = requiredTypeSet.end();
+                  //--typeIt;
+				  break;
                }
 
             }
@@ -103,7 +104,7 @@ namespace gpstk
          }
 
             // Let's remove satellites without all TypeID's
-         gData.removeSatID(satRejectedSet);
+        gData.removeSatID(satRejectedSet);
 
          return gData;
 

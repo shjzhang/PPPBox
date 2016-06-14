@@ -680,7 +680,7 @@ namespace gpstk
       // Modifies this object, removing these satellites.
       // @param satSet Set (SatIDSet) containing the satellites
       //               to be removed.
-   satTypeValueMap& satTypeValueMap::removeSatID(const SatIDSet& satSet)
+   satTypeValueMap& satTypeValueMap::removeSatID(const SatIDSet& satSet) throw(SVNumException)
    {
 
       for( SatIDSet::const_iterator pos = satSet.begin();
@@ -689,6 +689,10 @@ namespace gpstk
       {
          (*this).erase(*pos);
       }
+
+	  if( 0>=(*this).numSats() ){
+		GPSTK_THROW(SVNumException("SV number less than 0") );
+	  }
 
       return (*this);
 
@@ -1169,7 +1173,7 @@ in matrix and number of types do not match") );
       ////// gnssSatTypeValue //////
 
 
-      // Returns a gnssSatTypeValue with only this satellite.
+      // Returns a gnssSatTypeV alue with only this satellite.
       // @param satellite Satellite to be extracted.
    gnssSatTypeValue gnssSatTypeValue::extractSatID(const SatID& satellite)
       const

@@ -195,6 +195,7 @@ of weightVector");
 
       if (!(weightMatrix.isSquare()))
       {
+		 std::cout<<"row="<< weightMatrix.rows()<<",col="<<weightMatrix.cols()<<std::endl;
          InvalidSolver e("Weight matrix is not square");
          GPSTK_THROW(e);
       }
