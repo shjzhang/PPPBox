@@ -1080,7 +1080,7 @@ namespace gpstk
 
          satSysTemp = strip(line.substr(0,1));
          numObs     = asInt(line.substr(3,3));
-       //  cout<<satSysTemp<< " "<<numObs<<endl;
+        // cout<<satSysTemp<< " "<<numObs<<endl;
          try {
             if(satSysTemp == "" ) // it's a continuation line; use previous info.
             {
@@ -1677,7 +1677,6 @@ namespace gpstk
             }
          }
          valid |= validSystemPhaseShift;
-	 cout<<valid<<endl;
       }
       // is the header valid?
       unsigned long allValid;

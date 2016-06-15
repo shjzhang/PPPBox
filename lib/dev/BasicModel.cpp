@@ -138,6 +138,8 @@ namespace gpstk
       {
 
          SatIDSet satRejectedSet;
+	   // a copy of GPS default Observable(usually C1 or P1)
+	 TypeID gpsObservable = defaultObservable;
 
             // Loop through all the satellites
          satTypeValueMap::iterator stv;
@@ -146,16 +148,21 @@ namespace gpstk
               ++stv )
          {
 	    SatID::SatelliteSystem system = stv->first.system;
-                 // for BeiDou B1
-	    if (system == SatID::systemBeiDou)
+	          // for Galileo E1
+	    if (system == SatID::systemGalileo)
 	    {
-	       defaultObservable = TypeID::C2;	
+	       setDefaultObservable(TypeID::C1);	
+	    }
+                 // for BeiDou B1
+	    else if (system == SatID::systemBeiDou)
+	    {
+	       setDefaultObservable(TypeID::C2);	
 	    }
                // Scalar to hold temporal value
+
             double observable( (*stv).second(defaultObservable) );
                // A lot of the work is done by a CorrectedEphemerisRange object
             CorrectedEphemerisRange cerange;
-
             try
             {
                   // Compute most of the parameters
@@ -171,7 +178,6 @@ namespace gpstk
                   // If some problem appears, then schedule this satellite
                   // for removal
                satRejectedSet.insert( (*stv).first );
-
                continue;    // Skip this SV if problems arise
 
             }
@@ -194,7 +200,6 @@ namespace gpstk
 
                // Now we have to add the new values to the data structure
             (*stv).second[TypeID::dtSat] = cerange.svclkbias;
-
                // Now, lets insert the geometry matrix
             (*stv).second[TypeID::dx] = cerange.cosines[0];
             (*stv).second[TypeID::dy] = cerange.cosines[1];
@@ -247,14 +252,13 @@ namespace gpstk
             (*stv).second[TypeID::instC1] = tempTGD;
 
 
-
          } // End of loop for(stv = gData.begin()...
+           
+	    // default 
+	 setDefaultObservable(gpsObservable);
 
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);
-
-            // default C1
-	 defaultObservable = TypeID::C1;
 
          return gData;
 

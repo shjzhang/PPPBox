@@ -175,14 +175,14 @@ namespace gpstk
       pcCombWithC1.body[TypeID::P2]       = -b;
 
          // Definition to compute PC combination for Galileo E1/E5a
-      pcCombination.header                = TypeID::PC;
-      pcCombination.body[TypeID::C1]      = +h;
-      pcCombination.body[TypeID::C5]      = -i;
+      pcCombForGalileo.header                = TypeID::PC;
+      pcCombForGalileo.body[TypeID::C1]      = +h;
+      pcCombForGalileo.body[TypeID::C5]      = -i;
          
 	 // Definition to compute PC combination for BeiDou B1/B2 
-      pcCombination.header                = TypeID::PC;
-      pcCombination.body[TypeID::C2]      = +j;
-      pcCombination.body[TypeID::C7]      = -k;
+      pcCombForBeiDou.header                = TypeID::PC;
+      pcCombForBeiDou.body[TypeID::C2]      = +j;
+      pcCombForBeiDou.body[TypeID::C7]      = -k;
         
 	// Definition to compute prefit residual of PC
       pcPrefit.header                     = TypeID::prefitC;
@@ -202,14 +202,14 @@ namespace gpstk
       lcCombination.body[TypeID::L2]      = -b;
 
          // Definition to compute LC combination for Galileo E1/E5a
-      lcCombination.header                = TypeID::LC;
-      lcCombination.body[TypeID::L1]      = +h;
-      lcCombination.body[TypeID::L5]      = -i;
+      lcCombForGalileo.header                = TypeID::LC;
+      lcCombForGalileo.body[TypeID::L1]      = +h;
+      lcCombForGalileo.body[TypeID::L5]      = -i;
          
 	 // Definition to compute LC combination for BeiDou B1/B2
-      lcCombination.header                = TypeID::LC;
-      lcCombination.body[TypeID::L2]      = +j;
-      lcCombination.body[TypeID::L7]      = -k;
+      lcCombForBeiDou.header                = TypeID::LC;
+      lcCombForBeiDou.body[TypeID::L2]      = +j;
+      lcCombForBeiDou.body[TypeID::L7]      = -k;
        
          // Definition to compute prefit residual of LC
       lcPrefit.header                     = TypeID::prefitL;
@@ -228,34 +228,34 @@ namespace gpstk
       lcPrefit.body[TypeID::corrLC]       = -1.0;
       
           // Definition to compute prefit residual of LC for Galieo E1/E5a
-      lcPrefit.header                     = TypeID::prefitL;
-      lcPrefit.body[TypeID::LC]           = +1.0;
-      lcPrefit.body[TypeID::rho]          = -1.0;
-      lcPrefit.body[TypeID::dtSat]        = +1.0;
-      lcPrefit.body[TypeID::updSatLC]     = +1.0;   // UPD for LC
-      lcPrefit.body[TypeID::rel]          = -1.0;
-      lcPrefit.body[TypeID::gravDelay]    = -1.0;
-      lcPrefit.body[TypeID::satPCenter]   = -1.0;
-      lcPrefit.body[TypeID::tropoSlant]   = -1.0;
+      lcPrefitForGalileo.header                     = TypeID::prefitL;
+      lcPrefitForGalileo.body[TypeID::LC]           = +1.0;
+      lcPrefitForGalileo.body[TypeID::rho]          = -1.0;
+      lcPrefitForGalileo.body[TypeID::dtSat]        = +1.0;
+      lcPrefitForGalileo.body[TypeID::updSatLC]     = +1.0;   // UPD for LC
+      lcPrefitForGalileo.body[TypeID::rel]          = -1.0;
+      lcPrefitForGalileo.body[TypeID::gravDelay]    = -1.0;
+      lcPrefitForGalileo.body[TypeID::satPCenter]   = -1.0;
+      lcPrefitForGalileo.body[TypeID::tropoSlant]   = -1.0;
          // Coefficient for LC windUp is LC wavelenght/2*PI(Galieo E1/E5a)
-      lcPrefit.body[TypeID::windUp]       = -0.108941358884/TWO_PI;
+      lcPrefitForGalileo.body[TypeID::windUp]       = -0.108941358884/TWO_PI;
          // Interpolated from reference stations
-      lcPrefit.body[TypeID::corrLC]       = -1.0;
+      lcPrefitForGalileo.body[TypeID::corrLC]       = -1.0;
 
              // Definition to compute prefit residual of LC for BeiDou B1/B2
-      lcPrefit.header                     = TypeID::prefitL;
-      lcPrefit.body[TypeID::LC]           = +1.0;
-      lcPrefit.body[TypeID::rho]          = -1.0;
-      lcPrefit.body[TypeID::dtSat]        = +1.0;
-      lcPrefit.body[TypeID::updSatLC]     = +1.0;   // UPD for LC
-      lcPrefit.body[TypeID::rel]          = -1.0;
-      lcPrefit.body[TypeID::gravDelay]    = -1.0;
-      lcPrefit.body[TypeID::satPCenter]   = -1.0;
-      lcPrefit.body[TypeID::tropoSlant]   = -1.0;
+      lcPrefitForBeiDou.header                     = TypeID::prefitL;
+      lcPrefitForBeiDou.body[TypeID::LC]           = +1.0;
+      lcPrefitForBeiDou.body[TypeID::rho]          = -1.0;
+      lcPrefitForBeiDou.body[TypeID::dtSat]        = +1.0;
+      lcPrefitForBeiDou.body[TypeID::updSatLC]     = +1.0;   // UPD for LC
+      lcPrefitForBeiDou.body[TypeID::rel]          = -1.0;
+      lcPrefitForBeiDou.body[TypeID::gravDelay]    = -1.0;
+      lcPrefitForBeiDou.body[TypeID::satPCenter]   = -1.0;
+      lcPrefitForBeiDou.body[TypeID::tropoSlant]   = -1.0;
          // Coefficient for LC windUp is LC wavelenght/2*PI(BeiDou B1/B2)
-      lcPrefit.body[TypeID::windUp]       = -0.1082972115179/TWO_PI;
+      lcPrefitForBeiDou.body[TypeID::windUp]       = -0.1082972115179/TWO_PI;
          // Interpolated from reference stations
-      lcPrefit.body[TypeID::corrLC]       = -1.0;
+      lcPrefitForBeiDou.body[TypeID::corrLC]       = -1.0;
 
          // Definition to compute prefit residual of PC for clock estimation
       pcPrefitC.header                     = TypeID::prefitC;
@@ -289,14 +289,14 @@ namespace gpstk
       piCombWithC1.body[TypeID::P2]       = +1.0;
         
           // Definition to compute PI combination for Galieo E1/E5a
-      piCombination.header                = TypeID::PI;
-      piCombination.body[TypeID::C1]      = -1.0;
-      piCombination.body[TypeID::C5]      = +1.0;
+      piCombForGalileo.header                = TypeID::PI;
+      piCombForGalileo.body[TypeID::C1]      = -1.0;
+      piCombForGalileo.body[TypeID::C5]      = +1.0;
 
           // Definition to compute PI combination for BeiDou B1/B2
-      piCombination.header                = TypeID::PI;
-      piCombination.body[TypeID::C2]      = -1.0;
-      piCombination.body[TypeID::C7]      = +1.0;
+      piCombForBeiDou.header                = TypeID::PI;
+      piCombForBeiDou.body[TypeID::C2]      = -1.0;
+      piCombForBeiDou.body[TypeID::C7]      = +1.0;
 
          // Definition to compute LI combination 
       liCombination.header                = TypeID::LI;
@@ -304,14 +304,14 @@ namespace gpstk
       liCombination.body[TypeID::L2]      = -1.0;
          
           // Definition to compute LI combination for Galieo E1/E5a
-      liCombination.header                = TypeID::LI;
-      liCombination.body[TypeID::L1]      = +1.0;
-      liCombination.body[TypeID::L5]      = -1.0;
+      liCombForGalileo.header                = TypeID::LI;
+      liCombForGalileo.body[TypeID::L1]      = +1.0;
+      liCombForGalileo.body[TypeID::L5]      = -1.0;
 
           // Definition to compute LI combinationc for BeiDou B1/B2
-      liCombination.header                = TypeID::LI;
-      liCombination.body[TypeID::L2]      = +1.0;
-      liCombination.body[TypeID::L7]      = -1.0;
+      liCombForBeiDou.header                = TypeID::LI;
+      liCombForBeiDou.body[TypeID::L2]      = +1.0;
+      liCombForBeiDou.body[TypeID::L7]      = -1.0;
       
       double c( L1_FREQ_GPS/(L1_FREQ_GPS + L2_FREQ_GPS) );
       double d( L2_FREQ_GPS/(L1_FREQ_GPS + L2_FREQ_GPS) );
@@ -341,19 +341,16 @@ namespace gpstk
       pdeltaCombWithC1.body[TypeID::P2]   = +d;
 
          // Definition to compute Pdelta (PW) combination
-      pdeltaCombination.header            = TypeID::Pdelta;
-      pdeltaCombination.body[TypeID::C1]  = +l;
-      pdeltaCombination.body[TypeID::C5]  = +m;
+      pdeltaCombForGalileo.header            = TypeID::Pdelta;
+      pdeltaCombForGalileo.body[TypeID::C1]  = +l;
+      pdeltaCombForGalileo.body[TypeID::C5]  = +m;
 
    	// Definition to compute Pdelta (PW) combination
-      pdeltaCombination.header            = TypeID::Pdelta;
-      pdeltaCombination.body[TypeID::C2]  = +q;
-      pdeltaCombination.body[TypeID::C7]  = +r;
+      pdeltaCombForBeiDou.header            = TypeID::Pdelta;
+      pdeltaCombForBeiDou.body[TypeID::C2]  = +q;
+      pdeltaCombForBeiDou.body[TypeID::C7]  = +r;
 
-
-	
-
-         // Definition to compute prefit residual of Pdelta (LW)
+        // Definition to compute prefit residual of Pdelta (LW)
       pdeltaPrefit.header                     = TypeID::prefitPdelta;
       pdeltaPrefit.body[TypeID::Pdelta]       = +1.0;
       pdeltaPrefit.body[TypeID::rho]          = -1.0;
@@ -376,14 +373,14 @@ namespace gpstk
       ldeltaCombination.body[TypeID::L2]  = -f;
 	
 	// Definition to compute Ldelta (LW) combination
-      ldeltaCombination.header            = TypeID::Ldelta;
-      ldeltaCombination.body[TypeID::L1]  = +n;
-      ldeltaCombination.body[TypeID::L5]  = -p;
+      ldeltaCombForGalileo.header            = TypeID::Ldelta;
+      ldeltaCombForGalileo.body[TypeID::L1]  = +n;
+      ldeltaCombForGalileo.body[TypeID::L5]  = -p;
 	
 	// Definition to compute Ldelta (LW) combination
-      ldeltaCombination.header            = TypeID::Ldelta;
-      ldeltaCombination.body[TypeID::L2]  = +s;
-      ldeltaCombination.body[TypeID::L7]  = -t;
+      ldeltaCombForBeiDou.header            = TypeID::Ldelta;
+      ldeltaCombForBeiDou.body[TypeID::L2]  = +s;
+      ldeltaCombForBeiDou.body[TypeID::L7]  = -t;
 
          // Definition to compute prefit residual of Ldelta (LW)
       ldeltaPrefit.header                     = TypeID::prefitLdelta;
@@ -408,18 +405,18 @@ namespace gpstk
       mwubbenaCombination.body[TypeID::P2] = -d;
 
 	// Definition to compute the Melbourne-Wubbena (W) combination for Galileo
-      mwubbenaCombination.header           = TypeID::MWubbena;
-      mwubbenaCombination.body[TypeID::L1] = +n;
-      mwubbenaCombination.body[TypeID::L5] = -p;
-      mwubbenaCombination.body[TypeID::C1] = -l;
-      mwubbenaCombination.body[TypeID::C5] = -m;
+      mwubbenaCombForGalileo.header           = TypeID::MWubbena;
+      mwubbenaCombForGalileo.body[TypeID::L1] = +n;
+      mwubbenaCombForGalileo.body[TypeID::L5] = -p;
+      mwubbenaCombForGalileo.body[TypeID::C1] = -l;
+      mwubbenaCombForGalileo.body[TypeID::C5] = -m;
 	
 	// Definition to compute the Melbourne-Wubbena (W) combination for BeiDou
-      mwubbenaCombination.header           = TypeID::MWubbena;
-      mwubbenaCombination.body[TypeID::L2] = +s;
-      mwubbenaCombination.body[TypeID::L7] = -t;
-      mwubbenaCombination.body[TypeID::C2] = -q;
-      mwubbenaCombination.body[TypeID::C7] = -r;
+      mwubbenaCombForBeiDou.header           = TypeID::MWubbena;
+      mwubbenaCombForBeiDou.body[TypeID::L2] = +s;
+      mwubbenaCombForBeiDou.body[TypeID::L7] = -t;
+      mwubbenaCombForBeiDou.body[TypeID::C2] = -q;
+      mwubbenaCombForBeiDou.body[TypeID::C7] = -r;
 
          // Definition to compute the prefit residual of Melbourne-Wubbena (W) 
          // combination

@@ -135,7 +135,6 @@ namespace gpstk
          /// Definition to compute MIP2
       gnssLinearCombination q2Combination;
 
-
          /// Definition to compute prefit residual of C1
       gnssLinearCombination c1Prefit;
 
@@ -157,6 +156,13 @@ namespace gpstk
          /// Definition to compute PC combination, using C1 instead of P1
       gnssLinearCombination pcCombWithC1;
 
+         /// Definition to compute PC combination, using C1 instead of P1
+      gnssLinearCombination pcCombForGalileo;
+
+         /// Definition to compute PC combination, using C1 instead of P1
+      gnssLinearCombination pcCombForBeiDou;
+
+
          /// Definition to compute prefit residual of PC
       gnssLinearCombination pcPrefit;
 
@@ -169,8 +175,20 @@ namespace gpstk
          /// Definition to compute LC combination
       gnssLinearCombination lcCombination;
 
+         /// Definition to compute LC combination
+      gnssLinearCombination lcCombForGalileo;
+
+         /// Definition to compute LC combination
+      gnssLinearCombination lcCombForBeiDou;
+
          /// Definition to compute prefit residual of LC
       gnssLinearCombination lcPrefit;
+
+         /// Definition to compute prefit residual of LC
+      gnssLinearCombination lcPrefitForGalileo;
+
+         /// Definition to compute prefit residual of LC
+      gnssLinearCombination lcPrefitForBeiDou;
 
          /// Definition to compute PI combination
       gnssLinearCombination piCombination;
@@ -178,8 +196,20 @@ namespace gpstk
          /// Definition to compute PI combination, using C1 instead of P1
       gnssLinearCombination piCombWithC1;
 
+         /// Definition to compute PI combination
+      gnssLinearCombination piCombForGalileo;
+
+         /// Definition to compute PI combination
+      gnssLinearCombination piCombForBeiDou;
+
          /// Definition to compute LI combination
       gnssLinearCombination liCombination;
+
+         /// Definition to compute LI combination
+      gnssLinearCombination liCombForGalileo;
+
+         /// Definition to compute LI combination
+      gnssLinearCombination liCombForBeiDou;
 
          /// Definition to compute Pdelta (PW) combination
       gnssLinearCombination pdeltaCombination;
@@ -188,17 +218,35 @@ namespace gpstk
          /// of P1
       gnssLinearCombination pdeltaCombWithC1;
 
+         /// Definition to compute Pdelta (PW) combination
+      gnssLinearCombination pdeltaCombForGalileo;
+
+         /// Definition to compute Pdelta (PW) combination
+      gnssLinearCombination pdeltaCombForBeiDou;
+
          /// Definition to compute prefit residual of Pdelta(PW)
       gnssLinearCombination pdeltaPrefit;
 
          /// Definition to compute Ldelta (LW) combination
       gnssLinearCombination ldeltaCombination;
 
+         /// Definition to compute Ldelta (LW) combination
+      gnssLinearCombination ldeltaCombForGalileo;
+
+         /// Definition to compute Ldelta (LW) combination
+      gnssLinearCombination ldeltaCombForBeiDou;
+
          /// Definition to compute prefit residual of Ldelta (LW) 
       gnssLinearCombination ldeltaPrefit;
 
          /// Definition to compute the Melbourne-Wubbena (W) combination
       gnssLinearCombination mwubbenaCombination;
+
+         /// Definition to compute the Melbourne-Wubbena (W) combination
+      gnssLinearCombination mwubbenaCombForGalileo;
+
+         /// Definition to compute the Melbourne-Wubbena (W) combination
+      gnssLinearCombination mwubbenaCombForBeiDou;
 
          /// Definition to compute the prefit residual of Melbourne-Wubbena (W) 
          /// combination

@@ -170,15 +170,15 @@ namespace gpstk
                // We will mark both cycle slip flags
             (*it).second[resultType2] = (*it).second[resultType1];
 
+              // after porcessed this satellite, set default type(GPS)
+            lliType1 = TypeID::LLI1;
+	    lliType2 = TypeID::LLI2;
+	    resultType1 = TypeID::CSL1;
+	    resultType2 = TypeID::CSL2;
          }
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);
 
-            // default
-         lliType1 = TypeID::LLI1;
-	 lliType2 = TypeID::LLI2;
-	 resultType1 = TypeID::CSL1;
-	 resultType2 = TypeID::CSL2;
 
          return gData;
 
