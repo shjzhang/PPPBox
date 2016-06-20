@@ -112,6 +112,9 @@ namespace gpstk
          int prn(asInt(site.substr(1,2)));
          if(site[0] == 'G') sat = RinexSatID(prn,RinexSatID::systemGPS);
          else if(site[0] == 'R') sat = RinexSatID(prn,RinexSatID::systemGlonass);
+         else if(site[0] == 'E') sat = RinexSatID(prn,RinexSatID::systemGalileo);
+         else if(site[0] == 'C') sat = RinexSatID(prn,RinexSatID::systemBeiDou);
+         else if(site[0] == 'J') sat = RinexSatID(prn,RinexSatID::systemQZSS);
          else {
             FFStreamError e("Invalid sat : /" + site + "/");
             GPSTK_THROW(e);
