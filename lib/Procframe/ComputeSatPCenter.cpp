@@ -127,7 +127,6 @@ namespace gpstk
                // meters, and insert it in the GNSS data structure.
             (*it).second[TypeID::satPCenter] =
                getSatPCenter((*it).first, time, svPos, sunPos);
-   std::cout<<it->first<<" "<< (*it).second[TypeID::satPCenter]<<std::endl;
          }  // End of 'for (it = gData.begin(); it != gData.end(); ++it)'
 
             // Remove satellites with missing data
