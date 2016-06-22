@@ -52,3 +52,10 @@ add_executable(ephsum EphSum.cpp)
 target_link_libraries(ephsum pppbox)
 install (TARGETS ephsum DESTINATION bin)
 
+add_executable(crx2rnx crx2rnx.c)
+target_link_libraries(crx2rnx pppbox)
+install (TARGETS crx2rnx DESTINATION bin)
+
+add_executable(rnx2crx rnx2crx.c)
+target_link_libraries(rnx2crx pppbox)
+install (TARGETS rnx2crx DESTINATION bin)
