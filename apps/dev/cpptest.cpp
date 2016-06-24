@@ -24,6 +24,7 @@
 
 #include <iostream>
 #include "GeoidHeight.hpp"
+#include "GNSSconstants.hpp"
 
 
 using namespace std;
@@ -32,13 +33,16 @@ using namespace gpstk;
 int main()
 {
       GeoidHeight geoid;
-      double lat=0.0,lon=0.0;
-      string filename="/Users/whusgghwei/Desktop/Daily_Mac/Gravity_Models/egm96.gfc";
-      int degree=180;
+      double lat=30.0/180*PI,lon=114.0/180*PI;
+      
+      
+      string filename="../../tables/egm96.gfc";
+      int degree=360;
       double Ngeoid;
       
       geoid.computeGeoid(lat,lon,filename,degree,Ngeoid);
       
-      cout<<"geoid"<<Ngeoid;
+      cout<<"geoid"<<Ngeoid<<endl;
+      cout<<"sin(lat)"<<std::sin(lat)<<endl;
 
 }

@@ -55,13 +55,14 @@ namespace gpstk
       throw(FileMissingException)
       {
 
-            
+            //load EGMfile at degree you want
             GraModel.loadEGMFile(filename,degree);
-            
-            legendre(degree,lat,leg0,leg1,leg2);
-      
-            //cout<<degree<<lat<<leg0(1);
 
+            // legendre function
+            legendre(degree,lat,leg0,leg1,leg2);
+           // cout<<leg0(2)<<" "<<leg0(3)<<" "<<leg0(4)<<endl;
+      
+            //compute disturb potential T
             for(int n=0; n<=degree; ++n)
             {
                   for(int m=0; m<=n; ++m)
@@ -75,18 +76,20 @@ namespace gpstk
                   double smlon = std::sin(m*lon);
                   double cmlon = std::cos(m*lon);
                   
-                        if(n%2==0&&m==0){ Cnm=0.0;};
+                  // [plus nomal potential.
+                  if(n%2==0&&m==0){ Cnm=0.0;};
                         
                   Tdisturb +=P0 * (Cnm*cmlon+Snm*smlon);
                         
                   }
             }
             
+            //N=T/gama;here we sent(R/r)^n=1 ;r=ae;
             Ngeoid= Tdisturb*(GraModel.gmData.GM/GraModel.gmData.ae)/gama;
       
       }//end of computeGeoid
       
-      // compute Geoid.default EGM2008,MAXdegree=360;
+      // compute Geoid.default EGM96,MAXdegree=360;
       void GeoidHeight::computeGeoid(const double lat,
                         const double lon,
                         const string filename,
@@ -101,14 +104,14 @@ namespace gpstk
             
             
       
-      // compute Geoid.default EGM2008,MAXdegree=360;
+      // compute Geoid.default EGM96,MAXdegree=360;
       void GeoidHeight::computeGeoid(const double lat,
                      const double lon,
                      double& Ngeoid )
       throw(FileMissingException)
       {
          
-            filename="EGM2008";
+            filename="../../tables/egm96.gfc";
          
             degree=360;
          

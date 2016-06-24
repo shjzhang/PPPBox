@@ -65,7 +65,7 @@ namespace gpstk
       GravityModelData()
       {
          // model name
-         gmData.modelName = "EGM96";
+         gmData.modelName = "../../tables/egm96.gfc";
             
          // tide_system
          gmData.tide_system = "tide_free";

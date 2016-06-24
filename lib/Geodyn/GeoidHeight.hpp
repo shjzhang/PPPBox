@@ -72,6 +72,7 @@ namespace gpstk
          
          GeoidHeight()
          {
+            //nomal gravity;
             gama=9.78;
          }
 
@@ -81,7 +82,7 @@ namespace gpstk
         
          
          // compute Geoid
-         // compute Geoid.default EGM2008,MAXdegree=360;
+         // compute Geoid.default EGM96,MAXdegree=360;
          virtual  void computeGeoid(const double lat,
                                     const double lon,
                                     double& Ngeoid )
