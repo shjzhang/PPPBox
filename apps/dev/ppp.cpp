@@ -681,32 +681,28 @@ void ppp::process()
       // Let's read DCB files
       //***********************
 
-      // Now read dcb file from 'dcbFileName'
-   ifstream dcbFileStream;
-
       // Read and store dcb data
    DCBDataReader dcbP1C1;
-      // Open dcbFileList File
-   dcbFileStream.open(dcbFileName.c_str(), ios::in);
-   if(!dcbFileStream)
+
+   if( dcbFileOpt.getCount() == 0 )
    {
-      if(dcbFileName=="")
-      {
-         cerr << "Warning: dcb file List Name is not provided, "
-              << "We will not do the DCB correction!" << endl;
-      }
-      else
+      cerr << "dcb file is not provided, thus dcb will not be corrected !" << endl;
+   }
+   else
+   {
+         // Now read dcb file from 'dcbFileName'
+      ifstream dcbFileStream;
+
+         // Open dcbFileList File
+      dcbFileStream.open(dcbFileName.c_str(), ios::in);
+      if(!dcbFileStream)
       {
             // If file doesn't exist, issue a warning
          cerr << "Warning: dcb file List Name '" << dcbFileName << "' doesn't exist or you don't "
               << "have permission to read it." << endl;
          exit(-1);
       }
-   }
 
-   bool hasDCBFile(false);
-   if(dcbFileStream)
-   {
       string dcbFile;
          // Here is just a dcb file, we only read one month's dcb data.
       dcbFileStream >> dcbFile;
@@ -721,8 +717,10 @@ void ppp::process()
               << endl;
          exit(-1);
       }
+      dcbFileStream.close();
+
    }
-   dcbFileStream.close();
+
 
    	// Declare a CC2NONCC object
    CC2NONCC cc2noncc(dcbP1C1);
@@ -1481,7 +1479,7 @@ void ppp::process()
             ++outit;
          }
 
-            // Go process next station
+            // Go to process next station
          continue;
 
       }
