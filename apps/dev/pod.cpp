@@ -2,13 +2,13 @@
 
 //============================================================================
 //
-// PPP Positioning
+// pod Positioning
 //
 // This program shows how to use GNSS Data Structures (GDS) and other classes
 // to build a reasonable complete application that computes "Precise Point
-// Positioning" (PPP).
+// Positioning" (pod).
 //
-// For details on the PPP algorithm please consult:
+// For details on the pod algorithm please consult:
 //
 //    Kouba, J. and P. Heroux. "Precise Point Positioning using IGS Orbit
 //       and Clock Products". GPS Solutions, vol 5, pp 2-28. October, 2001.
@@ -132,13 +132,13 @@
 // satellite clock information with a 900 s sample rate.
 #include "Decimate.hpp"
 
-// Class to compute the Precise Point Positioning (PPP) solution in
+// Class to compute the Precise Point Positioning (pod) solution in
 // forwards-only mode.
-#include "SolverPPP.hpp"
+#include "SolverPOD.hpp"
 
-// Class to compute the Precise Point Positioning (PPP) solution in
+// Class to compute the Precise Point Positioning (pod) solution in
 // forwards-backwards mode.
-#include "SolverPPPFB.hpp"
+#include "SolverPODFB.hpp"
 
 // Class to filter the MW combination
 #include "MWFilter.hpp"
@@ -149,27 +149,19 @@
 // Class to compute the elevation weights
 #include "ComputeElevWeights.hpp"
 
-
-
-
-   // Class to store satellite precise navigation data
+// Class to store satellite precise navigation data
 #include "MSCStore.hpp"
 
 
 //******//
 // add hpp from pod.ar.cpp   for Professor sjzhang
-// however there's something debug ,I try replace it with a simple one
-//  "ReceiverAttStorew.hpp"
 
+// Class to read and store the receiver attitude data
+#include "LEOReciverAttData.hpp"
 // Class to read and store the receiver position data
-#include "ReceiverAttDataw.hpp"
+#include "LEOReciverPosData.hpp"
 
 //******//
-
-
-
-      double clight=2.99792458E8;
-
 
 
 using namespace std;
@@ -179,12 +171,12 @@ using namespace gpstk::StringUtils;
 
    // A new class is declared that will handle program behaviour
    // This class inherits from BasicFramework
-class ppp : public gpstk::BasicFramework
+class pod : public gpstk::BasicFramework
 {
 public:
 
       // Constructor declaration
-   ppp(char* arg0);
+   pod(char* arg0);
 
 
 protected:
@@ -216,9 +208,6 @@ private:
    CommandOptionWithAnyArg eopFileListOpt;
 
       // Option for monitor coordinate file
-   CommandOptionWithAnyArg mscFileOpt;
-
-      // Option for monitor coordinate file
    CommandOptionWithAnyArg outputFileListOpt;
 
       // If you want to share objects and variables among methods, you'd
@@ -228,7 +217,6 @@ private:
    string sp3FileListName;
    string clkFileListName;
    string eopFileListName;
-   string mscFileName;
    string outputFileListName;
 
       // Configuration file reader
@@ -245,6 +233,7 @@ private:
                        const  ComputeDOP& cDOP,
                        bool   useNEU,
                        int    numSats,
+
 //                       double dryTropo,
                        int    precision = 3 );
 
@@ -255,17 +244,17 @@ private:
                     int   precision = 4 );
 
 
-}; // End of 'ppp' class declaration
+}; // End of 'pod' class declaration
 
 
 
    // Let's implement constructor details
-ppp::ppp(char* arg0)
+pod::pod(char* arg0)
    :
    gpstk::BasicFramework(  arg0,
 "\nThis program reads parameters from a configuration file, \n"
 "reads GPS receiver data and ephemeris data from command line, \n"
-"then process the data using the PPP strategy.\n\n"
+"then process the data using the pod strategy.\n\n"
 "Please consult the default configuration file, 'pod.conf', for \n"
 "further details.\n\n"
 "The output file format is as follows:\n"
@@ -305,22 +294,20 @@ ppp::ppp(char* arg0)
    outputFileListOpt( 'o',
                    "outputFileList",
    "file storing the list of output file name ",
-                   false),
-   mscFileOpt( 'm',
-               "mscFile",
-   "file storing monitor station coordinates ",
-               true)
+                   false)
+
 {
 
       // This option may appear just once at CLI
    confFile.setMaxCount(1);
 
-}  // End of 'ppp::ppp'
+}  // End of 'pod::pod'
 
 
+GPSEllipsoid ellipsoid;
 
    // Method to print solution values
-void ppp::printSolution( ofstream& outfile,
+void pod::printSolution( ofstream& outfile,
                               const SolverLMS& solver,
                               const CommonTime& time,
                               const ComputeDOP& cDOP,
@@ -335,9 +322,9 @@ void ppp::printSolution( ofstream& outfile,
 
 
       // Print results
-   outfile << static_cast<YDSTime>(time).year        << "  ";    // Year           - #1
-   outfile << setw(5) << static_cast<YDSTime>(time).doy         << "  ";    // DayOfYear      - #2
-   outfile << setw(12)<< static_cast<YDSTime>(time).sod+solver.getSolution(TypeID::cdt)/clight << "  ";    // SecondsOfDay   - #3
+   outfile << static_cast<YDSTime>(time).year          << "  ";    // Year           - #1
+   outfile << setw(5) << static_cast<YDSTime>(time).doy<< "  ";    // DayOfYear      - #2
+   outfile << setw(12)<< static_cast<YDSTime>(time).sod<< "  ";    // SecondsOfDay   - #3
 
    if( useNEU )
    {
@@ -364,14 +351,15 @@ void ppp::printSolution( ofstream& outfile,
          // We add 0.1 meters to 'wetMap' because 'NeillTropModel' sets a
          // nominal value of 0.1 m. Also to get the total we have to add the
          // dry tropospheric delay value
-                                                                 // cdt - #7
-      outfile << solver.getSolution(TypeID::cdt)/clight << "  ";
+         
+      outfile << solver.getSolution(TypeID::cdt)<< "  ";         // cdt - #7
 
 
    }
-
+      // out nomalposition at  the epoch
+//   outfile << position[0] << "  "<<position[1] << "  "<<position[2] << "  ";
    outfile << numSats << "  ";    // Number of satellites - #12
-   outfile << solver.getConverged() << "  "; 
+  // outfile << solver.getConverged() << "  ";
 
    outfile << cDOP.getGDOP()        << "  ";  // GDOP - #13
    outfile << cDOP.getPDOP()        << "  ";  // PDOP - #14
@@ -383,12 +371,12 @@ void ppp::printSolution( ofstream& outfile,
    return;
 
 
-}  // End of method 'ppp::printSolution()'
+}  // End of method 'pod::printSolution()'
 
 
 
    // Method to print model values
-void ppp::printModel( ofstream& modelfile,
+void pod::printModel( ofstream& modelfile,
                            const gnssRinex& gData,
                            int   precision )
 {
@@ -429,13 +417,13 @@ void ppp::printModel( ofstream& modelfile,
 
    }  // End for (it = gData.body.begin(); ... )
 
-}  // End of method 'ppp::printModel()'
+}  // End of method 'pod::printModel()'
 
 
 
 
    // Method that will be executed AFTER initialization but BEFORE processing
-void ppp::spinUp()
+void pod::spinUp()
 {
 
       // Check if the user provided a configuration file name
@@ -515,17 +503,13 @@ void ppp::spinUp()
    {
       outputFileListName = outputFileListOpt.getValue()[0];
    }
-//   if(mscFileOpt.getCount())
-//   {
-//      mscFileName = mscFileOpt.getValue()[0];
-//   }
 
-}  // End of method 'ppp::spinUp()'
+}  // End of method 'pod::spinUp()'
 
 
 
    // Method that will really process information
-void ppp::process()
+void pod::process()
 {
       //**********************************************
       // Now, Let's read SP3 Files
@@ -651,25 +635,6 @@ void ppp::process()
       // Close file
    eopFileListStream.close();
 
-      //**********************************************
-      // Now, Let's read MSC data
-      //**********************************************
-      
-      // Declare a "MSCStore" object to handle msc file 
-//   MSCStore mscStore;
-//
-//   try
-//   {
-//      mscStore.loadFile( mscFileName );
-//   }
-//   catch (FileMissingException& e)
-//   {
-//         // If file doesn't exist, issue a warning
-//      cerr << "MSC file '" << mscFileName << "' doesn't exist or you don't "
-//           << "have permission to read it. Skipping it." << endl;
-//      exit(-1);
-//   }
-
       
       //******//
       // add hpp from pod.ar.cpp   for Professor sjzhang
@@ -715,50 +680,29 @@ void ppp::process()
       Triple offsetRecivert;
       
       
-      ReceiverAttDataw rxAtt;
+      LEOReciverAtt rxAtt;
+      LEOReciverPos rxPos;
       // GOCE attfile class
-      vector<ReceiverAttDataw::GOCEatt> vGOCEatts1,vGOCEatts2;
+      vector<LEOReciverAtt::LEOatt> vGOCEatts1,vGOCEatts2;
       
-      ReceiverAttDataw::GOCEatt         vGOCEattag1, vGOCEattag2;
+      LEOReciverAtt::LEOatt         vGOCEattag1, vGOCEattag2;
       
       //GOCE prd file class
-      vector<ReceiverAttDataw::GOCEprdposition> vGOCEprdpositions;
-      ReceiverAttDataw::GOCEprdposition vGOCEptag;
+      vector<LEOReciverPos::LEOposition> vGOCEprdpositions;
+      LEOReciverPos::LEOposition vGOCEptag;
       
       // read GOCE attfile
-      
-      //      rxAtt.ReadGOCEatt(attfile1,vGOCEatts1);
-      //      rxAtt.ReadGOCEatt(attfile2,vGOCEatts2);
-      rxAtt.ReadGOCEatt2(timestatatt,timeendatt,attfile1,vGOCEatts1);
-      rxAtt.ReadGOCEatt2(timestatatt,timeendatt,attfile2,vGOCEatts2);
+      rxAtt.ReadLEOatt2(timestatatt,timeendatt,attfile1,vGOCEatts1);
+      rxAtt.ReadLEOatt2(timestatatt,timeendatt,attfile2,vGOCEatts2);
       
       
       // read GOCE prdfile
-      //      rxAtt.ReadGOCEposition(prdfile,vGOCEprdpositions);
-      rxAtt.ReadGOCEposition2(timestatprd,timeendprd,prdfile,vGOCEprdpositions);
+      rxPos.ReadLEOposition2(timestatprd,timeendprd,prdfile,vGOCEprdpositions);
       
       //******//
       
-
-       for(int i = 0; i < 500; i ++)
-       {
-       double ttagprd;
-             ttagprd=vGOCEprdpositions[60+i].second+4.3E-3;
-
-       rxAtt.GetGOCEpostime(ttagprd,vGOCEprdpositions,vGOCEptag);
-       
-             cout<<"diff inpoly"<<vGOCEptag.x-vGOCEprdpositions[60+i].x<<"   "<<vGOCEptag.y-vGOCEprdpositions[60+i].y<<"   "<<vGOCEptag.y-vGOCEprdpositions[60+i].y<<endl;
-             
-       }
-      
-      
-      
-      
-      cout<<"step1 over"<<endl;
-      
-
       //**********************************************************
-      // Now, Let's perform the PPP for each rinex files
+      // Now, Let's perform the pod for each rinex files
       //**********************************************************
 
    vector<string> rnxFileListVec;
@@ -896,7 +840,6 @@ void ppp::process()
          continue;
       }
 
-         cout<<"step1.5 over"<<endl;
          // Get the station name for current rinex file 
       string station = roh.markerName;
 
@@ -916,11 +859,19 @@ void ppp::process()
          // and deletes it from the given variable list.
 
 //      Position nominalPos( mscData.coordinates );
-      Position nominalPos(-1.71633e+06 , -6.4105e+06 ,6988.72);
+      Position nominalPos;
 
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order
       ProcessingList pList;
+         
+         
+      Decimate ObsDecimate;
+         // to decimate data process data each 30 second.,
+         //none of business of sample interval of data
+      ObsDecimate.setSampleInterval(30.0);
+      ObsDecimate.setTolerance(0.5);
+      ObsDecimate.setInitialEpoch(initialTime);
 
          // This object will check that all required observables are present
       RequireObservables requireObs;
@@ -946,8 +897,6 @@ void ppp::process()
          pObsFilter.addFilteredType(TypeID::P1);
       }
          
-         cout<<"step1.6 over"<<endl;
-
          // Add 'requireObs' to processing list (it is the first)
       pList.push_back(requireObs);
 
@@ -1005,15 +954,6 @@ void ppp::process()
       markArc.setUnstablePeriod(151.0);
       pList.push_back(markArc);       // Add to processing list
 
-         cout<<"step1.7 over"<<endl;
-//         // Object to decimate data
-//      Decimate decimateData(
-//               confReader.getValueAsDouble( "decimationInterval"),
-//               confReader.getValueAsDouble( "decimationTolerance"),
-//               initialTime );
-//      pList.push_back(decimateData);       // Add to processing list
-
-
          // Declare a basic modeler
       BasicModel basic(nominalPos, SP3EphList);
          // Set the minimum elevation
@@ -1025,9 +965,6 @@ void ppp::process()
       }
          // Add to processing list
       pList.push_back(basic);
-
-         
-
 
          // Object to compute weights based on elevation
       ComputeElevWeights elevWeights;
@@ -1045,10 +982,7 @@ void ppp::process()
 
 
          // Vector from monument to antenna ARP [UEN], in meters
- 
-         //******
-       //  Triple offsetARP( roh.antennaOffset );
-           Triple offsetARP(0.0, 0.0000, 0.0000);
+      Triple offsetARP( roh.antennaOffset );
 
          // Declare some antenna-related variables
       Triple offsetL1( 0.0, 0.0, 0.0 ), offsetL2( 0.0, 0.0, 0.0 );
@@ -1196,7 +1130,7 @@ void ppp::process()
 
 
          // Object to compute ionosphere-free combinations to be used
-         // as observables in the PPP processing
+         // as observables in the pod processing
       ComputeLinear linear3;
 
          // Read if we should use C1 instead of P1
@@ -1268,8 +1202,8 @@ void ppp::process()
 
 
          // Declare solver objects
-      SolverPPP   pppSolver(isNEU);
-      SolverPPPFB fbpppSolver(isNEU);
+      SolverPOD   podSolver(isNEU);
+      SolverPODFB fbpodSolver(isNEU);
 
       cout<<"step3 over"<<endl;
          
@@ -1292,11 +1226,11 @@ void ppp::process()
          if ( isWN )
          {
                // Reconfigure solver
-            fbpppSolver.setCoordinatesModel(&wnM);
+            fbpodSolver.setCoordinatesModel(&wnM);
          }
 
             // Add solver to processing list
-         pList.push_back(fbpppSolver);
+         pList.push_back(fbpodSolver);
 
       }
       else
@@ -1308,11 +1242,11 @@ void ppp::process()
          if ( isWN )
          {
                // Reconfigure solver
-            pppSolver.setCoordinatesModel(&wnM);
+            podSolver.setCoordinatesModel(&wnM);
          }
 
             // Add solver to processing list
-         pList.push_back(pppSolver);
+         pList.push_back(podSolver);
 
       }  // End of 'if ( cycles > 0 )'
 
@@ -1321,9 +1255,9 @@ void ppp::process()
       SolidTides solid;
 
 
-         // Configure ocean loading model
-      OceanLoading ocean;
-      ocean.setFilename( confReader.getValue( "oceanLoadingFile") );
+//         // Configure ocean loading model
+//      OceanLoading ocean;
+//      ocean.setFilename( confReader.getValue( "oceanLoadingFile") );
 
          // Object to model pole tides
       PoleTides pole(eopStore);
@@ -1389,8 +1323,8 @@ void ppp::process()
             //here epoch.get(wday) is +0.5  ,youneed to reduce it
             ttagatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0+4.7E-3;
             ttagprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0+4.7E-3;
-            rxAtt.GOCEroffsetvt(ttagatt,vGOCEatts1,vGOCEatts2,offsetReciver,offsetRecivert);
-            rxAtt.GetGOCEpostime(ttagprd,vGOCEprdpositions,vGOCEptag);
+            rxAtt.LEOroffsetvt(ttagatt,vGOCEatts1,vGOCEatts2,offsetReciver,offsetRecivert);
+            rxPos.GetLEOpostime(ttagprd,vGOCEprdpositions,vGOCEptag);
             
             // get GOCE position with time and give it to Position by hwei
             Position nominalPos(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
@@ -1463,13 +1397,13 @@ void ppp::process()
             continue;
          }
             
-//            rxAtt.GetGOCEpostime(ttagprd+pppSolver.getSolution(TypeID::cdt)/clight,vGOCEprdpositions,vGOCEptag);
+//            rxAtt.GetGOCEpostime(ttagprd+podSolver.getSolution(TypeID::cdt)/clight,vGOCEprdpositions,vGOCEptag);
 //            
 //            // get GOCE position with time and give it to Position by hwei
 //            //Position solPos(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
-//            Position solPos( nominalPos.X() + pppSolver.getSolution(TypeID::dx),
-//                             nominalPos.Y() + pppSolver.getSolution(TypeID::dy),
-//                             nominalPos.Z() + pppSolver.getSolution(TypeID::dz) );
+//            Position solPos( nominalPos.X() + podSolver.getSolution(TypeID::dx),
+//                             nominalPos.Y() + podSolver.getSolution(TypeID::dy),
+//                             nominalPos.Z() + podSolver.getSolution(TypeID::dz) );
 //            
 //            nominalPos = solPos;
 //
@@ -1554,7 +1488,7 @@ void ppp::process()
                // This is a 'forwards-only' filter. Let's print to output
                // file the results of this epoch
             printSolution( outfile,
-                           pppSolver,
+                           podSolver,
                            time,
                            cDOP,
                            isNEU,
@@ -1590,24 +1524,24 @@ void ppp::process()
          // then we are done and should continue with next station.
       if ( cycles < 1 )
       {
-            // Now, Let's extract the Time-To-First-Fix information
-            // that stored in 'ttfc/ttffL1' in the Solver.
-         std::vector<double> ttfc;
-         ttfc = pppSolver.getTTFC(); 
-
-            // Let's open the output file
-         string ttfcName( outputFileName+ ".ttfc" );
-
-         ofstream ttfcFile;
-         ttfcFile.open( ttfcName.c_str(), ios::out );
-
-         for(std::vector<double>::iterator it=ttfc.begin();
-             it!=ttfc.end();
-             ++it)
-         {
-            ttfcFile << (*it) << endl;
-         }
-         ttfcFile.close();
+//            // Now, Let's extract the Time-To-First-Fix information
+//            // that stored in 'ttfc/ttffL1' in the Solver.
+//         std::vector<double> ttfc;
+//         ttfc = podSolver.getTTFC(); 
+//
+//            // Let's open the output file
+//         string ttfcName( outputFileName+ ".ttfc" );
+//
+//         ofstream ttfcFile;
+//         ttfcFile.open( ttfcName.c_str(), ios::out );
+//
+//         for(std::vector<double>::iterator it=ttfc.begin();
+//             it!=ttfc.end();
+//             ++it)
+//         {
+//            ttfcFile << (*it) << endl;
+//         }
+//         ttfcFile.close();
 
             // Close output file for this station
          outfile.close();
@@ -1638,7 +1572,7 @@ void ppp::process()
       try
       {
 
-         fbpppSolver.ReProcess(cycles);
+         fbpodSolver.ReProcess(cycles);
 
       }
       catch(Exception& e)
@@ -1664,13 +1598,13 @@ void ppp::process()
          // Reprocess is over. Let's finish with the last processing
 
          // Loop over all data epochs, again, and print results
-      while( fbpppSolver.LastProcess(gRin) )
+      while( fbpodSolver.LastProcess(gRin) )
       {
 
          CommonTime time(gRin.header.epoch);
 
          printSolution( outfile,
-                        fbpppSolver,
+                        fbpodSolver,
                         time,
                         cDOP,
                         isNEU,
@@ -1678,29 +1612,29 @@ void ppp::process()
 //                        drytropo,
                         precision );
 
-      }  // End of 'while( fbpppSolver.LastProcess(gRin) )'
+      }  // End of 'while( fbpodSolver.LastProcess(gRin) )'
 
 
          // We are done. Close and go for next station
          
          // Now, Let's extract the Time-To-First-Fix information
          // that stored in 'ttfc/ttffL1' in the Solver.
-      std::vector<double> ttfc;
-      ttfc = pppSolver.getTTFC(); 
-
-         // Let's open the output file
-      string ttfcName( outputFileName+ ".ttfc" );
-
-      ofstream ttfcFile;
-      ttfcFile.open( ttfcName.c_str(), ios::out );
-
-      for(std::vector<double>::iterator it=ttfc.begin();
-          it!=ttfc.end();
-          ++it)
-      {
-         ttfcFile << (*it) << endl;
-      }
-      ttfcFile.close();
+//      std::vector<double> ttfc;
+//      ttfc = podSolver.getTTFC(); 
+//
+//         // Let's open the output file
+//      string ttfcName( outputFileName+ ".ttfc" );
+//
+//      ofstream ttfcFile;
+//      ttfcFile.open( ttfcName.c_str(), ios::out );
+//
+//      for(std::vector<double>::iterator it=ttfc.begin();
+//          it!=ttfc.end();
+//          ++it)
+//      {
+//         ttfcFile << (*it) << endl;
+//      }
+//      ttfcFile.close();
 
          // Close output file for this station
       outfile.close();
@@ -1731,7 +1665,7 @@ void ppp::process()
 
    return;
 
-}  // End of 'ppp::process()'
+}  // End of 'pod::process()'
 
 
 
@@ -1742,7 +1676,7 @@ int main(int argc, char* argv[])
    try
    {
 
-      ppp program(argv[0]);
+      pod program(argv[0]);
 
          // We are disabling 'pretty print' feature to keep
          // our description format
