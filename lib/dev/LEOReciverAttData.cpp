@@ -36,30 +36,37 @@ using namespace std;
 namespace gpstk
 {
       //read GOCE attitude file
-        void LEOReciverAtt::ReadLEOatt( char *filename,
+        void LEOReciverAtt::ReadLEOatt( string filename,
                                         vector<LEOatt> &vLEOatt)
       {
             
             LEOatt goceattx;
             
             vLEOatt.clear();
-            FILE *fp = fopen(filename, "r");
-            if(!fp)
+            
+            ifstream inpf(filename.c_str());
+            if(!inpf)
             {
-                 cout<<"Could not open LEOatt file :" + string(filename)<<endl;
-                  
+                  FileMissingException fme("Could not open file :" + filename);
+                  GPSTK_THROW(fme);
             }
+            bool ok(true);
+            string line;
             
-            char buf[512];
-            
-            while(1)
+            while( !inpf.eof() && inpf.good() )
             {
-                  if(feof(fp))
-                        break;
-                  fgets(buf, 512,fp);
-                  sscanf(buf, "%lf%lf%lf%lf%lf", &goceattx.second,
-                         &goceattx.q1, &goceattx.q2, &goceattx.q3,
-                         &goceattx.q4);
+                  if( inpf.eof() ) break;
+                  
+                  if( inpf.bad() ) { ok = false; break; }
+                  
+                  getline(inpf,line);
+                  istringstream is(line);
+                  is>>goceattx.second
+                  >>goceattx.q1
+                  >>goceattx.q2
+                  >>goceattx.q3
+                  >>goceattx.q4;
+
                   vLEOatt.push_back(goceattx);
                   
             }
@@ -67,13 +74,20 @@ namespace gpstk
             cout<<"The length of file "<<filename<<" is "
             <<vLEOatt.size()<<endl;
             
-            fclose(fp);
+            inpf.close();
+            
+            if( !ok )
+            {
+                  FileMissingException fme( filename + " is corrupted or in wrong format");
+                  GPSTK_THROW(fme);
+            }
+
       } //end of read GOCEattitude file
       
       
       //read GOCE attitude file
         void LEOReciverAtt::ReadLEOatt2(double t1,double t2,
-                                        char *filename,
+                                        string filename,
                                         vector<LEOatt> &vLEOattnew)
       {
             
@@ -90,7 +104,7 @@ namespace gpstk
                   
                   if((vLEOatt[i].second > (t1-100))
                      &&(vLEOatt[i].second < (t2+100)))
-                        vLEOattnew.push_back(vLEOatt[i]);
+                  vLEOattnew.push_back(vLEOatt[i]);
                   
             }
             

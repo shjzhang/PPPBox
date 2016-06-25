@@ -75,12 +75,12 @@ namespace gpstk
          
          
          //read GOCE attitude file
-         virtual  void ReadLEOatt( char *filename, vector<LEOatt> &vLEOatt);
+         virtual  void ReadLEOatt( string filename, vector<LEOatt> &vLEOatt);
       
          
          //read GOCE attitude file
       virtual  void ReadLEOatt2(double t1,double t2,
-                                char *filename,
+                                string filename,
                                 vector<LEOatt> &vLEOattnew);
       
          
@@ -94,7 +94,7 @@ namespace gpstk
                            vector<LEOatt> vLEOatt1,
                            vector<LEOatt> vLEOatt2,
                            Triple offsetReciver,
-                                 Triple &offsetRecivert);
+                           Triple &offsetRecivert);
          
 
    };// end of class

@@ -16,8 +16,6 @@ add_executable(pod pod.cpp)
 target_link_libraries(pod pppbox)
 install (TARGETS pod DESTINATION bin)
 
-add_executable(cpptest cpptest.cpp)
-target_link_libraries(cpptest pppbox)
-install (TARGETS cpptest DESTINATION bin)
+
 
 

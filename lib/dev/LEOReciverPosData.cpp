@@ -38,29 +38,40 @@ namespace gpstk
      
 
       //read GOCE position file
-      void LEOReciverPos::ReadLEOposition( char *filename,
+      void LEOReciverPos::ReadLEOposition( string filename,
                                           vector<LEOposition> &vLEOposition)
       {
             
             LEOposition gocepx;
             
             vLEOposition.clear();
-            FILE *fp = fopen(filename, "r");
-            if(!fp)
+            
+           ifstream inpf(filename.c_str());
+            if(!inpf)
             {
-                  cout<<"Could not open LEOatt file :" + string(filename)<<endl;
+                  FileMissingException fme("Could not open file :" + filename);
+                  GPSTK_THROW(fme);
             }
             
-            char buf[512];
+            bool ok(true);
+            string line;
             
-            while(1)
+            while( !inpf.eof() && inpf.good() )
             {
-                  if(feof(fp))
-                        break;
-                  fgets(buf, 512,fp);
-                  sscanf(buf, "%lf%lf%lf%lf%lf%lf%lf", &gocepx.second,
-                         &gocepx.x, &gocepx.y,&gocepx.z,
-                         &gocepx.vx,&gocepx.vy,&gocepx.vz);
+                  if( inpf.eof() ) break;
+                  
+                  if( inpf.bad() ) { ok = false; break; }
+                  
+                  getline(inpf,line);
+                  istringstream is(line);
+                  is>> gocepx.second
+                  >>gocepx.x
+                  >>gocepx.y
+                  >>gocepx.z
+                  >>gocepx.vx
+                  >>gocepx.vy
+                  >>gocepx.vz;
+                  
                   vLEOposition.push_back(gocepx);
                   
             }
@@ -68,14 +79,20 @@ namespace gpstk
             cout<<"The length of file :"<<filename<<" is "
             << vLEOposition.size()<<endl;
             
-            fclose(fp);
+            inpf.close();
+            
+            if( !ok )
+            {
+                  FileMissingException fme( filename + " is corrupted or in wrong format");
+                  GPSTK_THROW(fme);
+            }
             
       }//end of read GOCE positionfile
       
       
       //read GOCE position file
       void LEOReciverPos::ReadLEOposition2(double t1, double t2,
-                                           char *filename,
+                                           string filename,
                                            vector<LEOposition> &vLEOpositionnew)
       {
             vector<LEOposition>  vLEOposition;

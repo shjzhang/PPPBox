@@ -639,36 +639,32 @@ void pod::process()
       //******//
       // add hpp from pod.ar.cpp   for Professor sjzhang
       
-      // Load all the receiver position files
-      char attfile1[100]="GO_CONS_SST_PRM_2__20091101T000000_20091131T235959_0101.GGT";
-      char attfile2[100]="GO_CONS_EGG_NOM_2__20091101T000000_20091131T235959_0101.IAQ";
-      char prdfile[100]="GO_CONS_SST_PRD20091031T235945_20091231T235944";
       //file time start month in J.D.day
-      double tmonth0= 2.4551365E6;  // here is 2009.11.1.0
-      double tatt0=1068800.0;     // here is second for gpstime 1968.1.6.0 reduce 94*******
-      double tprd0=941068800.0;   // here is second for gpstime 1968.1.6.0
+      double tmonth0= confReader.getValueAsDouble("JDmonth ");  // here is 2009.11.1.0
+      // here is second for gpstime 1968.1.6.0 reduce 94*******
+      double tatt0=confReader.getValueAsDouble("timeatt0");
+      // here is second for gpstime 1968.1.6.0
+      double tprd0=confReader.getValueAsDouble("timeprd0");
       
-      const Triple offsetReciver(0.6899,-0.0046,-1.1755 );
-      //      const Triple offsetReciver(0.0,0.0,0.0 );
+      int Year=floor(confReader.getValueAsDouble("Year"));
+      int Month=floor(confReader.getValueAsDouble("Month"));
+      int Daystart=floor(confReader.getValueAsDouble("Daystart"));
+      int Hourstart=floor(confReader.getValueAsDouble("Hourstart"));
+      int Dayend=floor(confReader.getValueAsDouble("Dayend"));
+      int Hourend=floor(confReader.getValueAsDouble("Hourend"));
       
       // give start time  and end time for compute to cut GOCE att and position file
-      CivilTime StartOfKD(2009,11,16,1,0,0.0, TimeSystem::GPS);
-      CivilTime   EndOfKD(2009,11,16,3,0,0.0, TimeSystem::GPS);
-      
-      //***********************
-      //**********************************
-      //compute position and offsetReciver
-      // get Obsever time for intpoly by hwei;
-      long wday,wsod;
-      double wfsod;
-      double timestatatt,timeendatt;
-      double timestatprd,timeendprd;
-      
-      
+      CivilTime StartOfKD(Year,Month,Daystart,Hourstart,0,0.0, TimeSystem::GPS);
+      CivilTime   EndOfKD(Year,Month,Dayend  ,  Hourend,0,0.0, TimeSystem::GPS);
       
       CommonTime epochsta=StartOfKD.convertToCommonTime();
       CommonTime epochend=EndOfKD.convertToCommonTime();
       
+      long wday,wsod;
+      double wfsod;
+      double timestatatt,timeendatt;
+      double timestatprd,timeendprd;
+
       epochsta.get(wday,wsod,wfsod);
       timestatatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0;
       timestatprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0;
@@ -677,27 +673,39 @@ void pod::process()
       timeendatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0;
       timeendprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0;
       
-      Triple offsetRecivert;
-      
-      
+      // Load all the receiver att files
       LEOReciverAtt rxAtt;
-      LEOReciverPos rxPos;
-      // GOCE attfile class
+      // GOCE attfile class sotre data
       vector<LEOReciverAtt::LEOatt> vGOCEatts1,vGOCEatts2;
+
       
-      LEOReciverAtt::LEOatt         vGOCEattag1, vGOCEattag2;
+            //# SCCfile ,give Quaternion for SRF to IRF
+            string attfile1=(confReader.getValue( "sccFile" ));
+            // read GOCE attfile
+            rxAtt.ReadLEOatt2(timestatatt,timeendatt,attfile1,vGOCEatts1);
+      
+            //# earth_rotation file ,give Quaternion for IRF to ITRF
+            //sometimes not needed
+            bool earth_rotation(confReader.getValueAsBoolean("earth_rotation"));
+      
+            if(earth_rotation)
+            {
+                  string attfile2=(confReader.getValue( "Earth_rotFile" ));
+                  rxAtt.ReadLEOatt2(timestatatt,timeendatt,attfile2,vGOCEatts2);
+            }
+      
+      // Load all the receiver prd data
+      LEOReciverPos rxPos;
       
       //GOCE prd file class
       vector<LEOReciverPos::LEOposition> vGOCEprdpositions;
       LEOReciverPos::LEOposition vGOCEptag;
       
-      // read GOCE attfile
-      rxAtt.ReadLEOatt2(timestatatt,timeendatt,attfile1,vGOCEatts1);
-      rxAtt.ReadLEOatt2(timestatatt,timeendatt,attfile2,vGOCEatts2);
-      
+      //# PKI/PRD file ,given by other organization.
+            string prdfile=(confReader.getValue( "PODFile" ));
       
       // read GOCE prdfile
-      rxPos.ReadLEOposition2(timestatprd,timeendprd,prdfile,vGOCEprdpositions);
+            rxPos.ReadLEOposition2(timestatprd,timeendprd,prdfile,vGOCEprdpositions);
       
       //******//
       
@@ -869,8 +877,8 @@ void pod::process()
       Decimate ObsDecimate;
          // to decimate data process data each 30 second.,
          //none of business of sample interval of data
-      ObsDecimate.setSampleInterval(30.0);
-      ObsDecimate.setTolerance(0.5);
+      ObsDecimate.setSampleInterval(confReader.getValueAsDouble("decimationInterval"));
+      ObsDecimate.setTolerance(confReader.getValueAsDouble("decimationTolerance"));
       ObsDecimate.setInitialEpoch(initialTime);
 
          // This object will check that all required observables are present
@@ -988,9 +996,6 @@ void pod::process()
       Triple offsetL1( 0.0, 0.0, 0.0 ), offsetL2( 0.0, 0.0, 0.0 );
       AntexReader antexReader;
       Antenna receiverAntenna;
-         
-         cout<<"step1.9 over"<<endl;
-         //******
          
          // Check if we want to use Antex information
       bool useantex( confReader.getValueAsBoolean( "useAntex") );
@@ -1320,30 +1325,18 @@ void pod::process()
         //add by hwei
            double ttagatt,ttagprd;
             time.get(wday,wsod,wfsod);
+            Triple offsetRecivert;
             //here epoch.get(wday) is +0.5  ,youneed to reduce it
-            ttagatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0+4.7E-3;
-            ttagprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0+4.7E-3;
-            rxAtt.LEOroffsetvt(ttagatt,vGOCEatts1,vGOCEatts2,offsetReciver,offsetRecivert);
+            ttagatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0;
+            ttagprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0;
+            rxAtt.LEOroffsetvt(ttagatt,vGOCEatts1,vGOCEatts2,offsetARP,offsetRecivert);
             rxPos.GetLEOpostime(ttagprd,vGOCEprdpositions,vGOCEptag);
             
             // get GOCE position with time and give it to Position by hwei
             Position nominalPos(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
         
-//            cout<<setprecision(8)<<wday<<"   "<<wsod<<"   "<<wfsod<<endl;
-//            cout<<setprecision(8)<<vGOCEptag.second<<"   "<<vGOCEptag.x<<"   "<<vGOCEptag.y<<"   "<<vGOCEptag.z<<endl;
-//            cout<<setprecision(8)<<wsod<<"   "<<vGOCEptag.vx<<"   "<<vGOCEptag.vy<<"   "<<vGOCEptag.vz<<endl;
-            //***********
-            // attention : here offsetARP is in ECEF for GOCE not in [UEN] as it move
-            //Triple offsetARP(offsetRecivert[0], offsetRecivert[1], offsetRecivert[2]);
-            Triple offsetARP(0.0,0.0,0.0);
-//            
-//            cout<< "offsetR"<<endl;
-//            cout<<offsetARP<<endl;
-//            cout<<offsetRecivert[0]<<"   "<<offsetRecivert[1]<<"   "<<offsetRecivert[2]<<endl;
-//            cout<<offsetReciver[0]<<"   "<<offsetReciver[1]<<"   "<<offsetReciver[2]<<endl;
- 
-            
-         //
+            Triple offsetARP(offsetRecivert);
+            //Triple offsetARP(0.0,0.0,0.0);
       //*******************************************************************
             // updata model or parameters according to nominalPos
             
@@ -1371,7 +1364,8 @@ void pod::process()
          {
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
-            gRin >> pList;
+            gRin >>ObsDecimate
+                 >> pList;
 
          }
          catch(DecimateEpoch& d)
@@ -1396,80 +1390,6 @@ void pod::process()
                     " at epoch: " << time << endl;
             continue;
          }
-            
-//            rxAtt.GetGOCEpostime(ttagprd+podSolver.getSolution(TypeID::cdt)/clight,vGOCEprdpositions,vGOCEptag);
-//            
-//            // get GOCE position with time and give it to Position by hwei
-//            //Position solPos(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
-//            Position solPos( nominalPos.X() + podSolver.getSolution(TypeID::dx),
-//                             nominalPos.Y() + podSolver.getSolution(TypeID::dy),
-//                             nominalPos.Z() + podSolver.getSolution(TypeID::dz) );
-//            
-//            nominalPos = solPos;
-//
-//            
-//            cout<<setprecision(8)<<wsod<<"   "<<vGOCEptag.x-solPos.X()
-//                                       <<"   "<<vGOCEptag.y-solPos.Y()
-//                                       <<"   "<<vGOCEptag.z-solPos.Z()<<endl;
-//            
-//     //*******************************************************************
-//            // updata model or parameters according to nominalPos
-//            
-//            // Declare a basic modeler
-//            //basic.rxPos = nominalPos;
-//            basic.setrxPos(nominalPos);
-//            // Object to compute gravitational delay effects
-//            grDelay.setNominalPosition( nominalPos );
-//            
-//            svPcenter.setNominalPosition( nominalPos );
-//            // Declare an object to correct observables to monument
-//            corr.setNominalPosition(nominalPos);
-//            corr.setMonument( offsetARP );
-//            
-//            // Object to compute wind-up effect
-//            windup.setNominalPosition( nominalPos );
-//            // Declare a base-changing object: From ECEF to North-East-Up (NEU)
-//            XYZ2NEU baseChange1(nominalPos);
-//            baseChange=baseChange1;
-//      //*******************************************************************
-//      //      gnssRinex gRoverBak = gRin;
-//
-//            try
-//            {
-//                  // Let's process data. Thanks to 'ProcessingList' this is
-//                  // very simple and compact: Just one line of code!!!.
-//                  gRin  >> pList;
-//                  
-//            }
-//            catch(DecimateEpoch& d)
-//            {
-//                  // If we catch a DecimateEpoch exception, just continue.
-//                  continue;
-//            }
-//            catch(SVNumException& s)
-//            {
-//                  // If we catch a SVNumException, just continue.
-//                  continue;
-//            }
-//            catch(Exception& e)
-//            {
-//                  cerr << "Exception for receiver '" << station <<
-//                  "' at epoch: " << time << "; " << e << endl;
-//                  continue;
-//            }
-//            catch(...)
-//            {
-//                  cerr << "Unknown exception for receiver '" << station <<
-//                  " at epoch: " << time << endl;
-//                  continue;
-//            }
-//      
-            
-            
-            
-            
-            
-            
             
             
             // Ask if we are going to print the model

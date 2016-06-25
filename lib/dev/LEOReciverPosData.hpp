@@ -76,12 +76,12 @@ namespace gpstk
          
          
          //read GOCE position file
-         virtual void ReadLEOposition( char *filename,
+         virtual void ReadLEOposition( string filename,
                                       vector<LEOposition> &vLEOposition);
          
          //read GOCE position file
          virtual void ReadLEOposition2(double t1, double t2,
-                                      char *filename,
+                                      string filename,
                                        vector<LEOposition> &vLEOpositionnew);
          
          //get GOCEposition value at time ttag   vGOCEattag
