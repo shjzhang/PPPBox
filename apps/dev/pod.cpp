@@ -149,10 +149,6 @@
 // Class to compute the elevation weights
 #include "ComputeElevWeights.hpp"
 
-// Class to store satellite precise navigation data
-#include "MSCStore.hpp"
-
-
 //******//
 // add hpp from pod.ar.cpp   for Professor sjzhang
 
@@ -233,7 +229,7 @@ private:
                        const  ComputeDOP& cDOP,
                        bool   useNEU,
                        int    numSats,
-
+                       Triple& position,
 //                       double dryTropo,
                        int    precision = 3 );
 
@@ -313,6 +309,7 @@ void pod::printSolution( ofstream& outfile,
                               const ComputeDOP& cDOP,
                               bool  useNEU,
                               int   numSats,
+                              Triple& position,
 //                              double dryTropo,
                               int   precision )
 {
@@ -357,7 +354,7 @@ void pod::printSolution( ofstream& outfile,
 
    }
       // out nomalposition at  the epoch
-//   outfile << position[0] << "  "<<position[1] << "  "<<position[2] << "  ";
+   outfile << position[0] << "  "<<position[1] << "  "<<position[2] << "  ";
    outfile << numSats << "  ";    // Number of satellites - #12
   // outfile << solver.getConverged() << "  ";
 
@@ -639,12 +636,13 @@ void pod::process()
       //******//
       // add hpp from pod.ar.cpp   for Professor sjzhang
       
-      //file time start month in J.D.day
-      double tmonth0= confReader.getValueAsDouble("JDmonth ");  // here is 2009.11.1.0
       // here is second for gpstime 1968.1.6.0 reduce 94*******
       double tatt0=confReader.getValueAsDouble("timeatt0");
       // here is second for gpstime 1968.1.6.0
       double tprd0=confReader.getValueAsDouble("timeprd0");
+      //file time start month in J.D.day
+      double tmonth0= confReader.getValueAsDouble("JDmonth");  // here is 2009.11.1.0
+
       
       int Year=floor(confReader.getValueAsDouble("Year"));
       int Month=floor(confReader.getValueAsDouble("Month"));
@@ -755,7 +753,7 @@ void pod::process()
    if(outputFileListOpt.getCount())
    {
          // Open ouputFileList File
-      outputFileListStream.open(outputFileListName);
+      outputFileListStream.open(outputFileListName.c_str());
       if( ! outputFileListStream.is_open() )
       {
             // If file doesn't exist, issue a warning
@@ -857,16 +855,12 @@ void pod::process()
          // Show a message indicating that we are starting with this station
       cout << "Starting processing for station: '" << station << "'." << endl;
 
-         // MSC data for this station
-//     initialTime.setTimeSystem(TimeSystem::Unknown);
-//      MSCData mscData( mscStore.findMSC( station, initialTime ) );
+
       initialTime.setTimeSystem(TimeSystem::GPS);
 
          // The former peculiar code is possible because each time we
          // call a 'fetchListValue' method, it takes out the first element
          // and deletes it from the given variable list.
-
-//      Position nominalPos( mscData.coordinates );
       Position nominalPos;
 
          // Create a 'ProcessingList' object where we'll store
@@ -1008,7 +1002,7 @@ void pod::process()
             // Antenna model 
          antennaModel = roh.antType;
             
-      //      cout<<antennaModel<<endl;
+            cout<<antennaModel<<endl;
             
 
             // Get receiver antenna parameters
@@ -1017,6 +1011,7 @@ void pod::process()
          try
          {
             receiverAntenna = antexReader.getAntenna( antennaModel );
+                cout<<"step20 over"<<endl;
          }
          catch(ObjectNotFound& notFound)
          {
@@ -1024,10 +1019,10 @@ void pod::process()
             antennaModel.replace(16,4,"NONE");
                // new receiver antenna with new antenna model
             receiverAntenna = antexReader.getAntenna( antennaModel );
+                cout<<"step21 over"<<endl;
          }
 
       }
-         cout<<"step2 over"<<endl;
 
          // Object to compute satellite antenna phase center effect
       ComputeSatPCenter svPcenter(nominalPos);
@@ -1039,7 +1034,7 @@ void pod::process()
 
       pList.push_back(svPcenter);       // Add to processing list
 
-
+          cout<<"step2 over"<<endl;
          // Declare an object to correct observables to monument
       CorrectObservables corr(SP3EphList);
       corr.setNominalPosition(nominalPos);
@@ -1073,7 +1068,7 @@ void pod::process()
 
       pList.push_back(corr);       // Add to processing list
 
-
+         cout<<"step3 over"<<endl;
          // Object to compute wind-up effect
       ComputeWindUp windup( SP3EphList,
                             nominalPos);
@@ -1084,21 +1079,6 @@ void pod::process()
       }
 
       pList.push_back(windup);       // Add to processing list
-
-
-      // not needed for POD
-//         // Declare a NeillTropModel object, setting its parameters
-//      NeillTropModel neillTM( nominalPos, 
-//                              initialTime );
-//
-//         // We will need this value later for printing
-//      double drytropo( 0.0 );
-//
-//
-//         // Object to compute the tropospheric data
-//      ComputeTropModel computeTropo(neillTM);
-//      pList.push_back(computeTropo);       // Add to processing list
-
 
          // Object to compute code combination with minus ionospheric delays
          // for L1/L2 calibration
@@ -1205,12 +1185,13 @@ void pod::process()
          // Get if we want results in ECEF or NEU reference system
       bool isNEU( confReader.getValueAsBoolean( "USENEU") );
 
-
+          cout<<"step4 over"<<endl;
          // Declare solver objects
       SolverPOD   podSolver(isNEU);
       SolverPODFB fbpodSolver(isNEU);
 
-      cout<<"step3 over"<<endl;
+         // Get if we want results in ECEF or RAC reference system
+      bool isRAC( confReader.getValueAsBoolean( "USERAC") );
          
          // Get if we want 'forwards-backwards' or 'forwards' processing only
       int cycles( confReader.getValueAsInt("filterCycles") );
@@ -1254,20 +1235,8 @@ void pod::process()
          pList.push_back(podSolver);
 
       }  // End of 'if ( cycles > 0 )'
-
-
-         // Object to compute tidal effects
-      SolidTides solid;
-
-
-//         // Configure ocean loading model
-//      OceanLoading ocean;
-//      ocean.setFilename( confReader.getValue( "oceanLoadingFile") );
-
-         // Object to model pole tides
-      PoleTides pole(eopStore);
-
-
+         cout<<"step5 over"<<endl;
+         
          // This is the GNSS data structure that will hold all the
          // GNSS-related information
       gnssRinex gRin;
@@ -1310,9 +1279,7 @@ void pod::process()
          modelName = rnxFile + ".model";
          modelfile.open( modelName.c_str(), ios::out );
       }
-
-         cout<<"step4 over"<<endl;
-
+             cout<<"step6 over"<<endl;
          //// *** Now comes the REAL forwards processing part *** ////
 
          // Loop over all data epochs
@@ -1323,19 +1290,30 @@ void pod::process()
          CommonTime time(gRin.header.epoch);
             
         //add by hwei
-           double ttagatt,ttagprd;
-            time.get(wday,wsod,wfsod);
+            double ttagatt,ttagprd;
             Triple offsetRecivert;
+            
+            time.get(wday,wsod,wfsod);
+            
             //here epoch.get(wday) is +0.5  ,youneed to reduce it
             ttagatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0;
             ttagprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0;
+            
+
+            
             rxAtt.LEOroffsetvt(ttagatt,vGOCEatts1,vGOCEatts2,offsetARP,offsetRecivert);
+            cout<<"step7 over"<<endl;
             rxPos.GetLEOpostime(ttagprd,vGOCEprdpositions,vGOCEptag);
             
+            cout<<"step8 over"<<endl;
             // get GOCE position with time and give it to Position by hwei
             Position nominalPos(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
         
-            Triple offsetARP(offsetRecivert);
+            cout<<wsod<<endl;
+            cout<<offsetRecivert<<endl;
+            cout<<nominalPos<<endl;
+     
+            offsetARP=offsetRecivert;
             //Triple offsetARP(0.0,0.0,0.0);
       //*******************************************************************
             // updata model or parameters according to nominalPos
@@ -1358,8 +1336,7 @@ void pod::process()
             XYZ2NEU baseChange(nominalPos);
             
       //*******************************************************************
-            
-
+      
          try
          {
                // Let's process data. Thanks to 'ProcessingList' this is
@@ -1413,6 +1390,7 @@ void pod::process()
                            cDOP,
                            isNEU,
                            gRin.numSats(),
+                           gRin.header.antennaPosition,
   //                         drytropo,
                            precision );
 
@@ -1514,25 +1492,91 @@ void pod::process()
       }  // End of 'try-catch' block
 
       cout << "Last processing ... ... " << endl;
+      cout<<"time  (*itSat)  satArc prefitL(i) postprefitL_nodX tempcdt tempamb"<<endl;
 
-         // Reprocess is over. Let's finish with the last processing
-
+         bool valid(false);
+         
          // Loop over all data epochs, again, and print results
-      while( fbpodSolver.LastProcess(gRin) )
-      {
+         do
+         {
+               // Last process
+               try
+               {
+                     valid = fbpodSolver.LastProcess(gRin);
+                     cDOP.Process(gRin);
+               }
+               catch(SVNumException& s)
+               {
+                     // Continue the loop
+                     valid = true;
+                     continue;
+               }
+               catch(...)
+               {
+                     valid = true;
+                     continue;
+               }
+               
+               // Rinex epoch
+               CommonTime time=gRin.header.epoch;
+               
+               // The nominal position for current 'gRin'
+               nominalPos=gRin.header.antennaPosition;
+               
+               double lat=nominalPos.geodeticLatitude();
+               double lon=nominalPos.longitude();
+               
+               // Vector from monument to antenna ARP [UEN], in meters
+               // translate from ECEF to UEN
+               Triple offset(fbpodSolver.getSolution(TypeID::dx),
+                             fbpodSolver.getSolution(TypeID::dy),
+                             fbpodSolver.getSolution(TypeID::dz));
+               
+               offset = (offset.R3(lon)).R2(-lat);
+               
+               
+               
+               
+               time.get(wday,wsod,wfsod);
+               SatIDSet currSatSet= gRin.body.getSatID();
+               Vector<double> prefitL(gRin.getVectorOfTypeID(TypeID::prefitL));
+               
+               
+               cout<<wsod<<" " << fixed << setprecision( precision );
+               
+               double tempcdt=fbpodSolver.getSolution(TypeID::cdt);
+               double tempamb;
+               
+               int i=0;
+               for( SatIDSet::const_iterator itSat = currSatSet.begin();
+                   itSat != currSatSet.end();
+                   ++itSat )
+               {
+                     
+                     double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
+                     
+                     tempamb=fbpodSolver.solution(4+i);
+                     cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i)<<" "<<prefitL(i)-tempcdt-tempamb
+                     <<" "<<tempcdt<<" "<<tempamb;
+                     ++i;
+               }
+               cout<<endl;
+               
+               
+               
+               // Print out the solution
+               printSolution( outfile,
+                             fbpodSolver,
+                             time,
+                             cDOP,
+                             isRAC,
+                             gRin.numSats(),
+                             //  offset,
+                             gRin.header.antennaPosition,
+                             precision );
+               
+         } while ( valid );
 
-         CommonTime time(gRin.header.epoch);
-
-         printSolution( outfile,
-                        fbpodSolver,
-                        time,
-                        cDOP,
-                        isNEU,
-                        gRin.numSats(),
-//                        drytropo,
-                        precision );
-
-      }  // End of 'while( fbpodSolver.LastProcess(gRin) )'
 
 
          // We are done. Close and go for next station
@@ -1575,12 +1619,11 @@ void pod::process()
    }  // end of 'while (...)'
       //***********************************************
       //
-      // At last, Let's clear the content of SP3/EOP/MSC object
+      // At last, Let's clear the content of SP3/EOP object
       //
       //***********************************************
    SP3EphList.clear();
    eopStore.clear();
-//   mscStore.clear();
 
 
    return;

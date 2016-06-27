@@ -69,7 +69,7 @@ namespace gpstk
 
       // translate quartern to rotation matrix in RX[9]
 
-      void Q2Rotation(double *Q, Matrix<double> Rx)
+      void Q2Rotation(double *Q, Matrix<double>& Rx)
       {
             
             
@@ -87,7 +87,6 @@ namespace gpstk
             Rx(2,1)=2.0*(Q[1]*Q[2]+Q[0]*Q[3]);
             Rx(2,2)=-std::pow(Q[0],2)-std::pow(Q[1],2)+std::pow(Q[2],2)+std::pow(Q[3],2);
             //=1.D0-2*Q1**2-2*Q2**2
-
             
       }// end of translate quartern to rotation matrix
 

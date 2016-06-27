@@ -183,11 +183,11 @@ namespace gpstk
                   
             }
             
-            
             Qx[0]=LagrangeInterpolation(times,Q1,ttag,err);
             Qx[1]=LagrangeInterpolation(times,Q2,ttag,err);
             Qx[2]=LagrangeInterpolation(times,Q3,ttag,err);
             Qx[3]=LagrangeInterpolation(times,Q4,ttag,err);
+     
             // unit Quart at time ttag
             Qx2Unitx(4 ,Qx);
             
@@ -216,11 +216,14 @@ namespace gpstk
             
             GetLEOattime(ttag,vLEOatt1,vLEOatttag1);
             GetLEOattime(ttag,vLEOatt2,vLEOatttag2);
-            
+     
             
             double Qx[4];
-            Vector<double> offtmp;
+            Vector<double> offtmp(3);
             Matrix<double> Rx1,Rx2,Rx;
+            Rx1.resize(3,3,0.0);
+            Rx2.resize(3,3,0.0);
+            Rx.resize(3,3,0.0);
             
             //prapare data
             //  get QX from file1 ,and translate to Rx1
@@ -228,24 +231,29 @@ namespace gpstk
             Qx[1]=vLEOatttag1.q2;
             Qx[2]=vLEOatttag1.q3;
             Qx[3]=vLEOatttag1.q4;
-            Q2Rotation(Qx, Rx1);
+          
+            Q2Rotation(Qx,Rx1);
+     
             //  get QX from file2 ,and translate to Rx2
             Qx[0]=vLEOatttag2.q1;
             Qx[1]=vLEOatttag2.q2;
             Qx[2]=vLEOatttag2.q3;
             Qx[3]=vLEOatttag2.q4;
             Q2Rotation(Qx, Rx2);
-            
+     
             //here maby change right *  or left *
             Rx=Rx1 * Rx2;
-            offtmp=offsetReciver.toStdVector();
+     
+            offtmp[0]=offsetRecivert[0];
+            offtmp[1]=offsetRecivert[0];
+            offtmp[2]=offsetRecivert[0];
+           
             offtmp=Rx*offtmp;
-            
-            
+               
             offsetRecivert[0]=offtmp[0];
             offsetRecivert[1]=offtmp[1];
             offsetRecivert[2]=offtmp[2];
-            
+       cout<<"offsetRecivert"<<offsetRecivert<<endl;        
             
       }//end of get GOCE reciver offset value at in ICEF
 
