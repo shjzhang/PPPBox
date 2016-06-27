@@ -86,7 +86,8 @@ namespace gpstk
       
       
       //read GOCE attitude file
-        void LEOReciverAtt::ReadLEOatt2(double t1,double t2,
+        void LEOReciverAtt::ReadLEOatt2(CommonTime time1,
+                                        CommonTime time2,
                                         string filename,
                                         vector<LEOatt> &vLEOattnew)
       {
@@ -98,6 +99,14 @@ namespace gpstk
             ReadLEOatt(filename,vLEOatt);
             
             int length=vLEOatt.size();
+            
+            // time to cut
+            double t1,t2;
+            
+            time1.get(wday,wsod,wfsod);
+            t1=double(wday-AttJDaystart-0.5)*86400+wsod+wfsod+Atttimestart;
+            time2.get(wday,wsod,wfsod);
+            t2=double(wday-AttJDaystart-0.5)*86400+wsod+wfsod+Atttimestart;
             
             for (int i=0; i<length-1;i++)
             {
@@ -117,11 +126,15 @@ namespace gpstk
       
       
       //get GOCE attitude value at time ttag   vGOCEattag
-        void LEOReciverAtt::GetLEOattime(double ttag,
-                                               vector<LEOatt> vLEOatt,
-                                               LEOatt &LEOatttag)
+        void LEOReciverAtt::GetLEOattime(CommonTime time,
+                                         vector<LEOatt> vLEOatt,
+                                         LEOatt &LEOatttag)
       
       {
+            // time to inply
+            double ttag;
+            time.get(wday,wsod,wfsod);
+            ttag=double(wday-AttJDaystart-0.5)*86400+wsod+wfsod+Atttimestart;
             
             //*******************
             // choose 9 point for lagrangepoly ,change it as you need;
@@ -205,17 +218,16 @@ namespace gpstk
       
       //get GOCE reciver offset value at in ICEF
       
-        void LEOReciverAtt::LEOroffsetvt(double ttag,
-                                               vector<LEOatt> vLEOatt1,
-                                               vector<LEOatt> vLEOatt2,
-                                               Triple offsetReciver,
-                                               Triple &offsetRecivert)
+        void LEOReciverAtt::LEOroffsetvt(CommonTime time,
+                                         vector<LEOatt> vLEOatt1,
+                                         vector<LEOatt> vLEOatt2,
+                                         Triple &offsetRecivert)
       {
             //get GOCE attitude value at time ttag   vGOCEattag
             LEOatt  vLEOatttag1, vLEOatttag2;
             
-            GetLEOattime(ttag,vLEOatt1,vLEOatttag1);
-            GetLEOattime(ttag,vLEOatt2,vLEOatttag2);
+            GetLEOattime(time,vLEOatt1,vLEOatttag1);
+            GetLEOattime(time,vLEOatt2,vLEOatttag2);
      
             
             double Qx[4];
@@ -244,16 +256,16 @@ namespace gpstk
             //here maby change right *  or left *
             Rx=Rx1 * Rx2;
      
-            offtmp[0]=offsetRecivert[0];
-            offtmp[1]=offsetRecivert[0];
-            offtmp[2]=offsetRecivert[0];
+            // read offsetReciver in SRF
+            offtmp[0]=offsetReciver[0];
+            offtmp[1]=offsetReciver[1];
+            offtmp[2]=offsetReciver[2];
            
             offtmp=Rx*offtmp;
                
             offsetRecivert[0]=offtmp[0];
             offsetRecivert[1]=offtmp[1];
             offsetRecivert[2]=offtmp[2];
-       cout<<"offsetRecivert"<<offsetRecivert<<endl;        
             
       }//end of get GOCE reciver offset value at in ICEF
 

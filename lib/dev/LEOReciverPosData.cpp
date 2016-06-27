@@ -36,7 +36,6 @@ using namespace std;
 namespace gpstk
 {
      
-
       //read GOCE position file
       void LEOReciverPos::ReadLEOposition( string filename,
                                           vector<LEOposition> &vLEOposition)
@@ -91,7 +90,8 @@ namespace gpstk
       
       
       //read GOCE position file
-      void LEOReciverPos::ReadLEOposition2(double t1, double t2,
+      void LEOReciverPos::ReadLEOposition2(CommonTime time1,
+                                           CommonTime time2,
                                            string filename,
                                            vector<LEOposition> &vLEOpositionnew)
       {
@@ -101,6 +101,14 @@ namespace gpstk
             // read GOCE position file
             ReadLEOposition(filename,vLEOposition);
             
+            // time to cut
+            double t1,t2;
+            
+            time1.get(wday,wsod,wfsod);
+            t1=double(wday-PosJDaystart-0.5)*86400+wsod+wfsod+Postimestart;
+            time2.get(wday,wsod,wfsod);
+            t2=double(wday-PosJDaystart-0.5)*86400+wsod+wfsod+Postimestart;
+            
             int length=vLEOposition.size();
             
             for (int i=0; i<length-1;i++)
@@ -109,7 +117,7 @@ namespace gpstk
                   if((vLEOposition[i].second > (t1-100))
                      &&(vLEOposition[i].second < (t2+100)))
                         
-                        vLEOpositionnew.push_back(vLEOposition[i]);
+                  {vLEOpositionnew.push_back(vLEOposition[i]);}
                   
             }
             
@@ -119,11 +127,16 @@ namespace gpstk
       }//end of read GOCE position file
       
       //get GOCEposition value at time ttag   vGOCEattag
-      void LEOReciverPos::GetLEOpostime(double ttag,
+      void LEOReciverPos::GetLEOpostime(CommonTime time,
                                          vector<LEOposition> vLEOposition,
                                          LEOposition &vGOCEptag)
       {
+
             
+            // time to inply
+            double ttag;
+            time.get(wday,wsod,wfsod);
+            ttag=double(wday-PosJDaystart-0.5)*86400+wsod+wfsod+Postimestart;
             //*******************
             // choose 9 point for lagrangepoly ,change it as you need;
             int N=9;

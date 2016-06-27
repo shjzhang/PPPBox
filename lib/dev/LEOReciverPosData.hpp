@@ -49,6 +49,16 @@ namespace gpstk
       class LEOReciverPos
    {
    
+         
+//         // deflaut
+//         //start time of LEO PRD file in GPS second
+//         //2000.1.1.12
+//         Postimestart(630763200.0),PosJDaystart(2451545.0)
+//         {
+//               //sometimes, set Postimestart(763200.0),
+//               // reduce 63******* to keep time precise E-9.
+//         }
+         
    public:
       
 
@@ -74,21 +84,40 @@ namespace gpstk
                
          } LEOposition;
          
+         //start time of LEO PRD file in GPS second
+         double Postimestart;
+         
+         //start time of LEO PRD file in JD day
+         double PosJDaystart;
+         
+         
+         // to get CommonTime time parameters
+         //time.get(wday,wsod,wfsod);
+         long wday,wsod;
+         double wfsod;
          
          //read GOCE position file
          virtual void ReadLEOposition( string filename,
                                       vector<LEOposition> &vLEOposition);
          
          //read GOCE position file
-         virtual void ReadLEOposition2(double t1, double t2,
+         virtual void ReadLEOposition2(CommonTime time1,
+                                       CommonTime time2,
                                       string filename,
                                        vector<LEOposition> &vLEOpositionnew);
          
          //get GOCEposition value at time ttag   vGOCEattag
-         virtual void GetLEOpostime(double ttag,
+         virtual void GetLEOpostime(CommonTime time,
                                      vector<LEOposition> vLEOposition,
                                      LEOposition &vGOCEptag);
 
+         /// Method to set starttime of LEO PRD file
+         virtual LEOReciverPos& settimestart(double Postime0, double JDay0)
+         {
+               Postimestart = Postime0;
+               PosJDaystart = JDay0;
+               return (*this);
+         };
          
          
    };// end of class

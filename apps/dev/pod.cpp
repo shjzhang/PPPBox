@@ -156,6 +156,8 @@
 #include "LEOReciverAttData.hpp"
 // Class to read and store the receiver position data
 #include "LEOReciverPosData.hpp"
+// Class to reduce dt reciver in Obs
+#include "CorrectObstime.hpp"
 
 //******//
 
@@ -643,7 +645,7 @@ void pod::process()
       //file time start month in J.D.day
       double tmonth0= confReader.getValueAsDouble("JDmonth");  // here is 2009.11.1.0
 
-      
+      // give start time  and end time for compute to cut GOCE att and position file
       int Year=floor(confReader.getValueAsDouble("Year"));
       int Month=floor(confReader.getValueAsDouble("Month"));
       int Daystart=floor(confReader.getValueAsDouble("Daystart"));
@@ -651,46 +653,33 @@ void pod::process()
       int Dayend=floor(confReader.getValueAsDouble("Dayend"));
       int Hourend=floor(confReader.getValueAsDouble("Hourend"));
       
-      // give start time  and end time for compute to cut GOCE att and position file
       CivilTime StartOfKD(Year,Month,Daystart,Hourstart,0,0.0, TimeSystem::GPS);
       CivilTime   EndOfKD(Year,Month,Dayend  ,  Hourend,0,0.0, TimeSystem::GPS);
       
       CommonTime epochsta=StartOfKD.convertToCommonTime();
       CommonTime epochend=EndOfKD.convertToCommonTime();
       
-      long wday,wsod;
-      double wfsod;
-      double timestatatt,timeendatt;
-      double timestatprd,timeendprd;
-
-      epochsta.get(wday,wsod,wfsod);
-      timestatatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0;
-      timestatprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0;
-      
-      epochend.get(wday,wsod,wfsod);
-      timeendatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0;
-      timeendprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0;
-      
       // Load all the receiver att files
       LEOReciverAtt rxAtt;
       // GOCE attfile class sotre data
       vector<LEOReciverAtt::LEOatt> vGOCEatts1,vGOCEatts2;
 
+      //# SCCfile ,give Quaternion for SRF to IRF
+      string attfile1=(confReader.getValue( "sccFile" ));
+      rxAtt.settimestart(tatt0,tmonth0);
       
-            //# SCCfile ,give Quaternion for SRF to IRF
-            string attfile1=(confReader.getValue( "sccFile" ));
-            // read GOCE attfile
-            rxAtt.ReadLEOatt2(timestatatt,timeendatt,attfile1,vGOCEatts1);
-      
-            //# earth_rotation file ,give Quaternion for IRF to ITRF
-            //sometimes not needed
-            bool earth_rotation(confReader.getValueAsBoolean("earth_rotation"));
-      
-            if(earth_rotation)
-            {
-                  string attfile2=(confReader.getValue( "Earth_rotFile" ));
-                  rxAtt.ReadLEOatt2(timestatatt,timeendatt,attfile2,vGOCEatts2);
-            }
+      // read GOCE attfile
+      rxAtt.ReadLEOatt2(epochsta,epochend,attfile1,vGOCEatts1);
+
+      //# earth_rotation file ,give Quaternion for IRF to ITRF
+      //sometimes not needed
+      bool earth_rotation(confReader.getValueAsBoolean("earth_rotation"));
+
+      if(earth_rotation)
+      {
+            string attfile2=(confReader.getValue( "Earth_rotFile" ));
+            rxAtt.ReadLEOatt2(epochsta,epochend,attfile2,vGOCEatts2);
+      }
       
       // Load all the receiver prd data
       LEOReciverPos rxPos;
@@ -700,10 +689,11 @@ void pod::process()
       LEOReciverPos::LEOposition vGOCEptag;
       
       //# PKI/PRD file ,given by other organization.
-            string prdfile=(confReader.getValue( "PODFile" ));
+      string prdfile=(confReader.getValue( "PODFile" ));
+      rxPos.settimestart(tprd0,tmonth0);
       
       // read GOCE prdfile
-            rxPos.ReadLEOposition2(timestatprd,timeendprd,prdfile,vGOCEprdpositions);
+      rxPos.ReadLEOposition2(epochsta,epochend,prdfile,vGOCEprdpositions);
       
       //******//
       
@@ -984,7 +974,10 @@ void pod::process()
 
 
          // Vector from monument to antenna ARP [UEN], in meters
-      Triple offsetARP( roh.antennaOffset );
+         //for Rinex other
+      //Triple offsetARP( roh.antennaOffset );
+         //for Rinex2.20 LEO
+      Triple offsetARP( roh.antennaDelta );
 
          // Declare some antenna-related variables
       Triple offsetL1( 0.0, 0.0, 0.0 ), offsetL2( 0.0, 0.0, 0.0 );
@@ -1002,24 +995,19 @@ void pod::process()
             // Antenna model 
          antennaModel = roh.antType;
             
-            cout<<antennaModel<<endl;
-            
-
             // Get receiver antenna parameters
-            // Warning: If no corrections are not found for one specific 
+            // Warning: If no corrections are not found for one specific
             //          radome, then the antenna with radome NONE are used.
          try
          {
             receiverAntenna = antexReader.getAntenna( antennaModel );
-                cout<<"step20 over"<<endl;
          }
          catch(ObjectNotFound& notFound)
          {
-               // new antenna model
+            // new antenna model
             antennaModel.replace(16,4,"NONE");
-               // new receiver antenna with new antenna model
+            // new receiver antenna with new antenna model
             receiverAntenna = antexReader.getAntenna( antennaModel );
-                cout<<"step21 over"<<endl;
          }
 
       }
@@ -1181,17 +1169,18 @@ void pod::process()
       ComputeDOP cDOP;
       pList.push_back(cDOP);       // Add to processing list
 
-      
          // Get if we want results in ECEF or NEU reference system
       bool isNEU( confReader.getValueAsBoolean( "USENEU") );
 
-          cout<<"step4 over"<<endl;
-         // Declare solver objects
-      SolverPOD   podSolver(isNEU);
-      SolverPODFB fbpodSolver(isNEU);
-
          // Get if we want results in ECEF or RAC reference system
       bool isRAC( confReader.getValueAsBoolean( "USERAC") );
+         
+         // Declare solver objects
+         SolverPOD   podSolver(isRAC);
+         SolverPODFB fbpodSolver(isRAC);
+         
+         // set min arc size
+         fbpodSolver.setMinArcSize(confReader.getValueAsDouble("MinArcSize"));
          
          // Get if we want 'forwards-backwards' or 'forwards' processing only
       int cycles( confReader.getValueAsInt("filterCycles") );
@@ -1204,38 +1193,16 @@ void pod::process()
 
 
          // Decide what type of solver we will use for this station
-      if ( cycles > 0 )
-      {
-            // In this case, we will use the 'forwards-backwards' solver
-
-            // Check about coordinates as white noise
-         if ( isWN )
-         {
+   
                // Reconfigure solver
             fbpodSolver.setCoordinatesModel(&wnM);
-         }
+                 // Reconfigure solver
+            fbpodSolver.setCoordinatesModel(&wnM);
+         
+         
+//               // Add solver to processing list
+//         pList.push_back(fbpodSolver);
 
-            // Add solver to processing list
-         pList.push_back(fbpodSolver);
-
-      }
-      else
-      {
-
-            // In this case, we will use the 'forwards-only' solver
-
-            // Check about coordinates as white noise
-         if ( isWN )
-         {
-               // Reconfigure solver
-            podSolver.setCoordinatesModel(&wnM);
-         }
-
-            // Add solver to processing list
-         pList.push_back(podSolver);
-
-      }  // End of 'if ( cycles > 0 )'
-         cout<<"step5 over"<<endl;
          
          // This is the GNSS data structure that will hold all the
          // GNSS-related information
@@ -1281,45 +1248,42 @@ void pod::process()
       }
              cout<<"step6 over"<<endl;
          //// *** Now comes the REAL forwards processing part *** ////
-
+         
          // Loop over all data epochs
       while(rin >> gRin)
       {
 
+            gnssRinex gRintmp;
+            gRintmp=gRin;
+            //Decimate Obs. data
+            try
+            {
+                  gRin >>ObsDecimate;
+            }
+            catch(DecimateEpoch& d)
+            {
+                  // If we catch a DecimateEpoch exception, just continue.
+                  continue;
+            }
+
             // Store current epoch
-         CommonTime time(gRin.header.epoch);
+            CommonTime time(gRin.header.epoch);
             
         //add by hwei
-            double ttagatt,ttagprd;
-            Triple offsetRecivert;
             
-            time.get(wday,wsod,wfsod);
-            
-            //here epoch.get(wday) is +0.5  ,youneed to reduce it
-            ttagatt=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tatt0;
-            ttagprd=double(wday-tmonth0-0.5)*86400+wsod+wfsod+tprd0;
-            
+            //get reciver offsetwith time in ECEF
+            rxAtt.setoffsetReciver(roh.antennaDelta);
+            rxAtt.LEOroffsetvt(time,vGOCEatts1,vGOCEatts2,offsetARP);
 
-            
-            rxAtt.LEOroffsetvt(ttagatt,vGOCEatts1,vGOCEatts2,offsetARP,offsetRecivert);
-            cout<<"step7 over"<<endl;
-            rxPos.GetLEOpostime(ttagprd,vGOCEprdpositions,vGOCEptag);
-            
-            cout<<"step8 over"<<endl;
             // get GOCE position with time and give it to Position by hwei
+            rxPos.GetLEOpostime(time,vGOCEprdpositions,vGOCEptag);
             Position nominalPos(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
-        
-            cout<<wsod<<endl;
-            cout<<offsetRecivert<<endl;
-            cout<<nominalPos<<endl;
      
-            offsetARP=offsetRecivert;
             //Triple offsetARP(0.0,0.0,0.0);
       //*******************************************************************
             // updata model or parameters according to nominalPos
-            
+            gRin.header.antennaPosition=nominalPos;
             // Declare a basic modeler
-            //basic.rxPos = nominalPos;
             basic.setrxPos(nominalPos);
             
             // Object to compute gravitational delay effects
@@ -1332,23 +1296,15 @@ void pod::process()
             
             // Object to compute wind-up effect
             windup.setNominalPosition( nominalPos );
-            // Declare a base-changing object: From ECEF to North-East-Up (NEU)
-            XYZ2NEU baseChange(nominalPos);
-            
       //*******************************************************************
-      
+ 
          try
          {
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
-            gRin >>ObsDecimate
-                 >> pList;
+            gRintmp >> pList
+                  >>podSolver;
 
-         }
-         catch(DecimateEpoch& d)
-         {
-               // If we catch a DecimateEpoch exception, just continue.
-            continue;
          }
          catch(SVNumException& s)
          {
@@ -1368,6 +1324,58 @@ void pod::process()
             continue;
          }
             
+            // reviver cloclk bias from fbpodSlover,only need for pod GOCE
+            CorrectObstime corrt;
+            double lat,lon;
+            
+            gRin.header.dtreciver=-podSolver.getSolution(TypeID::cdt)/ellipsoid.c();
+            double dtr=gRin.header.dtreciver;
+            
+      //add dtr
+            time +=dtr;
+
+            // get GOCE position with time and give it to Position by hwei
+            rxPos.GetLEOpostime(time,vGOCEprdpositions,vGOCEptag);
+            nominalPos=Position(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
+            
+            //get reciver offsetwith time in ECEF
+            rxAtt.LEOroffsetvt(time,vGOCEatts1,vGOCEatts2,offsetARP);
+            // turn from ECEF to NEU
+            lat=nominalPos.geodeticLatitude();
+            lon=nominalPos.longitude();
+            offsetARP = (offsetARP.R3(lon)).R2(-lat);
+            //offsetARP=Triple(0.0,0.0,0.0);
+            //*******************************************************************
+            // updata model or parameters according to nominalPos
+            gRin.header.antennaPosition=nominalPos;
+            // Declare a basic modeler
+            basic.setrxPos(nominalPos);
+            
+            // Object to compute gravitational delay effects
+            grDelay.setNominalPosition( nominalPos );
+            
+            svPcenter.setNominalPosition( nominalPos );
+            
+            // Declare an object to correct observables to monument
+            corr.setNominalPosition(nominalPos);
+            corr.setMonument( offsetARP );
+            
+            // Object to compute wind-up effect
+            windup.setNominalPosition( nominalPos );
+            // Declare a base-changing object: From ECEF to North-East-Up (NEU)
+            XYZ2NEU baseChange(nominalPos);
+            
+            // Store update current epoch
+            gRin.header.epoch +=dtr;
+            // correct Observablest with Reciver clock error only need for GOCE pod
+            corrt.setExtraDtr(dtr);
+            
+            //*******************************************************************
+ 
+            gRin  >>corrt
+                  >>pList
+                  >>fbpodSolver;;
+
             
             // Ask if we are going to print the model
          if ( printmodel )
@@ -1492,8 +1500,7 @@ void pod::process()
       }  // End of 'try-catch' block
 
       cout << "Last processing ... ... " << endl;
-      cout<<"time  (*itSat)  satArc prefitL(i) postprefitL_nodX tempcdt tempamb"<<endl;
-
+      
          bool valid(false);
          
          // Loop over all data epochs, again, and print results
@@ -1534,33 +1541,34 @@ void pod::process()
                
                offset = (offset.R3(lon)).R2(-lat);
                
-               
-               
-               
-               time.get(wday,wsod,wfsod);
-               SatIDSet currSatSet= gRin.body.getSatID();
-               Vector<double> prefitL(gRin.getVectorOfTypeID(TypeID::prefitL));
-               
-               
-               cout<<wsod<<" " << fixed << setprecision( precision );
-               
-               double tempcdt=fbpodSolver.getSolution(TypeID::cdt);
-               double tempamb;
-               
-               int i=0;
-               for( SatIDSet::const_iterator itSat = currSatSet.begin();
-                   itSat != currSatSet.end();
-                   ++itSat )
-               {
-                     
-                     double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
-                     
-                     tempamb=fbpodSolver.solution(4+i);
-                     cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i)<<" "<<prefitL(i)-tempcdt-tempamb
-                     <<" "<<tempcdt<<" "<<tempamb;
-                     ++i;
-               }
-               cout<<endl;
+//               cout<<"time  (*itSat)  satArc prefitL(i) postprefitL_nodX tempcdt tempamb"<<endl;
+//
+//               long wday,wsod;
+//               double wfsod;
+//               time.get(wday,wsod,wfsod);
+//               SatIDSet currSatSet= gRin.body.getSatID();
+//               Vector<double> prefitL(gRin.getVectorOfTypeID(TypeID::prefitL));
+//               
+//               
+//               cout<<wsod<<" " << fixed << setprecision( precision );
+//               
+//               double tempcdt=fbpodSolver.getSolution(TypeID::cdt);
+//               double tempamb;
+//               
+//               int i=0;
+//               for( SatIDSet::const_iterator itSat = currSatSet.begin();
+//                   itSat != currSatSet.end();
+//                   ++itSat )
+//               {
+//                     
+//                     double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
+//                     
+//                     tempamb=fbpodSolver.solution(4+i);
+//                     cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i)<<" "<<prefitL(i)-tempcdt-tempamb
+//                     <<" "<<tempcdt<<" "<<tempamb;
+//                     ++i;
+//               }
+//               cout<<endl;
                
                
                
@@ -1571,7 +1579,7 @@ void pod::process()
                              cDOP,
                              isRAC,
                              gRin.numSats(),
-                             //  offset,
+                             //offset,
                              gRin.header.antennaPosition,
                              precision );
                

@@ -49,11 +49,21 @@ namespace gpstk
 
       class LEOReciverAtt
    {
-   
+         
+//         // deflaut
+//         //start time of LEO PRD file in GPS second
+//         //2000.1.1.12
+//         LEOReciverAtt():
+//         offsetReciver(0.0,0.0,0.0),Atttimestart(630763200.0),
+//         AttJDaystart(2451545.0)
+//         {
+//               //sometimes, set Atttimestart(763200.0),
+//               // reduce 63******* to keep time precise E-9.
+//         }
+//         
+         
    public:
       
-      
-         
          typedef struct LEOatt
          {
                double second;
@@ -72,6 +82,20 @@ namespace gpstk
                
          } LEOatt;
          
+         //LEO reciver offset in SRF
+         Triple offsetReciver;
+         
+         
+         //start time of LEO PRD file in GPS second
+         double Atttimestart;
+         
+         //start time of LEO PRD file in JD day
+         double AttJDaystart;
+         
+         // to get CommonTime time parameters
+         //time.get(wday,wsod,wfsod);
+         long wday,wsod;
+         double wfsod;
          
          
          //read GOCE attitude file
@@ -79,23 +103,36 @@ namespace gpstk
       
          
          //read GOCE attitude file
-      virtual  void ReadLEOatt2(double t1,double t2,
+      virtual  void ReadLEOatt2(CommonTime time1,
+                                CommonTime time2,
                                 string filename,
                                 vector<LEOatt> &vLEOattnew);
       
          
          //get GOCE attitude value at time ttag   vGOCEattag
-      virtual   void GetLEOattime(double ttag,
-                           vector<LEOatt> vLEOatt,
+      virtual   void GetLEOattime(CommonTime time,
+                                  vector<LEOatt> vLEOatt,
                                   LEOatt &LEOatttag);
       
          //get GOCE reciver offset value at in ICEF
-      virtual  void LEOroffsetvt(double ttag,
+      virtual  void LEOroffsetvt(CommonTime time,
                            vector<LEOatt> vLEOatt1,
                            vector<LEOatt> vLEOatt2,
-                           Triple offsetReciver,
                            Triple &offsetRecivert);
+      
+         /// Method to set starttime of LEO PRD file
+      virtual LEOReciverAtt& settimestart(double Atttime0, double JDay0)
+      {
+         Atttimestart = Atttime0;
+         AttJDaystart = JDay0;
+         return (*this);
+      };
          
+         /// Method to set starttime of LEO PRD file
+      virtual LEOReciverAtt& setoffsetReciver(Triple offset)
+      {
+            offsetReciver=offset; return (*this);
+      };
 
    };// end of class
 
