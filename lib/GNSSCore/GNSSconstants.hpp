@@ -1,15 +1,10 @@
-/**
- * @file GNSSconstants.hpp
- * Constants as defined in the GPS-ICD-200D and by all RINEX GNSSs
- */
-
 //============================================================================
 //
 //  This file is part of GPSTk, the GPS Toolkit.
 //
 //  The GPSTk is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
-//  by the Free Software Foundation; either version 2.1 of the License, or
+//  by the Free Software Foundation; either version 3.0 of the License, or
 //  any later version.
 //
 //  The GPSTk is distributed in the hope that it will be useful,
@@ -27,17 +22,22 @@
 
 //============================================================================
 //
-// This software developed by Applied Research Laboratories at the University
-// of Texas at Austin, under contract to an agency or agencies within the U.S. 
-// Department of Defense. The U.S. Government retains all rights to use,
-// duplicate, distribute, disclose, or release this software. 
+//This software developed by Applied Research Laboratories at the University of
+//Texas at Austin, under contract to an agency or agencies within the U.S. 
+//Department of Defense. The U.S. Government retains all rights to use,
+//duplicate, distribute, disclose, or release this software. 
 //
-// Pursuant to DoD Directive 523024 
+//Pursuant to DoD Directive 523024 
 //
 // DISTRIBUTION STATEMENT A: This software has been approved for public 
 //                           release, distribution is unlimited.
 //
 //=============================================================================
+
+/**
+ * @file GNSSconstants.hpp
+ * Constants as defined in the GPS-ICD-200D and by all RINEX GNSSs
+ */
 
 #ifndef GPSTK_GNSS_CONSTANTS_HPP
 #define GPSTK_GNSS_CONSTANTS_HPP
@@ -56,15 +56,75 @@ namespace gpstk
 
    // ---------------- independent of GNSS ----------------------
       /// GPS value of PI; also specified by GAL
-   const double PI        = 3.1415926535898;
+   const double PI        = 3.141592653589793238462643383280;
       /// GPS value of PI*2
-   const double TWO_PI    = 6.2831853071796;
+   const double TWO_PI    = 6.283185307179586476925286766559;
       /// GPS value of PI**0.5
-   const double SQRT_PI   = 1.7724539;
+   const double SQRT_PI   = 1.772453850905516027298167483341;
       /// relativity constant (sec/sqrt(m))
    const double REL_CONST = -4.442807633e-10;
       /// m/s, speed of light; this value defined by GPS but applies to GAL and GLO.
    const double C_MPS = 2.99792458e8;
+
+      /// Conversion Factor from degrees to radians (unit: degrees^-1)
+   static const double DEG_TO_RAD   = 1.745329251994329576923691e-2;
+      /// Conversion Factor from radians to degrees (unit: degrees)
+   static const double RAD_TO_DEG   = 57.29577951308232087679815;
+      /// Conversion Factor from arcseconds to radians (unit: arcseconds^-1)
+   static const double AS_TO_RAD    = 4.848136811095359935899141e-6;
+      /// Conversion Factor from radians to arcseconds (unit: arcseconds)
+   static const double RAD_TO_AS    = 206264.8062470963551564734;
+      /// Conversion Factor from seconds of time to radians (unit: seconds^-1)
+   static const double SEC_TO_RAD   = 7.272205216643039903848712e-5;
+      /// Conversion Factor from radians to seconds of time (unit: seconds)
+   static const double RAD_TO_SEC   = 43200.0/PI;
+      /// Arcseconds in a full circle
+   static const double TURNAS       = 1296000.0;
+      /// Seconds per day
+   static const double DAY_TO_SEC   = 86400.0;
+      /// Days per Julian Century
+   static const double JC           = 36525.0;
+      /// Modified Julian Date of the J2000 Epoch
+   static const double MJD_J2000    = 51544.5;
+      /// Julian Date of Modified Julian Date zero
+   static const double JD_TO_MJD    = 2400000.5;
+      /// Reference epoch (J2000.0), Julian Data
+   static const double JD_J2000     = 2451545.0;
+
+
+   // IERS 2003 Numerical Standards
+   //-------------------------------------------------------------------------
+
+      /// Constant of gravitation (m^3/kg/s^2)
+   static const double G            = 6.673e-11;
+      /// Astronomical unit (m)
+   static const double AU           = 149597870691.0;
+      /// Solar radiation pressure at 1 AU (N/m^2)
+   static const double P_Sol        = 4.560e-6;
+
+
+      /// Geocentric gravitational constant (EGM96 value)
+   static const double GM_EARTH     = 3.986004418e14;
+      /// Equatorial radius of the Earth (m)
+   static const double RE_EARTH     = 6378136.6;
+      /// Nominal mean angular velocity of the Earth (rad/s)
+   static const double OMEGA_EARTH  = 7.292115e-5;
+      /// Flattening factor of the Earth
+   static const double FLAT_EARTH   = 1.0/298.25642;
+      /// Mean equatorial gravity (m/s^2)
+   static const double GE_EARTH     = 9.7803278;
+
+      /// Heliocentric gravitational constant
+   static const double GM_SUN       = 1.32712442076e20;
+      /// Mean radius of the Sun (m)
+   static const double RE_SUN       = 696000000.0;
+
+      /// Moon-Earth mass ratio
+   static const double RATIO_ME     = 0.0123000383;
+   static const double GM_MOON      = GM_EARTH * RATIO_ME;
+      /// Mean radius of the Moon (m)
+   static const double RE_MOON      = 1738000.0;
+
 
    // ---------------- GPS --------------------------------------
       /// Hz, GPS Oscillator or chip frequency
@@ -85,10 +145,6 @@ namespace gpstk
    const double L1_WAVELENGTH_GPS  = 0.190293672798;
       /// GPS L2 carrier wavelength in meters
    const double L2_WAVELENGTH_GPS  = 0.244210213425;
-      /// GPS LC carrier wavelength in meters
-   const double LC_WAVELENGTH_GPS  = 0.106953378142;
-      /// GPS WL carrier wavelength in meters
-   const double WL_WAVELENGTH_GPS  = 0.861918400322;
       /// GPS L5 carrier wavelength in meters.
    const double L5_WAVELENGTH_GPS  = 0.254828049;
       /// GPS L1 frequency in units of oscillator frequency
@@ -358,4 +414,3 @@ namespace gpstk
 } // namespace
 
 #endif //GPSTK_GNSS_CONSTANTS_HPP
-
