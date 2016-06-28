@@ -49,14 +49,14 @@
 // Class to store satellite precise navigation data
 #include "SP3EphemerisStore.hpp"
 
+// Class to store EOP data
+#include "EOPDataStore.hpp"
+
 // Class to store a list of processing objects
 #include "ProcessingList.hpp"
 
 // Class in charge of basic GNSS signal modelling
 #include "BasicModel.hpp"
-
-// Class to model the tropospheric delays
-#include "TropModel.hpp"
 
 // Class defining the GNSS data structures
 #include "DataStructures.hpp"
@@ -70,22 +70,14 @@
 // Class for easily changing reference base from ECEF to NEU
 #include "XYZ2NEU.hpp"
 
+// Class for easily changing reference base from ICRF to ECEF
+#include "ReferenceSystem.hpp"
+
 // Class to detect cycle slips using LI combination
 #include "LICSDetector.hpp"
 
 // Class to detect cycle slips using the Melbourne-Wubbena combination
-#include "MWCSDetector.hpp"
-// Class to detect cycle slips using the Melbourne-Wubbena combination
 #include "MWCSDetector2.hpp"
-
-// Class to compute the effect of solid tides
-#include "SolidTides.hpp"
-
-// Class to compute the effect of ocean loading
-#include "OceanLoading.hpp"
-
-// Class to compute the effect of pole tides
-#include "PoleTides.hpp"
 
 // Class to correct observables
 #include "CorrectObservables.hpp"
@@ -100,9 +92,6 @@
 // Class to compute the effect of satellite antenna phase center
 #include "ComputeSatPCenter.hpp"
 
-// Class to compute the tropospheric data
-#include "ComputeTropModel.hpp"
-
 // Class to compute linear combinations
 #include "ComputeLinear.hpp"
 
@@ -111,9 +100,6 @@
 
 // Class to compute Dilution Of Precision values
 #include "ComputeDOP.hpp"
-
-// Class to keep track of satellite arcs
-#include "SatArcMarker.hpp"
 
 // Class to keep track of satellite arcs
 #include "SatArcMarker2.hpp"
@@ -158,6 +144,9 @@
 #include "LEOReciverPosData.hpp"
 // Class to reduce dt reciver in Obs
 #include "CorrectObstime.hpp"
+
+
+
 
 //******//
 
@@ -222,8 +211,6 @@ private:
 
 
       // Declare our own methods to handle output
-
-
       // Method to print solution values
    void printSolution( ofstream& outfile,
                        const  SolverLMS& solver,
@@ -233,7 +220,7 @@ private:
                        int    numSats,
                        Triple& position,
 //                       double dryTropo,
-                       int    precision = 3 );
+                       int    precision = 4 );
 
 
       // Method to print model values
@@ -331,13 +318,7 @@ void pod::printSolution( ofstream& outfile,
       outfile<< setw(8) << solver.getSolution(TypeID::dLat) << "  ";       // dLat  - #4
       outfile<< setw(8) << solver.getSolution(TypeID::dLon) << "  ";       // dLon  - #5
       outfile<< setw(8) << solver.getSolution(TypeID::dH) << "  ";         // dH    - #6
-
-         // We add 0.1 meters to 'wetMap' because 'NeillTropModel' sets a
-         // nominal value of 0.1 m. Also to get the total we have to add the
-         // dry tropospheric delay value
-                                                                 // ztd - #7
-      outfile<< setw(8) << solver.getSolution(TypeID::wetMap)  << "  ";
-
+      outfile << solver.getSolution(TypeID::cdt)<< "  ";         // cdt - #7
 
    }
    else
@@ -346,14 +327,7 @@ void pod::printSolution( ofstream& outfile,
       outfile << solver.getSolution(TypeID::dx) << "  ";         // dx    - #4
       outfile << solver.getSolution(TypeID::dy) << "  ";         // dy    - #5
       outfile << solver.getSolution(TypeID::dz) << "  ";         // dz    - #6
-
-         // We add 0.1 meters to 'wetMap' because 'NeillTropModel' sets a
-         // nominal value of 0.1 m. Also to get the total we have to add the
-         // dry tropospheric delay value
-         
       outfile << solver.getSolution(TypeID::cdt)<< "  ";         // cdt - #7
-
-
    }
       // out nomalposition at  the epoch
    outfile << position[0] << "  "<<position[1] << "  "<<position[2] << "  ";
@@ -366,9 +340,7 @@ void pod::printSolution( ofstream& outfile,
       // Add end-of-line
    outfile << endl;
 
-
    return;
-
 
 }  // End of method 'pod::printSolution()'
 
@@ -601,6 +573,14 @@ void pod::process()
 
       // Declare a "EOPDataStore" object to handle earth rotation parameter file
    EOPDataStore eopStore;
+      
+      // Leap Sec Store
+   LeapSecStore leapSecStore;
+      
+      // Reference System
+   ReferenceSystem RefSystem;
+   RefSystem.setEOPDataStore(eopStore);
+   RefSystem.setLeapSecStore(leapSecStore);
 
       // Now read eop files from 'eopFileList'
    ifstream eopFileListStream;
@@ -635,67 +615,71 @@ void pod::process()
    eopFileListStream.close();
 
       
-      //******//
-      // add hpp from pod.ar.cpp   for Professor sjzhang
+   //******//
+   // add hpp from pod.ar.cpp   for Professor sjzhang
       
-      // here is second for gpstime 1968.1.6.0 reduce 94*******
-      double tatt0=confReader.getValueAsDouble("timeatt0");
-      // here is second for gpstime 1968.1.6.0
-      double tprd0=confReader.getValueAsDouble("timeprd0");
-      //file time start month in J.D.day
-      double tmonth0= confReader.getValueAsDouble("JDmonth");  // here is 2009.11.1.0
+      // here is second for gpstime 1980.1.6.0 reduce 94*******
+   double tatt0=confReader.getValueAsDouble("timeatt0");
+      // here is second for gpstime 1980.1.6.0
+   double tprd0=confReader.getValueAsDouble("timeprd0");
+      //file time start month 1day in J.D.day
+      // here is 2009.11.1.0
+   double tmonth0= confReader.getValueAsDouble("JDmonth");
 
       // give start time  and end time for compute to cut GOCE att and position file
-      int Year=floor(confReader.getValueAsDouble("Year"));
-      int Month=floor(confReader.getValueAsDouble("Month"));
-      int Daystart=floor(confReader.getValueAsDouble("Daystart"));
-      int Hourstart=floor(confReader.getValueAsDouble("Hourstart"));
-      int Dayend=floor(confReader.getValueAsDouble("Dayend"));
-      int Hourend=floor(confReader.getValueAsDouble("Hourend"));
+   int Year=floor(confReader.getValueAsDouble("Year"));
+   int Month=floor(confReader.getValueAsDouble("Month"));
+   int Daystart=floor(confReader.getValueAsDouble("Daystart"));
+   int Hourstart=floor(confReader.getValueAsDouble("Hourstart"));
+   int Dayend=floor(confReader.getValueAsDouble("Dayend"));
+   int Hourend=floor(confReader.getValueAsDouble("Hourend"));
       
-      CivilTime StartOfKD(Year,Month,Daystart,Hourstart,0,0.0, TimeSystem::GPS);
-      CivilTime   EndOfKD(Year,Month,Dayend  ,  Hourend,0,0.0, TimeSystem::GPS);
+   CivilTime StartOfKD(Year,Month,Daystart,Hourstart,0,0.0, TimeSystem::GPS);
+   CivilTime   EndOfKD(Year,Month,Dayend  ,  Hourend,0,0.0, TimeSystem::GPS);
       
-      CommonTime epochsta=StartOfKD.convertToCommonTime();
-      CommonTime epochend=EndOfKD.convertToCommonTime();
+   CommonTime epochsta=StartOfKD.convertToCommonTime();
+   CommonTime epochend=EndOfKD.convertToCommonTime();
       
       // Load all the receiver att files
-      LEOReciverAtt rxAtt;
+   LEOReciverAtt rxAtt;
       // GOCE attfile class sotre data
-      vector<LEOReciverAtt::LEOatt> vGOCEatts1,vGOCEatts2;
+   vector<LEOReciverAtt::LEOatt> vGOCEatts1,vGOCEatts2;
 
       //# SCCfile ,give Quaternion for SRF to IRF
-      string attfile1=(confReader.getValue( "sccFile" ));
-      rxAtt.settimestart(tatt0,tmonth0);
+   string attfile1=(confReader.getValue( "sccFile" ));
+   rxAtt.settimestart(tatt0,tmonth0);
       
       // read GOCE attfile
-      rxAtt.ReadLEOatt2(epochsta,epochend,attfile1,vGOCEatts1);
+   rxAtt.ReadLEOatt2(epochsta,epochend,attfile1,vGOCEatts1);
 
       //# earth_rotation file ,give Quaternion for IRF to ITRF
       //sometimes not needed
-      bool earth_rotation(confReader.getValueAsBoolean("earth_rotation"));
+      //referenceframe used to get RX for IRF to ITRF.
+      
+   bool earth_rotation(confReader.getValueAsBoolean("earth_rotation"));
 
-      if(earth_rotation)
+   if(earth_rotation)
       {
-            string attfile2=(confReader.getValue( "Earth_rotFile" ));
-            rxAtt.ReadLEOatt2(epochsta,epochend,attfile2,vGOCEatts2);
+      string attfile2=(confReader.getValue( "Earth_rotFile" ));
+      rxAtt.ReadLEOatt2(epochsta,epochend,attfile2,vGOCEatts2);
       }
       
+   
       // Load all the receiver prd data
-      LEOReciverPos rxPos;
+   LEOReciverPos rxPos;
       
       //GOCE prd file class
-      vector<LEOReciverPos::LEOposition> vGOCEprdpositions;
-      LEOReciverPos::LEOposition vGOCEptag;
+   vector<LEOReciverPos::LEOposition> vGOCEprdpositions;
+   LEOReciverPos::LEOposition vGOCEptag;
       
       //# PKI/PRD file ,given by other organization.
-      string prdfile=(confReader.getValue( "PODFile" ));
-      rxPos.settimestart(tprd0,tmonth0);
+   string prdfile=(confReader.getValue( "PODFile" ));
+   rxPos.settimestart(tprd0,tmonth0);
       
       // read GOCE prdfile
-      rxPos.ReadLEOposition2(epochsta,epochend,prdfile,vGOCEprdpositions);
+   rxPos.ReadLEOposition2(epochsta,epochend,prdfile,vGOCEprdpositions);
       
-      //******//
+   //******//
       
       //**********************************************************
       // Now, Let's perform the pod for each rinex files
@@ -859,7 +843,7 @@ void pod::process()
          
          
       Decimate ObsDecimate;
-         // to decimate data process data each 30 second.,
+         // to decimate data process data each decimationInterval second.,
          //none of business of sample interval of data
       ObsDecimate.setSampleInterval(confReader.getValueAsDouble("decimationInterval"));
       ObsDecimate.setTolerance(confReader.getValueAsDouble("decimationTolerance"));
@@ -914,7 +898,6 @@ void pod::process()
          // This object defines several handy linear combinations
       LinearCombinations comb;
 
-
          // Object to compute linear combinations for cycle slip detection
       ComputeLinear linear1;
 
@@ -933,9 +916,8 @@ void pod::process()
       linear1.addLinear(comb.liCombination);
       pList.push_back(linear1);       // Add to processing list
 
+         
          // Objects to mark cycle slips
-//      LICSDetector markCSLI;         // Checks LI cycle slips
-//      pList.push_back(markCSLI);      // Add to processing list
       MWCSDetector2 markCSMW;          // Checks Merbourne-Wubbena cycle slips
       pList.push_back(markCSMW);       // Add to processing list
 
@@ -946,6 +928,7 @@ void pod::process()
       markArc.setUnstablePeriod(151.0);
       pList.push_back(markArc);       // Add to processing list
 
+         
          // Declare a basic modeler
       BasicModel basic(nominalPos, SP3EphList);
          // Set the minimum elevation
@@ -958,6 +941,7 @@ void pod::process()
          // Add to processing list
       pList.push_back(basic);
 
+         
          // Object to compute weights based on elevation
       ComputeElevWeights elevWeights;
       pList.push_back(elevWeights);       // Add to processing list
@@ -1022,7 +1006,6 @@ void pod::process()
 
       pList.push_back(svPcenter);       // Add to processing list
 
-          cout<<"step2 over"<<endl;
          // Declare an object to correct observables to monument
       CorrectObservables corr(SP3EphList);
       corr.setNominalPosition(nominalPos);
@@ -1051,12 +1034,11 @@ void pod::process()
 
          corr.setL1pc( offsetL1 );
          corr.setL2pc( offsetL2 );
-
       }
 
       pList.push_back(corr);       // Add to processing list
 
-         cout<<"step3 over"<<endl;
+         
          // Object to compute wind-up effect
       ComputeWindUp windup( SP3EphList,
                             nominalPos);
@@ -1068,6 +1050,7 @@ void pod::process()
 
       pList.push_back(windup);       // Add to processing list
 
+         
          // Object to compute code combination with minus ionospheric delays
          // for L1/L2 calibration
       ComputeLinear linear2;
@@ -1091,7 +1074,6 @@ void pod::process()
       phaseAlignL1.setCodeType(TypeID::Q1);
       phaseAlignL1.setPhaseType(TypeID::L1);
       phaseAlignL1.setPhaseWavelength(0.190293672798);
-
       pList.push_back(phaseAlignL1);       // Add to processing list
 
          // Object to align phase with code measurements
@@ -1169,6 +1151,7 @@ void pod::process()
       ComputeDOP cDOP;
       pList.push_back(cDOP);       // Add to processing list
 
+         
          // Get if we want results in ECEF or NEU reference system
       bool isNEU( confReader.getValueAsBoolean( "USENEU") );
 
@@ -1176,11 +1159,11 @@ void pod::process()
       bool isRAC( confReader.getValueAsBoolean( "USERAC") );
          
          // Declare solver objects
-         SolverPOD   podSolver(isRAC);
-         SolverPODFB fbpodSolver(isRAC);
+      SolverPOD   podSolver(isRAC);
+      SolverPODFB fbpodSolver(isRAC);
          
          // set min arc size
-         fbpodSolver.setMinArcSize(confReader.getValueAsDouble("MinArcSize"));
+      fbpodSolver.setMinArcSize(confReader.getValueAsDouble("MinArcSize"));
          
          // Get if we want 'forwards-backwards' or 'forwards' processing only
       int cycles( confReader.getValueAsInt("filterCycles") );
@@ -1191,24 +1174,15 @@ void pod::process()
          // White noise stochastic model
       WhiteNoiseModel wnM(100.0);      // 100 m of sigma
 
-
-         // Decide what type of solver we will use for this station
-   
-               // Reconfigure solver
-            fbpodSolver.setCoordinatesModel(&wnM);
-                 // Reconfigure solver
-            fbpodSolver.setCoordinatesModel(&wnM);
-         
-         
-//               // Add solver to processing list
-//         pList.push_back(fbpodSolver);
-
+      podSolver.setCoordinatesModel(&wnM);
+      fbpodSolver.setCoordinatesModel(&wnM);
+ 
          
          // This is the GNSS data structure that will hold all the
          // GNSS-related information
       gnssRinex gRin;
 
-
+         
          // Prepare for printing
       int precision( confReader.getValueAsInt( "precision" ) );
 
@@ -1246,7 +1220,7 @@ void pod::process()
          modelName = rnxFile + ".model";
          modelfile.open( modelName.c_str(), ios::out );
       }
-             cout<<"step6 over"<<endl;
+     
          //// *** Now comes the REAL forwards processing part *** ////
          
          // Loop over all data epochs
@@ -1273,13 +1247,15 @@ void pod::process()
             
             //get reciver offsetwith time in ECEF
             rxAtt.setoffsetReciver(roh.antennaDelta);
-            rxAtt.LEOroffsetvt(time,vGOCEatts1,vGOCEatts2,offsetARP);
+            
+            //rxAtt.LEOroffsetvt(time,vGOCEatts1,vGOCEatts2,offsetARP);
+
 
             // get GOCE position with time and give it to Position by hwei
             rxPos.GetLEOpostime(time,vGOCEprdpositions,vGOCEptag);
             Position nominalPos(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
      
-            //Triple offsetARP(0.0,0.0,0.0);
+            offsetARP=Triple(0.0,0.0,0.0);
       //*******************************************************************
             // updata model or parameters according to nominalPos
             gRin.header.antennaPosition=nominalPos;
@@ -1298,48 +1274,70 @@ void pod::process()
             windup.setNominalPosition( nominalPos );
       //*******************************************************************
  
-         try
-         {
+            try
+            {
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
             gRintmp >> pList
                   >>podSolver;
 
-         }
-         catch(SVNumException& s)
-         {
+            }
+            catch(SVNumException& s)
+            {
                // If we catch a SVNumException, just continue.
-            continue;
-         }
-         catch(Exception& e)
-         {
-            cerr << "Exception for receiver '" << station <<
+                  continue;
+            }
+            catch(Exception& e)
+            {
+                  cerr << "Exception for receiver '" << station <<
                     "' at epoch: " << time << "; " << e << endl;
-            continue;
-         }
-         catch(...)
-         {
-            cerr << "Unknown exception for receiver '" << station <<
+                  continue;
+            }
+            catch(...)
+            {
+                  cerr << "Unknown exception for receiver '" << station <<
                     " at epoch: " << time << endl;
-            continue;
-         }
+                  continue;
+            }
             
             // reviver cloclk bias from fbpodSlover,only need for pod GOCE
             CorrectObstime corrt;
-            double lat,lon;
             
+            // lat,lon :to compute translate ECEF to NEU.
+            // dtr :keep reviver cloclk bias
+            double lat,lon,dtr;
+            
+            //reviver cloclk bias from podSolver solution.
             gRin.header.dtreciver=-podSolver.getSolution(TypeID::cdt)/ellipsoid.c();
-            double dtr=gRin.header.dtreciver;
+            dtr=gRin.header.dtreciver;
             
       //add dtr
-            time +=dtr;
 
+            time +=dtr;
+            
             // get GOCE position with time and give it to Position by hwei
             rxPos.GetLEOpostime(time,vGOCEprdpositions,vGOCEptag);
             nominalPos=Position(vGOCEptag.x,vGOCEptag.y,vGOCEptag.z);
             
             //get reciver offsetwith time in ECEF
-            rxAtt.LEOroffsetvt(time,vGOCEatts1,vGOCEatts2,offsetARP);
+            if(earth_rotation)
+            {
+                  //give CR2T by file.irf to ECEF
+                 rxAtt.LEOroffsetvt(time,vGOCEatts1,vGOCEatts2,offsetARP);
+            }
+            else
+            {
+                  // get ReferenceSystem.hpp by UTC
+                  //get Matrix C2T for ICRF to ITRF at UTCTime UTC.
+                  time.setTimeSystem(TimeSystem::UTC);
+                  CommonTime UTC( RefSystem.GPS2UTC(time) );
+                  Matrix<double> C2T( RefSystem.C2TMatrix(UTC) );
+                  
+                  
+                  rxAtt.LEOroffsetvt(time,vGOCEatts1,C2T,offsetARP);
+            }
+            
+            
             // turn from ECEF to NEU
             lat=nominalPos.geodeticLatitude();
             lon=nominalPos.longitude();
@@ -1394,7 +1392,7 @@ void pod::process()
                // file the results of this epoch
             printSolution( outfile,
                            podSolver,
-                           time,
+                           gRin.header.epoch,
                            cDOP,
                            isNEU,
                            gRin.numSats(),
@@ -1500,90 +1498,91 @@ void pod::process()
       }  // End of 'try-catch' block
 
       cout << "Last processing ... ... " << endl;
+      cout<<"time  (*itSat)  satArc prefitL(i) postprefitL_nodX tempcdt tempamb"<<endl;
       
-         bool valid(false);
+      bool valid(false);
          
          // Loop over all data epochs, again, and print results
-         do
-         {
-               // Last process
-               try
-               {
-                     valid = fbpodSolver.LastProcess(gRin);
-                     cDOP.Process(gRin);
-               }
-               catch(SVNumException& s)
-               {
-                     // Continue the loop
-                     valid = true;
-                     continue;
-               }
-               catch(...)
-               {
-                     valid = true;
-                     continue;
-               }
+      do
+      {
+            // Last process
+            try
+            {
+            valid = fbpodSolver.LastProcess(gRin);
+            cDOP.Process(gRin);
+            }
+            catch(SVNumException& s)
+            {
+                  // Continue the loop
+            valid = true;
+            continue;
+            }
+            catch(...)
+            {
+            valid = true;
+            continue;
+            }
                
                // Rinex epoch
-               CommonTime time=gRin.header.epoch;
+            CommonTime time=gRin.header.epoch;
                
                // The nominal position for current 'gRin'
-               nominalPos=gRin.header.antennaPosition;
+            nominalPos=gRin.header.antennaPosition;
                
-               double lat=nominalPos.geodeticLatitude();
-               double lon=nominalPos.longitude();
+            double lat=nominalPos.geodeticLatitude();
+            double lon=nominalPos.longitude();
                
                // Vector from monument to antenna ARP [UEN], in meters
                // translate from ECEF to UEN
-               Triple offset(fbpodSolver.getSolution(TypeID::dx),
-                             fbpodSolver.getSolution(TypeID::dy),
-                             fbpodSolver.getSolution(TypeID::dz));
+            Triple offset(fbpodSolver.getSolution(TypeID::dx),
+                          fbpodSolver.getSolution(TypeID::dy),
+                          fbpodSolver.getSolution(TypeID::dz));
                
-               offset = (offset.R3(lon)).R2(-lat);
+            offset = (offset.R3(lon)).R2(-lat);
+            
+            //cout<<"time  (*itSat)  satArc prefitL(i)
+            //          postprefitL_nodX tempcdt tempamb"<<endl;
+            long wday,wsod;
+            double wfsod;
+            time.get(wday,wsod,wfsod);
+            SatIDSet currSatSet= gRin.body.getSatID();
+            Vector<double> prefitL(gRin.getVectorOfTypeID(TypeID::prefitL));
+
+
+            cout<<wsod<<" " << fixed << setprecision( precision );
+
+            double tempcdt=fbpodSolver.getSolution(TypeID::cdt);
+            double tempamb;
+
+            int i=0;
+            for( SatIDSet::const_iterator itSat = currSatSet.begin();
+             itSat != currSatSet.end();
+             ++itSat )
+            {
                
-//               cout<<"time  (*itSat)  satArc prefitL(i) postprefitL_nodX tempcdt tempamb"<<endl;
-//
-//               long wday,wsod;
-//               double wfsod;
-//               time.get(wday,wsod,wfsod);
-//               SatIDSet currSatSet= gRin.body.getSatID();
-//               Vector<double> prefitL(gRin.getVectorOfTypeID(TypeID::prefitL));
-//               
-//               
-//               cout<<wsod<<" " << fixed << setprecision( precision );
-//               
-//               double tempcdt=fbpodSolver.getSolution(TypeID::cdt);
-//               double tempamb;
-//               
-//               int i=0;
-//               for( SatIDSet::const_iterator itSat = currSatSet.begin();
-//                   itSat != currSatSet.end();
-//                   ++itSat )
-//               {
-//                     
-//                     double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
-//                     
-//                     tempamb=fbpodSolver.solution(4+i);
-//                     cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i)<<" "<<prefitL(i)-tempcdt-tempamb
-//                     <<" "<<tempcdt<<" "<<tempamb;
-//                     ++i;
-//               }
-//               cout<<endl;
+               double satArc = gRin.body.getValue( (*itSat),TypeID::satArc );
+               
+               tempamb=fbpodSolver.solution(4+i);
+               cout<<(*itSat)<<" "<<satArc<<" "<<prefitL(i)<<" "<<prefitL(i)-tempcdt-tempamb
+               <<" "<<tempcdt<<" "<<tempamb;
+               ++i;
+            }
+            cout<<endl;
+            
                
                
-               
-               // Print out the solution
-               printSolution( outfile,
-                             fbpodSolver,
-                             time,
-                             cDOP,
-                             isRAC,
-                             gRin.numSats(),
-                             //offset,
-                             gRin.header.antennaPosition,
-                             precision );
-               
-         } while ( valid );
+            // Print out the solution
+            printSolution( outfile,
+                       fbpodSolver,
+                       time,
+                       cDOP,
+                       isRAC,
+                       gRin.numSats(),
+                       //offset,
+                       gRin.header.antennaPosition,
+                       precision );
+            
+      } while ( valid );
 
 
 

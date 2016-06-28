@@ -114,11 +114,18 @@ namespace gpstk
                                   vector<LEOatt> vLEOatt,
                                   LEOatt &LEOatttag);
       
-         //get GOCE reciver offset value at in ICEF
+         //get GOCE reciver offset value at in ECEF
       virtual  void LEOroffsetvt(CommonTime time,
                            vector<LEOatt> vLEOatt1,
                            vector<LEOatt> vLEOatt2,
                            Triple &offsetRecivert);
+         
+         //get GOCE reciver offset value at in ECEF
+         // FROM IRF2ECEF   matrix C2T NOT given BY FILE
+      virtual  void LEOroffsetvt(CommonTime time,
+                                 vector<LEOatt> vLEOatt1,
+                                 Matrix<double> C2T,
+                                 Triple &offsetRecivert);
       
          /// Method to set starttime of LEO PRD file
       virtual LEOReciverAtt& settimestart(double Atttime0, double JDay0)

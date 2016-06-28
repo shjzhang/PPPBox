@@ -254,8 +254,8 @@ namespace gpstk
             Q2Rotation(Qx, Rx2);
      
             //here maby change right *  or left *
-            Rx=Rx1 * Rx2;
-     
+            Rx=Rx2 * Rx1;
+            
             // read offsetReciver in SRF
             offtmp[0]=offsetReciver[0];
             offtmp[1]=offsetReciver[1];
@@ -268,6 +268,54 @@ namespace gpstk
             offsetRecivert[2]=offtmp[2];
             
       }//end of get GOCE reciver offset value at in ICEF
+      
+      void LEOReciverAtt::LEOroffsetvt(CommonTime time,
+                                       vector<LEOatt> vLEOatt1,
+                                       Matrix<double> C2T,
+                                       Triple &offsetRecivert)
+      {
+            //get GOCE attitude value at time ttag   vGOCEattag
+            LEOatt  vLEOatttag1;
+            
+            GetLEOattime(time,vLEOatt1,vLEOatttag1);
+
+
+            double Qx[4];
+            Vector<double> offtmp(3);
+            Matrix<double> Rx1,Rx;
+            Rx1.resize(3,3,0.0);
+            Rx.resize(3,3,0.0);
+            
+            //prapare data
+            //  get QX from file1 ,and translate to Rx1
+            // usually SCC file,SRF TO IRF
+            Qx[0]=vLEOatttag1.q1;
+            Qx[1]=vLEOatttag1.q2;
+            Qx[2]=vLEOatttag1.q3;
+            Qx[3]=vLEOatttag1.q4;
+            
+            Q2Rotation(Qx,Rx1);
+            
+            //  C2T
+            //give CR2T by file.irf to ECEF
+            // get ReferenceSystem.hpp by UTC
+            
+            //here maby change right *  or left *
+            Rx=C2T * Rx1;
+            
+            // read offsetReciver in SRF
+            offtmp[0]=offsetReciver[0];
+            offtmp[1]=offsetReciver[1];
+            offtmp[2]=offsetReciver[2];
+            
+            offtmp=Rx*offtmp;
+            
+            offsetRecivert[0]=offtmp[0];
+            offsetRecivert[1]=offtmp[1];
+            offsetRecivert[2]=offtmp[2];
+            
+      }//end of get GOCE reciver offset value at in ICEF
+
 
 
 
