@@ -66,7 +66,7 @@
    // be implemented
 #include "BasicFramework.hpp"
 
-#include "geometry.hpp"                   // DEG_TO_RAD
+#include "GNSSconstants.hpp"                  // DEG_TO_RAD
 
    // Time-class year-day-second
 #include "YDSTime.hpp"

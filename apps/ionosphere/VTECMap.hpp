@@ -43,7 +43,7 @@
 #include "WGS84Ellipsoid.hpp"
 #include "Position.hpp"
 #include "GNSSconstants.hpp"     // for TWO_PI
-#include "geometry.hpp"              // for DEG_TO_RAD and RAD_TO_DEG
+             // for DEG_TO_RAD and RAD_TO_DEG
 #include "MiscMath.hpp"              // for RSS
 
 #include <iostream>

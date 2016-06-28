@@ -40,7 +40,7 @@
 #include "XvtStore.hpp"
 #include "SatDataReader.hpp"
 #include "AntexReader.hpp"
-#include "geometry.hpp"
+#include "GNSSconstants.hpp"
 
 
 

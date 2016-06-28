@@ -36,7 +36,6 @@
 #include "Exception.hpp"
 #include "MathBase.hpp"
 #include "GNSSconstants.hpp"
-#include "geometry.hpp"
 
 #include "singleton.hpp"
 #include "expandtilde.hpp"

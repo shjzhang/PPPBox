@@ -68,6 +68,7 @@ namespace gpstk
          TAI,         ///< International Atomic Time
          TT,          ///< Terrestrial time (used in IERS conventions)
          TDB,         ///< Barycentric dynamical time (JPL ephemeris); very near TT
+         UT1,
          // count MUST BE LAST
          count        ///< the number of systems - not a system
       };

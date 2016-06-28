@@ -56,6 +56,7 @@
 #include "CommonTime.hpp"
 #include "Triple.hpp"
 #include "CivilTime.hpp"
+#include "GNSSconstants.hpp"
 
 namespace gpstk
 {

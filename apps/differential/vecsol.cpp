@@ -31,7 +31,6 @@
 #include <limits.h>
 #include <float.h>
 
-#include "geometry.hpp"
 
 #include "Matrix.hpp"
 #include "MatrixOperators.hpp"

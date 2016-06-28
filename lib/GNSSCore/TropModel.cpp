@@ -51,7 +51,6 @@
 #include "TropModel.hpp"
 #include "EphemerisRange.hpp"             // for Elevation()
 #include "MathBase.hpp"                   // SQRT
-#include "geometry.hpp"                   // DEG_TO_RAD
 #include "GPSEllipsoid.hpp"               // ell.a() = R earth
 #include "GNSSconstants.hpp"          // TWO_PI
 #include "YDSTime.hpp"

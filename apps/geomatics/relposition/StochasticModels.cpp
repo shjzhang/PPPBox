@@ -48,7 +48,7 @@
 #include "Vector.hpp"
 #include "Matrix.hpp"
 #include "Namelist.hpp"
-#include "geometry.hpp"
+#include "GNSSconstants.hpp"
 #include "RobustStats.hpp"
 #include "format.hpp"
 

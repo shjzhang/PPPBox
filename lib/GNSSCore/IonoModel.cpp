@@ -52,7 +52,6 @@
 #include "GNSSconstants.hpp"
 #include "IonoModel.hpp"
 #include "YDSTime.hpp"
-#include "geometry.hpp"
 
 namespace gpstk
 {

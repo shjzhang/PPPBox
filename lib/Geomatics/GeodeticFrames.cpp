@@ -50,8 +50,7 @@
 
 //------------------------------------------------------------------------------------
 // GPSTk includes
-#include "StringUtils.hpp"
-#include "geometry.hpp"             // for DEG_TO_RAD
+#include "StringUtils.hpp"          // for DEG_TO_RAD
 #include "GNSSconstants.hpp"    // for PI and TWO_PI
 #include "GeodeticFrames.hpp"
 #include "JulianDate.hpp"

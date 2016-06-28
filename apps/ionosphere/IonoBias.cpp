@@ -54,7 +54,7 @@
 #include "Position.hpp"
 #include "WGS84Ellipsoid.hpp"
 #include "GNSSconstants.hpp"     // for TWO_PI
-#include "geometry.hpp"              // for DEG_TO_RAD and RAD_TO_DEG
+             // for DEG_TO_RAD and RAD_TO_DEG
 
 #include "RinexUtilities.hpp"
 #include "RobustStats.hpp"

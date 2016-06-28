@@ -36,7 +36,6 @@
 //============================================================================
 
 
-#include "geometry.hpp"
 #include "ComputeElevWeights.hpp"
 
 

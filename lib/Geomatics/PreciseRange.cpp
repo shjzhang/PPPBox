@@ -45,7 +45,6 @@
 #include "MiscMath.hpp"
 #include "GPSEllipsoid.hpp"
 #include "GNSSconstants.hpp"
-#include "geometry.hpp"
 #include "Xvt.hpp"
 // geomatics
 #include "SunEarthSatGeometry.hpp"

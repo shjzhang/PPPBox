@@ -102,7 +102,7 @@
   // YDS Time-class
 #include "YDSTime.hpp"
 
-#include "geometry.hpp"                   // DEG_TO_RAD
+#include "GNSSconstants.hpp"                   // DEG_TO_RAD
 
 
 using namespace std;

@@ -45,7 +45,7 @@
 #include "MiscMath.hpp"
 #include "GPSEllipsoid.hpp"
 #include "GNSSconstants.hpp"
-#include "geometry.hpp"
+
 
 using namespace std;
 using namespace gpstk;

@@ -123,7 +123,6 @@
 #include "Stats.hpp"
 #include "WGS84Ellipsoid.hpp"
 #include "GNSSconstants.hpp"
-#include "geometry.hpp"
 #include "GPSEphemerisStore.hpp"
 #include "GPSWeekSecond.hpp"
 #include "CivilTime.hpp"

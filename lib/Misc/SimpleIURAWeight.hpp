@@ -46,7 +46,6 @@
 
 #include "Position.hpp"
 #include "TropModel.hpp"
-#include "geometry.hpp"                   // DEG_TO_RAD
 #include <cmath>
 
 

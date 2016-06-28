@@ -38,7 +38,6 @@
 #include "Position.hpp"
 #include "CommonTime.hpp"
 #include "GNSSconstants.hpp"
-#include "geometry.hpp"
 #include "EOPDataStore.hpp"
 
 

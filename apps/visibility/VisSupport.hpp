@@ -40,7 +40,7 @@
 #include "FileFilterFrame.hpp"
 #include "Position.hpp"
 #include "Matrix.hpp"
-#include "geometry.hpp"
+#include "GNSSconstants.hpp"
 
 // rinex
 #include "RinexNavStream.hpp"

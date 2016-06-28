@@ -39,7 +39,7 @@
 #include "Position.hpp"
 #include "SunPosition.hpp"
 #include "AntexReader.hpp"
-#include "geometry.hpp"
+#include "GNSSconstants.hpp"
 #include "StringUtils.hpp"
 
 namespace gpstk
