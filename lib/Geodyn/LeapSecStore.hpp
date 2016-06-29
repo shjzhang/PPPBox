@@ -121,6 +121,10 @@ namespace gpstk
          leapSecData[time] = leap;
       }
 
+         /// Load the leap second data from input file
+         void loadFile(std::string file)
+         throw(FileMissingException);
+         
 
          /** Determine the earliest time stored in the object 
           *

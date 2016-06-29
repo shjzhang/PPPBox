@@ -39,7 +39,116 @@ using namespace gpstk::StringUtils;
 namespace gpstk
 {
       
+      void LeapSecStore::loadFile(std::string file)
+      throw(FileMissingException)
+      {
+            
+            //      cout << file << endl;
+            //      cout << initialTime << endl;
+            //      cout << finalTime << endl;
+            
+            ifstream inpf(file.c_str());
+            if(!inpf)
+            {
+                  FileMissingException fme("Could not open leap second file " + file);
+                  GPSTK_THROW(fme);
+            }
+            
+            clear();
+            
+            // first we skip the header section
+            // skip the header with following 4 lines:
+            // --->
+            // MJD        Date        TAI-UTC (s)
+            //        day month year
+            // ---    --------------   ------
+            //
+            // <---
+            //
+            string temp;
+            while( getline(inpf,temp) )
+            {
+                  if(temp[0] != '#') break;
+                  if(debug) cout << temp << endl;
+            }
+            
+            // Now, read the leap second data
+            bool ok (true);
+            while(!inpf.eof() && inpf.good())
+            {
+                  string line;
+                  getline(inpf,line);
+                  StringUtils::stripTrailing(line,'\r');
+                  
+                  if(inpf.eof()) break;
+                  
+                  if(debug)
+                  {
+                        cout << "line:" << line << endl;
+                  }
+                  
+                  // line length is actually 185
+                  if( inpf.bad() )
+                  { ok = false; break; }
+                  
+                  // Define a string stream to read 'line'
+                  istringstream istrm(line);
+                  //         cout << line.size() << endl;
+                  
+                  double mjd(0.0);
+                  //         mjd = asDouble( leftJustify(line, 11) );
+                  //         cout << mjd << endl;
+                  double year(0.0), month(0.0), day(0.0);
+                  double leapSec(0.0);
+                  
+                  // Get the variable values from stream
+                  istrm >> mjd
+                  >> day >> month >> year
+                  >> leapSec;
+                  
+                  if(debug)
+                        cout << "time: "
+                        << CommonTime( MJD(mjd).convertToCommonTime() )
+                        << " TAI - UTC " << leapSec << endl;
+                  
+                  //         cout << "mjd: " << mjd << endl;
+                  
+                  // UTC time corresponding to the leap second
+                  CommonTime time( MJD(mjd).convertToCommonTime() );
+                  time.setTimeSystem(TimeSystem::UTC);
+                  
+                  // Add leap second into 'leapSecData'
+                  leapSecData[time] = leapSec;
+                  
+                  //         cout << time << "leap: " << leapSecData[time] << endl; 
+                  //         cout << initialTime << endl;
+                  //         cout << finalTime << endl;
+                  
+                  // Modify the initialTime and finalTime for 'leapSecData'
+                  if( time < initialTime )
+                  {
+                        initialTime = time;
+                  }
+                  else if( time > finalTime)
+                  {
+                        finalTime = time;
+                  }
+                  
+                  //         cout << "time:"  << time << endl;
+                  
+            }
+            
+            inpf.close();
+            
+            if(!ok) 
+            {
+                  FileMissingException fme("LeapSec File " + file
+                                           + " is corrupted or wrong format");
+                  GPSTK_THROW(fme);
+            }
+      }
       
+
 
    double LeapSecStore::getLeapSec(const CommonTime& utc) const
       throw(InvalidRequest)
