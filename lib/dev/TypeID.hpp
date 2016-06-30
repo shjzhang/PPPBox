@@ -301,6 +301,10 @@ namespace gpstk
          instL6,    ///< Instrumental delay, L6
          instL7,    ///< Instrumental delay, L7
          instL8,    ///< Instrumental delay, L8
+        
+	 ISB_BDS,    /// inter-system bias for BeiDou 
+	 ISB_GAL,    /// inter-system bias for Galileo
+	 ISB_GLO,    /// inter-system bias for Glonass
 
          recInstC1, ///< Instrumental delay for receiver
          recInstP1, ///< Instrumental delay for receiver

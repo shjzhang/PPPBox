@@ -246,6 +246,10 @@ namespace gpstk
       tStrings[instL6]       = "instrumentalL6";
       tStrings[instL7]       = "instrumentalL7";
       tStrings[instL8]       = "instrumentalL8";
+      
+      tStrings[ISB_BDS]       = "interSystemBiasBDS";
+      tStrings[ISB_GAL]       = "interSystemBiasGAL";
+      tStrings[ISB_GLO]       = "interSystemBiasGLO";
 
       tStrings[recInstC1]    = "recInstC1";
       tStrings[recInstP1]    = "recInstP1";
@@ -722,7 +726,7 @@ namespace gpstk
             if(roi.type == ObsID::otSNR) return TypeID::S1;
          }
          // For L2: C2 P2 L2 D2 S2
-         else if(roi.band == ObsID::cbG1)
+         else if(roi.band == ObsID::cbG2)
          {
             if(roi.type == ObsID::otRange)   // tcGCA or tcGP
                return (roi.code == ObsID::tcGCA) ? TypeID::C2 : TypeID::P2;

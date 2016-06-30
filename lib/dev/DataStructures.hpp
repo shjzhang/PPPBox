@@ -1596,8 +1596,9 @@ namespace gpstk
        * @endcode
        */
    std::istream& operator>>( std::istream& i, gnssRinex& f );
-
-
+       //define this function to process Glonass data
+       //add by Wei Wang
+   std::istream& readRinex3Obs( std::istream& i, gnssRinex& f, std::map<RinexSatID,int>& freqNo);
 	   /** Stream output for gnssRinex.
        *
        * This handy operator allows to output a gnssRinex data structure
