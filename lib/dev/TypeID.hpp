@@ -109,6 +109,7 @@ namespace gpstk
          LLI1,      ///< Loss of Lock Indicator/ lock count, L1 frequency
          SSI2,      ///< Signal strength indicator/index, L2 frequency
          LLI2,      ///< Loss of Lock Indicator/ lock count, L2 frequency
+	 FreqNo,    ///< The frequency number of Glonass satellite, from -7 to 9
             // v 2.11
          C5,        ///< GPS L5C-code pseudorange
          L5,        ///< GPS phase observation in L5 frequency
