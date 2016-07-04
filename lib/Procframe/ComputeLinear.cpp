@@ -62,19 +62,22 @@ namespace gpstk
 
          for( it = gData.begin(); it != gData.end(); ++it )
          {
-            if (((*it).first.system == SatID::systemGalileo)
-		     && (!GalileoLinearList.empty()))
+            if ((*it).first.system == SatID::systemGlonass)
+	    {
+	       setLinearCombination(GlonassLinearList);	
+	    }
+            else if ((*it).first.system == SatID::systemGalileo)
 	    {
 	       setLinearCombination(GalileoLinearList);	
 	    }
-	    else if (((*it).first.system == SatID::systemBeiDou)
-		     &&(!BeiDouLinearList.empty()))
+	    else if ((*it).first.system == SatID::systemBeiDou)
 	    {
 	       setLinearCombination(BeiDouLinearList);	
 	    }
 
                // Loop through all the defined linear combinations
             LinearCombList::const_iterator pos;
+
             for( pos = linearList.begin(); pos != linearList.end(); ++pos )
             {
 
@@ -100,7 +103,6 @@ namespace gpstk
 
                   // Store the result in the proper place
                (*it).second[pos->header] = result;
-
             }
 	           // set default linearlist to GPS
 	       setLinearCombination(GPSLinearList);
