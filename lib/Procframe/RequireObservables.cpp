@@ -92,23 +92,28 @@ namespace gpstk
                satIt != gData.end();
                ++satIt )
          {
-            
 	      // get the SatelliteSystem
 	    SatID::SatelliteSystem system = (*satIt).first.system;
-
-            if (system == SatID::systemGlonass && !GLORequiredTypeSet.empty())
+            if (system == SatID::systemGlonass)
 	    {
 	       setRequiredType(GLORequiredTypeSet);	
 	    }
-	    else if (system == SatID::systemGalileo && !GALRequiredTypeSet.empty())
+	    else if (system == SatID::systemGalileo)
 	    {
 	       setRequiredType(GALRequiredTypeSet);	
 	    }
-	    else if (system == SatID::systemBeiDou && !BDSRequiredTypeSet.empty())
+	    else if (system == SatID::systemBeiDou)
 	    {
 	       setRequiredType(BDSRequiredTypeSet);	
 	    }
+            
+	    
                // Check all the indicated TypeID's
+	    if (requiredTypeSet.empty())
+            {
+	      satRejectedSet.insert( (*satIt).first );	
+            }
+
             for ( TypeIDSet::const_iterator typeIt = requiredTypeSet.begin();
                   typeIt != requiredTypeSet.end();
                   ++typeIt )
