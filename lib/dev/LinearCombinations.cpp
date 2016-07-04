@@ -86,6 +86,10 @@ namespace gpstk
       
       double j(1.672418845/0.672418845); // for BeiDou B1/B2
       double k(1.0/0.672418845);
+          // for Glonass G1/G2
+	  // To every satellite of Glonass, f1/f2 = 9/7
+      double ag(1.653061224/0.653061224); 
+      double bg(1.0/0.653061224);
 
          // Definition to compute prefit residual of C1
       c1Prefit.header                     = TypeID::prefitC1;
@@ -169,10 +173,20 @@ namespace gpstk
       pcCombination.body[TypeID::P1]      = +a;
       pcCombination.body[TypeID::P2]      = -b;
 
+         // Definition to compute PC combination for Glonass
+      pcCombForGlonass.header                = TypeID::PC;
+      pcCombForGlonass.body[TypeID::P1]      = +ag;
+      pcCombForGlonass.body[TypeID::P2]      = -bg;
+
          // Definition to compute PC combination, using C1 instead of P1
       pcCombWithC1.header                 = TypeID::PC;
       pcCombWithC1.body[TypeID::C1]       = +a;
       pcCombWithC1.body[TypeID::P2]       = -b;
+
+         // Definition to compute PC combination, using C1 instead of P1 for Glonass
+      pcCombForGLOWithC1.header                 = TypeID::PC;
+      pcCombForGLOWithC1.body[TypeID::C1]       = +ag;
+      pcCombForGLOWithC1.body[TypeID::P2]       = -bg;
 
          // Definition to compute PC combination for Galileo E1/E5a
       pcCombForGalileo.header                = TypeID::PC;
@@ -201,6 +215,11 @@ namespace gpstk
       lcCombination.body[TypeID::L1]      = +a;
       lcCombination.body[TypeID::L2]      = -b;
 
+         // Definition to compute LC combination for Glonass
+      lcCombForGlonass.header                = TypeID::LC;
+      lcCombForGlonass.body[TypeID::L1]      = +ag;
+      lcCombForGlonass.body[TypeID::L2]      = -bg;
+
          // Definition to compute LC combination for Galileo E1/E5a
       lcCombForGalileo.header                = TypeID::LC;
       lcCombForGalileo.body[TypeID::L1]      = +h;
@@ -226,6 +245,22 @@ namespace gpstk
 
          // Interpolated from reference stations
       lcPrefit.body[TypeID::corrLC]       = -1.0;
+      
+         // Definition to compute prefit residual of LC for Glonass
+      lcPrefitForGlonass.header                     = TypeID::prefitL;
+      lcPrefitForGlonass.body[TypeID::LC]           = +1.0;
+      lcPrefitForGlonass.body[TypeID::rho]          = -1.0;
+      lcPrefitForGlonass.body[TypeID::dtSat]        = +1.0;
+      lcPrefitForGlonass.body[TypeID::updSatLC]     = +1.0;   // UPD for LC
+      lcPrefitForGlonass.body[TypeID::rel]          = -1.0;
+      lcPrefitForGlonass.body[TypeID::gravDelay]    = -1.0;
+      lcPrefitForGlonass.body[TypeID::satPCenter]   = -1.0;
+      lcPrefitForGlonass.body[TypeID::tropoSlant]   = -1.0;
+         // Coefficient for LC windUp is LC wavelenght/2*PI 
+      lcPrefitForGlonass.body[TypeID::windUp]       = -0.1052642062152181/TWO_PI;
+
+         // Interpolated from reference stations
+      lcPrefitForGlonass.body[TypeID::corrLC]       = -1.0;
       
           // Definition to compute prefit residual of LC for Galieo E1/E5a
       lcPrefitForGalileo.header                     = TypeID::prefitL;
@@ -253,7 +288,7 @@ namespace gpstk
       lcPrefitForBeiDou.body[TypeID::satPCenter]   = -1.0;
       lcPrefitForBeiDou.body[TypeID::tropoSlant]   = -1.0;
          // Coefficient for LC windUp is LC wavelenght/2*PI(BeiDou B1/B2)
-      lcPrefitForBeiDou.body[TypeID::windUp]       = -0.1082972115179/TWO_PI;
+      lcPrefitForBeiDou.body[TypeID::windUp]       = -0.1082972115435/TWO_PI;
          // Interpolated from reference stations
       lcPrefitForBeiDou.body[TypeID::corrLC]       = -1.0;
 
@@ -317,12 +352,17 @@ namespace gpstk
       double d( L2_FREQ_GPS/(L1_FREQ_GPS + L2_FREQ_GPS) );
       double e( L1_FREQ_GPS/(L1_FREQ_GPS - L2_FREQ_GPS) );
       double f( L2_FREQ_GPS/(L1_FREQ_GPS - L2_FREQ_GPS) );
+          // Glonass G1/G2
+      double cg( L1_FREQ_GLO/(L1_FREQ_GLO + L2_FREQ_GLO) );
+      double dg( L2_FREQ_GLO/(L1_FREQ_GLO + L2_FREQ_GLO) );
+      double eg( L1_FREQ_GLO/(L1_FREQ_GLO - L2_FREQ_GLO) );
+      double fg( L2_FREQ_GLO/(L1_FREQ_GLO - L2_FREQ_GLO) );
           // Galileo E1/E5a
       double l( L1_FREQ_GAL/(L1_FREQ_GAL + L5_FREQ_GAL) );
       double m( L5_FREQ_GAL/(L1_FREQ_GAL + L5_FREQ_GAL) );
       double n( L1_FREQ_GAL/(L1_FREQ_GAL - L5_FREQ_GAL) );
       double p( L5_FREQ_GAL/(L1_FREQ_GAL - L5_FREQ_GAL) );
-         // BeiDou B1/B2
+          // BeiDou B1/B2
       double q( L1_FREQ_BDS/(L1_FREQ_BDS + L2_FREQ_BDS) );
       double r( L2_FREQ_BDS/(L1_FREQ_BDS + L2_FREQ_BDS) );
       double s( L1_FREQ_BDS/(L1_FREQ_BDS - L2_FREQ_BDS) );
@@ -334,11 +374,22 @@ namespace gpstk
       pdeltaCombination.body[TypeID::P1]  = +c;
       pdeltaCombination.body[TypeID::P2]  = +d;
 
+         // Definition to compute Pdelta (PW) combination for Glonass
+      pdeltaCombForGlonass.header            = TypeID::Pdelta;
+      pdeltaCombForGlonass.body[TypeID::P1]  = +cg;
+      pdeltaCombForGlonass.body[TypeID::P2]  = +dg;
+
          // Definition to compute Pdelta (PW) combination, using C1 instead
          // of P1
       pdeltaCombWithC1.header             = TypeID::Pdelta;
       pdeltaCombWithC1.body[TypeID::C1]   = +c;
       pdeltaCombWithC1.body[TypeID::P2]   = +d;
+
+         // Definition to compute Pdelta (PW) combination, using C1 instead
+         // of P1 for Glonass
+      pdeltaCombForGLOWithC1.header             = TypeID::Pdelta;
+      pdeltaCombForGLOWithC1.body[TypeID::C1]   = +cg;
+      pdeltaCombForGLOWithC1.body[TypeID::P2]   = +dg;
 
          // Definition to compute Pdelta (PW) combination
       pdeltaCombForGalileo.header            = TypeID::Pdelta;
@@ -372,6 +423,11 @@ namespace gpstk
       ldeltaCombination.body[TypeID::L1]  = +e;
       ldeltaCombination.body[TypeID::L2]  = -f;
 	
+         // Definition to compute Ldelta (LW) combination
+      ldeltaCombForGlonass.header            = TypeID::Ldelta;
+      ldeltaCombForGlonass.body[TypeID::L1]  = +eg;
+      ldeltaCombForGlonass.body[TypeID::L2]  = -fg;
+	
 	// Definition to compute Ldelta (LW) combination
       ldeltaCombForGalileo.header            = TypeID::Ldelta;
       ldeltaCombForGalileo.body[TypeID::L1]  = +n;
@@ -404,6 +460,13 @@ namespace gpstk
       mwubbenaCombination.body[TypeID::P1] = -c;
       mwubbenaCombination.body[TypeID::P2] = -d;
 
+         // Definition to compute the Melbourne-Wubbena (W) combination for Glonass
+      mwubbenaCombForGlonass.header           = TypeID::MWubbena;
+      mwubbenaCombForGlonass.body[TypeID::L1] = +eg;
+      mwubbenaCombForGlonass.body[TypeID::L2] = -fg;
+      mwubbenaCombForGlonass.body[TypeID::P1] = -cg;
+      mwubbenaCombForGlonass.body[TypeID::P2] = -dg;
+
 	// Definition to compute the Melbourne-Wubbena (W) combination for Galileo
       mwubbenaCombForGalileo.header           = TypeID::MWubbena;
       mwubbenaCombForGalileo.body[TypeID::L1] = +n;
@@ -433,6 +496,13 @@ namespace gpstk
       mwubbenaCombWithC1.body[TypeID::C1] = -c;
       mwubbenaCombWithC1.body[TypeID::P2] = -d;
 
+         // Definition to compute the Melbourne-Wubbena (W) combination,
+         // using C1 instead of P1 for Glonass
+      mwubbenaCombForGLOWithC1.header           = TypeID::MWubbena;
+      mwubbenaCombForGLOWithC1.body[TypeID::L1] = +eg;
+      mwubbenaCombForGLOWithC1.body[TypeID::L2] = -fg;
+      mwubbenaCombForGLOWithC1.body[TypeID::C1] = -cg;
+      mwubbenaCombForGLOWithC1.body[TypeID::P2] = -dg;
          // Definition to compute the GRoup And PHase Ionospheric
          // Combination (GRAPHIC) in the L1 frequency
       GRAPHIC1Combination.header           = TypeID::GRAPHIC1;
