@@ -451,7 +451,7 @@ Download()
 		echo "The file $savefile2 already exists!"
 		savefile=$savefile2
 	else
-		wget -c -P $savepath $url
+		wget -c -t 2 -P $savepath $url
 	fi
 } # The end of Download()
 
