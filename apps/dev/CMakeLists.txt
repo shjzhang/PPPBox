@@ -12,4 +12,7 @@ add_executable(pppucar pppucar.cpp)
 target_link_libraries(pppucar pppbox)
 install (TARGETS pppucar DESTINATION bin)
 
+add_executable(pppgnss pppgnss.cpp)
+target_link_libraries(pppgnss pppbox)
+install (TARGETS pppgnss DESTINATION bin)
 
