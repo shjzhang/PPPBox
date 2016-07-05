@@ -218,8 +218,7 @@ namespace gpstk
           *                 if false (the default), will compute dx, dy, dz.
           */
       SolverPPP(bool useNEU = false);
-
-
+ 
          /** Compute the PPP Solution of the given equations set.
           *
           * @param prefitResiduals   Vector of prefit residuals
@@ -300,8 +299,12 @@ namespace gpstk
           *
           */
       virtual SolverPPP& setNEU( bool useNEU );
-
-
+        
+	// Sets if use BeiDou, Galileo or Glonass
+      virtual SolverPPP& setSystem( bool useGPS,
+                                    bool useGlonass,
+                                    bool useBeiDou,
+                                    bool useGalileo);
 
          /** Get the weight factor multiplying the phase measurements sigmas.
           *  This factor is the code_sigma/phase_sigma ratio.
@@ -511,23 +514,17 @@ namespace gpstk
 
    private:
 
-
          /// Number of variables
       int numVar;
-
 
          /// Number of unknowns
       int numUnknowns;
 
-
          /// Number of measurements
       int numMeas;
 
-
-
          /// Weight factor for phase measurements
       double weightFactor;
-
 
          /// Boolean flag to indicate reset the solution
       bool resetSol;
@@ -561,6 +558,15 @@ namespace gpstk
 
          /// Pointer to stochastic model for receiver clock
       StochasticModel* pClockStoModel;
+         
+	 /// Pointer to stochastic model for inter-system bias for Glonass
+      StochasticModel* pISBForGLOStoModel;
+
+	 /// Pointer to stochastic model for inter-system bias for Galileo
+      StochasticModel* pISBForGALStoModel;
+
+	 /// Pointer to stochastic model for inter-system bias for BeiDou
+      StochasticModel* pISBForBDSStoModel;
 
 
          /// Pointer to stochastic model for phase biases
@@ -636,6 +642,9 @@ namespace gpstk
 
          /// White noise stochastic model
       WhiteNoiseModel whitenoiseModel;
+      WhiteNoiseModel whitenoiseModel2;
+      WhiteNoiseModel whitenoiseModel3;
+      WhiteNoiseModel whitenoiseModel4;
 
 
          /// Phase biases stochastic model (constant + white noise)

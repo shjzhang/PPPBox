@@ -72,7 +72,7 @@ namespace gpstk
        *                 if false (the default), will compute dx, dy, dz.
        *
        */
-   SolverPPP::SolverPPP(bool useNEU)
+   SolverPPP::SolverPPP(bool useNEU )
       : firstTime(true), converged(false), bufferSize(4)
    {
 
@@ -85,7 +85,6 @@ namespace gpstk
    }  // End of 'SolverPPP::SolverPPP()'
 
 
-
       // Initializing method.
    void SolverPPP::Init(void)
    {
@@ -95,6 +94,10 @@ namespace gpstk
 
          // Pointer to default stochastic model for troposphere (random walk)
       pTropoStoModel = &rwalkModel;
+      
+      pISBForBDSStoModel = &whitenoiseModel2;
+      pISBForGALStoModel = &whitenoiseModel3;
+      pISBForGLOStoModel = &whitenoiseModel4;
 
          // Set default coordinates stochastic model (constant)
       setCoordinatesModel( &constantModel );
@@ -350,7 +353,8 @@ covariance matrix.");
 
          // Get a set with all satellites present in this GDS
       SatIDSet currSatSet( gData.body.getSatID() );
-
+    //  for (SatIDSet::iterator it = currSatSet.begin();it!=currSatSet.end();++it)
+//    {	 cout<<*it<<endl;}
          // Get the number of satellites currently visible
       int numCurrentSV( gData.numSats() );
 
@@ -361,7 +365,7 @@ covariance matrix.");
 
             // Number of 'core' variables: Coordinates, RX clock, troposphere
          numVar = defaultEqDef.body.size();
-
+//cout<<"numVar : "<<numVar<<endl;
             // Total number of unknowns is defined as variables + processed SVs
          numUnknowns = numVar + numCurrentSV;
 
@@ -381,6 +385,7 @@ covariance matrix.");
          {
             measVector( i                ) = prefitC(i);
             measVector( numCurrentSV + i ) = prefitL(i);
+//	    cout<<prefitC(i)<<" "<<prefitL(i)<<endl;
          }
 
 
@@ -399,14 +404,11 @@ covariance matrix.");
                // If we have weights information, let's load it
             Vector<double>
                weightsVector(gData.getVectorOfTypeID(TypeID::weight));
-
-            for( int i=0; i<numCurrentSV; i++ )
+            for(int i = 0; i< numCurrentSV;i++)
             {
-
                rMatrix( i               , i         ) = weightsVector(i);
                rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                             = weightsVector(i) * weightFactor;
-
+                                            = weightsVector(i) * weightFactor;
             }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
 
          }
@@ -414,30 +416,26 @@ covariance matrix.");
          {
 
                // If weights don't match, assign generic weights
-            for( int i=0; i<numCurrentSV; i++ )
+            for(int i = 0; i< numCurrentSV;i++)
             {
                rMatrix( i               , i         ) = 1.0;
-
-                  // Phases weights are bigger
                rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                                         = 1.0 * weightFactor;
-
+                                             = 1.0 * weightFactor;
             }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
 
-         }  // End of 'if ( dummy.numSats() == numCurrentSV )'
-
+          }
 
             // Generate the corresponding geometry/design matrix
          hMatrix.resize(numMeas, numUnknowns, 0.0);
 
             // Get the values corresponding to 'core' variables
          Matrix<double> dMatrix(gData.body.getMatrixOfTypes(defaultEqDef.body));
-
             // Let's fill 'hMatrix'
          for( int i=0; i<numCurrentSV; i++ )
          {
 
-               // First, fill the coefficients related to tropo, coord and clock
+               // First, fill the coefficients related to tropo, coord , clock
+	       // and ISB (if use BeiDou or Galileo)
             for( int j=0; j<numVar; j++ )
             {
 
@@ -447,7 +445,6 @@ covariance matrix.");
             }
 
          }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
-
 
             // Now, fill the coefficients related to phase biases
             // We must be careful because not all processed satellites
@@ -473,30 +470,128 @@ covariance matrix.");
                                   gData );
          phiMatrix(0,0) = pTropoStoModel->getPhi();
          qMatrix(0,0)   = pTropoStoModel->getQ();
+             // if no ISB, numVar = 5
+         if (numVar == 5 )
+	 {
+             // Second, the coordinates
+           pCoordXStoModel->Prepare(dummySat, gData);
+           phiMatrix(1,1) = pCoordXStoModel->getPhi();
+           qMatrix(1,1)   = pCoordXStoModel->getQ();
 
-            // Second, the coordinates
-         pCoordXStoModel->Prepare(dummySat, gData);
-         phiMatrix(1,1) = pCoordXStoModel->getPhi();
-         qMatrix(1,1)   = pCoordXStoModel->getQ();
+           pCoordYStoModel->Prepare(dummySat, gData);
+           phiMatrix(2,2) = pCoordYStoModel->getPhi();
+           qMatrix(2,2)   = pCoordYStoModel->getQ();
 
-         pCoordYStoModel->Prepare(dummySat, gData);
-         phiMatrix(2,2) = pCoordYStoModel->getPhi();
-         qMatrix(2,2)   = pCoordYStoModel->getQ();
-
-         pCoordZStoModel->Prepare(dummySat, gData);
-         phiMatrix(3,3) = pCoordZStoModel->getPhi();
-         qMatrix(3,3)   = pCoordZStoModel->getQ();
+           pCoordZStoModel->Prepare(dummySat, gData);
+           phiMatrix(3,3) = pCoordZStoModel->getPhi();
+           qMatrix(3,3)   = pCoordZStoModel->getQ();
 
             // Third, the receiver clock
-         pClockStoModel->Prepare( dummySat,
+           pClockStoModel->Prepare( dummySat,
                                   gData );
-         phiMatrix(4,4) = pClockStoModel->getPhi();
-         qMatrix(4,4)   = pClockStoModel->getQ();
+           phiMatrix(4,4) = pClockStoModel->getPhi();
+           qMatrix(4,4)   = pClockStoModel->getQ();
+        
+	  } 
+	 
+          else if( numVar == 6 )   // for BeiDou ISB
+          {
+       
+            pISBForBDSStoModel->Prepare(dummySat, gData);
+            phiMatrix(1,1) = pISBForBDSStoModel->getPhi();
+            qMatrix(1,1)   = pISBForBDSStoModel->getQ();
 
+               // Second, the coordinates
+            pCoordXStoModel->Prepare(dummySat, gData);
+            phiMatrix(2,2) = pCoordXStoModel->getPhi();
+            qMatrix(2,2)   = pCoordXStoModel->getQ();
 
+            pCoordYStoModel->Prepare(dummySat, gData);
+            phiMatrix(3,3) = pCoordYStoModel->getPhi();
+            qMatrix(3,3)   = pCoordYStoModel->getQ();
+
+            pCoordZStoModel->Prepare(dummySat, gData);
+            phiMatrix(4,4) = pCoordZStoModel->getPhi();
+            qMatrix(4,4)   = pCoordZStoModel->getQ();
+
+             // Third, the receiver clock
+            pClockStoModel->Prepare( dummySat,
+                                  gData );
+            phiMatrix(5,5) = pClockStoModel->getPhi();
+            qMatrix(5,5)   = pClockStoModel->getQ();
+          }
+
+          else if ( numVar == 7 )  // for BeiDou ISB and Galileo ISB
+          {
+	     
+            pISBForBDSStoModel->Prepare(dummySat, gData);
+            phiMatrix(1,1) = pISBForBDSStoModel->getPhi();
+            qMatrix(1,1)   = pISBForBDSStoModel->getQ();
+
+            pISBForGALStoModel->Prepare(dummySat, gData);
+            phiMatrix(2,2) = pISBForGALStoModel->getPhi();
+            qMatrix(2,2)   = pISBForGALStoModel->getQ();
+      
+
+               // Second, the coordinates
+            pCoordXStoModel->Prepare(dummySat, gData);
+            phiMatrix(3,3) = pCoordXStoModel->getPhi();
+            qMatrix(3,3)   = pCoordXStoModel->getQ();
+
+            pCoordYStoModel->Prepare(dummySat, gData);
+            phiMatrix(4,4) = pCoordYStoModel->getPhi();
+            qMatrix(4,4)   = pCoordYStoModel->getQ();
+
+            pCoordZStoModel->Prepare(dummySat, gData);
+            phiMatrix(5,5) = pCoordZStoModel->getPhi();
+            qMatrix(5,5)   = pCoordZStoModel->getQ();
+
+              // Third, the receiver clock
+            pClockStoModel->Prepare( dummySat,
+                                  gData );
+            phiMatrix(6,6) = pClockStoModel->getPhi();
+            qMatrix(6,6)   = pClockStoModel->getQ();
+        
+	  }
+
+          else if ( numVar == 8 )  // for BeiDou ISB, Galileo ISB and Glonass ISB
+          {
+	     
+            pISBForBDSStoModel->Prepare(dummySat, gData);
+            phiMatrix(1,1) = pISBForBDSStoModel->getPhi();
+            qMatrix(1,1)   = pISBForBDSStoModel->getQ();
+
+            pISBForGALStoModel->Prepare(dummySat, gData);
+            phiMatrix(2,2) = pISBForGALStoModel->getPhi();
+            qMatrix(2,2)   = pISBForGALStoModel->getQ();
+      
+            pISBForGLOStoModel->Prepare(dummySat, gData);
+            phiMatrix(3,3) = pISBForGLOStoModel->getPhi();
+            qMatrix(3,3)   = pISBForGLOStoModel->getQ();
+      
+               // Second, the coordinates
+            pCoordXStoModel->Prepare(dummySat, gData);
+            phiMatrix(4,4) = pCoordXStoModel->getPhi();
+            qMatrix(4,4)   = pCoordXStoModel->getQ();
+
+            pCoordYStoModel->Prepare(dummySat, gData);
+            phiMatrix(5,5) = pCoordYStoModel->getPhi();
+            qMatrix(5,5)   = pCoordYStoModel->getQ();
+
+            pCoordZStoModel->Prepare(dummySat, gData);
+            phiMatrix(6,6) = pCoordZStoModel->getPhi();
+            qMatrix(6,6)   = pCoordZStoModel->getQ();
+
+              // Third, the receiver clock
+            pClockStoModel->Prepare( dummySat,
+                                  gData );
+            phiMatrix(7,7) = pClockStoModel->getPhi();
+            qMatrix(7,7)   = pClockStoModel->getQ();
+        
+	   }
 
             // Finally, the phase biases
-         int count2(numVar);     // Note that for PPP, 'numVar' is always 5!!!
+         int count2(numVar);     
          for( SatIDSet::const_iterator itSat = currSatSet.begin();
               itSat != currSatSet.end();
               ++itSat )
@@ -529,16 +624,61 @@ covariance matrix.");
 
                // First, the zenital wet tropospheric delay
             initialErrorCovariance(0,0) = 0.25;          // (0.5 m)**2
-
-               // Second, the coordinates
-            for( int i=1; i<4; i++ )
+            if ( numVar == 5 )
             {
+               // Second, the coordinates
+             for( int i=1; i<4; i++ )
+             {
                initialErrorCovariance(i,i) = 10000.0;    // (100 m)**2
-            }
+             }
 
                // Third, the receiver clock
-            initialErrorCovariance(4,4) = 9.0e10;        // (300 km)**2
+             initialErrorCovariance(4,4) = 9.0e10;        // (300 km)**2
+            }
+              // ISB
+	    else if ( numVar == 6 )
+	    {
+              initialErrorCovariance(1,1) = 9.0e10;        // (300 km)**2
+                     // Second, the coordinates
+              for( int i=2; i<5; i++ )
+              {
+                initialErrorCovariance(i,i) = 10000.0;    // (100 m)**2
+              }
 
+               // Third, the receiver clock
+              initialErrorCovariance(5,5) = 9.0e10;        // (300 km)**2
+           
+            }
+
+	    else if ( numVar == 7 )
+	    {
+               initialErrorCovariance(1,1) = 9.0e10;        // (300 km)**2
+               initialErrorCovariance(2,2) = 9.0e10;        // (300 km)**2
+                // Second, the coordinates
+               for( int i=3; i<6; i++ )
+               {
+                 initialErrorCovariance(i,i) = 10000.0;    // (100 m)**2
+               }
+
+                // Third, the receiver clock
+               initialErrorCovariance(6,6) = 9.0e10;        // (300 km)**2
+
+            }
+	    else if ( numVar == 8 )
+	    {
+               initialErrorCovariance(1,1) = 9.0e10;        // (300 km)**2
+               initialErrorCovariance(2,2) = 9.0e10;        // (300 km)**2
+               initialErrorCovariance(3,3) = 9.0e10;        // (300 km)**2
+                // Second, the coordinates
+               for( int i=4; i<7; i++ )
+               {
+                 initialErrorCovariance(i,i) = 10000.0;    // (100 m)**2
+               }
+
+                // Third, the receiver clock
+               initialErrorCovariance(7,7) = 9.0e10;        // (300 km)**2
+
+            }
                // Finally, the phase biases
             for( int i=numVar; i<numUnknowns; i++ )
             {
@@ -726,7 +866,7 @@ covariance matrix.");
             postfitCode(i)  = postfitResiduals( i                );
             postfitPhase(i) = postfitResiduals( i + numCurrentSV );
          }
-
+    
          gData.insertTypeIDVector(TypeID::postfitC, postfitCode);
          gData.insertTypeIDVector(TypeID::postfitL, postfitPhase);
 
@@ -794,6 +934,7 @@ covariance matrix.");
          return gData;
 
       }
+
       catch(Exception& u)
       {
             // Throw an exception if something unexpected happens
@@ -822,6 +963,7 @@ covariance matrix.");
 
          // Watch out here: 'tempSet' is a 'std::set', and all sets order their
          // elements. According to 'TypeID' class, this is the proper order:
+
       tempSet.insert(TypeID::wetMap);  // BEWARE: The first is wetMap!!!
 
       if (useNEU)
@@ -837,7 +979,7 @@ covariance matrix.");
          tempSet.insert(TypeID::dz);   // #4
       }
       tempSet.insert(TypeID::cdt);     // #5
-
+      
          // Now, we build the basic equation definition
       defaultEqDef.header = TypeID::prefitC;
       defaultEqDef.body = tempSet;
@@ -846,7 +988,28 @@ covariance matrix.");
 
    }  // End of method 'SolverPPP::setNEU()'
 
-
+     // Set system , if BeiDou, Galileo or Glonass is used, there will be a
+     // inter-system bias, insert into defalutEqDef.body
+    SolverPPP& SolverPPP::setSystem(bool useGPS,
+                                    bool useGLO,
+                                    bool useBDS,
+                                    bool useGAL)
+    {
+       if (useGPS && useGLO)	
+       {
+         defaultEqDef.body.insert(TypeID::ISB_GLO);
+       }
+       if (useGPS && useBDS)	
+       {
+         defaultEqDef.body.insert(TypeID::ISB_BDS);
+       }
+       if (useGPS && useGAL)	
+       {
+         defaultEqDef.body.insert(TypeID::ISB_GAL);  
+       }
+	
+      return (*this);
+    }
 
 
       /* Set a single coordinates stochastic model to ALL coordinates.
