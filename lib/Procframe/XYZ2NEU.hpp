@@ -185,6 +185,9 @@ namespace gpstk
       virtual XYZ2NEU& setLatLon( const double& lat,
                                   const double& lon );
 
+         /// Method to get the rotationMatrix of the reference point.
+      virtual Matrix<double> getRotation(void) const
+      { return rotationMatrix; };
 
          /** Returns a reference to a satTypeValueMap object after
           *  converting from a geocentric reference system to a topocentric

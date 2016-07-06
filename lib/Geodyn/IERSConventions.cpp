@@ -93,6 +93,8 @@ namespace gpstk
          leapHistory( 2006, 1, 1, 33 );
          leapHistory( 2009, 1, 1, 34 );
          leapHistory( 2012, 7, 1, 35 );
+            //add 2015 leap second
+         leapHistory( 2015, 7, 1, 36 );
 
          // more leap seconds should be appended here
          // ...

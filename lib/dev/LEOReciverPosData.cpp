@@ -158,11 +158,8 @@ namespace gpstk
                 ||(ttag > vLEOposition[lengtht-N].second ) )
             {
                   
-                  cout<<setprecision(16);
-                  cout<<"The GOCE prd position inpoly time  "<<ttag<<" out of file "
-                  <<"the time should in "<<vLEOposition[N].second
-                  << " and " <<vLEOposition[lengtht-N].second<<endl;
-                  return ;
+                  FileMissingException fme("The LEO Pos inpoly time out of file");
+                  GPSTK_THROW(fme);
             }
             
             // cout<<"ttag"<<ttag<<endl;

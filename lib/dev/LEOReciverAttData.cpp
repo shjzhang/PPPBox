@@ -144,7 +144,7 @@ namespace gpstk
             
             
             vector<double> times(N), Q1(N), Q2(N), Q3(N), Q4(N);
-            double dt,err,Qx[4];
+            double dt,err,err_p,Qx[4];
             int line,lengtht;
             
             
@@ -152,19 +152,19 @@ namespace gpstk
             dt=vLEOatt[1].second-vLEOatt[0].second;
             line=floor((ttag-vLEOatt[0].second)/round(dt));
             
+            line+=floor((ttag-vLEOatt[line].second)/round(dt));
+
+            
             lengtht=vLEOatt.size();
             
             if ((ttag<vLEOatt[N].second )
                 ||(ttag > vLEOatt[lengtht-N].second ) )
             {
-                  cout<<setprecision(16);
-                  cout<<"The GOCE attitude inpoly time:"<<ttag<<" out of file "
-                  <<"the time should in "<<vLEOatt[N].second
-                  << " and " <<vLEOatt[lengtht-N].second<<endl;
-                  return ;
+
+                  FileMissingException fme("The LEO attitude inpoly time out of file");
+                  GPSTK_THROW(fme);
             }
-            
-            
+
             // read data for interpoly
             
             for(int i = 0; i < N; i ++)
@@ -183,15 +183,21 @@ namespace gpstk
                   
                   if(i> 0)
                   {
-                        err=Q1[i]*Q1[i-1]+Q2[i]*Q2[i-1]+Q3[i]*Q3[i-1];
-                        if(err<0)
+                  
+                        err  =std::abs(Q1[i]-Q1[i-1])+std::abs(Q2[i]-Q2[i-1])+
+                              std::abs(Q3[i]-Q3[i-1])+std::abs(Q4[i]-Q4[i-1]);
+                        
+                        err_p=std::abs(Q1[i]+Q1[i-1])+std::abs(Q2[i]+Q2[i-1])+
+                              std::abs(Q3[i]+Q3[i-1])+std::abs(Q4[i]+Q4[i-1]);
+                        if(err_p<err )
                         {
                               Q1[i]=-Q1[i];
                               Q2[i]=-Q2[i];
                               Q3[i]=-Q3[i];
                               Q4[i]=-Q4[i];
                         }
-                        err=0;
+                        err  =0.0;
+                        err_p=0.0;
                   }
                   
             }
@@ -200,7 +206,7 @@ namespace gpstk
             Qx[1]=LagrangeInterpolation(times,Q2,ttag,err);
             Qx[2]=LagrangeInterpolation(times,Q3,ttag,err);
             Qx[3]=LagrangeInterpolation(times,Q4,ttag,err);
-     
+            
             // unit Quart at time ttag
             Qx2Unitx(4 ,Qx);
             
@@ -254,8 +260,11 @@ namespace gpstk
             Q2Rotation(Qx, Rx2);
      
             //here maby change right *  or left *
-            Rx=Rx2 * Rx1;
+            Rx=transpose(Rx1*Rx2);
             
+//            cout<<"RX1:"<<endl<<Rx1<<endl;
+//            cout<<"Rx2:"<<endl<<Rx2<<endl;
+//            cout<<"RX:"<<endl<<Rx<<endl;
             // read offsetReciver in SRF
             offtmp[0]=offsetReciver[0];
             offtmp[1]=offsetReciver[1];
@@ -301,8 +310,11 @@ namespace gpstk
             // get ReferenceSystem.hpp by UTC
             
             //here maby change right *  or left *
-            Rx=C2T * Rx1;
-            
+            //for goce
+            Rx=C2T * transpose(Rx1);
+
+            //for grace
+            //Rx=C2T *transpose(Rx1) ;
             // read offsetReciver in SRF
             offtmp[0]=offsetReciver[0];
             offtmp[1]=offsetReciver[1];
