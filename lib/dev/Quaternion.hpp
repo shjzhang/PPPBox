@@ -72,20 +72,20 @@ namespace gpstk
       void Q2Rotation(double *Q, Matrix<double>& Rx)
       {
             
-            
+            //Q[0] is rotation angle
             Rx.resize(3,3,0.0);
             
-            Rx(0,0)=std::pow(Q[0],2)-std::pow(Q[1],2)-std::pow(Q[2],2)+std::pow(Q[3],2);
+            Rx(0,0)=std::pow(Q[0],2)+std::pow(Q[1],2)-std::pow(Q[2],2)-std::pow(Q[3],2);
             // =1.D0-2*Q2**2-2*Q3**2
-            Rx(0,1)=2.0*(Q[0]*Q[1]-Q[2]*Q[3]);
-            Rx(0,2)=2.0*(Q[0]*Q[2]+Q[1]*Q[3]);
-            Rx(1,0)=2.0*(Q[0]*Q[1]+Q[2]*Q[3]);
-            Rx(1,1)=-std::pow(Q[0],2)+std::pow(Q[1],2)-std::pow(Q[2],2)+std::pow(Q[3],2);
+            Rx(0,1)=2.0*(Q[1]*Q[2]+Q[0]*Q[3]);
+            Rx(0,2)=2.0*(Q[1]*Q[3]-Q[0]*Q[2]);
+            Rx(1,0)=2.0*(Q[1]*Q[2]-Q[0]*Q[3]);
+            Rx(1,1)=std::pow(Q[0],2)-std::pow(Q[1],2)+std::pow(Q[2],2)-std::pow(Q[3],2);
             //=1.D0-2*Q1**2-2*Q3**2
-            Rx(1,2)=2.0*(Q[1]*Q[2]-Q[0]*Q[3]);
-            Rx(2,0)=2.0*(Q[0]*Q[2]-Q[1]*Q[3]);
-            Rx(2,1)=2.0*(Q[1]*Q[2]+Q[0]*Q[3]);
-            Rx(2,2)=-std::pow(Q[0],2)-std::pow(Q[1],2)+std::pow(Q[2],2)+std::pow(Q[3],2);
+            Rx(1,2)=2.0*(Q[2]*Q[3]+Q[0]*Q[1]);
+            Rx(2,0)=2.0*(Q[1]*Q[3]+Q[0]*Q[2]);
+            Rx(2,1)=2.0*(Q[2]*Q[3]-Q[0]*Q[1]);
+            Rx(2,2)=std::pow(Q[0],2)-std::pow(Q[1],2)-std::pow(Q[2],2)+std::pow(Q[3],2);
             //=1.D0-2*Q1**2-2*Q2**2
             
       }// end of translate quartern to rotation matrix
@@ -99,11 +99,12 @@ namespace gpstk
             double QR[4],R1,R2,R3,R4,tmp;
             int CR;
             //Rx.size(3,3,0.0);
+            //Q[0] is rotation angle
             
-            QR[3]=Rx(0,0)+Rx(1,1)+Rx(2,2);
-            QR[0]=Rx(0,0);
-            QR[1]=Rx(1,1);
-            QR[2]=Rx(2,2);
+            QR[0]=1.0+Rx(0,0)+Rx(1,1)+Rx(2,2);
+            QR[1]=1.0+Rx(0,0)-Rx(1,1)-Rx(2,2);
+            QR[2]=1.0-Rx(0,0)+Rx(1,1)-Rx(2,2);
+            QR[3]=1.0-Rx(0,0)-Rx(1,1)+Rx(2,2);
             
             // find max value in Quaternion for compute
             maxaloc(QR,4,CR,tmp);
@@ -111,36 +112,32 @@ namespace gpstk
             
             if (CR==0)
             {
-                  R1=1.0+Rx(0,0)-Rx(1,1)-Rx(2,2);
-                  Q[0]=0.5*std::sqrt(R1);
-                  Q[1]=0.25*(Rx(0,1)+Rx(1,0))/Q[0];
-                  Q[2]=0.25*(Rx(0,2)+Rx(2,0))/Q[0];
-                  Q[3]=0.25*(Rx(2,1)+Rx(1,2))/Q[0];
+                  Q[0]=0.5*std::sqrt(QR[0]);
+                  Q[1]=0.25*(Rx(1,2)-Rx(2,1))/Q[0];
+                  Q[2]=0.25*(Rx(2,0)-Rx(0,2))/Q[0];
+                  Q[3]=0.25*(Rx(0,1)-Rx(1,0))/Q[0];
             }
             
             if (CR==1)
             {
-                  R2=1.0-Rx(0,0)+Rx(1,1)-Rx(2,2);
-                  Q[1]=0.5*std::sqrt(R2);
-                  Q[0]=0.25*(Rx(0,1)+Rx(1,0))/Q[1];
-                  Q[2]=0.25*(Rx(2,1)+Rx(1,2))/Q[1];
-                  Q[3]=0.25*(Rx(0,2)-Rx(2,0))/Q[1];
+                  Q[1]=0.5*std::sqrt(QR[1]);
+                  Q[0]=0.25*(Rx(1,2)-Rx(2,1))/Q[1];
+                  Q[2]=0.25*(Rx(0,1)+Rx(1,0))/Q[1];
+                  Q[3]=0.25*(Rx(2,0)+Rx(0,2))/Q[1];
             }
             if (CR==2)
             {
-                  R3=1.0-Rx(0,0)-Rx(1,1)+Rx(2,2);
-                  Q[2]=0.5*std::sqrt(R3);
-                  Q[0]=0.25*(Rx(0,2)+Rx(2,0))/Q[2];
-                  Q[1]=0.25*(Rx(1,2)+Rx(2,1))/Q[2];
-                  Q[3]=0.25*(Rx(1,0)-Rx(0,1))/Q[2];
+                  Q[2]=0.5*std::sqrt(QR[2]);
+                  Q[0]=0.25*(Rx(2,0)-Rx(0,2))/Q[2];
+                  Q[1]=0.25*(Rx(0,1)+Rx(1,0))/Q[2];
+                  Q[3]=0.25*(Rx(1,2)+Rx(2,1))/Q[2];
             }
             if (CR==3)
             {
-                  R4=1.0+Rx(0,0)+Rx(1,1)+Rx(2,2);
-                  Q[3]=0.5*std::sqrt(R4);
-                  Q[0]=0.25*(Rx(2,1)-Rx(1,2))/Q[3];
-                  Q[1]=0.25*(Rx(0,2)-Rx(2,0))/Q[3];
-                  Q[2]=0.25*(Rx(1,0)-Rx(0,1))/Q[3];
+                  Q[3]=0.5*std::sqrt(QR[3]);
+                  Q[0]=0.25*(Rx(0,1)-Rx(1,0))/Q[3];
+                  Q[1]=0.25*(Rx(2,0)+Rx(0,2))/Q[3];
+                  Q[2]=0.25*(Rx(1,2)+Rx(2,1))/Q[3];
             }
             
       }// end of translate quartern to rotation matrix
