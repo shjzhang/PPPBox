@@ -4,7 +4,7 @@
 ln -f -s ../../tables/OCEAN-GOT00.dat OCEAN-GOT00.dat
 ln -f -s ../../tables/msc.txt msc.txt
 ln -f -s ../../tables/URL_LIST.txt url.list
-#ln -f -s ../../tables/igs08.atx igs08.atx
+ln -f -s ../../tables/igs08.atx igs08.atx
 ln -f -s ../../tables/receiver_bernese.lis recType.list
 ln -f -s ../../tables/type.list type.list
 

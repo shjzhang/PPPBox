@@ -169,14 +169,9 @@
 
 // Class to delete outliers based on the prefit residuals
 #include "PrefitFilter.hpp"
-// Class to delete outliers based on the prefit residuals
-#include "PrefitCSDetector.hpp"
+
 //// Class to calibrate the phase with its ambiguity
 //#include "PhaseCalibration.hpp"
-//// Class to correct satellite biases
-//#include "CorrectPhaseBiases.hpp"
-//// Class to compute the corrections for PPP-RTK and RTK positioning
-//#include "ComputeCorrection.hpp"
 
 //******//
 
@@ -1032,6 +1027,7 @@ void pod::process()
          
       // Declare an object to correct observables to monument
       CorrectObservables corr(SP3EphList);
+
       //given as time for pod
       //      corr.setNominalPosition(nominalPos);
       //      corr.setMonument( offsetARP );
@@ -1174,22 +1170,6 @@ void pod::process()
       pList.push_back(linear2);       // Add to processing list
          
 
-//         PrefitCSDetector prefitCSDetector;
-//         pList.push_back( prefitCSDetector );
-//         
-//         MWCSDetector2 markCSMW;          // Checks Merbourne-Wubbena cycle slips
-//         pList.push_back(markCSMW);       // Add to processing list
-//         
-//         
-//         // Object to keep track of satellite arcs
-//         SatArcMarker markArc;
-//         markArc.setDeleteUnstableSats(false);
-//         markArc.setUnstablePeriod(11.0);
-//         pList.push_back(markArc);       // Add to processing list
-         
-         
-
-         
          // Declare a simple filter object to screen PC
       SimpleFilter pcFilter;
       pcFilter.setFilteredType(TypeID::PC);
@@ -1218,58 +1198,6 @@ void pod::process()
       //PrefitFilter prefitFilter;
       //pList.push_back(prefitFilter);
          
-         
-         ///////////////////////////////////////////////////
-         //
-         //  Warning: you MUST NOT delete any satellites between the cycle
-         //  slip detection object and the satArcMarker, or else you may
-         //  delete the cycle slip flags, which will make wrong arc marking
-         //  in 'satArcMarker'
-         //
-         ///////////////////////////////////////////////////
-         
-         // Object to detect cycle slips using the prefit-residuals
-         // @author Shoujian Zhang
-//      PrefitCSDetector prefitCSDetector;
-//      pList.push_back( prefitCSDetector );
-         
-         // Objects to mark cycle slips
-//      MWCSDetector2  markCSMW;          // Checks Merbourne-Wubbena cycle slips
-//      pList.push_back(markCSMW);       // Add to processing list
-//         
-//         ///////////////////////////////////////////////////
-//         //
-//         //  Satellite arc marker
-//         //
-//         ///////////////////////////////////////////////////
-//         
-//         
-//         // Object to keep track of satellite arcs
-//         // Notes: The SatArcMarker class should be run
-//         //        immediately AFTER the cycle slip detector class. And any class
-//         //        between cycleslip detector and "SatArcMarker", which delelte
-//         //        satellite, will destroy the arc continuity.
-//      SatArcMarker2 markArc;
-//      markArc.setDeleteUnstableSats(false);
-//      markArc.setUnstablePeriod(151.0);
-//      pList.push_back(markArc);       // Add to processing list
-//         
-         // Object to remove eclipsed satellites
-//      EclipsedSatFilter eclipsedSV;
-//      pList.push_back(eclipsedSV);       // Add to processing list
-//         ///////////////////////////////////////////////////
-//         //
-//         //  Now, Compute the prefit for solver !!!!
-//         //
-//         ///////////////////////////////////////////////////
-//         
-//         // Compute the prefit for the solver
-//         // Warning: compute the pc and lc prefit again for the solver,
-//         //          after computing all the related corrections.
-//      ComputeLinear linear4;
-//      linear4.addLinear(comb.pcPrefit);
-//      linear4.addLinear(comb.lcPrefit);
-//      pList.push_back(linear4);       // Add to processing list
          
          ///////////////////////////////////////////////////
          //
@@ -1469,6 +1397,7 @@ void pod::process()
                  // cout<<offsetRecivert<<endl;
                   // Declare a basic modeler
                   basic.rxPos = nominalPos;
+
                   // Object to compute gravitational delay effects
                   grDelay.setNominalPosition( nominalPos );
                   
