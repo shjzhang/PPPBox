@@ -1,0 +1,908 @@
+     1.4            M                                       ANTEX VERSION / SYST
+A                                                           PCV TYPE / REFANT   
+########################################################### COMMENT             
+General hint for satellite antenna corrections:             COMMENT             
+   All values in this file refer to an IGS-specific axis    COMMENT             
+   convention which differs from manufacturer               COMMENT             
+   specifications for certain satellite types. The IGS      COMMENT             
+   convention allows for a uniform description of the       COMMENT             
+   spacecraft attitude for all satellites applying a yaw-   COMMENT             
+   steering attitude control. Detailed definitions are      COMMENT             
+   provided in Montenbruck et al. (2015).                   COMMENT             
+                                                            COMMENT             
+GPS satellite antenna corrections:                          COMMENT             
+  - z-offsets:                                              COMMENT             
+    + satellite-specific                                    COMMENT             
+    + based on reprocessed (1994-2007) and operational      COMMENT             
+      (2008-2010) AC SINEX files                            COMMENT             
+    + solutions aligned to ITRF2008                         COMMENT             
+    + unweighted mean of five ACs (CODE, ESA, GFZ, MIT,     COMMENT             
+      NRCan)                                                COMMENT             
+    + analyzed and combined by IGN and TUM                  COMMENT             
+    + L1 and L2 set to the results for the ionosphere-free  COMMENT             
+      linear combination                                    COMMENT             
+    + block-specific values for historical satellites       COMMENT             
+      (active prior to 1994)                                COMMENT             
+  - phase center variations:                                COMMENT             
+    + block-specific                                        COMMENT             
+    + purely nadir-dependent (no azimuth-dependence)        COMMENT             
+    + maximum nadir angle: 14 degrees (Block I), 17 degrees COMMENT             
+      (Block II/IIA/IIR-A/IIR-B/IIR-M/IIF)                  COMMENT             
+    + adopted from igs05.atx                                COMMENT             
+    + solutions aligned to IGb00                            COMMENT             
+    + unweighted mean of two ACs (GFZ, TUM)                 COMMENT             
+    + L1 and L2 set to the results for the ionosphere-free  COMMENT             
+      linear combination                                    COMMENT             
+    + Block IIF: solutions aligned to IGS08, unweighted     COMMENT             
+      mean of CODE and ESOC                                 COMMENT             
+    + extension for nadir angles beyond 14 degrees based on COMMENT             
+      LEO data from 2009 analyzed by CODE                   COMMENT             
+  - x- and y-offsets:                                       COMMENT             
+    + block-specific                                        COMMENT             
+    + based on manufacturer information                     COMMENT             
+                                                            COMMENT             
+GLONASS satellite antenna corrections:                      COMMENT             
+  - z-offsets:                                              COMMENT             
+    + satellite-specific                                    COMMENT             
+    + based on reprocessed CODE (2003-2011) and ESOC        COMMENT             
+      (2008-2011) solutions                                 COMMENT             
+    + solutions aligned to ITRF2008                         COMMENT             
+    + L1 and L2 set to the results for the ionosphere-free  COMMENT             
+      linear combination                                    COMMENT             
+    + block-specific values for historical satellites       COMMENT             
+      (active between 1998 and 2003)                        COMMENT             
+  - phase center variations:                                COMMENT             
+    + block-specific (common parameters for GLONASS and     COMMENT             
+      GLONASS-M), satellite-specific values for R714        COMMENT             
+    + purely nadir-dependent (no azimuth-dependence)        COMMENT             
+    + maximum nadir angle: 15 degrees                       COMMENT             
+    + solutions aligned to ITRF2008                         COMMENT             
+    + unweighted mean of two ACs (CODE, ESOC)               COMMENT             
+    + L1 and L2 set to the results for the ionosphere-free  COMMENT             
+      linear combination                                    COMMENT             
+  - x- and y-offsets:                                       COMMENT             
+    + block-specific                                        COMMENT             
+    + based on manufacturer information                     COMMENT             
+                                                            COMMENT             
+Galileo satellite antenna corrections:                      COMMENT             
+  - x-, y- and z-offsets:                                   COMMENT             
+    + GALILEO-0A/B: satellite- and frequency-specific       COMMENT             
+      values based on ESA information (Zandbergen and       COMMENT             
+      Navarro, 2008: Specification of Galileo and GIOVE     COMMENT             
+      space segment properties relevant for satellite laser COMMENT             
+      ranging, ESA-EUING-TN/10206)                          COMMENT             
+    + GALILEO-1/2: block-specific, conventional MGEX values COMMENT             
+  - phase center variations:                                COMMENT             
+    + wild card values                                      COMMENT             
+    + maximum nadir angle: 13 degrees (extended to 16       COMMENT             
+      degrees for E201/E202 taking into account the         COMMENT             
+      increased orbital eccentricity)                       COMMENT             
+                                                            COMMENT             
+BeiDou satellite antenna corrections:                       COMMENT             
+  - x-, y- and z-offsets:                                   COMMENT             
+    + block-specific                                        COMMENT             
+    + conventional MGEX values                              COMMENT             
+    + duplicate entries for C01 and C02 to support the use  COMMENT             
+      of RINEX 3.01 and 3.02 observation codes of B1        COMMENT             
+  - phase center variations:                                COMMENT             
+    + wild card values                                      COMMENT             
+    + maximum nadir angle: 14 degrees (BEIDOU-2M),          COMMENT             
+      9 degrees (BEIDOU-2G/I)                               COMMENT             
+                                                            COMMENT             
+QZSS satellite antenna corrections:                         COMMENT             
+  - x-, y- and z-offsets:                                   COMMENT             
+    + satellite-specific                                    COMMENT             
+    + frequency-specific                                    COMMENT             
+    + based on JAXA information (provided by S. Kogure)     COMMENT             
+    + values refer to the main L-ANT antenna (consideration COMMENT             
+      of the SAIF antenna requires an extension of the      COMMENT             
+      ANTEX format for signal-specific values)              COMMENT             
+  - phase center variations:                                COMMENT             
+    + wild card values                                      COMMENT             
+    + maximum nadir angle: 10 degrees                       COMMENT             
+                                                            COMMENT             
+IRNSS satellite antenna corrections:                        COMMENT             
+  - x-, y- and z-offsets:                                   COMMENT             
+    + block-specific                                        COMMENT             
+    + based on ISRO information (provided by A.S. Ganeshan) COMMENT             
+  - phase center variations:                                COMMENT             
+    + wild card values                                      COMMENT             
+    + maximum nadir angle: 14 degrees (taking into account  COMMENT             
+      the off-nadir pointing navigation antenna)            COMMENT             
+                                                            COMMENT             
+Receiver antenna corrections:                               COMMENT             
+  - absolute elevation- and azimuth-dependent corrections   COMMENT             
+    from robot calibrations in the field performed by       COMMENT             
+    Geo++ GmbH for GPS and, to some extent, for GLONASS     COMMENT             
+    (http://www.geopp.de/gnpcvdb)                           COMMENT             
+  - purely elevation-dependent corrections from relative    COMMENT             
+    field calibrations performed by NGS and/or other        COMMENT             
+    institutions; converted to absolute corrections by      COMMENT             
+    adding                                                  COMMENT             
+      d_offset (AOAD/M_T_abs - AOAD/M_T_rel)  and           COMMENT             
+      d_pattern (AOAD/M_T_abs - AOAD/M_T_rel)               COMMENT             
+    (http://www.ngs.noaa.gov/ANTCAL,                        COMMENT             
+     ftp://igs.org/pub/station/general/igs_01.pcv)          COMMENT             
+  - IMPORTANT hints:                                        COMMENT             
+    If no corrections are available for a combination of an COMMENT             
+    antenna with one specific radome, the values for the    COMMENT             
+    corresponding antenna without a radome (radome code:    COMMENT             
+    NONE) are used within the IGS.                          COMMENT             
+    If no corrections for the GLONASS frequencies are       COMMENT             
+    available, the values for the GPS frequencies are used  COMMENT             
+    within the IGS instead.                                 COMMENT             
+                                                            COMMENT             
+References:                                                 COMMENT             
+  Schmid R, Dach R, Collilieux X, Jaeggi A, Schmitz M,      COMMENT             
+    Dilssner F (2016) Absolute IGS antenna phase center     COMMENT             
+    model igs08.atx: status and potential improvements.     COMMENT             
+    J Geod 90(4): 343-364, doi: 10.1007/s00190-015-0876-3   COMMENT             
+  Rothacher M, Schmid R (2010) ANTEX: The Antenna Exchange  COMMENT             
+    Format, Version 1.4 (ftp://igs.org/pub/station/general/ COMMENT             
+    antex14.txt)                                            COMMENT             
+  Montenbruck O, Schmid R, Mercier F, Steigenberger P, Noll COMMENT             
+    C, Fatkulin R, Kogure S, Ganeshan AS (2015) GNSS        COMMENT             
+    satellite geometry and attitude models. Adv Space Res   COMMENT             
+    56(6): 1015-1029, doi: 10.1016/j.asr.2015.06.019        COMMENT             
+  Schmid R (2015) Antenna Working Group Technical Report    COMMENT             
+    2014. In: Jean Y, Dach R (eds) IGS Technical Report     COMMENT             
+    2014, 129-132 (ftp://igs.org/pub/resource/pubs/         COMMENT             
+    2014_techreport.pdf)                                    COMMENT             
+  Schmid R (2014) IGS Antenna Working Group. In: Dach R,    COMMENT             
+    Jean Y (eds) IGS Technical Report 2013, 133-136         COMMENT             
+    (ftp://igs.org/pub/resource/pubs/2013_techreport.pdf)   COMMENT             
+  Schmid R (2013) IGS Antenna Working Group. In: Dach R,    COMMENT             
+    Jean Y (eds) IGS Technical Report 2012, 141-147         COMMENT             
+    (ftp://igs.org/pub/resource/pubs/2012_techreport.pdf)   COMMENT             
+  Schmid R (2012) IGS Antenna Working Group. In: Meindl M,  COMMENT             
+    Dach R, Jean Y (eds) IGS Technical Report 2011, 133-137 COMMENT             
+    (ftp://igs.org/pub/resource/pubs/2011_techreport.pdf)   COMMENT             
+  Schmid R (2011) Upcoming switch to IGS08/igs08.atx -      COMMENT             
+    Details on igs08.atx. IGSMAIL-6355 (http://igscb.jpl.   COMMENT             
+    nasa.gov/pipermail/igsmail/2011/006347.html)            COMMENT             
+                                                            COMMENT             
+Changes:                                                    COMMENT             
+  week 1903  Added R853                                     COMMENT             
+             Decommission date: R723                        COMMENT             
+  week 1900  Added E210, E211                               COMMENT             
+             Added SOKSA500        NONE                     COMMENT             
+  week 1899  Added C017, I007                               COMMENT             
+             E201/E202: nadir angle extended to 16 degrees  COMMENT             
+  week 1888  Added I005, I006                               COMMENT             
+             Added CHCI80          NONE                     COMMENT             
+  week 1887  Added R736 (R16)                               COMMENT             
+             Decommission date: R738 (R16)                  COMMENT             
+             Added TRMR2           NONE                     COMMENT             
+  week 1886  Added R851                                     COMMENT             
+             Decommission date: R714 (R17)                  COMMENT             
+  week 1885  Added R802 (R09), R714 (R17)                   COMMENT             
+             Decommission date: R736 (R09), R802 (R17)      COMMENT             
+             Satellites RENAMED: R754 -> R854               COMMENT             
+                                 R755 -> R855               COMMENT             
+  week 1884  Added G070                                     COMMENT             
+  week 1882  Added R802 (R17), R802 (R27)                   COMMENT             
+             Decommission date: R714 (R17), R802 (R27)      COMMENT             
+  week 1881  Added G049 (G04)                               COMMENT             
+             Decommission date: G023 (G32)                  COMMENT             
+  week 1880  Added TPSCR.G5        NONE                     COMMENT             
+                   TPSCR.G5C       NONE                     COMMENT             
+                   TPSCR.G5C       TPSH                     COMMENT             
+  week 1879  Added E208, E209                               COMMENT             
+             Decommission date: G034                        COMMENT             
+             Added TWIVP6000       NONE                     COMMENT             
+  week 1869  Added G073                                     COMMENT             
+             Decommission date: G036 (G10)                  COMMENT             
+  week 1864  Added E205, E206                               COMMENT             
+             Added GMXZENITH35     NONE                     COMMENT             
+                   TPSG5_A1        NONE                     COMMENT             
+  week 1861  Added G036 (G10)                               COMMENT             
+             Decommission date: G040                        COMMENT             
+  week 1854  Added C001, C003, C004, C005, C006, C007,      COMMENT             
+                   C008, C009, C010, C011, C012, C013,      COMMENT             
+                   C014, C015, C016, E001, E002, E101,      COMMENT             
+                   E102, E103, E104, E201, E202, E203,      COMMENT             
+                   E204, I001, I002, I003, I004, J001       COMMENT             
+             x-offset UPDATED: G001, G002, G003, G004, G005 COMMENT             
+  week 1853  Added G072                                     COMMENT             
+             Added CHCC220GR       CHCD                     COMMENT             
+                   CHCC220GR2      CHCD                     COMMENT             
+  week 1852  Decommission date: G049 (G08)                  COMMENT             
+  week 1850  Added SEPCHOKE_B3E6   NONE                     COMMENT             
+                   SEPCHOKE_B3E6   SPKE                     COMMENT             
+                   TRMR8S          NONE                     COMMENT             
+  week 1848  Added JAVRINGANT_DM   SCIS                     COMMENT             
+                   JAVRINGANT_G5T  NONE                     COMMENT             
+                   JAVRINGANT_G5T  JAVC                     COMMENT             
+                   TRM57971.00     SCIT                     COMMENT             
+  week 1844  Added STXS10SX017A    NONE                     COMMENT             
+  week 1842  Added G049 (G08)                               COMMENT             
+             Added GMXZENITH10     NONE                     COMMENT             
+                   GMXZENITH20     NONE                     COMMENT             
+                   GMXZENITH25     NONE                     COMMENT             
+                   GMXZENITH25PRO  NONE                     COMMENT             
+  week 1840  Added R714 (R17)                               COMMENT             
+             Decommission date: G038, R746                  COMMENT             
+             Added JAV_RINGANT_G3T JAVC                     COMMENT             
+  week 1837  Added G071                                     COMMENT             
+             Decommission date: G027 (G26)                  COMMENT             
+             Added JNSCR_C146-22-1 NONE                     COMMENT             
+  week 1835  Added G027 (G26)                               COMMENT             
+             Decommission date: G032 (G26)                  COMMENT             
+  week 1832  Added STXS8PX003A     NONE                     COMMENT             
+  week 1830  Added G032 (G26)                               COMMENT             
+             Decommission date: G026                        COMMENT             
+             Added TIAPENG3100R2   NONE                     COMMENT             
+  week 1822  Added JAVTRIUMPH_1M   NONE                     COMMENT             
+                   JAVTRIUMPH_1MR  NONE                     COMMENT             
+                   JAVTRIUMPH_2A   NONE                     COMMENT             
+                   JAVTRIUMPH_LSA  NONE                     COMMENT             
+  week 1816  Added G069                                     COMMENT             
+             Decommission date: G035 (G03)                  COMMENT             
+             Corrected NRP:  JAV_GRANT-G3T   NONE           COMMENT             
+             Corrected name: STXS9PX001A     NONE           COMMENT             
+  week 1808  Added G035 (G03)                               COMMENT             
+             Decommission date: G033                        COMMENT             
+  week 1805  Corrected date: R725, R755                     COMMENT             
+             Added LEIGG03         NONE                     COMMENT             
+  week 1804  Added G068, R755                               COMMENT             
+             Decommission date: G039, R725                  COMMENT             
+             Added AERAT1675_120   SPKE                     COMMENT             
+  week 1793  Added G067                                     COMMENT             
+             Decommission date: G049 (G06)                  COMMENT             
+             Added STXS9+X001A     NONE                     COMMENT             
+  week 1788  Added R754                                     COMMENT             
+             Decommission date: R714 (R18)                  COMMENT             
+  week 1787  Added G049 (G06)                               COMMENT             
+  week 1785  Added TRM55970.00     NONE                     COMMENT             
+             Decommission date: G036                        COMMENT             
+  week 1781  Added TPSPN.A5        NONE                     COMMENT             
+             Corrected date: G010                           COMMENT             
+  week 1780  Added G064, R714 (R18)                         COMMENT             
+             Decommission date: G049 (G30), R724            COMMENT             
+  week 1771  Added G049 (G30)                               COMMENT             
+             Decommission date: G027 (G30)                  COMMENT             
+  week 1769  Added G027 (G30)                               COMMENT             
+             Decommission date: G037 (G30)                  COMMENT             
+  week 1764  Added CHCX91+S        NONE                     COMMENT             
+                   LEIICG60        NONE                     COMMENT             
+                   NOV750.R5       NOVS                     COMMENT             
+                   TIAPENG2100B    NONE                     COMMENT             
+                   TIAPENG2100R    NONE                     COMMENT             
+  week 1758  Added G037 (G30)                               COMMENT             
+             Decommission date: G032 (G30)                  COMMENT             
+  week 1755  Added G032 (G30)                               COMMENT             
+             Decommission date: G049 (G30)                  COMMENT             
+  week 1748  Added R747                                     COMMENT             
+             Decommission date: R728                        COMMENT             
+             Added NOV703GGG.R2    NONE                     COMMENT             
+  week 1745  PCVs of GPS Block II/IIA/IIR-A/IIR-B/IIR-M/IIF COMMENT             
+             satellites extended to a maximum nadir angle   COMMENT             
+             of 17 degrees                                  COMMENT             
+  week 1740  Added G066                                     COMMENT             
+  week 1739  Added G049 (G30)                               COMMENT             
+             Decommission date: G035 (G30), G049 (G27)      COMMENT             
+             Spikes removed from GLONASS calibrations:      COMMENT             
+                   LEIAT504GG      LEIS                     COMMENT             
+                   TRM55971.00     TZGD                     COMMENT             
+  week 1737  Added ITT3750323      SCIS                     COMMENT             
+  week 1735  Added TPSCR.G5        TPSH                     COMMENT             
+                   TRMR4-3         NONE                     COMMENT             
+                   TRMR6-4         NONE                     COMMENT             
+                   TRMR8-4         NONE                     COMMENT             
+                   TRMSPS985       NONE                     COMMENT             
+  week 1734  Spikes removed from GLONASS calibrations:      COMMENT             
+                   ASH700936C_M    NONE                     COMMENT             
+                   ASH700936D_M    SNOW                     COMMENT             
+                   ASH700936E      NONE                     COMMENT             
+                   JAV_GRANT-G3T   NONE                     COMMENT             
+                   JAV_RINGANT_G3T NONE                     COMMENT             
+                   JAVRINGANT_DM   NONE                     COMMENT             
+                   JAVRINGANT_DM   JVDM                     COMMENT             
+                   LEIAR10         NONE                     COMMENT             
+                   LEIAR25         NONE                     COMMENT             
+                   LEIAR25         LEIT                     COMMENT             
+                   LEIAR25.R3      NONE                     COMMENT             
+                   LEIAR25.R4      NONE                     COMMENT             
+                   LEIAR25.R4      LEIT                     COMMENT             
+                   LEIAR25.R4      SCIT                     COMMENT             
+                   LEIAS05         NONE                     COMMENT             
+                   LEIAS10         NONE                     COMMENT             
+                   LEIAT504GG      NONE                     COMMENT             
+                   LEIATX1230+GNSS NONE                     COMMENT             
+                   LEIAX1202GG     NONE                     COMMENT             
+                   LEIAX1203+GNSS  NONE                     COMMENT             
+                   LEIGG02PLUS     NONE                     COMMENT             
+                   LEIGS08         NONE                     COMMENT             
+                   LEIGS09         NONE                     COMMENT             
+                   LEIGS12         NONE                     COMMENT             
+                   LEIMNA950GG     NONE                     COMMENT             
+                   NAX3G+C         NONE                     COMMENT             
+                   NOV702GG        NONE                     COMMENT             
+                   NOV750.R4       NONE                     COMMENT             
+                   RNG80971.00     NONE                     COMMENT             
+                   SEPCHOKE_MC     NONE                     COMMENT             
+                   SEPCHOKE_MC     SPKE                     COMMENT             
+                   STXS9SA7224V3.0 NONE                     COMMENT             
+                   TPSCR.G3        NONE                     COMMENT             
+                   TPSCR.G3        SCIS                     COMMENT             
+                   TPSCR3_GGD      CONE                     COMMENT             
+                   TPSPG_A1+GP     NONE                     COMMENT             
+                   TRM39105.00     NONE                     COMMENT             
+                   TRM55971.00     NONE                     COMMENT             
+                   TRM57970.00     NONE                     COMMENT             
+                   TRM57971.00     NONE                     COMMENT             
+                   TRM59800.00     NONE                     COMMENT             
+                   TRM59800.00     SCIT                     COMMENT             
+                   TRM59800.80     NONE                     COMMENT             
+                   TRM59800.80     SCIT                     COMMENT             
+                   TRMR8_GNSS      NONE                     COMMENT             
+                   TRMR8_GNSS3     NONE                     COMMENT             
+  week 1731  Added TRMR10          NONE                     COMMENT             
+  week 1730  Added R743 (R08), R801 (R26)                   COMMENT             
+             Decommission date: R801 (R08)                  COMMENT             
+  week 1722  Added R743 (R08), R801 (R08)                   COMMENT             
+             Decommission date: R712 (R08), R743 (R08),     COMMENT             
+                                R801 (R26)                  COMMENT             
+  week 1719  Added LEIGS14         NONE                     COMMENT             
+  week 1717  Added LEIAR20         NONE                     COMMENT             
+                   LEIAR20         LEIM                     COMMENT             
+                   TIAPENG3100R1   NONE                     COMMENT             
+  week 1711  Added R712 (R08)                               COMMENT             
+             Decommission date: R743                        COMMENT             
+  week 1710  Added G049 (G27)                               COMMENT             
+             Decommission date: G027                        COMMENT             
+  week 1708  Added G065                                     COMMENT             
+             Decommission date: G049 (G24)                  COMMENT             
+  week 1707  Added R743                                     COMMENT             
+             Decommission date: R729                        COMMENT             
+             Added ASH701023.A     NONE                     COMMENT             
+                   JPSREGANT_DD_E1 NONE                     COMMENT             
+                   JPSREGANT_DD_E2 NONE                     COMMENT             
+                   JPSREGANT_SD_E1 NONE                     COMMENT             
+                   JPSREGANT_SD_E2 NONE                     COMMENT             
+                   LEIGS08PLUS     NONE                     COMMENT             
+  week 1706  z-offset UPDATED: G062, G063, R742, R744,      COMMENT             
+                               R745, R746, R801             COMMENT             
+  week 1700  Added G049 (G24)                               COMMENT             
+             Decommission date: G037 (G24)                  COMMENT             
+  week 1699  Added R801 (R26)                               COMMENT             
+             Added RNG80971.00     NONE                     COMMENT             
+  week 1685  Added G037 (G24)                               COMMENT             
+             Decommission date: G032 (G24)                  COMMENT             
+  week 1682  Added G032 (G24)                               COMMENT             
+             Decommission date: G049 (G24)                  COMMENT             
+             Added NOV533+CR       NOVC                     COMMENT             
+  week 1673  Added G049 (G24)                               COMMENT             
+             Decommission date: G024                        COMMENT             
+  week 1667  Added R746                                     COMMENT             
+             Decommission date: R714 (R17)                  COMMENT             
+  week 1666  Added R745                                     COMMENT             
+             Decommission date: R712                        COMMENT             
+  week 1664  Added R744                                     COMMENT             
+             Decommission date: R801 (R03)                  COMMENT             
+             Added SEPCHOKE_MC     NONE                     COMMENT             
+                   SEPCHOKE_MC     SPKE                     COMMENT             
+  week 1657  Added R715 (R14), R742 (R04), R801 (R03)       COMMENT             
+             Decommission date: R715 (R03), R722 (R14),     COMMENT             
+                                R801 (R04)                  COMMENT             
+  week 1648  Added G035 (G30)                               COMMENT             
+             Decommission date: G030                        COMMENT             
+  week 1645  Added G063                                     COMMENT             
+  week 1644  Decommission date: G035 (G01)                  COMMENT             
+             Added ASH701946.2     SNOW                     COMMENT             
+  week 1643  z-offset UPDATED: R801                         COMMENT             
+             Added TRM59900.00     NONE                     COMMENT             
+                   TRM59900.00     SCIS                     COMMENT             
+  week 1639  Added G035 (G01)                               COMMENT             
+             Decommission date: G049                        COMMENT             
+  week 1636  Added APSAPS-3        NONE                     COMMENT             
+                   LEIGG02PLUS     NONE                     COMMENT             
+                   LEIGS08         NONE                     COMMENT             
+                   LEIGS12         NONE                     COMMENT             
+                   TPSPG_A1+GP     NONE                     COMMENT             
+  week 1633  Added R801 (R04)                               COMMENT             
+             Added JAVRINGANT_DM   JVDM                     COMMENT             
+                   NAX3G+C         NONE                     COMMENT             
+                   STXS9SA7224V3.0 NONE                     COMMENT             
+                                                            COMMENT             
+Major changes w.r.t. igs05.atx:                             COMMENT             
+  - satellite antenna corrections consistent with IGS08/    COMMENT             
+    IGb08                                                   COMMENT             
+  - satellite antenna z-offsets based on the results of     COMMENT             
+    more ACs (GPS: 5 instead of 2, GLONASS: 2 instead of 1) COMMENT             
+  - satellite antenna z-offsets no longer trend-corrected   COMMENT             
+  - bigger maximum nadir angle for GLONASS satellite        COMMENT             
+    antenna corrections (15 instead of 14 degrees)          COMMENT             
+  - information on historical satellites                    COMMENT             
+  - GLONASS-specific receiver antenna corrections           COMMENT             
+  - type-specific robot-based values updated with results   COMMENT             
+    from recent individual antenna calibrations             COMMENT             
+  - conversion of relative receiver antenna corrections     COMMENT             
+    with updated AOAD/M_T values                            COMMENT             
+  - additional ROBOT calibrations:                          COMMENT             
+      ASH701941.B     SCIS                                  COMMENT             
+      ASH701945C_M    NONE                                  COMMENT             
+      ASH701945C_M    OLGA                                  COMMENT             
+      ASH701945E_M    NONE                                  COMMENT             
+      ASH701945E_M    SNOW                                  COMMENT             
+      ASH701945G_M    SNOW                                  COMMENT             
+      LEIAX1202GG     NONE                                  COMMENT             
+      NOV503+CR       SPKE                                  COMMENT             
+      NOV600          NONE                                  COMMENT             
+      TPSCR3_GGD      NONE                                  COMMENT             
+      TPSCR3_GGD      CONE                                  COMMENT             
+      TRM29659.00     SCIS                                  COMMENT             
+      TRM29659.00     SCIT                                  COMMENT             
+      TRM39105.00     NONE                                  COMMENT             
+      TRM41249.00     TZGD                                  COMMENT             
+  - additional COPIED calibrations:                         COMMENT             
+      ASH700228B      NONE                                  COMMENT             
+      ASH700228E      NONE                                  COMMENT             
+      ASH700718A      NONE                                  COMMENT             
+      ASH700936A_M    SNOW                                  COMMENT             
+      ASH700936E_C    SNOW                                  COMMENT             
+      ASH701945B_M    SNOW                                  COMMENT             
+      ASH701945D_M    SNOW                                  COMMENT             
+      LEIAS05         NONE                                  COMMENT             
+      LEIAT202-GP     NONE                                  COMMENT             
+  - FIELD (NGS) instead of CONVERTED (igs_01.pcv):          COMMENT             
+      ASH700228C      NONE                                  COMMENT             
+      LEISR299_INT    NONE                                  COMMENT             
+      LEISR399_INT    NONE                                  COMMENT             
+  - antenna types removed:                                  COMMENT             
+      SPP571908273    NONE                                  COMMENT             
+      SPP571908273    SPKE                                  COMMENT             
+                                                            COMMENT             
+Compiled by Ralf Schmid (DGFI-TUM), e-mail: schmid@tum.de   COMMENT             
+########################################################### COMMENT             
+                                                            END OF HEADER       
+                                                            START OF ANTENNA    
+BLOCK IIA           G01                 G032      1992-079A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1992    11    22     0     0    0.0000000                 VALID FROM          
+  2008    10    16    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2380.80                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2380.80                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIA           G01                 G037      1993-032A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2008    10    23     0     0    0.0000000                 VALID FROM          
+  2009     1     6    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2352.20                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2352.20                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIR-M         G01                 G049      2009-014A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2009     3    24     0     0    0.0000000                 VALID FROM          
+  2011     5     6    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00    965.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00    965.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIA           G01                 G035      1993-054A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    06-JUN-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2011     6     2     0     0    0.0000000                 VALID FROM          
+  2011     7    12    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2622.00                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2622.00                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIF           G01                 G063      2011-036A TYPE / SERIAL NO    
+                                             0    18-JUL-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2011     7    16     0     0    0.0000000                 VALID FROM          
+IGS08_1903                                                  SINEX CODE          
+Z-OFFSET UPDATE IN GPS WEEK 1706: 1650.0 mm --> 1561.3 mm   COMMENT             
+   G01                                                      START OF FREQUENCY  
+    394.00      0.00   1561.30                              NORTH / EAST / UP   
+   NOAZI    6.10    4.40    2.80    1.30   -0.20   -1.40   -2.80   -3.90   -4.40   -4.40   -3.70   -2.30   -0.20    3.00    5.70   12.40   18.20   23.50
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    394.00      0.00   1561.30                              NORTH / EAST / UP   
+   NOAZI    6.10    4.40    2.80    1.30   -0.20   -1.40   -2.80   -3.90   -4.40   -4.40   -3.70   -2.30   -0.20    3.00    5.70   12.40   18.20   23.50
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK II            G02                 G013      1989-044A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1989     6    10     0     0    0.0000000                 VALID FROM          
+  2004     5    12    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2712.20                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2712.20                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIR-B         G02                 G061      2004-045A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2004    11     6     0     0    0.0000000                 VALID FROM          
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00    778.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00    778.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK I             G03                 G011      1985-093A TYPE / SERIAL NO    
+                    COD/GFZ                  0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  14.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1985    10     9     0     0    0.0000000                 VALID FROM          
+  1994     4    17    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    210.00      0.00   1923.90                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    210.00      0.00   1923.90                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIA           G03                 G033      1996-019A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1996     3    28     0     0    0.0000000                 VALID FROM          
+  2014     8    18    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2792.60                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2792.60                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIA           G03                 G035      1993-054A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    05-SEP-14 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2014     9     5     0     0    0.0000000                 VALID FROM          
+  2014    10    20    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2622.00                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2622.00                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIF           G03                 G069      2014-068A TYPE / SERIAL NO    
+                                             0    31-OCT-14 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2014    10    29     0     0    0.0000000                 VALID FROM          
+IGS08_1903                                                  SINEX CODE          
+ATTENTION! PRELIMINARY PHASE CENTER CORRECTIONS!            COMMENT             
+   G01                                                      START OF FREQUENCY  
+    394.00      0.00   1600.00                              NORTH / EAST / UP   
+   NOAZI    6.10    4.40    2.80    1.30   -0.20   -1.40   -2.80   -3.90   -4.40   -4.40   -3.70   -2.30   -0.20    3.00    5.70   12.40   18.20   23.50
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    394.00      0.00   1600.00                              NORTH / EAST / UP   
+   NOAZI    6.10    4.40    2.80    1.30   -0.20   -1.40   -2.80   -3.90   -4.40   -4.40   -3.70   -2.30   -0.20    3.00    5.70   12.40   18.20   23.50
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK I             G04                 G001      1978-020A TYPE / SERIAL NO    
+                                             0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  14.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1978     2    22     0     0    0.0000000                 VALID FROM          
+  1985     7    17    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+ATTENTION! ROUNDED BLOCK MEAN Z-OFFSET VALUE!               COMMENT             
+X-OFFSET UPDATE IN GPS WEEK 1854: 210.0 mm --> 0.0 mm       COMMENT             
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIA           G04                 G034      1993-068A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1993    10    26     0     0    0.0000000                 VALID FROM          
+  2015    11     9    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2420.00                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2420.00                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIR-M         G04                 G049      2009-014A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    28-JAN-16 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2016     2     2     0     0    0.0000000                 VALID FROM          
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00    965.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00    965.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK I             G05                 G005      1980-011A TYPE / SERIAL NO    
+                                             0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  14.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1980     2     9     0     0    0.0000000                 VALID FROM          
+  1984     5    11    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+ATTENTION! ROUNDED BLOCK MEAN Z-OFFSET VALUE!               COMMENT             
+X-OFFSET UPDATE IN GPS WEEK 1854: 210.0 mm --> 0.0 mm       COMMENT             
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIA           G05                 G035      1993-054A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1993     8    30     0     0    0.0000000                 VALID FROM          
+  2009     6     8    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2622.00                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2622.00                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIR-M         G05                 G050      2009-043A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2009     8    17     0     0    0.0000000                 VALID FROM          
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00    822.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00    822.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK I             G06                 G003      1978-093A TYPE / SERIAL NO    
+                                             0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  14.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1978    10     6     0     0    0.0000000                 VALID FROM          
+  1992     5    18    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+ATTENTION! ROUNDED BLOCK MEAN Z-OFFSET VALUE!               COMMENT             
+X-OFFSET UPDATE IN GPS WEEK 1854: 210.0 mm --> 0.0 mm       COMMENT             
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIA           G06                 G036      1994-016A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1994     3    10     0     0    0.0000000                 VALID FROM          
+  2014     3     3    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2878.60                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2878.60                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIR-M         G06                 G049      2009-014A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    08-APR-14 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2014     4     3     0     0    0.0000000                 VALID FROM          
+  2014     5     5    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00    965.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00    965.60                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIF           G06                 G067      2014-026A TYPE / SERIAL NO    
+                                             0    19-MAY-14 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2014     5    17     0     0    0.0000000                 VALID FROM          
+IGS08_1903                                                  SINEX CODE          
+ATTENTION! PRELIMINARY PHASE CENTER CORRECTIONS!            COMMENT             
+   G01                                                      START OF FREQUENCY  
+    394.00      0.00   1600.00                              NORTH / EAST / UP   
+   NOAZI    6.10    4.40    2.80    1.30   -0.20   -1.40   -2.80   -3.90   -4.40   -4.40   -3.70   -2.30   -0.20    3.00    5.70   12.40   18.20   23.50
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    394.00      0.00   1600.00                              NORTH / EAST / UP   
+   NOAZI    6.10    4.40    2.80    1.30   -0.20   -1.40   -2.80   -3.90   -4.40   -4.40   -3.70   -2.30   -0.20    3.00    5.70   12.40   18.20   23.50
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK I             G07                 G002      1978-047A TYPE / SERIAL NO    
+                                             0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  14.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1978     5    13     0     0    0.0000000                 VALID FROM          
+  1988     2    12    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+ATTENTION! ROUNDED BLOCK MEAN Z-OFFSET VALUE!               COMMENT             
+X-OFFSET UPDATE IN GPS WEEK 1854: 210.0 mm --> 0.0 mm       COMMENT             
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2.00    2.00    1.70    0.50   -0.10   -0.60   -0.70   -0.60   -0.30
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIA           G07                 G037      1993-032A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1993     5    13     0     0    0.0000000                 VALID FROM          
+  2008     1    14    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+    279.00      0.00   2352.20                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+    279.00      0.00   2352.20                              NORTH / EAST / UP   
+   NOAZI   -0.80   -0.90   -0.90   -0.80   -0.40    0.20    0.80    1.30    1.40    1.20    0.70    0.00   -0.40   -0.70   -0.90   -0.90   -0.90   -0.90
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK IIR-M         G07                 G048      2008-012A TYPE / SERIAL NO    
+                    COD/EMR/ESA/GFZ/MIT      0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  17.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  2008     3    15     0     0    0.0000000                 VALID FROM          
+IGS08_1903                                                  SINEX CODE          
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00    852.90                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G01                                                      END OF FREQUENCY    
+   G02                                                      START OF FREQUENCY  
+      0.00      0.00    852.90                              NORTH / EAST / UP   
+   NOAZI   10.70   10.10    8.00    4.60    0.50   -3.80   -7.50   -9.70  -10.30   -9.50   -7.40   -4.10    0.30    6.00   12.10   22.00   30.40   40.60
+   G02                                                      END OF FREQUENCY    
+                                                            END OF ANTENNA      
+                                                            START OF ANTENNA    
+BLOCK I             G08                 G004      1978-112A TYPE / SERIAL NO    
+                                             0    25-MAR-11 METH / BY / # / DATE
+     0.0                                                    DAZI                
+     0.0  14.0   1.0                                        ZEN1 / ZEN2 / DZEN  
+     2                                                      # OF FREQUENCIES    
+  1978    12    10     0     0    0.0000000                 VALID FROM          
+  1989    10    14    23    59   59.9999999                 VALID UNTIL         
+IGS08_1903                                                  SINEX CODE          
+ATTENTION! ROUNDED BLOCK MEAN Z-OFFSET VALUE!               COMMENT             
+X-OFFSET UPDATE IN GPS WEEK 1854: 210.0 mm --> 0.0 mm       COMMENT             
+   G01                                                      START OF FREQUENCY  
+      0.00      0.00   1950.00                              NORTH / EAST / UP   
+   NOAZI   -1.00   -2.60   -1.20   -0.90    0.50    1.40    2
