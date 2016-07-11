@@ -3460,12 +3460,18 @@ in matrix and number of types do not match") );
 	           // get the frequency number of glonass satellite
 	           // add by Wei Wang
 	         int freqNo = roh.GlonassFreqNo.find(sat)->second;
+
+		 tvMap[TypeID::FreqNo] = freqNo;
+
 	          // TODO:: handle glonass data later(yanweigps)
                  tvMap[ type ] = it->second[i].data*getWavelength(sat,n,freqNo);
 	       }
-	       else
-	       {
-                 tvMap[ type ] = it->second[i].data*getWavelength(sat,n);
+	       else 
+	       {   // if phase observabels is missed, do not insert it into tvMap
+		 if (it->second[i].data != 0.0)
+		 {
+                   tvMap[ type ] = it->second[i].data*getWavelength(sat,n);
+		 }
 	       }
 
                // n=1 2 5 6 7 8
