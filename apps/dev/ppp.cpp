@@ -275,40 +275,40 @@ ppp::ppp(char* arg0)
 "\n 9) GDOP"
 "\n10) PDOP\n"),
       // Option initialization. "true" means a mandatory option
-   confFile( CommandOption::stdType,
-             'c',
-             "conffile",
+   confFile(          CommandOption::stdType,
+                      'c',
+                      "conffile",
    "Name of configuration file ('ppp.conf' by default).",
-             false),
+                      false),
       // Option for rinex file list reading
-   rnxFileListOpt( 'r',
-                   "rnxFileList",
+   rnxFileListOpt(    'r',
+                      "rnxFileList",
    "file storing a list of rinex file name ",
-                   true),
-   sp3FileListOpt( 's',
-                   "sp3FileList",
+                      true),
+   sp3FileListOpt(    's',
+                      "sp3FileList",
    "file storing a list of rinex SP3 file name ",
-                   true),
-   clkFileListOpt( 'k',
-                   "clkFileList",
+                      true),
+   clkFileListOpt(    'k',
+                      "clkFileList",
    "file storing a list of rinex clk file name ",
-                   false),
-   eopFileListOpt( 'e',
-                   "eopFileList",
+                      false),
+   eopFileListOpt(    'e',
+                      "eopFileList",
    "file storing a list of IGS erp file name ",
-                   true),
+                      true),
    outputFileListOpt( 'o',
-                   "outputFileList",
+                      "outputFileList",
    "file storing the list of output file name ",
-                   false),
-   mscFileOpt( 'm',
-               "mscFile",
+                      false),
+   mscFileOpt(        'm',
+                      "mscFile",
    "file storing monitor station coordinates ",
-               true),
-   dcbFileOpt('D',
-             "dcbfile",
+                      true),
+   dcbFileOpt(        'D',
+                      "dcbfile",
    "file storing the P1C1 DCB file.",
-             false)
+                      false)
 {
 
       // This option may appear just once at CLI
@@ -616,6 +616,29 @@ void ppp::process()
 
    }  // End of 'if(...)'
 
+
+      //***********************
+      // Let's read ocean loading BLQ data files
+      //***********************
+
+      // BLQ data store object
+   BLQDataReader blqStore;
+
+      // Read BLQ file name from the configure file
+   string blqFile = confReader.getValue( "oceanLoadingFile");
+
+   try
+   {
+      blqStore.open( blqFile );
+   }
+   catch (FileMissingException& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "BLQ file '" << blqFile << "' doesn't exist or you don't "
+           << "have permission to read it. Skipping it." << endl;
+      exit(-1);
+   }
+
       //***********************
       // Let's read eop files
       //***********************
@@ -628,12 +651,11 @@ void ppp::process()
 
       // Open eopFileList File
    eopFileListStream.open(eopFileListName.c_str(), ios::in);
-   if(!eopFileListStream)
+   if( !eopFileListStream )
    {
          // If file doesn't exist, issue a warning
-      cerr << "erp file List Name'" << eopFileListName << "' doesn't exist or you don't "
-           << "have permission to read it." << endl;
-
+      cerr << "EOP file List Name'" << eopFileListName << "' doesn't exist or you don't "
+           << "have permission to read it. Skipping it." << endl;
       exit(-1);
    }
 
@@ -659,56 +681,45 @@ void ppp::process()
       // Let's read DCB files
       //***********************
 
-      // Now read dcb file from 'dcbFileName'
-   ifstream dcbFileStream;
-
       // Read and store dcb data
-   DCBDataReader dcbP1C1;
-      // Open dcbFileList File
-   dcbFileStream.open(dcbFileName.c_str(), ios::in);
-   if(!dcbFileStream)
+   DCBDataReader dcbStore;
+
+   if( dcbFileOpt.getCount() == 0 )
    {
-      if(dcbFileName=="")
-      {
-         cerr << "Warning: dcb file List Name is not provided, "
-              << "We will not do the DCB correction!" << endl;
-      }
-      else
+      cerr << "dcb file is not provided, thus dcb will not be corrected !" << endl;
+   }
+   else
+   {
+         // Now read dcb file from 'dcbFileName'
+      ifstream dcbFileStream;
+
+         // Open dcbFileList File
+      dcbFileStream.open(dcbFileName.c_str(), ios::in);
+      if(!dcbFileStream)
       {
             // If file doesn't exist, issue a warning
          cerr << "Warning: dcb file List Name '" << dcbFileName << "' doesn't exist or you don't "
               << "have permission to read it." << endl;
          exit(-1);
       }
-   }
 
-   bool hasDCBFile(false);
-   if(dcbFileStream)
-   {
       string dcbFile;
          // Here is just a dcb file, we only read one month's dcb data.
       dcbFileStream >> dcbFile;
 
       try
       {
-         dcbP1C1.open(dcbFile);
+         dcbStore.open(dcbFile);
       }
       catch(FileMissingException e)
       {
-         if(dcbFile=="")
-         {
-            cerr << "Warning! The DCB file is not provided!" 
-                 << endl;
-         }
-         if(dcbFile!="")
-         {
-            cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
-                 << endl;
-            exit(-1);
-         }
+         cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
+              << endl;
+         exit(-1);
       }
+      dcbFileStream.close();
+
    }
-   dcbFileStream.close();
 
       //**********************************************
       // Now, Let's read MSC data
@@ -720,6 +731,14 @@ void ppp::process()
    try
    {
       mscStore.loadFile( mscFileName );
+   }
+   catch (gpstk::FFStreamError& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << e << endl;
+      cerr << "MSC file '" << mscFileName << "' Format is not supported!!!"
+           << "stop." << endl;
+      exit(-1);
    }
    catch (FileMissingException& e)
    {
@@ -739,13 +758,12 @@ void ppp::process()
    ifstream rnxFileListStream;
 
       // Open eopFileList File
-   rnxFileListStream.open(rnxFileListName.c_str());
-   if(!rnxFileListStream)
+   rnxFileListStream.open(rnxFileListName.c_str(), ios::in);
+   if( !rnxFileListStream )
    {
          // If file doesn't exist, issue a warning
       cerr << "rinex file List Name'" << rnxFileListName << "' doesn't exist or you don't "
-           << "have permission to read it." << endl;
-
+           << "have permission to read it. Skipping it." << endl;
       exit(-1);
    }
 
@@ -780,7 +798,7 @@ void ppp::process()
       {
             // If file doesn't exist, issue a warning
          cerr << "output file List Name'" << outputFileListName << "' doesn't exist or you don't "
-              << "have permission to read it." << endl;
+              << "have permission to read it. Skipping it." << endl;
 
          exit(-1);
       }
@@ -837,6 +855,9 @@ void ppp::process()
             // Close current Rinex observation stream
          rin.close();
 
+            // Index for rinex file iterator.
+         ++rnxit;
+
          continue;
 
       }  // End of 'try-catch' block
@@ -875,9 +896,17 @@ void ppp::process()
          // Get the station name for current rinex file 
       string station = roh.markerName;
 
-
          // First time for this rinex file
       CommonTime initialTime( roh.firstObs ) ;
+
+         // Let's check the ocean loading data for current station before
+         // the real data processing.
+      if( ! blqStore.isValid(station) )
+      {
+         cout << "There is no BLQ data for current station:" << station << endl;
+         cout << "Current staion will be not processed !!!!" << endl;
+         continue;
+      }
 
          // Show a message indicating that we are starting with this station
       cout << "Starting processing for station: '" << station << "'." << endl;
@@ -913,19 +942,12 @@ void ppp::process()
          // the processing objects in order
       ProcessingList pList;
 
-
-      	// Declare a CC2NONCC object
-      CC2NONCC cc2noncc(dcbP1C1);
+        	// Declare a CC2NONCC object
+      CC2NONCC cc2noncc(dcbStore);
 
          // Read the receiver type file.
-      string recTypeFile(confReader.getValue("recTypeFile"));
-      cc2noncc.loadRecTypeFile(recTypeFile);
-
-         // set the receiver type
-      string recType = roh.recType;
-      cc2noncc.setRecType(recType);
-
-         // Copy C1 to P1
+      cc2noncc.loadRecTypeFile(confReader.getValue("recTypeFile"));
+      cc2noncc.setRecType(roh.recType);
       cc2noncc.setCopyC1ToP1(true);
 
       pList.push_back(cc2noncc); 
@@ -1262,10 +1284,8 @@ void ppp::process()
          // Object to compute tidal effects
       SolidTides solid;
 
-
          // Configure ocean loading model
-      OceanLoading ocean;
-      ocean.setFilename( confReader.getValue( "oceanLoadingFile") );
+      OceanLoading ocean(blqStore);
 
          // Object to model pole tides
       PoleTides pole(eopStore);
@@ -1324,6 +1344,9 @@ void ppp::process()
             // Store current epoch
          CommonTime time(gRin.header.epoch);
 
+            // Store the nominal position into 'SourceID'
+         gRin.header.source.nominalPos = nominalPos;
+
             // Compute solid, oceanic and pole tides effects at this epoch
          Triple tides( solid.getSolidTide( time, nominalPos )  +
                        ocean.getOceanLoading( station, time )  +
@@ -1352,7 +1375,7 @@ void ppp::process()
          catch(Exception& e)
          {
             cerr << "Exception for station '" << station <<
-                    "' at epoch: " << time << "; " << e << endl;
+                    "' at epoch: " << time << ": " << e << endl;
             continue;
          }
          catch(...)
@@ -1450,7 +1473,7 @@ void ppp::process()
             ++outit;
          }
 
-            // Go process next station
+            // Go to process next station
          continue;
 
       }

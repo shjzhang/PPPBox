@@ -12,7 +12,7 @@
 # the executive program "timeconvert" to your user directory "/usr/
 # local/bin". 
 # When you need to segment or merge the observation file, you 
-# should prepare the teqc tool;You need install the CRX2RNX tool 
+# should prepare the teqc tool;You need install the crx2rnx tool 
 # When the RINEX files need to be converted from Hatanaka compact 
 # format to standard RINEX.
 # 
@@ -427,7 +427,7 @@ Download()
 		
 	savefile="$savepath""$filename"
 	   # If the observation's format is 31(Hatanaka Compact RINEX),
-	   # we should use CRX2RNX tool to convert its format.
+	   # we should use crx2rnx tool to convert its format.
 	if [[ ${filename: -1} = "d" ]] && [[ $product_type = "OBS" ]]
 	then
 	      # Change the filename's suffix(.yyd to .yyo)
@@ -451,7 +451,7 @@ Download()
 		echo "The file $savefile2 already exists!"
 		savefile=$savefile2
 	else
-		wget -c -P $savepath $url
+		wget -c -t 2 -P $savepath $url
 	fi
 } # The end of Download()
 
@@ -476,19 +476,19 @@ Decompress()
 		fi
 
 	   # If the observation's format is 31(Hatanaka Compact RINEX),
-	   # we should use CRX2RNX tool to convert its format.
+	   # we should use crx2rnx tool to convert its format.
 	if [[ ${filename: -1} = "d" ]] && [[ $product_type = "OBS" ]]
 	then
 		if [[ ! -e $savefile2 ]]
 		then
             # Convert
-	      CRX2RNX "$savefile"
+	      crx2rnx "$savefile"
 
-	         # Judge if the CRX2RNX tool exists.
+	         # Judge if the crx2rnx tool exists.
          if [[ $? -ne 0 ]]
 	      then
-		      echo "Failed: CRX2RNX tool doesn't exist!"
-		      echo "Please install the CRX2RNX tool in advance."
+		      echo "Failed: crx2rnx tool doesn't exist!"
+		      echo "Please install the jrx2rnx tool in advance."
 	      fi
       fi
          # Now, observation file name has already changed to '*.yyo'
@@ -707,8 +707,15 @@ Merge()
 	  # Read the observation files list
 	local rnxlist=`echo ${FileList[*]}`
 
-	  # Assign for the merged file.
-	local store_file="$s"."$y""o"
+     # Extrat the first and last rinex file.
+   local firstFile=`echo ${FileList[0]} | awk -F '/' '{print $NF}'` 
+   local lastFile=`echo ${FileList[@]: -1} | awk -F '/' '{print $NF}'` 
+
+   local doy1=`echo $firstFile | cut -c 5-8`
+   local doy2=`echo $lastFile | cut -c 5-8`
+
+     # Assign for the merged file.
+   local store_file="${s}${doy1}_${doy2}"."$y""o"
 
 	unset FileList
 	declare -a FileList

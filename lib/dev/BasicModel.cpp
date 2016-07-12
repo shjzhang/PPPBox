@@ -31,8 +31,8 @@
 
 
 #include "BasicModel.hpp"
-#include "geometry.hpp"
 #include "YDSTime.hpp"
+#include "GNSSconstants.hpp"
 
 using namespace std;
 

@@ -7,7 +7,7 @@ import sys
 proj='igs16577'
 station='%s/%s.stalist.test'%(sys.path[0],proj)
 #print station
-workdir='/Users/shjzhang/Documents/Develop/CynoNav/PPPBox/workplace/ppp'
+workdir='/home/rinex/Documents/data/IGS'#'/Users/shjzhang/Documents/Develop/CynoNav/PPPBox/workplace/ppp'
 beginTime = '20111009000000'
 endTime = '20111010000000'
 agency = 'IGS'
