@@ -357,10 +357,9 @@ namespace gpstk
                   
                   // Test for current bias bigger than lambda limit and for
                   // current bias squared bigger than sigma squared limit
-                  //acoording to Equations3.3,zhang ,2009
-                  //currentBias<3*sqrt(MWData[sat].varMW+1.0*1.0);
+                  // currentBias<4*sqrt(MWData[sat].varMW);
                   
-                  lambdaLimit=3*std::sqrt(MWData[sat].varMW+0.25*0.25);
+                  lambdaLimit=4*std::sqrt(MWData[sat].varMW);
 
                   if ( currentBias > lambdaLimit )
                   {
