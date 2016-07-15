@@ -3103,8 +3103,8 @@ in matrix and number of types do not match") );
 
    }  // End of stream input for gnssRinex
       
-      // function to read Rinex3Obs
-   std::istream& readRinex3Obs( std::istream& i, 
+      // function to fill gRin from  Rinex3Stream
+   std::istream& FeedFromRinex3Obs( std::istream& i, 
                                 gnssRinex& f,
 				std::map<RinexSatID,int>& freqNo)
    {
@@ -3467,7 +3467,7 @@ in matrix and number of types do not match") );
                  tvMap[ type ] = it->second[i].data*getWavelength(sat,n,freqNo);
 	       }
 	       else 
-	       {   // if phase observabels is missed, do not insert it into tvMap
+	       {   // if phase observable is missed, do not insert it into tvMap
 		 if (it->second[i].data != 0.0)
 		 {
                    tvMap[ type ] = it->second[i].data*getWavelength(sat,n);
