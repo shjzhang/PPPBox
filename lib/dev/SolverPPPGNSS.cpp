@@ -1,7 +1,7 @@
 #pragma ident "$Id$"
 
 /**
- * @file SolverPPP.cpp
+ * @file SolverPPPGNSS.cpp
  * Class to compute the PPP Solution.
  */
 
@@ -45,7 +45,7 @@
 //============================================================================
 
 
-#include "SolverPPP.hpp"
+#include "SolverPPPGNSS.hpp"
 #include "MatrixFunctors.hpp"
 
 using namespace std;
@@ -54,16 +54,16 @@ namespace gpstk
 {
 
       // Index initially assigned to this class
-   int SolverPPP::classIndex = 9300000;
+   int SolverPPPGNSS::classIndex = 9300000;
 
       // Returns an index identifying this object.
-   int SolverPPP::getIndex() const
+   int SolverPPPGNSS::getIndex() const
    { return index; }
 
 
       // Returns a string identifying this object.
-   std::string SolverPPP::getClassName() const
-   { return "SolverPPP"; }
+   std::string SolverPPPGNSS::getClassName() const
+   { return "SolverPPPGNSS"; }
 
 
       /* Common constructor.
@@ -72,7 +72,7 @@ namespace gpstk
        *                 if false (the default), will compute dx, dy, dz.
        *
        */
-   SolverPPP::SolverPPP(bool useNEU)
+   SolverPPPGNSS::SolverPPPGNSS(bool useNEU)
       : firstTime(true), converged(false), bufferSize(4)
    {
 
@@ -82,19 +82,27 @@ namespace gpstk
          // Call initializing method
       Init();
 
-   }  // End of 'SolverPPP::SolverPPP()'
-
+   }  // End of 'SolverPPPGNSS::SolverPPP()'
 
 
       // Initializing method.
-   void SolverPPP::Init(void)
+   void SolverPPPGNSS::Init(void)
    {
 
          // Set qdot value for default random walk stochastic model
       rwalkModel.setQprime(3e-8);
+      rwalkModel2.setQprime(3e-4);
+      rwalkModel3.setQprime(3e-4);
 
          // Pointer to default stochastic model for troposphere (random walk)
       pTropoStoModel = &rwalkModel;
+
+         // Pointer to default stochastic model for BeiDou ISB and Galileo ISB
+      pISBForBDSStoModel = &rwalkModel2;
+      pISBForGALStoModel = &rwalkModel3;
+
+         // Pointer to default stochastic model for Glonass ISB
+      pISBForGLOStoModel = &GloISBModel;
 
          // Set default coordinates stochastic model (constant)
       setCoordinatesModel( &constantModel );
@@ -114,7 +122,7 @@ namespace gpstk
       weightFactor = 10000.0;       // 100^2
 
 
-   }  // End of method 'SolverPPP::Init()'
+   }  // End of method 'SolverPPPGNSS::Init()'
 
 
 
@@ -133,7 +141,7 @@ namespace gpstk
        *  0 if OK
        *  -1 if problems arose
        */
-   int SolverPPP::Compute( const Vector<double>& prefitResiduals,
+   int SolverPPPGNSS::Compute( const Vector<double>& prefitResiduals,
                            const Matrix<double>& designMatrix,
                            const Vector<double>& weightVector )
       throw(InvalidSolver)
@@ -161,12 +169,12 @@ of weightVector");
          wMatrix(i,i) = weightVector(i);
       }
 
-         // Call the more general SolverPPP::Compute() method
-      return SolverPPP::Compute( prefitResiduals,
+         // Call the more general SolverPPPGNSS::Compute() method
+      return SolverPPPGNSS::Compute( prefitResiduals,
                                  designMatrix,
                                  wMatrix );
 
-   }  // End of method 'SolverPPP::Compute()'
+   }  // End of method 'SolverPPPGNSS::Compute()'
 
 
 
@@ -184,7 +192,7 @@ of weightVector");
       //  0 if OK
       //  -1 if problems arose
       //
-   int SolverPPP::Compute( const Vector<double>& prefitResiduals,
+   int SolverPPPGNSS::Compute( const Vector<double>& prefitResiduals,
                            const Matrix<double>& designMatrix,
                            const Matrix<double>& weightMatrix )
       throw(InvalidSolver)
@@ -290,7 +298,7 @@ covariance matrix.");
 
       return 0;
 
-   }  // End of method 'SolverPPP::Compute()'
+   }  // End of method 'SolverPPPGNSS::Compute()'
 
 
 
@@ -299,7 +307,7 @@ covariance matrix.");
        *
        * @param gData    Data object holding the data.
        */
-   gnssSatTypeValue& SolverPPP::Process(gnssSatTypeValue& gData)
+   gnssSatTypeValue& SolverPPPGNSS::Process(gnssSatTypeValue& gData)
       throw(ProcessingException, SVNumException)
    {
 
@@ -335,7 +343,7 @@ covariance matrix.");
 
       }
 
-   }  // End of method 'SolverPPP::Process()'
+   }  // End of method 'SolverPPPGNSS::Process()'
 
 
 
@@ -344,13 +352,27 @@ covariance matrix.");
        *
        * @param gData     Data object holding the data.
        */
-   gnssRinex& SolverPPP::Process(gnssRinex& gData)
+   gnssRinex& SolverPPPGNSS::Process(gnssRinex& gData)
       throw(ProcessingException, SVNumException)
    {
 
          // Get a set with all satellites present in this GDS
       SatIDSet currSatSet( gData.body.getSatID() );
-
+         // Get a set with Glonass satellites present
+      SatIDSet GloSatSet;
+         // loop in currSatSet
+      for ( SatIDSet::const_iterator it = currSatSet.begin();
+            it != currSatSet.end();
+	    it++)
+      { 
+	  if ((*it).system == SatID::systemGlonass)
+	  {
+	      GloSatSet.insert(*it);
+	  }
+	      
+      }
+         // the number of Glonass satellites
+      int numGloSV (GloSatSet.size());
          // Get the number of satellites currently visible
       int numCurrentSV( gData.numSats() );
 
@@ -361,10 +383,16 @@ covariance matrix.");
 
             // Number of 'core' variables: Coordinates, RX clock, troposphere
          numVar = defaultEqDef.body.size();
-
-            // Total number of unknowns is defined as variables + processed SVs
-         numUnknowns = numVar + numCurrentSV;
-
+	 if ( useGPS && useGlonass)
+	 {
+             // Total number of unknowns is defined as variables + processed SVs
+	     // + Glonass SVs(for ISB)
+	     numUnknowns = numVar + numCurrentSV + numGloSV;
+	 }
+	 else
+	 {
+             numUnknowns = numVar + numCurrentSV;
+         }
             // State Transition Matrix (PhiMatrix)
          phiMatrix.resize(numUnknowns, numUnknowns, 0.0);
 
@@ -399,14 +427,11 @@ covariance matrix.");
                // If we have weights information, let's load it
             Vector<double>
                weightsVector(gData.getVectorOfTypeID(TypeID::weight));
-
-            for( int i=0; i<numCurrentSV; i++ )
+            for(int i = 0; i< numCurrentSV;i++)
             {
-
                rMatrix( i               , i         ) = weightsVector(i);
                rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                             = weightsVector(i) * weightFactor;
-
+                                            = weightsVector(i) * weightFactor;
             }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
 
          }
@@ -414,30 +439,25 @@ covariance matrix.");
          {
 
                // If weights don't match, assign generic weights
-            for( int i=0; i<numCurrentSV; i++ )
+            for(int i = 0; i< numCurrentSV;i++)
             {
                rMatrix( i               , i         ) = 1.0;
-
-                  // Phases weights are bigger
                rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                                         = 1.0 * weightFactor;
-
+                                             = 1.0 * weightFactor;
             }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
 
-         }  // End of 'if ( dummy.numSats() == numCurrentSV )'
-
-
+          }
             // Generate the corresponding geometry/design matrix
          hMatrix.resize(numMeas, numUnknowns, 0.0);
 
             // Get the values corresponding to 'core' variables
          Matrix<double> dMatrix(gData.body.getMatrixOfTypes(defaultEqDef.body));
-
             // Let's fill 'hMatrix'
          for( int i=0; i<numCurrentSV; i++ )
          {
 
-               // First, fill the coefficients related to tropo, coord and clock
+               // First, fill the coefficients related to tropo, coord , clock
+	       // and ISB (if use BeiDou or Galileo)
             for( int j=0; j<numVar; j++ )
             {
 
@@ -447,7 +467,6 @@ covariance matrix.");
             }
 
          }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
-
 
             // Now, fill the coefficients related to phase biases
             // We must be careful because not all processed satellites
@@ -463,8 +482,26 @@ covariance matrix.");
             ++count1;
 
          }  // End of 'for( itSat = currSatSet.begin(); ... )'
+            
+	    // Now ,fill the coefficients realted to glonass ISB
+         if ( useGPS && useGlonass )
+	 {
+	   int count2(0);
 
-
+           for (SatIDSet::const_iterator itGloSat = GloSatSet.begin();
+	        itGloSat != GloSatSet.end();
+		itGloSat++)
+	   {
+	      size_t index = std::distance(currSatSet.begin(),currSatSet.find(*itGloSat));
+                  // code
+	      hMatrix(index,count2+numVar+numCurrentSV) = 1.0;
+	          // phase
+	      hMatrix(index+numCurrentSV,count2+numVar+numCurrentSV) = 1.0;
+	 
+	      count2++;
+	   }
+	     
+	 }
             // Now, let's fill the Phi and Q matrices
          SatID  dummySat;
 
@@ -473,30 +510,92 @@ covariance matrix.");
                                   gData );
          phiMatrix(0,0) = pTropoStoModel->getPhi();
          qMatrix(0,0)   = pTropoStoModel->getQ();
+             // if no ISB, numVar = 5
+         if (numVar == 5 )
+	 {
+             // Second, the coordinates
+           pCoordXStoModel->Prepare(dummySat, gData);
+           phiMatrix(1,1) = pCoordXStoModel->getPhi();
+           qMatrix(1,1)   = pCoordXStoModel->getQ();
 
-            // Second, the coordinates
-         pCoordXStoModel->Prepare(dummySat, gData);
-         phiMatrix(1,1) = pCoordXStoModel->getPhi();
-         qMatrix(1,1)   = pCoordXStoModel->getQ();
+           pCoordYStoModel->Prepare(dummySat, gData);
+           phiMatrix(2,2) = pCoordYStoModel->getPhi();
+           qMatrix(2,2)   = pCoordYStoModel->getQ();
 
-         pCoordYStoModel->Prepare(dummySat, gData);
-         phiMatrix(2,2) = pCoordYStoModel->getPhi();
-         qMatrix(2,2)   = pCoordYStoModel->getQ();
-
-         pCoordZStoModel->Prepare(dummySat, gData);
-         phiMatrix(3,3) = pCoordZStoModel->getPhi();
-         qMatrix(3,3)   = pCoordZStoModel->getQ();
+           pCoordZStoModel->Prepare(dummySat, gData);
+           phiMatrix(3,3) = pCoordZStoModel->getPhi();
+           qMatrix(3,3)   = pCoordZStoModel->getQ();
 
             // Third, the receiver clock
-         pClockStoModel->Prepare( dummySat,
+           pClockStoModel->Prepare( dummySat,
                                   gData );
-         phiMatrix(4,4) = pClockStoModel->getPhi();
-         qMatrix(4,4)   = pClockStoModel->getQ();
+           phiMatrix(4,4) = pClockStoModel->getPhi();
+           qMatrix(4,4)   = pClockStoModel->getQ();
+        
+	  } 
+	 
+          else if( numVar == 6 )   // for BeiDou ISB
+          {
+       
+            pISBForBDSStoModel->Prepare(dummySat, gData);
+            phiMatrix(1,1) = pISBForBDSStoModel->getPhi();
+            qMatrix(1,1)   = pISBForBDSStoModel->getQ();
 
+               // Second, the coordinates
+            pCoordXStoModel->Prepare(dummySat, gData);
+            phiMatrix(2,2) = pCoordXStoModel->getPhi();
+            qMatrix(2,2)   = pCoordXStoModel->getQ();
 
+            pCoordYStoModel->Prepare(dummySat, gData);
+            phiMatrix(3,3) = pCoordYStoModel->getPhi();
+            qMatrix(3,3)   = pCoordYStoModel->getQ();
+
+            pCoordZStoModel->Prepare(dummySat, gData);
+            phiMatrix(4,4) = pCoordZStoModel->getPhi();
+            qMatrix(4,4)   = pCoordZStoModel->getQ();
+
+             // Third, the receiver clock
+            pClockStoModel->Prepare( dummySat,
+                                  gData );
+            phiMatrix(5,5) = pClockStoModel->getPhi();
+            qMatrix(5,5)   = pClockStoModel->getQ();
+          }
+
+          else if ( numVar == 7 )  // for BeiDou ISB and Galileo ISB
+          {
+	     
+            pISBForBDSStoModel->Prepare(dummySat, gData);
+            phiMatrix(1,1) = pISBForBDSStoModel->getPhi();
+            qMatrix(1,1)   = pISBForBDSStoModel->getQ();
+
+            pISBForGALStoModel->Prepare(dummySat, gData);
+            phiMatrix(2,2) = pISBForGALStoModel->getPhi();
+            qMatrix(2,2)   = pISBForGALStoModel->getQ();
+      
+
+               // Second, the coordinates
+            pCoordXStoModel->Prepare(dummySat, gData);
+            phiMatrix(3,3) = pCoordXStoModel->getPhi();
+            qMatrix(3,3)   = pCoordXStoModel->getQ();
+
+            pCoordYStoModel->Prepare(dummySat, gData);
+            phiMatrix(4,4) = pCoordYStoModel->getPhi();
+            qMatrix(4,4)   = pCoordYStoModel->getQ();
+
+            pCoordZStoModel->Prepare(dummySat, gData);
+            phiMatrix(5,5) = pCoordZStoModel->getPhi();
+            qMatrix(5,5)   = pCoordZStoModel->getQ();
+
+              // Third, the receiver clock
+            pClockStoModel->Prepare( dummySat,
+                                  gData );
+            phiMatrix(6,6) = pClockStoModel->getPhi();
+            qMatrix(6,6)   = pClockStoModel->getQ();
+        
+	  }
 
             // Finally, the phase biases
-         int count2(numVar);     // Note that for PPP, 'numVar' is always 5!!!
+         int count2(numVar);     
          for( SatIDSet::const_iterator itSat = currSatSet.begin();
               itSat != currSatSet.end();
               ++itSat )
@@ -511,6 +610,25 @@ covariance matrix.");
             qMatrix(count2,count2)   = pBiasStoModel->getQ();
 
             ++count2;
+         }
+	   // the Glonass ISB
+	 if ( useGPS && useGlonass )
+	 {
+	   int count3(numVar+numCurrentSV);
+           for ( SatIDSet::const_iterator itGloSat = GloSatSet.begin();
+	         itGloSat != GloSatSet.end();
+	         itGloSat ++)
+	   {
+                  // Prepare stochastic model
+               pISBForGLOStoModel->Prepare( *itGloSat, gData );
+
+                 // Get values into phi and q matrices
+               phiMatrix(count3,count3) = pISBForGLOStoModel->getPhi();
+               qMatrix(count3,count3) = pISBForGLOStoModel->getQ();
+            
+               ++count3;
+           }
+
          }
 
          double sod( (gData.header.epoch).getSecondOfDay() );
@@ -529,21 +647,59 @@ covariance matrix.");
 
                // First, the zenital wet tropospheric delay
             initialErrorCovariance(0,0) = 0.25;          // (0.5 m)**2
-
-               // Second, the coordinates
-            for( int i=1; i<4; i++ )
+            if ( numVar == 5 )
             {
+               // Second, the coordinates
+             for( int i=1; i<4; i++ )
+             {
                initialErrorCovariance(i,i) = 10000.0;    // (100 m)**2
-            }
+             }
 
                // Third, the receiver clock
-            initialErrorCovariance(4,4) = 9.0e10;        // (300 km)**2
+             initialErrorCovariance(4,4) = 9.0e10;        // (300 km)**2
+            }
+              // ISB
+	    else if ( numVar == 6 )
+	    {
+              initialErrorCovariance(1,1) = 10000.0;    
+                     // Second, the coordinates
+              for( int i=2; i<5; i++ )
+              {
+                initialErrorCovariance(i,i) = 10000.0;    // (100 m)**2
+              }
 
+               // Third, the receiver clock
+              initialErrorCovariance(5,5) = 9.0e10;        // (300 km)**2
+           
+            }
+
+	    else if ( numVar == 7 )
+	    {
+               initialErrorCovariance(1,1) = 10000.0;        
+               initialErrorCovariance(2,2) = 10000.0;        
+                // Second, the coordinates
+               for( int i=3; i<6; i++ )
+               {
+                 initialErrorCovariance(i,i) = 10000.0;    // (100 m)**2
+               }
+
+                // Third, the receiver clock
+               initialErrorCovariance(6,6) = 9.0e10;        // (300 km)**2
+
+            }
                // Finally, the phase biases
-            for( int i=numVar; i<numUnknowns; i++ )
+            for( int i=numVar; i<numVar+numCurrentSV; i++ )
             {
                initialErrorCovariance(i,i) = 4.0e14;     // (20000 km)**2
             }
+               // the Glonass ISB
+	    if ( useGPS && useGlonass)
+	    { 
+		for (int i = numVar+numCurrentSV;i<numUnknowns;i++)
+		{
+	          initialErrorCovariance(i,i) = 9.0e10;	    
+	        } 
+	    }
 
                // Reset Kalman filter
             kFilter.Reset( initialState, initialErrorCovariance );
@@ -563,7 +719,6 @@ covariance matrix.");
          }
          else
          {
-
                // Adapt the size to the current number of unknowns
             Vector<double> currentState(numUnknowns, 0.0);
             Matrix<double> currentErrorCov(numUnknowns, numUnknowns, 0.0);
@@ -580,7 +735,7 @@ covariance matrix.");
                   currentErrorCov(i,j) =  covMatrix(i,j);
                }
             }
-
+            
 
                // Temporary satellite set
             SatIDSet tempSatSet(currSatSet);
@@ -640,31 +795,103 @@ covariance matrix.");
 
                   ++c3;
                }
+  
+	       if ( useGPS && useGlonass)
+	       {
+	          int c4(numVar+numCurrentSV);
+                  
+		  for ( SatIDSet::const_iterator itSat3 = GloSatSet.begin();
+		        itSat3 != GloSatSet.end();
+		        ++itSat3 )
+		  {
+		         
+		     currentErrorCov(c1,c4) = ambCovMap[*itSat].ISBCovMap[*itSat3];
+		     currentErrorCov(c4,c1) = ambCovMap[*itSat].ISBCovMap[*itSat3];
+		      
+	 	     ++c4;	      
+		  }
+
+	       }
 
                ++c1;
             }
+	       // for Glonass ISB
+	    if ( useGPS && useGlonass )
+	    {
+	       SatIDSet tempGloSat(GloSatSet);
+
+	       int c5(numVar+numCurrentSV);
+	       for ( SatIDSet::const_iterator itGloSat = GloSatSet.begin();
+	            itGloSat != GloSatSet.end();
+		    ++itGloSat )
+	       {
+		   // put Glonass ISB into state vector
+		  currentState(c5) = GlonassISBMap[*itGloSat];
+		  
+		  if (GloISBCovMap.find(*itGloSat) != GloISBCovMap.end())
+                  {
+		    currentErrorCov(c5,c5) = GloISBCovMap[*itGloSat].iCovMap[*itGloSat];     
+		  }
+                  else 
+		  {
+		    currentErrorCov(c5,c5) = 10000.0;    
+		  }
+		  int c6(c5+1);
+
+		    // remove current sat for 'tempGloSat'
+                  tempGloSat.erase(*itGloSat);
+                   
+		  for ( SatIDSet::const_iterator itGloSat2 = tempGloSat.begin();
+		        itGloSat2 != tempGloSat.end();
+			++itGloSat2)
+                  {
+
+		    currentErrorCov(c5,c6) = GloISBCovMap[*itGloSat].iCovMap[*itGloSat2];    
+		    currentErrorCov(c6,c5) = GloISBCovMap[*itGloSat].iCovMap[*itGloSat2];    
+		    
+		    ++c6;
+		  }
+                  
+		  int c7(0);
+                  for ( TypeIDSet::const_iterator itType = defaultEqDef.body.begin();
+		        itType != defaultEqDef.body.end();
+		        ++itType )
+		  {
+
+		    currentErrorCov(c5,c7) = GloISBCovMap[*itGloSat].ivCovMap[*itType];        
+		    currentErrorCov(c7,c5) = GloISBCovMap[*itGloSat].ivCovMap[*itType];        
+
+		    ++c7;     
+		  }
+                 
+		 ++c5;
+
+	       } // End of 'for (SatIDSet...)'
+
+	     } // End of 'if ( useGPS...)'
 
                // Reset Kalman filter to current state and covariance matrix
             kFilter.Reset( currentState, currentErrorCov );
 
-
          }  // End of 'if(firstTime)'
-
 
             // Call the Compute() method with the defined equation model.
             // This equation model MUST HAS BEEN previously set, usually when
-            // creating the SolverPPP object with the appropriate
+            // creating the SolverPPPGNSS object with the appropriate
             // constructor.
+
          Compute( measVector,
                   hMatrix,
                   rMatrix );
-
 
 
             // Now, clear ambCovMap
          ambiguityMap.clear();
          ambCovMap.clear();
 
+            // clear GloISBCovMap
+	 GlonassISBMap.clear();
+	 GloISBCovMap.clear();
 
             // Temporary satellite set
          SatIDSet tempSatSet(currSatSet);
@@ -712,12 +939,68 @@ covariance matrix.");
 
                ++c3;
             }
+              // Store Glonass ISB X ambiguities covariances
+	    if ( useGPS && useGlonass)
+	    {
+	       int c4(numVar+numCurrentSV);
+	       for ( SatIDSet::const_iterator itGloSat = GloSatSet.begin();
+	             itGloSat != GloSatSet.end();
+		     ++itGloSat )
+	       {
+	          ambCovMap[*itSat].ISBCovMap[*itGloSat] = covMatrix(c1,c4);
+
+		  ++c4;
+	       }	
+		
+   	    }
 
             ++c1;
 
          }  // End of 'for( itSat = currSatSet.begin(); ...'
+           
+	    // for Glonass ISB Map
+         if ( useGPS && useGlonass)
+	 {
+	    SatIDSet tempGloSat(GloSatSet);
 
+	    int c5(numVar+numCurrentSV);
+	    for ( SatIDSet::const_iterator itGloSat = GloSatSet.begin();
+	          itGloSat != GloSatSet.end();
+		  ++itGloSat )
+	    {
+               
+	       GlonassISBMap[*itGloSat] = solution(c5);
 
+	       GloISBCovMap[*itGloSat].iCovMap[*itGloSat] = covMatrix(c5,c5);
+
+	       int c6(c5+1);
+	    
+	       tempGloSat.erase(*itGloSat);
+
+	       for ( SatIDSet::const_iterator itGloSat2 = tempGloSat.begin();
+	             itGloSat2 != tempGloSat.end();
+		     ++itGloSat2 )
+	       {
+		 GloISBCovMap[*itGloSat].iCovMap[*itGloSat2] = covMatrix(c5,c6);   
+		   
+		 ++c6;
+	       }
+	          // Store Glonass ISB X variables covariances     
+	       int c7(0);
+	       for ( TypeIDSet::const_iterator itType = defaultEqDef.body.begin();
+	             itType != defaultEqDef.body.end();
+		     ++itType )
+	       {
+
+		 GloISBCovMap[*itGloSat].ivCovMap[*itType] = covMatrix(c5,c7);   
+
+	         ++c7;	   
+	       }
+	       
+	      ++c5;
+	    } // End of 'for (SatIDSet...)'
+
+         }  // End of 'if  ( useGPS ...)'
             // Now we have to add the new values to the data structure
          Vector<double> postfitCode(numCurrentSV,0.0);
          Vector<double> postfitPhase(numCurrentSV,0.0);
@@ -726,9 +1009,17 @@ covariance matrix.");
             postfitCode(i)  = postfitResiduals( i                );
             postfitPhase(i) = postfitResiduals( i + numCurrentSV );
          }
-
+    
          gData.insertTypeIDVector(TypeID::postfitC, postfitCode);
          gData.insertTypeIDVector(TypeID::postfitL, postfitPhase);
+
+           // Now insert glonass ISB into gData
+	 for ( std::map<SatID, double>::const_iterator it = GlonassISBMap.begin();
+	       it != GlonassISBMap.end();
+	       ++it)
+	 {
+            gData.body[(*it).first][TypeID::ISB_GLO] = (*it).second;  	     
+         }
 
             // Now Let's insert the ambiguity parameters into 'gData'
          Vector<double> ambVec(numCurrentSV,0.0);
@@ -736,10 +1027,29 @@ covariance matrix.");
          {
             ambVec(i) = solution(numVar + i) + postfitPhase(i);
          }
+	   // dx, dy, dz
+	 double dx(0.0);
+	 double dy(0.0);
+	 double dz(0.0);
+         if (numVar == 5)
+	 {
+            dx = solution(1);
+            dy = solution(2);
+            dz = solution(3);
+	 }
+         else if (numVar == 6)
+	 {
+            dx = solution(2);
+            dy = solution(3);
+            dz = solution(4);
+	 }
+         else if (numVar == 7)
+	 {
+           dx = solution(3);
+           dy = solution(4);
+           dz = solution(5);
+	 }
 
-         double dx = solution(1);
-         double dy = solution(2);
-         double dz = solution(3);
          double drou = std::sqrt(dx*dx+dy*dy+dz*dz);
 
          if(drou < 0.10)
@@ -794,6 +1104,7 @@ covariance matrix.");
          return gData;
 
       }
+
       catch(Exception& u)
       {
             // Throw an exception if something unexpected happens
@@ -804,7 +1115,7 @@ covariance matrix.");
 
       }
 
-   }  // End of method 'SolverPPP::Process()'
+   }  // End of method 'SolverPPPGNSS::Process()'
 
 
 
@@ -814,7 +1125,7 @@ covariance matrix.");
        *                be used
        *
        */
-   SolverPPP& SolverPPP::setNEU( bool useNEU )
+   SolverPPPGNSS& SolverPPPGNSS::setNEU( bool useNEU )
    {
 
          // First, let's define a set with the typical code-based unknowns
@@ -822,6 +1133,7 @@ covariance matrix.");
 
          // Watch out here: 'tempSet' is a 'std::set', and all sets order their
          // elements. According to 'TypeID' class, this is the proper order:
+
       tempSet.insert(TypeID::wetMap);  // BEWARE: The first is wetMap!!!
 
       if (useNEU)
@@ -837,17 +1149,40 @@ covariance matrix.");
          tempSet.insert(TypeID::dz);   // #4
       }
       tempSet.insert(TypeID::cdt);     // #5
-
+     
          // Now, we build the basic equation definition
       defaultEqDef.header = TypeID::prefitC;
       defaultEqDef.body = tempSet;
 
       return (*this);
 
-   }  // End of method 'SolverPPP::setNEU()'
+   }  // End of method 'SolverPPPGNSS::setNEU()'
+      
+      /// Set SatSystem 
+   SolverPPPGNSS& SolverPPPGNSS::setSatSystem( bool usingGPS,
+                                               bool usingGLO,
+					       bool usingBDS,
+					       bool usingGAL )
+   
+   {
+      useGPS     = usingGPS;
+      useGlonass = usingGLO;
+      useBeiDou  = usingBDS;
+      useGalileo = usingGAL;
 
+         // insert BeiDou ISB into defaultEqDef.body
+      if ( useGPS && useBeiDou )
+      {
+        defaultEqDef.body.insert(TypeID::ISB_BDS);	  
+      }
 
-
+        // insert Galileo ISB into defaultEqDef.body
+      if ( useGPS && useGalileo )
+      {
+        defaultEqDef.body.insert(TypeID::ISB_GAL);	  
+      }
+       
+   }
 
       /* Set a single coordinates stochastic model to ALL coordinates.
        *
@@ -860,7 +1195,7 @@ covariance matrix.");
        * this method only with non-state-aware stochastic models like
        * 'StochasticModel' (constant coordinates) or 'WhiteNoiseModel'.
        */
-   SolverPPP& SolverPPP::setCoordinatesModel( StochasticModel* pModel )
+   SolverPPPGNSS& SolverPPPGNSS::setCoordinatesModel( StochasticModel* pModel )
    {
 
          // All coordinates will have the same model
@@ -870,12 +1205,12 @@ covariance matrix.");
 
       return (*this);
 
-   }  // End of method 'SolverPPP::setCoordinatesModel()'
+   }  // End of method 'SolverPPPGNSS::setCoordinatesModel()'
 
 
        /** Set the positioning mode, kinematic or static.
         */
-   SolverPPP& SolverPPP::setKinematic( bool kinematicMode,
+   SolverPPPGNSS& SolverPPPGNSS::setKinematic( bool kinematicMode,
                                        double sigmaX,
                                        double sigmaY,
                                        double sigmaZ )
@@ -897,12 +1232,12 @@ covariance matrix.");
 
       return (*this);
 
-   }  // End of method 'SolverPPP::setKinematic()'
+   }  // End of method 'SolverPPPGNSS::setKinematic()'
 
 
       /** Return the converged flag.
        */
-   bool SolverPPP::getConverged() const
+   bool SolverPPPGNSS::getConverged() const
       throw(InvalidRequest)
    {
          // Return current fixed satellite number

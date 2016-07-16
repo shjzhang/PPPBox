@@ -1,7 +1,7 @@
 #pragma ident "$Id$"
 
 /**
- * @file SolverPPP.hpp
+ * @file SolverPPPGNSS.hpp
  * Class to compute the PPP Solution.
  */
 
@@ -79,8 +79,8 @@ namespace gpstk
        *      // PoleTides, CorrectObservables, ComputeWindUp, ComputeLinear,
        *      // LinearCombinations, etc.
        *
-       *      // Declare a SolverPPP object
-       *   SolverPPP pppSolver;
+       *      // Declare a SolverPPPGNSS object
+       *   SolverPPPGNSS pppSolver;
        *
        *     // PROCESSING PART
        *
@@ -119,7 +119,7 @@ namespace gpstk
        *   }
        * @endcode
        *
-       * The "SolverPPP" object will extract all the data it needs from the
+       * The "SolverPPPGNSS" object will extract all the data it needs from the
        * GNSS data structure that is "gRin" and will try to solve the PPP
        * system of equations using a Kalman filter. It will also insert back
        * postfit residual data (both code and phase) into "gRin" if it
@@ -134,7 +134,7 @@ namespace gpstk
        * You may configure the solver to work with a NEU system in the class
        * constructor or using the "setNEU()" method.
        *
-       * In any case, the "SolverPPP" object will also automatically add and
+       * In any case, the "SolverPPPGNSS" object will also automatically add and
        * estimate the ionosphere-free phase ambiguities. The independent vector
        * is composed of the code and phase prefit residuals.
        *
@@ -142,7 +142,7 @@ namespace gpstk
        * be achieved with objects from classes such as "ComputeIURAWeights",
        * "ComputeMOPSWeights", etc.
        *
-       * If these weights are not assigned, then the "SolverPPP" object will
+       * If these weights are not assigned, then the "SolverPPPGNSS" object will
        * set a value of "1.0" to code measurements, and "weightFactor" to phase
        * measurements. The default value of "weightFactor" is "10000.0". This
        * implies that code sigma is 1 m, and phase sigma is 1 cm.
@@ -200,7 +200,7 @@ namespace gpstk
        * @endcode
        *
        *
-       * \warning "SolverPPP" is based on a Kalman filter, and Kalman filters
+       * \warning "SolverPPPGNSS" is based on a Kalman filter, and Kalman filters
        * are objets that store their internal state, so you MUST NOT use the
        * SAME object to process DIFFERENT data streams.
        *
@@ -208,7 +208,7 @@ namespace gpstk
        * base classes.
        *
        */
-   class SolverPPP : public CodeKalmanSolver
+   class SolverPPPGNSS : public CodeKalmanSolver
    {
    public:
 
@@ -217,9 +217,8 @@ namespace gpstk
           * @param useNEU   If true, will compute dLat, dLon, dH coordinates;
           *                 if false (the default), will compute dx, dy, dz.
           */
-      SolverPPP(bool useNEU = false);
-
-
+      SolverPPPGNSS( bool useNEU = false );
+ 
          /** Compute the PPP Solution of the given equations set.
           *
           * @param prefitResiduals   Vector of prefit residuals
@@ -288,8 +287,8 @@ namespace gpstk
           * and newErrorCov must be 6x6.
           *
           */
-      virtual SolverPPP& Reset( const Vector<double>& newState,
-                                const Matrix<double>& newErrorCov )
+      virtual SolverPPPGNSS& Reset( const Vector<double>& newState,
+                                    const Matrix<double>& newErrorCov )
       { kFilter.Reset( newState, newErrorCov ); return (*this); };
 
 
@@ -299,9 +298,13 @@ namespace gpstk
           *                be used
           *
           */
-      virtual SolverPPP& setNEU( bool useNEU );
-
-
+      virtual SolverPPPGNSS& setNEU( bool useNEU );
+        
+	// Sets if use BeiDou, Galileo or Glonass
+      virtual SolverPPPGNSS& setSatSystem( bool usingGPS,
+                                           bool usingGLO,
+                                           bool usingBDS,
+                                           bool usingGAL );
 
          /** Get the weight factor multiplying the phase measurements sigmas.
           *  This factor is the code_sigma/phase_sigma ratio.
@@ -318,7 +321,7 @@ namespace gpstk
           * For instance, if we assign a code sigma of 1 m and a phase sigma
           * of 10 cm, the ratio is 100, and so should be "factor".
           */
-      virtual SolverPPP& setWeightFactor(double factor)
+      virtual SolverPPPGNSS& setWeightFactor(double factor)
       { weightFactor = (factor*factor); return (*this); };
 
 
@@ -332,7 +335,7 @@ namespace gpstk
           * @param pModel      Pointer to StochasticModel associated with
           *                    dx (or dLat) coordinate.
           */
-      SolverPPP& setXCoordinatesModel(StochasticModel* pModel)
+      SolverPPPGNSS& setXCoordinatesModel(StochasticModel* pModel)
       { pCoordXStoModel = pModel; return (*this); };
 
 
@@ -346,7 +349,7 @@ namespace gpstk
           * @param pModel      Pointer to StochasticModel associated with
           *                    dy (or dLon) coordinate.
           */
-      SolverPPP& setYCoordinatesModel(StochasticModel* pModel)
+      SolverPPPGNSS& setYCoordinatesModel(StochasticModel* pModel)
       { pCoordYStoModel = pModel; return (*this); };
 
 
@@ -360,7 +363,7 @@ namespace gpstk
           * @param pModel      Pointer to StochasticModel associated with
           *                    dz (or dH) coordinate.
           */
-      SolverPPP& setZCoordinatesModel(StochasticModel* pModel)
+      SolverPPPGNSS& setZCoordinatesModel(StochasticModel* pModel)
       { pCoordZStoModel = pModel; return (*this); };
 
 
@@ -375,7 +378,7 @@ namespace gpstk
           * this method only with non-state-aware stochastic models like
           * 'StochasticModel' (constant coordinates) or 'WhiteNoiseModel'.
           */
-      virtual SolverPPP& setCoordinatesModel(StochasticModel* pModel);
+      virtual SolverPPPGNSS& setCoordinatesModel(StochasticModel* pModel);
 
 
          /// Get wet troposphere stochastic model pointer
@@ -393,7 +396,7 @@ namespace gpstk
           * If that is your case, you MUST NOT use the SAME model in DIFFERENT
           * solver objects.
           */
-      virtual SolverPPP& setTroposphereModel(StochasticModel* pModel)
+      virtual SolverPPPGNSS& setTroposphereModel(StochasticModel* pModel)
       { pTropoStoModel = pModel; return (*this); };
 
 
@@ -412,7 +415,7 @@ namespace gpstk
           * If that is your case, you MUST NOT use the SAME model in DIFFERENT
           * solver objects.
           */
-      virtual SolverPPP& setReceiverClockModel(StochasticModel* pModel)
+      virtual SolverPPPGNSS& setReceiverClockModel(StochasticModel* pModel)
       { pClockStoModel = pModel; return (*this); };
 
 
@@ -434,14 +437,48 @@ namespace gpstk
           * \warning This method should be used with caution, because model
           * must be of PhaseAmbiguityModel class in order to make sense.
           */
-      virtual SolverPPP& setPhaseBiasesModel(StochasticModel* pModel)
+      virtual SolverPPPGNSS& setPhaseBiasesModel(StochasticModel* pModel)
       { pBiasStoModel = pModel; return (*this); };
 
+         /// get the Gloanss ISB stochastic mdoel.
+      virtual StochasticModel* getGLOISBModel (void) const
+      { return pISBForGLOStoModel; }
+
+         /** Set Glonass ISB stochastic model.
+	 *
+	 *\warning: the ISB is stable in a short time, therefore the stochastic 
+	 * model can be constant model or RandomWalk model
+	 */
+      virtual SolverPPPGNSS& setGLOISBModel (StochasticModel* pModel )
+      { pISBForGLOStoModel = pModel; return(*this); };
+
+         /// get the Galileo ISB stochastic mdoel.
+      virtual StochasticModel* getGALISBModel (void) const
+      { return pISBForGALStoModel; }
+
+         /** Set Galileo ISB stochastic model.
+	 *
+	 *\warning: the ISB is stable in a short time, therefore the stochastic 
+	 * model can be constant model or RandomWalk model
+	 */
+      virtual SolverPPPGNSS& setGALISBModel (StochasticModel* pModel )
+      { pISBForGALStoModel = pModel; return(*this); };
+
+         /// get the BeiDou ISB stochastic mdoel.
+      virtual StochasticModel* getBDSISBModel (void) const
+      { return pISBForBDSStoModel; }
+
+         /** Set BeiDou ISB stochastic model.
+	 *
+	 *\warning: the ISB is stable in a short time, therefore the stochastic 
+	 * model can be constant model or RandomWalk model
+	 */
+      virtual SolverPPPGNSS& setBDSISBModel (StochasticModel* pModel )
+      { pISBForBDSStoModel = pModel; return(*this); };
 
          /// Get the State Transition Matrix (phiMatrix)
       virtual Matrix<double> getPhiMatrix(void) const
       { return phiMatrix; };
-
 
          /** Set the State Transition Matrix (phiMatrix)
           *
@@ -452,7 +489,7 @@ namespace gpstk
           * the Compute() methods directly if you use this method.
           *
           */
-      virtual SolverPPP& setPhiMatrix(const Matrix<double> & pMatrix)
+      virtual SolverPPPGNSS& setPhiMatrix(const Matrix<double> & pMatrix)
       { phiMatrix = pMatrix; return (*this); };
 
 
@@ -470,20 +507,20 @@ namespace gpstk
           * the Compute() methods directly if you use this method.
           *
           */
-      virtual SolverPPP& setQMatrix(const Matrix<double> & pMatrix)
+      virtual SolverPPPGNSS& setQMatrix(const Matrix<double> & pMatrix)
       { qMatrix = pMatrix; return (*this); };
 
 
           /** Set the positioning mode, kinematic or static.
            */
-      virtual SolverPPP& setKinematic( bool kinematicMode = true,
-                                       double sigmaX = 100.0,
-                                       double sigmaY = 100.0,
-                                       double sigmaZ = 100.0 );
+      virtual SolverPPPGNSS& setKinematic( bool kinematicMode = true,
+                                           double sigmaX = 100.0,
+                                           double sigmaY = 100.0,
+                                           double sigmaZ = 100.0 );
 
           /** Set buffer size for convergence statistics. 
            */
-      virtual SolverPPP& setBufferSize(int size )
+      virtual SolverPPPGNSS& setBufferSize(int size )
       { bufferSize = size; return(*this); };
 
          /** Return the converged flag
@@ -506,28 +543,34 @@ namespace gpstk
 
 
          /// Destructor.
-      virtual ~SolverPPP() {};
+      virtual ~SolverPPPGNSS() {};
 
 
    private:
 
+         /// Wheather use GPS  
+      bool useGPS;
+
+         /// Wheather use Glonass  
+      bool useGlonass;
+
+         /// Wheather use BeiDou
+      bool useBeiDou;
+
+         /// Wheather use Glonass
+      bool useGalileo;
 
          /// Number of variables
       int numVar;
 
-
          /// Number of unknowns
       int numUnknowns;
-
 
          /// Number of measurements
       int numMeas;
 
-
-
          /// Weight factor for phase measurements
       double weightFactor;
-
 
          /// Boolean flag to indicate reset the solution
       bool resetSol;
@@ -561,6 +604,16 @@ namespace gpstk
 
          /// Pointer to stochastic model for receiver clock
       StochasticModel* pClockStoModel;
+         
+	 /// Pointer to stochastic model for inter-system bias for every Glonass satellite,
+	 /// include the inter-frequency bias (IFB)
+      StochasticModel* pISBForGLOStoModel;
+
+	 /// Pointer to stochastic model for inter-system bias for Galileo
+      StochasticModel* pISBForGALStoModel;
+
+	 /// Pointer to stochastic model for inter-system bias for BeiDou
+      StochasticModel* pISBForBDSStoModel;
 
 
          /// Pointer to stochastic model for phase biases
@@ -597,21 +650,34 @@ namespace gpstk
          /// Map to store the values of the ambiguity 
       std::map<SatID, double> ambiguityMap;
 
+         /// Map to store the values of the ISB for Glonass satellites
+      std::map<SatID, double> GlonassISBMap;
+
          /// A structure used to store Kalman filter data.
       struct filterData
       {
             // Default constructor initializing the data in the structure
          filterData() {};
 
-         std::map<TypeID, double> vCovMap;  ///< Variables covariance values.
-         std::map<SatID,  double> aCovMap;  ///< Ambiguities covariance values.
+         std::map<TypeID, double> vCovMap;    ///< Variables covariance values.
+         std::map<SatID,  double> aCovMap;    ///< Ambiguities covariance values.
+         std::map<SatID,  double> ISBCovMap;  ///< Glonass ISB covariance values.
 
       };
-
 
          /// Map holding the information regarding every satellite
       std::map<SatID, filterData> ambCovMap;
 
+        /// to store data related to Glonass ISB
+      struct ISBData
+      {
+         ISBData () {};
+
+	 std::map<TypeID, double> ivCovMap;
+	 std::map<SatID,  double> iCovMap;
+ 	 
+      };
+      std::map<SatID,ISBData> GloISBCovMap;
 
          /// General Kalman filter object
       SimpleKalmanFilter kFilter;
@@ -632,7 +698,9 @@ namespace gpstk
 
          /// Random Walk stochastic model
       RandomWalkModel rwalkModel;
-
+        
+      RandomWalkModel rwalkModel2;
+      RandomWalkModel rwalkModel3;
 
          /// White noise stochastic model
       WhiteNoiseModel whitenoiseModel;
@@ -641,6 +709,8 @@ namespace gpstk
          /// Phase biases stochastic model (constant + white noise)
       PhaseAmbiguityModel biasModel;
 
+        /// Glonass ISB stochastic model
+      ISBRandomWalkModel  GloISBModel;
 
          // Some methods that we want to hide
          /// Initial index assigned to this class.
@@ -660,13 +730,13 @@ namespace gpstk
       { return 0; };
 
 
-      virtual SolverPPP& setDefaultEqDefinition(
+      virtual SolverPPPGNSS& setDefaultEqDefinition(
                                        const gnssEquationDefinition& eqDef )
       { return (*this); };
 
 
 
-   }; // End of class 'SolverPPP'
+   }; // End of class 'SolverPPPGNSS'
 
       //@}
 
