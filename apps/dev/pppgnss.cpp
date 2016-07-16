@@ -143,9 +143,7 @@
 
    // Class to compute the Precise Point Positioning (pppgnss) solution in
    // forwards-only mode.
-#include "SolverPPP.hpp"
-
-
+#include "SolverPPPGNSS.hpp"
 
    // Class to filter the MW combination
 #include "MWFilter.hpp"
@@ -376,21 +374,6 @@ void pppgnss::printSolution( ofstream& outfile,
 
    }
 
-   if (useGPS && useGlonass)
-   {
-      double ISB_GLO = 0.0;
-      try
-      {
-          ISB_GLO = solver.getSolution(TypeID::ISB_GLO);
-      }   
-      catch (...)
-      {
-          // do nothing 
-      } 
-           // now the unit of ISB is ns
-      outfile<< setw(8) << ISB_GLO*3.3352 << "  ";
-
-   }
    if (useGPS && useBeiDou)
    {
       double ISB_BDS = 0.0;
@@ -1393,13 +1376,11 @@ void pppgnss::process()
       bool isNEU( confReader.getValueAsBoolean( "USENEU") );
 
          // Declare solver objects
-      SolverPPP  pppgnssSolver(isNEU);
-      pppgnssSolver.setSystem(usingGPS,
-                              usingGlonass,
-                              usingBeiDou,
-			      usingGalileo);
-
-
+      SolverPPPGNSS  pppgnssSolver( isNEU);
+      pppgnssSolver.setSatSystem( usingGPS,
+				  usingGlonass,
+				  usingBeiDou,
+				  usingGalileo );
 
          // Get if we want 'forwards-backwards' or 'forwards' processing only
       int cycles( confReader.getValueAsInt("filterCycles") );
@@ -1410,15 +1391,12 @@ void pppgnss::process()
          // White noise stochastic model
       WhiteNoiseModel wnM(100.0);      // 100 m of sigma
 
-
-	// In this case, we will use the 'forwards-only' solver
-
             // Check about coordinates as white noise
-         if ( isWN )
-         {
+      if ( isWN )
+      {
                // Reconfigure solver
-            pppgnssSolver.setCoordinatesModel(&wnM);
-         }
+          pppgnssSolver.setCoordinatesModel(&wnM);
+      }
 
             // Add solver to processing list
       pList.push_back(pppgnssSolver);
@@ -1481,12 +1459,12 @@ void pppgnss::process()
          //// *** Now comes the REAL forwards processing part *** ////
 
          // Loop over all data epochs
-	 // there readRinex3Obs function is used to replace (rin>>gRin)
+	 // there FeedFromRinex3Obs function is used to replace (rin>>gRin)
 	 // as glonass freqency number is needed to process glonass data
 	 // the Rinex3ObsHeader of some stations also have this messeage.
-      while(readRinex3Obs(rin,gRin,FreqNumber))
+      while(FeedFromRinex3Obs(rin,gRin,FreqNumber))
       {
-
+     
             // Store current epoch
          CommonTime time(gRin.header.epoch);
             // Compute solid, oceanic and pole tides effects at this epoch
@@ -1496,13 +1474,14 @@ void pppgnss::process()
 
             // Update observable correction object with tides information
          corr.setExtraBiases(tides);
-
          try
          {
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
-	    // gRin.keepOnlySatSystem(SatID::systemBeiDou);
+	     //gRin.keepOnlySatSystem(SatID::systemGalileo);
 	     gRin >> pList;
+         
+         
          }
          catch(DecimateEpoch& d)
          {
