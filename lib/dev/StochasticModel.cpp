@@ -692,6 +692,119 @@ namespace gpstk
       return;
 
    }  // End of method 'SatBiasRandomWalkModel::computeQ()'
+  
+
+      /* Set the value of process spectral density for ALL current sources.
+       *
+       * @param qp         Process spectral density: d(variance)/d(time) or
+       *                   d(sigma*sigma)/d(time).
+       *
+       * \warning Beware of units: Process spectral density units are
+       * sigma*sigma/time, while other models take plain sigma as input.
+       * Sigma units are usually given in meters, but time units MUST BE
+       * in SECONDS.
+       *
+       * \warning By default, process spectral density for satellite bias 
+       * is set to 3e-8 m*m/s (equivalent to about * 1.0 cm*cm/h).
+       *
+       */
+   ISBRandomWalkModel& ISBRandomWalkModel::setQprime(double qp)
+   {
+
+         // Look at each satellite being currently managed
+      for( std::map<SatID, ISBModelData>::iterator it = ISBData.begin();
+           it != ISBData.end();
+           ++it )
+      {
+            // Assign new process spectral density value
+         (*it).second.qprime = qp;
+      }
+
+      return (*this);
+
+   }  // End of method 'SatBiasRandomWalkModel::setQprime()'
+
+
+
+      /* This method provides the stochastic model with all the available
+       *  information and takes appropriate actions.
+       *
+       * @param sat        Satellite.
+       * @param gData      Data object holding the data.
+       *
+       */
+   void ISBRandomWalkModel::Prepare( const SatID& sat,
+                                     gnssSatTypeValue& gData )
+   {
+
+         // First, get current source
+      SourceID source( gData.header.source );
+
+         // Second, let's update current epoch for this source
+      setCurrentTime(sat, gData.header.epoch );
+
+         // Third, compute Q value
+      computeQ(sat, gData.body, source);
+
+         // Fourth, prepare for next iteration updating previous epoch
+      setPreviousTime(sat, ISBData[sat].currentTime);
+
+      return;
+
+   }  // End of method 'SatBiasRandomWalkModel::Prepare()'
+
+
+
+      /* This method provides the stochastic model with all the available
+       *  information and takes appropriate actions.
+       *
+       * @param sat        Satellite.
+       * @param gData      Data object holding the data.
+       *
+       */
+   void ISBRandomWalkModel::Prepare( const SatID& sat,
+                                     gnssRinex& gData )
+   {
+
+         // First, get current source
+      SourceID source( gData.header.source );
+
+         // Second, let's update current epoch for this source
+      setCurrentTime(sat, gData.header.epoch );
+
+         // Third, compute Q value
+      computeQ(sat, gData.body, source);
+
+         // Fourth, prepare for next iteration updating previous epoch
+      setPreviousTime(sat, ISBData[sat].currentTime);
+
+      return;
+
+   }  // End of method 'SatBiasRandomWalkModel::Prepare()'
+
+
+
+      /* This method computes the right variance value to be returned
+       *  by method 'getQ()'.
+       *
+       * @param sat        Satellite.
+       * @param data       Object holding the data.
+       * @param source     Object holding the source of data.
+       *
+       */
+   void ISBRandomWalkModel::computeQ( const SatID& sat,
+                                      satTypeValueMap& data,
+                                      SourceID& source )
+   {
+
+         // Compute current variance
+      variance = ISBData[ sat ].qprime
+                 * std::abs( ISBData[ sat ].currentTime
+                           - ISBData[ sat ].previousTime );
+
+      return;
+
+   }  // End of method 'SatBiasRandomWalkModel::computeQ()'
 
 
 }  // End of namespace gpstk
