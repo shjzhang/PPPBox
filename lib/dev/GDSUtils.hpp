@@ -41,6 +41,11 @@
 //============================================================================
 
 #include <fstream>
+#include <utility>
+#include <vector>
+#include <set>
+#include <map>
+#include <string>
 
 #include "CivilTime.hpp"
 #include "DataStructures.hpp"
@@ -51,14 +56,17 @@ namespace gpstk
     * Methods to exchange data between gnssDataMap and binary file 
     */
 
-   template<class DataType>
+   template <class DataType>
    struct DataBin
    {
       DataType data;
 
-      DataBin() {}
+      DataBin() 
+      {};
 
-      DataBin(const DataType& d) : data(d) {}
+      DataBin(const DataType& d) 
+         : data(d) 
+      {};
       
       DataBin(const DataType& d,std::ostream& s) : data(d) { write(s); }
       
@@ -76,40 +84,51 @@ namespace gpstk
 
       virtual void read(std::istream& s)
       { s.read((char*)&data,sizeof(DataType));}
+
+      virtual ~DataBin() {}
+
    };
  
    struct StringBin : DataBin<std::string>
    {
-      StringBin() : DataBin(){}
+      StringBin() 
+        : DataBin()
+      {}
 
-      StringBin(const std::string& str) : DataBin(str){}
+      StringBin(const std::string& str) 
+         : DataBin(str)
+      {}
 
       StringBin(const std::string& str,std::ostream& s) 
-         : DataBin(str) { write(s); }
+         : DataBin(str) 
+      { write(s); }
 
-      StringBin(std::istream& s) { read(s); }
+      StringBin(std::istream& s) 
+      { read(s); }
 
       void write(std::ostream& s)
       {          
          DataBin<size_t> sizeBin(data.length(),s);
-         
          s.write(&data[0],sizeof(char)*sizeBin.get());
       }
 
       void read(std::istream& s)
       { 
          DataBin<size_t> sizeBin(s);
-
          data.resize(sizeBin.get(),' ');
          s.read(&data[0],sizeof(char)*sizeBin.get());
       }
+
+      virtual ~StringBin () {};
    };
 
    struct TypeIDBin : DataBin<TypeID>
    {
-      TypeIDBin() : DataBin(){}
+//    TypeIDBin() 
+//       : DataBin(){}
 
-      TypeIDBin(const TypeID& type) : DataBin(type){}
+      TypeIDBin(const TypeID& type) 
+         : DataBin(type){}
 
       TypeIDBin(const TypeID& type,std::ostream& s) 
          : DataBin(type) { write(s); }
@@ -131,9 +150,11 @@ namespace gpstk
 
    struct SourceIDBin : DataBin<SourceID>
    {
-      SourceIDBin() : DataBin(){}
+//    SourceIDBin() 
+//       : DataBin(){}
 
-      SourceIDBin(const SourceID& source) : DataBin(source){}
+      SourceIDBin(const SourceID& source) 
+         : DataBin(source){}
 
       SourceIDBin(const SourceID& source,std::ostream& s) 
          : DataBin(source) { write(s); }
@@ -208,7 +229,7 @@ namespace gpstk
 
    struct SatIDBin : DataBin<SatID>
    {
-      SatIDBin() : DataBin(){}
+//    SatIDBin() : DataBin(){}
 
       SatIDBin(const SatID& sat) : DataBin(sat){}
 
@@ -235,7 +256,7 @@ namespace gpstk
 
    struct CommonTimeBin : DataBin<CommonTime>
    {
-      CommonTimeBin() : DataBin(){}
+//    CommonTimeBin() : DataBin(){}
 
       CommonTimeBin(const CommonTime& time) : DataBin(time){}
 
@@ -287,7 +308,7 @@ namespace gpstk
 
    struct typeValueMapBin : DataBin<typeValueMap>
    {
-      typeValueMapBin() : DataBin(){}
+//    typeValueMapBin() : DataBin(){}
 
       typeValueMapBin(const typeValueMap& tvMap) : DataBin(tvMap){}
 
@@ -328,7 +349,7 @@ namespace gpstk
 
    struct satTypeValueMapBin : DataBin<satTypeValueMap>
    {
-      satTypeValueMapBin() : DataBin(){}
+//    satTypeValueMapBin() : DataBin(){}
 
       satTypeValueMapBin(const satTypeValueMap& stvMap) : DataBin(stvMap){}
 
@@ -368,7 +389,7 @@ namespace gpstk
 
    struct sourceDataMapBin : DataBin<sourceDataMap>
    {
-      sourceDataMapBin() : DataBin(){}
+//    sourceDataMapBin() : DataBin(){}
 
       sourceDataMapBin(const sourceDataMap& sdMap) : DataBin(sdMap){}
 
@@ -411,7 +432,7 @@ namespace gpstk
 
    struct gnssDataMapBin : DataBin<gnssDataMap>
    {
-      gnssDataMapBin() : DataBin(){}
+//    gnssDataMapBin() : DataBin(){}
 
       gnssDataMapBin(const gnssDataMap& gdMap) : DataBin(gdMap){}
 
