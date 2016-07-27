@@ -790,18 +790,7 @@ void pppucar::process()
    {
       try
       {
-         if( upperCase(eopFile.substr(0,3)) == "IGS" )
-         {
-            eopStore.loadIGSFile( eopFile );
-         }
-//       else if( upperCase(eopFile.substr(0,3)) == "COD" )
-//       {
-//          eopStore.loadCODFile( eopFile );
-//       }
-         else
-         {
-            cerr << "File type not supported!" << endl;
-         }
+         eopStore.loadIGSFile( eopFile );
       }
       catch (FileMissingException& e)
       {
@@ -1109,11 +1098,15 @@ void pppucar::process()
 
 
          // Object to apply the P1C1 corrections for some receivers
-      CC2NONCC p1c1Corr;
+      
+      DCBDataReader dcbStore;
+      dcbStore.open(dcbFileName);
+
+      CC2NONCC p1c1Corr(dcbStore);
+
          // recType.list is given in the configuration file
-      p1c1Corr.setRecTypeFile( confReader.getValue( "recType.list" ) );
-         // dcb file name is given from the command line
-      p1c1Corr.setDCBFile( dcbFileName );
+      p1c1Corr.loadRecTypeFile( confReader.getValue( "recType.list" ) );
+      
 
          // If you use C1 code, and the dcb file is given, then
          // correct the observables!

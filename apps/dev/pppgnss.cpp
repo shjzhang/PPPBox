@@ -154,10 +154,14 @@
    // Class to compute the elevation weights
 #include "ComputeElevWeights.hpp"
 
-
-
    // Class to store satellite precise navigation data
 #include "MSCStore.hpp"
+
+   // Class to convert the CC to NONCC.
+#include "CC2NONCC.hpp"
+
+  // Class to read and store the receiver type.
+#include "RecTypeDataReader.hpp"
 
 
 using namespace std;
@@ -209,6 +213,9 @@ private:
       // Option for monitor coordinate file
    CommandOptionWithAnyArg mscFileOpt;
 
+      // Option for p1c1 dcb file
+   CommandOptionWithAnyArg dcbFileListOpt;
+
       // Option for monitor coordinate file
    CommandOptionWithAnyArg outputFileListOpt;
 
@@ -221,6 +228,7 @@ private:
    string clkFileListName;
    string eopFileListName;
    string mscFileName;
+   string dcbFileListName;
    string outputFileListName;
 
       // Configuration file reader
@@ -309,7 +317,11 @@ pppgnss::pppgnss(char* arg0)
    mscFileOpt( 'm',
                "mscFile",
    "file storing monitor station coordinates ",
-               true)
+               true),
+   dcbFileListOpt( 'D',
+               "dcbFile",
+   "file storing P1-C1 DCB ",
+               false)
 {
 
       // This option may appear just once at CLI
@@ -558,6 +570,10 @@ void pppgnss::spinUp()
    {
       mscFileName = mscFileOpt.getValue()[0];
    }
+   if(dcbFileListOpt.getCount())
+   {
+      dcbFileListName = dcbFileListOpt.getValue()[0];
+   }
 
 }  // End of method 'pppgnss::spinUp()'
 
@@ -671,7 +687,6 @@ void pppgnss::process()
 
    }  // End of 'if(...)'
 
-
       //***********************
       // Let's read clock files
       //***********************
@@ -772,7 +787,47 @@ void pppgnss::process()
       exit(-1);
    }
 
-      //**********************************************************
+      //***********************
+      // Let's read DCB files
+      //***********************
+
+      // Read and store dcb data
+   DCBDataReader dcbStore;
+
+   if(dcbFileListOpt.getCount() )
+   {
+         // Now read dcb file from 'dcbFileName'
+      ifstream dcbFileListStream;
+
+         // Open dcbFileList File
+      dcbFileListStream.open(dcbFileListName.c_str(), ios::in);
+      if(!dcbFileListStream)
+      {
+            // If file doesn't exist, issue a warning
+         cerr << "dcb file List Name '" << dcbFileListName << "' doesn't exist or you don't "
+              << "have permission to read it." << endl;
+         exit(-1);
+      }
+
+      string dcbFile;
+
+         // Here is just a dcb file, we only read one month's dcb data.
+      while(dcbFileListStream >> dcbFile)
+      {
+         try
+         {
+            dcbStore.open(dcbFile);
+         }
+         catch(FileMissingException e)
+         {
+            cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
+                 << endl;
+            exit(-1);
+         }
+      };
+
+      dcbFileListStream.close();
+   }    //**********************************************************
       // Now, Let's perform the pppgnss for each rinex files
       //**********************************************************
 
@@ -880,6 +935,14 @@ void pppgnss::process()
             // Close current Rinex observation stream
          rin.close();
 
+           // Index for rinex file iterator.
+         ++rnxit;
+            // Index for output file iterator.
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
+
          continue;
 
       }  // End of 'try-catch' block
@@ -907,6 +970,11 @@ void pppgnss::process()
 
             // Index for rinex file iterator.
          ++rnxit;
+            // Index for output file iterator.
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
 
          continue;
       }
@@ -921,7 +989,25 @@ void pppgnss::process()
 
          // MSC data for this station
       initialTime.setTimeSystem(TimeSystem::Unknown);
-      MSCData mscData( mscStore.findMSC( station, initialTime ) );
+      MSCData mscData;
+      try
+      {
+         mscData = mscStore.findMSC( station, initialTime );
+      }
+      catch (InvalidRequest& ie)
+      {
+         	// If file doesn't exist, issue a warning
+         cerr << "The station " << station 
+              << " isn't included in MSC file." << endl;
+
+         ++rnxit;
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
+         continue;
+      }
+
       initialTime.setTimeSystem(TimeSystem::GPS);
 
          // The former peculiar code is possible because each time we
@@ -934,19 +1020,37 @@ void pppgnss::process()
          // the processing objects in order
       ProcessingList pList;
 
-         // This object will check that all required observables are present
-      RequireObservables requireObs;
-      requireObs.addRequiredType(TypeID::P2);
-      requireObs.addRequiredType(TypeID::L1);
-      requireObs.addRequiredType(TypeID::L2);
-      
       bool usingGPS     (confReader.getValueAsBoolean( "useGPS" ));
       bool usingGlonass (confReader.getValueAsBoolean( "useGlonass" ));
       bool usingGalileo (confReader.getValueAsBoolean( "useGalileo" ));
       bool usingBeiDou  (confReader.getValueAsBoolean( "useBeiDou" ));
+
+          // Declare a CC2NONCC object
+      CC2NONCC cc2noncc(dcbStore);
+         // Read the receiver type file.
+      cc2noncc.loadRecTypeFile( confReader.getValue("recTypeFile"));
+
+      cc2noncc.setRecType(roh.recType);
+      cc2noncc.setCopyC1ToP1(true);
+
+         // Add to processing list
+      pList.push_back(cc2noncc);
+
+         // This object will check that all required observables are present
+      RequireObservables requireObs;
+          
+             // for GPS 
+      if (usingGPS)
+      {
+        requireObs.addRequiredType(TypeID::P1); 
+        requireObs.addRequiredType(TypeID::P2);    
+        requireObs.addRequiredType(TypeID::L1);    
+        requireObs.addRequiredType(TypeID::L2);    
+      }
              // for Glonass     
       if (usingGlonass)
       {
+        requireObs.addGLORequiredType(TypeID::P1); 
         requireObs.addGLORequiredType(TypeID::P2);    
         requireObs.addGLORequiredType(TypeID::L1);    
         requireObs.addGLORequiredType(TypeID::L2);    
@@ -972,36 +1076,16 @@ void pppgnss::process()
          // This object will check that code observations are within
          // reasonable limits
       SimpleFilter pObsFilter;
-      pObsFilter.setFilteredType(TypeID::P2);
 
-         // Read if we should use C1 instead of P1
-	 // for GPS
-      bool usingGPSC1( confReader.getValueAsBoolean( "useGPSC1" ) );
-         // for Glonass
-      bool usingGLOC1( confReader.getValueAsBoolean( "useGLOC1" ) );
-
-      if ( usingGPSC1 )
+      if ( usingGPS )
       {
-         requireObs.addRequiredType(TypeID::C1);
-         pObsFilter.addFilteredType(TypeID::C1);
-      }
-      else
-      {
-         requireObs.addRequiredType(TypeID::P1);
          pObsFilter.addFilteredType(TypeID::P1);
+         pObsFilter.addFilteredType(TypeID::P2);
     
       }
          // for Glonass
-      if ( usingGlonass && usingGLOC1 )
+      if (usingGlonass)
       {
-	 
-         requireObs.addGLORequiredType(TypeID::C1);
-         pObsFilter.addGLOFilteredType(TypeID::C1);
-         pObsFilter.addGLOFilteredType(TypeID::P2);
-      }
-      else if (usingGlonass)
-      {
-         requireObs.addGLORequiredType(TypeID::P1);
          pObsFilter.addGLOFilteredType(TypeID::P1);
          pObsFilter.addGLOFilteredType(TypeID::P2);
       }
@@ -1050,30 +1134,16 @@ void pppgnss::process()
          // Object to compute linear combinations for cycle slip detection
       ComputeLinear linear1;
 
-         // Read if we should use C1 instead of P1
-      if ( usingGPSC1 )
-      {
-         linear1.addLinear(comb.pdeltaCombWithC1);
-         linear1.addLinear(comb.mwubbenaCombWithC1);
-      }
-      else
+      if (usingGPS)
       {
          linear1.addLinear(comb.pdeltaCombination);
          linear1.addLinear(comb.mwubbenaCombination);
+         linear1.addLinear(comb.ldeltaCombination);
+         linear1.addLinear(comb.liCombination);
       }
 
-      linear1.addLinear(comb.ldeltaCombination);
-      linear1.addLinear(comb.liCombination);
               // for Glonass
-      if (usingGlonass && usingGLOC1)
-      {
-	  
-   	linear1.addGlonassLinear(comb.pdeltaCombForGLOWithC1);
-   	linear1.addGlonassLinear(comb.ldeltaCombForGlonass);
-   	linear1.addGlonassLinear(comb.mwubbenaCombForGLOWithC1);
-   	linear1.addGlonassLinear(comb.liCombination);
-      } 
-      else if (usingGlonass)
+      if (usingGlonass)
       {
 	  
    	linear1.addGlonassLinear(comb.pdeltaCombForGlonass);
@@ -1102,10 +1172,10 @@ void pppgnss::process()
       pList.push_back(linear1);       // Add to processing list
 
          // Objects to mark cycle slips
-      LICSDetector markCSLI;         // Checks LI cycle slips
+      LICSDetector markCSLI;          // Checks LI cycle slips
       pList.push_back(markCSLI);      // Add to processing list
       MWCSDetector markCSMW;          // Checks Merbourne-Wubbena cycle slips
-      pList.push_back(markCSMW);       // Add to processing list
+      pList.push_back(markCSMW);      // Add to processing list
 
 
          // Object to keep track of satellite arcs
@@ -1127,15 +1197,12 @@ void pppgnss::process()
       BasicModel basic(nominalPos, SP3EphList);
          // Set the minimum elevation
       basic.setMinElev(confReader.getValueAsDouble("cutOffElevation"));
-         // If we are going to use P1 instead of C1, we must reconfigure 'basic'
-      if ( !usingGPSC1 )
-      {
-         basic.setDefaultObservable(TypeID::P1);
-      }
+         
+         // for GPS and Glonass
+      basic.setDefaultObservable(TypeID::P1);
+
          // Add to processing list
       pList.push_back(basic);
-
-
 
 
          // Object to compute weights based on elevation
@@ -1259,34 +1326,18 @@ void pppgnss::process()
       pList.push_back(computeTropo);       // Add to processing list
 
 
-      
-
          // Object to compute ionosphere-free combinations to be used
          // as observables in the pppgnss processing
       ComputeLinear linear3;
 
-         // Read if we should use C1 instead of P1
-      if ( usingGPSC1 )
-      {
-            // WARNING: When using C1 instead of P1 to compute PC combination,
-            //          be aware that instrumental errors will NOT cancel,
-            //          introducing a bias that must be taken into account by
-            //          other means. This won't be taken into account in this
-            //          example.
-         linear3.addLinear(comb.pcCombWithC1);
-      }
-      else
+      if ( usingGPS )
+      
       {
          linear3.addLinear(comb.pcCombination);
+         linear3.addLinear(comb.lcCombination);
       }
-      linear3.addLinear(comb.lcCombination);
 
-      if (usingGlonass && usingGLOC1)
-      {
-  	 linear3.addGlonassLinear(comb.pcCombForGLOWithC1);
-  	 linear3.addGlonassLinear(comb.lcCombForGlonass);
-      }
-      else if (usingGlonass)
+      if (usingGlonass)
       {
   	 linear3.addGlonassLinear(comb.pcCombForGlonass);
   	 linear3.addGlonassLinear(comb.lcCombForGlonass);
@@ -1304,11 +1355,12 @@ void pppgnss::process()
       }
       pList.push_back(linear3);       // Add to processing list
 
-
          // Declare a simple filter object to screen PC
       SimpleFilter pcFilter;
-      pcFilter.setFilteredType(TypeID::PC);
-
+      if (usingGPS)
+      {
+        pcFilter.setFilteredType(TypeID::PC);
+      }
       if (usingGlonass)
       {
       	pcFilter.addGLOFilteredType(TypeID::PC);
@@ -1337,8 +1389,12 @@ void pppgnss::process()
       PhaseCodeAlignment phaseAlign;
       pList.push_back(phaseAlign); 
          // Object to compute prefit-residuals
-      ComputeLinear linear4(comb.pcPrefit);
-      linear4.addLinear(comb.lcPrefit);
+      ComputeLinear linear4;
+      if (usingGPS)
+      {
+        linear4.addLinear(comb.pcPrefit);
+        linear4.addLinear(comb.lcPrefit);
+      }
       
       if (usingGlonass)
       {
@@ -1359,7 +1415,6 @@ void pppgnss::process()
       }
 
       pList.push_back(linear4);       // Add to processing list
-
 
          // Declare a base-changing object: From ECEF to North-East-Up (NEU)
       XYZ2NEU baseChange(nominalPos);
@@ -1478,7 +1533,7 @@ void pppgnss::process()
          {
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
-	     //gRin.keepOnlySatSystem(SatID::systemGalileo);
+	    // gRin.keepOnlySatSystem(SatID::systemBeiDou);
 	     gRin >> pList;
          
          

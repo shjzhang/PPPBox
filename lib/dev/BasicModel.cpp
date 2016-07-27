@@ -181,11 +181,9 @@ namespace gpstk
                continue;    // Skip this SV if problems arise
 
             }
-
                // Let's test if satellite has enough elevation over horizon
             if ( rxPos.elevationGeodetic(cerange.svPosVel) < minElev )
             {
-
                   // Mark this satellite if it doesn't have enough elevation
                satRejectedSet.insert( (*stv).first );
 
@@ -211,6 +209,33 @@ namespace gpstk
 
                // When using pseudorange method, this is 1.0
             (*stv).second[TypeID::cdt] = 1.0;
+	       // prepare for the class SolverPPPGNSS
+	       // we will estimate the inter-system bias between GPS and Galileo
+	       // and bias between GPS and BeiDou using the PPP method
+	    if ((*stv).first.system == SatID::systemGPS)
+	    {
+              (*stv).second[TypeID::ISB_GLO] = 0.0;
+              (*stv).second[TypeID::ISB_GAL] = 0.0;
+              (*stv).second[TypeID::ISB_BDS] = 0.0;
+            }
+	    else if ((*stv).first.system == SatID::systemGlonass)
+	    {
+              (*stv).second[TypeID::ISB_GLO] = 1.0;
+              (*stv).second[TypeID::ISB_GAL] = 0.0;
+              (*stv).second[TypeID::ISB_BDS] = 0.0;
+            }
+	    else if ((*stv).first.system == SatID::systemGalileo)
+	    {
+              (*stv).second[TypeID::ISB_GLO] = 0.0;
+              (*stv).second[TypeID::ISB_GAL] = 1.0;
+              (*stv).second[TypeID::ISB_BDS] = 0.0;
+            }
+	    else if ((*stv).first.system == SatID::systemBeiDou)
+	    {
+              (*stv).second[TypeID::ISB_GLO] = 0.0;
+              (*stv).second[TypeID::ISB_GAL] = 0.0;
+              (*stv).second[TypeID::ISB_BDS] = 1.0;
+            }
 
                // Now we have to add the new values to the data structure
             (*stv).second[TypeID::rho] = cerange.rawrange;
