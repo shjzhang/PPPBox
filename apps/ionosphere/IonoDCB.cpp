@@ -421,50 +421,43 @@ void IonoDCB::process()
    }  // End of 'if(...)'
 
 
-      // Read P1-C1 DCB files
-   CC2NONCC cc2noncc;
-   bool hasDCBFile(false);
-   if(dcbFileListOpt.getCount())
-  {
-   ifstream dcbFileListStream;
-      // Open dcbFileList File
-   dcbFileListStream.open(dcbFileListName.c_str(), ios::in);
-   if(!dcbFileListStream)
-   {
-         // If file doesn't exist, issue a warning
-      cerr << "DCB file List Name'" << dcbFileListName << "' doesn't exist or you don't "
-           << "have permission to read it. Skipping it." << endl;
+      // Read and store dcb data
+   DCBDataReader dcbStore;
 
-      exit(-1);
-   }
-
-   string dcbFile;
-   while( dcbFileListStream >> dcbFile )
+   if(dcbFileListOpt.getCount() )
    {
-      try
-      {
-         
-         	// Read the receiver type file.
-	string recTypeFile("recType.list");
-		
-	       // Read the DCB file.
-	cc2noncc.setDCBFile(dcbFile); 
-	
-	cc2noncc.setRecTypeFile(recTypeFile);    
-	hasDCBFile = true;
-      }
-      catch (FileMissingException& e)
+         // Now read dcb file from 'dcbFileName'
+      ifstream dcbFileListStream;
+
+         // Open dcbFileList File
+      dcbFileListStream.open(dcbFileListName.c_str(), ios::in);
+      if(!dcbFileListStream)
       {
             // If file doesn't exist, issue a warning
-         cerr << "DCB file '" << dcbFile << "' doesn't exist or you don't "
-              << "have permission to read it. Skipping it." << endl;
-         continue;
+         cerr << "dcb file List Name '" << dcbFileListName << "' doesn't exist or you don't "
+              << "have permission to read it." << endl;
+         exit(-1);
       }
-   }
-      // Close file
-   dcbFileListStream.close();
-  }
 
+      string dcbFile;
+
+         // Here is just a dcb file, we only read one month's dcb data.
+      while(dcbFileListStream >> dcbFile)
+      {
+         try
+         {
+            dcbStore.open(dcbFile);
+         }
+         catch(FileMissingException e)
+         {
+            cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
+                 << endl;
+            exit(-1);
+         }
+      };
+
+      dcbFileListStream.close();
+   }  
       //**********************************************************
       // Now, Let's perform the IonoDCB for each rinex files
       //**********************************************************
@@ -636,16 +629,23 @@ void IonoDCB::process()
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order
       ProcessingList pList;
-      if (hasDCBFile)
+
+         // Convert C1 to P1 
+      if(dcbFileListOpt.getCount() )
       {
-      	 // Get the receiver type
-       string recType = roh.recType;
-	    // Convert CC to NONCC 
-       cc2noncc.setRecType(recType);
-	    // Copy C1 to P1
-       cc2noncc.setCopyC1ToP1(true);
-       pList.push_back(cc2noncc); 
+         // Declare a CC2NONCC object
+         CC2NONCC cc2noncc(dcbStore);
+         // Read the receiver type file.
+         cc2noncc.loadRecTypeFile ("recType.list");
+
+         cc2noncc.setRecType(roh.recType);
+         cc2noncc.setCopyC1ToP1(true);
+
+         // Add to processing list
+         pList.push_back(cc2noncc);
+
       }
+
          // This object will check that all required observables are present
       RequireObservables requireObs;
       requireObs.addRequiredType(TypeID::P2);
