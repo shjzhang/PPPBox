@@ -153,6 +153,12 @@ namespace gpstk
                it != gData.end();
                ++it )
          {
+	       // for BeiDou B1
+	    if ((*it).first.system == SatID::systemBeiDou)
+            {
+	       watchCSFlag = TypeID::CSL2;	
+            }
+
             try
             {
                   // Try to extract the CS flag value
@@ -214,12 +220,13 @@ namespace gpstk
 
                // We will insert satellite arc number
             (*it).second[TypeID::satArc] = satArcMap[ (*it).first ];
-
+               // set default watchCSFlag
+	    watchCSFlag = TypeID::CSL1;
          }
 
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);
-
+             
          return gData;
 
       }
@@ -303,3 +310,4 @@ namespace gpstk
 
 
 }  // End of namespace gpstk
+

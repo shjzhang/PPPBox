@@ -107,50 +107,71 @@ bool cc2noncc::initialize(int argc, char *argv[])
 void cc2noncc::process()
 {
    try{
-	      // Get input files from command line arguments
-		string infile = inFileOption.getValue().front();
-		string recTypeFile = recTypeFileOption.getValue().front();
-		string DCBfile = DCBFileOption.getValue().front();
-		string outfile = outFileOption.getValue().front();
+         // Get input files from command line arguments
+      string infile = inFileOption.getValue().front();
+      string recTypeFile = recTypeFileOption.getValue().front();
+      string dcbFile = DCBFileOption.getValue().front();
+      string outfile = outFileOption.getValue().front();
 
-        cout << "Start processing " << infile << endl;
-		  // Create input observation file stream
-		RinexObsStream rin;
+      cout << "Start processing " << infile << endl;
+        // Create input observation file stream
+      RinexObsStream rin;
 
-		  // Enable exceptions
-		rin.exceptions(ios::failbit);
-	      // Read and store the input RINEX file.
-		rin.open(infile, std::ios::in );
-		
-		
-		  // Let's read the header firstly!!!!
-		RinexObsHeader roh;
-		rin >> roh;
-		  // Read the receiver from RINEX file's header section.
-		string recType;  
-		recType = roh.recType;
-		
-		CC2NONCC cc2noncc;
-		cc2noncc.setRecType(recType);
-		cc2noncc.setDCBFile(DCBfile);
-		cc2noncc.setRecTypeFile(recTypeFile);
+        // Enable exceptions
+      rin.exceptions(ios::failbit);
+
+         // Read and store the input RINEX file.
+      rin.open(infile, std::ios::in );
+      
+      
+        // Let's read the header firstly!!!!
+      RinexObsHeader roh;
+      rin >> roh;
+
+        // Read the receiver from RINEX file's header section.
+      string recType;  
+      recType = roh.recType;
+      
+      DCBDataReader dcbP1C1;
+      try
+      {
+         dcbP1C1.open(dcbFile);
+      }
+      catch(FileMissingException e)
+      {
+         if(dcbFile=="")
+         {
+            cerr << "Warning! The DCB file is not provided!" 
+                 <<endl;
+         }
+         if(dcbFile!="")
+         {
+            cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
+      	   	  <<endl;
+            exit(-1);
+         }
+      }
+
+      CC2NONCC cc2noncc(dcbP1C1);
+      cc2noncc.setRecType(recType);
+      cc2noncc.loadRecTypeFile(recTypeFile);
 
       SimpleFilter filter;
       filter.addFilteredType(TypeID::C1);
       filter.addFilteredType(TypeID::P2);
-		
-		  // Create output observation file stream
-		RinexObsStream out(outfile, ios::out);
-		out << roh;
-		
-	      // Create a gnssRinex object
-		gnssRinex gRin;
-		while(rin >> gRin)
-		{
-			gRin >> filter;
-			gRin >> cc2noncc;
-			out << gRin;
-		}
+      
+        // Create output observation file stream
+      RinexObsStream out(outfile, ios::out);
+      out << roh;
+      
+         // Create a gnssRinex object
+      gnssRinex gRin;
+      while(rin >> gRin)
+      {
+         gRin >> filter;
+         gRin >> cc2noncc;
+         out << gRin;
+      }
         cout << "Finish cc2noncc! " << endl;
 	} // end of try{} 
    catch(InvalidRequest& e)
@@ -181,7 +202,7 @@ int main( int argc, char*argv[] )
    try
    {
       cc2noncc fc("cc2noncc", 
-	  "Convert the cc(uses cross-correlation tenique) to noncc.");
+     "Convert the cc(uses cross-correlation tenique) to noncc.");
       if (!fc.initialize(argc, argv)) return(false);
       fc.run();
    }
@@ -198,3 +219,4 @@ int main( int argc, char*argv[] )
    return 0;
 }
 
+// End of cc2noncc
