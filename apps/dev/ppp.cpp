@@ -938,6 +938,7 @@ void ppp::process()
          // and deletes it from the given variable list.
       Position nominalPos( mscData.coordinates );
 
+      cout << nominalPos << endl;
 
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order

@@ -173,7 +173,10 @@ void SSC2MSC::process()
 					RefEpoch.year = 2000 + RefEpoch.year;
 					EarliestEffect.year = 2000 + EarliestEffect.year;
 				}
-				else std::cerr << "Invalid RefEpoch!" << std::endl;
+				else 
+            {
+               std::cerr << "Invalid RefEpoch!" << std::endl;
+            }
 				
 					// make sure the coordinates have values
 				if (sd.coordinates[0] != 0.0 && 
