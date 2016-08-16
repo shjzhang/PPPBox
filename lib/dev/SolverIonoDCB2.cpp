@@ -19,7 +19,7 @@
 //
 //  Revision
 //
-//  2016/05/12, add the P1-C1 DCB for satellite and receivers
+//  2016/05/12, add the P1-C1 DCB for satellites and receivers
 //
 //=============================================================================
 /**
@@ -29,7 +29,6 @@
 #include "SolverIonoDCB2.hpp"
 #include "MatrixFunctors.hpp"
 #include "geometry.hpp"      // DEG_TO_RAD
-#include <cmath> 
 
 using namespace std;
 using namespace gpstk::StringUtils;
@@ -102,8 +101,8 @@ namespace gpstk
    {
    
 
-          // - "currSatSet" stores satellites currently in view, and it is
-          //   related with the number of measurements.
+          // "currSatSet" stores satellites currently in view, and it is
+          // related with the number of measurements.
           // Get a set with all satellites present in this GDS
       currSatSet = gData.getSatIDSet();
           // Get the number of satellites currently visible
@@ -113,9 +112,11 @@ namespace gpstk
       int numRec(recSet.size());
     
       gnssDataMap gMap = gData.extractSourceID(p1p2RecSet);
-         // Firstly, estimate the p1-c1 dcb
-      p1c1Estimate(gMap,p1p2RecSet);
-      
+         // Firstly, estimate the p1-c1 dcb 
+      if (!p1p2RecSet.empty())
+      {
+      	p1c1Estimate(gMap,p1p2RecSet);
+      }
           // Number of SH coefficients
           // there are 13 sets of coefficients in a day,
           // correspnding to  0h, 2h, 4h...,24h respectively
@@ -218,20 +219,25 @@ namespace gpstk
 
               int satPos=std::distance(currSatSet.begin(),currSatSet.find(*itSat)); 
 		// attention : PI is defined as P2-P1 , there we using -PI(P1-P2)
-		// as measVector
+		// as measurements
               if ( isC1P2Rec )
               {
 	         std::map<SatID,double>::iterator it = satP1C1DCB.find(*itSat);
                  if (it != satP1C1DCB.end())
                  {  
-                   double p1c1dcb(it->second);  
+                   double p1c1dcb(it->second);
                     // there the P1-C1 DCB for satellite are eliminated from the observation
-                   measVector(count) = (-piCom(seq))/mapFun(seq)*(-9.52437);
+                   measVector(count) = (-piCom(seq)+p1c1dcb/dcbFactor)/mapFun(seq)*(-9.52437);
                  } 
+		 else
+		 {  
+		     // if can not find the P1-C1 DCB, ignore it
+	           measVector(count) = -piCom(seq)/mapFun(seq)*(-9.52437);	     
+		 }
               }
-
               else
               {
+		    // for P1P2RecSet
                  measVector(count) = -piCom(seq)/mapFun(seq)*(-9.52437); 
               }
 
@@ -241,7 +247,6 @@ namespace gpstk
               {
                  weightVector(seq) = 1.0;
               }
-         ;
              	  // the coefficient of P1-P2 DCB for receiver and satellite
               hVector(recPos) = hVector(satPos+numRec) = coefDCB ;
               index.push_back(recPos);
@@ -255,7 +260,7 @@ namespace gpstk
                               * std::cos(DEG_TO_RAD*lon(seq)-DEG_TO_RAD*NGPLon));
 	   
 	        // transform geographic longitude into Sun-fixed longitude 
-               double lonFixed = DEG_TO_RAD*lon(seq)+second*M_PI/43200.0 - M_PI;
+               double lonFixed = DEG_TO_RAD*lon(seq)+second*PI/43200.0 - PI;
 
 	       double u = std::sin(Lat);
                int i = 0;
@@ -535,7 +540,7 @@ namespace gpstk
      
      else 
      {
-       cerr<<asString(rec).substr(0,10)<<"is not found!";	
+       cerr<<"The P1-P2 DCB for "<<asString(rec).substr(0,10)<<" is not found!"<<endl;	
        return 0.0;
      }
 
@@ -551,7 +556,7 @@ namespace gpstk
      
      else 
      {
-       cerr<<asString(sat)<<"is not found!";	
+       cerr<<"The P1-P2 DCB for "<<asString(sat)<<" is not found!"<<endl;	
        return 0.0;
      }
    }
@@ -566,7 +571,7 @@ namespace gpstk
      
      else 
      {
-       cerr<<asString(sat)<<"is not found!";	
+       cerr<<"The P1-C1 DCB for "<<asString(sat)<<" is not found!"<<endl;	
        return 0.0;
      }
    }
