@@ -77,9 +77,6 @@
 
    // Class to estimate the DCBs and ionosphere models using a Spherical
    // Harmonic expansion
-   // Kalman filter method
-//#include "SolverIonoDCB.hpp"
-   //LS method
 #include "SolverIonoDCB2.hpp"
    // Class to compute the elevation weights
 #include "ComputeElevWeights.hpp"
@@ -772,7 +769,7 @@ void IonoDCB::process()
 
         // Object to smooth PI 
      PISmoother smoothPI;
-     smoothPI.setMaxWindowSize(35);
+     smoothPI.setMaxWindowSize(8);
      pList.push_back(smoothPI);       // Add to processing list
 
       // Initialize the GetIPP
@@ -804,11 +801,11 @@ void IonoDCB::process()
        SourceID source(gRin.header.source);
        if (usingC1)
        {
-        C1P2RecSet.insert(source); 	   
+   	   C1P2RecSet.insert(source); 	   
        }
        else
        {
-        P1P2RecSet.insert(source);	   
+           P1P2RecSet.insert(source);	   
        }
 
        try
@@ -918,40 +915,6 @@ void IonoDCB::process()
        <<outputFileName.c_str()<<endl;
   
 
- 
-
-     // define a tolerance(1 hour) for gnssDataMap 
-     // the Data in (epoch-tolerance,epoch+tolerance) will be extracted
- //  double tol=0.1;
- //  gData.setTolerance(tol);
-//SourceIDSet sourSet = gdsMap.getSourceIDSet();
-// SatIDSet satSet = gdsMap.getSatIDSet();
-    // loop epochs
- /* for (gnssDataMap::const_iterator it= gdsMap.begin();
-       it!= gdsMap.end(); )
-   {
-     CommonTime epoch = it->first; 
-     cout<<epoch<<endl;
-     double second = epoch.getSecondOfDay();
-   //  if ((static_cast<int>(second)%static_cast<int>(2*tol))==0)
-    // {
-	  gnssDataMap gData = gdsMap.getDataFromEpoch(epoch);
-	  SourceIDSet tempSet = gData.getSourceIDSet();
-  	    
-         if (tempSet.size()==sourSet.size())
-	  {
-           ionoDCBSolver.Process(epoch, gData,satSet);
-	   ionoDCBSolver.getSolution();
-        
-          }
-		  
-    // }
-	 // move the iterator to the next epoch
-     std::advance(it,tempSet.size());
-  }
- 
-  return;
-*/
 }  // End of 'IonoDCB::process()'
 
 
