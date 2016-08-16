@@ -215,6 +215,9 @@ namespace gpstk
       virtual SimpleFilter& addFilteredType(const TypeID& type)
       { filterTypeSet.insert(type); return (*this); };
 
+      virtual SimpleFilter& addGLOFilteredType(const TypeID& type)
+      { GLOFilterTypeSet.insert(type); return (*this); };
+
       virtual SimpleFilter& addGALFilteredType(const TypeID& type)
       { GALFilterTypeSet.insert(type); return (*this); };
 
@@ -266,6 +269,8 @@ namespace gpstk
 
          /// Set of types to be filtered
       TypeIDSet filterTypeSet;
+
+      TypeIDSet GLOFilterTypeSet;
 
       TypeIDSet GALFilterTypeSet;
 

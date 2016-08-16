@@ -59,6 +59,7 @@ namespace gpstk
          double flagObs1(0.0);
          double flagObs2(0.0);
          double weight(0.0);
+	 double satArcNo(0.0);
 
          SatIDSet satRejectedSet;
 
@@ -75,6 +76,8 @@ namespace gpstk
                codeObs  = (*it).second(codeType);
                   // using L2-L1 smoothing P2-P1
                phaseObs = -(*it).second(phaseType);
+                  // get the SatArc number
+	       satArcNo = (*it).second[TypeID::satArc];
 
             }
             catch(...)
@@ -126,7 +129,8 @@ namespace gpstk
                                                      phaseObs,
                                                      flagObs1,
                                                      flagObs2,
-                                                     weight);
+                                                     weight,
+						     satArcNo);
 
                // Find weight in '(*it).second'
             typeValueMap::iterator ittvm = (*it).second.find(TypeID::weight);
@@ -199,7 +203,8 @@ namespace gpstk
                                     const double& phase,
                                     const double& flag1,
                                     const double& flag2,
-                                    double& weight)
+                                    double& weight,
+				    double& satArcNo)
    {
 
 
@@ -207,13 +212,14 @@ namespace gpstk
     
 
          // In case we have a cycle slip either in L1 or L2
-      if ( (flag1!=0.0) || (flag2!=0.0) )
+      if ( (flag1!=0.0) || (flag2!=0.0) || (SmoothingData[sat].satArc != satArcNo ))
       {
             // Prepare the structure for the next iteration
          SmoothingData[sat].previousCode = code;
          SmoothingData[sat].previousPhase = phase;
          SmoothingData[sat].previousVar = varPI; // Set the variance of PI as 1.0m;
          SmoothingData[sat].windowSize = 1;
+	 SmoothingData[sat].satArc = satArcNo ;
 
             // We don't need any further processing
          return code;
@@ -247,17 +253,9 @@ namespace gpstk
          // As window size "n" increases, the former formula gives more
          // weight to the previous smoothed code CSn-1 plus the phase bias
          // (Ln - Ln-1), and less weight to the current code observation Cn
-
-      if ((std::abs(phase-prevPhase)) > 20.0 ) // set a limit between phase and prePhase
-      {
-           smoothedCode = code ;     
-		   SmoothingData[sat].windowSize = 1;
-      } 
-      else
-      {
-        smoothedCode = (code + (wSize-1.0)*( prevCode + (phase-prevPhase) ) ) / wSize;
+      
+      smoothedCode = (code + (wSize-1.0)*( prevCode + (phase-prevPhase) ) ) / wSize;
        
-      }
          // The variance of PI is 1.0m;
       varSmCode = (varPI + (wSize-1.0)*(wSize-1.0)*prevVar ) /(wSize*wSize);
 

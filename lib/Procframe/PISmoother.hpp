@@ -224,11 +224,12 @@ namespace gpstk
       {
             // Default constructor initializing the data in the structure
          filterData() 
-            : windowSize(1), previousCode(0.0), 
+            : windowSize(1), satArc(1.0),previousCode(0.0), 
               previousPhase(0.0), previousVar(0.0)
          {};
 
          int windowSize;       ///< The filter window size.
+	 double satArc;           ///< The satArc number.
          double previousCode;  ///< Accumulated mean bias (pseudorange - phase).
          double previousPhase; ///< Accumulated mean bias sigma squared.
          double previousVar;   ///< variance for smoothed code.
@@ -254,7 +255,8 @@ namespace gpstk
                                    const double& phase,
                                    const double& flag1,
                                    const double& flag2,
-                                   double& weight);
+                                   double& weight,
+				   double& satArc);
 #pragma clang diagnostic pop
 
          /// This method is out of reach in this class.

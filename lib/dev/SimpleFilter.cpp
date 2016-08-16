@@ -62,8 +62,14 @@ namespace gpstk
 
          for (it = gData.begin(); it != gData.end(); ++it) 
          {
+	       // for Glonass
+	    if ((*it).first.system == SatID::systemGlonass
+		 && !GLOFilterTypeSet.empty() )
+	    {
+	      setFilteredType(GLOFilterTypeSet);
+	    }
 	       // for Galileo
-	    if ((*it).first.system == SatID::systemGalileo 
+	    else if ((*it).first.system == SatID::systemGalileo 
 		 && !GALFilterTypeSet.empty() )
 	    {
 	      setFilteredType(GALFilterTypeSet);
@@ -73,7 +79,7 @@ namespace gpstk
 		     && !BDSFilterTypeSet.empty())
 	    {
 	      setFilteredType(BDSFilterTypeSet);
-	       // BeiDou has a few GEO satellites, needs to change the max limit
+	       // for GEO and IGSO satellites, needs to change the max limit
 	      setMaxLimit(45000000.0);
 	    }    
 
@@ -83,7 +89,7 @@ namespace gpstk
 
             for (pos = filterTypeSet.begin(); pos != filterTypeSet.end(); ++pos)
             {
-            
+                  
               double value(0.0);
 	      try
 	      {
@@ -106,15 +112,13 @@ namespace gpstk
                }
             }
 
-               // Before checking next TypeID, let's remove satellites with
-               // data out of bounds
-            gData.removeSatID(satRejectedSet);
-
               // set default filter type 
 	    setFilteredType(GPSFilterTypeSet);
 	    setMaxLimit(defaultMaxLimit);
          }
 
+             // let's remove satellites with data out of bounds
+         gData.removeSatID(satRejectedSet);
 
          return gData;
 
