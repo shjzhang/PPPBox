@@ -454,7 +454,7 @@ void pppgnss::printModel( ofstream& modelfile,
          // Print epoch
       modelfile << static_cast<YDSTime>(time).year         << "  ";    // Year           #1
       modelfile << static_cast<YDSTime>(time).doy          << "  ";    // DayOfYear      #2
-      modelfile << static_cast<YDSTime>(time).sod    << "  ";    // SecondsOfDay   #3
+      modelfile << static_cast<YDSTime>(time).sod  	   << "  ";    // SecondsOfDay   #3
 
          // Print satellite information (Satellite system and ID number)
       modelfile << (*it).first << " ";             // System         #4
@@ -593,6 +593,8 @@ void pppgnss::process()
       // values or clocks
    SP3EphList.rejectBadPositions(true);
    SP3EphList.rejectBadClocks(true);
+      // Set clock max interval ( 5min )
+   SP3EphList.setClockMaxInterval(300.0);
 
       // Now read sp3 files from 'sp3FileList'
    ifstream sp3FileListStream;
@@ -630,6 +632,8 @@ void pppgnss::process()
       //***********************
    
    Rinex3NavStream rNavStream;
+   rNavStream.exceptions(ios::failbit); // Enable exception
+
    Rinex3NavData rNavData;
        // Container to store the Glonass satellite frequency number 
    std::map<RinexSatID,int>  FreqNumber;
@@ -657,9 +661,19 @@ void pppgnss::process()
          {     
 	     
             rNavStream.open(GloNavFile.c_str(),std::ios::in);
+         }
+         catch (...)
+         {
+               // If file doesn't exist, issue a warning
+            cerr << "Problem opening file '" << GloNavFile <<"'."<< endl;
+	    cerr << "Maybe it doesn't exist or you don't "
+                 << "have permission to read it." << endl;
 
-            while (rNavStream >> rNavData)
-	    {
+            exit(-1);
+         }
+	 	  // read Glonass Nav File
+          while (rNavStream >> rNavData)
+	  {
 		  // initilize the Glophemeis
 	       GloEphemeris GloEph(rNavData);	
 	          // get PRN ID
@@ -670,16 +684,9 @@ void pppgnss::process()
 	       RinexSatID sat(prn,SatID::systemGlonass);
 
 	       FreqNumber[sat] = freqNo;
-	    }
+	   }
 
-         }
-         catch (FileMissingException& e)
-         {
-               // If file doesn't exist, issue a warning
-            cerr << "Glonass navigation file '" << GloNavFile << "' doesn't exist or you don't "
-                 << "have permission to read it. Skipping it." << endl;
-            continue;
-         }
+	   rNavStream.close();
       }
 
          // Close file
@@ -1031,8 +1038,9 @@ void pppgnss::process()
       CC2NONCC cc2noncc(dcbStore);
          // Read the receiver type file.
       cc2noncc.loadRecTypeFile( confReader.getValue("recTypeFile"));
-
-      cc2noncc.setRecType(roh.recType);
+         // warning: change receiver type to upper case, if not,
+	 // some receiver type(lower case) can not be find in receiver_bernese.lis
+      cc2noncc.setRecType(upperCase(roh.recType));
       cc2noncc.setCopyC1ToP1(true);
 
          // Add to processing list
