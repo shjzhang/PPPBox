@@ -392,7 +392,7 @@ namespace gpstk
                   
                   // Compute variance 
                   // Var(i) = Var(i-1) + [ ( mw(i) - meanMW)^2/(i)- 1*Var(i-1) ]/(i);
-                  //acoording to Equations3.2,zhang ,2009. change 1/i to 1/(i^2)*( mw(i) - meanMW)^2
+                  // acoording to Equations3.2,zhang ,2009. change 1/i to 1/(i^2)*( mw(i) - meanMW)^2
                   // not used yet
                   MWData[sat].varMW  += ( mwBias*mwBias -MWData[sat].varMW ) / size;
                   
