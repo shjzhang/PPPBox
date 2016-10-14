@@ -36,8 +36,8 @@ void MergeRinClk::process(){
    RinexClockHeaderTouchHeaderMerge merged;
    fff.touchHeader(merged);
 
-   fff.sort(RinexClockDataOperatorLessThanFull());
-   fff.unique(RinexClockDataOperatorEquals());
+// fff.sort(RinexClockDataOperatorLessThanFull());
+// fff.unique(RinexClockDataOperatorEquals());
 
    std::string outputFile = outputFileOption.getValue().front();
    fff.writeFile(outputFile, merged.theHeader);

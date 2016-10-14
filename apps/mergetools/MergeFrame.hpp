@@ -67,11 +67,11 @@ public:
          inputFileOption('i',
                          "input",
                          "An input " + type +
-                         " file, can be repeated as many times as needed.",
+                         "file, can be repeated as many times as needed.",
                          true),
          outputFileOption('o',
                           "output",
-                          "Name for the merged output " + type + " file. Any "
+                          "Name for the merged output " + type + " file. Any \n"
                           "existing file with that name will be overwritten.", 
                           true)
       {
@@ -81,7 +81,7 @@ public:
 #pragma clang diagnostic ignored "-Woverloaded-virtual"
    virtual bool initialize(int argc, char* argv[]) throw()
       {
-         return gpstk::BasicFramework::initialize(argc, argv);
+         return gpstk::BasicFramework::initialize(argc, argv, true);
       }
 #pragma clang diagnostic pop
 protected:

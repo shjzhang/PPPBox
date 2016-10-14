@@ -6,7 +6,8 @@ proj="ppp"
 # get the rinex file list
 ##############################
 > $proj.rnxlist
-get_rnx.sh -b "2011 10 1 0 0 0" -e "2011 10 2  0 0 0" -i 24 -a "IGS" -u "../../tables/url.list" -s "$proj.stalist" -l "$proj" -p "$HOME/data/IGS/data"  
+get_rnx.sh -b "2011 10 1 0 0 0" -e "2011 10 3 0 0 0" -i 24 -t "IGS_OBS" -u "../../tables/url.list" -s "$proj.stalist" -l "$proj" -p "$HOME/data/IGS/data"  
+
 
 ##############################
 # get the ephemeris file list
@@ -14,7 +15,8 @@ get_rnx.sh -b "2011 10 1 0 0 0" -e "2011 10 2  0 0 0" -i 24 -a "IGS" -u "../../t
 > $proj.ephlist
 > $proj.clklist
 > $proj.erplist
-get_eph.sh -b "2011 10 1 0 0 0" -e "2011 10 2 0 0 0" -i 24 -a "IGS" -u "../../tables/url.list" -t "type.list" -l "$proj" -p "$HOME/data/IGS/data" 
+get_eph.sh -b "2011 10 1 0 0 0" -e "2011 10 3 0 0 0" -i 24 -t "type.list" -u "../../tables/url.list" -l "$proj" -p "$HOME/data/IGS/data" 
+
 
 ##############################
 # get the msc file list
@@ -43,5 +45,5 @@ do
 done
 
 # now, Let's perform the ppp positioning
-ppp -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -m msc.txt -D $proj.dcb_p1c1list -o $proj.outlist
+ppp -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -m msc.txt -D $proj.dcblist -o $proj.outlist
 

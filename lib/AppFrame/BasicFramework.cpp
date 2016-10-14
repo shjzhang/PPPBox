@@ -81,7 +81,9 @@ namespace gpstk
 
       if (helpOption.getCount())
       {
+         
          cop.displayUsage(cerr, pretty);
+
          return false;
       }
 
