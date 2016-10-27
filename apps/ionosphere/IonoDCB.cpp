@@ -117,7 +117,7 @@ protected:
 
 
 private:
-  
+
             // Option for rinex file list
    CommandOptionWithAnyArg rnxFileListOpt;
 
@@ -139,11 +139,8 @@ private:
      // Option for the interval(unit: h)
    CommandOptionWithAnyArg intervalOpt;
 
- 
-
       // If you want to share objects and variables among methods, you'd
       // better declare them here
-   
    string rnxFileListName;
    string sp3FileListName;
    string clkFileListName;
@@ -303,23 +300,23 @@ void IonoDCB::printSolution(  ofstream& outfile,
      for (int n = 0;n <=order;n++)
      {
        for (int m = 0; m <=n;m++)
-      {
-      
-       if (m == 0)
-       { 
-        outfile<<setw(3)<<n<<setw(9)<<m<<setw(12)<<ionoCoef(i)<<endl;
-       }
-      
-       else
        {
-         outfile<<setw(3)<<n<<setw(9)<<m<<setw(12)<<ionoCoef(i)<<endl;
+      
+         if (m == 0)
+         { 
+             outfile<<setw(3)<<n<<setw(9)<<m<<setw(12)<<ionoCoef(i)<<endl;
+         }
+      
+         else
+         {
+             outfile<<setw(3)<<n<<setw(9)<<m<<setw(12)<<ionoCoef(i)<<endl;
+             i++;
+             outfile<<setw(3)<<n<<setw(9)<<-m<<setw(12)<<ionoCoef(i)<<endl;
+         }
          i++;
-         outfile<<setw(3)<<n<<setw(9)<<-m<<setw(12)<<ionoCoef(i)<<endl;
        }
-      i++;
-     }
      
-   }
+     }
 
   }  // End for (int index ...)
      
@@ -357,7 +354,7 @@ void IonoDCB::process()
 
       exit(-1);
    }
-
+   
    string sp3File;
    while( sp3FileListStream >> sp3File )
    {
@@ -780,7 +777,7 @@ void IonoDCB::process()
          // GNSS-related information
      gnssRinex gRin;
         // just store the type needed to reduce the memory consumption
-	// if using global stations to compute, the memory consumption
+        // if using global stations to compute, the memory consumption
 	// is very huge
      TypeIDSet typeNeed;
      typeNeed.insert(TypeID::PI);
@@ -796,50 +793,50 @@ void IonoDCB::process()
      {
 
             // Store current epoch
-       CommonTime time(gRin.header.epoch);
+        CommonTime time(gRin.header.epoch);
             // Store source
-       SourceID source(gRin.header.source);
-       if (usingC1)
-       {
-   	   C1P2RecSet.insert(source); 	   
-       }
-       else
-       {
+        SourceID source(gRin.header.source);
+        if (usingC1)
+        {
+           C1P2RecSet.insert(source); 	   
+        }
+        else
+        {
            P1P2RecSet.insert(source);	   
-       }
+        }
 
-       try
-         {
+        try
+        {
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
             gRin >> pList;
-	      // add gRin into gnssDataMap
+	  	    // add gRin into gnssDataMap
      	    gRin.keepOnlyTypeID(typeNeed);
 
             gdsMap.addGnssRinex(gRin); 
-         }
-         catch(DecimateEpoch& d)
-         {
+        }
+        catch(DecimateEpoch& d)
+        {
                // If we catch a DecimateEpoch exception, just continue.
             continue;
-         }
-         catch(SVNumException& s)
-         {
+        }
+        catch(SVNumException& s)
+        {
                // If we catch a SVNumException, just continue.
             continue;
-         }
-         catch(Exception& e)
-         {
+        }
+        catch(Exception& e)
+        {
             cerr << "Exception for receiver '" << station <<
                     "' at epoch: " << time << "; " << e << endl;
             continue;
-         }
-         catch(...)
-         {
+	}
+        catch(...)
+        {
             cerr << "Unknown exception for receiver '" << station <<
                     " at epoch: " << time << endl;
             continue;
-         }
+        }
        
       }  // End of 'while(rin >> gRin)'
 
@@ -849,16 +846,10 @@ void IonoDCB::process()
       ++rnxit;
 
    }  // end of 'while (...)'
-      //***********************************************
-      //
-      // At last, Let's clear the content of SP3/EOP/MSC object
-      //
-      //***********************************************
-   SP3EphList.clear();
 
-   cout<<"Preprocessing done ! Start to estimate DCBs ..."<<endl;
+    cout<<"Preprocessing done ! Start to estimate DCBs ..."<<endl;
      // initialize the class 
-   SolverIonoDCB2 ionoDCBSolver2(maxOrder);
+    SolverIonoDCB2 ionoDCBSolver2(maxOrder);
 
   
     outit = outputFileListVec.begin();
@@ -868,11 +859,11 @@ void IonoDCB::process()
        // Let's open the output file
     if( outputFileListOpt.getCount() )
     {
-      outputFileName = (*outit);
+       outputFileName = (*outit);
     }
     else
     {
-     outputFileName = string("IonoDCB.out");
+       outputFileName = string("IonoDCB.out");
     }
 
     ofstream outfile;
@@ -901,19 +892,21 @@ void IonoDCB::process()
        ionoDCBSolver2.Process(gData,P1P2RecSet,C1P2RecSet,interval);
        printSolution(outfile,interval,maxOrder,ionoDCBSolver2,
                      epoch1,epoch2,gData);     
-      }    
+     }    
    } 
    else // using the data of one day to estimate DCBs
    {
-    ionoDCBSolver2.Process(gdsMap,P1P2RecSet,C1P2RecSet,24);
+     ionoDCBSolver2.Process(gdsMap,P1P2RecSet,C1P2RecSet,24);
    
-    printSolution(outfile,24,maxOrder,ionoDCBSolver2,
+     printSolution(outfile,24,maxOrder,ionoDCBSolver2,
                   epochFirst,epochLast,gdsMap); 
    } 
    
    cout<<"Esitmating DCBs done ! Results have been written into "
        <<outputFileName.c_str()<<endl;
-  
+
+      // At last , clear the SP3 object
+   SP3EphList.clear();
 
 }  // End of 'IonoDCB::process()'
 
