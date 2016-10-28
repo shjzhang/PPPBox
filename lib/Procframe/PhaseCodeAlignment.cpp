@@ -100,33 +100,33 @@ namespace gpstk
 
          SatIDSet satRejectedSet;
           // a copy of GPS watchCSFlag and GPS LC wavelength
-	 TypeID csFlag = watchCSFlag;
-	 double wavelength = phaseWavelength;
+         TypeID csFlag = watchCSFlag;
+         double wavelength = phaseWavelength;
             // Loop through all the satellites
          for( satTypeValueMap::iterator it = gData.begin();
               it != gData.end();
               ++it )
          {
-	    if ((*it).first.system == SatID::systemGlonass)
-	    {
-		 // get L1 wavelength
-	      double L1Wavelength = getWavelength((*it).first,1,(*it).second[TypeID::FreqNo]);
-	         // get L2 wavelength;
-	      double L2Wavelength = getWavelength((*it).first,2,(*it).second[TypeID::FreqNo]);
+            if ((*it).first.system == SatID::systemGlonass)
+            {
+                 // get L1 wavelength
+              double L1Wavelength = getWavelength((*it).first,1,(*it).second[TypeID::FreqNo]);
+                 // get L2 wavelength;
+              double L2Wavelength = getWavelength((*it).first,2,(*it).second[TypeID::FreqNo]);
                  // LC wavelegnth of this satellite
-	      double LCWavelength = 2.53125*L1Wavelength - 1.53125*L2Wavelength;
-	      
-	      setPhaseWavelength(LCWavelength); 
-	    }
-	    else if ((*it).first.system == SatID::systemGalileo)
-	    {
-	      setPhaseWavelength(0.108941358884) ; // Galileo LC wavelength	
-	    }
-	    else if ((*it).first.system == SatID::systemBeiDou)
-	    {
-	      setPhaseWavelength(0.1082972115435) ; // BeiDou LC wavelength	
-	      setCSFlag(TypeID::CSL2);            // BeiDou B1 
-	    }
+              double LCWavelength = 2.53125*L1Wavelength - 1.53125*L2Wavelength;
+              
+              setPhaseWavelength(LCWavelength); 
+            }
+            else if ((*it).first.system == SatID::systemGalileo)
+            {
+              setPhaseWavelength(0.108941358884) ; // Galileo LC wavelength     
+            }
+            else if ((*it).first.system == SatID::systemBeiDou)
+            {
+              setPhaseWavelength(0.1082972115435) ; // BeiDou LC wavelength     
+              setCSFlag(TypeID::CSL2);            // BeiDou B1 
+            }
 
 
                // Check if satellite currently has entries
@@ -239,8 +239,8 @@ namespace gpstk
             (*it).second[phaseType] = (*it).second[phaseType]
                                       + svData[(*it).first].offset;
               // for the next satellite 
-	    setCSFlag(csFlag);
-	    setPhaseWavelength(wavelength);
+            setCSFlag(csFlag);
+            setPhaseWavelength(wavelength);
          }
 
             // Remove satellites with missing data

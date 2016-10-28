@@ -90,17 +90,17 @@ namespace gpstk
            {
 
                // Compute phase center offsets
-	    if ((*it).first.system == SatID::systemGPS)
-	    {
+            if ((*it).first.system == SatID::systemGPS)
+            {
                 L1PhaseCenter = antenna.getAntennaEccentricity( Antenna::G01 );
                 L2PhaseCenter = antenna.getAntennaEccentricity( Antenna::G02 );
             }
-	       // for Glonass
-	    else if ((*it).first.system == SatID::systemGlonass)
-	    {
+               // for Glonass
+            else if ((*it).first.system == SatID::systemGlonass)
+            {
                 L1PhaseCenter = antenna.getAntennaEccentricity( Antenna::R01 );
                 L2PhaseCenter = antenna.getAntennaEccentricity( Antenna::R02 );
-	    }
+            }
               // warning : The PCO and PCV of antenna for Galileo and BeiDou are not avaliable now
           }
 
@@ -161,7 +161,7 @@ namespace gpstk
                // Declare the variables where antenna PC variations
                // will be stored. Only values for L1 and L2 will be
                // computed, in UEN system
-	      
+              
             Triple L1Var( 0.0, 0.0, 0.0 );
             Triple L2Var( 0.0, 0.0, 0.0 );
 
@@ -186,17 +186,17 @@ namespace gpstk
                      {
                
                            // Compute phase center variation values
-			if ((*it).first.system == SatID::systemGPS)
-			{
+                        if ((*it).first.system == SatID::systemGPS)
+                        {
                            L1Var = antenna.getAntennaPCVariation( Antenna::G01,elev );
                            L2Var = antenna.getAntennaPCVariation( Antenna::G02,elev );
-			}
-			   // for Glonass
-			else if ((*it).first.system == SatID::systemGlonass)
-			{
+                        }
+                           // for Glonass
+                        else if ((*it).first.system == SatID::systemGlonass)
+                        {
                            L1Var = antenna.getAntennaPCVariation( Antenna::R01,elev );
                            L2Var = antenna.getAntennaPCVariation( Antenna::R02,elev );
-			}
+                        }
 
                      }
                      catch(InvalidRequest& ir)
@@ -227,27 +227,27 @@ namespace gpstk
                         try
                         {
                               // Compute phase center variation values
-			   if ((*it).first.system == SatID::systemGPS)
-			   {
+                           if ((*it).first.system == SatID::systemGPS)
+                           {
                               L1Var = antenna.getAntennaPCVariation( Antenna::G01,
-			                                             elev,
-								     azim );
+                                                                     elev,
+                                                                     azim );
 
                               L2Var = antenna.getAntennaPCVariation( Antenna::G02,
                                                                      elev,
                                                                      azim );
-			   }
-			      // for Glonass
-			   else if ((*it).first.system == SatID::systemGlonass)
-			   {
+                           }
+                              // for Glonass
+                           else if ((*it).first.system == SatID::systemGlonass)
+                           {
                               L1Var = antenna.getAntennaPCVariation( Antenna::R01,
-			                                             elev,
-								     azim );
+                                                                     elev,
+                                                                     azim );
 
                               L2Var = antenna.getAntennaPCVariation( Antenna::R02,
                                                                      elev,
                                                                      azim );
-			   }
+                           }
 
                         }
                         catch(InvalidRequest& ir)
@@ -257,21 +257,21 @@ namespace gpstk
                            {
 
                                  // Compute phase center variation values
-		              if ((*it).first.system == SatID::systemGPS)
-			      {
+                              if ((*it).first.system == SatID::systemGPS)
+                              {
                                   L1Var = antenna.getAntennaPCVariation( Antenna::G01,
                                                                          elev );
                                   L2Var = antenna.getAntennaPCVariation( Antenna::G02,
                                                                          elev );
-			      }
-				 // for Glonass
-		              else if ((*it).first.system == SatID::systemGlonass)
-			      {
+                              }
+                                 // for Glonass
+                              else if ((*it).first.system == SatID::systemGlonass)
+                              {
                                   L1Var = antenna.getAntennaPCVariation( Antenna::R01,
                                                                          elev );
                                   L2Var = antenna.getAntennaPCVariation( Antenna::R02,
                                                                          elev );
-			      }
+                              }
 
                            }
                            catch(InvalidRequest& ir)
@@ -346,7 +346,7 @@ namespace gpstk
                // Find which observables are present, and then
                // apply corrections
                // Look for C1
-	    if ( (*it).second.find(TypeID::C1) != (*it).second.end() )
+            if ( (*it).second.find(TypeID::C1) != (*it).second.end() )
             {
                (*it).second[TypeID::C1] = (*it).second[TypeID::C1] + corrL1;
             };
@@ -357,25 +357,25 @@ namespace gpstk
             };
 
                // Look for L1
-	    if ( (*it).second.find(TypeID::L1) != (*it).second.end() )
+            if ( (*it).second.find(TypeID::L1) != (*it).second.end() )
             {
                (*it).second[TypeID::L1] = (*it).second[TypeID::L1] + corrL1;
             };
 
                // Look for C2
-	    if	( (*it).second.find(TypeID::C2) != (*it).second.end() )
+            if  ( (*it).second.find(TypeID::C2) != (*it).second.end() )
             {
                (*it).second[TypeID::C2] = (*it).second[TypeID::C2] + corrL2;
             };
 
                // Look for P2
-	    if ( (*it).second.find(TypeID::P2) != (*it).second.end() )
+            if ( (*it).second.find(TypeID::P2) != (*it).second.end() )
             {
                (*it).second[TypeID::P2] = (*it).second[TypeID::P2] + corrL2;
             };
 
                // Look for L2
-	    if	( (*it).second.find(TypeID::L2) != (*it).second.end() )
+            if  ( (*it).second.find(TypeID::L2) != (*it).second.end() )
             {
                (*it).second[TypeID::L2] = (*it).second[TypeID::L2] + corrL2;
             };
@@ -429,8 +429,8 @@ namespace gpstk
             };
 
               // prepare for the next satellite
-	    L1PhaseCenter[0] = L1PhaseCenter[1] = L1PhaseCenter[2] = 0.0;
-	    L2PhaseCenter[0] = L2PhaseCenter[1] = L2PhaseCenter[2] = 0.0;
+            L1PhaseCenter[0] = L1PhaseCenter[1] = L1PhaseCenter[2] = 0.0;
+            L2PhaseCenter[0] = L2PhaseCenter[1] = L2PhaseCenter[2] = 0.0;
          }
 
             // Remove satellites with missing data

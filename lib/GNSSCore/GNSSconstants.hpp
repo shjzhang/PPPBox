@@ -313,9 +313,9 @@ namespace gpstk
             else if(n == 5) return L5_WAVELENGTH_GEO;
             break;
          case SatID::systemBeiDou:
-            //MGEX data uses 2    
-	         if(n == 1) return L1_WAVELENGTH_BDS;
-                 if(n == 2) return L1_WAVELENGTH_BDS;
+                    //MGEX data uses 2    
+                 if(n == 1) return L1_WAVELENGTH_BDS;
+            else if(n == 2) return L1_WAVELENGTH_BDS;
             else if(n == 7) return L2_WAVELENGTH_BDS;
             else if(n == 6) return L3_WAVELENGTH_BDS;
             break;

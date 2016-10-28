@@ -85,33 +85,33 @@ namespace gpstk
       {
 
          SatIDSet satRejectedSet;
-	       // a copy of GPS requiredTypeIDSet
-	 TypeIDSet GPSRequiredTypeSet = requiredTypeSet;
+               // a copy of GPS requiredTypeIDSet
+         TypeIDSet GPSRequiredTypeSet = requiredTypeSet;
             // Loop through all the satellites
          for ( satTypeValueMap::iterator satIt = gData.begin();
                satIt != gData.end();
                ++satIt )
          {
-	      // get the SatelliteSystem
-	    SatID::SatelliteSystem system = (*satIt).first.system;
+              // get the SatelliteSystem
+            SatID::SatelliteSystem system = (*satIt).first.system;
             if (system == SatID::systemGlonass)
-	    {
-	       setRequiredType(GLORequiredTypeSet);	
-	    }
-	    else if (system == SatID::systemGalileo)
-	    {
-	       setRequiredType(GALRequiredTypeSet);	
-	    }
-	    else if (system == SatID::systemBeiDou)
-	    {
-	       setRequiredType(BDSRequiredTypeSet);	
-	    }
-            
-	    
-               // Check all the indicated TypeID's
-	    if (requiredTypeSet.empty())
             {
-	      satRejectedSet.insert( (*satIt).first );	
+               setRequiredType(GLORequiredTypeSet);     
+            }
+            else if (system == SatID::systemGalileo)
+            {
+               setRequiredType(GALRequiredTypeSet);     
+            }
+            else if (system == SatID::systemBeiDou)
+            {
+               setRequiredType(BDSRequiredTypeSet);     
+            }
+            
+            
+               // Check all the indicated TypeID's
+            if (requiredTypeSet.empty())
+            {
+              satRejectedSet.insert( (*satIt).first );  
             }
 
             for ( TypeIDSet::const_iterator typeIt = requiredTypeSet.begin();
@@ -133,7 +133,7 @@ namespace gpstk
 
             }
              // set to default requiredTypeSet
-	     setRequiredType(GPSRequiredTypeSet);
+             setRequiredType(GPSRequiredTypeSet);
 
          }
 

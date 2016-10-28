@@ -128,13 +128,13 @@ namespace gpstk
                it != gData.end();
                ++it )
          {
-	    SatID::SatelliteSystem system = (*it).first.system;
+            SatID::SatelliteSystem system = (*it).first.system;
                
-	       // for BeiDou B1
+               // for BeiDou B1
             if (system == SatID::systemBeiDou)
             {
-	       watchCSFlag = TypeID::CSL2;	
-	    }
+               watchCSFlag = TypeID::CSL2;      
+            }
 
             try
             {
@@ -212,8 +212,8 @@ namespace gpstk
 
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);
-	     // default
-	 watchCSFlag = TypeID::CSL1;
+             // default
+         watchCSFlag = TypeID::CSL1;
 
          return gData;
 

@@ -90,23 +90,23 @@ namespace gpstk
          satTypeValueMap::iterator it;
          for (it = gData.begin(); it != gData.end(); ++it)
          {
-	    SatID::SatelliteSystem system = (*it).first.system;
+            SatID::SatelliteSystem system = (*it).first.system;
                   // for Galileo E1/E5a 
-	    if (system == SatID::systemGalileo)
+            if (system == SatID::systemGalileo)
             {
-	      lliType1 = TypeID::LLI1;
-	      lliType2 = TypeID::LLI5;
-	      resultType1 = TypeID::CSL1;
-	      resultType2 = TypeID::CSL5;
-       	    }
+              lliType1 = TypeID::LLI1;
+              lliType2 = TypeID::LLI5;
+              resultType1 = TypeID::CSL1;
+              resultType2 = TypeID::CSL5;
+            }
                  // for BeiDou B1/B2
-	    else if (system == SatID::systemBeiDou)
+            else if (system == SatID::systemBeiDou)
             {
-	      lliType1 = TypeID::LLI2;
-	      lliType2 = TypeID::LLI7;
-	      resultType1 = TypeID::CSL2;
-	      resultType2 = TypeID::CSL7;
-       	    }
+              lliType1 = TypeID::LLI2;
+              lliType2 = TypeID::LLI7;
+              resultType1 = TypeID::CSL2;
+              resultType2 = TypeID::CSL7;
+            }
             try
             {
                   // Try to extract the values
@@ -167,9 +167,9 @@ namespace gpstk
 
               // default
             lliType1 = TypeID::LLI1;
-	    lliType2 = TypeID::LLI2;
-	    resultType1 = TypeID::CSL1;
-	    resultType2 = TypeID::CSL2;
+            lliType2 = TypeID::LLI2;
+            resultType1 = TypeID::CSL1;
+            resultType2 = TypeID::CSL2;
          }
 
             // Remove satellites with missing data

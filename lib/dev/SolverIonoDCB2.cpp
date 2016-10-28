@@ -107,7 +107,7 @@ namespace gpstk
       currSatSet = gData.getSatIDSet();
           // Get the number of satellites currently visible
       int numCurrentSV( currSatSet.size() );
-	  // Get the number of receivers
+          // Get the number of receivers
       recSet = gData.getSourceIDSet();
       int numRec(recSet.size());
     
@@ -115,7 +115,7 @@ namespace gpstk
          // Firstly, estimate the p1-c1 dcb 
       if (!p1p2RecSet.empty())
       {
-      	p1c1Estimate(gMap,p1p2RecSet);
+        p1c1Estimate(gMap,p1p2RecSet);
       }
           // Number of SH coefficients
           // there are 13 sets of coefficients in a day,
@@ -125,7 +125,7 @@ namespace gpstk
 
       numMeas = 0; //Reset numMeas
             
-	    // Total number of unknowns:
+            // Total number of unknowns:
             // P1-P2 DCB  for all receivers
             // P1-P2 DCB for satellites
             // ionospheric coefficients  
@@ -133,20 +133,20 @@ namespace gpstk
 
           //get the number of measurements
        for (gnssDataMap::const_iterator itEpoch = gData.begin();
-	    itEpoch != gData.end(); ++itEpoch)
+            itEpoch != gData.end(); ++itEpoch)
        {
  
-	 for (sourceDataMap::const_iterator itSour = (itEpoch->second).begin();
-	      itSour != (itEpoch->second).end(); ++itSour)
-	{
+         for (sourceDataMap::const_iterator itSour = (itEpoch->second).begin();
+              itSour != (itEpoch->second).end(); ++itSour)
+        {
           numMeas += (itSour->second).numSats();
-	
-	}
+        
+        }
 
        }
-	 
-	 CommonTime epochBegin( gData.begin()->first );
-	 double secondBegin = epochBegin.getSecondOfDay();
+         
+         CommonTime epochBegin( gData.begin()->first );
+         double secondBegin = epochBegin.getSecondOfDay();
          int timeBegin = int(secondBegin/7200.0);
               // resize the matrix  
          NormMatrix.resize(numUnknowns,numUnknowns,0.0);
@@ -157,12 +157,12 @@ namespace gpstk
          
          int count = 0;
             // fill the hMatrix and measVector according to the order of receivers
-	 for (SourceIDSet::const_iterator itSour = recSet.begin();
-	      itSour != recSet.end(); ++itSour)
-	 {
-	  SourceID rec(*(itSour));
+         for (SourceIDSet::const_iterator itSour = recSet.begin();
+              itSour != recSet.end(); ++itSour)
+         {
+          SourceID rec(*(itSour));
           
-	  bool isC1P2Rec(false);
+          bool isC1P2Rec(false);
               // distinguish the receiver type of this station
           SourceIDSet::iterator it = c1p2RecSet.find(rec);
           if ( it != c1p2RecSet.end() )
@@ -170,74 +170,74 @@ namespace gpstk
              isC1P2Rec = true;
           }
               // get the sequence number of this receiver in the recSet
-	  int recPos= std::distance(recSet.begin(),recSet.find(rec));
+          int recPos= std::distance(recSet.begin(),recSet.find(rec));
 
-	    // extract the gnssDataMap of this receiver
+            // extract the gnssDataMap of this receiver
           gnssDataMap tempMap(gData.extractSourceID(rec));
            
               // loop epochs
           for (gnssDataMap::const_iterator itEpoch = tempMap.begin();
-	         itEpoch != tempMap.end(); ++itEpoch)
-	  {
-	    CommonTime epoch(itEpoch->first);
-	         // get the second of this epoch , will be used to transform geographic
-	         // longitude into Sun-fixed longitude
-	    double second = epoch.getSecondOfDay();
+                 itEpoch != tempMap.end(); ++itEpoch)
+          {
+            CommonTime epoch(itEpoch->first);
+                 // get the second of this epoch , will be used to transform geographic
+                 // longitude into Sun-fixed longitude
+            double second = epoch.getSecondOfDay();
             
             double t = second/7200.0;
             int t1 = int(t);
             int t2 = t1 + 1;
             
             sourceDataMap tempSourMap(itEpoch->second);
-		 // the SatIDSet corresponding to this receiver
-	    SatIDSet tempSatSet = tempSourMap.getSatIDSet();
+                 // the SatIDSet corresponding to this receiver
+            SatIDSet tempSatSet = tempSourMap.getSatIDSet();
    
-	    int seq = 0;
+            int seq = 0;
             satTypeValueMap dummy(tempSourMap[rec]);
                   // extract the PI combination
-	    Vector<double> piCom(dummy.getVectorOfTypeID(TypeID::PI));
+            Vector<double> piCom(dummy.getVectorOfTypeID(TypeID::PI));
 
-		 // the latitude of ionospheric pierce points
-	    Vector<double> lat(dummy.getVectorOfTypeID(TypeID::LatIPP));
+                 // the latitude of ionospheric pierce points
+            Vector<double> lat(dummy.getVectorOfTypeID(TypeID::LatIPP));
 
-		 // the longitude of ionospheric pierce points
-	    Vector<double> lon(dummy.getVectorOfTypeID(TypeID::LonIPP));
+                 // the longitude of ionospheric pierce points
+            Vector<double> lon(dummy.getVectorOfTypeID(TypeID::LonIPP));
              
                  // the weight of PI
-	    Vector<double> weightVector(dummy.getVectorOfTypeID(TypeID::weight));
-	         // the mapping function value
-	    Vector<double> mapFun(dummy.getVectorOfTypeID(TypeID::ionoMap));
+            Vector<double> weightVector(dummy.getVectorOfTypeID(TypeID::weight));
+                 // the mapping function value
+            Vector<double> mapFun(dummy.getVectorOfTypeID(TypeID::ionoMap));
 
                // loop in the SatIDSet
-	    for (SatIDSet::const_iterator itSat = tempSatSet.begin();
-		 itSat != tempSatSet.end(); ++itSat)
+            for (SatIDSet::const_iterator itSat = tempSatSet.begin();
+                 itSat != tempSatSet.end(); ++itSat)
             {
                // record the position of element which is not zero
-	      std::vector<int> index;  
+              std::vector<int> index;  
           
               hVector.resize(numUnknowns,0.0);
 
               int satPos=std::distance(currSatSet.begin(),currSatSet.find(*itSat)); 
-		// attention : PI is defined as P2-P1 , there we using -PI(P1-P2)
-		// as measurements
+                // attention : PI is defined as P2-P1 , there we using -PI(P1-P2)
+                // as measurements
               if ( isC1P2Rec )
               {
-	         std::map<SatID,double>::iterator it = satP1C1DCB.find(*itSat);
+                 std::map<SatID,double>::iterator it = satP1C1DCB.find(*itSat);
                  if (it != satP1C1DCB.end())
                  {  
                    double p1c1dcb(it->second);
                     // there the P1-C1 DCB for satellite are eliminated from the observation
                    measVector(count) = (-piCom(seq)+p1c1dcb/dcbFactor)/mapFun(seq)*(-9.52437);
                  } 
-		 else
-		 {  
-		     // if can not find the P1-C1 DCB, ignore it
-	           measVector(count) = -piCom(seq)/mapFun(seq)*(-9.52437);	     
-		 }
+                 else
+                 {  
+                     // if can not find the P1-C1 DCB, ignore it
+                   measVector(count) = -piCom(seq)/mapFun(seq)*(-9.52437);           
+                 }
               }
               else
               {
-		    // for P1P2RecSet
+                    // for P1P2RecSet
                  measVector(count) = -piCom(seq)/mapFun(seq)*(-9.52437); 
               }
 
@@ -247,44 +247,44 @@ namespace gpstk
               {
                  weightVector(seq) = 1.0;
               }
-             	  // the coefficient of P1-P2 DCB for receiver and satellite
+                  // the coefficient of P1-P2 DCB for receiver and satellite
               hVector(recPos) = hVector(satPos+numRec) = coefDCB ;
               index.push_back(recPos);
               index.push_back(satPos+numRec);
-	      
-		 // fill the SH coefficients	
+              
+                 // fill the SH coefficients    
                double Lat = DEG_TO_RAD*lat(seq);
                  // geomagnetic latitude
                Lat = std::asin(std::sin(DEG_TO_RAD*NGPLat)*std::sin(Lat)
                               + std::cos(DEG_TO_RAD*NGPLat)*std::cos(Lat)
                               * std::cos(DEG_TO_RAD*lon(seq)-DEG_TO_RAD*NGPLon));
-	   
-	        // transform geographic longitude into Sun-fixed longitude 
+           
+                // transform geographic longitude into Sun-fixed longitude 
                double lonFixed = DEG_TO_RAD*lon(seq)+second*PI/43200.0 - PI;
 
-	       double u = std::sin(Lat);
+               double u = std::sin(Lat);
                int i = 0;
-	      
-	       double tp1 = (t2-t)/(t2-t1);
-	       double tp2 = (t-t1)/(t2-t1);
+              
+               double tp1 = (t2-t)/(t2-t1);
+               double tp2 = (t-t1)/(t2-t1);
                
-	       int CoefStart(numRec+numCurrentSV+numSH*(t1-timeBegin));
+               int CoefStart(numRec+numCurrentSV+numSH*(t1-timeBegin));
 
-	       for (int n=0;n<=order;n++)
-	       {
-		 for (int m=0;m<=n;m++)
+               for (int n=0;n<=order;n++)
+               {
+                 for (int m=0;m<=n;m++)
                  {
-	           double p = legendrePoly(n,m,u)*norm(n,m);
+                   double p = legendrePoly(n,m,u)*norm(n,m);
                    if (m==0)
-		   {
+                   {
                       hVector(CoefStart+i) = p*tp1 ;//An0
                       hVector(CoefStart+i+numSH) = p * tp2;// Next An0
 
                       index.push_back(CoefStart+i);
                       index.push_back(CoefStart+i+numSH);
                     
-		   }
-	           else   
+                   }
+                   else   
                    {
                       hVector(CoefStart+i)= p*std::cos(m*lonFixed)*tp1;//Anm
                       hVector(CoefStart+i+numSH)=p*std::cos(m*lonFixed)*tp2;// Next Anm
@@ -301,12 +301,12 @@ namespace gpstk
                       index.push_back(CoefStart+i+numSH);
                    }
                    i++;
-		  }
-	       }
-		
-		  //In order to reduce the memory consumption
-		  //and speed up the process of matrix mutiplication
-		for (std::vector<int>::iterator it = index.begin();
+                  }
+               }
+                
+                  //In order to reduce the memory consumption
+                  //and speed up the process of matrix mutiplication
+                for (std::vector<int>::iterator it = index.begin();
                      it != index.end(); it++)
                 {
                  
@@ -322,8 +322,8 @@ namespace gpstk
                   }
 
                 }
-	      seq++;
-	      count++;
+              seq++;
+              count++;
            }  // End of 'for (SatIDSet::...)'       
 
          }  // End of for '(gnssDataMap::...)'
@@ -337,7 +337,7 @@ namespace gpstk
       consMatrix.resize(1,numUnknowns,0.0);
       for (int i = 0;i<numCurrentSV;i++)
       {
-         consMatrix(0,i+numRec)= 1.0;	 
+         consMatrix(0,i+numRec)= 1.0;    
       }
 
         // update NormMatrix
@@ -353,25 +353,25 @@ namespace gpstk
         // insert the result into corrsponding containers
       int i = 0;
       for (SourceIDSet::const_iterator it = recSet.begin();
-	   it != recSet.end(); it++)
+           it != recSet.end(); it++)
       {
-	    // Now, the unit of DCBs is ns
+            // Now, the unit of DCBs is ns
          recState[*(it)] = sol(i)*dcbFactor;
          i++;
       }
       
       for (SatIDSet::const_iterator it2 = currSatSet.begin();
-	   it2 != currSatSet.end(); it2++)
+           it2 != currSatSet.end(); it2++)
       {
          satState[*(it2)] = sol(i)*dcbFactor;
-	 
-	 i++;
+         
+         i++;
       }
 
       IonoCoef.resize(numIonoCoef,0.0);
       for (int j = 0; j< numIonoCoef;j++)
       {
-        IonoCoef(j) = sol(i);	  
+        IonoCoef(j) = sol(i);     
         i++;
       }
      
@@ -407,74 +407,74 @@ namespace gpstk
       {
           SourceID rec(*(it));
               // get the sequence number of this receiver in the recSet
-	  int recPos= std::distance(p1p2RecSet.begin(),p1p2RecSet.find(rec));
+          int recPos= std::distance(p1p2RecSet.begin(),p1p2RecSet.find(rec));
 
-	    // extract the gnssDataMap of this receiver
+            // extract the gnssDataMap of this receiver
           gnssDataMap tempMap(gdsMap.extractSourceID(rec));
 
-	        // get the observed satellite of this receiver
-	  SatIDSet tempSat(tempMap.getSatIDSet());
+                // get the observed satellite of this receiver
+          SatIDSet tempSat(tempMap.getSatIDSet());
 
           int numSat(tempSat.size());
 
-	  Matrix<double> aMatrix;
+          Matrix<double> aMatrix;
           aMatrix.resize(numSat,numUnknowns,0.0);
             // containers to store the mean C1-P1 DCB for this receiver
-	    // if have P1, usually also have C1
-	  Vector<double> mVector;
-	  mVector.resize(numSat,0.0);
-	  
+            // if have P1, usually also have C1
+          Vector<double> mVector;
+          mVector.resize(numSat,0.0);
+          
           int i(0);
 
-	  for (SatIDSet::const_iterator itSat = tempSat.begin();
-	       itSat != tempSat.end();++itSat)
-	  {   
+          for (SatIDSet::const_iterator itSat = tempSat.begin();
+               itSat != tempSat.end();++itSat)
+          {   
               
              double sumInst(0.0);
              int numEpoch(0);
 
              int satPos=std::distance(satSet.begin(),satSet.find(*itSat));
-	  
+          
              aMatrix(i,recPos) = aMatrix(i,satPos+numP1P2Rec) = 1.0;
 
                 // loop epochs
              for (gnssDataMap::const_iterator itEpoch = tempMap.begin();
-	          itEpoch != tempMap.end(); ++itEpoch)
+                  itEpoch != tempMap.end(); ++itEpoch)
              {
-	        CommonTime epoch(itEpoch->first);
+                CommonTime epoch(itEpoch->first);
                 double c1(0.0),p1(0.0);
-	        try
-		{
-		      // get C1 obervable
-		  c1 = tempMap.getValue(epoch,rec,*itSat,TypeID::C1);
-	              // get P1 observable
-		  p1 = tempMap.getValue(epoch,rec,*itSat,TypeID::P1);
-	        }
-		     // if can not find value, skip this epoch
-		catch (...)
-	        { 
-		  continue; 
-	        }
+                try
+                {
+                      // get C1 obervable
+                  c1 = tempMap.getValue(epoch,rec,*itSat,TypeID::C1);
+                      // get P1 observable
+                  p1 = tempMap.getValue(epoch,rec,*itSat,TypeID::P1);
+                }
+                     // if can not find value, skip this epoch
+                catch (...)
+                { 
+                  continue; 
+                }
 
-		sumInst += (p1-c1);   
-		 
-		numEpoch++;
+                sumInst += (p1-c1);   
+                 
+                numEpoch++;
 
-	      }
+              }
 
                // insert the mean value into map
              if (sumInst && numEpoch)
              {
-	        mVector(i) = sumInst/numEpoch;
+                mVector(i) = sumInst/numEpoch;
              }
               
              i++;
            }
 
-	       // update NMatrix and WVector
-	   NMatrix += transpose(aMatrix) * aMatrix;
-	   WVector += transpose(aMatrix) * mVector;	      
-	 
+               // update NMatrix and WVector
+           NMatrix += transpose(aMatrix) * aMatrix;
+           WVector += transpose(aMatrix) * mVector;           
+         
        } // End of 'for (SourceIDSet...)'
 
          // constraint condition
@@ -483,13 +483,13 @@ namespace gpstk
       consMatrix.resize(1,numUnknowns,0.0);
       for (int i = 0;i<numSV;i++)
       {
-         consMatrix(0,i+numP1P2Rec)= 1.0;	 
+         consMatrix(0,i+numP1P2Rec)= 1.0;        
       }
 
         // update NormMatrix
       NMatrix += transpose(consMatrix)*consMatrix;
 
-	
+        
         // estimate P1-C1 DCB using LS method
       Matrix<double> qMatrix;
     
@@ -535,12 +535,12 @@ namespace gpstk
      std::map<SourceID,double>::const_iterator it = recState.find(rec);
      if (it != recState.end())
      {
-       return (*it).second ;	 
+       return (*it).second ;     
      }
      
      else 
      {
-       cerr<<"The P1-P2 DCB for "<<asString(rec).substr(0,10)<<" is not found!"<<endl;	
+       cerr<<"The P1-P2 DCB for "<<asString(rec).substr(0,10)<<" is not found!"<<endl;  
        return 0.0;
      }
 
@@ -551,12 +551,12 @@ namespace gpstk
      std::map<SatID,double>::const_iterator it = satState.find(sat);
      if (it != satState.end())
      {
-       return (*it).second ;	 
+       return (*it).second ;     
      }
      
      else 
      {
-       cerr<<"The P1-P2 DCB for "<<asString(sat)<<" is not found!"<<endl;	
+       cerr<<"The P1-P2 DCB for "<<asString(sat)<<" is not found!"<<endl;       
        return 0.0;
      }
    }
@@ -566,12 +566,12 @@ namespace gpstk
      std::map<SatID,double>::const_iterator it = satP1C1DCB.find(sat);
      if (it != satP1C1DCB.end())
      {
-       return (*it).second ;	 
+       return (*it).second ;     
      }
      
      else 
      {
-       cerr<<"The P1-C1 DCB for "<<asString(sat)<<" is not found!"<<endl;	
+       cerr<<"The P1-C1 DCB for "<<asString(sat)<<" is not found!"<<endl;       
        return 0.0;
      }
    }
@@ -616,7 +616,7 @@ namespace gpstk
       else
       {
          return ((2.0*n-1.0)*u*legendrePoly(n-1,m,u)-(n+m-1.0)
-	                                      *legendrePoly(n-2,m,u))/(n-m);
+                                              *legendrePoly(n-2,m,u))/(n-m);
       }
       
    }  // End of method 'SolverIonoDCB2::legendrePoly()'

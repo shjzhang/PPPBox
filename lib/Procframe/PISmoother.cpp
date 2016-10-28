@@ -59,7 +59,7 @@ namespace gpstk
          double flagObs1(0.0);
          double flagObs2(0.0);
          double weight(0.0);
-	 double satArcNo(0.0);
+         double satArcNo(0.0);
 
          SatIDSet satRejectedSet;
 
@@ -77,7 +77,7 @@ namespace gpstk
                   // using L2-L1 smoothing P2-P1
                phaseObs = -(*it).second(phaseType);
                   // get the SatArc number
-	       satArcNo = (*it).second[TypeID::satArc];
+               satArcNo = (*it).second[TypeID::satArc];
 
             }
             catch(...)
@@ -130,7 +130,7 @@ namespace gpstk
                                                      flagObs1,
                                                      flagObs2,
                                                      weight,
-						     satArcNo);
+                                                     satArcNo);
 
                // Find weight in '(*it).second'
             typeValueMap::iterator ittvm = (*it).second.find(TypeID::weight);
@@ -204,7 +204,7 @@ namespace gpstk
                                     const double& flag1,
                                     const double& flag2,
                                     double& weight,
-				    double& satArcNo)
+                                    double& satArcNo)
    {
 
 
@@ -219,7 +219,7 @@ namespace gpstk
          SmoothingData[sat].previousPhase = phase;
          SmoothingData[sat].previousVar = varPI; // Set the variance of PI as 1.0m;
          SmoothingData[sat].windowSize = 1;
-	 SmoothingData[sat].satArc = satArcNo ;
+         SmoothingData[sat].satArc = satArcNo ;
 
             // We don't need any further processing
          return code;

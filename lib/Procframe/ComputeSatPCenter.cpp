@@ -341,7 +341,6 @@ namespace gpstk
 
                   // Get satellite antenna information out of AntexReader object
                Antenna antenna( pAntexReader->getAntenna( sat.str(), time ) );
-
                   //get PCO, NOTE: It is NOT in ECEF, it is in UEN!!!
                Triple satAnt( antenna.getAntennaEccentricity( Antenna::C01) );
                   // Now, get the phase center variation.

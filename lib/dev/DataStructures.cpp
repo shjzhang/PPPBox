@@ -3106,7 +3106,7 @@ in matrix and number of types do not match") );
       // function to fill gRin from  Rinex3Stream
    std::istream& FeedFromRinex3Obs( std::istream& i, 
                                 gnssRinex& f,
-				std::map<RinexSatID,int>& freqNo)
+                std::map<RinexSatID,int>& freqNo)
    {
       if( Rinex3ObsStream::IsRinex3ObsStream(i) )     // Rinex3
       {
@@ -3115,14 +3115,14 @@ in matrix and number of types do not match") );
          // If the header hasn't been read, read it...
          if(!strm.headerRead) strm >> strm.header;
 
-         // Clear out this object
+            // Clear out this object
          Rinex3ObsHeader& roh = strm.header;
-         // if glonass frequency number in the Rinex3ObsHeader is missed,
-	 // get it from the glonass navigation file
+           // if glonass frequency number in the Rinex3ObsHeader is missed,
+           // get it from the glonass navigation file
          if (roh.GlonassFreqNo.empty())
-	 {
-	   roh.GlonassFreqNo = freqNo;    
-	 }
+         {
+            roh.GlonassFreqNo = freqNo;    
+         }
 
          Rinex3ObsData rod;
          strm >> rod;
@@ -3380,7 +3380,7 @@ in matrix and number of types do not match") );
             const int n = GetCarrierBand(itObs->first);
             if(isPhase)
             {
-	          // TODO:: handle glonass data later(yanweigps)
+              // TODO:: handle glonass data later(yanweigps)
                  tvMap[ type ] = (*itObs).second.data*getWavelength(rsat,n);
                // n=1 2 5 6 7 8
                if(n==1)
@@ -3455,24 +3455,25 @@ in matrix and number of types do not match") );
             if(types[i].type==ObsID::otPhase)   // Phase
             {
                if (sat.system == SatID::systemGlonass)
-	       {
+               {
 
-	           // get the frequency number of glonass satellite
-	           // add by Wei Wang
-	         int freqNo = roh.GlonassFreqNo.find(sat)->second;
+                  // get the frequency number of glonass satellite
+                  // add by Wei Wang
+                 int freqNo = roh.GlonassFreqNo.find(sat)->second;
 
-		 tvMap[TypeID::FreqNo] = freqNo;
+                 tvMap[TypeID::FreqNo] = freqNo;
 
-	          // TODO:: handle glonass data later(yanweigps)
+                  // TODO:: handle glonass data later(yanweigps)
                  tvMap[ type ] = it->second[i].data*getWavelength(sat,n,freqNo);
-	       }
-	       else 
-	       {   // if phase observable is missed, do not insert it into tvMap
-		 if (it->second[i].data != 0.0)
-		 {
-                   tvMap[ type ] = it->second[i].data*getWavelength(sat,n);
-		 }
-	       }
+               }
+
+               else 
+               {   // if phase observable is missed, do not insert it into tvMap
+                  if (it->second[i].data != 0.0)
+                  {
+                     tvMap[ type ] = it->second[i].data*getWavelength(sat,n);
+                  }
+               }
 
                // n=1 2 5 6 7 8
                if(n==1)

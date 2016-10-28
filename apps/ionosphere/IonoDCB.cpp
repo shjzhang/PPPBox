@@ -260,7 +260,7 @@ void IonoDCB::printSolution(  ofstream& outfile,
    SatIDSet satSet = gData.getSatIDSet();
 
    outfile<<"Start time : "<<civtime1<<endl
-	  <<"End   time : "<<civtime2<<endl;
+          <<"End   time : "<<civtime2<<endl;
    outfile<<"DCBs for satellite and receiver (unit : ns)"<<endl
           <<"Satellite  P1-P2     P1-C1"<<endl;
    for (SatIDSet::iterator it = satSet.begin();
@@ -613,7 +613,7 @@ void IonoDCB::process()
 
       if (C1)
       {
-         usingC1 = true;	  
+         usingC1 = true;          
       }
       Triple antennaPos= roh.antennaPosition;
       cout<<"Processing station : "<<station.substr(0,4)<<endl;
@@ -778,7 +778,7 @@ void IonoDCB::process()
      gnssRinex gRin;
         // just store the type needed to reduce the memory consumption
         // if using global stations to compute, the memory consumption
-	// is very huge
+        // is very huge
      TypeIDSet typeNeed;
      typeNeed.insert(TypeID::PI);
      typeNeed.insert(TypeID::P1);
@@ -798,11 +798,11 @@ void IonoDCB::process()
         SourceID source(gRin.header.source);
         if (usingC1)
         {
-           C1P2RecSet.insert(source); 	   
+           C1P2RecSet.insert(source);      
         }
         else
         {
-           P1P2RecSet.insert(source);	   
+           P1P2RecSet.insert(source);      
         }
 
         try
@@ -810,8 +810,8 @@ void IonoDCB::process()
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
             gRin >> pList;
-	  	    // add gRin into gnssDataMap
-     	    gRin.keepOnlyTypeID(typeNeed);
+                    // add gRin into gnssDataMap
+            gRin.keepOnlyTypeID(typeNeed);
 
             gdsMap.addGnssRinex(gRin); 
         }
@@ -830,7 +830,7 @@ void IonoDCB::process()
             cerr << "Exception for receiver '" << station <<
                     "' at epoch: " << time << "; " << e << endl;
             continue;
-	}
+        }
         catch(...)
         {
             cerr << "Unknown exception for receiver '" << station <<

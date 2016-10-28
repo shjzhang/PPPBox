@@ -162,14 +162,14 @@ namespace gpstk
          }
       }
           // line 8-12 in SP3 files announced by WHU are zero
-	  // Skip this lines
+          // Skip this lines
       if (agency == " WHU")
       {
         for (int i = 0;i<5;i++)
-	{
+        {
          strm.formattedGetLine(line);
-	
-	}
+        
+        }
       }
       readSVs = 0;
 
@@ -198,14 +198,14 @@ namespace gpstk
       }
 
           // line 18-22 in SP3 files announced by WHU are zero
-	  // Skip this lines
+          // Skip this lines
       if (agency == " WHU")
       {
         for (int i = 0;i<5;i++)
-	{
+        {
          strm.formattedGetLine(line);
-	
-	}
+        
+        }
       }
 
       strm.formattedGetLine(line);

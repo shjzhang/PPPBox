@@ -138,8 +138,8 @@ namespace gpstk
       {
 
          SatIDSet satRejectedSet;
-	   // a copy of GPS default Observable(usually C1 or P1)
-	 TypeID gpsObservable = defaultObservable;
+           // a copy of GPS default Observable(usually C1 or P1)
+         TypeID gpsObservable = defaultObservable;
 
             // Loop through all the satellites
          satTypeValueMap::iterator stv;
@@ -147,17 +147,17 @@ namespace gpstk
               stv != gData.end();
               ++stv )
          {
-	    SatID::SatelliteSystem system = stv->first.system;
-	          // for Galileo E1
-	    if (system == SatID::systemGalileo)
-	    {
-	       setDefaultObservable(TypeID::C1);	
-	    }
+            SatID::SatelliteSystem system = stv->first.system;
+                  // for Galileo E1
+            if (system == SatID::systemGalileo)
+            {
+               setDefaultObservable(TypeID::C1);        
+            }
                  // for BeiDou B1
-	    else if (system == SatID::systemBeiDou)
-	    {
-	       setDefaultObservable(TypeID::C2);	
-	    }
+            else if (system == SatID::systemBeiDou)
+            {
+               setDefaultObservable(TypeID::C2);        
+            }
                // Scalar to hold temporal value
 
             double observable( (*stv).second(defaultObservable) );
@@ -209,29 +209,29 @@ namespace gpstk
 
                // When using pseudorange method, this is 1.0
             (*stv).second[TypeID::cdt] = 1.0;
-	       // prepare for the class SolverPPPGNSS
-	       // we will estimate the inter-system bias between GPS and Galileo
-	       // and bias between GPS and BeiDou using the PPP method
-	    if ((*stv).first.system == SatID::systemGPS)
-	    {
+               // prepare for the class SolverPPPGNSS
+               // we will estimate the inter-system bias between GPS and Galileo
+               // and bias between GPS and BeiDou using the PPP method
+            if ((*stv).first.system == SatID::systemGPS)
+            {
               (*stv).second[TypeID::ISB_GLO] = 0.0;
               (*stv).second[TypeID::ISB_GAL] = 0.0;
               (*stv).second[TypeID::ISB_BDS] = 0.0;
             }
-	    else if ((*stv).first.system == SatID::systemGlonass)
-	    {
+            else if ((*stv).first.system == SatID::systemGlonass)
+            {
               (*stv).second[TypeID::ISB_GLO] = 1.0;
               (*stv).second[TypeID::ISB_GAL] = 0.0;
               (*stv).second[TypeID::ISB_BDS] = 0.0;
             }
-	    else if ((*stv).first.system == SatID::systemGalileo)
-	    {
+            else if ((*stv).first.system == SatID::systemGalileo)
+            {
               (*stv).second[TypeID::ISB_GLO] = 0.0;
               (*stv).second[TypeID::ISB_GAL] = 1.0;
               (*stv).second[TypeID::ISB_BDS] = 0.0;
             }
-	    else if ((*stv).first.system == SatID::systemBeiDou)
-	    {
+            else if ((*stv).first.system == SatID::systemBeiDou)
+            {
               (*stv).second[TypeID::ISB_GLO] = 0.0;
               (*stv).second[TypeID::ISB_GAL] = 0.0;
               (*stv).second[TypeID::ISB_BDS] = 1.0;
@@ -279,8 +279,8 @@ namespace gpstk
 
          } // End of loop for(stv = gData.begin()...
            
-	    // default 
-	 setDefaultObservable(gpsObservable);
+            // default 
+         setDefaultObservable(gpsObservable);
 
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);

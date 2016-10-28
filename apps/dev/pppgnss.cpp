@@ -245,7 +245,7 @@ private:
                        const  ComputeDOP& cDOP,
                        bool   useNEU,
                        bool   usingGPS,
-		       bool   usingGlonass,
+                       bool   usingGlonass,
                        bool   usingBeiDou,
                        bool   usingGalileo,
                        int    numSats,
@@ -337,10 +337,10 @@ void pppgnss::printSolution( ofstream& outfile,
                               const CommonTime& time,
                               const ComputeDOP& cDOP,
                               bool  useNEU,
-			      bool  useGPS,
-			      bool  useGlonass,
+                              bool  useGPS,
+                              bool  useGlonass,
                               bool  useBeiDou,
-      			      bool  useGalileo,
+                              bool  useGalileo,
                               int   numSats,
                               double dryTropo,
                               int   precision )
@@ -454,7 +454,7 @@ void pppgnss::printModel( ofstream& modelfile,
          // Print epoch
       modelfile << static_cast<YDSTime>(time).year         << "  ";    // Year           #1
       modelfile << static_cast<YDSTime>(time).doy          << "  ";    // DayOfYear      #2
-      modelfile << static_cast<YDSTime>(time).sod  	   << "  ";    // SecondsOfDay   #3
+      modelfile << static_cast<YDSTime>(time).sod          << "  ";    // SecondsOfDay   #3
 
          // Print satellite information (Satellite system and ID number)
       modelfile << (*it).first << " ";             // System         #4
@@ -659,34 +659,34 @@ void pppgnss::process()
       {
          try
          {     
-	     
+             
             rNavStream.open(GloNavFile.c_str(),std::ios::in);
          }
          catch (...)
          {
                // If file doesn't exist, issue a warning
             cerr << "Problem opening file '" << GloNavFile <<"'."<< endl;
-	    cerr << "Maybe it doesn't exist or you don't "
+            cerr << "Maybe it doesn't exist or you don't "
                  << "have permission to read it." << endl;
 
             exit(-1);
          }
-	 	  // read Glonass Nav File
+                  // read Glonass Nav File
           while (rNavStream >> rNavData)
-	  {
-		  // initilize the Glophemeis
-	       GloEphemeris GloEph(rNavData);	
-	          // get PRN ID
-	       int prn(GloEph.getPRNID());
-	          // get frequency number
+          {
+                  // initilize the Glophemeis
+               GloEphemeris GloEph(rNavData);   
+                  // get PRN ID
+               int prn(GloEph.getPRNID());
+                  // get frequency number
                int freqNo(GloEph.getfreqNum());
                   // insert into map
-	       RinexSatID sat(prn,SatID::systemGlonass);
+               RinexSatID sat(prn,SatID::systemGlonass);
 
-	       FreqNumber[sat] = freqNo;
-	   }
+               FreqNumber[sat] = freqNo;
+           }
 
-	   rNavStream.close();
+           rNavStream.close();
       }
 
          // Close file
@@ -1005,7 +1005,7 @@ void pppgnss::process()
       }
       catch (InvalidRequest& ie)
       {
-         	// If file doesn't exist, issue a warning
+                // If file doesn't exist, issue a warning
          cerr << "The station " << station 
               << " isn't included in MSC file." << endl;
 
@@ -1039,7 +1039,7 @@ void pppgnss::process()
          // Read the receiver type file.
       cc2noncc.loadRecTypeFile( confReader.getValue("recTypeFile"));
          // warning: change receiver type to upper case, if not,
-	 // some receiver type(lower case) can not be find in receiver_bernese.lis
+         // some receiver type(lower case) can not be find in receiver_bernese.lis
       cc2noncc.setRecType(upperCase(roh.recType));
       cc2noncc.setCopyC1ToP1(true);
 
@@ -1067,7 +1067,7 @@ void pppgnss::process()
       }
 
       if (usingGalileo)
-      {	  
+      {   
            // for Galileo E1/E5a
         requireObs.addGALRequiredType(TypeID::C1);    
         requireObs.addGALRequiredType(TypeID::C5);    
@@ -1155,28 +1155,28 @@ void pppgnss::process()
               // for Glonass
       if (usingGlonass)
       {
-	  
-   	linear1.addGlonassLinear(comb.pdeltaCombForGlonass);
-   	linear1.addGlonassLinear(comb.ldeltaCombForGlonass);
-   	linear1.addGlonassLinear(comb.mwubbenaCombForGlonass);
-   	linear1.addGlonassLinear(comb.liCombination);
+          
+        linear1.addGlonassLinear(comb.pdeltaCombForGlonass);
+        linear1.addGlonassLinear(comb.ldeltaCombForGlonass);
+        linear1.addGlonassLinear(comb.mwubbenaCombForGlonass);
+        linear1.addGlonassLinear(comb.liCombination);
       } 
-	  
-          // for Galileo	  
+          
+          // for Galileo          
       if (usingGalileo)
       {
-   	linear1.addGalileoLinear(comb.pdeltaCombForGalileo);
-   	linear1.addGalileoLinear(comb.ldeltaCombForGalileo);
-   	linear1.addGalileoLinear(comb.mwubbenaCombForGalileo);
-   	linear1.addGalileoLinear(comb.liCombForGalileo);
+        linear1.addGalileoLinear(comb.pdeltaCombForGalileo);
+        linear1.addGalileoLinear(comb.ldeltaCombForGalileo);
+        linear1.addGalileoLinear(comb.mwubbenaCombForGalileo);
+        linear1.addGalileoLinear(comb.liCombForGalileo);
       } 
          // for BeiDou
       if (usingBeiDou)
       {
-   	linear1.addBeiDouLinear(comb.pdeltaCombForBeiDou);
-   	linear1.addBeiDouLinear(comb.ldeltaCombForBeiDou);
-   	linear1.addBeiDouLinear(comb.mwubbenaCombForBeiDou);
-   	linear1.addBeiDouLinear(comb.liCombForBeiDou);
+        linear1.addBeiDouLinear(comb.pdeltaCombForBeiDou);
+        linear1.addBeiDouLinear(comb.ldeltaCombForBeiDou);
+        linear1.addBeiDouLinear(comb.mwubbenaCombForBeiDou);
+        linear1.addBeiDouLinear(comb.liCombForBeiDou);
       }
 
       pList.push_back(linear1);       // Add to processing list
@@ -1349,19 +1349,19 @@ void pppgnss::process()
 
       if (usingGlonass)
       {
-  	 linear3.addGlonassLinear(comb.pcCombForGlonass);
-  	 linear3.addGlonassLinear(comb.lcCombForGlonass);
+         linear3.addGlonassLinear(comb.pcCombForGlonass);
+         linear3.addGlonassLinear(comb.lcCombForGlonass);
       }
 
       if (usingGalileo)
       {
-  	 linear3.addGalileoLinear(comb.pcCombForGalileo);
-  	 linear3.addGalileoLinear(comb.lcCombForGalileo);
+         linear3.addGalileoLinear(comb.pcCombForGalileo);
+         linear3.addGalileoLinear(comb.lcCombForGalileo);
       }
       if (usingBeiDou)
       {
-  	 linear3.addBeiDouLinear(comb.pcCombForBeiDou);
-   	 linear3.addBeiDouLinear(comb.lcCombForBeiDou);
+         linear3.addBeiDouLinear(comb.pcCombForBeiDou);
+         linear3.addBeiDouLinear(comb.lcCombForBeiDou);
       }
       pList.push_back(linear3);       // Add to processing list
 
@@ -1373,15 +1373,15 @@ void pppgnss::process()
       }
       if (usingGlonass)
       {
-      	pcFilter.addGLOFilteredType(TypeID::PC);
+        pcFilter.addGLOFilteredType(TypeID::PC);
       }
       if (usingGalileo)
       {
-      	pcFilter.addGALFilteredType(TypeID::PC);
+        pcFilter.addGALFilteredType(TypeID::PC);
       }
       if (usingBeiDou)
       {
-      	pcFilter.addBDSFilteredType(TypeID::PC);
+        pcFilter.addBDSFilteredType(TypeID::PC);
       }
          // IMPORTANT NOTE:
          // Like in the "filterCode" case, the "filterPC" option allows you to
@@ -1395,7 +1395,7 @@ void pppgnss::process()
          pList.push_back(pcFilter);       // Add to processing list
       }
 
-     	// Object to align phase with code measurements
+        // Object to align phase with code measurements
       PhaseCodeAlignment phaseAlign;
       pList.push_back(phaseAlign); 
          // Object to compute prefit-residuals
@@ -1408,20 +1408,20 @@ void pppgnss::process()
       
       if (usingGlonass)
       {
-   	linear4.addGlonassLinear(comb.lcPrefitForGlonass);
-   	linear4.addGlonassLinear(comb.pcPrefit);
+        linear4.addGlonassLinear(comb.lcPrefitForGlonass);
+        linear4.addGlonassLinear(comb.pcPrefit);
       }
 
       if (usingGalileo)
       {
-   	linear4.addGalileoLinear(comb.lcPrefitForGalileo);
-   	linear4.addGalileoLinear(comb.pcPrefit);
+        linear4.addGalileoLinear(comb.lcPrefitForGalileo);
+        linear4.addGalileoLinear(comb.pcPrefit);
       }
 
       if (usingBeiDou)
       {
-   	linear4.addBeiDouLinear(comb.lcPrefitForBeiDou);
-   	linear4.addBeiDouLinear(comb.pcPrefit);
+        linear4.addBeiDouLinear(comb.lcPrefitForBeiDou);
+        linear4.addBeiDouLinear(comb.pcPrefit);
       }
 
       pList.push_back(linear4);       // Add to processing list
@@ -1443,9 +1443,9 @@ void pppgnss::process()
          // Declare solver objects
       SolverPPPGNSS  pppgnssSolver( isNEU);
       pppgnssSolver.setSatSystem( usingGPS,
-				  usingGlonass,
-				  usingBeiDou,
-				  usingGalileo );
+                                  usingGlonass,
+                                  usingBeiDou,
+                                  usingGalileo );
 
          // Get if we want 'forwards-backwards' or 'forwards' processing only
       int cycles( confReader.getValueAsInt("filterCycles") );
@@ -1524,9 +1524,9 @@ void pppgnss::process()
          //// *** Now comes the REAL forwards processing part *** ////
 
          // Loop over all data epochs
-	 // there FeedFromRinex3Obs function is used to replace (rin>>gRin)
-	 // as glonass freqency number is needed to process glonass data
-	 // the Rinex3ObsHeader of some stations also have this messeage.
+         // there FeedFromRinex3Obs function is used to replace (rin>>gRin)
+         // as glonass freqency number is needed to process glonass data
+         // the Rinex3ObsHeader of some stations also have this messeage.
       while(FeedFromRinex3Obs(rin,gRin,FreqNumber))
       {
      
@@ -1543,8 +1543,8 @@ void pppgnss::process()
          {
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
-	    // gRin.keepOnlySatSystem(SatID::systemBeiDou);
-	     gRin >> pList;
+            // gRin.keepOnlySatSystem(SatID::systemBeiDou);
+             gRin >> pList;
          
          
          }
@@ -1592,8 +1592,8 @@ void pppgnss::process()
                            time,
                            cDOP,
                            isNEU,
-			   usingGPS,
-			   usingGlonass,
+                           usingGPS,
+                           usingGlonass,
                            usingBeiDou,
                            usingGalileo,
                            gRin.numSats(),
@@ -1767,5 +1767,4 @@ int main(int argc, char* argv[])
    return 0;
 
 }  // End of 'main()'
-
 

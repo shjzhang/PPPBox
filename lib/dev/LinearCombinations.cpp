@@ -87,7 +87,7 @@ namespace gpstk
       double j(1.672418845/0.672418845); // for BeiDou B1/B2
       double k(1.0/0.672418845);
           // for Glonass G1/G2
-	  // To every satellite of Glonass, f1/f2 = 9/7
+          // To every satellite of Glonass, f1/f2 = 9/7
       double ag(1.653061224/0.653061224); 
       double bg(1.0/0.653061224);
 
@@ -193,12 +193,12 @@ namespace gpstk
       pcCombForGalileo.body[TypeID::C1]      = +h;
       pcCombForGalileo.body[TypeID::C5]      = -i;
          
-	 // Definition to compute PC combination for BeiDou B1/B2 
+         // Definition to compute PC combination for BeiDou B1/B2 
       pcCombForBeiDou.header                = TypeID::PC;
       pcCombForBeiDou.body[TypeID::C2]      = +j;
       pcCombForBeiDou.body[TypeID::C7]      = -k;
         
-	// Definition to compute prefit residual of PC
+        // Definition to compute prefit residual of PC
       pcPrefit.header                     = TypeID::prefitC;
       pcPrefit.body[TypeID::PC]           = +1.0;
       pcPrefit.body[TypeID::rho]          = -1.0;
@@ -225,7 +225,7 @@ namespace gpstk
       lcCombForGalileo.body[TypeID::L1]      = +h;
       lcCombForGalileo.body[TypeID::L5]      = -i;
          
-	 // Definition to compute LC combination for BeiDou B1/B2
+         // Definition to compute LC combination for BeiDou B1/B2
       lcCombForBeiDou.header                = TypeID::LC;
       lcCombForBeiDou.body[TypeID::L2]      = +j;
       lcCombForBeiDou.body[TypeID::L7]      = -k;
@@ -396,7 +396,7 @@ namespace gpstk
       pdeltaCombForGalileo.body[TypeID::C1]  = +l;
       pdeltaCombForGalileo.body[TypeID::C5]  = +m;
 
-   	// Definition to compute Pdelta (PW) combination
+        // Definition to compute Pdelta (PW) combination
       pdeltaCombForBeiDou.header            = TypeID::Pdelta;
       pdeltaCombForBeiDou.body[TypeID::C2]  = +q;
       pdeltaCombForBeiDou.body[TypeID::C7]  = +r;
@@ -422,18 +422,18 @@ namespace gpstk
       ldeltaCombination.header            = TypeID::Ldelta;
       ldeltaCombination.body[TypeID::L1]  = +e;
       ldeltaCombination.body[TypeID::L2]  = -f;
-	
+        
          // Definition to compute Ldelta (LW) combination
       ldeltaCombForGlonass.header            = TypeID::Ldelta;
       ldeltaCombForGlonass.body[TypeID::L1]  = +eg;
       ldeltaCombForGlonass.body[TypeID::L2]  = -fg;
-	
-	// Definition to compute Ldelta (LW) combination
+        
+        // Definition to compute Ldelta (LW) combination
       ldeltaCombForGalileo.header            = TypeID::Ldelta;
       ldeltaCombForGalileo.body[TypeID::L1]  = +n;
       ldeltaCombForGalileo.body[TypeID::L5]  = -p;
-	
-	// Definition to compute Ldelta (LW) combination
+        
+        // Definition to compute Ldelta (LW) combination
       ldeltaCombForBeiDou.header            = TypeID::Ldelta;
       ldeltaCombForBeiDou.body[TypeID::L2]  = +s;
       ldeltaCombForBeiDou.body[TypeID::L7]  = -t;
@@ -467,14 +467,14 @@ namespace gpstk
       mwubbenaCombForGlonass.body[TypeID::P1] = -cg;
       mwubbenaCombForGlonass.body[TypeID::P2] = -dg;
 
-	// Definition to compute the Melbourne-Wubbena (W) combination for Galileo
+        // Definition to compute the Melbourne-Wubbena (W) combination for Galileo
       mwubbenaCombForGalileo.header           = TypeID::MWubbena;
       mwubbenaCombForGalileo.body[TypeID::L1] = +n;
       mwubbenaCombForGalileo.body[TypeID::L5] = -p;
       mwubbenaCombForGalileo.body[TypeID::C1] = -l;
       mwubbenaCombForGalileo.body[TypeID::C5] = -m;
-	
-	// Definition to compute the Melbourne-Wubbena (W) combination for BeiDou
+        
+        // Definition to compute the Melbourne-Wubbena (W) combination for BeiDou
       mwubbenaCombForBeiDou.header           = TypeID::MWubbena;
       mwubbenaCombForBeiDou.body[TypeID::L2] = +s;
       mwubbenaCombForBeiDou.body[TypeID::L7] = -t;

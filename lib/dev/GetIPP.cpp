@@ -114,9 +114,9 @@ namespace gpstk
                   // the IPP 
                double lonIPP = pos.getLongitude(); 
                if (lonIPP >= 180.0)
-	       {
-	         lonIPP -= 360.0;	   
-	       }
+               {
+                 lonIPP -= 360.0;          
+               }
            
                (*stv).second[TypeID::LatIPP]  = latIPP;
                (*stv).second[TypeID::LonIPP]  = lonIPP;
