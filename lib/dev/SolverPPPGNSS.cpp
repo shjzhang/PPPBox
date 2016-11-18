@@ -176,8 +176,8 @@ of weightVector");
 
          // Call the more general SolverPPPGNSS::Compute() method
       return SolverPPPGNSS::Compute( prefitResiduals,
-                                 designMatrix,
-                                 wMatrix );
+                                     designMatrix,
+                                     wMatrix );
 
    }  // End of method 'SolverPPPGNSS::Compute()'
 
@@ -378,7 +378,6 @@ covariance matrix.");
       int numGloSV (GloSatSet.size());
          // Get the number of satellites currently visible
       int numCurrentSV( gData.numSats() );
-	  cout<<"numCurrentSV : "<<numCurrentSV<<endl;
       try
       {
             // Number of measurements is twice the number of visible satellites
@@ -408,6 +407,7 @@ covariance matrix.");
 
          Vector<double> prefitC(gData.getVectorOfTypeID(defaultEqDef.header));
          Vector<double> prefitL(gData.getVectorOfTypeID(TypeID::prefitL));
+
          for( int i=0; i<numCurrentSV; i++ )
          {
             measVector( i                ) = prefitC(i);
@@ -435,34 +435,9 @@ covariance matrix.");
                  it != currSatSet.end();
                  ++it)
             {
-                 // the weight between system :
-                 // GPS : Glonass : BeiDou : Galileo = 6 : 4 : 3 : 4
-               if ((*it).system == SatID::systemGPS)
-               {
-                  rMatrix( i               , i         ) = weightsVector(i);
-                  rMatrix( i + numCurrentSV, i + numCurrentSV )
+               rMatrix( i               , i         ) = weightsVector(i);
+               rMatrix( i + numCurrentSV, i + numCurrentSV )
                                             = weightsVector(i) * weightFactor;
-               }
-               if ((*it).system == SatID::systemGlonass)
-               {
-                  rMatrix( i               , i         ) = 0.6666667*weightsVector(i);
-                  rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                            = 0.6666667*weightsVector(i) * weightFactor;
-               }
-               if ( (*it).system == SatID::systemBeiDou )
-               {
-                           
-                  rMatrix( i               , i         ) = 0.5*weightsVector(i);
-                  rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                            =0.5*weightsVector(i) * weightFactor;
-               }
-               if ((*it).system == SatID::systemGalileo)
-               {
-                  rMatrix( i               , i         ) = 0.6666667*weightsVector(i);
-                  rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                            = 0.6666667*weightsVector(i) * weightFactor;
-               }
-
                ++i;
 
             }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
@@ -477,32 +452,10 @@ covariance matrix.");
                  it != currSatSet.end();
                  ++it)
             {
-                 // the weight between system :
-                 // GPS : Glonass : BeiDou : Galileo = 6 : 4 : 3 : 4
-               if ((*it).system == SatID::systemGPS)
-               {
-                  rMatrix( i               , i         ) = 1.0;
-                  rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                            = 1.0 * weightFactor;
-               }
-               if ((*it).system == SatID::systemGlonass)
-               {
-                  rMatrix( i               , i         ) = 0.6666667;
-                  rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                            = 0.6666667 * weightFactor;
-               }
-               if ( (*it).system == SatID::systemBeiDou )
-               {
 
-                   rMatrix( i               , i         ) = 0.5;
-                   rMatrix( i + numCurrentSV, i + numCurrentSV ) = 0.5* weightFactor;
-               }
-               if ((*it).system == SatID::systemGalileo)
-               {
-                  rMatrix( i               , i         ) = 0.6666667;
-                  rMatrix( i + numCurrentSV, i + numCurrentSV )
-                                            = 0.6666667 * weightFactor;
-               }
+               rMatrix( i               , i         ) = 1.0;
+               rMatrix( i + numCurrentSV, i + numCurrentSV )
+                                            = 1.0 * weightFactor;
 
                ++i;
 
@@ -948,11 +901,11 @@ covariance matrix.");
             kFilter.Reset( currentState, currentErrorCov );
 
          }  // End of 'if(firstTime)'
+
             // Call the Compute() method with the defined equation model.
             // This equation model MUST HAS BEEN previously set, usually when
             // creating the SolverPPPGNSS object with the appropriate
             // constructor.
-
          Compute( measVector,
                   hMatrix,
                   rMatrix );

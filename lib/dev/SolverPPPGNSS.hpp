@@ -300,7 +300,7 @@ namespace gpstk
           */
       virtual SolverPPPGNSS& setNEU( bool useNEU );
         
-	// Sets if use BeiDou, Galileo or Glonass
+    // Sets if use BeiDou, Galileo or Glonass
       virtual SolverPPPGNSS& setSatSystem( bool usingGPS,
                                            bool usingGLO,
                                            bool usingBDS,
@@ -445,10 +445,10 @@ namespace gpstk
       { return pISBForGLOStoModel; }
 
          /** Set Glonass ISB stochastic model.
-	 *
-	 *\warning: the ISB is stable in a short time, therefore the stochastic 
-	 * model can be constant model or RandomWalk model
-	 */
+          *
+          *\warning: the ISB is stable in a short time, therefore the stochastic 
+          * model can be constant model or RandomWalk model
+          */
       virtual SolverPPPGNSS& setGLOISBModel (StochasticModel* pModel )
       { pISBForGLOStoModel = pModel; return(*this); };
 
@@ -457,10 +457,10 @@ namespace gpstk
       { return pISBForGALStoModel; }
 
          /** Set Galileo ISB stochastic model.
-	 *
-	 *\warning: the ISB is stable in a short time, therefore the stochastic 
-	 * model can be constant model or RandomWalk model
-	 */
+          *
+          *\warning: the ISB is stable in a short time, therefore the stochastic 
+          * model can be constant model or RandomWalk model
+          */
       virtual SolverPPPGNSS& setGALISBModel (StochasticModel* pModel )
       { pISBForGALStoModel = pModel; return(*this); };
 
@@ -469,10 +469,10 @@ namespace gpstk
       { return pISBForBDSStoModel; }
 
          /** Set BeiDou ISB stochastic model.
-	 *
-	 *\warning: the ISB is stable in a short time, therefore the stochastic 
-	 * model can be constant model or RandomWalk model
-	 */
+          *
+          *\warning: the ISB is stable in a short time, therefore the stochastic 
+          * model can be constant model or RandomWalk model
+          */
       virtual SolverPPPGNSS& setBDSISBModel (StochasticModel* pModel )
       { pISBForBDSStoModel = pModel; return(*this); };
 
@@ -605,19 +605,22 @@ namespace gpstk
          /// Pointer to stochastic model for receiver clock
       StochasticModel* pClockStoModel;
          
-	 /// Pointer to stochastic model for inter-system bias for every Glonass satellite,
-	 /// include the inter-frequency bias (IFB)
+         /// Pointer to stochastic model for inter-system bias for every Glonass satellite,
+         /// include the inter-frequency bias (IFB)
       StochasticModel* pISBForGLOStoModel;
 
-	 /// Pointer to stochastic model for inter-system bias for Galileo
+         /// Pointer to stochastic model for inter-system bias for Galileo
       StochasticModel* pISBForGALStoModel;
 
-	 /// Pointer to stochastic model for inter-system bias for BeiDou
+         /// Pointer to stochastic model for inter-system bias for BeiDou
       StochasticModel* pISBForBDSStoModel;
 
 
          /// Pointer to stochastic model for phase biases
       StochasticModel* pBiasStoModel;
+
+         /// Pointer to stochastic model for BeiDou phase biases
+      StochasticModel* pBDSBiasStoModel;
 
 
          /// State Transition Matrix (PhiMatrix)
@@ -673,9 +676,9 @@ namespace gpstk
       {
          ISBData () {};
 
-	 std::map<TypeID, double> ivCovMap;
-	 std::map<SatID,  double> iCovMap;
- 	 
+         std::map<TypeID, double> ivCovMap;
+         std::map<SatID,  double> iCovMap;
+     
       };
       std::map<SatID,ISBData> GloISBCovMap;
 
@@ -694,7 +697,10 @@ namespace gpstk
       WhiteNoiseModel whitenoiseModelX;
       WhiteNoiseModel whitenoiseModelY;
       WhiteNoiseModel whitenoiseModelZ;
-
+         /// for kinematic
+      RandomWalkModel rwalkModelX;
+      RandomWalkModel rwalkModelY;
+      RandomWalkModel rwalkModelZ;
 
          /// Random Walk stochastic model
       RandomWalkModel rwalkModel;
@@ -708,6 +714,8 @@ namespace gpstk
 
          /// Phase biases stochastic model (constant + white noise)
       PhaseAmbiguityModel biasModel;
+         /// for BeiDou, since BeiDou use CSL2
+      PhaseAmbiguityModel BDSBiasModel;
 
         /// Glonass ISB stochastic model
       ISBRandomWalkModel  GloISBModel;
@@ -738,7 +746,6 @@ namespace gpstk
 
    }; // End of class 'SolverPPPGNSS'
 
-      //@}
 
 }  // End of namespace gpstk
 
