@@ -13,6 +13,7 @@ set (CMAKE_INSTALL_PREFIX $ENV{pppbox})
 
 if (UNIX) #Unix Compiler Options
 	 set (STADYN "SHARED") #Dynamic Libraries Enabled
+	 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 	 if (APPLE) #Apple Compiler Options
 	 	set (CMAKE_SHARED_LIBRARY_SUFFIX .dylib)
 		set (CMAKE_INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib")
@@ -105,3 +106,4 @@ install (DIRECTORY tables/ DESTINATION tables)
 add_subdirectory (apps)
 add_subdirectory (examples)
 add_subdirectory (script)
+
