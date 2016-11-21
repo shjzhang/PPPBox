@@ -1,0 +1,357 @@
+#pragma ident "$Id$"
+//============================================================================
+//
+//  This file is part of GPSTk, the GPS Toolkit.
+//
+//  The GPSTk is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published
+//  by the Free Software Foundation; either version 2.1 of the License, or
+//  any later version.
+//
+//  The GPSTk is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public
+//  License along with GPSTk; if not, write to the Free Software Foundation,
+//  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+//
+//  Copyright (c)
+//
+//  XY.Cao, Wuhan University, 2016.
+//
+//============================================================================
+// Modification
+//
+// 2016.11.20  Q.Liu  Add the function outputting the received binary data
+//                    to file.
+//============================================================================
+
+// Using Ntrip to retrive and decode real-time streams from IGS/EUREF
+// The preliminary test just considers the only format rtcm3 and outputs the 
+// retrived streams to the screen!
+
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <stdlib.h>
+#include <signal.h>
+
+	/// Class to define the version of NtripTool
+#include "NtripToolVersion.hpp"
+
+	/// Class to read configuration files
+#include "ConfDataReader.hpp"
+
+	/// Class to define the structure of URL
+#include "NetUrl.hpp"
+
+	/// Class to define the structure of mountpoint
+#include "MountPoint.hpp"
+
+	///	Class to store mountpoints
+#include "ReadMountPoints.hpp"
+
+// Class to handle socket
+#include "SocketLib.hpp"
+
+#include "NetQueryBase.hpp"
+
+#include "NetQueryNtrip1.hpp"
+
+#include "SourceTableReader.hpp"
+
+	/// Class to hand c++ string
+#include "StringUtils.hpp"
+
+#include "YDSTime.hpp"
+
+#include "NtripTask.h"
+
+#include "ThreadPool.h"
+
+
+
+using namespace gpstk;
+using namespace StringUtils;
+using namespace std;
+
+// max size of ntrip response
+#define NTRIP_MAXRSP   32768
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+void catch_signal(int) 
+{
+	cout << "Program Interrupted by Ctrl-C" << endl;
+    exit(1);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+// main program
+int main( int argc, char* argv[] )
+{
+    signal(SIGINT, catch_signal);
+
+    // configure file name,by default named "NtripTool.conf"
+    string ConfFileName;
+
+    // raw file name(post process)
+    string RawFileName;
+
+    // print help
+    string PrintHelp = 
+    "NtripTool_" NTRIPTOOLPGMNAME NTRIPTOOLVERSION "_" NTRIPTOOLOS " usage:\n"
+    " 	-help: print help{no arguments}\n"
+    "	-conf: configure file name{ConfFileName}\n"
+    "	-file: raw file name{RawFileName}\n"
+    "\n";
+
+    /// just for test:output
+    /// 0 = no output; 1 = necessary parameters
+    /// 2 = parameters of medium process
+    /// 3 = input parameters and output parameters
+    /// 5 = output all
+    int verb = 5;
+
+    if(argc == 1) 
+    {
+        cout << PrintHelp << endl;
+        exit(0);
+    }
+
+    // read input arguments
+    int idx = 0;
+
+    while( ++idx < argc)
+    {
+        if(strncmp(argv[idx],"-help",5) == 0 && idx < argc)
+        {
+            cout << PrintHelp << endl;
+            exit(0);
+        }	// end if -help
+
+        else if(strncmp(argv[idx],"-conf",5) == 0 && idx + 1 < argc)
+        {
+            ConfFileName = argv[idx+1];
+            idx++;
+            continue;
+        }	// end if -conf
+
+        else if(strncmp(argv[idx],"-file",5) == 0 && idx + 1 < argc)
+        {
+            RawFileName = argv[idx+1];
+            idx++;
+            continue;
+        }	// end if -file
+        else
+        {
+            cout << "Error input arguments!" << endl;
+            cout << PrintHelp << endl;
+            exit(-1);
+        }
+
+    	// set another loop to get key name and key value 
+
+    } // end while argc
+
+    if (verb > 2)
+    {
+        cout << "ConfFileName: " << ConfFileName << endl;
+        cout << "RawFileName: "  << RawFileName  << endl;
+    }
+
+    ///////////////// first ,read conf file/////////////
+
+    // open and parse configuration file
+    ConfDataReader NtripConf;
+    
+    //	check whether the user has provided a configuration file
+    if(! ConfFileName.empty())
+    {
+        // enable exceptions
+        NtripConf.exceptions(ios::failbit);
+        try
+        {
+            NtripConf.open(ConfFileName);
+        }
+        catch(...)
+        {
+            cerr << "Error: opening file " 
+                 << ConfFileName << endl;
+            cerr << "Maybe configuration doesn't exsit or you don't have "
+                 << "proper read permissions." 
+                 << endl;
+            exit(-1);
+        }	// end try-catch
+    }	// if-else
+    else
+    {
+        try
+        {
+            //	try to open the default configuration file
+            NtripConf.open("NtripTool.conf");
+        }
+        catch(...)
+        {
+            cerr << "***Error: opening default configuration file NtripTool.conf"
+                 << endl;
+            cerr << "Maybe configuration doesn't exsit or you don't have "
+                 << "proper read permissions."
+                 << endl;
+            exit(-1);
+        }	// end try-catch
+    }	//	 end if-else
+
+        // read configuration file
+        string UserName = NtripConf.getValue("UserName");
+        string PassWord = NtripConf.getValue("PassWord");
+
+        // whether to use proxy or not
+        string CasterHost = NtripConf.getValue("ProxyHost");
+        string CasterPort = NtripConf.getValue("ProxyPort");
+
+        if(CasterHost.empty())
+        {
+            CasterHost = NtripConf.getValue("CasterHost");
+            CasterPort = NtripConf.getValue("CasterPort");
+        }
+
+        // mountpoint or mountpoint list(sepeated by '/')
+        string ConfMountPoints = NtripConf.getValue("MountPoints");
+
+
+        if(ConfMountPoints.empty())
+        {
+            cout << "Warning: no mountpoints!" << endl;
+            exit(0);
+        }
+
+        if(verb > 1)
+        {
+            cout << "UserName = \t" << UserName << endl;
+            cout << "PassWord = \t" << PassWord << endl;
+            cout << "CasterHost = \t" << CasterHost << endl;
+            cout << "CasterPort = \t" << CasterPort << endl;
+            cout << "MountPoints = \t" << ConfMountPoints << endl;
+        }
+
+        ///////////////// second ,read sourcetable file/////////////
+
+        // read SourceTable.txt and try to find the mountpoint
+        SourceTableReader srcTableReader;
+
+        // local path of SourceTable.txt
+        string SourceTablePath = NtripConf.getValue("SourceTable");
+
+        // whether get sourcetable from network
+        bool getSourceTable( NtripConf.getValueAsBoolean("GetSourceTableFromNet") );
+
+        // whether output raw data to file
+        bool outputRaw(NtripConf.getValueAsBoolean("OutputRawToFile"));
+
+
+    if(!getSourceTable)
+    {
+    	// get from network
+    	if(SourceTablePath.empty())
+    	{
+    	    cout << "SourceTable.txt does not exist in local path, " 
+    	         << "please get it from network!"
+    	         << endl;
+    	    // not exit
+
+    	    // TD:get form network and uplate local sourcetable file
+    	}
+    	else
+    	{
+            // read SourceTable.txt
+            //cout << "get sourcetable from local path." << endl;
+
+            srcTableReader.open(SourceTablePath);
+
+    	}
+
+    }
+
+
+    ///////////////// third ,preparation for multi-thread/////////////
+
+    // the url of caster
+    NetUrl mntUrl(UserName,PassWord,CasterHost,CasterPort);
+
+    string mountpointID;
+
+    ReadMountPoints ReadmntPoints;
+
+    while(!ConfMountPoints.empty())
+    {
+        // every mountpoint seperated by "/"
+        mountpointID = stripTrailing(stripFirstWord(ConfMountPoints,'/'));
+
+        mntUrl.setPath(mountpointID);
+        // get from sourcetable
+        if(srcTableReader.haveStream(mountpointID))
+        {
+            SourceTableReader::mountpointSTR stream =
+                srcTableReader.getStream(mountpointID);
+            // add the new mountpoint to the map
+            ReadmntPoints.addMountPoint(mountpointID,mntUrl,stream);
+        }
+        else
+        {
+            continue;
+        }
+
+    }
+
+    if( verb >2 ) ReadmntPoints.dump();
+
+
+    //////////////////////// thread ////////////////////////////////////
+    
+    ThreadPool* pTP = ThreadPool::create(15);
+
+    pTP->onStart();
+
+    // get the map
+    map<string,MountPoint> mntPointsMap = ReadmntPoints.getMountPointMap();
+
+    
+    // Loop through MountPointsMap
+    map<string,MountPoint>::iterator itmnt;
+
+    for(itmnt = mntPointsMap.begin();itmnt != mntPointsMap.end();++itmnt)
+    {
+        if(verb > 1)
+        {
+            cout << "Start for " << (*itmnt).first << endl;
+        }
+
+        MountPoint pt = (itmnt->second);
+
+        NtripTask* pTask = new NtripTask;
+        pTask->setMountPoint(pt);
+        string filename = pt.getMountPointID()+".out";
+        pTask->setRawOutFile(filename);
+        pTask->setRawOutOpt(outputRaw);
+        pTP->pushTask(pTask);
+ 
+    } // end for
+
+
+
+    char key = ' ';
+
+    while( key != 'q' )
+    {
+        scanf("%c", &key);
+    }
+  
+    return 0;
+}	/// end main()
+

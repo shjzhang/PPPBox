@@ -11,10 +11,11 @@ add_subdirectory (geomatics)
 add_subdirectory (ionosphere)
 add_subdirectory (troposphere)
 add_subdirectory (mergetools)
+add_subdirectory (ntrip)
 
 # If on UNIX, do these
 if (UNIX)
-	add_subdirectory (MDPtools)
+	#add_subdirectory (MDPtools)
 	add_subdirectory (rfw)
 	# error occurs on MAC OS X
 	add_subdirectory (swrx)

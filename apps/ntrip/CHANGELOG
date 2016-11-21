@@ -1,0 +1,8 @@
+# Log of changing
+2016-11-18
+Using the SockLib, Ntrip tools(by XY.Cao) and ThreadPool
+(by K.Gao), we can receive several mountpoints' data from 
+Ntrip caster.
+
+2016-11-20
+Receive and write the raw data to file in real-time.
