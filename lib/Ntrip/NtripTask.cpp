@@ -60,10 +60,18 @@ void NtripTask::run()
             }
             else
             {
-                query->startRequest(tempURL,"");
-                if(m_bOutputRaw)
+                try
                 {
-                    query->writeRawData(out);
+                    query->startRequest(tempURL,"");
+                    if(m_bOutputRaw)
+                    {
+                        query->writeRawData(out);
+                    }
+                }
+                catch(MountPointNotFound& e)
+                {
+                    cout << e.what();
+                    continue;
                 }
             }
         }

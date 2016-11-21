@@ -148,6 +148,7 @@ namespace gpstk
        {
            if(url.getPath().size()>0)
            {
+               ntripStatus = wait;
                MountPointNotFound e(getClassName() + ": The mountpoint '"+url.getPath()+
                     "' is not found in the caster");
                GPSTK_THROW(e);
