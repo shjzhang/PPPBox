@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/RinSum.dir/RinSum.cpp.o  -o RinSum -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

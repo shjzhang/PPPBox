@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ephsum.dir/EphSum.cpp.o  -o ephsum -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

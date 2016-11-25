@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ash2xyz.dir/ash2xyz.cpp.o  -o ash2xyz -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

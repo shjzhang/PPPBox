@@ -1,1 +1,0 @@
-/usr/bin/c++       -lpthread CMakeFiles/corltr.dir/corltr.cpp.o  -o corltr -rdynamic libsimlib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox 

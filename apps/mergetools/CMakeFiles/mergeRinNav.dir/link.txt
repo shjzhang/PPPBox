@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/mergeRinNav.dir/mergeRinNav.cpp.o  -o mergeRinNav -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

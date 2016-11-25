@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/rinexelvstrip.dir/RinexElvStrip.cpp.o  -o rinexelvstrip -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

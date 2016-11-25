@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/bc2sp3.dir/bc2sp3.cpp.o  -o bc2sp3 -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 
