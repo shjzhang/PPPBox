@@ -257,7 +257,7 @@ namespace gpstk
       lcPrefitForGlonass.body[TypeID::satPCenter]   = -1.0;
       lcPrefitForGlonass.body[TypeID::tropoSlant]   = -1.0;
          // Coefficient for LC windUp is LC wavelenght/2*PI 
-      lcPrefitForGlonass.body[TypeID::windUp]       = -0.1052642062152181/TWO_PI;
+      lcPrefitForGlonass.body[TypeID::windUp]       = -0.105264205758427/TWO_PI;
 
          // Interpolated from reference stations
       lcPrefitForGlonass.body[TypeID::corrLC]       = -1.0;
@@ -273,7 +273,7 @@ namespace gpstk
       lcPrefitForGalileo.body[TypeID::satPCenter]   = -1.0;
       lcPrefitForGalileo.body[TypeID::tropoSlant]   = -1.0;
          // Coefficient for LC windUp is LC wavelenght/2*PI(Galieo E1/E5a)
-      lcPrefitForGalileo.body[TypeID::windUp]       = -0.108941358884/TWO_PI;
+      lcPrefitForGalileo.body[TypeID::windUp]       = -0.108941359148506/TWO_PI;
          // Interpolated from reference stations
       lcPrefitForGalileo.body[TypeID::corrLC]       = -1.0;
 
@@ -288,7 +288,7 @@ namespace gpstk
       lcPrefitForBeiDou.body[TypeID::satPCenter]   = -1.0;
       lcPrefitForBeiDou.body[TypeID::tropoSlant]   = -1.0;
          // Coefficient for LC windUp is LC wavelenght/2*PI(BeiDou B1/B2)
-      lcPrefitForBeiDou.body[TypeID::windUp]       = -0.1082972115435/TWO_PI;
+      lcPrefitForBeiDou.body[TypeID::windUp]       = -0.108297212161671/TWO_PI;
          // Interpolated from reference stations
       lcPrefitForBeiDou.body[TypeID::corrLC]       = -1.0;
 

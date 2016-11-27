@@ -1146,37 +1146,28 @@ void pppgnss::process()
 
       if (usingGPS)
       {
-         linear1.addLinear(comb.pdeltaCombination);
          linear1.addLinear(comb.mwubbenaCombination);
-         linear1.addLinear(comb.ldeltaCombination);
          linear1.addLinear(comb.liCombination);
       }
 
-              // for Glonass
+          // for Glonass
       if (usingGlonass)
       {
-          
-        linear1.addGlonassLinear(comb.pdeltaCombForGlonass);
-        linear1.addGlonassLinear(comb.ldeltaCombForGlonass);
-        linear1.addGlonassLinear(comb.mwubbenaCombForGlonass);
-        linear1.addGlonassLinear(comb.liCombination);
+         linear1.addGlonassLinear(comb.mwubbenaCombForGlonass);
+         linear1.addGlonassLinear(comb.liCombination);
       } 
           
           // for Galileo          
       if (usingGalileo)
       {
-        linear1.addGalileoLinear(comb.pdeltaCombForGalileo);
-        linear1.addGalileoLinear(comb.ldeltaCombForGalileo);
-        linear1.addGalileoLinear(comb.mwubbenaCombForGalileo);
-        linear1.addGalileoLinear(comb.liCombForGalileo);
+         linear1.addGalileoLinear(comb.mwubbenaCombForGalileo);
+         linear1.addGalileoLinear(comb.liCombForGalileo);
       } 
          // for BeiDou
       if (usingBeiDou)
       {
-        linear1.addBeiDouLinear(comb.pdeltaCombForBeiDou);
-        linear1.addBeiDouLinear(comb.ldeltaCombForBeiDou);
-        linear1.addBeiDouLinear(comb.mwubbenaCombForBeiDou);
-        linear1.addBeiDouLinear(comb.liCombForBeiDou);
+         linear1.addBeiDouLinear(comb.mwubbenaCombForBeiDou);
+         linear1.addBeiDouLinear(comb.liCombForBeiDou);
       }
 
       pList.push_back(linear1);       // Add to processing list
@@ -1251,7 +1242,7 @@ void pppgnss::process()
 
             // Get receiver antenna parameters
             // Warning: If no corrections are not found for one specific 
-            //          radome, then the antenna with radome NONE are used.
+            // radome, then the antenna with radome NONE are used.
          try
          {
             receiverAntenna = antexReader.getAntenna( antennaModel );
@@ -1309,8 +1300,7 @@ void pppgnss::process()
       }
 
       pList.push_back(corr);       // Add to processing list
-
-
+      
          // Object to compute wind-up effect
       ComputeWindUp windup( SP3EphList,
                             nominalPos);
@@ -1543,7 +1533,6 @@ void pppgnss::process()
          {
                // Let's process data. Thanks to 'ProcessingList' this is
                // very simple and compact: Just one line of code!!!.
-            // gRin.keepOnlySatSystem(SatID::systemBeiDou);
              gRin >> pList;
          
          

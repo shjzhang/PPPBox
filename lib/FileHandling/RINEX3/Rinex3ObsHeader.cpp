@@ -1690,11 +1690,12 @@ namespace gpstk
                          asString(version));
          GPSTK_THROW(e);
       }
-    //  if((valid & allValid) != allValid)
-    //  {
-    //     FFStreamError e("Incomplete or invalid header");
-    //     GPSTK_THROW(e);
-    //  }
+      if((valid & allValid) != allValid)
+      {
+         FFStreamError e("Incomplete or invalid header");
+      // GPSTK_THROW(e);   // commented by wei wang
+                           // some rinex files may miss necesseray information in the header
+      }
 
       // If we get here, we should have reached the end of header line.
       strm.header = *this;
