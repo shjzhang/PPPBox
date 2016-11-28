@@ -106,7 +106,6 @@ namespace gpstk
          err.addText("Make sure to set the version correctly.");
          GPSTK_THROW(err);
       }
-
       if((valid & allValid) != allValid) {
          ostringstream msg;
          msg << endl;
@@ -218,7 +217,6 @@ namespace gpstk
    {
       Rinex3ObsStream& strm = dynamic_cast<Rinex3ObsStream&>(ffs);
       string line;
-
       if(valid & validVersion) {
          line  = rightJustify(asString(version,2), 9);
          line += string(11, ' ');
@@ -894,7 +892,7 @@ namespace gpstk
          line  = string(60, ' ');
          line += stringEoH;
          strm << line << endl;
-//       cout << "Line >" << line << "<" << endl;
+       cout << "Line >" << line << "<" << endl;
          strm.lineNumber++;
       }
 //    cout << "past validEoH" << endl;
@@ -1082,7 +1080,7 @@ namespace gpstk
 
          satSysTemp = strip(line.substr(0,1));
          numObs     = asInt(line.substr(3,3));
-
+        // cout<<satSysTemp<< " "<<numObs<<endl;
          try {
             if(satSysTemp == "" ) // it's a continuation line; use previous info.
             {
@@ -1094,6 +1092,7 @@ namespace gpstk
                {
                   int position = 4*(i % maxObsPerLine) + 6 + 1;
                   RinexObsID rt(satSysTemp+line.substr(position,3));
+	//	  cout<<"ObsType : "<<rt<<endl;
                   newTypeList.push_back(rt);
                }
                mapObsTypes[satSysTemp] = newTypeList;
@@ -1103,9 +1102,11 @@ namespace gpstk
                vector<RinexObsID> newTypeList;
                for(i = 0; (i < numObs) && (i < maxObsPerLine); i++)
                {
+
                   int position = 4*i + 6 + 1;
                   RinexObsID rt(satSysTemp+line.substr(position,3));
-                  newTypeList.push_back(rt);
+		  newTypeList.push_back(rt);
+	//	  cout<<"ObsType : "<<rt<<endl;
                }
                mapObsTypes[satSysTemp] = newTypeList;
             }
@@ -1246,7 +1247,7 @@ namespace gpstk
 
          valid |= validSystemScaleFac;
       }
-      else if(label == stringSystemPhaseShift) ///< "SYS / PHASE SHIFT"    R3.01
+      else if((label == stringSystemPhaseShift)||(label == "SYS / PHASE SHIFTS")) ///< "SYS / PHASE SHIFT(S)"    R3.01
       {
          //map<string, map<RinexObsID, map<RinexSatID,double> > > sysPhaseShift;
          RinexSatID sat;
@@ -1660,13 +1661,13 @@ namespace gpstk
          //   cout << endl;
          //}
       }
-
       // Since technically the Phase Shift record is required in ver 3.01,
       // create SystemPhaseShift record(s) if not present.
       //map<string, map<RinexObsID, map<RinexSatID,double> > > sysPhaseShift;
       if(version >= 3.01 && (valid & validSystemObsType)
                          && !(valid & validSystemPhaseShift)) {
-         // loop over obs types to get systems
+      
+      // loop over obs types to get systems
          map<string,vector<RinexObsID> >::const_iterator iter;
          for(iter=mapObsTypes.begin(); iter != mapObsTypes.end(); iter++) {
             string sys(iter->first);
@@ -1677,7 +1678,6 @@ namespace gpstk
          }
          valid |= validSystemPhaseShift;
       }
-
       // is the header valid?
       unsigned long allValid;
       if     (version <  3  )  allValid = allValid2;
@@ -1690,11 +1690,11 @@ namespace gpstk
                          asString(version));
          GPSTK_THROW(e);
       }
-
       if((valid & allValid) != allValid)
       {
          FFStreamError e("Incomplete or invalid header");
-         GPSTK_THROW(e);
+      // GPSTK_THROW(e);   // commented by wei wang
+                           // some rinex files may miss necesseray information in the header
       }
 
       // If we get here, we should have reached the end of header line.

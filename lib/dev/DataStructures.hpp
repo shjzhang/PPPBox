@@ -1255,7 +1255,16 @@ namespace gpstk
       gnssDataMap getDataFromEpoch( const CommonTime& epoch ) const
          throw( CommonTimeNotFound );
 
-
+        /** Returns a 'gnssDataMap' with the data corresponding to provided
+          *  timespan
+          *
+          * @param epochStart         the starting time.
+          * @param epochEnd           the end time.
+          */
+      gnssDataMap getDataFromTimeSpan( const CommonTime& epochStart,
+                                       const CommonTime& epochEnd ) const
+         throw( CommonTimeNotFound );
+ 
          /** Returns the data value (double) corresponding to provided CommonTime,
           *  SourceID, SatID and TypeID.
           *
@@ -1587,8 +1596,9 @@ namespace gpstk
        * @endcode
        */
    std::istream& operator>>( std::istream& i, gnssRinex& f );
-
-
+       //define this function to process Glonass data
+       //add by Wei Wang
+   std::istream& FeedFromRinex3Obs( std::istream& i, gnssRinex& f, std::map<RinexSatID,int>& freqNo);
 	   /** Stream output for gnssRinex.
        *
        * This handy operator allows to output a gnssRinex data structure

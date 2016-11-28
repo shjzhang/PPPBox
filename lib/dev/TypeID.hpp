@@ -109,6 +109,7 @@ namespace gpstk
          LLI1,      ///< Loss of Lock Indicator/ lock count, L1 frequency
          SSI2,      ///< Signal strength indicator/index, L2 frequency
          LLI2,      ///< Loss of Lock Indicator/ lock count, L2 frequency
+	 FreqNo,    ///< The frequency number of Glonass satellite, from -7 to 9
             // v 2.11
          C5,        ///< GPS L5C-code pseudorange
          L5,        ///< GPS phase observation in L5 frequency
@@ -201,6 +202,8 @@ namespace gpstk
          wetTropoVar,  ///< Vertical tropospheric delay var, wet component
          wetMap,    ///< Tropospheric mapping function, wet component
          tropoSlant, ///< Slant tropospheric delay, total
+         LatIPP,     /// Geocentric latitude of Ionoshere Pierce Point(IPP)
+         LonIPP,      /// longitude of Ionosphere Pierce Point(IPP)
          iono,      ///< Vertical ionospheric delay
          ionoTEC,   ///< Total Electron Content (in TECU), 1TECU = 1e+16 electrons per m**2
          ionoMap,   ///< Ionospheric mapping function
@@ -299,10 +302,16 @@ namespace gpstk
          instL6,    ///< Instrumental delay, L6
          instL7,    ///< Instrumental delay, L7
          instL8,    ///< Instrumental delay, L8
+        
+	 ISB_BDS,    /// inter-system bias for BeiDou 
+	 ISB_GAL,    /// inter-system bias for Galileo
+	 ISB_GLO,    /// inter-system bias for Glonass
 
          recInstC1, ///< Instrumental delay for receiver
          recInstP1, ///< Instrumental delay for receiver
          recInstP2, ///< Instrumental delay for receiver
+         recP1P2DCB, ///< the difference between instrumental delays for receiver
+         satP1P2DCB, ///< the difference between instrumental delays for satellite
          recInstC1Var, ///< Instrumental delay for receiver
          recInstP1Var, ///< Instrumental delay for receiver
          recInstP2Var, ///< Instrumental delay for receiver

@@ -82,18 +82,18 @@ int main(void)
    IonoModel ioModel;                  // Declare a Ionospheric Model object
 
       // Create the input observation file stream
-   Rinex3ObsStream rin("bahr1620.04o");
-
+   Rinex3ObsStream rin("wroc0020.15o");
+ 
       // Create the input navigation file stream
-   Rinex3NavStream rnavin("bahr1620.04n");
+   Rinex3NavStream rnavin("brdm0020.15p");
 
       // We need to read ionospheric parameters (Klobuchar model) from header
    rnavin >> rNavHeader;
-
+   std::cout<<"nav done??"<<std::endl;
       // Let's feed the ionospheric model (Klobuchar type) from data in the
       // navigation (ephemeris) file header. First, we must check if there are
       // valid ionospheric correction parameters in the header
-   if(rNavHeader.valid & Rinex3NavHeader::validIonoCorrGPS)
+/*   if(rNavHeader.valid & Rinex3NavHeader::validIonoCorrGPS)
    {
          // Extract the Alpha and Beta parameters from the header
       double* ionAlpha = rNavHeader.mapIonoCorr["GPSA"].param;
@@ -104,20 +104,20 @@ int main(void)
    }
    else
    {
-      cerr << "WARNING: Navigation file bahr1620.04n "
+      cerr << "WARNING: Navigation file  "
            << "doesn't have valid ionospheric correction parameters." << endl;
    }
-
+*/
       // Beware: In this case, the same model will be used for the
       // full data span
-   ionoStore.addIonoModel(CommonTime::BEGINNING_OF_TIME, ioModel);
+   //ionoStore.addIonoModel(CommonTime::BEGINNING_OF_TIME, ioModel);
 
       // Storing the ephemeris in "bceStore"
    while (rnavin >> rNavData)
    {
       bceStore.addEphemeris(rNavData);
    }
-
+   std::cout<<"add eph done"<<std::endl;
    bceStore.SearchUser();  // This is the default
 
       // BAHR station nominal position

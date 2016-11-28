@@ -166,7 +166,6 @@ namespace gpstk
                   // Convert coordinate system
                Position pos(IPP);
                pos.transformTo(Position::Geocentric);
-
                   // Compute the IPP position directly above the place of the
                   // receiver. 
                Position rxIPP = rxPos.getIonosphericPiercePoint( 90,
@@ -210,13 +209,13 @@ namespace gpstk
                diffLat = range(rxIPP, rxIPP2);
                diffLon = range(rxIPP, rxIPP3);
 
-               cout << "diffLat" << diffLat << endl;
-               cout << "diffLon" << diffLon << endl;
-
-                  // Insert the range difference in latitude and longitude
+              // cout << "diffLat : " << diffLat << endl;
+              // cout << "diffLon : " << diffLon << endl;
                (*stv).second[TypeID::diffLat]  = diffLat;
                (*stv).second[TypeID::diffLon]  = diffLon;
-
+                  // Insert the latitude and longitude of IPP
+               (*stv).second[TypeID::LatIPP]  = latIPP;
+               (*stv).second[TypeID::LonIPP]  = lonIPP;
                   // Let's get TEC, RMS and ionosphere height for IPP
                   // at current epoch
                Triple val = pDefaultMaps->getIonexValue( time, pos );

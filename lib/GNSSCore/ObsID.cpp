@@ -179,8 +179,10 @@ namespace gpstk
       }
       else if (sys == 'C') // BeiDou
       {
-         if(band == cbL1) band = cbB1;
-         if(band == cbE6) band = cbB3;
+         if(band == cbL1) band = cbB1; // n=1
+         if(band == cbL2) band = cbB1; // n=2, MGEX data use 2
+         if(band == cbE6) band = cbB3; // n=6
+         if(band == cbE5b) band = cbB2;// n=7
 
          if(band == cbB1) {
             switch (code)
@@ -193,17 +195,17 @@ namespace gpstk
          }
          if(band == cbB3) switch (code)
          {
-            case tcI5: code = tcCI7; break;     // 'I'
-            case tcQ5: code = tcCQ7; break;     // 'Q'
-            case tcC2LM: code = tcCIQ7; break;  // 'X'
+            case tcI5: code = tcCI6; break;     // 'I'
+            case tcQ5: code = tcCQ6; break;     // 'Q'
+            case tcC2LM: code = tcCIQ6; break;  // 'X'
             default: break;
          }
-         if(band == cbE5b) {
+         if(band == cbB2) {
             switch (code)
             {
-               case tcI5: code = tcCI6; break;     // 'I'
-               case tcQ5: code = tcCQ6; break;     // 'Q'
-               case tcC2LM: code = tcCIQ6; break;  // 'X'
+               case tcI5: code = tcCI7; break;     // 'I'
+               case tcQ5: code = tcCQ7; break;     // 'Q'
+               case tcC2LM: code = tcCIQ7; break;  // 'X'
             default: break;
             }
          }

@@ -223,6 +223,15 @@ namespace gpstk
       virtual ComputeLinear& addLinear(const gnssLinearCombination& linear)
       { linearList.push_back(linear); return (*this); };
 
+      virtual ComputeLinear& addGlonassLinear(const gnssLinearCombination& linear)
+      { GlonassLinearList.push_back(linear); return (*this); };
+
+      virtual ComputeLinear& addGalileoLinear(const gnssLinearCombination& linear)
+      { GalileoLinearList.push_back(linear); return (*this); };
+
+      virtual ComputeLinear& addBeiDouLinear(const gnssLinearCombination& linear)
+      { BeiDouLinearList.push_back(linear); return (*this); };
+
 
          /// Returns a string identifying this object.
       virtual std::string getClassName(void) const;
@@ -237,7 +246,12 @@ namespace gpstk
 
          /// List of linear combinations to compute
       LinearCombList linearList;
-
+         /// for Glonass
+      LinearCombList GlonassLinearList;
+         /// for Galileo
+      LinearCombList GalileoLinearList;
+         /// for BeiDou
+      LinearCombList BeiDouLinearList;
 
    }; // End class ComputeLinear
 

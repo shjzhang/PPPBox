@@ -126,7 +126,14 @@ namespace gpstk
          E05,                    ///< E5a - Galileo
          E07,                    ///< E5b - Galileo
          E08,                    ///< E5 (E5a+E5b) - Galileo
-         E06                     ///< E6 - Galileo
+         E06,                    ///< E6 - Galileo
+         C01,                    ///< B1 - BeiDou
+         C06,                    ///< B3 - BeiDou
+         C07,                    ///< B2 - BeiDou
+         J01,                    ///< L1 - QZSS
+         J02,                    ///< L2 - QZSS
+         J05,                    ///< L5 - QZSS
+         J06                     ///< L6 - QZSS
       };
 
 

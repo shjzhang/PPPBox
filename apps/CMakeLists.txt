@@ -9,7 +9,6 @@ add_subdirectory (difftools)
 add_subdirectory (filetools)
 add_subdirectory (geomatics)
 add_subdirectory (ionosphere)
-add_subdirectory (troposphere)
 add_subdirectory (mergetools)
 
 # If on UNIX, do these

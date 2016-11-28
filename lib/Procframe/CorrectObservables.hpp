@@ -4,6 +4,8 @@
  * @file CorrectObservables.hpp
  * This class corrects observables from effects such as antenna excentricity,
  * difference in phase centers, offsets due to tide effects, etc.
+ *
+ *
  */
 
 #ifndef GPSTK_CORRECTOBSERVABLES_HPP
@@ -546,10 +548,8 @@ namespace gpstk
          /// Position of antenna L1 phase center with respect to ARP ([UEN]).
       Triple L1PhaseCenter;
 
-
          /// Position of antenna L2 phase center with respect to ARP ([UEN]).
       Triple L2PhaseCenter;
-
 
          /// Position of antenna L5 phase center with respect to ARP ([UEN]).
       Triple L5PhaseCenter;

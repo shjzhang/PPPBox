@@ -30,6 +30,7 @@
 
 #include "ComputeLinear.hpp"
 
+using namespace std;
 
 namespace gpstk
 {
@@ -50,17 +51,32 @@ namespace gpstk
                                             satTypeValueMap& gData )
       throw(ProcessingException)
    {
-
       try
       {
 
             // Loop through all the satellites
          satTypeValueMap::iterator it;
+            // a copy of GPS linearList for the first time
+         LinearCombList GPSLinearList = linearList;
+
          for( it = gData.begin(); it != gData.end(); ++it )
          {
+            if ((*it).first.system == SatID::systemGlonass)
+            {
+               setLinearCombination(GlonassLinearList); 
+            }
+            else if ((*it).first.system == SatID::systemGalileo)
+            {
+               setLinearCombination(GalileoLinearList); 
+            }
+            else if ((*it).first.system == SatID::systemBeiDou)
+            {
+               setLinearCombination(BeiDouLinearList);  
+            }
 
                // Loop through all the defined linear combinations
             LinearCombList::const_iterator pos;
+
             for( pos = linearList.begin(); pos != linearList.end(); ++pos )
             {
 
@@ -73,7 +89,6 @@ namespace gpstk
                   double temp(0.0);
 
                   TypeID type(iter->first);
-
                   if( (*it).second.find(type) != (*it).second.end() )
                   {
                      temp = (*it).second[type];
@@ -82,19 +97,17 @@ namespace gpstk
                   {
                      temp = 0.0;
                   }
-
                   result = result + (*iter).second * temp;
                }
 
                   // Store the result in the proper place
                (*it).second[pos->header] = result;
-
             }
-
+                   // set default linearlist to GPS
+               setLinearCombination(GPSLinearList);
          }
 
          return gData;
-
       }
       catch(Exception& u)
       {

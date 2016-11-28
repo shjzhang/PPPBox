@@ -59,7 +59,6 @@ namespace gpstk
       throw(exception, FFStreamError, StringException)
    {
       SP3Stream& strm = dynamic_cast<SP3Stream&>(ffs);
-      
       string line;
       strm.formattedGetLine(line);
       if(debug) std::cout << "SP3 Header Line 1 " << line << std::endl;
@@ -162,7 +161,16 @@ namespace gpstk
             GPSTK_THROW(e);
          }
       }
-      
+          // line 8-12 in SP3 files announced by WHU are zero
+          // Skip this lines
+      if (agency == " WHU")
+      {
+        for (int i = 0;i<5;i++)
+        {
+         strm.formattedGetLine(line);
+        
+        }
+      }
       readSVs = 0;
 
          // read in the accuracy.
@@ -187,6 +195,17 @@ namespace gpstk
                + line.substr(0,2));
             GPSTK_THROW(e);
          }
+      }
+
+          // line 18-22 in SP3 files announced by WHU are zero
+          // Skip this lines
+      if (agency == " WHU")
+      {
+        for (int i = 0;i<5;i++)
+        {
+         strm.formattedGetLine(line);
+        
+        }
       }
 
       strm.formattedGetLine(line);
@@ -423,3 +442,4 @@ namespace gpstk
    }  // end SP3Header::dump()
 
 }  // namespace
+

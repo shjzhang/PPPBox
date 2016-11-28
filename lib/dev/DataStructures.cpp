@@ -2102,8 +2102,58 @@ in matrix and number of types do not match") );
 
    }  // End of method 'gnssDataMap::getDataFromEpoch()'
 
+       /** Returns a 'gnssDataMap' with the data corresponding to provided
+          *  timespan
+          *
+          * @param epoch_begin         the starting time.
+          * @param epoch_end           the end time.
+          */
+     gnssDataMap gnssDataMap::getDataFromTimeSpan( const CommonTime& epochStart,
+                                                   const CommonTime& epochEnd ) const
+        throw( CommonTimeNotFound )
+     {
 
+         // Declare structure to be returned
+      gnssDataMap toReturn;
 
+         // First check that structure isn't empty
+      if( !( (*this).empty() ) )
+      {
+
+            // Find the position of the first element whose key is not less than
+            // 'epoch-tolerance'
+         gnssDataMap::const_iterator beginPos(
+                                 (*this).lower_bound(epochStart) );
+
+            // Find the position of the first element PAST
+            // 'epoch+tolerance'
+         gnssDataMap::const_iterator endPos(
+                                 (*this).upper_bound(epochEnd) );
+
+            // Add values to 'toReturn'
+         for( gnssDataMap::const_iterator it = beginPos;
+              it != endPos;
+              ++it )
+         {
+            toReturn.insert( (*it) );
+         }
+
+      }
+      else
+      {
+         GPSTK_THROW(CommonTimeNotFound("Data map is empty"));
+      }
+
+         // Check if 'toReturn' is empty
+      if( toReturn.empty() )
+      {
+         GPSTK_THROW(CommonTimeNotFound("Epoch not found"));
+      }
+
+      return toReturn;
+
+   }  // End of method 'gnssDataMap::getDataFromTimeSpan()'
+ 
       /* Returns the data value (double) corresponding to provided CommonTime,
        * SourceID, SatID and TypeID.
        *
@@ -3009,7 +3059,6 @@ in matrix and number of types do not match") );
             source.type         = SatIDsystem2SourceIDtype(roh.system);
             source.sourceName   = roh.markerName;
             source.sourceNumber = roh.markerNumber;
-
             // Fill header source data 
             f.header.source.type        = source.type         ;
             f.header.source.sourceName  = source.sourceName   ;
@@ -3021,7 +3070,6 @@ in matrix and number of types do not match") );
             f.header.antennaPosition = roh.antennaPosition;
             f.header.epochFlag = rod.epochFlag;
             f.header.epoch = rod.time;
-
             f.body = satTypeValueMapFromRinexObsData(roh, rod);
 
             return i;
@@ -3060,6 +3108,46 @@ in matrix and number of types do not match") );
       return i;
 
    }  // End of stream input for gnssRinex
+      
+      // function to fill gRin from  Rinex3Stream
+   std::istream& FeedFromRinex3Obs( std::istream& i, 
+                                gnssRinex& f,
+                std::map<RinexSatID,int>& freqNo)
+   {
+      if( Rinex3ObsStream::IsRinex3ObsStream(i) )     // Rinex3
+      {
+         Rinex3ObsStream& strm = dynamic_cast<Rinex3ObsStream&>(i);
+
+         // If the header hasn't been read, read it...
+         if(!strm.headerRead) strm >> strm.header;
+
+            // Clear out this object
+         Rinex3ObsHeader& roh = strm.header;
+           // if glonass frequency number in the Rinex3ObsHeader is missed,
+           // get it from the glonass navigation file
+         if (roh.GlonassFreqNo.empty())
+         {
+            roh.GlonassFreqNo = freqNo;    
+         }
+
+         Rinex3ObsData rod;
+         strm >> rod;
+
+         // Fill data
+         f.header.source.type = SatIDsystem2SourceIDtype(roh.fileSysSat);
+         f.header.source.sourceName = roh.markerName;
+         f.header.antennaType = roh.antType;
+         f.header.antennaPosition = roh.antennaPosition;
+         f.header.epochFlag = rod.epochFlag;
+         f.header.epoch = rod.time;
+
+         f.body = satTypeValueMapFromRinex3ObsData(roh, rod);
+
+         return i;
+      }
+
+   }  // End of function to read Rinex3Obs
+
 
 
    // Stream output for gnssRinex
@@ -3296,15 +3384,13 @@ in matrix and number of types do not match") );
             RinexSatID rsat(sat.id,sat.system);
 
             TypeID type = ConvertToTypeID( itObs->first, rsat);
-
+            
             const bool isPhase = IsCarrierPhase(itObs->first);
             const int n = GetCarrierBand(itObs->first);
-
             if(isPhase)
             {
-               // TODO:: handle glonass data later(yanweigps)
-               tvMap[ type ] = (*itObs).second.data*getWavelength(rsat,n);
-
+              // TODO:: handle glonass data later(yanweigps)
+                 tvMap[ type ] = (*itObs).second.data*getWavelength(rsat,n);
                // n=1 2 5 6 7 8
                if(n==1)
                {
@@ -3366,8 +3452,6 @@ in matrix and number of types do not match") );
       for(it=rod.obs.begin(); it != rod.obs.end(); it++)
       {
          RinexSatID sat(it->first);
-
-
          typeValueMap tvMap;
 
          map<std::string,std::vector<RinexObsID> > mapObsTypes(roh.mapObsTypes);
@@ -3376,13 +3460,29 @@ in matrix and number of types do not match") );
          for(size_t i=0; i<types.size(); i++)
          {
             TypeID type = ConvertToTypeID(types[i],sat);
-
             const int n = GetCarrierBand(types[i]);
-
             if(types[i].type==ObsID::otPhase)   // Phase
             {
-               // TODO:: handle glonass data later(yanweigps)
-               tvMap[type] = it->second[i].data*getWavelength(sat,n);
+               if (sat.system == SatID::systemGlonass)
+               {
+
+                  // get the frequency number of glonass satellite
+                  // add by Wei Wang
+                 int freqNo = roh.GlonassFreqNo.find(sat)->second;
+
+                 tvMap[TypeID::FreqNo] = freqNo;
+
+                  // TODO:: handle glonass data later(yanweigps)
+                 tvMap[ type ] = it->second[i].data*getWavelength(sat,n,freqNo);
+               }
+
+               else 
+               {   // if phase observable is missed, do not insert it into tvMap
+                  if (it->second[i].data != 0.0)
+                  {
+                     tvMap[ type ] = it->second[i].data*getWavelength(sat,n);
+                  }
+               }
 
                // n=1 2 5 6 7 8
                if(n==1)

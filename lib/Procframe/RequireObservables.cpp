@@ -30,7 +30,6 @@
 
 #include "RequireObservables.hpp"
 
-
 namespace gpstk
 {
 
@@ -54,8 +53,26 @@ namespace gpstk
 
    }  // End of method 'RequireObservables::addRequiredType()'
 
+   RequireObservables& RequireObservables::addGLORequiredType(TypeIDSet& typeSet)
+   {
+     GLORequiredTypeSet.insert(typeSet.begin(),typeSet.end());     
+       
+     return (*this);
+   }
+   
+   RequireObservables& RequireObservables::addGALRequiredType(TypeIDSet& typeSet)
+   {
+     GALRequiredTypeSet.insert(typeSet.begin(),typeSet.end());     
+       
+     return (*this);
+   }
 
-
+   RequireObservables& RequireObservables::addBDSRequiredType(TypeIDSet& typeSet)
+   {
+     BDSRequiredTypeSet.insert(typeSet.begin(),typeSet.end());     
+       
+     return (*this);
+   }
       // Returns a satTypeValueMap object, filtering the target observables.
       //
       // @param gData     Data object holding the data.
@@ -68,31 +85,47 @@ namespace gpstk
       {
 
          SatIDSet satRejectedSet;
-
+               // a copy of GPS requiredTypeIDSet
+         TypeIDSet GPSRequiredTypeSet = requiredTypeSet;
             // Loop through all the satellites
          for ( satTypeValueMap::iterator satIt = gData.begin();
                satIt != gData.end();
                ++satIt )
          {
-
-
+              // get the SatelliteSystem
+            SatID::SatelliteSystem system = (*satIt).first.system;
+            if (system == SatID::systemGlonass)
+            {
+               setRequiredType(GLORequiredTypeSet);     
+            }
+            else if (system == SatID::systemGalileo)
+            {
+               setRequiredType(GALRequiredTypeSet);     
+            }
+            else if (system == SatID::systemBeiDou)
+            {
+               setRequiredType(BDSRequiredTypeSet);     
+            }
+            
+            
                // Check all the indicated TypeID's
+            if (requiredTypeSet.empty())
+            {
+              satRejectedSet.insert( (*satIt).first );  
+            }
+
             for ( TypeIDSet::const_iterator typeIt = requiredTypeSet.begin();
                   typeIt != requiredTypeSet.end();
                   ++typeIt )
             {
-
-
                   // Try to find required type
                typeValueMap::iterator it( (*satIt).second.find(*typeIt) );
-
                   // Now, check if this TypeID exists in this data structure
                if ( it == (*satIt).second.end() )
                {
                      // If we couldn't find type, then schedule this
                      // satellite for removal
                   satRejectedSet.insert( (*satIt).first );
-
                      // It is not necessary to keep looking
                   //typeIt = requiredTypeSet.end();
                   //--typeIt;
@@ -100,6 +133,8 @@ namespace gpstk
                }
 
             }
+             // set to default requiredTypeSet
+             setRequiredType(GPSRequiredTypeSet);
 
          }
 

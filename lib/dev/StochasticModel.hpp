@@ -1237,7 +1237,184 @@ namespace gpstk
 
 
    }; // End of class 'SatBiasRandomWalkModel'
+   
+    /** This class compute the elements of Phi and Q matrices corresponding
+       *  to satellite's bias(uncalibrated hardware delay), modeled as a random 
+       *  walk stochastic model.
+       *
+       *
+       * @sa RandomWalkModel, StochasticModel, ConstantModel, WhiteNoiseModel
+       *
+       */
+   class ISBRandomWalkModel : public StochasticModel
+   {
+   public:
 
+         /// Default constructor.
+      ISBRandomWalkModel() {};
+
+
+         /** Set the value of previous epoch for a given source
+          *
+          * @param satellite  SatID whose previous epoch will be set
+          * @param prevTime   Value of previous epoch
+          *
+          */
+      virtual ISBRandomWalkModel& setPreviousTime( const SatID& sat,
+                                                   const CommonTime& prevTime )
+      { ISBData[sat].previousTime = prevTime; return (*this); };
+
+
+         /** Set the value of current epoch for a given source
+          *
+          * @param satellite  SatID whose current epoch will be set
+          * @param currTime   Value of current epoch
+          *
+          */
+      virtual ISBRandomWalkModel& setCurrentTime( const SatID& sat,
+                                                  const CommonTime& currTime )
+      { ISBData[sat].currentTime = currTime; return (*this); };
+
+
+         /** Set the value of process spectral density for ALL current sources.
+          *
+          * @param qp         Process spectral density: d(variance)/d(time) or
+          *                   d(sigma*sigma)/d(time).
+          *
+          * \warning Beware of units: Process spectral density units are
+          * sigma*sigma/time, while other models take plain sigma as input.
+          * Sigma units are usually given in meters, but time units MUST BE
+          * in SECONDS.
+          *
+          * \warning New sources being added for processing AFTER calling
+          * method 'setQprime()' will still be processed at the default process
+          * spectral density for satellite bias (UHD), which is set
+          * to 3e-8 m*m/s (equivalent to about 1.0 cm*cm/h).
+          *
+          */
+      virtual ISBRandomWalkModel& setQprime(double qp);
+
+
+         /** Set the value of process spectral density for a given source.
+          *
+          * @param source     SourceID whose process spectral density will
+          *                   be set.
+          * @param qp         Process spectral density: d(variance)/d(time) or
+          *                   d(sigma*sigma)/d(time).
+          *
+          * \warning Beware of units: Process spectral density units are
+          * sigma*sigma/time, while other models take plain sigma as input.
+          * Sigma units are usually given in meters, but time units MUST BE
+          * in SECONDS.
+          *
+          * \warning New sources being added for processing AFTER calling
+          * method 'setQprime()' will still be processed at the default process
+          * spectral density for satellite bias(UHD), which is set
+          * to 3e-8 m*m/s (equivalent to about 1.0 cm*cm/h).
+          *
+          */
+      virtual ISBRandomWalkModel& setQprime( const SatID& sat,
+                                             double qp )
+      { ISBData[sat].qprime = qp; return (*this); };
+
+
+
+         /** Get element of the process noise matrix Q.
+          *
+          * \warning The element of process noise matrix Q to be returned
+          * will correspond to the last "prepared" SourceID (using "Prepare()"
+          * method).
+          *
+          */
+      virtual double getQ()
+      { return variance; };
+
+
+         /** This method provides the stochastic model with all the available
+          *  information and takes appropriate actions.
+          *
+          * @param sat        Satellite.
+          * @param gData      Data object holding the data.
+          *
+          */
+      virtual void Prepare( const SatID& sat,
+                            gnssSatTypeValue& gData );
+
+
+         /** This method provides the stochastic model with all the available
+          *  information and takes appropriate actions.
+          *
+          * @param sat        Satellite.
+          * @param gData      Data object holding the data.
+          *
+          */
+      virtual void Prepare( const SatID& sat,
+                            gnssRinex& gData );
+
+
+      virtual void Prepare( CommonTime& epoch,
+                            const SourceID& source,
+                            const SatID& sat,
+                            typeValueMap& tData)
+      {
+         gnssRinex g1;
+         g1.header.epoch = epoch;
+         g1.header.source = source;
+
+         satTypeValueMap satData;
+         satData[sat] = tData;
+
+         g1.body = satData; 
+
+         Prepare(sat, g1);
+      }
+
+         /// Destructor
+      virtual ~ISBRandomWalkModel() {};
+
+
+   private:
+
+
+         /// Structure holding object data
+      struct ISBModelData
+      {
+            // Default constructor initializing the data in the structure
+            // 3.30e-6*30=1.0e-4 = 0.01^2; 0.01^2/s = (0.1 cycle/sqrt(s))
+         ISBModelData() 
+             : qprime(3.3e-4),
+               previousTime(CommonTime::BEGINNING_OF_TIME) 
+         {};
+
+         double qprime;          ///< Process spectral density
+         CommonTime previousTime;   ///< Epoch of previous measurement
+         CommonTime currentTime;    ///< Epoch of current measurement
+
+      }; // End of struct 'satBiasModelData'
+
+
+         /// Map holding the information regarding each source
+      std::map<SatID, ISBModelData> ISBData;
+
+
+         /// Field holding value of current variance
+      double variance;
+
+
+         /** This method computes the right variance value to be returned
+          *  by method 'getQ()'.
+          *
+          * @param sat        Satellite.
+          * @param data       Object holding the data.
+          * @param source     Object holding the source of data.
+          *
+          */
+      virtual void computeQ( const SatID& sat,
+                             satTypeValueMap& data,
+                             SourceID& source );
+
+
+   }; // End of class 'ISBRandomWalkModel'
 
       /** This class compute the elements of Phi and Q matrices corresponding
        *  to a phase ambiguity variable: Constant stochastic model within
