@@ -45,14 +45,15 @@ namespace gpstk
 
 		/** 
 		 * This enumeration dedicates the status of network communication
-         * init = 0; running = 1; finished = 2; error = -1
+         * init = 0; connected = 1; dataReceiveable = 2; finished = 3; error = -1
 		 */ 
 		enum queryStatus
 		{
-			init,
-			running,
-			finished,
-            error = -1
+            init,                   // Initialize state
+            connected,              // have connected to the server
+            dataReceiveable,        // can receive the data
+            finished,               // finished the work
+            error = -1              // errors occur
 		};
 
 		/**
@@ -101,7 +102,7 @@ namespace gpstk
 		 * @param outData: output data from caster
          * @return the number of received data bytes
 		 */
-        virtual int waitForReadyRead(const char* outData) = 0;
+        virtual int waitForReadyRead(unsigned char* outData) = 0;
   
 		/**	
 		 * send NMEA-GGA message to caster

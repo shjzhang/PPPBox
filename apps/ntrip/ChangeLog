@@ -6,3 +6,8 @@ Ntrip caster.
 
 2016-11-20
 Receive and write the raw data to file in real-time.
+
+
+2016-12-05
+Decode the GPS RTCM3 format data (Type = 1002 & 1004) in 
+real-time, and output the RINEX file. 

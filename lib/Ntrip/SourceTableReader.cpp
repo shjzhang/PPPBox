@@ -174,7 +174,7 @@ namespace gpstk
 					mountPointMap[mountpoint].network        = content[7];
 					mountPointMap[mountpoint].country        = content[8];
 					mountPointMap[mountpoint].latitude       = asDouble(content[9]);
-					mountPointMap[mountpoint].longtitude     = asDouble(content[10]);
+                    mountPointMap[mountpoint].longitude     = asDouble(content[10]);
 					mountPointMap[mountpoint].nmeaFlag       = int(asFloat(content[11]));
 					mountPointMap[mountpoint].solution       = int(asFloat(content[12]));
 					mountPointMap[mountpoint].generator      = content[13];
@@ -241,7 +241,7 @@ namespace gpstk
 				 << stream.network << "\t"
 				 << stream.country << "\t"
 				 << stream.latitude << "\t"
-				 << stream.longtitude << "\t"
+                 << stream.longitude << "\t"
 				 << stream.nmeaFlag << "\t"
 				 << stream.solution << "\t"
 				 << stream.generator << "\t"
@@ -273,7 +273,7 @@ namespace gpstk
 				 << stream.network << "\t"
 				 << stream.country << "\t"
 				 << stream.latitude << "\t"
-				 << stream.longtitude << "\t"
+                 << stream.longitude << "\t"
 				 << stream.nmeaFlag << "\t"
 				 << stream.solution << "\t"
 				 << stream.generator << "\t"

@@ -60,17 +60,6 @@ namespace gpstk
 	class NetQueryNtrip1: public NetQueryBase
 	{
 	public: 
-        /**
-         * This enumeration dedicates the status of ntrip communication
-         * wait = 0; requested = 1; response_ok = 2; srctbl_received = 3
-         */
-        enum NtripStatus
-        {
-            wait,
-            requested,
-            response_ok,
-            srctbl_received
-        };
 
 		/**
 		 * default constructor
@@ -114,7 +103,7 @@ namespace gpstk
          * @param  outData: output data from caster
          * @return the number of received data bytes
          */
-        virtual int waitForReadyRead(const char* outData);
+        virtual int waitForReadyRead(unsigned char* outData);
 
         /**
          * Write the raw data to file
@@ -144,8 +133,6 @@ namespace gpstk
         void testResponse() throw (BufferOverflowError);
 
 		SocketLib *TCPsocket;
-
-        NtripStatus ntripStatus;
 
         int buffersize;
 

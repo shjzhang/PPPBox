@@ -75,7 +75,7 @@ namespace gpstk
 
 			string country;
 
-			double latitude,longtitude;
+            double latitude,longitude;
 
 			// 1 = MUST send NMEA GGA
 			int nmeaFlag;

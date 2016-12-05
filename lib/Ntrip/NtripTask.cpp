@@ -1,10 +1,11 @@
 #include <mutex>
-#include  <fstream>
+#include <fstream>
 #include "NtripTask.h"
 #include "NetUrl.hpp"
 #include "NetQueryBase.hpp"
 #include "NetQueryNtrip1.hpp"
-//#include "MountPoint.hpp"
+#include "RTCM3Decoder.hpp"
+#include "StringUtils.hpp"
 
 
 //using namespace gpstk;
@@ -13,11 +14,54 @@ NtripTask::NtripTask()
 {
     m_bOutputRaw = false;
     m_sRawOutFile = "";
+    m_sStreamFormat = "RTCM_3";
+    m_decoder = 0;
+    m_sRnxPath = "./";
+    m_dRnxVer = 3.01;
+    //m_prnLastEpo.clear();
 }
 
 NtripTask::~NtripTask()
 {
+    delete m_decoder;
+}
 
+RTCMDecoder* NtripTask::decoder()
+{
+    //如果不输出原始观测值，那么可以直接返回
+    if (m_decoder != 0) {
+      return m_decoder;
+    }
+    //如果要输出原始观测值，会有一个存储器，来依据各挂载点及其GPSDecoder对象来存储
+    else {
+      if (initDecoder() == true)
+      {
+          return m_decoder;
+      }
+    }
+    return 0;
+}
+
+
+bool NtripTask::initDecoder()
+{
+    m_decoder = 0;
+    string staID = m_MP.getMountPointID();
+
+    NetUrl mntpntUrl = m_MP.getMountPointUrl();
+    string lat  = StringUtils::asString(m_MP.getLatitude());
+    string lon  = StringUtils::asString(m_MP.getLongitude());
+    string ntripVer = m_MP.getNtripVersion();
+    string nmea = "no";
+
+    if(m_sStreamFormat.find("RTCM_3") != string::npos)
+    {
+        m_decoder = new RTCM3Decoder();
+    }
+    //m_decoder = new RTCM3Decoder();
+    m_decoder->initRinex(staID, mntpntUrl, lat, lon,
+                         nmea, ntripVer);
+    return true;
 }
 
 void NtripTask::run()
@@ -67,6 +111,56 @@ void NtripTask::run()
                     {
                         query->writeRawData(out);
                     }
+
+                    if (!decoder() || query->getStatus() != NetQueryBase::dataReceiveable)
+                    {
+                      continue;
+                    }
+
+                    // Delete old observations
+                    // -----------------------
+                    m_decoder->m_obsList.clear();
+
+                    // Decode Data
+                    // -------------
+                    unsigned char* data = (unsigned char *)malloc(4096);
+                    int buffLen = query->waitForReadyRead(data);
+
+                    if(buffLen > 0)
+                    {
+                        bool decodeState = m_decoder->decode(data, buffLen);
+                        if(!decodeState)
+                        {
+                            continue;
+                        }
+                    }
+
+                    // Loop over all observations (observations output)
+                    // ------------------------------------------------
+                    list<t_satObs>::iterator it = m_decoder->m_obsList.begin();
+                    for(;it!=(m_decoder->m_obsList.end());++it)
+                    {
+                        const t_satObs& obs = *it;
+                        string prn = obs._prn.toString();
+                        CommonTime obsTime = obs._time;
+                        /*
+                        {
+                            map<string, CommonTime>::iterator mt = m_prnLastEpo.begin();
+                            for(;mt!=(m_prnLastEpo.end());++mt)
+                            {
+                                CommonTime oldTime = m_prnLastEpo[prn];
+                                // observation coming more than once
+                                if( obsTime <= oldTime )
+                                {
+                                    continue;
+                                }
+                            }
+                            m_prnLastEpo[prn] = obsTime;
+                        }*/
+                        string format = "RTCM_3";
+                        m_decoder->dumpRinexEpoch(obs, format);
+                    }
+
                 }
                 catch(MountPointNotFound& e)
                 {

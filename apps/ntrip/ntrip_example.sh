@@ -10,4 +10,4 @@
 # Q.Liu, Wuhan University, 2016
 # =========================================================
 
-ntrip -conf ../../workplace/ntrip/NtripTool.conf
+ntrip -conf ./NtripTool.conf

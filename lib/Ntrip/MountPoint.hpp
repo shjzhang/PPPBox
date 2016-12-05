@@ -55,7 +55,7 @@ namespace gpstk
 
 		// default constructor
         MountPoint():Format(""),Country(""),Latitude(0.0),
-                    Longtitude(0.0),nmeaFlag(0),NtripVersion("1"){;}
+                    Longitude(0.0),nmeaFlag(0),NtripVersion("1"){;}
 
 		/** 
 		 * Constructor:only initialize url of mountpoint
@@ -99,71 +99,71 @@ namespace gpstk
 		void DecodeMountPoint(string _mntstring);
 		
 		/// destructor
-		~MountPoint(){};
+        ~MountPoint(){;}
 
 		// return a string identifying this class
 		string getClassName() const;
 
 		// set MountPortUrl
 		void setMountPointUrl(const NetUrl& _url)
-		{MountPointUrl = _url;};
+        {MountPointUrl = _url;}
 
 		void setScheme(const string& _scheme)
-		{MountPointUrl.setScheme(_scheme);};
+        {MountPointUrl.setScheme(_scheme);}
 
 		void setUserName(const string& _UserName)
-		{MountPointUrl.setUserName(_UserName);};
+        {MountPointUrl.setUserName(_UserName);}
 
 		void setPassWord(const string& _PassWord)
-		{MountPointUrl.setPassWord(_PassWord);};
+        {MountPointUrl.setPassWord(_PassWord);}
 
 		void setCasterHost(const string& _CasterHost)
-		{MountPointUrl.setCasterHost(_CasterHost);};
+        {MountPointUrl.setCasterHost(_CasterHost);}
 
 		void setCasterPort(const string& _CasterPort)
-		{MountPointUrl.setCasterPort(_CasterPort);};
+        {MountPointUrl.setCasterPort(_CasterPort);}
 
 		void setFormat(const string& format)
-		{Format = format;};
+        {Format = format;}
 
 		void setCountry(const string& country)
-		{Country = country;};
+        {Country = country;}
 
 		void setLatitude(const double lat)
-		{Latitude = lat;};
+        {Latitude = lat;}
 
-		void setLontitude(const double lon)
-		{Longtitude = lon;};
+        void setLongitude(const double lon)
+        {Longitude = lon;}
 
 		void setNmeaFlag(int flag)
-		{nmeaFlag = flag;};
+        {nmeaFlag = flag;}
 
 		void setNtripVersion(const string& _version)
-		{NtripVersion = _version;};
+        {NtripVersion = _version;}
 
 		// get
-		NetUrl getMountPointUrl() const{return MountPointUrl;};
+        NetUrl getMountPointUrl() const{return MountPointUrl;}
 
-		string getUserName() const{return MountPointUrl.getUserName();};
+        string getUserName() const{return MountPointUrl.getUserName();}
 
-		string getPassWord() const{return MountPointUrl.getPassWord();};
+        string getPassWord() const{return MountPointUrl.getPassWord();}
 		
-		string getCasterHost() const{return MountPointUrl.getCasterHost();};
+        string getCasterHost() const{return MountPointUrl.getCasterHost();}
 		
-		string getCasterPort() const{return MountPointUrl.getCasterPort();};
+        string getCasterPort() const{return MountPointUrl.getCasterPort();}
 		
-		string getMountPointID() const{return MountPointUrl.getPath();};
+        string getMountPointID() const{return MountPointUrl.getPath();}
 
 		// RTCM_3,RTCM_2(return upper case letters)
-		string getFormat() const{return Format;};
+        string getFormat() const{return Format;}
 
-		double getLatitude() const {return Latitude;};
+        double getLatitude() const {return Latitude;}
 
-		double getLongtitude() const{return Longtitude;};
+        double getLongitude() const{return Longitude;}
 
-		int getnmeaFlag() const{return nmeaFlag;};
+        int getnmeaFlag() const{return nmeaFlag;}
 
-		string getNtripVersion() const{return NtripVersion;};
+        string getNtripVersion() const{return NtripVersion;}
 
 		// overloading operator =
 		MountPoint& operator= (const MountPoint& _mountpoint);
@@ -188,7 +188,7 @@ namespace gpstk
 
 		// aprroximate position in case of nmea = 1
 		double Latitude;
-		double Longtitude;
+        double Longitude;
 
 		// necessity for client to send NMEA message with
 		// approximate position to caster

@@ -91,7 +91,7 @@ namespace gpstk
 	   mntpoint.setFormat(stream.format);
 	   mntpoint.setCountry(stream.country);
 	   mntpoint.setLatitude(stream.latitude);
-	   mntpoint.setLontitude(stream.longtitude);
+       mntpoint.setLongitude(stream.longitude);
 	   mntpoint.setNmeaFlag(stream.nmeaFlag);
 
 	   typedef pair<string,MountPoint> str_mnt_pair;

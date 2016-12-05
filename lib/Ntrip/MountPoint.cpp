@@ -60,7 +60,7 @@ namespace gpstk
 	   Format = "";
 	   Country = "";
 	   Latitude = 0.0;
-	   Longtitude = 0.0;
+       Longitude = 0.0;
 	   nmeaFlag = 0;
 	   NtripVersion = "1";
    }
@@ -86,7 +86,7 @@ namespace gpstk
 	   Format = "";
 	   Country = "";
 	   Latitude = 0.0;
-	   Longtitude = 0.0;
+       Longitude = 0.0;
 	   nmeaFlag = 0;
 	   NtripVersion = "1";
    }
@@ -107,7 +107,7 @@ namespace gpstk
 	   Format = _mntpoint.Format;
 	   Country = _mntpoint.Country;
 	   Latitude = _mntpoint.Latitude;
-	   Longtitude = _mntpoint.Longtitude;
+       Longitude = _mntpoint.Longitude;
 	   nmeaFlag = _mntpoint.nmeaFlag;
 	   NtripVersion = _mntpoint.NtripVersion;
    }
@@ -136,7 +136,7 @@ namespace gpstk
 		   Latitude = asDouble(stripFirstWord(mntpoint));
 	   }
 	   // get the Latitude and Longtitude
-	   Longtitude = asDouble(stripFirstWord(mntpoint));
+       Longitude = asDouble(stripFirstWord(mntpoint));
 	   // get the nmea flag
 	   if(stripFirstWord(mntpoint) == "no")
 	   {
@@ -158,7 +158,7 @@ namespace gpstk
 	   Format = _mountpoint.Format;
 	   Country = _mountpoint.Country;
 	   Latitude = _mountpoint.Latitude;
-	   Longtitude = _mountpoint.Longtitude;
+       Longitude = _mountpoint.Longitude;
 	   nmeaFlag = _mountpoint.nmeaFlag;
 	   NtripVersion = _mountpoint.NtripVersion;
 	   return *this;
@@ -190,7 +190,7 @@ namespace gpstk
 	   cout << temp << " " << Format 
 		            << " " << Country 
 					<< " " << Latitude 
-					<< " " << Longtitude 
+                    << " " << Longitude
 					<< " " << nmeaFlag 
 					<< " " << NtripVersion 
 					<< endl;

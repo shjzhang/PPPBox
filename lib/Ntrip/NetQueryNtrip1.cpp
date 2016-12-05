@@ -59,7 +59,7 @@ namespace gpstk
    {
 	   TCPsocket = 0;
 	   timeOut = 20; // by default: 20s
-       ntripStatus = wait;
+       status = init;
        buffersize = 4096;
        buff = (unsigned char *)malloc(buffersize);
    }
@@ -93,19 +93,18 @@ namespace gpstk
    void NetQueryNtrip1::startRequest(const NetUrl& url, const string& gga)
         throw (MountPointNotFound,SocketRecvError)
    {
-       while(ntripStatus != response_ok && ntripStatus != srctbl_received)
+       while(status != dataReceiveable)
        {
-           if(ntripStatus <0 )
+           if(status < 0 )
            {
                return;
            }
-           else if(ntripStatus == wait)
+           else if(status == init)
            {
                sendRequest(url,gga);
            }
-           else if(ntripStatus == requested)
+           else if(status == connected)
            {
-               char *p = (char*)buff;
                int n = recv(TCPsocket->getSocketID(),(char*)buff,buffersize-1,0);
                if(n < 0)
                {
@@ -128,7 +127,7 @@ namespace gpstk
            }
 
        }
-       if(ntripStatus == response_ok)
+       if(status == dataReceiveable)
        {
            int n;
            // judge whether receive rightly
@@ -138,13 +137,11 @@ namespace gpstk
                delete TCPsocket;
                TCPsocket  = 0;
                status = error;
-               ntripStatus = wait;
                return;
            }
            nbyte = n;
        }
-
-       else if(ntripStatus == srctbl_received )
+       /*else if(ntripStatus == srctbl_received )
        {
            if(url.getPath().size()>0)
            {
@@ -153,7 +150,7 @@ namespace gpstk
                     "' is not found in the caster");
                GPSTK_THROW(e);
            }
-       }
+       }*/
    }
 
    // send the nmea order when we have connected to a caster
@@ -163,17 +160,25 @@ namespace gpstk
    }
 
    // read the received data
-   int NetQueryNtrip1::waitForReadyRead(const char* outData)
+   int NetQueryNtrip1::waitForReadyRead(unsigned char *outData)
    {
-        outData = (const char*)buff;
-        return nbyte;
+       if(status == dataReceiveable)
+       {
+           for(int i=0;i<nbyte;++i)
+           {
+               outData[i] = buff[i];
+           }
+           return nbyte;
+       }
+       else
+       {
+           return -1;
+       }
    }
 
 
    void NetQueryNtrip1::sendRequest(const NetUrl &url, const string &gga)
    {
-       // change the status of request
-       status = running;
 
        string caster = url.getCasterHost();
        string port = url.getCasterPort();
@@ -236,7 +241,6 @@ namespace gpstk
                TCPsocket = 0;
                status = error;
                return;
-
            }
        }
        else
@@ -248,8 +252,7 @@ namespace gpstk
            status  = error;
            return;
        }
-       status = running;
-       ntripStatus = requested;
+       status = connected;
    }
 
    void NetQueryNtrip1::testResponse()
@@ -268,7 +271,7 @@ namespace gpstk
            {
                *q++ = *p++;
            }
-           ntripStatus = response_ok;
+           status = dataReceiveable;
        }
 
        /* receive source table */
@@ -276,8 +279,8 @@ namespace gpstk
        {
            nbyte = 0;
            buff[0] = '\0';
-           ntripStatus = srctbl_received;
-           TCPsocket->CloseSocket();
+           status = dataReceiveable;
+           TCPsocket->CloseSocket();    //?
        }
 
        /* http response */
@@ -288,7 +291,7 @@ namespace gpstk
 
            nbyte = 0;
            buff[0]='\0';
-           ntripStatus = wait;
+           status = init;
            TCPsocket->CloseSocket();
        }
 
@@ -298,7 +301,7 @@ namespace gpstk
             printf("response overflow");
             nbyte=0;
             buff[0]='\0';
-            ntripStatus = wait;
+            status = init;
             TCPsocket->CloseSocket();
 
             BufferOverflowError e(getClassName() + ": Response buffer overflow!");
@@ -308,14 +311,14 @@ namespace gpstk
        {
            nbyte=0;
            buff[0]='\0';
-           ntripStatus = wait;
+           status = init;
        }
    }
 
    // write the recived raw data
    void NetQueryNtrip1::writeRawData(ofstream& out)
    {
-       if(ntripStatus==response_ok)
+       if(status == dataReceiveable)
        {
            lock_guard<mutex> guard(m_mutex);
            out.write((const char*)buff,nbyte);
@@ -334,144 +337,6 @@ namespace gpstk
    {
        // break up the origin function from XY.Cao
    }
-
-
-
-
-
-
-	   /*
-	   /// Send for TCP
-	   if((SocketSend(socketfd,reqStr.c_str(),reqStr.size(),0,timeOut)) < 0)
-	   {
-		   cerr << "error:send socket wrong:\t" << getLastSocketError() << endl;
-		   status = error;
-		   SocketClose(socketfd);
-		   return;
-	   }
-
-	   // received caster response
-	   char receiveBuff[NTRIP_MAXRSP]={0};
-	   // the total number of bytes received from caster
-	   int totalbytes = 0;
-	   // the number of bytes received from caster at once time
-	   int numbytes=0;
-	   // start time
-	   int starttime = time(0);
-
-	   /* old version
-	   *	This method maybe cause something wrong because of the limited buffer size.
-	   *	Copy from the receive buffer to the socket buffer could not be finished at one time.
-	   if( (numbytes = SocketRecv(socketfd,(char *)receiveBuff,NTRIP_MAXRSP-1,0,timeOut)) < 0)
-	   {
-		   cerr << "error:receive socket wrong:\t" << getLastSocketError() << endl;
-		   status = error;
-		   SocketClos444444444444socketfd);
-		   return;
-	   }
-	   */
-	   /*
-	   // the counter
-	   int icounter = 0;
-	   bool writeSourcetable = false;
-
-	   while( (numbytes = SocketRecv(socketfd, (char*)(receiveBuff + numbytes), NTRIP_MAXRSP-1, 0, timeOut)) > 0 )
-	   {
-		   cout << "icounter = " << icounter << " , numbytes = " << numbytes << endl;
-		   icounter++;
-		   totalbytes += numbytes;
-		   cout << "totalbytes = " << totalbytes << endl;
-		   
-		   bool proxyResponse = false;
-		   // the response list from caster
-		   vector<string> response;
-
-		   while(true)
-		   {
-			   string buff = receiveBuff;
-			   string line = stripFirstWord(buff,'\n') + "\n";
-			   
-			   /// whether proxy
-			   if( numbytes > 17 &&
-                   !strstr(receiveBuff, "ICY 200 OK")  &&
-                   (!strncmp(receiveBuff, "HTTP/1.1 200 OK\r\n", 17) ||
-                   !strncmp(receiveBuff, "HTTP/1.0 200 OK\r\n", 17)) )
-			   {
-				   // proxy
-				   proxyResponse = true;
-			   }
-
-			   if (!proxyResponse && !stripTrailing(line).empty()) 
-			   {
-				   response.push_back(line);
-			   }
-
-			   if (stripTrailing(line).empty()) 
-			   {
-				   if (proxyResponse) 
-				   {
-					   proxyResponse = false;
-				   }
-				   else 
-				   {
-					   break;
-				   }
-			   }
-
-			   // invalid password or no password
-			   if ( strstr(receiveBuff,"Unauthorized") )
-			   {
-				   /// output the unauthorized message according HTTP PROTOCOL
-
-				   for(int k = 0; k < numbytes; ++k)
-                   {
-					   ///fprintf(stderr, "%c", isprint(receiveBuff[k]) ? receiveBuff[k] : '.');
-					   fprintf(stderr, "%c", receiveBuff[k]);
-                   }
-				   break;
-			   }
-
-			   // invalid mountpoin
-			   if( strstr(receiveBuff,"SOURCETABLE") )
-			   {
-				   // write to a file: SourceTable
-				   ofstream sourcetable;
-				   sourcetable.open("SourceTable",ofstream::out);
-				   if(!sourcetable)
-				   {
-					   // If file doesn't exist, issue a warning
-					   cerr << "error:sourcetable" << endl;
-					   exit(-1);
-				   }
-				   for(int k = 0; k < totalbytes; ++k)
-                   {
-					   sourcetable << receiveBuff[k];
-                   }
-				   // close SourceTable
-				   sourcetable.close();
-				   break;
-			   }
-
-			   if ( !proxyResponse &&
-				   ( line.find("200 OK") != std::string::npos ) &&
-				   ( line.find("SOURCETABLE") == std::string::npos ))
-			   {
-				   /// ICY 200 OK,then clear response list
-				   response.clear();
-				   
-			   }
-
-		   }	// end while(true)
-
-	   }	// end while
-
-
-	   status = running;
-	   */
-   
-
-
-
 
 
 }  // End of namespace gpstk

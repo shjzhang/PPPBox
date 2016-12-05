@@ -37,7 +37,7 @@ namespace gpstk
 #define NTRIPTOOLVERSION "1.0"
 
 	// agency name
-#define NTRIPTOOLPGMNAME "WHU"
+#define NTRIPTOOLPGMNAME "PPPBox" NTRIPTOOLVERSION
 
 	// operating system
 #ifdef _WIN32

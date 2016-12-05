@@ -24,7 +24,7 @@
 //============================================================================
 // Modification
 //
-// 2016.11.20  Q.Liu  Add the function outputting the received binary data
+// 2016.11.20  Q.Liu  Add the function outputting the reveived binary data
 //                    to file.
 //============================================================================
 
@@ -95,117 +95,117 @@ void catch_signal(int)
 // main program
 int main( int argc, char* argv[] )
 {
-    signal(SIGINT, catch_signal);
+	signal(SIGINT, catch_signal);
 
-    // configure file name,by default named "NtripTool.conf"
-    string ConfFileName;
+	// configure file name,by default named "NtripTool.conf"
+	string ConfFileName;
 
-    // raw file name(post process)
-    string RawFileName;
+	// raw file name(post process)
+	string RawFileName;
 
-    // print help
-    string PrintHelp = 
-    "NtripTool_" NTRIPTOOLPGMNAME NTRIPTOOLVERSION "_" NTRIPTOOLOS " usage:\n"
-    " 	-help: print help{no arguments}\n"
-    "	-conf: configure file name{ConfFileName}\n"
-    "	-file: raw file name{RawFileName}\n"
-    "\n";
+	// print help
+	string PrintHelp = 
+	"NtripTool_" NTRIPTOOLPGMNAME NTRIPTOOLVERSION "_" NTRIPTOOLOS " usage:\n"
+	" 	-help: print help{no arguments}\n"
+	"	-conf: configure file name{ConfFileName}\n"
+	"	-file: raw file name{RawFileName}\n"
+	"\n";
 
-    /// just for test:output
-    /// 0 = no output; 1 = necessary parameters
-    /// 2 = parameters of medium process
-    /// 3 = input parameters and output parameters
-    /// 5 = output all
-    int verb = 5;
+	/// just for test:output
+	/// 0 = no output; 1 = necessary parameters
+	/// 2 = parameters of medium process
+	/// 3 = input parameters and output parameters
+	/// 5 = output all
+	int verb = 5;
 
-    if(argc == 1) 
-    {
-        cout << PrintHelp << endl;
-        exit(0);
-    }
+	if(argc == 1) 
+	{
+		cout << PrintHelp << endl;
+		exit(0);
+	}
 
-    // read input arguments
-    int idx = 0;
+	// read input arguments
+	int idx = 0;
 
-    while( ++idx < argc)
-    {
-        if(strncmp(argv[idx],"-help",5) == 0 && idx < argc)
-        {
-            cout << PrintHelp << endl;
-            exit(0);
-        }	// end if -help
+	while( ++idx < argc)
+	{
+		if(strncmp(argv[idx],"-help",5) == 0 && idx < argc)
+		{
+			cout << PrintHelp << endl;
+			exit(0);
+		}	// end if -help
 
-        else if(strncmp(argv[idx],"-conf",5) == 0 && idx + 1 < argc)
-        {
-            ConfFileName = argv[idx+1];
-            idx++;
-            continue;
-        }	// end if -conf
+		else if(strncmp(argv[idx],"-conf",5) == 0 && idx + 1 < argc)
+		{
+			ConfFileName = argv[idx+1];
+			idx++;
+			continue;
+		}	// end if -conf
 
-        else if(strncmp(argv[idx],"-file",5) == 0 && idx + 1 < argc)
-        {
-            RawFileName = argv[idx+1];
-            idx++;
-            continue;
-        }	// end if -file
-        else
-        {
-            cout << "Error input arguments!" << endl;
-            cout << PrintHelp << endl;
-            exit(-1);
-        }
+		else if(strncmp(argv[idx],"-file",5) == 0 && idx + 1 < argc)
+		{
+			RawFileName = argv[idx+1];
+			idx++;
+			continue;
+		}	// end if -file
+		else
+		{
+			cout << "Error input arguments!" << endl;
+			cout << PrintHelp << endl;
+			exit(-1);
+		}
 
-    	// set another loop to get key name and key value 
+		// set another loop to get key name and key value 
 
-    } // end while argc
+	} // end while argc
 
-    if (verb > 2)
-    {
-        cout << "ConfFileName: " << ConfFileName << endl;
-        cout << "RawFileName: "  << RawFileName  << endl;
-    }
+	if (verb > 2)
+	{
+		cout << "ConfFileName: " << ConfFileName << endl;
+		cout << "RawFileName: "  << RawFileName  << endl;
+	}
 
     ///////////////// first ,read conf file/////////////
 
-    // open and parse configuration file
-    ConfDataReader NtripConf;
-    
-    //	check whether the user has provided a configuration file
-    if(! ConfFileName.empty())
-    {
-        // enable exceptions
-        NtripConf.exceptions(ios::failbit);
-        try
-        {
-            NtripConf.open(ConfFileName);
-        }
-        catch(...)
-        {
-            cerr << "Error: opening file " 
-                 << ConfFileName << endl;
-            cerr << "Maybe configuration doesn't exsit or you don't have "
-                 << "proper read permissions." 
-                 << endl;
-            exit(-1);
-        }	// end try-catch
-    }	// if-else
-    else
-    {
-        try
-        {
-            //	try to open the default configuration file
-            NtripConf.open("NtripTool.conf");
-        }
-        catch(...)
-        {
-            cerr << "***Error: opening default configuration file NtripTool.conf"
-                 << endl;
-            cerr << "Maybe configuration doesn't exsit or you don't have "
-                 << "proper read permissions."
-                 << endl;
-            exit(-1);
-        }	// end try-catch
-    }	//	 end if-else
+	// open and parse configuration file
+	ConfDataReader NtripConf;
+	
+	//	check whether the user has provided a configuration file
+	if(! ConfFileName.empty())
+	{
+		// enable exceptions
+		NtripConf.exceptions(ios::failbit);
+		try
+		{
+			NtripConf.open(ConfFileName);
+		}
+		catch(...)
+		{
+			cerr << "Error: opening file " 
+				 << ConfFileName << endl;
+			cerr << "Maybe configuration doesn't exsit or you don't have "
+				 << "proper read permissions." 
+				 << endl;
+			exit(-1);
+		}	// end try-catch
+	}	// if-else
+	else
+	{
+		try
+		{
+			//	try to open the default configuration file
+			NtripConf.open("NtripTool.conf");
+		}
+		catch(...)
+		{
+			cerr << "***Error: opening default configuration file NtripTool.conf"
+				 << endl;
+			cerr << "Maybe configuration doesn't exsit or you don't have "
+				 << "proper read permissions."
+				 << endl;
+			exit(-1);
+		}	// end try-catch
+	}	//	 end if-else
 
         // read configuration file
         string UserName = NtripConf.getValue("UserName");
@@ -255,46 +255,46 @@ int main( int argc, char* argv[] )
         bool outputRaw(NtripConf.getValueAsBoolean("OutputRawToFile"));
 
 
-    if(!getSourceTable)
-    {
-    	// get from network
-    	if(SourceTablePath.empty())
-    	{
-    	    cout << "SourceTable.txt does not exist in local path, " 
-    	         << "please get it from network!"
-    	         << endl;
-    	    // not exit
+	if(!getSourceTable)
+	{
+		// get from network
+		if(SourceTablePath.empty())
+		{
+			cout << "SourceTable.txt does not exist in local path, " 
+				 << "please get it from network!"
+				 << endl;
+			// not exit
 
-    	    // TD:get form network and uplate local sourcetable file
-    	}
-    	else
-    	{
-            // read SourceTable.txt
-            //cout << "get sourcetable from local path." << endl;
+			// TD:get form network and uplate local sourcetable file
+		}
+		else
+		{
+			// read SourceTable.txt
+			//cout << "get sourcetable from local path." << endl;
 
-            srcTableReader.open(SourceTablePath);
+			srcTableReader.open(SourceTablePath);
 
-    	}
+		}
 
-    }
+	}
 
 
-    ///////////////// third ,preparation for multi-thread/////////////
+	///////////////// third ,preparation for multi-thread/////////////
 
-    // the url of caster
-    NetUrl mntUrl(UserName,PassWord,CasterHost,CasterPort);
+	// the url of caster
+	NetUrl mntUrl(UserName,PassWord,CasterHost,CasterPort);
 
-    string mountpointID;
+	string mountpointID;
 
-    ReadMountPoints ReadmntPoints;
+	ReadMountPoints ReadmntPoints;
 
-    while(!ConfMountPoints.empty())
-    {
-        // every mountpoint seperated by "/"
-        mountpointID = stripTrailing(stripFirstWord(ConfMountPoints,'/'));
+	while(!ConfMountPoints.empty())
+	{
+		// every mountpoint seperated by "/"
+		mountpointID = stripTrailing(stripFirstWord(ConfMountPoints,'/'));
 
         mntUrl.setPath(mountpointID);
-        // get from sourcetable
+		// get from sourcetable
         if(srcTableReader.haveStream(mountpointID))
         {
             SourceTableReader::mountpointSTR stream =
@@ -307,30 +307,30 @@ int main( int argc, char* argv[] )
             continue;
         }
 
-    }
+	}
 
-    if( verb >2 ) ReadmntPoints.dump();
+	if( verb >2 ) ReadmntPoints.dump();
 
 
-    //////////////////////// thread ////////////////////////////////////
-    
+	//////////////////////// thread ////////////////////////////////////
+	
     ThreadPool* pTP = ThreadPool::create(15);
 
-    pTP->onStart();
+	pTP->onStart();
 
-    // get the map
-    map<string,MountPoint> mntPointsMap = ReadmntPoints.getMountPointMap();
+	// get the map
+	map<string,MountPoint> mntPointsMap = ReadmntPoints.getMountPointMap();
 
-    
-    // Loop through MountPointsMap
-    map<string,MountPoint>::iterator itmnt;
+	
+	// Loop through MountPointsMap
+	map<string,MountPoint>::iterator itmnt;
 
-    for(itmnt = mntPointsMap.begin();itmnt != mntPointsMap.end();++itmnt)
-    {
-        if(verb > 1)
-        {
-            cout << "Start for " << (*itmnt).first << endl;
-        }
+	for(itmnt = mntPointsMap.begin();itmnt != mntPointsMap.end();++itmnt)
+	{
+		if(verb > 1)
+		{
+			cout << "Start for " << (*itmnt).first << endl;
+		}
 
         MountPoint pt = (itmnt->second);
 
@@ -340,18 +340,15 @@ int main( int argc, char* argv[] )
         pTask->setRawOutFile(filename);
         pTask->setRawOutOpt(outputRaw);
         pTP->pushTask(pTask);
- 
-    } // end for
-
-
-
+	} // end for
+  
     char key = ' ';
 
     while( key != 'q' )
     {
         scanf("%c", &key);
     }
-  
-    return 0;
+
+   return 0;
 }	/// end main()
 
