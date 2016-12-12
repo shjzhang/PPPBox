@@ -183,9 +183,9 @@ namespace gpstk
 		      MountPointUrl.getUserName() + ":" + 
 			  MountPointUrl.getPassWord() + "@" + 
 			  MountPointUrl.getCasterHost() + ":" + 
-			  MountPointUrl.getCasterPort() +
-			  MountPointUrl.getPath()
-			  ;
+              MountPointUrl.getCasterPort() + "/" +
+              MountPointUrl.getPath();
+
 	   // http://username:password@host:port/path
 	   cout << temp << " " << Format 
 		            << " " << Country 

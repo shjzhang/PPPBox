@@ -12,6 +12,8 @@
 using namespace gpstk;
 using namespace std;
 
+
+
 class NtripTask : public TaskBase{
 
 public:

@@ -42,7 +42,6 @@ RTCMDecoder* NtripTask::decoder()
     return 0;
 }
 
-
 bool NtripTask::initDecoder()
 {
     m_decoder = 0;
@@ -73,103 +72,95 @@ void NtripTask::run()
 	/// According to the ntrip version of mountpoint,
 	/// select corresponding model of network request.
 	/// By default: Ntrip Version 1.0
-	if(tempVersion == "U")
-	{}
-	else if(tempVersion == "R")
-	{}
-	else if(tempVersion == "S")
-	{}
-	else if(tempVersion == "N")
-	{}
-	else if(tempVersion == "UN")
-	{}
-	else if(tempVersion == "2")
-	{}
-	else if(tempVersion == "2s")
-	{}
-    else if(tempVersion == "1")
-	{
-		/// 
-		NetQueryBase* query = new NetQueryNtrip1();
+    NetQueryBase* query = 0;
+    if(tempVersion == "1")
+    {
+        query = new NetQueryNtrip1();
+    }
+    else if(tempVersion == "2")
+    {
+    }
+    else if(tempVersion == "2S")
+    {
+    }
 
-        ofstream out(m_sRawOutFile.c_str(),ios::out|ios::binary);
-        cout << "pid=" << this_thread::get_id() << endl;
-        while(1)
+    ofstream out(m_sRawOutFile.c_str(),ios::out|ios::binary);
+    cout << "pid=" << this_thread::get_id() << endl;
+    while(1)
+    {
+        if(tempNmeaFlag)
         {
-            if(tempNmeaFlag)
+            // added gga into string
+            string gga = "";
+            query->startRequest(tempURL,gga);
+        }
+        else
+        {
+            try
             {
-                // added gga into string
-                string gga = "";
-                query->startRequest(tempURL,gga);
-            }
-            else
-            {
-                try
+                query->startRequest(tempURL,"");
+                if(m_bOutputRaw)
                 {
-                    query->startRequest(tempURL,"");
-                    if(m_bOutputRaw)
+                    query->writeRawData(out);
+                }
+
+                if (!decoder() || query->getStatus() != NetQueryBase::dataReceiveable)
+                {
+                  continue;
+                }
+
+                // Delete old observations
+                // -----------------------
+                m_decoder->m_obsList.clear();
+
+                // Decode Data
+                // -------------
+                unsigned char* data = (unsigned char *)malloc(4096);
+                int buffLen = query->waitForReadyRead(data);
+
+                if(buffLen > 0)
+                {
+                    bool decodeState = m_decoder->decode(data, buffLen);
+                    if(!decodeState)
                     {
-                        query->writeRawData(out);
+                        continue;
                     }
+                }
 
-                    if (!decoder() || query->getStatus() != NetQueryBase::dataReceiveable)
+                // Loop over all observations (observations output)
+                // ------------------------------------------------
+                list<t_satObs>::iterator it = m_decoder->m_obsList.begin();
+                for(;it!=(m_decoder->m_obsList.end());++it)
+                {
+                    const t_satObs& obs = *it;
+                    string prn = obs._prn.toString();
+                    CommonTime obsTime = obs._time;
+                    /*
                     {
-                      continue;
-                    }
-
-                    // Delete old observations
-                    // -----------------------
-                    m_decoder->m_obsList.clear();
-
-                    // Decode Data
-                    // -------------
-                    unsigned char* data = (unsigned char *)malloc(4096);
-                    int buffLen = query->waitForReadyRead(data);
-
-                    if(buffLen > 0)
-                    {
-                        bool decodeState = m_decoder->decode(data, buffLen);
-                        if(!decodeState)
+                        map<string, CommonTime>::iterator mt = m_prnLastEpo.begin();
+                        for(;mt!=(m_prnLastEpo.end());++mt)
                         {
-                            continue;
-                        }
-                    }
-
-                    // Loop over all observations (observations output)
-                    // ------------------------------------------------
-                    list<t_satObs>::iterator it = m_decoder->m_obsList.begin();
-                    for(;it!=(m_decoder->m_obsList.end());++it)
-                    {
-                        const t_satObs& obs = *it;
-                        string prn = obs._prn.toString();
-                        CommonTime obsTime = obs._time;
-                        /*
-                        {
-                            map<string, CommonTime>::iterator mt = m_prnLastEpo.begin();
-                            for(;mt!=(m_prnLastEpo.end());++mt)
+                            CommonTime oldTime = m_prnLastEpo[prn];
+                            // observation coming more than once
+                            if( obsTime <= oldTime )
                             {
-                                CommonTime oldTime = m_prnLastEpo[prn];
-                                // observation coming more than once
-                                if( obsTime <= oldTime )
-                                {
-                                    continue;
-                                }
+                                continue;
                             }
-                            m_prnLastEpo[prn] = obsTime;
-                        }*/
-                        string format = "RTCM_3";
-                        m_decoder->dumpRinexEpoch(obs, format);
-                    }
+                        }
+                        m_prnLastEpo[prn] = obsTime;
+                    }*/
+                    string format = "RTCM_3";
+                    m_decoder->dumpRinexEpoch(obs, format);
+                }
 
-                }
-                catch(MountPointNotFound& e)
-                {
-                    cout << e.what();
-                    continue;
-                }
+            }
+            catch(MountPointNotFound& e)
+            {
+                cout << e.what();
+                continue;
             }
         }
-        out.close();
-	}
+    }
+    out.close();
 }
 

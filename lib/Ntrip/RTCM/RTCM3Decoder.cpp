@@ -17,6 +17,8 @@
 
 // #include <stdint.h> //uint64_t,UINT_LEAST64_MAX的定义场所。
 
+// RTCM station information
+RTCMDecoder::t_staInfo m_sta;
 
 RTCM3Decoder::RTCM3Decoder()
 {
@@ -110,8 +112,11 @@ bool RTCM3Decoder::decode(unsigned char* buffer, int bufLen)
           //if(decodeBDSEphemeris(Message, BlockSize))
           //  decoded = true;
           break;
-        case 1007: case 1008: case 1033:
+        case 1007: case 1008:
           decodeAntenna(Message, BlockSize);
+          break;
+        case 1033:
+          decodeRcvAnt(Message, BlockSize);
           break;
         case 1005: case 1006:
           decodeAntennaPosition(Message, BlockSize);
@@ -359,9 +364,75 @@ bool RTCM3Decoder::decodeRTCM3GLONASS(unsigned char* data, int size)
 ////////////////////////////////////////////////////////////////////////////
 bool RTCM3Decoder::decodeGPSEphemeris(unsigned char* data, int size)
 {
-  bool decoded = false;
+    bool decoded = false;
 
-  return decoded;
+    if(size == 67)
+    {
+      GPSEphemeris eph;
+      int i, week, toeWeek;
+      double sqrtA;
+      uint64_t numbits = 0, bitfield = 0;
+
+      data += 3; /* header */
+      size -= 6; /* header + crc */
+      SKIPBITS(12);
+
+      //eph.transmitTime = ;
+
+      // prn
+      GETBITS(i, 6);
+      eph.satID = SatID(i, SatID::systemGPS);
+      // week
+      GETBITS(week, 10);
+      week += 1024;
+      // SV accuracy (URA index)
+      GETBITS(eph.accuracy, 4);
+      //eph._ura = accuracyFromIndex(i, eph.type());
+      GETBITS(eph.codeflags, 2);
+      GETFLOATSIGN(eph.idot, 14, PI*P2_43);
+      GETBITS(eph.IODE, 8);
+      GETBITS(i, 16);
+      i <<= 4;
+      eph.ctToc = setGPS(i*1000);
+      GETFLOATSIGN(eph.af2, 8, P2_55)
+      GETFLOATSIGN(eph.af1, 16, P2_43)
+      GETFLOATSIGN(eph.af0, 22, P2_31)
+      GETBITS(eph.IODC, 10)
+      GETFLOATSIGN(eph.Crs, 16, P2_5)
+      GETFLOATSIGN(eph.dn, 16, PI*P2_43)
+      GETFLOATSIGN(eph.M0, 32, PI*P2_31)
+      GETFLOATSIGN(eph.Cuc, 16, P2_29)
+      GETFLOAT(eph.ecc, 32, P2_33)
+      GETFLOATSIGN(eph.Cus, 16, P2_29)
+      GETFLOAT(sqrtA, 32, P2_19);
+      eph.A = sqrtA*sqrtA;
+
+      // toe second of week
+      GETBITS(i, 16)
+      i <<= 4;
+      eph.ctToe = setGPS(i*1000);
+      GPSWeekSecond weeksec;
+      weeksec.convertFromCommonTime(eph.ctToe);
+      /* week from HOW, differs from TOC, TOE week, we use adapted value instead */
+      toeWeek = weeksec.week;
+      if(toeWeek > week + 1 || toeWeek < week-1)
+        return false;
+      GETFLOATSIGN(eph.Cic, 16, P2_29);
+      GETFLOATSIGN(eph.OMEGA0, 32, PI*P2_31);
+      GETFLOATSIGN(eph.Cis, 16, P2_29);
+      GETFLOATSIGN(eph.i0, 32, PI*P2_31);
+      GETFLOATSIGN(eph.Crc, 16, P2_5);
+      GETFLOATSIGN(eph.w, 32, PI*P2_31);
+      GETFLOATSIGN(eph.OMEGAdot, 24, PI*P2_43);
+      GETFLOATSIGN(eph.Tgd, 8, P2_31);
+      GETBITS(eph.health, 6);
+      GETBITS(eph.L2Pdata, 1);
+      GETBITS(eph.fitint, 1);
+
+      decoded = true;
+    }
+
+    return decoded;
 }
 
 //
@@ -414,42 +485,159 @@ bool RTCM3Decoder::decodeBDSEphemeris(unsigned char* data, int size)
 ////////////////////////////////////////////////////////////////////////////
 bool RTCM3Decoder::decodeAntenna(unsigned char* data, int size)
 {
+\
+    int type;
+    char *antenna, *serialNum;
+    int antnum = -1, snum = -1;
+    int staID, setup;
+    uint64_t numbits = 0, bitfield = 0;
 
-  return true;
+    data += 3; /* header */
+    size -= 6; /* header + crc */
+
+    // get message type number
+    GETBITS(type, 12);
+
+    // get station ID
+    GETBITS(staID, 12);
+    m_sta.staID = staID;
+
+    // get antenna description
+    GETSTRING(antnum, antenna);  // Here has a question, if this function has skipped right bits
+    if (antnum > -1 && antnum < MAXANT)
+    {
+      memcpy(m_sta.antDes, antenna, antnum);
+      m_sta.antDes[antnum] = 0;
+    }
+
+    // get setup ID
+    GETBITS(setup, 8);
+    m_sta.antSetup = setup;
+
+    if(type == 1008)
+    {
+        // get antenna serial number
+      GETSTRING(snum, serialNum);
+      {
+        if(snum > -1 && snum < 32)
+        {
+          memcpy(m_sta.antNum, serialNum, snum);
+          m_sta.antNum[snum] = 0;
+        }
+      }
+    }
+    return true;
 }
 
 //
 ////////////////////////////////////////////////////////////////////////////
 bool RTCM3Decoder::decodeAntennaPosition(unsigned char* data, int size)
 {
-  /*int type;
-  uint64_t numbits = 0, bitfield = 0;
-  double x, y, z;
 
-  data += 3; /* header */
-  //size -= 6; /* header + crc */
+    int type;
+    int staID, itrf;
+    uint64_t numbits = 0, bitfield = 0;
+    double x, y, z;
 
-  /*GETBITS(type, 12)
-  _antList.push_back(t_antInfo());
-  _antList.back().type = t_antInfo::ARP;
-  SKIPBITS(22)
-  GETBITSSIGN(x, 38)
-  _antList.back().xx = x * 1e-4;
-  SKIPBITS(2)
-  GETBITSSIGN(y, 38)
-  _antList.back().yy = y * 1e-4;
-  SKIPBITS(2)
-  GETBITSSIGN(z, 38)
-  _antList.back().zz = z * 1e-4;
-  if(type == 1006)
-  {
-    double h;
-    GETBITS(h, 16)
-    _antList.back().height = h * 1e-4;
-    _antList.back().height_f = true;
-  }
-  _antList.back().message  = type;*/
+    data += 3; /* header */
+    size -= 6; /* header + crc */
 
-  return true;
+    // get message type number
+    GETBITS(type, 12);
+
+    // get station ID
+    GETBITS(staID,12);
+    m_sta.staID = staID;
+
+    // get the year for ITRF realization
+    GETBITS(itrf, 6);
+    m_sta.itrf = itrf;
+
+    SKIPBITS(4);
+
+    // get the antenna position
+    GETBITSSIGN(x, 38);
+    SKIPBITS(2);
+    GETBITSSIGN(y, 38);
+    SKIPBITS(2);
+    GETBITSSIGN(z, 38);
+
+
+    m_sta.pos[0] = x;
+    m_sta.pos[1] = y;
+    m_sta.pos[2] = z;
+    if(type == 1006)
+    {
+      double h;
+      GETBITS(h, 16);
+      m_sta.height = h;
+    }
+
+    return true;
+}
+
+// type = 1033
+////////////////////////////////////////////////////////////////////////////
+bool RTCM3Decoder::decodeRcvAnt(unsigned char* data, int size)
+{
+    char *antenna, *antSerialNum, *receiver, *rcvFirmware, *rcvSerialNum;
+    int strNum = -1, setup,staID;
+    uint64_t numbits = 0, bitfield = 0;
+
+    data += 3; /* header */
+    size -= 6; /* header + crc */
+    SKIPBITS(12);
+
+    // get station ID
+    GETBITS(staID, 12);
+    m_sta.staID = staID;
+
+    // get antenna descriptor
+    GETSTRING(strNum,antenna);
+    if(strNum > -1 && strNum < MAXANT)
+    {
+      memcpy(m_sta.antDes, antenna, strNum);
+      m_sta.antDes[strNum] = 0;
+    }
+
+    // get setup ID
+    GETBITS(setup, 8);
+    m_sta.antSetup = setup;
+
+    // get antenna serial number
+    strNum = -1;
+    GETSTRING(strNum, antSerialNum);
+    if(strNum > -1 && strNum < MAXANT)
+    {
+      memcpy(m_sta.antNum, antSerialNum, strNum);
+      m_sta.antNum[strNum] = 0;
+    }
+
+    // get receiver descriptor
+    strNum = -1;
+    GETSTRING(strNum, receiver);
+    if(strNum > -1 && strNum < MAXANT)
+    {
+      memcpy(m_sta.rcvDes, receiver, strNum);
+      m_sta.rcvDes[strNum] = 0;
+    }
+
+    // get receiver firmware version
+    strNum = -1;
+    GETSTRING(strNum, rcvFirmware);
+    if(strNum > -1 && strNum < MAXANT)
+    {
+      memcpy(m_sta.rcvVer, rcvFirmware, strNum);
+      m_sta.rcvVer[strNum] = 0;
+    }
+
+    // get receiver serial number
+    strNum = -1;
+    GETSTRING(strNum, rcvSerialNum);
+    if(strNum > -1 && strNum < MAXANT)
+    {
+      memcpy(m_sta.rcvNum, rcvSerialNum, strNum);
+      m_sta.antNum[strNum] = 0;
+    }
 }
 

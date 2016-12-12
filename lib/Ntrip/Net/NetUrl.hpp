@@ -48,7 +48,7 @@ namespace gpstk
 
 		// Default constructor
 		NetUrl():Scheme("http"),UserName(""),PassWord(""),
-			CasterHost(""),CasterPort("80"),ResourcePath( "/"){};
+            CasterHost(""),CasterPort("80"),ResourcePath( ""){};
 
 		/** 
 		 * Constructor

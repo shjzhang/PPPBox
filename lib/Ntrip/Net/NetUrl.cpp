@@ -58,7 +58,7 @@ namespace gpstk
 	   PassWord = _password;
 	   CasterHost = _host;
 	   CasterPort = _port;
-	   ResourcePath = "/";
+       ResourcePath = "";
    }
 
    

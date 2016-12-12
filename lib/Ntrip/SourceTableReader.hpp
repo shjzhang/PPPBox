@@ -31,6 +31,11 @@
 //  Q.Liu,XY.CAO, Wuhan Uniersity, 2016.
 //
 //============================================================================
+// Modification
+//
+// 2016.12.12  Q.Liu  Add the function that update the source table file from
+//                    network.
+//============================================================================
 
 #include <string>
 #include <vector>
@@ -40,6 +45,14 @@
 #include "StringUtils.hpp"
 #include "FFTextStream.hpp"
 #include "MountPoint.hpp"
+#include "NetUrl.hpp"
+#include "NetQueryNtrip1.hpp"
+
+
+#define MAXSRCTBL   512000              // max source table size (bytes)
+#define ENDSRCTBL	"ENDSOURCETABLE"	// end marker of table
+#define NTRIP_CYCLE 50                  // processing cycle (ms)
+#define NTRIP_TIMEOUT 10000             // response timeout (ms)
 
 namespace gpstk
 {
@@ -119,18 +132,26 @@ namespace gpstk
 		void dumpSourceTable();
 
 		// dump thr interested stream in sourcetable
-		void dumpStream(string mountpoint);
+        void dumpStream(string &mountpoint);
 
 		// whether contains the designated mountpoint 
-		bool haveStream(string mountpoint);
+        bool haveStream(string &mountpoint);
 
 		// get the designated mountpoint 
-		mountpointSTR getStream(string mountpoint);
+        mountpointSTR getStream(string &mountpoint);
 
+		// count the number of rtcm format
+		// format: RTCM 2.0/RTCM 2.3/RTCM 3.0/RTCM3.1/RTCM 3.2 OR
+		// espective lower case
+        int RTCMTypeNumber(string &format);
+
+        // update the source table file from networks
+        void updateFromNet(string &file, NetUrl &url);
+
+        // update the source table file from networks
+        void updateFromNet(string &file, string &host, string &port);
 
     private:
-
-
 
         // map to store all the table contents
         std::map<MountPointID,mountpointSTR> mountPointMap;

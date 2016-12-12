@@ -173,6 +173,13 @@ private:
   */
  bool decodeAntennaPosition(unsigned char* buffer, int bufLen);
 
+ /**
+  * Extract receiver and antenna descriptors from 1033 RTCM3 messages.
+  * @param buffer the buffer containing an antenna RTCM block
+  * @param bufLen the length of the buffer (the message length including header+crc)
+  * @return <code>true</code> when data block was decodable
+  */
+ bool decodeRcvAnt(unsigned char* data, int size);
 
  /** Current station description, dynamic in case of raw input file handling */
  string             staID;

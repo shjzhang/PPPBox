@@ -3,12 +3,13 @@
 
 #include <string>
 #include <vector>
+#include <list>
 
 #include "CommonTime.hpp"
 #include "RinexSatID.hpp"
+#include "Matrix.hpp"
 
 // the observation on one frequency
-
 class t_frqObs  {
  public:
   t_frqObs() {
@@ -76,6 +77,120 @@ class t_satObs {
   gpstk::RinexSatID      _prn;
   gpstk::CommonTime      _time;
   std::vector<t_frqObs*> _obs;
+};
+
+class t_orbCorr {
+ public:
+  t_orbCorr();
+  static void writeEpoch(std::ostream* out, const std::list<t_orbCorr>& corrList);
+  static void readEpoch(const std::string& epoLine, std::istream& in, std::list<t_orbCorr>& corrList);
+  std::string          _staID;
+  gpstk::SatID         _prn;
+  unsigned int         _iod;
+  gpstk::CommonTime    _time;
+  unsigned int         _updateInt;
+  char                 _system;
+  gpstk::Triple        _xr;
+  gpstk::Triple        _dotXr;
+};
+
+class t_clkCorr {
+ public:
+  t_clkCorr();
+  static void writeEpoch(std::ostream* out, const std::list<t_clkCorr>& corrList);
+  static void readEpoch(const std::string& epoLine, std::istream& in, std::list<t_clkCorr>& corrList);
+  std::string          _staID;
+  gpstk::SatID         _prn;
+  unsigned int         _iod;
+  gpstk::CommonTime    _time;
+  unsigned int   _updateInt;
+  double         _dClk;
+  double         _dotDClk;
+  double         _dotDotDClk;
+};
+
+class t_frqCodeBias {
+ public:
+  t_frqCodeBias() {
+    _value = 0.0;
+  }
+  std::string _rnxType2ch;
+  double      _value;
+};
+
+class t_satCodeBias {
+ public:
+  static void writeEpoch(std::ostream* out, const std::list<t_satCodeBias>& biasList);
+  static void readEpoch(const std::string& epoLine, std::istream& in, std::list<t_satCodeBias>& biasList);
+  std::string                _staID;
+  gpstk::SatID               _prn;
+  gpstk::CommonTime          _time;
+  unsigned int               _updateInt;
+  std::vector<t_frqCodeBias> _bias;
+};
+
+class t_frqPhaseBias {
+ public:
+  t_frqPhaseBias() {
+    _value                = 0.0;
+    _fixIndicator         = 0;
+    _fixWideLaneIndicator = 0;
+    _jumpCounter          = 0;
+  }
+  std::string _rnxType2ch;
+  double      _value;
+  int         _fixIndicator;
+  int         _fixWideLaneIndicator;
+  int         _jumpCounter;
+};
+
+class t_satPhaseBias {
+ public:
+  t_satPhaseBias() {
+    _updateInt  = 0;
+    _dispBiasConstistInd = 0;
+    _MWConsistInd = 0;
+    _yawDeg     = 0.0;
+    _yawDegRate = 0.0;
+  }
+  static void writeEpoch(std::ostream* out, const std::list<t_satPhaseBias>& biasList);
+  static void readEpoch(const std::string& epoLine, std::istream& in, std::list<t_satPhaseBias>& biasList);
+  std::string                 _staID;
+  gpstk::SatID                _prn;
+  gpstk::CommonTime           _time;
+  unsigned int                _updateInt;           // not satellite specific
+  unsigned int                _dispBiasConstistInd; // not satellite specific
+  unsigned int                _MWConsistInd;        // not satellite specific
+  double                      _yawDeg;
+  double                      _yawDegRate;
+  std::vector<t_frqPhaseBias> _bias;
+};
+
+class t_vTecLayer {
+ public:
+  t_vTecLayer() {
+    _height = 0.0;
+  }
+  double _height;
+  gpstk::Matrix<double> _C;
+  gpstk::Matrix<double> _S;
+};
+
+class t_vTec {
+ public:
+  static void write(std::ostream* out, const t_vTec& vTec);
+  static void read(const std::string& epoLine, std::istream& in, t_vTec& vTec);
+  std::string              _staID;
+  gpstk::CommonTime        _time;
+  unsigned int            _updateInt;
+  std::vector<t_vTecLayer> _layers;
+};
+
+class t_corrSSR {
+ public:
+  enum e_type {clkCorr, orbCorr, codeBias, phaseBias, vTec, unknown};
+  static e_type readEpoLine(const std::string& line, gpstk::CommonTime& epoTime,
+                            unsigned int& updateInt, int& numEntries, std::string& staID);
 };
 
 #endif // SATOBS_HPP

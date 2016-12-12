@@ -41,34 +41,14 @@ namespace gpstk
     SourceTableReader::SourceTableReader()
     {
         mountPointMap.clear();
-		tableLength = 0;
+        tableLength = 0;
     }
 
     // Destructor
     SourceTableReader::~SourceTableReader()
     {
-		// do nothing
+        // do nothing
     }
-
-/*
-    // Common constructor, it will always open file for read and will load sourcetable.
-    SourceTableReader::SourceTableReader(const std::string& fn)
-    throw( FileMissingException )
-    {
-        // We need to be sure current data stream is closed
-        (*this).close();
-
-        try
-        {
-            this->open(fn.c_str());
-        }
-
-        catch(FileMissingException& e)
-        {
-            GPSTK_RETHROW(e);
-        }
-    }
-*/
 
     // Method to open AND load source table content file.
     void SourceTableReader::open(const char *fn)
@@ -113,7 +93,6 @@ namespace gpstk
             GPSTK_THROW(e);
         }
     }
-
 	
     // Load the source table contents
     void SourceTableReader::loadData()
@@ -255,7 +234,7 @@ namespace gpstk
 	}
 
 	// dump designated mountpoint
-	void SourceTableReader::dumpStream(string mountpoint)
+    void SourceTableReader::dumpStream(string &mountpoint)
 	{
 		if( haveStream(mountpoint) )
 		{
@@ -294,13 +273,13 @@ namespace gpstk
 
 
 	// 
-	bool SourceTableReader::haveStream(string mountpoint)
+    bool SourceTableReader::haveStream(string &mountpoint)
 	{
 		return( mountPointMap.find(mountpoint) != mountPointMap.end() );
 	}
 
 	//
-	SourceTableReader::mountpointSTR SourceTableReader::getStream(string mountpoint)
+    SourceTableReader::mountpointSTR SourceTableReader::getStream(string &mountpoint)
 	{
 		map<MountPointID,mountpointSTR>::const_iterator mptr = 
 				mountPointMap.find(mountpoint);
@@ -310,82 +289,101 @@ namespace gpstk
 	}
 
 
+	// if can not find this format, return 0
+    int SourceTableReader::RTCMTypeNumber(string &format)
+	{
+		int c = 0;
 
-/*
-    // Get the MountPoint
-    MountPoint SourceTableReader::getMountPoint(const std::string& mountpointID)
+		map<MountPointID,mountpointSTR>::iterator mptr;
+
+		for( mptr = mountPointMap.begin();mptr != mountPointMap.end(); mptr++ )
+		{
+			// upper case
+			if( (*mptr).second.format == upperCase(format) )
+			{
+				c++;
+			}
+
+		}
+
+		return c;
+	}
+
+    void SourceTableReader::updateFromNet(string &file, NetUrl &url)
     {
-        std::map<MountPointID,MountPoint>::const_iterator mntpr =
-                                           mountPointMap.find(mountpointID);
-        if(mntpr != mountPointMap.end())
+        // get source table buffer
+        //////////////////////////
+
+        // source table buffer
+        static char buff[MAXSRCTBL];
+        char* p = buff;
+        unsigned char *table=(unsigned char*)malloc(MAXSRCTBL);
+        int len = strlen(ENDSRCTBL);
+        int nb = 0;
+
+        NetQueryBase* query = new NetQueryNtrip1();
+
+        while(p<buff+MAXSRCTBL-1)
         {
-            return mountPointMap[mountpointID];
+            try
+            {
+                query->startRequest(url,"");
+
+                if (query->getStatus() == NetQueryBase::error)
+                {
+                    break;
+                }
+                if (query->getStatus() != NetQueryBase::dataReceiveable)
+                {
+                  continue;
+                }
+
+                int buffLen = query->waitForReadyRead((unsigned char*)p);
+
+                if(buffLen > 0)
+                {
+                    nb += buffLen;
+                    p += buffLen;
+                }
+                if (p-len-3>buff&&strstr((const char*)(p-len-3),ENDSRCTBL))
+                {
+                    break;
+                }
+
+            }
+            catch(MountPointNotFound& e)
+            {
+                cout << e.what();
+                continue;
+            }
+            catch(SocketRecvError& e)
+            {
+                cout << e.what();
+                continue;
+            }
         }
-        else
+        for(int i=0;i<nb;++i)
         {
-            std::cout << mountpointID << " has not exsit in mountpoint map!" << std::endl;
-            /// may be something wrong
-            return (*mntpr).second;
+            table[i] = buff[i];
         }
+        query->stop();
+        delete query;
+
+        // write the buffer to file
+        ///////////////////////////
+        ofstream out(file,ios::out);
+        out.write((const char*)table,nb);
+        out.flush();
+        out.close();
 
     }
 
-
-    // Dump all the source table contents in the file
-    void SourceTableReader::dumpAllContent()
+    void SourceTableReader::updateFromNet(string &file, string &host, string &port)
     {
-        std::map<MountPointID,MountPoint>::const_iterator im =
-                                                mountPointMap.begin();
-        int count = 0;
-        int num = 0;
-        std::cout << "Format: Num; ID; Stream Format; Country; Lat; Lon; NMEA)" << std::endl;
-        for(;im != mountPointMap.end();++im)
-        {
-            MountPoint mountpoint = (*im).second;
-            ++num;
-            std::cout << num << ". "
-                      << mountpoint.getMountPointID() << "; "
-                      << mountpoint.getFormat() << "; "
-                      << mountpoint.getCountry() << "; "
-                      << mountpoint.getLatitude() << "; "
-                      << mountpoint.getLongitude() << "; "
-                      << mountpoint.getNmeaFlag();
-            ++count;
-            if(count!=20)
-            {
-                std::cout << std::endl;
-            }
-            else
-            {
-                getchar();
-                count = 0;
-            }
-        }
+        NetUrl url;
+        url.setCasterHost(host);
+        url.setCasterPort(port);
+        updateFromNet(file, url);
     }
 
-    // Dump all the MountPoint ID
-    void SourceTableReader::dumpAllMountPointID()
-    {
-        std::map<MountPointID,MountPoint>::const_iterator im =
-                                                mountPointMap.begin();
-        int count = 0;
-        int num = 0;
-        for(;im != mountPointMap.end();++im)
-        {
-            ++num;
-            std::cout << num << "."
-                      << (*im).first;
-            ++count;
-            if(count!=20)
-            {
-                std::cout << std::endl;
-            }
-            else
-            {
-                getchar();
-                count = 0;
-            }
-        }
-    }
-	*/
 }  // End of namespace gpstk

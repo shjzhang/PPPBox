@@ -34,10 +34,12 @@
 //                    to file.
 //============================================================================
 
+#include <iostream>
+
 #include "NetQueryNtrip1.hpp"
 #include "NtripToolVersion.hpp"
 #include "StringUtils.hpp"
-#include <iostream>
+
 
 using namespace vdraw;
 using namespace gpstk;
@@ -89,68 +91,53 @@ namespace gpstk
 
    }
 
+
    // connect to caster and send the network request
    void NetQueryNtrip1::startRequest(const NetUrl& url, const string& gga)
         throw (MountPointNotFound,SocketRecvError)
    {
-       while(status != dataReceiveable)
+       int n, err;
+       if(status == error )
        {
-           if(status < 0 )
-           {
-               return;
-           }
-           else if(status == init)
-           {
-               sendRequest(url,gga);
-           }
-           else if(status == connected)
-           {
-               int n = recv(TCPsocket->getSocketID(),(char*)buff,buffersize-1,0);
-               if(n < 0)
-               {
-                   SocketRecvError e(getClassName() +": Socket receive error!");
-                   GPSTK_THROW(e);
-               }
-
-               nbyte = n;
-               buff[nbyte] = '\0';
-
-               // wait response
-               try
-               {
-                   testResponse();
-               }
-               catch(BufferOverflowError &e)
-               {
-                   GPSTK_THROW(e);
-               }
-           }
-
+           return;
        }
-       if(status == dataReceiveable)
+       else if(status == init)
        {
-           int n;
-           // judge whether receive rightly
-           if((n = recv(TCPsocket->getSocketID(),(char*)buff,buffersize-1,0))<=0)
-           {
-               cout << "socket error occurs:\t" << TCPsocket->getSocketError() << endl;
-               delete TCPsocket;
-               TCPsocket  = 0;
-               status = error;
-               return;
-           }
-           nbyte = n;
+           sendRequest(url,gga);
        }
-       /*else if(ntripStatus == srctbl_received )
+       else if(status == connected)
        {
-           if(url.getPath().size()>0)
+       }
+
+       n = recv(TCPsocket->getSocketID(),(char*)buff,buffersize-1,0);
+       if(n==-1)
+       {
+           err = TCPsocket->getSocketError();
+           status = error;
+           TCPsocket->CloseSocket();
+           SocketRecvError e(getClassName() +": Socket receive error!");
+           GPSTK_THROW(e);
+       }
+       nbyte = n;
+
+       // wait response
+       if(status != dataReceiveable)
+       {
+           try
            {
-               ntripStatus = wait;
-               MountPointNotFound e(getClassName() + ": The mountpoint '"+url.getPath()+
-                    "' is not found in the caster");
+               string netPath = url.getPath();
+               testResponse(netPath);
+           }
+           catch(BufferOverflowError &e)
+           {
                GPSTK_THROW(e);
            }
-       }*/
+           catch(MountPointNotFound &e)
+           {
+               GPSTK_THROW(e);
+           }
+       }
+       return;
    }
 
    // send the nmea order when we have connected to a caster
@@ -255,7 +242,7 @@ namespace gpstk
        status = connected;
    }
 
-   void NetQueryNtrip1::testResponse()
+   void NetQueryNtrip1::testResponse(string &netPath)
           throw (BufferOverflowError)
    {
        int i;
@@ -277,10 +264,21 @@ namespace gpstk
        /* receive source table */
        else if((p=strstr((char*)buff,NTRIP_RSP_SRCTBL)))
        {
-           nbyte = 0;
-           buff[0] = '\0';
-           status = dataReceiveable;
-           TCPsocket->CloseSocket();    //?
+
+           if(netPath == "")
+           {
+               status = dataReceiveable;
+           }
+           else
+           {
+               nbyte = 0;
+               buff[0] = '\0';
+               status = error;
+               MountPointNotFound e(getClassName() + ": The mountpoint '"+ netPath +
+                    "' is not found in the caster");
+               GPSTK_THROW(e);
+           }
+
        }
 
        /* http response */

@@ -130,10 +130,12 @@ namespace gpstk
         void sendRequest(const NetUrl &url,const string &gga);
 
         // test the response
-        void testResponse() throw (BufferOverflowError);
+        void testResponse(string &netPath) throw (BufferOverflowError);
 
+        //
 		SocketLib *TCPsocket;
 
+        // size of buffer
         int buffersize;
 
         // response buffer
