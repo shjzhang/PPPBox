@@ -188,12 +188,16 @@ public:
 
 /* Common functions for RTCM Decoding ----------------------*/
 
+// get the GPS time from GPS week and second of week
+///////////////////////////////////////////////////////////
 inline CommonTime setTime(int week, double sec)
 {
     GPSWeekSecond weeksec(week,sec);
     return weeksec.convertToCommonTime();
 }
 
+// get the GPS time from second of week
+///////////////////////////////////////////////////////////
 inline CommonTime setGPS(int msec)
 {
     int week;
@@ -209,6 +213,18 @@ inline CommonTime setGPS(int msec)
     if(msec/1000.0 < sec - 86400.0)
       ++week;
     return setTime(week, msec/1000.0);
+}
+
+// get the current GPS week and seconds from civil time
+///////////////////////////////////////////////////////////
+inline void currentGPSWeeks(int& week, double& sec)
+{
+    SystemTime system;
+    CommonTime ct(system);
+    GPSWeekSecond gws;
+    gws.convertFromCommonTime(ct);
+    week = gws.getWeek();
+    sec = gws.getSOW();
 }
 
 

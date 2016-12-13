@@ -23,6 +23,12 @@ RTCMDecoder::t_staInfo m_sta;
 RTCM3Decoder::RTCM3Decoder()
 {
     MessageSize = SkipBytes = BlockSize = NeedBytes = 0;
+    //_coDecoder = 0;
+}
+
+RTCM3Decoder::~RTCM3Decoder()
+{
+    //delete _coDecoder;
 }
 
 //
@@ -54,14 +60,11 @@ bool RTCM3Decoder::decode(unsigned char* buffer, int bufLen)
        * else. */
       if((id >= 1057 && id <= 1068) || (id >= 1240 && id <= 1270))
       {
-        /*if (!_coDecoders.contains(_staID.toAscii()))
-          _coDecoders[_staID.toAscii()] = new RTCM3coDecoder(_staID);
-        RTCM3coDecoder* coDecoder = _coDecoders[_staID.toAscii()];
-        if(coDecoder->Decode(reinterpret_cast<char *>(_Message), _BlockSize,
-        errmsg) == success)
+        RTCM3coDecoder _coDecoder = RTCM3coDecoder(staID);
+        if(_coDecoder.decode(Message, BlockSize))
         {
           decoded = true;
-        }*/
+        }
       }
       else if(id >= 1070 && id <= 1229) /* MSM */
       {

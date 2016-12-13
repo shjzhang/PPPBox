@@ -6,6 +6,7 @@
 #include <map>
 
 #include "RTCMDecoder.hpp"
+#include "RTCM3coDecoder.hpp"
 #include "Rinex3ObsData.hpp"
 #include "CommonTime.hpp"
 #include "satObs.hpp"
@@ -28,7 +29,7 @@ public:
     /**
      * Destructor
      */
-    virtual ~RTCM3Decoder(){}
+    virtual ~RTCM3Decoder();
 
     /**
      * Decode the RTCM raw data
@@ -187,6 +188,7 @@ private:
  //bncRawFile*            rawFile;
 
  /** List of decoders for Clock and Orbit data */
+ //RTCM3coDecoder _coDecoder;
  //map<QByteArray, RTCM3coDecoder*> coDecoders;
 
  /** Message buffer for input parsing */
