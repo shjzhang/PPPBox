@@ -148,7 +148,11 @@
    // Class to compute the elevation weights
 #include "ComputeElevWeights.hpp"
 
+   // Class to convert the CC to NONCC.
+#include "CC2NONCC.hpp"
 
+  // Class to read and store the receiver type.
+#include "RecTypeDataReader.hpp"
 
    // Class to store satellite precise navigation data
 #include "MSCStore.hpp"
@@ -200,6 +204,9 @@ private:
       // Option for monitor coordinate file
    CommandOptionWithAnyArg mscFileOpt;
 
+      // Option for p1c1 dcb file
+   CommandOptionWithAnyArg dcbFileListOpt;
+
       // Option for monitor coordinate file
    CommandOptionWithAnyArg outputFileListOpt;
 
@@ -210,6 +217,7 @@ private:
    string sp3FileListName;
    string clkFileListName;
    string eopFileListName;
+   string dcbFileListName;
    string mscFileName;
    string outputFileListName;
 
@@ -291,7 +299,12 @@ ppp::ppp(char* arg0)
    mscFileOpt( 'm',
                "mscFile",
    "file storing monitor station coordinates ",
-               true)
+               true),
+   dcbFileListOpt( 'D',
+               "dcbFile",
+   "file storing P1-C1 DCB ",
+               false)
+
 {
 
       // This option may appear just once at CLI
@@ -502,6 +515,10 @@ void ppp::spinUp()
    {
       mscFileName = mscFileOpt.getValue()[0];
    }
+   if(dcbFileListOpt.getCount())
+   {
+      dcbFileListName = dcbFileListOpt.getValue()[0];
+   }
 
 }  // End of method 'ppp::spinUp()'
 
@@ -652,6 +669,48 @@ void ppp::process()
            << "have permission to read it. Skipping it." << endl;
       exit(-1);
    }
+
+      //***********************
+      // Let's read DCB files
+      //***********************
+
+      // Read and store dcb data
+   DCBDataReader dcbStore;
+
+   if(dcbFileListOpt.getCount() )
+   {
+         // Now read dcb file from 'dcbFileName'
+      ifstream dcbFileListStream;
+
+         // Open dcbFileList File
+      dcbFileListStream.open(dcbFileListName.c_str(), ios::in);
+      if(!dcbFileListStream)
+      {
+            // If file doesn't exist, issue a warning
+         cerr << "dcb file List Name '" << dcbFileListName << "' doesn't exist or you don't "
+              << "have permission to read it." << endl;
+         exit(-1);
+      }
+
+      string dcbFile;
+
+         // Here is just a dcb file, we only read one month's dcb data.
+      while(dcbFileListStream >> dcbFile)
+      {
+         try
+         {
+            dcbStore.open(dcbFile);
+         }
+         catch(FileMissingException e)
+         {
+            cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
+                 << endl;
+            exit(-1);
+         }
+      };
+
+      dcbFileListStream.close();
+   }    
 
       //**********************************************************
       // Now, Let's perform the PPP for each rinex files
@@ -816,8 +875,21 @@ void ppp::process()
          // the processing objects in order
       ProcessingList pList;
 
+          // Declare a CC2NONCC object
+      CC2NONCC cc2noncc(dcbStore);
+         // Read the receiver type file.
+      cc2noncc.loadRecTypeFile( confReader.getValue("recTypeFile"));
+         // warning: change receiver type to upper case, if not,
+         // some receiver type(lower case) can not be find in receiver_bernese.lis
+      cc2noncc.setRecType(upperCase(roh.recType));
+      cc2noncc.setCopyC1ToP1(true);
+         // Add to processing list
+      pList.push_back(cc2noncc);
+
+
          // This object will check that all required observables are present
       RequireObservables requireObs;
+      requireObs.addRequiredType(TypeID::P1);
       requireObs.addRequiredType(TypeID::P2);
       requireObs.addRequiredType(TypeID::L1);
       requireObs.addRequiredType(TypeID::L2);
@@ -826,19 +898,7 @@ void ppp::process()
          // reasonable limits
       SimpleFilter pObsFilter;
       pObsFilter.setFilteredType(TypeID::P2);
-
-         // Read if we should use C1 instead of P1
-      bool usingC1( confReader.getValueAsBoolean( "useC1" ) );
-      if ( usingC1 )
-      {
-         requireObs.addRequiredType(TypeID::C1);
-         pObsFilter.addFilteredType(TypeID::C1);
-      }
-      else
-      {
-         requireObs.addRequiredType(TypeID::P1);
-         pObsFilter.addFilteredType(TypeID::P1);
-      }
+      pObsFilter.addFilteredType(TypeID::P1);
 
          // Add 'requireObs' to processing list (it is the first)
       pList.push_back(requireObs);
@@ -869,17 +929,8 @@ void ppp::process()
          // Object to compute linear combinations for cycle slip detection
       ComputeLinear linear1;
 
-         // Read if we should use C1 instead of P1
-      if ( usingC1 )
-      {
-         linear1.addLinear(comb.pdeltaCombWithC1);
-         linear1.addLinear(comb.mwubbenaCombWithC1);
-      }
-      else
-      {
-         linear1.addLinear(comb.pdeltaCombination);
-         linear1.addLinear(comb.mwubbenaCombination);
-      }
+      linear1.addLinear(comb.pdeltaCombination);
+      linear1.addLinear(comb.mwubbenaCombination);
       linear1.addLinear(comb.ldeltaCombination);
       linear1.addLinear(comb.liCombination);
       pList.push_back(linear1);       // Add to processing list
@@ -910,11 +961,7 @@ void ppp::process()
       BasicModel basic(nominalPos, SP3EphList);
          // Set the minimum elevation
       basic.setMinElev(confReader.getValueAsDouble("cutOffElevation"));
-         // If we are going to use P1 instead of C1, we must reconfigure 'basic'
-      if ( !usingC1 )
-      {
-         basic.setDefaultObservable(TypeID::P1);
-      }
+      basic.setDefaultObservable(TypeID::P1);
          // Add to processing list
       pList.push_back(basic);
 
@@ -1046,17 +1093,8 @@ void ppp::process()
          // for L1/L2 calibration
       ComputeLinear linear2;
 
-         // Read if we should use C1 instead of P1
-      if ( usingC1 )
-      {
-         linear2.addLinear(comb.q1CombWithC1);
-         linear2.addLinear(comb.q2CombWithC1);
-      }
-      else
-      {
-         linear2.addLinear(comb.q1Combination);
-         linear2.addLinear(comb.q2Combination);
-      }
+      linear2.addLinear(comb.q1Combination);
+      linear2.addLinear(comb.q2Combination);
       pList.push_back(linear2);       // Add to processing list
 
 
@@ -1080,20 +1118,7 @@ void ppp::process()
          // as observables in the PPP processing
       ComputeLinear linear3;
 
-         // Read if we should use C1 instead of P1
-      if ( usingC1 )
-      {
-            // WARNING: When using C1 instead of P1 to compute PC combination,
-            //          be aware that instrumental errors will NOT cancel,
-            //          introducing a bias that must be taken into account by
-            //          other means. This won't be taken into account in this
-            //          example.
-         linear3.addLinear(comb.pcCombWithC1);
-      }
-      else
-      {
-         linear3.addLinear(comb.pcCombination);
-      }
+      linear3.addLinear(comb.pcCombination);
       linear3.addLinear(comb.lcCombination);
       pList.push_back(linear3);       // Add to processing list
 
@@ -1113,18 +1138,6 @@ void ppp::process()
       {
          pList.push_back(pcFilter);       // Add to processing list
       }
-
-
-      ComputeLinear linear5;
-      if(usingC1)
-      {
-         linear5.addLinear(comb.mwubbenaCombWithC1);
-      }
-      else
-      {
-         linear5.addLinear(comb.mwubbenaCombination);
-      }
-      pList.push_back(linear5);       // Add to processing list
 
 
          // Object to compute prefit-residuals
@@ -1326,7 +1339,6 @@ void ppp::process()
                            precision );
 
          }  // End of 'if ( cycles < 1 )'
-
 
 
          // The given epoch hass been processed. Let's get the next one

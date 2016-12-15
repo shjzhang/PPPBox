@@ -44,7 +44,7 @@
 #include "EngEphemeris.hpp"
 #include "XvtStore.hpp"
 #include "GPSEphemerisStore.hpp"
-
+#include "PPPExtendedKalmanFilter.hpp"
 
 namespace gpstk
 {
@@ -111,7 +111,7 @@ namespace gpstk
          /// and satellites with elevation less than 10 degrees will be
          /// deleted.
       BasicModel()
-         : minElev(10.0), pDefaultEphemeris(NULL),
+         : minElev(10.0), pDefaultEphemeris(NULL),pEKFStateStore(NULL),
            defaultObservable(TypeID::C1), useTGD(false)
       { setInitialRxPosition(); };
 
@@ -159,6 +159,11 @@ namespace gpstk
           *
           */
       BasicModel( const Position& RxCoordinates,
+                  XvtStore<SatID>& dEphemeris,
+                  const TypeID& dObservable = TypeID::C1,
+                  const bool& applyTGD = false);
+
+      BasicModel( PPPExtendedKalmanFilter& pppEKF,
                   XvtStore<SatID>& dEphemeris,
                   const TypeID& dObservable = TypeID::C1,
                   const bool& applyTGD = false);
@@ -235,40 +240,6 @@ namespace gpstk
       { pDefaultEphemeris = &ephem; return (*this); };
 
 
-
-         /// Either estimated or "a priori" position of receiver
-      Position rxPos;
-
-
-         /// Returns a string identifying this object.
-      virtual std::string getClassName(void) const;
-
-
-         /// Destructor.
-      virtual ~BasicModel() {};
-
-
-   protected:
-
-
-         /// The elevation cut-off angle for accepted satellites.
-         /// By default it is set to 10 degrees.
-      double minElev;
-
-
-         /// Pointer to default XvtStore<SatID> object when working with GNSS
-         /// data structures.
-      XvtStore<SatID>* pDefaultEphemeris;
-
-
-         /// Default observable to be used when fed with GNSS data structures.
-      TypeID defaultObservable;
-
-
-         /// Whether the TGD effect will be applied to C1 observable or not.
-      bool useTGD;
-
-
          /** Method to set the initial (a priori) position of receiver.
           * @return
           *  0 if OK
@@ -289,6 +260,38 @@ namespace gpstk
          /// Method to set the initial (a priori) position of receiver.
       virtual int setInitialRxPosition();
 
+
+
+         /// Either estimated or "a priori" position of receiver
+      Position rxPos;
+
+
+         /// Returns a string identifying this object.
+      virtual std::string getClassName(void) const;
+
+
+         /// Destructor.
+      virtual ~BasicModel() {};
+
+
+   protected:
+
+
+         /// The elevation cut-off angle for accepted satellites.
+         /// By default it is set to 10 degrees.
+      double minElev;
+         /// class to store state of extended kalman filter
+      PPPExtendedKalmanFilter* pEKFStateStore;
+         /// Pointer to default XvtStore<SatID> object when working with GNSS
+         /// data structures.
+      XvtStore<SatID>* pDefaultEphemeris;
+
+
+         /// Default observable to be used when fed with GNSS data structures.
+      TypeID defaultObservable;
+
+         /// Whether the TGD effect will be applied to C1 observable or not.
+      bool useTGD;
 
          /// Method to get TGD corrections.
       virtual double getTGDCorrections( CommonTime Tr,

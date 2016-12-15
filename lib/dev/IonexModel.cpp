@@ -154,7 +154,7 @@ namespace gpstk
                double ionexL1(0.0), ionexL2(0.0), ionexL5(0.0);   // GPS
                double ionexL6(0.0), ionexL7(0.0), ionexL8(0.0);   // Galileo
 
-                  //	calculate the position of the ionospheric pierce-point
+                  //    calculate the position of the ionospheric pierce-point
                   // corresponding to the receiver-satellite ray
                Position IPP = rxPos.getIonosphericPiercePoint( elevation,
                                                                azimuth,
@@ -284,14 +284,12 @@ namespace gpstk
                   // refers to the ionosphere-free linear combination (LC)
                   // see Appendix B, pg.14 of the Ionex manual
                   // Useful link:
-
-// http://www.ngs.noaa.gov/IGSWorkshop2008/docs/Schaer_DCB_IGSWS2008.ppt
+                  // http://www.ngs.noaa.gov/IGSWorkshop2008/docs/Schaer_DCB_IGSWS2008.ppt
 
                   // Computing Differential Code Biases (DCB - nanoseconds)
                double tempDCB( getDCBCorrections( time,
                                                  (*pDefaultMaps),
                                                   stv->first) );
-
 
                   // add to the GDS the  corresponding correction,
                   // if appropriate
@@ -304,6 +302,8 @@ namespace gpstk
                   double kappa1(-1.0/0.392814977);  // -f1^2/(f1^2-f2^2)
                   double dcb(tempDCB * C_MPS * 1e-9);  // p1-p2, meters
 
+
+
                      // If instC1 is found, it means the C1 is used instead of P1
                   if( stv->second.find(TypeID::instC1) != stv->second.end() )
                   {
@@ -311,12 +311,13 @@ namespace gpstk
                   }
                   else
                   {
-                     stv->second[TypeID::instC1]  = (kappa2 * dcb);
+                     stv->second[TypeID::instC1] = (kappa2 * dcb);
                   }
 
                      // the DCB corrections for P1/P2 observable
                   stv->second[TypeID::instP1] = (kappa2 * dcb);
                   stv->second[TypeID::instP2] = (kappa1 * dcb);
+
 
                }  // End of 'if(useDCB)...'
 

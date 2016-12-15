@@ -342,6 +342,7 @@ namespace gpstk
 
             // Equation system-related types
          prefitC1,  ///< Prefit residual, code C1
+         prefitC2,  ///< Prefit residual, code C2 for beidou
          prefitP1,  ///< Prefit residual, code P1
          prefitP2,  ///< Prefit residual, code P2
          prefitL1,  ///< Prefit residual, phase L1
@@ -404,6 +405,9 @@ namespace gpstk
          dSatR,     ///< dSatR coefficient for satellite position in RTN
          dSatT,     ///< dSatT coefficient for satellite position in RTN
          dSatN,     ///< dSatN coefficient for satellite position in RTN
+         dRecX,
+         dRecY,
+         dRecZ,
          weight,    ///< Weight assigned to a given observation
          codeBias,  ///< Code bias by both receiver and satellite
          cdtC1,     ///< Receiver clock offset of C1

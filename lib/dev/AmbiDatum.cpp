@@ -54,7 +54,7 @@ namespace gpstk
          // Thirdly, Let's find 'newArc' and 'newSat ' 
       SatID newSat;
 
-         // Source from 'gData'
+         // Source from 'gData' 
       SourceID source = gData.header.source;
 
          // Satellite number 

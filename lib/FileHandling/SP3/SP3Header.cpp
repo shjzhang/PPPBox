@@ -163,14 +163,16 @@ namespace gpstk
       }
           // line 8-12 in SP3 files announced by WHU are zero
           // Skip this lines
-      if (agency == " WHU")
-      {
+    /*  if (agency == " WHU")
+        {
         for (int i = 0;i<5;i++)
         {
          strm.formattedGetLine(line);
         
         }
+     
       }
+      */
       readSVs = 0;
 
          // read in the accuracy.
@@ -199,7 +201,7 @@ namespace gpstk
 
           // line 18-22 in SP3 files announced by WHU are zero
           // Skip this lines
-      if (agency == " WHU")
+    /*  if (agency == " WHU")
       {
         for (int i = 0;i<5;i++)
         {
@@ -207,7 +209,7 @@ namespace gpstk
         
         }
       }
-
+  */
       strm.formattedGetLine(line);
       if(debug) std::cout << "SP3 Header Line 13 " << line << std::endl;
       if (version == SP3c) {

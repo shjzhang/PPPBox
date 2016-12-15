@@ -32,8 +32,6 @@
 
    // Class for handling satellite observation parameters RINEX files
 #include "Rinex3ObsStream.hpp"
-
-   // Classes for handling RINEX Broadcast ephemeris files 
 #include "Rinex3NavStream.hpp"
 #include "Rinex3NavHeader.hpp"
 #include "Rinex3NavData.hpp"
@@ -41,21 +39,30 @@
    // Class in charge of the GPS signal modelling
 #include "ModelObs.hpp"
 
-   // Class to store satellite broadcast navigation data
-#include "GPSEphemerisStore.hpp"
 
    // Class to model the tropospheric delays
 #include "TropModel.hpp"
 
-   // Classes to model ans store ionospheric delays
-#include "IonoModel.hpp"
-#include "IonoModelStore.hpp"
+  // Class to get IPP position and ionosphere mapping function
+#include "IonexModel.hpp"
+
+#include "SP3EphemerisStore.hpp"
 
    // Class to solve the equation system using Least Mean Squares
 #include "SolverLMS.hpp"
-
+#include "ComputeElevWeights.hpp"
    // Class defining the GNSS data structures
 #include "DataStructures.hpp"
+
+   // Class in charge of basic GNSS signal modelling
+#include "BasicModel.hpp"
+   // Class to compute the tropospheric data
+#include "ComputeTropModel.hpp"
+
+#include "Rinex3EphemerisStore.hpp"
+
+   // Class to filter out satellites without required observables
+#include "RequireObservables.hpp"
 
    // Class to filter out observables grossly out of limits
 #include "SimpleFilter.hpp"
@@ -63,6 +70,11 @@
   // YDS Time-class
 #include "YDSTime.hpp"
 
+   // Class to compute linear combinations
+#include "ComputeLinear.hpp"
+
+   // This class pre-defines several handy linear combinations
+#include "LinearCombinations.hpp"
 
 using namespace std;
 using namespace gpstk;
@@ -74,75 +86,100 @@ int main(void)
 
    cout << fixed << setprecision(8);   // Set a proper output format
 
-   Rinex3NavData rNavData;             // Object to store Rinex navigation data
-   GPSEphemerisStore bceStore;         // Object to store satellites ephemeris
-   Rinex3NavHeader rNavHeader;         // Object to read the header of Rinex
-                                       // navigation data files
-   IonoModelStore ionoStore;           // Object to store ionospheric models
-   IonoModel ioModel;                  // Declare a Ionospheric Model object
+ // Declare a "SP3EphemerisStore" object to handle precise ephemeris
+   SP3EphemerisStore SP3EphList;
+
+      // Set flags to reject satellites with bad or absent positional
+      // values or clocks
+   SP3EphList.rejectBadPositions(true);
+   SP3EphList.rejectBadClocks(true);
+      // Set clock max interval ( 5min )
+   SP3EphList.setClockMaxInterval(300.0);
+
+   
+   SP3EphList.loadFile( "gbm18825.sp3");
+   SP3EphList.loadFile( "gbm18826.sp3");
+   SP3EphList.loadFile( "gbm18830.sp3");
+
+
+    // GMSD station nominal position
+   Position nominalPos(-3607665.367,4147867.957,3223717.038);
+                                       
+   // Object to get IPP position and mapping function
+   IonexStore IonexMapList;
+   IonexMapList.loadFile("codg0370.16i");
+   IonexModel ionex(nominalPos, IonexMapList);  // Declare a Ionospheric Model object
 
       // Create the input observation file stream
-   Rinex3ObsStream rin("wroc0020.15o");
- 
-      // Create the input navigation file stream
-   Rinex3NavStream rnavin("brdm0020.15p");
+   Rinex3ObsStream rin("gmsd0370.16o");
+   
+   Rinex3NavData rNavData;             // Object to store Rinex navigation data
+   Rinex3EphemerisStore bceStore;         // Object to store satellites ephemeris
+   Rinex3NavHeader rNavHeader;         // Object to read the header of Rinex
+                                                                   
+         // Create the input navigation file stream
+   Rinex3NavStream rnavin("brdm0370.16p");
 
-      // We need to read ionospheric parameters (Klobuchar model) from header
    rnavin >> rNavHeader;
-   std::cout<<"nav done??"<<std::endl;
-      // Let's feed the ionospheric model (Klobuchar type) from data in the
-      // navigation (ephemeris) file header. First, we must check if there are
-      // valid ionospheric correction parameters in the header
-/*   if(rNavHeader.valid & Rinex3NavHeader::validIonoCorrGPS)
+
+   while ( rnavin >> rNavData)
    {
-         // Extract the Alpha and Beta parameters from the header
-      double* ionAlpha = rNavHeader.mapIonoCorr["GPSA"].param;
-      double* ionBeta  = rNavHeader.mapIonoCorr["GPSB"].param;
-
-         // Feed the ionospheric model with the parameters
-      ioModel.setModel(ionAlpha, ionBeta);
+      bceStore.addEphemeris(rNavData);  
    }
-   else
-   {
-      cerr << "WARNING: Navigation file  "
-           << "doesn't have valid ionospheric correction parameters." << endl;
-   }
-*/
-      // Beware: In this case, the same model will be used for the
-      // full data span
-   //ionoStore.addIonoModel(CommonTime::BEGINNING_OF_TIME, ioModel);
+      
+   RequireObservables requireObs;
+   requireObs.addRequiredType(TypeID::C1);
+   requireObs.addRequiredType(TypeID::P2);
 
-      // Storing the ephemeris in "bceStore"
-   while (rnavin >> rNavData)
-   {
-      bceStore.addEphemeris(rNavData);
-   }
-   std::cout<<"add eph done"<<std::endl;
-   bceStore.SearchUser();  // This is the default
+   requireObs.addBDSRequiredType(TypeID::C2);
+   requireObs.addBDSRequiredType(TypeID::C7);
+   
+   // Declare a basic modeler
+   BasicModel basic(nominalPos, SP3EphList);
+  // BasicModel basic(nominalPos, bceStore);
 
-      // BAHR station nominal position
-   Position nominalPos(3633909.1016, 4425275.5033, 2799861.2736);
+   // Declare a NeillTropModel object, setting its parameters
+   NeillTropModel neillTM( nominalPos.getLongitude(),
+                           nominalPos.getGeodeticLatitude(), 037 );
 
-      // Declare a MOPSTropModel object, setting the defaults
-   MOPSTropModel mopsTM( nominalPos.getAltitude(),
-                         nominalPos.getGeodeticLatitude(),
-                         162 );
+         // Object to compute the tropospheric data
+   ComputeTropModel computeTropo(neillTM);
 
-      // Declare the modeler object, setting all the parameters in one pass
-   ModelObs modelRef(nominalPos, ionoStore, mopsTM, bceStore, TypeID::C1);
+
+     // This object defines several handy linear combinations
+   LinearCombinations comb;
+         // Object to compute linear combinations for cycle slip detection
+   ComputeLinear linear1;
+   linear1.addLinear(comb.pcCombWithC1);
+   linear1.addBeiDouLinear(comb.pcCombForBeiDou);
+   ComputeLinear linear2;
+   linear2.addBeiDouLinear(comb.pcPrefit);
+   linear2.addLinear(comb.pcPrefit);
+
+   ComputeElevWeights elevWeights;
 
       // Declare SolverLMS object
    SolverLMS solver;
 
       // Declare a simple filter object. By default, it filters C1
-   SimpleFilter myFilter;
-
+   //SimpleFilter myFilter;
+   //myFilter.setFilteredType(TypeID::C2);
       // This is the GNSS data structure that will hold all the
       // GNSS-related information
    gnssRinex gRin;
 
-      //////// End of initialization phase ////////
+   TypeIDSet unknownsSet;
+   unknownsSet.insert(TypeID::dx);
+   unknownsSet.insert(TypeID::dy);
+   unknownsSet.insert(TypeID::dz);
+   unknownsSet.insert(TypeID::cdt);
 
+      // Create a new equation definition
+      // newEq(independent value, set of unknowns)
+   gnssEquationDefinition newEq(TypeID::prefitC, unknownsSet);
+
+      // Reconfigure solver
+   solver.setDefaultEqDefinition(newEq);
 
       //////// Processing phase ////////
 
@@ -154,7 +191,13 @@ int main(void)
       {
 
             // This is the line that will process all the GPS data
-         gRin.keepOnlyTypeID(TypeID::C1) >> myFilter >> modelRef >> solver;
+         gRin.keepOnlySatSystem(SatID::systemGPS);
+         gRin >> requireObs ;
+         gRin >> basic >> elevWeights;
+         gRin >> ionex ;
+         gRin >> computeTropo;
+         gRin >> linear1 >> linear2;
+         gRin >> solver;
             // First: Wipe off all data that we will not use (may be skipped)
             // Second: Filter out observables out of bounds (may be skipped)
             // Third: The resulting data structure will feed the modeler object
@@ -167,22 +210,12 @@ int main(void)
          cerr << "Exception at epoch: " << gRin.header.epoch << endl;
       }
 
-         // Fifth: Get your results out of the solver object and print them.
-         // That is all
-      Position solPos( (modelRef.rxPos.X() + solver.solution[0]),
-                       (modelRef.rxPos.Y() + solver.solution[1]),
-                       (modelRef.rxPos.Z() + solver.solution[2]) );
-
-      cout << static_cast<YDSTime>(gRin.header.epoch).sod
-           << " ";   // Output field #1
-      cout << solPos.X() << "   ";                    // Output field #2
-      cout << solPos.Y() << "   ";                    // Output field #3
-      cout << solPos.Z() << "   ";                    // Output field #4
-      cout << solPos.longitude() << "   ";            // Output field #5
-      cout << solPos.geodeticLatitude() << "   ";     // Output field #6
-      cout << solPos.height() << "   ";               // Output field #7
-
-      cout << endl;
+      cout << gRin.header.epoch.getSecondOfDay()<<" "
+           <<solver.solution[0]<<" "
+           <<solver.solution[1]<<" "
+           <<solver.solution[2]<<endl;
+       
+      
 
    }
 

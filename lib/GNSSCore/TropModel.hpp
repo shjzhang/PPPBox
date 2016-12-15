@@ -53,7 +53,6 @@
 #include "Matrix.hpp"
 #include "GNSSconstants.hpp"
 
-
 // Model of the troposphere, used to compute non-dispersive delay of
 // satellite signal as function of satellite elevation as seen at the
 // receiver. Both wet and dry components are computed.
@@ -1732,7 +1731,6 @@ namespace gpstk
 
 
    private:
-
 
       double NeillHeight;
       double NeillLat;

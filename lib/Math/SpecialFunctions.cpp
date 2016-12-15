@@ -1152,7 +1152,51 @@ namespace gpstk
       return result;
 
    }  // End of function 'incompleteBeta()'
+   
+    double norm(const int n, const int m ) 
+    {
+      // The input should be n >= m >= 0
+      double fac(1.0);
+      for(int i = (n-m+1); i <= (n+m); i++)
+      {
+         fac = fac * double(i);
+      }
 
+      double delta  = (m == 0) ? 1.0 : 0.0;
+
+      double num = (2.0 * n + 1.0) * (2.0 - delta);
+
+      // We should make sure fac!=0, but it won't happen on the case,
+      // so we just skip handling it
+      double out = std::sqrt(num/fac);                  
+      
+      return out;
+
+   }  // End of 'norm'
+   
+  
+      //  Legendre polynomial
+   double legendrePoly(const int n, const int m, const double u)
+   {
+      if(0==n && 0==m)
+      {
+         return 1.0;
+      }
+      else if(m==n)
+      {
+         return (2.0*m-1.0)*std::sqrt(1.0-u*u)*legendrePoly(n-1,m-1,u);
+      }
+      else if(n==m+1)
+      {
+         return (2.0*m+1)*u*legendrePoly(m,m,u);
+      }
+      else
+      {
+         return ((2.0*n-1.0)*u*legendrePoly(n-1,m,u)-(n+m-1.0)
+	                                      *legendrePoly(n-2,m,u))/(n-m);
+      }
+      
+   }  
 
 
 }  // End of namespace gpstk

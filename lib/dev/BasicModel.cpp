@@ -74,6 +74,7 @@ namespace gpstk
 
       minElev = 10.0;
       pDefaultEphemeris = NULL;
+      pEKFStateStore    = NULL;
       defaultObservable = TypeID::C1;
       useTGD = false;
       setInitialRxPosition( aRx, bRx, cRx, s, ell, frame );
@@ -88,6 +89,7 @@ namespace gpstk
 
       minElev = 10.0;
       pDefaultEphemeris = NULL;
+      pEKFStateStore    = NULL;
       defaultObservable = TypeID::C1;
       useTGD = false;
       setInitialRxPosition(RxCoordinates);
@@ -122,6 +124,19 @@ namespace gpstk
    }  // End of 'BasicModel::BasicModel()'
 
 
+   BasicModel::BasicModel( PPPExtendedKalmanFilter& pppEKF,
+                           XvtStore<SatID>& dEphemeris,
+                           const TypeID& dObservable,
+                           const bool& applyTGD )
+   {
+
+      minElev = 10.0;
+      pEKFStateStore = &pppEKF;
+      setDefaultEphemeris(dEphemeris);
+      defaultObservable = dObservable;
+      useTGD = applyTGD;
+
+   }  // End of 'BasicModel::BasicModel()'
 
       /* Returns a satTypeValueMap object, adding the new data generated when
        * calling a modeling object.
@@ -136,6 +151,11 @@ namespace gpstk
 
       try
       {
+            // update receiver position
+         if ( pEKFStateStore != NULL )
+         {
+            setInitialRxPosition(pEKFStateStore->getRxPosition());
+         }
 
          SatIDSet satRejectedSet;
            // a copy of GPS default Observable(usually C1 or P1)
@@ -159,7 +179,6 @@ namespace gpstk
                setDefaultObservable(TypeID::C2);        
             }
                // Scalar to hold temporal value
-
             double observable( (*stv).second(defaultObservable) );
                // A lot of the work is done by a CorrectedEphemerisRange object
             CorrectedEphemerisRange cerange;
@@ -198,10 +217,12 @@ namespace gpstk
 
                // Now we have to add the new values to the data structure
             (*stv).second[TypeID::dtSat] = cerange.svclkbias;
+            cout<<stv->first<<" scvlkbias : "<<cerange.svclkbias<<std::endl;
                // Now, lets insert the geometry matrix
             (*stv).second[TypeID::dx] = cerange.cosines[0];
             (*stv).second[TypeID::dy] = cerange.cosines[1];
             (*stv).second[TypeID::dz] = cerange.cosines[2];
+            cout<<"dx : "<<(*stv).second[TypeID::dx]<<std::endl;
 
             (*stv).second[TypeID::dSatX] = -cerange.cosines[0];
             (*stv).second[TypeID::dSatY] = -cerange.cosines[1];
@@ -257,6 +278,23 @@ namespace gpstk
             (*stv).second[TypeID::recX] = rxPos.X();
             (*stv).second[TypeID::recY] = rxPos.Y();
             (*stv).second[TypeID::recZ] = rxPos.Z();
+
+               // there we estimate the receiver position directly(not dx,dy,dz as usual),
+               // so we need to compute these values when linearized the equation
+               // which will be used in class LinearCombinations.
+            if ( pEKFStateStore != NULL )
+            {
+               (*stv).second[TypeID::dRecX] = cerange.cosines[0]*rxPos.X();
+               (*stv).second[TypeID::dRecY] = cerange.cosines[1]*rxPos.Y();
+               (*stv).second[TypeID::dRecZ] = cerange.cosines[2]*rxPos.Z();
+            }
+            else
+            {
+               (*stv).second[TypeID::dRecX] = 0.0;
+               (*stv).second[TypeID::dRecY] = 0.0;
+               (*stv).second[TypeID::dRecZ] = 0.0;
+            }
+                
 
                // Let's insert receiver velocity 
             (*stv).second[TypeID::recVX] = 0.0;

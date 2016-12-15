@@ -13,15 +13,15 @@ echo "./nnor0370.16o" >> rnxlist
 
 
 rm ephlist
-echo "./gbm18825.sp3" >> ephlist
-echo "./gbm18826.sp3" >> ephlist
-echo "./gbm18830.sp3" >> ephlist
+echo "./wum18825.sp3" >> ephlist
+echo "./wum18826.sp3" >> ephlist
+echo "./wum18830.sp3" >> ephlist
 
 
 rm clklist
-echo "./gbm18825.clk" >> clklist
-echo "./gbm18826.clk" >> clklist
-echo "./gbm18830.clk" >> clklist
+echo "./wum18825.clk" >> clklist
+echo "./wum18826.clk" >> clklist
+echo "./wum18830.clk" >> clklist
 
 rm navlist
 echo "./brdc0370.16g" >> navlist          
@@ -35,9 +35,9 @@ rm dcblist
 echo "./P1C11602_RINEX.DCB" >> dcblist
 
 rm outlist
-echo "$mypath/gmsd0370.out.grce.kine" >> outlist
-echo "$mypath/jfng0370.out.grce.kine" >> outlist
-echo "$mypath/nnor0370.out.grce.kine" >> outlist
+echo "$mypath/gmsd0370.out.gps.wum.kine" >> outlist
+echo "$mypath/jfng0370.out.gps.wum.kine" >> outlist
+echo "$mypath/nnor0370.out.gps.wum.kine" >> outlist
 
 rm msc.txt
 # convert ssc2msc

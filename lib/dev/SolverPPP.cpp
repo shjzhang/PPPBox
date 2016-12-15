@@ -350,10 +350,10 @@ covariance matrix.");
 
          // Get a set with all satellites present in this GDS
       SatIDSet currSatSet( gData.body.getSatID() );
-
          // Get the number of satellites currently visible
       int numCurrentSV( gData.numSats() );
 
+ cout<<gData.header.epoch<<endl;
       try
       {
             // Number of measurements is twice the number of visible satellites
@@ -381,6 +381,7 @@ covariance matrix.");
          {
             measVector( i                ) = prefitC(i);
             measVector( numCurrentSV + i ) = prefitL(i);
+			cout<<"C and L : "<<prefitC(i)<<" "<<prefitL(i)<<endl;
          }
 
 
@@ -447,7 +448,6 @@ covariance matrix.");
             }
 
          }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
-
 
             // Now, fill the coefficients related to phase biases
             // We must be careful because not all processed satellites

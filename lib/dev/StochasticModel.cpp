@@ -157,7 +157,6 @@ namespace gpstk
             return;
          }
 
-
          if (!watchSatArc)
          {
                // In this case, we only use cycle slip flags

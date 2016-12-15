@@ -41,7 +41,7 @@
 #include "SatDataReader.hpp"
 #include "AntexReader.hpp"
 #include "geometry.hpp"
-
+#include "PPPExtendedKalmanFilter.hpp"
 
 
 namespace gpstk
@@ -125,6 +125,14 @@ namespace gpstk
          : pEphemeris(&ephem), nominalPos(stapos), satData(filename),
            fileData(filename), pAntexReader(NULL)
       { };
+
+      ComputeWindUp( XvtStore<SatID>& ephem,
+                     PPPExtendedKalmanFilter& pppEKF,
+                     std::string filename="PRN_GPS" )
+         : pEphemeris(&ephem), pEKFStateStore(&pppEKF), satData(filename),
+           fileData(filename), pAntexReader(NULL)
+      { };
+
 
 
          /** Common constructor. Uses satellite antenna data from an Antex file.
@@ -258,6 +266,7 @@ namespace gpstk
          /// Receiver position
       Position nominalPos;
 
+      PPPExtendedKalmanFilter* pEKFStateStore;
 
          /// Object to read satellite data file (PRN_GPS)
       SatDataReader satData;

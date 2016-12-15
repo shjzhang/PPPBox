@@ -55,6 +55,10 @@ namespace gpstk
       try
       {
 
+         if (pEKFStateStore != NULL)
+         {
+            setNominalPosition(pEKFStateStore->getRxPosition());
+         }
             // Compute station latitude and longitude
          double lat(nominalPos.geodeticLatitude());
          double lon(nominalPos.longitude());

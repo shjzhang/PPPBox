@@ -205,7 +205,6 @@ namespace gpstk
             x[1] = asDouble(strm.lastLine.substr(18,14));
             x[2] = asDouble(strm.lastLine.substr(32,14));
             clk = asDouble(strm.lastLine.substr(46,14));             // Clock
-
             // the rest is version c only
             if(isVerC) {
                sig[0] = asInt(strm.lastLine.substr(61,2));           // sigma XYZ

@@ -435,9 +435,22 @@ covariance matrix.");
                  it != currSatSet.end();
                  ++it)
             {
+               if ((*it).id == 01 || (*it).id == 02 || (*it).id == 03 ||
+                    (*it).id == 04 || (*it).id == 05)
+               {
+               rMatrix( i               , i         ) = 0.1*weightsVector(i);
+               rMatrix( i + numCurrentSV, i + numCurrentSV )
+                                            = 0.1*weightsVector(i) * weightFactor;
+               }
+               else
+               {
+                   
                rMatrix( i               , i         ) = weightsVector(i);
                rMatrix( i + numCurrentSV, i + numCurrentSV )
                                             = weightsVector(i) * weightFactor;
+               }
+                   
+                   
                ++i;
 
             }  // End of 'for( int i=0; i<numCurrentSV; i++ )'
@@ -452,10 +465,20 @@ covariance matrix.");
                  it != currSatSet.end();
                  ++it)
             {
-
+               if ((*it).id == 01 || (*it).id == 02 || (*it).id == 03 ||
+                    (*it).id == 04 || (*it).id == 05)
+               {
+               rMatrix( i               , i         ) = 0.2;
+               rMatrix( i + numCurrentSV, i + numCurrentSV )
+                                            = 0.2* weightFactor;
+               }
+               else
+               {
+                   
                rMatrix( i               , i         ) = 1.0;
                rMatrix( i + numCurrentSV, i + numCurrentSV )
                                             = 1.0 * weightFactor;
+               }
 
                ++i;
 

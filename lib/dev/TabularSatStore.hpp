@@ -162,7 +162,6 @@ namespace gpstk
       try {
          static const char *fmt=" at time %F/%.3g %4Y/%02m/%02d %2H:%02M:%.3f %P";
 
-
          // find the DataTable for this sat
          typename std::map<SatID, DataTable>::const_iterator satit;
          satit = tables.find(sat);
@@ -195,8 +194,7 @@ namespace gpstk
 
          // lower_bound points to the first element with key >= ttag
          it1 = it2 = dtable.lower_bound(ttag);
-          
-         // ttag is <= first time in table
+         // ttag is <= first time in table 
          if(it1 == dtable.begin()) {
 
             if(exactMatch && nhalf==1) 

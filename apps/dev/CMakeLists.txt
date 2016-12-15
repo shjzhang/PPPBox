@@ -16,3 +16,15 @@ add_executable(pppgnss pppgnss.cpp)
 target_link_libraries(pppgnss pppbox)
 install (TARGETS pppgnss DESTINATION bin)
 
+add_executable(sfppp sfppp.cpp)
+target_link_libraries(sfppp pppbox)
+install (TARGETS sfppp DESTINATION bin)
+
+add_executable(getFCB GetFCB.cpp)
+target_link_libraries(getFCB pppbox)
+install (TARGETS getFCB DESTINATION bin)
+
+add_executable(ppprt ppprt.cpp)
+target_link_libraries(ppprt pppbox)
+install (TARGETS ppprt DESTINATION bin)
+

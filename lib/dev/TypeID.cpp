@@ -283,6 +283,7 @@ namespace gpstk
       tStrings[corrLdelta] = "corrLdelta";
 
       tStrings[prefitC1]   = "prefitResidualCodeC1";
+      tStrings[prefitC2]   = "prefitResidualCodeC2";
       tStrings[prefitP1]   = "prefitResidualCodeP1";
       tStrings[prefitP2]   = "prefitResidualCodeP2";
       tStrings[prefitL1]   = "prefitResidualPhaseL1";
@@ -346,6 +347,11 @@ namespace gpstk
       tStrings[dSatR]      = "dSatR";
       tStrings[dSatT]      = "dSatT";
       tStrings[dSatN]      = "dSatN";
+
+      tStrings[dRecX]      = "dRecX";
+      tStrings[dRecY]      = "dRecY";
+      tStrings[dRecZ]      = "dRecZ";
+
       tStrings[weight]     = "weight";
       tStrings[codeBias]   = "codeBias";
 
@@ -407,10 +413,10 @@ namespace gpstk
       tStrings[recJ2kAX]   = "RxJ2kAccelerationX";
       tStrings[recJ2kAY]   = "RxJ2kAccelerationY";
       tStrings[recJ2kAZ]   = "RxJ2kAccelerationZ";
-		tStrings[STAX]       = "STAX";
-		tStrings[STAY]       = "STAY";
+	  tStrings[STAX]       = "STAX";
+	  tStrings[STAY]       = "STAY";
       tStrings[STAZ]       = "STAZ";
-		tStrings[VELX]			= "VELX";
+	  tStrings[VELX]	   = "VELX";
       tStrings[VELY]       = "VELY";
       tStrings[VELZ]       = "VELZ";
       tStrings[AntOffU]    = "AntOffU";

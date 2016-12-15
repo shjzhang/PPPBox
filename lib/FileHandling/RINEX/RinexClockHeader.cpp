@@ -179,6 +179,7 @@ namespace gpstk
                for(i=0; i<15; ++i) {
                   label = line.substr(4*i,3);
                   if(label == string("   ")) break;
+                  if(label == string(" 00")) break;
                   prn = asInt(line.substr(4*i+1,2));
                   if(line[4*i] == 'G')
                      satList.push_back(RinexSatID(prn,RinexSatID::systemGPS));

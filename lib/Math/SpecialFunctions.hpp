@@ -147,8 +147,10 @@ namespace gpstk
        */
    double regIncompleteBeta(const double x, const double a, const double b)
       throw(InvalidParameter);
+       
+   double norm( const int n, const int m );
 
-
+   double legendrePoly(const int n, const int m, const double u);
       //@}
 
 }  // End of namespace gpstk

@@ -482,7 +482,7 @@ Decompress()
 		if [[ ! -e $savefile2 ]]
 		then
             # Convert
-	      CRX2RNX "$savefile"
+	      crx2rnx "$savefile"
 
 	         # Judge if the CRX2RNX tool exists.
          if [[ $? -ne 0 ]]

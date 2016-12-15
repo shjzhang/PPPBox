@@ -99,7 +99,6 @@ namespace gpstk
                   }
                   result = result + (*iter).second * temp;
                }
-
                   // Store the result in the proper place
                (*it).second[pos->header] = result;
             }

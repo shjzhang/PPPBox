@@ -119,8 +119,6 @@ namespace gpstk
       p1Prefit.body[TypeID::instP1]       = -1.0;
          // Interpolated from reference stations
       p1Prefit.body[TypeID::corrP1]       = -1.0;
-    
-
 
          // Definition to compute prefit residual of P2
       p2Prefit.header                     = TypeID::prefitP2;
@@ -203,6 +201,11 @@ namespace gpstk
       pcPrefit.body[TypeID::PC]           = +1.0;
       pcPrefit.body[TypeID::rho]          = -1.0;
       pcPrefit.body[TypeID::dtSat]        = +1.0;
+        // just for test
+      //pcPrefit.body[TypeID::dRecX]        = +1.0;
+      //pcPrefit.body[TypeID::dRecY]        = +1.0;
+      //pcPrefit.body[TypeID::dRecZ]        = +1.0;
+
       pcPrefit.body[TypeID::rel]          = -1.0;
       pcPrefit.body[TypeID::gravDelay]    = -1.0;
       pcPrefit.body[TypeID::satPCenter]   = -1.0;
@@ -235,6 +238,11 @@ namespace gpstk
       lcPrefit.body[TypeID::LC]           = +1.0;
       lcPrefit.body[TypeID::rho]          = -1.0;
       lcPrefit.body[TypeID::dtSat]        = +1.0;
+        // just for test
+      //lcPrefit.body[TypeID::dRecX]        = +1.0;
+      //lcPrefit.body[TypeID::dRecY]        = +1.0;
+      //lcPrefit.body[TypeID::dRecZ]        = +1.0;
+
       lcPrefit.body[TypeID::updSatLC]     = +1.0;   // UPD for LC
       lcPrefit.body[TypeID::rel]          = -1.0;
       lcPrefit.body[TypeID::gravDelay]    = -1.0;

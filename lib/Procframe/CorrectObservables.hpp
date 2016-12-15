@@ -42,7 +42,7 @@
 #include "Position.hpp"
 #include "Antenna.hpp"
 #include "geometry.hpp"
-
+#include "PPPExtendedKalmanFilter.hpp"
 
 
 namespace gpstk
@@ -152,6 +152,14 @@ namespace gpstk
            monumentVector(0.0, 0.0, 0.0), extraBiases(0.0, 0.0, 0.0)
       { };
 
+      CorrectObservables( XvtStore<SatID>& ephem,
+                          PPPExtendedKalmanFilter& pppEKF )
+         : pEphemeris(&ephem), pEKFStateStore(&pppEKF), useAzimuth(false),
+           L1PhaseCenter(0.0, 0.0, 0.0), L2PhaseCenter(0.0, 0.0, 0.0),
+           L5PhaseCenter(0.0, 0.0, 0.0), L6PhaseCenter(0.0, 0.0, 0.0),
+           L7PhaseCenter(0.0, 0.0, 0.0), L8PhaseCenter(0.0, 0.0, 0.0),
+           monumentVector(0.0, 0.0, 0.0), extraBiases(0.0, 0.0, 0.0)
+      { };
 
          /** Common constructor
           *
@@ -536,7 +544,7 @@ namespace gpstk
          /// Receiver position.
       Position nominalPos;
 
-
+      PPPExtendedKalmanFilter* pEKFStateStore;
          /// Antenna object with information taken from Antex file.
       Antenna antenna;
 

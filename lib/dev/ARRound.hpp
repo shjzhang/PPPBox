@@ -115,8 +115,6 @@ tha   t of ambCov");
             // fixed ambiguity
          Vector<double> ambFixed(namb,0.0);
 
-
-            // number of ambiguity to be fixed, always == 1, here
          int nfixed = 0;
 
             // ambiguity decision, ambigity value and sigma
