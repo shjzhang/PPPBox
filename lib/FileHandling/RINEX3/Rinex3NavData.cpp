@@ -933,7 +933,7 @@ namespace gpstk
          line += doubleToScientific(GammaN,19,12,2);
          line += doubleToScientific((double)MFtime,19,12,2);
       }
-      else if(satSys == "G" || satSys == "E" || satSys == "J" || satSys == "C") {
+      else if(satSys == "G" || satSys == "E" || satSys == "J" || satSys == "C" || satSys == "I") {
          line += doubleToScientific(af0,19,12,2);
          line += doubleToScientific(af1,19,12,2);
          line += doubleToScientific(af2,19,12,2);
@@ -971,7 +971,7 @@ namespace gpstk
                line += doubleToScientific(ax,19,12,2);
                line += doubleToScientific((double)health,19,12,2);
             }
-            else if(satSys == "G" || satSys == "C" || satSys == "J") {// GPS,BDS,QZS
+            else if(satSys == "G" || satSys == "C" || satSys == "J" || satSys == "I") {// GPS,BDS,QZS
                line += doubleToScientific(IODE,19,12,2);
                line += doubleToScientific(Crs,19,12,2);
                line += doubleToScientific(dn,19,12,2);
@@ -1039,7 +1039,7 @@ namespace gpstk
             else if(HOWtime - Toe < -(HALFWEEK))
                wk--;
 
-            if(satSys == "G" || satSys == "J") {      // GPS QZS
+            if(satSys == "G" || satSys == "J" || satSys == "I") {  // GPS QZS
                line += doubleToScientific(idot,19,12,2);
                line += doubleToScientific((double)codeflgs,19,12,2);
                line += doubleToScientific(wk,19,12,2);
@@ -1063,7 +1063,7 @@ namespace gpstk
             line += doubleToScientific(accuracy,19,12,2);
             line += doubleToScientific((double)health,19,12,2);
 
-            if(satSys == "G" || satSys == "J") {       // GPS, QZS
+            if(satSys == "G" || satSys == "J" || satSys == "I") { // GPS, QZS
                line += doubleToScientific(Tgd,19,12,2);
                line += doubleToScientific(IODC,19,12,2);
             }
@@ -1076,7 +1076,7 @@ namespace gpstk
          else if(nline == 7) {
             line += doubleToScientific(HOWtime,19,12,2);
 
-            if(satSys == "G" || satSys == "J") {
+            if(satSys == "G" || satSys == "J" || satSys == "I") {
                line += doubleToScientific(fitint,19,12,2);
             }
             else if(satSys == "E") {
@@ -1121,7 +1121,6 @@ namespace gpstk
             satSys = line.substr(0,1);
             PRNID = asInt(line.substr(1,2));
             sat.fromString(line.substr(0,3));
-
             yr  = asInt(line.substr( 4,4));
             mo  = asInt(line.substr( 9,2));
             day = asInt(line.substr(12,2));
@@ -1163,6 +1162,7 @@ namespace gpstk
          if(satSys == "C") time.setTimeSystem(TimeSystem::BDT);
          if(satSys == "J") time.setTimeSystem(TimeSystem::QZS);
          if(satSys == "S") time.setTimeSystem(TimeSystem::GPS);
+         if(satSys == "I") time.setTimeSystem(TimeSystem::IRN);
 
          // TOC is the clock time
          GPSWeekSecond gws(time);         // sow is system-independent
@@ -1183,7 +1183,7 @@ namespace gpstk
                }
             }
          }
-         else if(satSys == "G" || satSys == "E" || satSys == "C" || satSys == "J") {
+         else if(satSys == "G" || satSys == "E" || satSys == "C" || satSys == "J" || satSys == "I") {
             af0 = StringUtils::for2doub(line.substr(23,19));
             af1 = StringUtils::for2doub(line.substr(42,19));
             af2 = StringUtils::for2doub(line.substr(61,19));
@@ -1216,7 +1216,7 @@ namespace gpstk
          strm.formattedGetLine(line);
 
          if(nline == 1) {
-            if(satSys == "G" || satSys == "J" || satSys == "C") {
+            if(satSys == "G" || satSys == "J" || satSys == "C" || satSys == "I") {
                IODE = StringUtils::for2doub(line.substr(n,19)); n+=19;
                Crs  = StringUtils::for2doub(line.substr(n,19)); n+=19;
                dn   = StringUtils::for2doub(line.substr(n,19)); n+=19;
@@ -1237,7 +1237,7 @@ namespace gpstk
          }
 
          else if(nline == 2) {
-            if(satSys == "G" || satSys == "E" || satSys == "J" || satSys == "C") {
+            if(satSys == "G" || satSys == "E" || satSys == "J" || satSys == "C" || satSys == "I") {
                Cuc   = StringUtils::for2doub(line.substr(n,19)); n+=19;
                ecc   = StringUtils::for2doub(line.substr(n,19)); n+=19;
                Cus   = StringUtils::for2doub(line.substr(n,19)); n+=19;
@@ -1255,7 +1255,7 @@ namespace gpstk
          }
 
          else if(nline == 3) {
-            if(satSys == "G" || satSys == "E" || satSys == "J" || satSys == "C") {
+            if(satSys == "G" || satSys == "E" || satSys == "J" || satSys == "C" || satSys == "I") {
                Toe    = StringUtils::for2doub(line.substr(n,19)); n+=19;
                Cic    = StringUtils::for2doub(line.substr(n,19)); n+=19;
                OMEGA0 = StringUtils::for2doub(line.substr(n,19)); n+=19;
@@ -1280,7 +1280,7 @@ namespace gpstk
          }
 
          else if(nline == 5) {
-            if(satSys == "G" || satSys == "J" || satSys == "C") {
+            if(satSys == "G" || satSys == "J" || satSys == "C" || satSys == "I"){
                idot     =        StringUtils::for2doub(line.substr(n,19)); n+=19;
                codeflgs = (short)StringUtils::for2doub(line.substr(n,19)); n+=19;
                weeknum  = (short)StringUtils::for2doub(line.substr(n,19)); n+=19;
@@ -1295,7 +1295,7 @@ namespace gpstk
 
          else if(nline == 6) {
             Tgd2 = 0.0;
-            if(satSys == "G" || satSys == "J") {
+            if(satSys == "G" || satSys == "J" || satSys == "I") {
                accuracy =       StringUtils::for2doub(line.substr(n,19)); n+=19;
                health   = short(StringUtils::for2doub(line.substr(n,19))); n+=19;
                Tgd      =       StringUtils::for2doub(line.substr(n,19)); n+=19;

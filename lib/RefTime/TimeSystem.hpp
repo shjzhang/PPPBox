@@ -64,6 +64,7 @@ namespace gpstk
          GAL,         ///< Galileo system time
          QZS,         ///< QZSS system Time
          BDT,         ///< BeiDou system Time
+         IRN,         ///< IRNSS time
          UTC,         ///< Coordinated Universal Time (e.g., from NTP)
          TAI,         ///< International Atomic Time
          TT,          ///< Terrestrial time (used in IERS conventions)
