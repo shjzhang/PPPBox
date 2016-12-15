@@ -202,9 +202,9 @@ namespace gpstk
       pcPrefit.body[TypeID::rho]          = -1.0;
       pcPrefit.body[TypeID::dtSat]        = +1.0;
         // just for test
-      //pcPrefit.body[TypeID::dRecX]        = +1.0;
-      //pcPrefit.body[TypeID::dRecY]        = +1.0;
-      //pcPrefit.body[TypeID::dRecZ]        = +1.0;
+      pcPrefit.body[TypeID::dRecX]        = +1.0;
+      pcPrefit.body[TypeID::dRecY]        = +1.0;
+      pcPrefit.body[TypeID::dRecZ]        = +1.0;
 
       pcPrefit.body[TypeID::rel]          = -1.0;
       pcPrefit.body[TypeID::gravDelay]    = -1.0;
@@ -239,9 +239,9 @@ namespace gpstk
       lcPrefit.body[TypeID::rho]          = -1.0;
       lcPrefit.body[TypeID::dtSat]        = +1.0;
         // just for test
-      //lcPrefit.body[TypeID::dRecX]        = +1.0;
-      //lcPrefit.body[TypeID::dRecY]        = +1.0;
-      //lcPrefit.body[TypeID::dRecZ]        = +1.0;
+      lcPrefit.body[TypeID::dRecX]        = +1.0;
+      lcPrefit.body[TypeID::dRecY]        = +1.0;
+      lcPrefit.body[TypeID::dRecZ]        = +1.0;
 
       lcPrefit.body[TypeID::updSatLC]     = +1.0;   // UPD for LC
       lcPrefit.body[TypeID::rel]          = -1.0;

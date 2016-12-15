@@ -217,12 +217,10 @@ namespace gpstk
 
                // Now we have to add the new values to the data structure
             (*stv).second[TypeID::dtSat] = cerange.svclkbias;
-            cout<<stv->first<<" scvlkbias : "<<cerange.svclkbias<<std::endl;
                // Now, lets insert the geometry matrix
             (*stv).second[TypeID::dx] = cerange.cosines[0];
             (*stv).second[TypeID::dy] = cerange.cosines[1];
             (*stv).second[TypeID::dz] = cerange.cosines[2];
-            cout<<"dx : "<<(*stv).second[TypeID::dx]<<std::endl;
 
             (*stv).second[TypeID::dSatX] = -cerange.cosines[0];
             (*stv).second[TypeID::dSatY] = -cerange.cosines[1];
