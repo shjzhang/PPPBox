@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ash2mdp.dir/ash2mdp.cpp.o  -o ash2mdp -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

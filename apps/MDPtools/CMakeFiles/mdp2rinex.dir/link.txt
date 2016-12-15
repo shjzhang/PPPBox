@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/mdp2rinex.dir/mdp2rinex.cpp.o  -o mdp2rinex -rdynamic libmdplib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

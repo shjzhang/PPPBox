@@ -109,23 +109,25 @@ namespace gpstk
          {
             if ((*it).first.system == SatID::systemGlonass)
             {
-                 // get L1 wavelength
-              double L1Wavelength = getWavelength((*it).first,1,(*it).second[TypeID::FreqNo]);
-                 // get L2 wavelength;
-              double L2Wavelength = getWavelength((*it).first,2,(*it).second[TypeID::FreqNo]);
-                 // LC wavelegnth of this satellite
-              double LCWavelength = 2.53125*L1Wavelength - 1.53125*L2Wavelength;
               
+              double N((*it).second[TypeID::FreqNo]);
+                 // get L1 freuquency 
+              double L1Frequency(L1_FREQ_GLO + N*L1_FREQ_STEP_GLO);
+                 // get L2 freuquency;
+              double L2Frequency(L2_FREQ_GLO + N*L2_FREQ_STEP_GLO);
+                 // LC wavelegnth of this satellite
+              double LCWavelength(C_MPS/(L1Frequency+L2Frequency));
+
               setPhaseWavelength(LCWavelength); 
             }
             else if ((*it).first.system == SatID::systemGalileo)
             {
-              setPhaseWavelength(0.108941358884) ; // Galileo LC wavelength     
+              setPhaseWavelength(0.108941359148506) ; // Galileo LC wavelength     
             }
             else if ((*it).first.system == SatID::systemBeiDou)
             {
-              setPhaseWavelength(0.1082972115435) ; // BeiDou LC wavelength     
-              setCSFlag(TypeID::CSL2);            // BeiDou B1 
+              setPhaseWavelength(0.108297212161671) ; // BeiDou LC wavelength     
+              setCSFlag(TypeID::CSL2);                // BeiDou B1 
             }
 
 

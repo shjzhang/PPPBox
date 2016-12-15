@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ficfica.dir/ficfica.cpp.o  -o ficfica -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

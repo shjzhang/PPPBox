@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/tallandev.dir/tallandev.cpp.o  -o tallandev -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

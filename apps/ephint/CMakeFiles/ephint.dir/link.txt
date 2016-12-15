@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ephint.dir/ephint.cpp.o CMakeFiles/ephint.dir/ComputeSatPCOffset.cpp.o  -o ephint -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

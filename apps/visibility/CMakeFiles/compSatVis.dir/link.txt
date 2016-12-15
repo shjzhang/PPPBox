@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/compSatVis.dir/compSatVis.cpp.o  -o compSatVis -rdynamic ../../libpppbox.so libvislib.a -Wl,-rpath,/home/ww/pppbox:::::::::: 

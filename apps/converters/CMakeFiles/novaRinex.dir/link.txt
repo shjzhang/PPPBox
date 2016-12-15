@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/novaRinex.dir/novaRinex.cpp.o  -o novaRinex -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

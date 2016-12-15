@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ordLinEst.dir/ordLinEst.cpp.o  -o ordLinEst -rdynamic librlib.a ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

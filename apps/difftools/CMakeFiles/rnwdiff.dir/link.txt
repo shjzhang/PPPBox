@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/rnwdiff.dir/rnwdiff.cpp.o  -o rnwdiff -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/mergeFIC.dir/mergeFIC.cpp.o  -o mergeFIC -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/pppar.dir/pppar.cpp.o  -o pppar -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 

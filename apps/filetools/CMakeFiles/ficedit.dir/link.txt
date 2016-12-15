@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/ficedit.dir/ficedit.cpp.o  -o ficedit -rdynamic ../../libpppbox.so -Wl,-rpath,/home/ww/pppbox:::::::::: 
