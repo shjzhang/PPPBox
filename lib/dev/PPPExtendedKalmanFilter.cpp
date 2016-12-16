@@ -102,7 +102,7 @@ matrix and a priori state estimation vector do not match.");
          // After checking sizes, let's do the real correction work
       Matrix<double> GainMatrix;
 
-	  Vector<double> predResiduals;
+      Vector<double> predResiduals;
 
       Matrix<double> idenityMatrix(pMCol,pMCol,0.0);
       for (int i =0;i<pMCol;i++)
@@ -116,10 +116,10 @@ matrix and a priori state estimation vector do not match.");
       {
 
           Matrix<double> temp(measurementsMatrix * Pminus* measMatrixT 
-		                              + measurementsNoiseCovariance);
+                                      + measurementsNoiseCovariance);
 
           GainMatrix = Pminus * measMatrixT * inverse(temp);
-		 
+         
       }
       catch(...)
       {
@@ -133,13 +133,13 @@ matrix and a priori state estimation vector do not match.");
       {
 
             // Compute the a posteriori state estimation
-		  predResiduals = measurements - measurementsMatrix * xhatminus;
+          predResiduals = measurements - measurementsMatrix * xhatminus;
 
-		  xhat = xhatminus + GainMatrix * predResiduals;
+          xhat = xhatminus + GainMatrix * predResiduals;
 
           Matrix<double> tempMatrix(idenityMatrix - GainMatrix * measurementsMatrix);
            
-		  P = tempMatrix * Pminus * transpose(tempMatrix) 
+          P = tempMatrix * Pminus * transpose(tempMatrix) 
               + GainMatrix * measurementsNoiseCovariance * transpose(GainMatrix);
 
       }
