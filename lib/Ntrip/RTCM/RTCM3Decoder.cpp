@@ -10,6 +10,7 @@
 #include <math.h>
 #include <string.h>
 
+#include "SignalCenter.hpp"
 #include "bits.h"
 #include "RTCM3Decoder.hpp"
 #include "SatID.hpp"
@@ -389,14 +390,15 @@ bool RTCM3Decoder::decodeGPSEphemeris(unsigned char* data, int size)
       GETBITS(week, 10);
       week += 1024;
       // SV accuracy (URA index)
-      GETBITS(eph.accuracy, 4);
-      //eph._ura = accuracyFromIndex(i, eph.type());
+      GETBITS(i, 4);
+      eph.accuracyFlag = accuracyFromIndex(i, eph.satID.system);
       GETBITS(eph.codeflags, 2);
       GETFLOATSIGN(eph.idot, 14, PI*P2_43);
       GETBITS(eph.IODE, 8);
       GETBITS(i, 16);
       i <<= 4;
       eph.ctToc = setGPS(i*1000);
+      eph.transmitTime = eph.ctToc;
       GETFLOATSIGN(eph.af2, 8, P2_55)
       GETFLOATSIGN(eph.af1, 16, P2_43)
       GETFLOATSIGN(eph.af0, 22, P2_31)
@@ -433,8 +435,8 @@ bool RTCM3Decoder::decodeGPSEphemeris(unsigned char* data, int size)
       GETBITS(eph.fitint, 1);
 
       decoded = true;
-    }
-
+      SIG_CENTER->newGPSEph(eph);
+    } 
     return decoded;
 }
 

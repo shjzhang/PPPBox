@@ -189,10 +189,11 @@ static const enum COR_OFFSETS satoffset[CLOCKORBIT_SATNUM+1] =
 size_t MakeClockOrbit(const struct ClockOrbit *co, enum ClockOrbitType type,
 int moremessagesfollow, char *buffer, size_t size)
 {
+  STARTDATA
   unsigned int status[CLOCKORBIT_SATNUM][COBOFS_NUM], i, s;
 
   memset(status, 0, sizeof(status));
-  STARTDATA
+
 
   for(s = 0; s < CLOCKORBIT_SATNUM; ++s)
   {

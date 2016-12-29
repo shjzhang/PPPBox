@@ -28,11 +28,10 @@ NtripTask::~NtripTask()
 
 RTCMDecoder* NtripTask::decoder()
 {
-    //如果不输出原始观测值，那么可以直接返回
     if (m_decoder != 0) {
       return m_decoder;
     }
-    //如果要输出原始观测值，会有一个存储器，来依据各挂载点及其GPSDecoder对象来存储
+
     else {
       if (initDecoder() == true)
       {
@@ -57,7 +56,6 @@ bool NtripTask::initDecoder()
     {
         m_decoder = new RTCM3Decoder();
     }
-    //m_decoder = new RTCM3Decoder();
     m_decoder->initRinex(staID, mntpntUrl, lat, lon,
                          nmea, ntripVer);
     return true;
@@ -65,13 +63,13 @@ bool NtripTask::initDecoder()
 
 void NtripTask::run()
 {
-	string tempVersion = m_MP.getNtripVersion();
-	int tempNmeaFlag = m_MP.getnmeaFlag();
-	NetUrl tempURL = m_MP.getMountPointUrl();
+    string tempVersion = m_MP.getNtripVersion();
+    int tempNmeaFlag = m_MP.getnmeaFlag();
+    NetUrl tempURL = m_MP.getMountPointUrl();
 
-	/// According to the ntrip version of mountpoint,
-	/// select corresponding model of network request.
-	/// By default: Ntrip Version 1.0
+    /// According to the ntrip version of mountpoint,
+    /// select corresponding model of network request.
+    /// By default: Ntrip Version 1.0
     NetQueryBase* query = 0;
     if(tempVersion == "1")
     {
@@ -84,7 +82,11 @@ void NtripTask::run()
     {
     }
 
-    ofstream out(m_sRawOutFile.c_str(),ios::out|ios::binary);
+    ofstream out;
+    if(m_bOutputRaw)
+    {
+        out.open(m_sRawOutFile.c_str(),ios::out|ios::binary);
+    }
     cout << "pid=" << this_thread::get_id() << endl;
     while(1)
     {

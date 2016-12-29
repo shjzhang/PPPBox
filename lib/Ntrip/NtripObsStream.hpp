@@ -31,9 +31,9 @@ public:
     void setRnxPath(std::string &path);
     void setRnxObsOpt(RinexObsOpt & opt){m_rinexOpt = opt;}
 private:
-    std::string     m_sStatID;
-    NetUrl          m_mountPoint;
-    std::string     m_sRnxPath;
+    std::string     m_sStatID;          ///< station identification
+    NetUrl          m_mountPoint;       ///< url of mountpoint
+    std::string     m_sRnxPath;         ///< path to save the RINEX file
 
     double          m_dRinexVersion;
     bool            m_bHeaderWritten;

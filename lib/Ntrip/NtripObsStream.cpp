@@ -7,6 +7,7 @@
 #include "StringUtils.hpp"
 #include "SystemTime.hpp"
 #include "FileUtils.hpp"
+#include "FileSpec.hpp"
 
 using namespace StringUtils;
 
@@ -25,7 +26,7 @@ NtripObsStream::NtripObsStream(const std::string& staID, const NetUrl& mountPoin
     m_bHeaderWritten = false;
     m_sPrgmName = NTRIPTOOLPGMNAME;
 
-    m_sRnxPath = "./";
+    m_sRnxPath = ".";
 #ifdef WIN32
     m_sUserName = ::getenv("USERNAME");
 #else
@@ -36,12 +37,18 @@ NtripObsStream::NtripObsStream(const std::string& staID, const NetUrl& mountPoin
 
 void NtripObsStream::setRnxPath(std::string &path)
 {
-    int strLen = path.size();
-    if(path[strLen-1]!='/')
+    if(!path.empty())
     {
-        path +='/';
+        if(path[path.size()-1]!=slash)
+        {
+            path += slash;
+        }
+        m_sRnxPath = path;
     }
-    m_sRnxPath = path;
+    else
+    {
+        m_sRnxPath = "." + slash;
+    }
 }
 
 // File Name according to RINEX Standards

@@ -2,6 +2,8 @@
 #define GPSTK_RTCMDECODER_HPP
 
 #include <list>
+#include <math.h>
+
 #include "NetUrl.hpp"
 #include "Rinex3NavHeader.hpp"
 #include "Rinex3NavData.hpp"
@@ -10,6 +12,7 @@
 #include "CommonTime.hpp"
 #include "SystemTime.hpp"
 #include "satObs.hpp"
+#include "SatID.hpp"
 #include "NtripObsStream.hpp"
 
 
@@ -226,6 +229,50 @@ inline void currentGPSWeeks(int& week, double& sec)
     week = gws.getWeek();
     sec = gws.getSOW();
 }
+
+inline double accuracyFromIndex(int index, gpstk::SatID::SatelliteSystem system)
+{
+
+    if (system == gpstk::SatID::systemGPS || system == gpstk::SatID::systemBeiDou
+            || system == gpstk::SatID::systemGeosync || system == gpstk::SatID::systemQZSS) {
+
+      if ((index >= 0) && (index <= 6)) {
+        if (index == 3) {
+          return ceil(10.0 * pow(2.0, (double(index) / 2.0) + 1.0)) / 10.0;
+        }
+        else {
+          return floor(10.0 * pow(2.0, (double(index) / 2.0) + 1.0)) / 10.0;
+        }
+      }
+      else if ((index > 6) && (index <= 15)) {
+        return (10.0 * pow(2.0, (double(index) - 2.0))) / 10.0;
+      }
+      else {
+        return 8192.0;
+      }
+    }
+
+    if (system == gpstk::SatID::systemGalileo) {
+
+      if ((index >= 0) && (index <= 49)) {
+        return (double(index) / 100.0);
+      }
+      else if ((index > 49) && (index <= 74)) {
+        return (50.0 + (double(index) - 50.0) * 2.0) / 100.0;
+      }
+      else if ((index > 74) && (index <= 99)) {
+        return 1.0 + (double(index) - 75.0) * 0.04;
+      }
+      else if ((index > 99) && (index <= 125)) {
+        return 2.0 + (double(index) - 100.0) * 0.16;
+      }
+      else {
+        return -1.0;
+      }
+    }
+
+    return double(index);
+  }
 
 
 #endif // GPSTK_RTCMDECODER_H
