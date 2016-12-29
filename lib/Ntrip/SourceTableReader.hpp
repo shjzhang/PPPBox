@@ -40,6 +40,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <mutex>
 
 #include "Exception.hpp"
 #include "StringUtils.hpp"
@@ -162,6 +163,9 @@ namespace gpstk
         // Method to store sourcetable data in this class' data map
         virtual void loadData()
            throw( FFStreamError, gpstk::StringUtils::StringException );
+
+        // IO Mutex
+        mutex m_mutex;
 
     }; // End of class SourceTableReader
 

@@ -27,6 +27,7 @@ NtripObsStream::NtripObsStream(const std::string& staID, const NetUrl& mountPoin
     m_sPrgmName = NTRIPTOOLPGMNAME;
 
     m_sRnxPath = ".";
+    setRnxPath(m_sRnxPath);
 #ifdef WIN32
     m_sUserName = ::getenv("USERNAME");
 #else

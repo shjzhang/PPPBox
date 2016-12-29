@@ -314,8 +314,10 @@ namespace gpstk
         // get source table buffer
         //////////////////////////
 
+        lock_guard<mutex> guard(m_mutex);
+
         // source table buffer
-        static char buff[MAXSRCTBL];
+        char buff[MAXSRCTBL];
         char* p = buff;
         unsigned char *table=(unsigned char*)malloc(MAXSRCTBL);
         int len = strlen(ENDSRCTBL);
@@ -367,7 +369,7 @@ namespace gpstk
             table[i] = buff[i];
         }
         query->stop();
-        delete query;
+        delete query;     
 
         // write the buffer to file
         ///////////////////////////
