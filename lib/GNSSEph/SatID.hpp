@@ -20,7 +20,7 @@
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with GPSTk; if not, write to the Free Software Foundation,
 //  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
-//  
+//
 //  Copyright 2004, The University of Texas at Austin
 //
 //============================================================================
@@ -28,17 +28,21 @@
 //============================================================================
 //
 //This software developed by Applied Research Laboratories at the University of
-//Texas at Austin, under contract to an agency or agencies within the U.S. 
+//Texas at Austin, under contract to an agency or agencies within the U.S.
 //Department of Defense. The U.S. Government retains all rights to use,
-//duplicate, distribute, disclose, or release this software. 
+//duplicate, distribute, disclose, or release this software.
 //
-//Pursuant to DoD Directive 523024 
+//Pursuant to DoD Directive 523024
 //
-// DISTRIBUTION STATEMENT A: This software has been approved for public 
+// DISTRIBUTION STATEMENT A: This software has been approved for public
 //                           release, distribution is unlimited.
 //
 //=============================================================================
-
+//
+//Modification
+//
+// Q.Liu   2017.01.09   Add the common constructor for SatID class
+//=============================================================================
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -83,6 +87,50 @@ namespace gpstk
       /// @note if s is given a default value here,
       /// some compilers will silently cast int to SatID.
       SatID(int p, SatelliteSystem s) { id=p; system=s; }
+
+      /// Assure the satellite prn by the common format input
+      /// @param  satnum    satellite prn number
+      /// @param  sys    satellite system string
+      /// @author Q.Liu
+      SatID(int satnum, std::string& satsys)
+      {
+         id = satnum;
+         if(satsys.length()==1)
+         {
+            if(satsys == "G")
+            {
+               system = systemGPS;
+            }
+            else if(satsys == "R")
+            {
+               system = systemGlonass;
+            }
+            else if(satsys == "E")
+            {
+               system = systemGalileo;
+            }
+            else if(satsys == "C")
+            {
+               system = systemBeiDou;
+            }
+            else if(satsys == "J")
+            {
+               system = systemQZSS;
+            }
+            else if(satsys == "S")
+            {
+               system = systemGeosync;
+            }
+            else
+            {
+               // TODO Nothing
+            }
+         }
+         else
+         {
+            // TODO Nothing
+         }
+      }
 
       // operator=, copy constructor and destructor built by compiler
 
