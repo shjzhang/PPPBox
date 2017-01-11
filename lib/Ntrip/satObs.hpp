@@ -8,6 +8,7 @@
 #include "CommonTime.hpp"
 #include "RinexSatID.hpp"
 #include "Matrix.hpp"
+#include "Triple.hpp"
 
 // the observation on one frequency
 class t_frqObs  {
@@ -82,6 +83,7 @@ class t_satObs {
 class t_orbCorr {
  public:
   t_orbCorr();
+
   static void writeEpoch(std::ostream* out, const std::list<t_orbCorr>& corrList);
   static void readEpoch(const std::string& epoLine, std::istream& in, std::list<t_orbCorr>& corrList);
   std::string          _staID;

@@ -16,7 +16,7 @@
 #include "FileUtils.hpp"
 #include "StringUtils.hpp"
 #include "SatID.hpp"
-#include "Rinex3NavData.hpp"
+#include "Rinex3NavData2.hpp"
 
 NtripNavStream::NtripNavStream()
 {
@@ -110,26 +110,52 @@ void NtripNavStream::printEphHeader()
     m_bHeaderWritten = true;
 }
 
-void NtripNavStream::printEph(OrbitEph *eph)
+OrbitEph2* NtripNavStream::ephLast(const std::string &prn)
+{
+    if(m_eph.count(prn)!=0)
+    {
+        return m_eph[prn].back();
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+OrbitEph2* NtripNavStream::ephPrev(const std::string &prn)
+{
+    if(m_eph.count(prn)!=0)
+    {
+        unsigned n = m_eph[prn].size();
+        if(n > 1)
+        {
+            return m_eph[prn].at(n-2);
+        }
+
+    }
+    return 0;
+}
+
+void NtripNavStream::printEph(OrbitEph2 *eph)
 {
     if(eph==0)
     {
         return;
     }
-    Rinex3NavData *navData;
+    Rinex3NavData2 *navData;
     navData = 0;
     gpstk::SatID::SatelliteSystem system = eph->satID.system;
     switch(system)
     {
         case gpstk::SatID::systemGPS:
         {
-            const GPSEphemeris* nowEph = dynamic_cast<const GPSEphemeris*>(eph);
-            navData = new Rinex3NavData(*nowEph);
+            const GPSEphemeris2* nowEph = dynamic_cast<const GPSEphemeris2*>(eph);
+            navData = new Rinex3NavData2(*nowEph);
             break;
         }
         default:
         {
-
+            break;
         }
     }
 
@@ -138,8 +164,10 @@ void NtripNavStream::printEph(OrbitEph *eph)
     delete navData;
 }
 
-bool NtripNavStream::putNewEph(OrbitEph *eph)
+bool NtripNavStream::putNewEph(OrbitEph2 *eph)
 {
+    //std::lock_guard<std::mutex> guard(m_mutex);
+
     if(eph == 0)
     {
         return false;
@@ -147,30 +175,50 @@ bool NtripNavStream::putNewEph(OrbitEph *eph)
 
     checkEphmeris(eph);
 
-    std::string prn = StringUtils::asString(eph->satID);
-    CommonTime ct = eph->ctToc;
-    int cnt = m_ephTime.count(prn);
-    int size = m_ephTime.size();
-    if(m_ephTime.count(prn)!=0)
+    const GPSEphemeris2* ephGPS = dynamic_cast<const GPSEphemeris2*>(eph);
+
+    OrbitEph2* ephNew = 0;
+
+    if(ephGPS)
     {
-        if(ct > m_ephTime[prn])
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        ephNew = new GPSEphemeris2(*ephGPS);
     }
     else
     {
-        m_ephTime[prn] = ct;
+        return false;
     }
-    size = m_ephTime.size();
-    return true;
+
+    std::string prn = StringUtils::asString(eph->satID);
+    const OrbitEph2* ephOld = ephLast(prn);
+
+    if(ephOld && (ephOld->getCheckState() == OrbitEph2::bad
+               || ephOld->getCheckState() == OrbitEph2::outdated))
+    {
+        ephOld = 0;
+    }
+
+    if((ephOld ==0 || ephNew->isNewerThan(ephOld)) &&
+       (eph->getCheckState() != OrbitEph2::bad &&
+        eph->getCheckState() != OrbitEph2::outdated))
+    {
+        std::deque<OrbitEph2*>& qq = m_eph[prn];
+        qq.push_back(ephNew);
+        if(qq.size() > m_iMaxQueueSize)
+        {
+            delete qq.front();
+            qq.pop_front();
+        }
+
+        return true;
+    }
+    else
+    {
+        delete ephNew;
+        return false;
+    }
 }
 
-void NtripNavStream::checkEphmeris(OrbitEph *eph)
+void NtripNavStream::checkEphmeris(OrbitEph2 *eph)
 {
     if(!eph)
     {
@@ -179,7 +227,26 @@ void NtripNavStream::checkEphmeris(OrbitEph *eph)
 
     // Simple Check - check satellite radial distance
     // ----------------------------------------------
-    // Don't know why???
+    Xvt sv;
+    double clkcorr;
+    eph->dataLoadedFlag = true;
+    if(!eph->getCrd(eph->ctToc, sv, clkcorr, false))
+    {
+        eph->setCheckState(OrbitEph2::bad);
+        return;
+    }
+
+    double rr = sv.x.mag();
+
+
+    const double MINDIST = 2.e7;
+    const double MAXDIST = 6.e7;
+
+    if (rr < MINDIST || rr > MAXDIST)
+    {
+        eph->setCheckState(OrbitEph2::bad);
+        return;
+    }
 
 
     // Check whether the epoch is too far away from the current time
@@ -198,15 +265,110 @@ void NtripNavStream::checkEphmeris(OrbitEph *eph)
         if(timeDiff > 4*3600)
         {
             // outdated
+            eph->setCheckState(OrbitEph2::outdated);
+            return;
+        }
+    }
+    else if(system == SatID::systemGlonass)
+    {
+        // updated every 30 minutes
+        if(timeDiff > 1*3600)
+        {
+            // outdated
+            eph->setCheckState(OrbitEph2::outdated);
+            return;
+        }
+    }
+    else if(system == SatID::systemBeiDou)
+    {
+        // updates 1 (GEO) up to 6 hours
+        if(timeDiff > 6*3600)
+        {
+            // outdated
+            eph->setCheckState(OrbitEph2::outdated);
+            return;
+        }
+    }
+    else if(system == SatID::systemQZSS)
+    {
+        // orbit parameters are valid for 7200 seconds (at minimum)
+        if(timeDiff > 4*3600)
+        {
+            // outdated
+            eph->setCheckState(OrbitEph2::outdated);
             return;
         }
     }
 
     // Check consistency with older ephemerides
     // ----------------------------------------
+    const double MAXDIFF = 1000.0;
+    std::string prn = StringUtils::asString(eph->satID);
+    OrbitEph2* ephL = ephLast(prn);
+
+    if(ephL)
+    {
+        Xvt svL;
+        double clkcorrL;
+        ephL->getCrd(eph->ctToc, svL, clkcorrL, false);
+
+        double dt = eph->ctToc - ephL->ctToc;
+        double diffX = (sv.x - svL.x).mag();
+        double diffC = fabs(clkcorr - clkcorrL) * C_MPS;
+
+        // some lines to allow update of ephemeris data sets after outage
+        if(system == SatID::systemGPS && dt > 4*3600)
+        {
+            ephL->setCheckState(OrbitEph2::outdated);
+            return;
+        }
+        if(system == SatID::systemGalileo && dt > 4*3600)
+        {
+            ephL->setCheckState(OrbitEph2::outdated);
+            return;
+        }
+        if(system == SatID::systemGlonass && dt > 1*3600)
+        {
+            ephL->setCheckState(OrbitEph2::outdated);
+            return;
+        }
+        if(system == SatID::systemBeiDou && dt > 6*3600)
+        {
+            ephL->setCheckState(OrbitEph2::outdated);
+            return;
+        }
+        if(system == SatID::systemQZSS && dt > 4*3600)
+        {
+            ephL->setCheckState(OrbitEph2::outdated);
+            return;
+        }
+
+        if (diffX < MAXDIFF && diffC < MAXDIFF)
+        {
+          if (dt != 0.0) {
+            eph->setCheckState(OrbitEph2::ok);
+            ephL->setCheckState(OrbitEph2::ok);
+          }
+          else
+          {
+              // do nothing here
+          }
+        }
+        else
+        {
+          if (ephL->getCheckState() == OrbitEph2::ok)
+          {
+            eph->setCheckState(OrbitEph2::bad);
+          }
+          else
+          {
+              // do nothing here
+          }
+        }
+    }
 }
 
-bool NtripNavStream::checkPrintEph(OrbitEph* eph)
+bool NtripNavStream::checkPrintEph(OrbitEph2* eph)
 {
     std::lock_guard<std::mutex> guard(m_mutex);
     if(eph == 0)

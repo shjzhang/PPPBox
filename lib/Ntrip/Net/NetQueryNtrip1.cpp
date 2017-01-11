@@ -60,7 +60,7 @@ namespace gpstk
    NetQueryNtrip1::NetQueryNtrip1()
    {
 	   TCPsocket = 0;
-	   timeOut = 20; // by default: 20s
+       timeOut = 20; // by default: 20s
        status = init;
        buffersize = 4096;
        buff = (unsigned char *)malloc(buffersize);
@@ -113,10 +113,10 @@ namespace gpstk
        if(n==-1)
        {
            err = TCPsocket->getSocketError();
-           status = error;
+           //status = init;
            TCPsocket->CloseSocket();
            SocketRecvError e(getClassName() +": Socket receive error!");
-           GPSTK_THROW(e);
+           //GPSTK_THROW(e);
        }
        nbyte = n;
 
@@ -179,9 +179,10 @@ namespace gpstk
        if( !TCPsocket->waitForConnected(timeOut) )
        {
            // if time out
+           cout << "For host " << url.getCasterHost() << ", ";
            cout << "connect time out:\t" << TCPsocket->getSocketError() << endl;
+           TCPsocket->CloseSocket();
            delete TCPsocket;
-           TCPsocket  = 0;
            status = error;
            return;
        }
@@ -224,8 +225,8 @@ namespace gpstk
            if(writebytes == -1)
            {
                cout << "send error:\t" << TCPsocket->getSocketError() << endl;
+               TCPsocket->CloseSocket();
                delete TCPsocket;
-               TCPsocket = 0;
                status = error;
                return;
            }
@@ -234,8 +235,8 @@ namespace gpstk
        {
            // write time out
            cout << "write time out" << endl;
+           TCPsocket->CloseSocket();
            delete TCPsocket;
-           TCPsocket = 0;
            status  = error;
            return;
        }

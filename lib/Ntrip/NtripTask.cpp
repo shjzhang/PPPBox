@@ -1,5 +1,6 @@
 #include <mutex>
 #include <fstream>
+#include <ctime>
 #include "NtripTask.h"
 #include "NetUrl.hpp"
 #include "NetQueryBase.hpp"
@@ -54,7 +55,7 @@ bool NtripTask::initDecoder()
 
     if(m_sStreamFormat.find("RTCM_3") != string::npos)
     {
-        m_decoder = new RTCM3Decoder();
+        m_decoder = new RTCM3Decoder(staID);
     }
     m_decoder->initRinex(staID, mntpntUrl, lat, lon,
                          nmea, ntripVer);
@@ -87,7 +88,12 @@ void NtripTask::run()
     {
         out.open(m_sRawOutFile.c_str(),ios::out|ios::binary);
     }
-    cout << "pid=" << this_thread::get_id() << endl;
+    cout << "pid=" << this_thread::get_id() << " Host:" << tempURL.getCasterHost() << ",  ";
+    // get the start time
+    time_t start_time;
+    start_time = time(NULL);
+    cout<< "Start Time:" << start_time  << endl;
+
     while(1)
     {
         if(tempNmeaFlag)
@@ -101,6 +107,10 @@ void NtripTask::run()
             try
             {
                 query->startRequest(tempURL,"");
+                if (query->getStatus() == NetQueryBase::error)
+                {
+                    return;
+                }
                 if(m_bOutputRaw)
                 {
                     query->writeRawData(out);
@@ -108,7 +118,7 @@ void NtripTask::run()
 
                 if (!decoder() || query->getStatus() != NetQueryBase::dataReceiveable)
                 {
-                  continue;
+                    continue;
                 }
 
                 // Delete old observations
@@ -164,5 +174,8 @@ void NtripTask::run()
         }
     }
     out.close();
+    time_t end_time;
+    end_time = time(NULL);
+    cout<< "End Time:" << end_time  << endl;
 }
 

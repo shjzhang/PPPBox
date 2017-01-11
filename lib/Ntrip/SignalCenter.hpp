@@ -5,7 +5,7 @@
 #include <mutex>
 
 #include "NtripNavStream.hpp"
-#include "GPSEphemeris.hpp"
+#include "GPSEphemeris2.hpp"
 
 using namespace gpstk;
 class SignalCenter
@@ -17,8 +17,9 @@ public:
     /// Destructor
     ~SignalCenter();
 
-    void newGPSEph(GPSEphemeris eph);
-    void writeGPSEph(OrbitEph *eph);
+    void newGPSEph(GPSEphemeris2& eph);
+    void writeGPSEph(GPSEphemeris2 *eph);
+    std::string getCorrPath(){return m_sCorrPath;}
     static SignalCenter* instance();
 private:
     std::mutex m_ephMutex;
@@ -27,6 +28,8 @@ private:
     std::condition_variable cond_EphDecoded;
 
     NtripNavStream* m_navStream;   ///< Ntrip ephmeris stream
+
+    std::string m_sCorrPath; ///< Path to save the correction data
 
 };
 
