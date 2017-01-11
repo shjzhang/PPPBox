@@ -27,6 +27,12 @@ RTCM3Decoder::RTCM3Decoder()
     //_coDecoder = 0;
 }
 
+RTCM3Decoder::RTCM3Decoder(const string& staid)
+{
+    MessageSize = SkipBytes = BlockSize = NeedBytes = 0;
+    staID = staid;
+}
+
 RTCM3Decoder::~RTCM3Decoder()
 {
     //delete _coDecoder;
@@ -372,7 +378,7 @@ bool RTCM3Decoder::decodeGPSEphemeris(unsigned char* data, int size)
 
     if(size == 67)
     {
-      GPSEphemeris eph;
+      GPSEphemeris2 eph;
       int i, week, toeWeek;
       double sqrtA;
       uint64_t numbits = 0, bitfield = 0;

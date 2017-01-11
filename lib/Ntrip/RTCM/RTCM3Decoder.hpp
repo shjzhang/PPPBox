@@ -24,7 +24,7 @@ public:
     /**
      * Common constructor
      */
-    //RTCM3Decoder(const string& staid, bncRawFile* rawFile);
+    RTCM3Decoder(const string& staid);
 
     /**
      * Destructor
