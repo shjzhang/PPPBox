@@ -385,10 +385,8 @@ covariance matrix.");
 
                // Store variables X ambiguities covariances
             int c3(0);
-            TypeIDSet::const_iterator itType;
-            for( itType  = defaultEqDef.body.begin();
-                 itType != defaultEqDef.body.end();
-                 ++itType )
+			std::list<TypeID>::const_iterator itType;
+            for( itType  = coreVarList.begin();itType != coreVarList.end();++itType )
             {
 
                pEKFStateStore->ambCovMap[*itSat].vCovMap[*itType] = covMatrix(c1,c3);

@@ -792,6 +792,9 @@ void ppprt::process()
 
             // Close current Rinex observation stream
          rin.close();
+		 
+		 ++rnxit;
+		 if (outputFileListOpt.getCount()) { ++outit; }
 
          continue;
 
@@ -821,11 +824,13 @@ void ppprt::process()
             // Index for rinex file iterator.
          ++rnxit;
 
+		 if (outputFileListOpt.getCount()) { ++outit; }
+
          continue;
       }
 
          // Get the station name for current rinex file 
-      string station = roh.markerName;
+      string station = roh.markerName.substr(0,4);
 
          // First time for this rinex file
       CommonTime initialTime( roh.firstObs );
@@ -834,6 +839,12 @@ void ppprt::process()
          // Show a message indicating that we are starting with this station
       cout << "Starting processing for station: '" << station << "'." << endl;
 
+	  if ( !blqStore.isValid(station) )
+	  {
+	      cerr << "Can't find this station in BLQ Store,"
+			   << "So the ocean tide effect won't be corrected!"
+	           << endl;
+	  }
 
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order
@@ -1281,9 +1292,14 @@ void ppprt::process()
 
              Position tempPos(pppEKF.getRxPosition());
                // Compute solid, oceanic and pole tides effects at this epoch
-             Triple tides( solid.getSolidTide( time, tempPos)  +
-                          ocean.getOceanLoading( station, time )  +
-                          pole.getPoleTide( time, tempPos) );
+		     Triple oceanTide(0.0,0.0,0.0);
+		     if ( blqStore.isValid(station) )
+		     {
+		         oceanTide = ocean.getOceanLoading( station, time );
+		     }
+
+             Triple tides( solid.getSolidTide( time, tempPos) + oceanTide
+					       + pole.getPoleTide( time, tempPos) );
 
                // Update observable correction object with tides information
              corr.setExtraBiases(tides);

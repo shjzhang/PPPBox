@@ -374,10 +374,8 @@ namespace gpstk
                   // covariance matrix. This fills the lower left and upper
                   // right quadrants of covariance matrix
                int c3(0);
-               TypeIDSet::const_iterator itType;
-               for( itType  = defaultEqDef.body.begin();
-                    itType != defaultEqDef.body.end();
-                    ++itType )
+			   std::list<TypeID>::const_iterator itType;
+               for( itType  = coreVarList.begin();itType != coreVarList.end();++itType )
                {
 
                   currentErrorCov(c1,c3) = pEKFStateStore->ambCovMap[*itSat].vCovMap[*itType];
