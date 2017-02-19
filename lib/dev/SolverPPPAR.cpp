@@ -288,6 +288,11 @@ namespace gpstk
 
          }
 
+         if(debugLevel)
+         {
+            cout << "varUnknowns.size()" << varUnknowns.size() << endl;
+         }
+
 
             // Get the number of satellites currently visible
          numCurrentSV =  gData.numSats();
@@ -386,6 +391,12 @@ namespace gpstk
             }
          }
 
+         if(debugLevel)
+         {
+//          cout << "rMatrix" << endl;
+//          cout <<  rMatrix  << endl;
+         }
+
             //////////////// //////////////
             //
             // Fill the hMatrix
@@ -441,6 +452,12 @@ namespace gpstk
             ++count1;
 
          }  // End of 'for( itSat = currSatSet.begin(); ... )'
+
+         if(debugLevel)
+         {
+//          cout << "hMatrix" << endl;
+//          cout <<  hMatrix  << endl;
+         }
 
 
             // Now, Fill the phiMatrix and qMatrix
@@ -525,6 +542,15 @@ namespace gpstk
             qMatrix(count2,count2)   = pAmbiModelWL->getQ();
 
             ++count2;
+         }
+
+         if(debugLevel)
+         {
+//          cout << "phiMatrix" << endl;
+//          cout <<  phiMatrix  << endl;
+
+//          cout << "qMatrix" << endl;
+//          cout <<  qMatrix  << endl;
          }
 
             // Feed the filter with the correct state and covariance matrix
@@ -647,11 +673,19 @@ namespace gpstk
 
                int c1(numVar);      // Set an index
 
-               for( VariableSet::const_iterator itVar = varUnknowns.begin();
-                    itVar != varUnknowns.end();
-                    ++itVar )
+               for( VariableSet::const_iterator itvu = varUnknowns.begin();
+                    itvu != varUnknowns.end();
+                    ++itvu )
                {
-                  currentState(c1) = stateMap[ (*itVar) ];
+                  if( stateMap.find( (*itvu) ) != stateMap.end() )
+                  {
+                     currentState(c1) = stateMap[ (*itvu) ];
+                  }
+                  else
+                  {
+                     currentState(c1) = 0.0;
+                  }
+
                   ++c1;
                }
 
@@ -688,11 +722,29 @@ namespace gpstk
                        itVar2 != tempSet.end();
                        ++itVar2 )
                   {
+                     if( covarianceMap.find( (*itVar1) ) != covarianceMap.end()  )
+                     {
 
-                           // If it belongs, get element from 'covarianceMap'
+                        std::map<Variable, double> satVarCov;
+                        satVarCov = covarianceMap[(*itVar1)].satIndexedVarCov;
+
+                        if(satVarCov.find( (*itVar2) ) != satVarCov.end() )
+                        {
+                              // If it belongs, get element from 'covarianceMap'
+                           currentErrorCov(c1, c2) =
+                              currentErrorCov(c2, c1) = satVarCov[ (*itVar2) ];
+                        }
+                        else
+                        {
+                           currentErrorCov(c1, c2) =
+                              currentErrorCov(c2, c1) = 0.0;
+                        }
+                     }
+                     else
+                     {
                         currentErrorCov(c1, c2) =
-                           currentErrorCov(c2, c1) =
-                              covarianceMap[ (*itVar1) ].satIndexedVarCov[ (*itVar2) ];
+                           currentErrorCov(c2, c1) = 0.0;
+                     }
 
                      ++c2;
                   }
@@ -707,9 +759,26 @@ namespace gpstk
                        itType != srcIndexedTypes.end();
                        ++itType )
                   {
+                     if( covarianceMap.find( (*itVar1) ) != covarianceMap.end()  )
+                     {
+                        std::map<TypeID, double> srcVarCov;
+                        srcVarCov = covarianceMap[(*itVar1)].srcIndexedVarCov;;
+                        if(srcVarCov.find( (*itType) ) != srcVarCov.end() )
+                        {
+                           currentErrorCov(c1,c3) =  
+                               currentErrorCov(c3,c1) = srcVarCov[ (*itType) ];
+                        }
+                        else
+                        {
+                           currentErrorCov(c1,c3) =  
+                               currentErrorCov(c3,c1) = 0.0;
+                        }
+                     }
+                     else
+                     {
                         currentErrorCov(c1,c3) =  
-                            currentErrorCov(c3,c1) = 
-                               covarianceMap[ (*itVar1) ].srcIndexedVarCov[ (*itType) ];
+                            currentErrorCov(c3,c1) = 0.0;
+                     }
 
                      ++c3;
                   }
@@ -719,10 +788,21 @@ namespace gpstk
                }  // End of for( VariableSet::const_iterator itVar1 = varUnknowns...'
             }
 
-
                // Reset Kalman filter to current state and covariance matrix
             xhat = currentState;
             P    = currentErrorCov;
+
+            if(debugLevel)
+            {
+               cout << "currentState" << endl;
+               cout << currentState << endl;
+               cout << "currentErrorCov" << endl;
+               cout << currentErrorCov << endl;
+               cout << "xhat" << endl;
+               cout <<  xhat << endl;
+               cout << "P" << endl;
+               cout <<  P  << endl;
+            }
 
          }  // End of 'if(firstTime)'
 
@@ -949,6 +1029,12 @@ of qMatrix");
 
                // Ambiguity fixing decision
             double decision = ambRes.getDecision(bw, bwSig);
+
+            if(debugLevel)
+            {
+//             cout << "decision" << endl;
+//             cout <<  decision  << endl;
+            }
 
                // Look for the largest fixing decision
             if( decision > cutDec )
@@ -1538,6 +1624,18 @@ of qMatrix");
                    // Get fixed ambiguity vector
                 Vector<double> ambFixedVec = mlambda.getFixedAmbVec();
 
+                if( debugLevel )
+                {
+//                 cout << "tempAmb" << endl;
+//                 cout <<  tempAmb  << endl;
+//                 cout << "tempCov" << endl;
+//                 cout <<  tempCov  << endl;
+//                 cout << "ratioWL" << endl;
+//                 cout <<  ratioWL << endl;
+//                 cout << "ambFixedVec" << endl;
+//                 cout <<  ambFixedVec  << endl;
+                }
+
                    // Fixing ratio
                 if( (ratioWL>3.0) && (lastMinDec > 0.0))
                 {
@@ -1779,6 +1877,19 @@ of qMatrix");
                       // Get fixed ambiguity vector
                    Vector<double> ambL1Fixed = mlambda.getFixedAmbVec();
 
+
+                   if( debugLevel )
+                   {
+//                    cout << "tempAmb" << endl;
+//                    cout <<  tempAmb  << endl;
+//                    cout << "tempCov" << endl;
+//                    cout <<  tempCov  << endl;
+//                    cout << "ratioL1" << endl;
+//                    cout <<  ratioL1 << endl;
+//                    cout << "ambL1Fixed " << endl;
+//                    cout <<  ambL1Fixed   << endl;
+                   }
+
                       // Fixing ratio
                    if( (ratioL1>3.0) && (lastMinDec > 0.0))
                    {
@@ -1942,15 +2053,15 @@ of qMatrix");
 
          if(debugLevel)
          {
-            cout << "ambWLFlag" << endl;
-            cout <<  ambWLFlag  << endl;
-            cout << "ambWLFixed" << endl;
-            cout <<  ambWLFixed  << endl;
+//          cout << "ambWLFlag" << endl;
+//          cout <<  ambWLFlag  << endl;
+//          cout << "ambWLFixed" << endl;
+//          cout <<  ambWLFixed  << endl;
 
-            cout << "ambL1Flag" << endl;
-            cout <<  ambL1Flag  << endl;
-            cout << "ambL1Fixed" << endl;
-            cout <<  ambL1Fixed  << endl;
+//          cout << "ambL1Flag" << endl;
+//          cout <<  ambL1Flag  << endl;
+//          cout << "ambL1Fixed" << endl;
+//          cout <<  ambL1Fixed  << endl;
          }
 
 
@@ -2365,6 +2476,14 @@ matrix and a priori state estimation vector do not match.");
 
             stateMap[ (*itVar) ] = solution(i);
             ++i;
+         }
+
+         if(debugLevel)
+         {
+            cout << "solution" << endl;
+            cout <<  solution  << endl;
+            cout << "covMatrix" << endl;
+            cout <<  covMatrix  << endl;
          }
 
             // Store values of covariance matrix

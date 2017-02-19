@@ -90,8 +90,8 @@ void clkdiff::process()
 
       if (header1.satList.size() != header2.satList.size())
       {
-         cout << "The two files have a different number of satellite." << endl;
-         cout << "The first file has ";
+         cout << "# The two files have a different number of satellite." << endl;
+         cout << "# The first file has ";
          vector<RinexSatID> types1 = header1.satList;
          vector<RinexSatID>::iterator i = types1.begin();
          while (i != types1.end())
@@ -101,7 +101,7 @@ void clkdiff::process()
 	      }
          cout << endl;
 
-         cout << "The second file has ";
+         cout << "# The second file has ";
          vector<RinexSatID> types2 = header2.satList;
          vector<RinexSatID>::iterator j = types2.begin();
          while (j != types2.end())
@@ -331,9 +331,11 @@ void clkdiff::process()
                // Convert to 'yds'
             YDSTime yds( static_cast<YDSTime>(currTime) );
 
+            cout << yds << endl;
+
             cout << setw(4)  << yds.year << " "
-                 << setw(3)  << yds.doy  << " "
-                 << setw(9) << fixed << setprecision(3) << yds.sod  << " ";
+                 << setw(16) << fixed <<  setprecision(10)  
+                 << yds.doy + yds.sod/86400.0 << " " ;
 
             for( satValueMap::const_iterator svIter = (*cmIter).second.begin();
                  svIter != (*cmIter).second.end();

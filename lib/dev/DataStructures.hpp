@@ -432,7 +432,7 @@ namespace gpstk
          /// Modifies this object, removing these satellites.
          /// @param satSet Set (SatIDSet) containing the satellites
          ///               to be removed.
-      satTypeValueMap& removeSatID(const SatIDSet& satSet);
+      satTypeValueMap& removeSatID(const SatIDSet& satSet) throw(SVNumException) ;
 
 
          /// Modifies this object, removing this type of data.

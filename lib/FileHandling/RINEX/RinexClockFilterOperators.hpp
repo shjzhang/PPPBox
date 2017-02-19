@@ -29,7 +29,12 @@
 //  Copyright
 //
 //  Shoujian Zhang, 2015, Wuhan University
+// 
+// ===========================================================================
 //
+// @Date 2016/09/08   Gao Kang
+//    Add class RinexClockDataOperatorEquals as unique operator to remove the 
+//    same elements in data vector.
 //============================================================================
 
 #include <set>
@@ -127,6 +132,22 @@ namespace gpstk
       return false;
     }
   };
+   
+  /// Compares RinexClockData 
+  struct RinexClockDataOperatorEquals : public RinexClockDataBinaryOperator
+   {
+   public:
+      
+      bool operator()(const RinexClockData& l, const RinexClockData& r) const
+      { 
+         
+         /// compare RinexClock data elements about [datatype][sat][site][time]
+         return ( l.datatype == r.datatype ) && ( l.sat == r.sat ) &&
+            ( l.site == r.site ) && ( l.time == r.time );
+
+      }
+
+   };
 
   /// Combines RinexClockHeaders into a single header, combining comments and
   /// adding the appropriate RinexClockTypes.  This assumes that all the headers

@@ -36,239 +36,198 @@ using namespace std;
 
 namespace gpstk
 {
-	
-	void SSCData::reallyGetRecord(FFStream& ffs)
-		throw(exception, FFStreamError, StringException)
-	{
-		std::string lastLine;
-//		std::string lastLine = "***DefaultLine****";
-//		cout << "defaultline: " << lastLine << endl;
-		SSCStream& strm = dynamic_cast<SSCStream&>(ffs);
-		try 
-		{
-      	strm.formattedGetLine(strm.line, true);
+    
+    void SSCData::reallyGetRecord(FFStream& ffs)
+        throw(exception, FFStreamError, StringException)
+    {
+        SSCStream& strm = dynamic_cast<SSCStream&>(ffs);
+        try 
+        {
+        strm.formattedGetLine(strm.line, true);
       }
       catch (gpstk::Exception& e)
       {
-      	FFStreamError fse("Without data!");
+        FFStreamError fse("Without data!");
          GPSTK_THROW(fse);
       }
-		
-		//strm.formattedGetLine(strm.line, true);
-		while(1)
-		{
-			   // read "Antenna Type" part
-			if (strm.line == string("+SITE/ANTENNA"))
-			{
-				   // std::cout << "+SITE/ANTENNA" << strm.line << std::endl;
-				antennaTypeFlag = true;
-				break;	
-			}
-	
-     	 	   // read "Antenna offset" part
-      	else if (strm.line == string("+SITE/ECCENTRICITY"))
-      	{
-        	   antennaOffsetFlag = true;
-				break;
-      	}
-			
-			   // read the "station coordinates " part
-			else if (strm.line == string("+SOLUTION/ESTIMATE"))
-			{
-				stationCoorFlag = true;
-				break;
-			} 
-			
-			else { ; }
-			
-			if (antennaTypeFlag)
-			{
-				   /// note line
-				if (strm.line[0] == '*')	{ break; }
-			
-				   /// data line
-				else if (strm.line[0] == ' ' && strm.line[1] != ' ')
-				{
-					station = asString(strm.line.substr(1,4));
-					antennaType = asString(strm.line.substr(42,20));				
-					break;
-				}
+        
+        //strm.formattedGetLine(strm.line, true);
+        while(1)
+        {
+               // read "Antenna Type" part
+            if (strm.line == string("+SITE/ANTENNA"))
+            {
+                   // std::cout << "+SITE/ANTENNA" << strm.line << std::endl;
+                antennaTypeFlag = true;
+                break;  
+            }
+    
+               // read "Antenna offset" part
+        else if (strm.line == string("+SITE/ECCENTRICITY"))
+        {
+               antennaOffsetFlag = true;
+                break;
+        }
+            
+               // read the "station coordinates " part
+            else if (strm.line == string("+SOLUTION/ESTIMATE"))
+            {
+                stationCoorFlag = true;
+                break;
+            } 
+            
+            else { ; }
+            
+            if (antennaTypeFlag)
+            {
+                   /// note line
+                if (strm.line[0] == '*')    { break; }
+            
+                   /// data line
+                else if (strm.line[0] == ' ' && strm.line[1] != ' ')
+                {
+                    station = asString(strm.line.substr(1,4));
+                    antennaType = asString(strm.line.substr(42,20));                
+                    break;
+                }
 
-				   /// end line
-				else if (strm.line[0] == '-')
-				{
-					antennaTypeFlag = false;
-					station = "";
-					break;
-				}
-			} // end of 'if(antennaTypeFlag)'
-			
-			
-			if (antennaOffsetFlag)
-			{
-				   /// note line
-				if (strm.line[0] == '*')   { break; }
-		
-				   /// data line
-				else if (strm.line[0] == ' ' && strm.line[1] != ' ')
-	       	{
-            	station = strm.line.substr(1,4);
-            	antennaOffset[0] = asDouble(strm.line.substr(46,8));
-					antennaOffset[1] = asDouble(strm.line.substr(55,8));
-					antennaOffset[2] = asDouble(strm.line.substr(64,8));
-          	   break;
-				}
+                   /// end line
+                else if (strm.line[0] == '-')
+                {
+                    antennaTypeFlag = false;
+                    station = "";
+                    break;
+                }
+            } // end of 'if(antennaTypeFlag)'
+            
+            
+            if (antennaOffsetFlag)
+            {
+                   /// note line
+                if (strm.line[0] == '*')   { break; }
+        
+                   /// data line
+                else if (strm.line[0] == ' ' && strm.line[1] != ' ')
+                {
+                    station = strm.line.substr(1,4);
+                    antennaOffset[0] = asDouble(strm.line.substr(46,8));
+                    antennaOffset[1] = asDouble(strm.line.substr(55,8));
+                    antennaOffset[2] = asDouble(strm.line.substr(64,8));
+                    break;
+                }
 
-        		/// end line
-				else if (strm.line[0] == '-')
-       	   {
-          	   antennaOffsetFlag = false;
-					station = "";
-         	   break;
-      	   }
+                /// end line
+                else if (strm.line[0] == '-')
+                {
+                    antennaOffsetFlag = false;
+                    station = "";
+                    break;
+                }
 
-      	} // end of 'if(antennaOffsetFlag)'
-			
-			
-			if (stationCoorFlag)
-			{
-				   /// comment line
-				if (strm.line[0] == '*')	 break; 
-				
-			   	/// data line
-				if (strm.line[0] == ' ' && strm.line[5] != ' ')
-				{
-					   //@param:
-					   //{ x : x coordinates;
-					   //	 y : y coordinates;
-				   	//  z : z coordinates;
-					   // vx : x velocity;
-					   // vy : y velocity;
-					   // vz : z velocity;
-					   //}
-				// double x, y, z, vx, vy, vz;
-					
-			   		// read reference epoch
-					RefEpoch.year = asDouble(strm.line.substr(27,2));
-					RefEpoch.doy = asDouble(strm.line.substr(30,3));
-					RefEpoch.sod = asDouble(strm.line.substr(34,5));
+        } // end of 'if(antennaOffsetFlag)'
+            
+            
+            if (stationCoorFlag)
+            {
+                   /// comment line
+                if (strm.line[0] == '*')     break; 
+                
+                /// data line
+                if (strm.line[0] == ' ' && strm.line[5] != ' ')
+                {
+                       //@param:
+                       //{ x : x coordinates;
+                       //    y : y coordinates;
+                        //  z : z coordinates;
+                       // vx : x velocity;
+                       // vy : y velocity;
+                       // vz : z velocity;
+                       //}
+                    // double x, y, z, vx, vy, vz;
+                    
+                    // read reference epoch
+                    RefEpoch.year = asDouble(strm.line.substr(27,2));
+                    RefEpoch.doy = asDouble(strm.line.substr(30,3));
+                    RefEpoch.sod = asDouble(strm.line.substr(34,5));
 
-					   /// STAX
-					if (strm.line.substr(7,4) == std::string("STAX"))
-					{
-							coordinates[0] = asDouble(strm.line.substr(47,21));
-							station = strm.line.substr(14,4); 
-							break;
-					}
-					
-					   /// STAY
-					else if (strm.line.substr(7,4) == std::string("STAY"))
-					{
-							coordinates[1] = asDouble(strm.line.substr(47,21));
-							station = strm.line.substr(14,4); 
-							break;
-					}
+                       /// STAX
+                    if (strm.line.substr(7,4) == std::string("STAX"))
+                    {
+                            coordinates[0] = asDouble(strm.line.substr(47,21));
+                            station = strm.line.substr(14,4); 
+                            break;
+                    }
+                    
+                       /// STAY
+                    else if (strm.line.substr(7,4) == std::string("STAY"))
+                    {
+                            coordinates[1] = asDouble(strm.line.substr(47,21));
+                            station = strm.line.substr(14,4); 
+                            break;
+                    }
 
-					   /// STAZ
-					else if (strm.line.substr(7,4) == std::string("STAZ"))
-					{						
-            	      coordinates[2] = asDouble(strm.line.substr(47,21));
-		
-						   /// if there is no error in STAX,STAY,STAZ,
-						   /// read the stationID at the line which 
-						   /// contains STAZ.
-               ///if ( coordinates[0] != 0.0 && 
-               ///     coordinates[1] != 0.0 &&
-					///	  coordinates[2] != 0.0)
-					///{
-                        /// Save station name
-							station = strm.line.substr(14,4); 
-					
-						 //coordinates[0] = x;
-						 //coordinates[1] = y;
-						 //coordinates[2] = z;			
+                       /// STAZ
+                    else if (strm.line.substr(7,4) == std::string("STAZ"))
+                    {                       
+                           coordinates[2] = asDouble(strm.line.substr(47,21));
+                           /// Save station name
+                           station = strm.line.substr(14,4); 
+                           break;
 
-							break;
-					///}
-					///else 
-					///{ 
-					///	FFStreamError fse("no stationID read in this station: "
-					///							+ strm.line.substr(14,4));
-					///	GPSTK_THROW(fse);
-					///	break; 
-					///}
+                    } // end of 'else if STAZ'
+                    else if (strm.line.substr(7,4) == std::string("VELX"))
+                    {
+                           vel[0] = asDouble(strm.line.substr(47,21));
+                           station = strm.line.substr(14,4);
+                           containVelFlag = true;
+                           break;
+                    }
 
-					} // end of 'else if STAZ'
-					
-					
-               else if (strm.line.substr(7,4) == std::string("VELX"))
-               {
-                  vel[0] = asDouble(strm.line.substr(47,21));
-                  station = strm.line.substr(14,4);
-						containVelFlag = true;
-						break;
-               }
+                    else if (strm.line.substr(7,4) == std::string("VELY"))
+                    {
+                          vel[1] = asDouble(strm.line.substr(47,21));
+                          station = strm.line.substr(14,4);
+                          break;
+                    }
 
-               else if (strm.line.substr(7,4) == std::string("VELY"))
-               {
-                  vel[1] = asDouble(strm.line.substr(47,21));
-                  station = strm.line.substr(14,4);
-						break;
-               }
+                    else if (strm.line.substr(7,4) == std::string("VELZ"))
+                    {
+                          vel[2] = asDouble(strm.line.substr(47,21));
 
-               else if (strm.line.substr(7,4) == std::string("VELZ"))
-               {
-               	vel[2] = asDouble(strm.line.substr(47,21));
+                           /// Save station name
+                          station = strm.line.substr(14,4);
 
-                //if ( vel[0] != 0.0 && 
-                //     vel[1] != 0.0 &&
-                //     vel[2] != 0.0)
-                //{
-                        /// Save station name
-                     station = strm.line.substr(14,4);
+                          break;
 
-                   //vel[0] = vx;
-                   //vel[1] = vy;
-                   //vel[2] = vz;		
-                   
-                     break;
-                //}
-                //else
-                //{
-                //   FFStreamError fse("no stationID read in this station: "
-                //                     + strm.line.substr(14,4));
-                //   GPSTK_THROW(fse);
-                //   break;
-                //}
-
-               }
+                    }
  
-					else 
-					{
-						FFStreamError fse("No data in this line"
-												+ strm.line);
-						GPSTK_THROW(fse);
-						break;
-					}
-				} // end of data line
+                    else 
+                    {
+                        FFStreamError fse("No data in this line"
+                                                + strm.line);
+                        GPSTK_THROW(fse);
+                        break;
+                    }
 
-				   /// end line
-				if (strm.line[0] == '-')	
-				{
-					stationCoorFlag = false;
-					break;
-				}
-			}
+                } // end of data line
 
-			break;
+                   /// end line
+                if (strm.line[0] == '-')    
+                {
+                    stationCoorFlag = false;
+                    break;
+                }
+            }
 
-		} // end of while(1)
+            break;
 
-	} // end of void SSCData::reallyGet..."
+        } // end of while(1)
+
+    } // end of void SSCData::reallyGet..."
    
-	void SSCData::reallyPutRecord(FFStream& ffs) const
+    void SSCData::reallyPutRecord(FFStream& ffs) const
       throw(exception, FFStreamError, StringException)
-	{
-		std::cout << "We will finish this part in a later time." << std::endl;
-	}
+    {
+        std::cout << "We will finish this part in a later time." << std::endl;
+    }
 } // end of namespace

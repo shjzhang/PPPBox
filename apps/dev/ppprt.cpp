@@ -21,14 +21,9 @@
 //
 // Modifications
 //
-// 2010/10/01
+// 2016.11
 //
-// Create this program
-//
-// 2015/11/18
-//
-// if rinex header is not valid, then skip the rinex files, and then continue
-// processing the other files.
+// Create this program, Wei Wang
 //
 //============================================================================
 
@@ -586,6 +581,27 @@ void ppprt::process()
 
    }  // End of 'if(...)'
 
+      // Let's read ocean loading BLQ data files
+      //***********************
+
+      // BLQ data store object
+   BLQDataReader blqStore;
+
+      // Read BLQ file name from the configure file
+   string blqFile = confReader.getValue( "oceanLoadingFile", "DEFAULT");
+
+   try
+   {
+      blqStore.open( blqFile );
+   }
+   catch (FileMissingException& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "BLQ file '" << blqFile << "' doesn't exist or you don't "
+           << "have permission to read it. Skipping it." << endl;
+      exit(-1);
+   }
+
       //***********************
       // Let's read eop files
       //***********************
@@ -1131,8 +1147,7 @@ void ppprt::process()
 
 
          // Configure ocean loading model
-      OceanLoading ocean;
-      ocean.setFilename( confReader.getValue( "oceanLoadingFile") );
+      OceanLoading ocean(blqStore);
 
          // Object to model pole tides
       PoleTides pole(eopStore);

@@ -1,1 +1,0 @@
-../../script/get_eph.sh

@@ -2,14 +2,14 @@
 
 > pppar_example.rnxlist
 echo "./cagz2831.11o" >> pppar_example.rnxlist
-echo "./cagz2832.11o" >> pppar_example.rnxlist
-echo "./cagz2833.11o" >> pppar_example.rnxlist
-echo "./cagz2834.11o" >> pppar_example.rnxlist
-
-echo "./brus2871.11o" >> pppar_example.rnxlist
-echo "./brus2872.11o" >> pppar_example.rnxlist
-echo "./brus2873.11o" >> pppar_example.rnxlist
-echo "./brus2874.11o" >> pppar_example.rnxlist
+#echo "./cagz2832.11o" >> pppar_example.rnxlist
+#echo "./cagz2833.11o" >> pppar_example.rnxlist
+#echo "./cagz2834.11o" >> pppar_example.rnxlist
+#
+#echo "./brus2871.11o" >> pppar_example.rnxlist
+#echo "./brus2872.11o" >> pppar_example.rnxlist
+#echo "./brus2873.11o" >> pppar_example.rnxlist
+#echo "./brus2874.11o" >> pppar_example.rnxlist
 
 > pppar_example.ephlist
 echo "./igs16566.sp3" >> pppar_example.ephlist

@@ -737,6 +737,28 @@ void pppgnss::process()
    }  // End of 'if(...)'
 
       //***********************
+      // Let's read ocean loading BLQ data files
+      //***********************
+
+      // BLQ data store object
+   BLQDataReader blqStore;
+
+      // Read BLQ file name from the configure file
+   string blqFile = confReader.getValue( "oceanLoadingFile", "DEFAULT");
+
+   try
+   {
+      blqStore.open( blqFile );
+   }
+   catch (FileMissingException& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "BLQ file '" << blqFile << "' doesn't exist or you don't "
+           << "have permission to read it. Skipping it." << endl;
+      exit(-1);
+   }
+
+      //***********************
       // Let's read eop files
       //***********************
 
@@ -992,6 +1014,26 @@ void pppgnss::process()
       string station = roh.markerName;
          // First time for this rinex file
       CommonTime initialTime( roh.firstObs ) ;
+      
+         // Let's check the ocean loading data for current station before
+         // the real data processing.
+      if( ! blqStore.isValid(station) )
+      {
+         cout << "There is no BLQ data for current station: " << station << endl;
+         cout << "Skipping this station!" << endl;
+
+            // Close current Rinex observation stream
+         rin.close();
+            // Index for rinex file iterator.
+         ++rnxit;
+            // Index for output file iterator.
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
+
+         continue;
+      }
 
          // Show a message indicating that we are starting with this station
       cout << "Starting processing for station: '" << station << "'." << endl;
@@ -1461,8 +1503,7 @@ void pppgnss::process()
       SolidTides solid;
 
          // Configure ocean loading model
-      OceanLoading ocean;
-      ocean.setFilename( confReader.getValue( "oceanLoadingFile") );
+      OceanLoading ocean(blqStore);
 
          // Object to model pole tides
       PoleTides pole(eopStore);

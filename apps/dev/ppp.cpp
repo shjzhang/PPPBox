@@ -30,11 +30,16 @@
 // if rinex header is not valid, then skip the rinex files, and then continue
 // processing the other files.
 //
+// 2016/03/30
+//
+// Add the DCB correction for the C1/P2 and C1/X2 receiver.   Q.Liu    
+// If the station is not found in ths MSC file, then continue.  Q.Liu    
+//
 //============================================================================
 
 
 
-// Basic input/output C++ classes
+	// Basic input/output C++ classes
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -75,7 +80,7 @@
 #include "LICSDetector.hpp"
 
    // Class to detect cycle slips using the Melbourne-Wubbena combination
-#include "MWCSDetector.hpp"
+#include "MWCSDetector2.hpp"
 
    // Class to compute the effect of solid tides
 #include "SolidTides.hpp"
@@ -157,6 +162,14 @@
    // Class to store satellite precise navigation data
 #include "MSCStore.hpp"
 
+   // Class to convert the CC to NONCC.
+#include "CC2NONCC.hpp"
+
+   // Class to read and store the receiver type.
+#include "RecTypeDataReader.hpp"
+
+
+
 
 using namespace std;
 using namespace gpstk;
@@ -204,7 +217,7 @@ private:
       // Option for monitor coordinate file
    CommandOptionWithAnyArg mscFileOpt;
 
-      // Option for p1c1 dcb file
+      // Option for P1C1 DCB file
    CommandOptionWithAnyArg dcbFileListOpt;
 
       // Option for monitor coordinate file
@@ -219,6 +232,7 @@ private:
    string eopFileListName;
    string dcbFileListName;
    string mscFileName;
+   string dcbFileListName;
    string outputFileListName;
 
       // Configuration file reader
@@ -270,41 +284,40 @@ ppp::ppp(char* arg0)
 "\n 9) GDOP"
 "\n10) PDOP\n"),
       // Option initialization. "true" means a mandatory option
-   confFile( CommandOption::stdType,
-             'c',
-             "conffile",
+   confFile(          CommandOption::stdType,
+                      'c',
+                      "conffile",
    "Name of configuration file ('ppp.conf' by default).",
-             false),
+                      false),
       // Option for rinex file list reading
-   rnxFileListOpt( 'r',
-                   "rnxFileList",
+   rnxFileListOpt(    'r',
+                      "rnxFileList",
    "file storing a list of rinex file name ",
-                   true),
-   sp3FileListOpt( 's',
-                   "sp3FileList",
+                      true),
+   sp3FileListOpt(    's',
+                      "sp3FileList",
    "file storing a list of rinex SP3 file name ",
-                   true),
-   clkFileListOpt( 'k',
-                   "clkFileList",
+                      true),
+   clkFileListOpt(    'k',
+                      "clkFileList",
    "file storing a list of rinex clk file name ",
-                   false),
-   eopFileListOpt( 'e',
-                   "eopFileList",
+                      false),
+   eopFileListOpt(    'e',
+                      "eopFileList",
    "file storing a list of IGS erp file name ",
-                   true),
+                      true),
    outputFileListOpt( 'o',
-                   "outputFileList",
+                      "outputFileList",
    "file storing the list of output file name ",
-                   false),
-   mscFileOpt( 'm',
-               "mscFile",
+                      false),
+   mscFileOpt(        'm',
+                      "mscFile",
    "file storing monitor station coordinates ",
                true),
    dcbFileListOpt( 'D',
                "dcbFile",
    "file storing P1-C1 DCB ",
                false)
-
 {
 
       // This option may appear just once at CLI
@@ -547,7 +560,7 @@ void ppp::process()
    {
          // If file doesn't exist, issue a warning
       cerr << "SP3 file List Name'" << sp3FileListName << "' doesn't exist or you don't "
-           << "have permission to read it. Skipping it." << endl;
+           << "have permission to read it." << endl;
 
       exit(-1);
    }
@@ -586,7 +599,7 @@ void ppp::process()
       {
             // If file doesn't exist, issue a warning
          cerr << "clock file List Name'" << clkFileListName << "' doesn't exist or you don't "
-              << "have permission to read it. Skipping it." << endl;
+              << "have permission to read it." << endl;
 
          exit(-1);
       }
@@ -613,6 +626,28 @@ void ppp::process()
    }  // End of 'if(...)'
 
       //***********************
+      // Let's read ocean loading BLQ data files
+      //***********************
+
+      // BLQ data store object
+   BLQDataReader blqStore;
+
+      // Read BLQ file name from the configure file
+   string blqFile = confReader.getValue( "oceanLoadingFile", "DEFAULT");
+
+   try
+   {
+      blqStore.open( blqFile );
+   }
+   catch (FileMissingException& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "BLQ file '" << blqFile << "' doesn't exist or you don't "
+           << "have permission to read it. Skipping it." << endl;
+      exit(-1);
+   }
+
+      //***********************
       // Let's read eop files
       //***********************
 
@@ -624,10 +659,10 @@ void ppp::process()
 
       // Open eopFileList File
    eopFileListStream.open(eopFileListName.c_str(), ios::in);
-   if(!eopFileListStream)
+   if( !eopFileListStream )
    {
          // If file doesn't exist, issue a warning
-      cerr << "erp file List Name'" << eopFileListName << "' doesn't exist or you don't "
+      cerr << "eop file List Name'" << eopFileListName << "' doesn't exist or you don't "
            << "have permission to read it. Skipping it." << endl;
 
       exit(-1);
@@ -651,6 +686,48 @@ void ppp::process()
       // Close file
    eopFileListStream.close();
 
+      //***********************
+      // Let's read DCB files
+      //***********************
+
+      // Read and store dcb data
+   DCBDataReader dcbStore;
+
+   if(dcbFileListOpt.getCount() )
+   {
+         // Now read dcb file from 'dcbFileName'
+      ifstream dcbFileListStream;
+
+         // Open dcbFileList File
+      dcbFileListStream.open(dcbFileListName.c_str(), ios::in);
+      if(!dcbFileListStream)
+      {
+            // If file doesn't exist, issue a warning
+         cerr << "dcb file List Name '" << dcbFileListName << "' doesn't exist or you don't "
+              << "have permission to read it." << endl;
+         exit(-1);
+      }
+
+      string dcbFile;
+
+         // Here is just a dcb file, we only read one month's dcb data.
+      while(dcbFileListStream >> dcbFile)
+      {
+         try
+         {
+            dcbStore.open(dcbFile);
+         }
+         catch(FileMissingException e)
+         {
+            cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
+                 << endl;
+            exit(-1);
+         }
+      };
+
+      dcbFileListStream.close();
+   }
+
       //**********************************************
       // Now, Let's read MSC data
       //**********************************************
@@ -662,11 +739,19 @@ void ppp::process()
    {
       mscStore.loadFile( mscFileName );
    }
+   catch (gpstk::FFStreamError& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << e << endl;
+      cerr << "MSC file '" << mscFileName << "' Format is not supported!!!"
+           << "stop." << endl;
+      exit(-1);
+   }
    catch (FileMissingException& e)
    {
          // If file doesn't exist, issue a warning
       cerr << "MSC file '" << mscFileName << "' doesn't exist or you don't "
-           << "have permission to read it. Skipping it." << endl;
+           << "have permission to read it." << endl;
       exit(-1);
    }
 
@@ -722,13 +807,12 @@ void ppp::process()
    ifstream rnxFileListStream;
 
       // Open eopFileList File
-   rnxFileListStream.open(rnxFileListName.c_str());
+   rnxFileListStream.open(rnxFileListName.c_str(), ios::in);
    if(!rnxFileListStream)
    {
          // If file doesn't exist, issue a warning
       cerr << "rinex file List Name'" << rnxFileListName << "' doesn't exist or you don't "
            << "have permission to read it. Skipping it." << endl;
-
       exit(-1);
    }
 
@@ -744,6 +828,7 @@ void ppp::process()
    {
       cerr << rnxFileListName  << "rnxFileList is empty!! "
            << endl;
+      exit(-1);
    }
 
       //////////////////////////////////////
@@ -820,6 +905,9 @@ void ppp::process()
             // Close current Rinex observation stream
          rin.close();
 
+            // Index for rinex file iterator.
+         ++rnxit;
+
          continue;
 
       }  // End of 'try-catch' block
@@ -838,38 +926,68 @@ void ppp::process()
          cerr << "Problem in reading file '"
               << rnxFile
               << "'." << endl;
-
          cerr << "Skipping receiver '" << rnxFile << "'."
               << endl;
 
             // Close current Rinex observation stream
          rin.close();
 
-            // Index for rinex file iterator.
+           // Index for rinex file iterator.
          ++rnxit;
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
 
          continue;
       }
 
+         // First time for this rinex file
+      CommonTime initialTime( roh.firstObs ) ;
+
          // Get the station name for current rinex file 
       string station = roh.markerName;
 
-         // First time for this rinex file
-      CommonTime initialTime( roh.firstObs ) ;
+         // Let's check the ocean loading data for current station before
+         // the real data processing.
+      if( ! blqStore.isValid(station) )
+      {
+         cout << "There is no BLQ data for current station:" << station << endl;
+         cout << "Current staion will be not processed !!!!" << endl;
+         continue;
+      }
 
          // Show a message indicating that we are starting with this station
       cout << "Starting processing for station: '" << station << "'." << endl;
 
          // MSC data for this station
       initialTime.setTimeSystem(TimeSystem::Unknown);
-      MSCData mscData( mscStore.findMSC( station, initialTime ) );
+      MSCData mscData;
+      try
+      {
+         mscData = mscStore.findMSC( station, initialTime );
+      }
+      catch (InvalidRequest& ie)
+      {
+         	// If file doesn't exist, issue a warning
+         cerr << "The station " << station 
+              << " isn't included in MSC file." << endl;
+
+         ++rnxit;
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
+         continue;
+      }
       initialTime.setTimeSystem(TimeSystem::GPS);
 
          // The former peculiar code is possible because each time we
          // call a 'fetchListValue' method, it takes out the first element
          // and deletes it from the given variable list.
-
       Position nominalPos( mscData.coordinates );
+
+      cout << nominalPos << endl;
 
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order
@@ -893,12 +1011,14 @@ void ppp::process()
       requireObs.addRequiredType(TypeID::P2);
       requireObs.addRequiredType(TypeID::L1);
       requireObs.addRequiredType(TypeID::L2);
+         // Add 'requireObs' to processing list (it is the first)
+      pList.push_back(requireObs);
 
          // This object will check that code observations are within
          // reasonable limits
       SimpleFilter pObsFilter;
-      pObsFilter.setFilteredType(TypeID::P2);
       pObsFilter.addFilteredType(TypeID::P1);
+      pObsFilter.addFilteredType(TypeID::P2);
 
          // Add 'requireObs' to processing list (it is the first)
       pList.push_back(requireObs);
@@ -925,10 +1045,8 @@ void ppp::process()
          // This object defines several handy linear combinations
       LinearCombinations comb;
 
-
          // Object to compute linear combinations for cycle slip detection
       ComputeLinear linear1;
-
       linear1.addLinear(comb.pdeltaCombination);
       linear1.addLinear(comb.mwubbenaCombination);
       linear1.addLinear(comb.ldeltaCombination);
@@ -937,12 +1055,13 @@ void ppp::process()
 
          // Objects to mark cycle slips
       LICSDetector markCSLI;         // Checks LI cycle slips
-      pList.push_back(markCSLI);      // Add to processing list
-      MWCSDetector markCSMW;          // Checks Merbourne-Wubbena cycle slips
-      pList.push_back(markCSMW);       // Add to processing list
-
+      pList.push_back(markCSLI);     // Add to processing list
+      MWCSDetector2 markCSMW;        // Checks Merbourne-Wubbena cycle slips
+      pList.push_back(markCSMW);     // Add to processing list
 
          // Object to keep track of satellite arcs
+         // Notes: delete unstable satellite may cause discontinuity
+         //        in the network processing!
       SatArcMarker2 markArc;
       markArc.setDeleteUnstableSats(false);
       markArc.setUnstablePeriod(151.0);
@@ -951,9 +1070,9 @@ void ppp::process()
 
          // Object to decimate data
       Decimate decimateData(
-               confReader.getValueAsDouble( "decimationInterval"),
-               confReader.getValueAsDouble( "decimationTolerance"),
-               initialTime );
+              confReader.getValueAsDouble( "decimationInterval"),
+              confReader.getValueAsDouble( "decimationTolerance"),
+              initialTime);
       pList.push_back(decimateData);       // Add to processing list
 
 
@@ -961,16 +1080,16 @@ void ppp::process()
       BasicModel basic(nominalPos, SP3EphList);
          // Set the minimum elevation
       basic.setMinElev(confReader.getValueAsDouble("cutOffElevation"));
+         // If we are going to use P1 instead of C1, we must reconfigure 'basic'
       basic.setDefaultObservable(TypeID::P1);
          // Add to processing list
       pList.push_back(basic);
 
 
-
-
          // Object to compute weights based on elevation
       ComputeElevWeights elevWeights;
       pList.push_back(elevWeights);       // Add to processing list
+
 
 
          // Object to remove eclipsed satellites
@@ -1016,8 +1135,8 @@ void ppp::process()
                // new receiver antenna with new antenna model
             receiverAntenna = antexReader.getAntenna( antennaModel );
          }
-
       }
+
 
          // Object to compute satellite antenna phase center effect
       ComputeSatPCenter svPcenter(nominalPos);
@@ -1026,7 +1145,6 @@ void ppp::process()
             // Feed 'ComputeSatPCenter' object with 'AntexReader' object
          svPcenter.setAntexReader( antexReader );
       }
-
       pList.push_back(svPcenter);       // Add to processing list
 
 
@@ -1036,13 +1154,13 @@ void ppp::process()
       corr.setMonument( offsetARP );
 
          // Check if we want to use Antex patterns
-      bool usepatterns(confReader.getValueAsBoolean("usePCPatterns" ));
+      bool usepatterns( confReader.getValueAsBoolean("usePCPatterns") );
       if( useantex && usepatterns )
       {
          corr.setAntenna( receiverAntenna );
 
             // Should we use elevation/azimuth patterns or just elevation?
-         corr.setUseAzimuth(confReader.getValueAsBoolean("useAzim" ));
+         corr.setUseAzimuth( confReader.getValueAsBoolean("useAzim") );
       }
       else
       {
@@ -1066,7 +1184,7 @@ void ppp::process()
 
          // Object to compute wind-up effect
       ComputeWindUp windup( SP3EphList,
-                            nominalPos);
+                            nominalPos );
       if( useantex )
       {
             // Feed 'ComputeSatPCenter' object with 'AntexReader' object
@@ -1077,7 +1195,7 @@ void ppp::process()
 
 
          // Declare a NeillTropModel object, setting its parameters
-      NeillTropModel neillTM( nominalPos, 
+      NeillTropModel neillTM( nominalPos,
                               initialTime );
 
          // We will need this value later for printing
@@ -1102,7 +1220,7 @@ void ppp::process()
       PhaseCodeAlignment phaseAlignL1;
       phaseAlignL1.setCodeType(TypeID::Q1);
       phaseAlignL1.setPhaseType(TypeID::L1);
-      phaseAlignL1.setPhaseWavelength(0.190293672798);
+      phaseAlignL1.setPhaseWavelength( 0.190293672798);
 
       pList.push_back(phaseAlignL1);       // Add to processing list
 
@@ -1110,14 +1228,13 @@ void ppp::process()
       PhaseCodeAlignment phaseAlignL2;
       phaseAlignL2.setCodeType(TypeID::Q2);
       phaseAlignL2.setPhaseType(TypeID::L2);
-      phaseAlignL2.setPhaseWavelength(0.244210213425);
+      phaseAlignL2.setPhaseWavelength( 0.244210213425);
       pList.push_back(phaseAlignL2);       // Add to processing list
 
 
          // Object to compute ionosphere-free combinations to be used
          // as observables in the PPP processing
       ComputeLinear linear3;
-
       linear3.addLinear(comb.pcCombination);
       linear3.addLinear(comb.lcCombination);
       pList.push_back(linear3);       // Add to processing list
@@ -1131,13 +1248,18 @@ void ppp::process()
          // Like in the "filterCode" case, the "filterPC" option allows you to
          // deactivate the "SimpleFilter" object that filters out PC, in case
          // you need to.
-      bool filterPC( confReader.getValueAsBoolean( "filterPC") );
+      bool filterPC( confReader.getValueAsBoolean( "filterPC" ) );
 
          // Check if we are going to use this "SimpleFilter" object or not
       if( filterPC )
       {
          pList.push_back(pcFilter);       // Add to processing list
       }
+
+
+      ComputeLinear linear5;
+      linear5.addLinear(comb.mwubbenaCombination);
+      pList.push_back(linear5);       // Add to processing list
 
 
          // Object to compute prefit-residuals
@@ -1213,10 +1335,8 @@ void ppp::process()
          // Object to compute tidal effects
       SolidTides solid;
 
-
          // Configure ocean loading model
-      OceanLoading ocean;
-      ocean.setFilename( confReader.getValue( "oceanLoadingFile") );
+      OceanLoading ocean(blqStore);
 
          // Object to model pole tides
       PoleTides pole(eopStore);
@@ -1248,7 +1368,7 @@ void ppp::process()
 
          // print out the header
       outfile << "# col  1 -  3: year/doy/sod \n" 
-              << "# col  4 -  7: dLat/dLon/dH/ZTD \n" 
+              << "# col  4 -  7: dN/dE/dU/ZTD \n" 
               << "# col  8 - 11: TotalSatNumber/Converged/GDOP/PDOP \n"
               << "# END OF HEADER" << endl;
 
@@ -1265,7 +1385,6 @@ void ppp::process()
          modelfile.open( modelName.c_str(), ios::out );
       }
 
-
          //// *** Now comes the REAL forwards processing part *** ////
 
          // Loop over all data epochs
@@ -1274,6 +1393,9 @@ void ppp::process()
 
             // Store current epoch
          CommonTime time(gRin.header.epoch);
+
+            // Store the nominal position into 'SourceID'
+         gRin.header.source.nominalPos = nominalPos;
 
             // Compute solid, oceanic and pole tides effects at this epoch
          Triple tides( solid.getSolidTide( time, nominalPos )  +
@@ -1302,13 +1424,13 @@ void ppp::process()
          }
          catch(Exception& e)
          {
-            cerr << "Exception for receiver '" << station <<
-                    "' at epoch: " << time << "; " << e << endl;
+            cerr << "Exception for station '" << station <<
+                    "' at epoch: " << time << ": " << e << endl;
             continue;
          }
          catch(...)
          {
-            cerr << "Unknown exception for receiver '" << station <<
+            cerr << "Unknown exception for station '" << station <<
                     " at epoch: " << time << endl;
             continue;
          }
@@ -1400,7 +1522,7 @@ void ppp::process()
             ++outit;
          }
 
-            // Go process next station
+            // Go to process next station
          continue;
 
       }
@@ -1421,13 +1543,17 @@ void ppp::process()
 
             // If problems arose, issue an message and skip receiver
          cerr << "Exception at reprocessing phase: " << e << endl;
-         cerr << "Skipping receiver '" << station << "'." << endl;
+         cerr << "Skipping station '" << station << "'." << endl;
 
             // Close output file for this station
          outfile.close();
 
             // Next file
          ++rnxit;
+         if(outputFileListOpt.getCount())
+         {
+         	++outit;
+         }
 
             // Go process next station
          continue;
@@ -1513,7 +1639,6 @@ void ppp::process()
    // Main function
 int main(int argc, char* argv[])
 {
-
    try
    {
 
@@ -1525,30 +1650,24 @@ int main(int argc, char* argv[])
       {
          return 0;
       }
-
       if ( !program.run() )
       {
          return 1;
       }
 
       return 0;
-
    }
    catch(Exception& e)
    {
-
       cerr << "Problem: " << e << endl;
 
       return 1;
-
    }
    catch(...)
    {
-
       cerr << "Unknown error." << endl;
 
       return 1;
-
    }
 
    return 0;

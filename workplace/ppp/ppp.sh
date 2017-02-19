@@ -1,16 +1,13 @@
 #!/bin/bash
 
-proj="igs16577"
-
-ln -f -s ../../script/get_data.sh ./get_data.sh
-ln -f -s ../../script/get_eph.sh  ./get_eph.sh
-ln -f -s ../../script/get_rnx.sh  ./get_rnx.sh
+proj="ppp"
 
 ##############################
 # get the rinex file list
 ##############################
 > $proj.rnxlist
-get_rnx.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 6 -a "IGS" -u "../../tables/url.list" -s "$proj.stalist.test" -l "$proj" -p "/Users/apple/Documents/data/IGS/data" > get_rnx.log 
+get_rnx.sh -b "2011 10 1 0 0 0" -e "2011 10 3 0 0 0" -i 24 -t "IGS_OBS" -u "../../tables/url.list" -s "$proj.stalist" -l "$proj" -p "$HOME/data/IGS/data"  
+
 
 ##############################
 # get the ephemeris file list
@@ -18,7 +15,8 @@ get_rnx.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 6 -a "IGS" -u "../../ta
 > $proj.ephlist
 > $proj.clklist
 > $proj.erplist
-get_eph.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 6 -a "IGS" -u "../../tables/url.list" -t "type.list" -l "$proj" -p "/Users/apple/Documents/data/IGS/data" > get_eph.log 
+get_eph.sh -b "2011 10 1 0 0 0" -e "2011 10 3 0 0 0" -i 24 -t "type.list" -u "../../tables/url.list" -l "$proj" -p "$HOME/data/IGS/data" 
+
 
 ##############################
 # get the msc file list
@@ -26,13 +24,14 @@ get_eph.sh -b "2011 10 9 0 0 0" -e "2011 10 15 0 0 0" -i 6 -a "IGS" -u "../../ta
 # convert ssc2msc
 cat $proj.ssclist | while read line
 do
-   ssc2msc -s $line
+   ssc2msc -s $line 
 done
 
 > msc.txt
 # now, let's merge all the msc files together for pppar positioning
-ls *.msc | while read line
+ls $HOME/data/IGS/data/*.msc | while read line
 do
+   echo $line;
    cat $line >> msc.txt
 done
 
@@ -46,5 +45,5 @@ do
 done
 
 # now, Let's perform the ppp positioning
-ppp -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -m msc.txt -o $proj.outlist
+ppp -r $proj.rnxlist -s $proj.ephlist -k $proj.clklist -e $proj.erplist -m msc.txt -D $proj.dcblist -o $proj.outlist
 

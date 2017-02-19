@@ -195,6 +195,7 @@ of weightVector");
 
       if (!(weightMatrix.isSquare()))
       {
+		 std::cout<<"row="<< weightMatrix.rows()<<",col="<<weightMatrix.cols()<<std::endl;
          InvalidSolver e("Weight matrix is not square");
          GPSTK_THROW(e);
       }
@@ -592,18 +593,19 @@ covariance matrix.");
                  itSat != currSatSet.end();
                  ++itSat )
             {
-                  // Put ambiguities into state vector
-               currentState(c1) = ambiguityMap[*itSat];
-
 
                if( ambCovMap.find( (*itSat) ) != ambCovMap.end() )
                {
-
                      // Fill the diagonal element
                   currentErrorCov(c1,c1) = ambCovMap[*itSat].aCovMap[*itSat];
+
+                     // Put ambiguities into state vector
+                  currentState(c1) = ambiguityMap[*itSat];
+
                }
                else
                {
+                  currentState(c1)  = 0.0;
                   currentErrorCov(c1,c1) = 4.0e+14;
                }
 

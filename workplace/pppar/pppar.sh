@@ -6,10 +6,6 @@
 
 proj="igs16577"
 
-ln -f -s ../../script/get_data.sh ./get_data.sh
-ln -f -s ../../script/get_eph.sh  ./get_eph.sh
-ln -f -s ../../script/get_rnx.sh  ./get_rnx.sh
-
 mypath="./data"
 if [ ! -d "$mypath" ];then
     mkdir $mypath
@@ -20,7 +16,7 @@ fi
 ##################################
 rm  $proj.rnxlist
 # firstly, download the rnx files from IGS or IGS analysis center
-get_rnx.sh -b "2011 10 9 0 0 0" -e "2011 10 10 0 0 0" -i 6 -a IGS -u "../../tables/url.list" -s "$proj.stalist.test" -l "$proj" -p "$mypath"
+get_rnx.sh -b "2011 10 9 0 0 0" -e "2011 10 10 0 0 0" -i 24  -t "IGS_OBS" -u "../../tables/url.list" -s "$proj.stalist.test" -l "$proj" -p "$mypath"
 
 ##################################
 # get the ephemeris file list
@@ -30,7 +26,7 @@ rm $proj.clklist
 rm $proj.erplist
 rm $proj.ssclist
 # then, download the ephemeris files from IGS or IGS analysis center
-get_eph.sh -b "2011 10 9 0 0 0" -e "2011 10 10 0 0 0" -i 6 -a IGS -u "../../tables/url.list" -t "type.list" -l "$proj" -p "$mypath"            
+get_eph.sh -b "2011 10 9 0 0 0" -e "2011 10 10 0 0 0" -i 24 -u "../../tables/url.list" -t "type.list" -l "$proj" -p "$mypath"            
 
 ##################################
 # Now, Let's prepare the upd file list

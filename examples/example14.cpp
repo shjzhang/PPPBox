@@ -48,6 +48,10 @@
 // with 30 s observation data to take about 9 minutes to be processed with a
 // modern PC (Dual Core, 2 GB RAM) with Linux.
 //
+// 2016/06/12
+// change the interface of the OceanLoading class.
+//
+//============================================================================
 
 
 // Basic input/output C++ classes
@@ -448,9 +452,10 @@ void example14::process()
    SolidTides solid;
 
 
+   BLQDataReader blqStore(confReader.getValue( "oceanLoadingFile", "DEFAULT"));
+
       // Configure ocean loading model
-   OceanLoading ocean;
-   ocean.setFilename( confReader.getValue( "oceanLoadingFile", "DEFAULT" ) );
+   OceanLoading ocean(blqStore);
 
 
       // Numerical values (xp, yp) are pole displacements (arcsec).

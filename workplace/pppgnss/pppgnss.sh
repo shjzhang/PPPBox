@@ -44,7 +44,7 @@ rm msc.txt
  ssc2msc -s igs16P1882.ssc 
 
 # now, let's merge all the msc files  for ppp positioning
- cat igs1882.msc >> msc.txt
+ cat igs16P1882.msc >> msc.txt
 
 # now, Let's perform the ppp positioning
 pppgnss -r rnxlist -s ephlist -e erplist  -k clklist  -g navlist -D dcblist -m msc.txt -o outlist

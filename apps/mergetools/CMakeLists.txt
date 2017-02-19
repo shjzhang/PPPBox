@@ -17,3 +17,6 @@ add_executable(mergeFIC mergeFIC.cpp)
 target_link_libraries(mergeFIC pppbox)
 install (TARGETS mergeFIC DESTINATION bin)
 
+add_executable(mergeRinClk mergeRinClk.cpp)
+target_link_libraries(mergeRinClk pppbox)
+install (TARGETS mergeRinClk DESTINATION bin)

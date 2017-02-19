@@ -75,6 +75,8 @@
    // Class to filter out satellites without required observables
 #include "RequireObservables.hpp"
 
+#include "RequireObservables.hpp"
+
    // Class to filter out observables grossly out of limits
 #include "SimpleFilter.hpp"
 
@@ -672,6 +674,29 @@ void pppar::process()
 
 
       //***********************
+      // Let's read ocean loading BLQ data files
+      //***********************
+
+      // BLQ data store object
+   BLQDataReader blqStore;
+
+      // Read BLQ file name from the configure file
+   string blqFile = confReader.getValue( "oceanLoadingFile");
+
+   try
+   {
+      blqStore.open( blqFile );
+   }
+   catch (FileMissingException& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "BLQ file '" << blqFile << "' doesn't exist or you don't "
+           << "have permission to read it. Skipping it." << endl;
+      exit(-1);
+   }
+
+
+      //***********************
       // Let's read eop files
       //***********************
 
@@ -884,6 +909,10 @@ void pppar::process()
 
             // Index for rinex file iterator.
          ++rnxit;
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
 
          continue;
       }
@@ -894,18 +923,43 @@ void pppar::process()
          // First time for this rinex file
       CommonTime initialTime( roh.firstObs ) ;
 
+         // Let's check the ocean loading data for current station before
+         // the real data processing.
+      if( ! blqStore.isValid(station) )
+      {
+         cout << "There is no BLQ data for current station:" << station << endl;
+         cout << "Current staion will be not processed !!!!" << endl;
+         continue;
+      }
+
          // Show a message indicating that we are starting with this station
       cout << "Starting processing for station: '" << station << "'." << endl;
 
          // MSC data for this station
       initialTime.setTimeSystem(TimeSystem::Unknown);
-      MSCData mscData( mscStore.findMSC( station, initialTime ) );
+      MSCData mscData;
+      try
+      {
+         mscData = mscStore.findMSC( station, initialTime );
+      }
+      catch (InvalidRequest& ie)
+      {
+         	// If file doesn't exist, issue a warning
+         cerr << "The station " << station 
+              << " isn't included in MSC file." << endl;
+
+         ++rnxit;
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
+         continue;
+      }
       initialTime.setTimeSystem(TimeSystem::GPS);
 
          // The former peculiar code is possible because each time we
          // call a 'fetchListValue' method, it takes out the first element
          // and deletes it from the given variable list.
-
       Position nominalPos( mscData.coordinates );
 
          // Create a 'ProcessingList' object where we'll store
@@ -1380,8 +1434,7 @@ void pppar::process()
       SolidTides solid;
 
          // Configure ocean loading model
-      OceanLoading ocean;
-      ocean.setFilename( confReader.getValue( "oceanLoadingFile") );
+      OceanLoading ocean(blqStore);
 
          // Object to model pole tides
       PoleTides pole(eopStore);
@@ -1685,6 +1738,10 @@ void pppar::process()
 
             // Next file
          ++rnxit;
+         if(outputFileListOpt.getCount())
+         {
+         	++outit;
+         }
 
             // Go process next station
          continue;
