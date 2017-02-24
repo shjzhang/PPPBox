@@ -58,7 +58,7 @@ namespace gpstk
                                          const Matrix<double>& measurementsNoiseCovariance )
    throw(InvalidSolver)
    {
-      // Let's check sizes before start
+         // Let's check sizes before start
       int measRow(measurements.size());
       int aprioriStateRow(xhatminus.size());
 
@@ -100,48 +100,59 @@ matrix and a priori state estimation vector do not match.");
       }
 
          // After checking sizes, let's do the real correction work
-      Matrix<double> GainMatrix;
-
-      Vector<double> predResiduals;
-
-      Matrix<double> idenityMatrix(pMCol,pMCol,0.0);
-      for (int i =0;i<pMCol;i++)
-      {
-          idenityMatrix(i,i) = 1.0;
-      }
-
+      Matrix<double> invR;
+      Matrix<double> invPMinus;
       Matrix<double> measMatrixT( transpose(measurementsMatrix) );
 
       try
       {
 
-          Matrix<double> temp(measurementsMatrix * Pminus* measMatrixT 
-                                      + measurementsNoiseCovariance);
+         invR = inverseChol(measurementsNoiseCovariance);
 
-          GainMatrix = Pminus * measMatrixT * inverse(temp);
-         
       }
       catch(...)
       {
-         InvalidSolver e("Correct(): Unable to compute Gain matrix.");
+         InvalidSolver e("Correct(): Unable to compute invR matrix.");
          GPSTK_THROW(e);
          return -1;
       }
 
+      try
+      {
+
+         invPMinus = inverseChol(Pminus);
+
+      }
+      catch(...)
+      {
+         InvalidSolver e("Correct(): Unable to compute invPMinus matrix.");
+         GPSTK_THROW(e);
+         return -1;
+      }
+
+      try
+      {
+
+         Matrix<double> invTemp( measMatrixT*invR*measurementsMatrix +
+                                 invPMinus );
+
+            // Compute the a posteriori error covariance matrix
+         P = inverseChol( invTemp );
+
+      }
+      catch(...)
+      {
+         InvalidSolver e("Correct(): Unable to compute P matrix.");
+         GPSTK_THROW(e);
+         return -1;
+      }
 
       try
       {
 
             // Compute the a posteriori state estimation
-          predResiduals = measurements - measurementsMatrix * xhatminus;
-
-          xhat = xhatminus + GainMatrix * predResiduals;
-
-          Matrix<double> tempMatrix(idenityMatrix - GainMatrix * measurementsMatrix);
-           
-          P = tempMatrix * Pminus * transpose(tempMatrix) 
-              + GainMatrix * measurementsNoiseCovariance * transpose(GainMatrix);
-
+         xhat = P * ( (measMatrixT * invR * measurements) + 
+                      (invPMinus * xhatminus) );
       }
       catch(Exception e)
       {

@@ -152,7 +152,8 @@
 
   // Class to read and store the receiver type.
 #include "RecTypeDataReader.hpp"
-  
+  // Class to convert ECEF XYZ to ENU
+#include "ENUUtil.hpp"
 
 using namespace std;
 using namespace gpstk;
@@ -197,21 +198,23 @@ private:
       // Option for eop file list
    CommandOptionWithAnyArg eopFileListOpt;
 
-
       // Option for p1c1 dcb file
    CommandOptionWithAnyArg dcbFileListOpt;
+
+      // Option for monitor coordinate file
+   CommandOptionWithAnyArg mscFileOpt;
 
       // Option for monitor coordinate file
    CommandOptionWithAnyArg outputFileListOpt;
 
       // If you want to share objects and variables among methods, you'd
       // better declare them here
-   
    string rnxFileListName;
    string sp3FileListName;
    string clkFileListName;
    string eopFileListName;
    string dcbFileListName;
+   string mscFileName;
    string outputFileListName;
 
       // Configuration file reader
@@ -226,9 +229,10 @@ private:
                        const  SolverLMS& solver,
                        const  CommonTime& time,
                        const  ComputeDOP& cDOP,
-                       bool   useNEU,
                        int    numSats,
                        double dryTropo,
+					   Position& pos,
+					   const string format,
                        int    precision = 3);
 
 
@@ -281,7 +285,11 @@ ppprt::ppprt(char* arg0)
    dcbFileListOpt( 'D',
                "dcbFile",
    "file storing P1-C1 DCB ",
-               false)
+               false),
+   mscFileOpt( 'm',
+               "mscFile",
+   "file storing the precise coordinate of station ",
+               true)
 {
 
       // This option may appear just once at CLI
@@ -292,14 +300,15 @@ ppprt::ppprt(char* arg0)
 
 
    // Method to print solution values
-void ppprt::printSolution( ofstream& outfile,
-                              const SolverLMS& solver,
-                              const CommonTime& time,
-                              const ComputeDOP& cDOP,
-                              bool  useNEU,
-                              int   numSats,
-                              double dryTropo,
-                              int   precision)
+void ppprt::printSolution(  ofstream& outfile,
+                            const SolverLMS& solver,
+                            const CommonTime& time,
+                            const ComputeDOP& cDOP,
+                            int   numSats,
+                            double dryTropo,
+						    Position& pos,
+							const string format,
+                            int   precision)
 {
 
       // Prepare for printing
@@ -314,25 +323,43 @@ void ppprt::printSolution( ofstream& outfile,
    double recY(solver.getSolution(TypeID::recY));  // ECEF Y
    double recZ(solver.getSolution(TypeID::recZ));  // ECEF Z
 
-   if (useNEU)
-   {
-       Position recPos(recX,recY,recZ);
-   
-       double lat(recPos.getGeodeticLatitude());   // Geodetic latitude
-       double lon(recPos.getLongitude());          // Geodetic longitude
-       double height(recPos.getHeight());          // Geodetic Height
+   double dx(recX - pos[0]);
+   double dy(recY - pos[1]);
+   double dz(recZ - pos[2]);
 
+   Triple dxyzTriple(dx,dy,dz);
+
+   Position recPos(recX,recY,recZ);
+   double lat(recPos.getGeodeticLatitude());   // Geodetic latitude
+   double lon(recPos.getLongitude());          // Geodetic longitude
+   double height(recPos.getHeight());          // Geodetic Height
+
+   if ( format == "BLH" )
+   {
        outfile << setprecision(9)         << setw(16) << lat;         // Lat        - #4
        outfile << setprecision(9)         << setw(16) << lon;         // Lon        - #5
        outfile << setprecision(precision) << setw(14) << height;      // Height     - #6
    }
-   else 
+   else if ( format == "XYZ")
    {
        outfile << setw(14) << recX;           // recX       - #4
        outfile << setw(14) << recY;           // recY       - #5
        outfile << setw(14) << recZ;           // recZ       - #6
    }
-
+   else if ( format == "dxyz")
+   {
+       outfile << setw(14) << dx;             // dx       - #4
+       outfile << setw(14) << dy;             // dy       - #5
+       outfile << setw(14) << dz;             // dz       - #6
+   }
+   else if ( format == "dneu")
+   {
+       ENUUtil enu(lat,lon);
+       Triple denu(enu.convertToENU(dxyzTriple));
+       outfile << setw(14) << denu[1];        // dn        - #4
+       outfile << setw(14) << denu[0];        // de        - #5
+       outfile << setw(14) << denu[2];        // du        - #6
+   }
          // We add 0.1 meters to 'wetMap' because 'NeillTropModel' sets a
          // nominal value of 0.1 m. Also to get the total we have to add the
          // dry tropospheric delay value
@@ -398,9 +425,6 @@ void ppprt::printModel( ofstream& modelfile,
    }  // End for (it = gData.body.begin(); ... )
 
 }  // End of method 'ppprt::printModel()'
-
-
-
 
 
    // Method that will be executed AFTER initialization but BEFORE processing
@@ -488,6 +512,11 @@ void ppprt::spinUp()
    {
       dcbFileListName = dcbFileListOpt.getValue()[0];
    }
+   if(mscFileOpt.getCount())
+   {
+      mscFileName = mscFileOpt.getValue()[0];
+   }
+
 
 }  // End of method 'ppprt::spinUp()'
 
@@ -684,6 +713,33 @@ void ppprt::process()
       dcbFileListStream.close();
    }    
 
+      //**********************************************
+      // Now, Let's read MSC data
+      //**********************************************
+      
+      // Declare a "MSCStore" object to handle msc file 
+   MSCStore mscStore;
+
+   try
+   {
+      mscStore.loadFile( mscFileName );
+   }
+   catch (gpstk::FFStreamError& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << e << endl;
+      cerr << "MSC file '" << mscFileName << "' Format is not supported!!!"
+           << "stop." << endl;
+      exit(-1);
+   }
+   catch (FileMissingException& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "MSC file '" << mscFileName << "' doesn't exist or you don't "
+           << "have permission to read it." << endl;
+      exit(-1);
+   }
+
       //**********************************************************
       // Now, Let's perform the PPP for each rinex files
       //**********************************************************
@@ -836,8 +892,30 @@ void ppprt::process()
       CommonTime initialTime( roh.firstObs );
       initialTime.setTimeSystem(TimeSystem::GPS);
 
+         // MSC data for this station
+      MSCData mscData;
+      try
+      {
+         mscData = mscStore.findMSC( station, initialTime );
+      }
+      catch (InvalidRequest& ie)
+      {
+         	// If file doesn't exist, issue a warning
+         cerr << "The station " << station 
+              << " isn't included in MSC file." << endl;
+
+         ++rnxit;
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
+         continue;
+      }
+	     // get the precise position of this station( X,Y,Z in ITRF )
+      Position precisePos(mscData.coordinates);
+
          // Show a message indicating that we are starting with this station
-      cout << "Starting processing for station: '" << station << "'." << endl;
+      cout << "Starting processing for station : '" << station << "'." << endl;
 
 	  if ( !blqStore.isValid(station) )
 	  {
@@ -1112,20 +1190,11 @@ void ppprt::process()
       correctList.push_back(linear4);       // Add to processing list
 
 
-         // Declare a base-changing object: From ECEF to North-East-Up (NEU)
-      //XYZ2NEU baseChange(nominalPos);
-         // We always need both ECEF and NEU data for 'ComputeDOP', so add this
-      //pList.push_back(baseChange);
-
-
          // Object to compute DOP values
       ComputeDOP cDOP;
       correctList.push_back(cDOP);       // Add to processing list
 
       
-         // Get if we want results in ECEF or NEU reference system
-      bool isNEU( confReader.getValueAsBoolean( "USENEU") );
-
          // Get the obsInterval
       double decimateInterval(confReader.getValueAsDouble( "decimationInterval"));
          // Declare solver objects
@@ -1139,6 +1208,7 @@ void ppprt::process()
          // Get if kinematic mode is on.
       bool kinematic( confReader.getValueAsBoolean( "KinematicMode") );
       double accSigma(confReader.getValueAsDouble("AccelerationSigma"));
+	  string result_format(confReader.getValue("resultFormat"));
 
             // Check about coordinates as white noise
       if ( kinematic )
@@ -1202,18 +1272,36 @@ void ppprt::process()
       outfile << "% Year"
               << setw(6) << "Doy" 
               << setw(12)<< "Second";
-      if (isNEU)
+
+      if ( result_format == "BLH")
       {
           outfile << setw(16) << "Lat(deg)"
                   << setw(16) << "Lon(deg)"
                   << setw(14) << "Height(m)";    
       }
-      else
+      else if ( result_format == "XYZ")
       {
           outfile << setw(14) <<  "X(m)"
                   << setw(14) <<  "Y(m)"
                   << setw(14) <<  "Z(m)";  
       }
+      else if ( result_format == "dxyz")
+      {
+          outfile << setw(14) <<  "dx(m)"
+                  << setw(14) <<  "dy(m)"
+	              << setw(14) <<  "dz(m)"; 
+	  }
+      else if ( result_format == "dneu")
+      {
+          outfile << setw(14) <<  "dn(m)"
+                  << setw(14) <<  "de(m)"
+	              << setw(14) <<  "du(m)"; 
+	  }
+	  else
+	  {
+	      cout << "Unknown Result Format !" << endl;
+		  exit(-1);
+	  }
 
       outfile << setw(10) << "ZTD(m)"
               << setw(6)  << "nSat"
@@ -1356,10 +1444,11 @@ void ppprt::process()
                            pppCorrectSolver,
                            time,
                            cDOP,
-                           isNEU,
                            gRin.numSats(),
                            drytropo,
-                           precision);
+						   precisePos,
+						   result_format,
+						   precision ); 
 
          }  // End of 'if ( cycles < 1 )'
 
