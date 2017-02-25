@@ -109,6 +109,7 @@ namespace gpstk
          LLI1,      ///< Loss of Lock Indicator/ lock count, L1 frequency
          SSI2,      ///< Signal strength indicator/index, L2 frequency
          LLI2,      ///< Loss of Lock Indicator/ lock count, L2 frequency
+         FreqNo,    ///< The frequency number of Glonass satellite, from -7 to 9
             // v 2.11
          C5,        ///< GPS L5C-code pseudorange
          L5,        ///< GPS phase observation in L5 frequency
@@ -201,6 +202,8 @@ namespace gpstk
          wetTropoVar,  ///< Vertical tropospheric delay var, wet component
          wetMap,    ///< Tropospheric mapping function, wet component
          tropoSlant, ///< Slant tropospheric delay, total
+         LatIPP,     /// Geocentric latitude of Ionoshere Pierce Point(IPP)
+         LonIPP,      /// longitude of Ionosphere Pierce Point(IPP)
          iono,      ///< Vertical ionospheric delay
          ionoTEC,   ///< Total Electron Content (in TECU), 1TECU = 1e+16 electrons per m**2
          ionoMap,   ///< Ionospheric mapping function
@@ -299,10 +302,16 @@ namespace gpstk
          instL6,    ///< Instrumental delay, L6
          instL7,    ///< Instrumental delay, L7
          instL8,    ///< Instrumental delay, L8
+        
+         ISB_BDS,   ///< inter-system bias between BeiDou and GPS
+         ISB_GAL,   ///< inter-system bias between Galileo and GPS
+         ISB_GLO,   ///< inter-system bias between Glonass and GPS
 
          recInstC1, ///< Instrumental delay for receiver
          recInstP1, ///< Instrumental delay for receiver
          recInstP2, ///< Instrumental delay for receiver
+         recP1P2DCB, ///< the difference between instrumental delays for receiver
+         satP1P2DCB, ///< the difference between instrumental delays for satellite
          recInstC1Var, ///< Instrumental delay for receiver
          recInstP1Var, ///< Instrumental delay for receiver
          recInstP2Var, ///< Instrumental delay for receiver
@@ -332,84 +341,52 @@ namespace gpstk
          updSatMW,     ///< Uncalibrated phase delays, MW
 
             // Equation system-related types
-            prefitC1,  ///< Prefit residual, code C1
-            prefitP1,  ///< Prefit residual, code P1
-            prefitP2,  ///< Prefit residual, code P2
-            prefitL1,  ///< Prefit residual, phase L1
-            prefitL2,  ///< Prefit residual, phase L2
-            postfitC1, ///< Postfit residual, code C1
-            postfitP1, ///< Postfit residual, code P1
-            postfitP2, ///< Postfit residual, code P2
-            postfitL1, ///< Postfit residual, phase L1
-            postfitL2, ///< Postfit residual, phase L2
-            prefitC5,  ///< Prefit residual, code C5
-            prefitL5,  ///< Prefit residual, phase L5
-            postfitC5, ///< Postfit residual, code C5
-            postfitL5, ///< Postfit residual, phase L5
-            prefitGRAPHIC1,   ///< Prefit residual, GRAPHIC1
-            prefitGRAPHIC2,   ///< Prefit residual, GRAPHIC2
-            postfitGRAPHIC1,  ///< Postfit residual, GRAPHIC1
-            postfitGRAPHIC2,  ///< Postfit residual, GRAPHIC2
-            postfitMWubbena,   /// Postfit residual, MWubbena
-            prefitMWubbena,   /// Prefit residual, MWubbena
-            prefitWL,  ///< Prefit residual, WL
-            prefitWL2, ///< Prefit residual, WL2
-            prefitWL3, ///< Prefit residual, WL3
-            prefitWL4, ///< Prefit residual, WL4
-            postfitWL, ///< Postfit residual, WL
-            postfitWL2,///< Postfit residual, WL2
-            postfitWL3,///< Postfit residual, WL3
-            postfitWL4,///< Postfit residual, WL4
-            prefitC,   ///< Prefit residual, code
-            prefitL,   ///< Prefit residual, phase
-            prefitPdelta,    ///< Narrow-lane combination
-            prefitLdelta,    ///< Wide-lane combination
-            prefitPC,   ///< Prefit residual, P3
-            prefitLC,   ///< Prefit residual, phase
-            prefitP3,   ///< Prefit residual, P3
-            prefitL3,   ///< Prefit residual, phase
-            postfitC,  ///< Postfit residual, code
-            postfitL,  ///< Postfit residual, phase
-            postfitL3,  ///< Postfit residual, phase
-            postfitPdelta,    ///< Narrow-lane combination
-            postfitLdelta,    ///< Wide-lane combination
+         prefitC1,  ///< Prefit residual, code C1
+         prefitC2,  ///< Prefit residual, code C2 for beidou
+         prefitP1,  ///< Prefit residual, code P1
+         prefitP2,  ///< Prefit residual, code P2
+         prefitL1,  ///< Prefit residual, phase L1
+         prefitL2,  ///< Prefit residual, phase L2
+         postfitP1, ///< Postfit residual, code P1
+         postfitP2, ///< Postfit residual, code P2
+         postfitL1, ///< Postfit residual, phase L1
+         postfitL2, ///< Postfit residual, phase L2
+         prefitPdelta,   ///< Prefit residual, Pdelta
+         prefitLdelta,   ///< Prefit residual, Ldelta
+         postfitPdelta,   ///< Postfit residual, Pdelta
+         postfitLdelta,   ///< Postfit residual, Ldelta
+         prefitC5,  ///< Prefit residual, code C5
+         prefitL5,  ///< Prefit residual, phase L5
+         postfitC5, ///< Postfit residual, code C5
+         postfitL5, ///< Postfit residual, phase L5
+         prefitGRAPHIC1,   ///< Prefit residual, GRAPHIC1
+         prefitGRAPHIC2,   ///< Prefit residual, GRAPHIC2
+         postfitGRAPHIC1,  ///< Postfit residual, GRAPHIC1
+         postfitGRAPHIC2,  ///< Postfit residual, GRAPHIC2
+         prefitMWubbena,   /// Prefit residual, MWubbena
+         prefitWL,  ///< Prefit residual, WL
+         prefitWL2, ///< Prefit residual, WL2
+         prefitWL3, ///< Prefit residual, WL3
+         prefitWL4, ///< Prefit residual, WL4
+         postfitMWubbena,   /// Postfit residual, MWubbena
+         postfitWL, ///< Postfit residual, WL
+         postfitWL2,///< Postfit residual, WL2
+         postfitWL3,///< Postfit residual, WL3
+         postfitWL4,///< Postfit residual, WL4
+         prefitC,   ///< Prefit residual, code
+         prefitL,   ///< Prefit residual, phase
+         postfitC,  ///< Postfit residual, code
+         postfitL,  ///< Postfit residual, phase
+
+         diffPrefitC1,  ///< Prefit residual, code C1
+         diffPrefitP1,  ///< Prefit residual, code P1
+         diffPrefitP2,  ///< Prefit residual, code P2
+         diffPrefitL1,  ///< Prefit residual, phase L1
+         diffPrefitL2,  ///< Prefit residual, phase L2
+         diffPrefitC,   ///< Prefit residual, code
+         diffPrefitL,   ///< Prefit residual, phase
+    
             
-            diffMWubbena,  ///< Prefit residual, time difference of MWubbena
-            diffLI,        ///< Prefit residual, time difference of LI
-            
-            diffPrefitC,   ///< Prefit residual, code
-            diffPrefitL,   ///< Prefit residual, phase
-            diffPostfitC,  ///< Postfit residual, code
-            diffPostfitL,  ///< Postfit residual, phase
-            
-            // Epoch difference of observations and combinations
-            diffPrefitC1,  ///< Prefit residual, epoch difference of code C1
-            diffPrefitP1,  ///< Prefit residual, epoch difference of code P1
-            diffPrefitP2,  ///< Prefit residual, epoch difference of code P2
-            diffPrefitL1,  ///< Prefit residual, epoch difference of phase L1
-            diffPrefitL2,  ///< Prefit residual, epoch difference of phase L2
-            
-            diffPostfitC1, ///< Postfit residual, epoch difference of code C1
-            diffPostfitP1, ///< Postfit residual, epoch difference of code P1
-            diffPostfitP2, ///< Postfit residual, epoch difference of code P2
-            diffPostfitL1, ///< Postfit residual, epoch difference of phase L1
-            diffPostfitL2, ///< Postfit residual, epoch difference of phase L2
-            
-            diffPrefitPdelta,    ///< Narrow-lane combination
-            diffPrefitLdelta,    ///< Wide-lane combination
-            
-            diffPostfitPdelta,    ///< Narrow-lane combination
-            diffPostfitLdelta,    ///< Wide-lane combination
-            
-            diffPrefitWL,  ///< Prefit residual, epoch difference of WL
-            diffPrefitWL2, ///< Prefit residual, epoch difference of WL2
-            diffPrefitWL3, ///< Prefit residual, epoch difference of WL3
-            diffPrefitWL4, ///< Prefit residual, epoch difference of WL4
-            
-            diffPostfitWL, ///< Postfit residual, epoch difference of WL
-            diffPostfitWL2,///< Postfit residual, epoch difference of WL2
-            diffPostfitWL3,///< Postfit residual, epoch difference of WL3
-            diffPostfitWL4,///< Postfit residual, epoch difference of WL4
          diffWetMap,///< Time difference of the Tropospheric mapping function
 
          dx,        ///< In the position domain: Position bias, X component; in the range domain: dx coefficient
@@ -427,82 +404,47 @@ namespace gpstk
          diffLat,      ///< position difference between IPP and station location, Latitude component
          diffLon,      ///< Position difference between IPP and station location, Longitude component
 
-            dSatX,     ///< dSatX coefficient for satellite position in XYZ
-            dSatY,     ///< dSatY coefficient for satellite position in XYZ
-            dSatZ,     ///< dSatZ coefficient for satellite position in XYZ
-            dSatR,     ///< dSatR coefficient for satellite position in RTN
-            dSatT,     ///< dSatT coefficient for satellite position in RTN
-            dSatN,     ///< dSatN coefficient for satellite position in RTN
-            weight,    ///< Weight assigned to a given observation
-            VMW,       ///< Variance assigned to a MW observation
-            VLC,       ///< Variance assigned to a LC observation
-            codeBias,  ///< Code bias by both receiver and satellite
-            cdtC1,     ///< Receiver clock offset of C1
-            cdtP1,     ///< Receiver clock offset of P1
-            cdtC2,     ///< Receiver clock offset of C2
-            cdtP2,     ///< Receiver clock offset of P2
-            cdtC5,     ///< Receiver clock offset of C5
-            cdtP5,     ///< Receiver clock offset of P5
-            cdtPdelta, ///< Receiver clock offset of Pdelta
-            cdtL1,     ///< Receiver clock offset of L1
-            cdtL2,     ///< Receiver clock offset of L2
-            cdtL5,     ///< Receiver clock offset of L5
-            cdtLdelta, ///< Receiver clock offset of Ldelta
-            cdtPC,     ///< Receiver clock offset of PC
-            cdtLC,     ///< Receiver clock offset of LC
-            cdtL3,     ///< Receiver clock offset of L3
-            cdtWL,     ///< Receiver clock offset of WL
-            cdtWL2,    ///< Receiver clock offset of WL2
-            cdtWL3,    ///< Receiver clock offset of WL3
-            cdtWL4,    ///< Receiver clock offset of WL4
-            cdtMW,     ///< Receiver clock offset of MW
-            cdtSatC1,  ///< Satellite clock offset of C1
-            cdtSatP1,  ///< Satellite clock offset of P1
-            cdtSatC2,  ///< Satellite clock offset of C2
-            cdtSatP2,  ///< Satellite clock offset of P2
-            cdtSatC5,  ///< Satellite clock offset of C5
-            cdtSatP5,  ///< Satellite clock offset of P5
-            cdtSatL1,  ///< Satellite clock offset of L1
-            cdtSatL2,  ///< Satellite clock offset of L2
-            cdtSatL5,  ///< Satellite clock offset of L5
-            cdtSatPC,  ///< Satellite clock offset of PC
-            cdtSatLC,  ///< Satellite clock offset of LC
-            cdtSatL3,  ///< Satellite clock offset of LC
-            cdtSatWL,  ///< Satellite clock offset of WL
-            cdtSatMW,  ///< Satellite clock offset of MW
+         dSatX,     ///< dSatX coefficient for satellite position in XYZ
+         dSatY,     ///< dSatY coefficient for satellite position in XYZ
+         dSatZ,     ///< dSatZ coefficient for satellite position in XYZ
+         dSatR,     ///< dSatR coefficient for satellite position in RTN
+         dSatT,     ///< dSatT coefficient for satellite position in RTN
+         dSatN,     ///< dSatN coefficient for satellite position in RTN
+         dRecX,     
+         dRecY,
+         dRecZ,
+         weight,    ///< Weight assigned to a given observation
+         codeBias,  ///< Code bias by both receiver and satellite
+         cdtC1,     ///< Receiver clock offset of C1
+         cdtP1,     ///< Receiver clock offset of P1
+         cdtC2,     ///< Receiver clock offset of C2
+         cdtP2,     ///< Receiver clock offset of P2
+         cdtC5,     ///< Receiver clock offset of C5
+         cdtP5,     ///< Receiver clock offset of P5
+         cdtL1,     ///< Receiver clock offset of L1
+         cdtL2,     ///< Receiver clock offset of L2
+         cdtL5,     ///< Receiver clock offset of L5
+         cdtPC,     ///< Receiver clock offset of PC
+         cdtLC,     ///< Receiver clock offset of LC
+         cdtWL,     ///< Receiver clock offset of WL
+         cdtWL2,    ///< Receiver clock offset of WL2
+         cdtWL3,    ///< Receiver clock offset of WL3
+         cdtWL4,    ///< Receiver clock offset of WL4
+         cdtMW,     ///< Receiver clock offset of MW
+         cdtSatC1,  ///< Satellite clock offset of C1
+         cdtSatP1,  ///< Satellite clock offset of P1
+         cdtSatC2,  ///< Satellite clock offset of C2
+         cdtSatP2,  ///< Satellite clock offset of P2
+         cdtSatC5,  ///< Satellite clock offset of C5
+         cdtSatP5,  ///< Satellite clock offset of P5
+         cdtSatL1,  ///< Satellite clock offset of L1
+         cdtSatL2,  ///< Satellite clock offset of L2
+         cdtSatL5,  ///< Satellite clock offset of L5
+         cdtSatPC,  ///< Satellite clock offset of PC
+         cdtSatLC,  ///< Satellite clock offset of LC
+         cdtSatWL,  ///< Satellite clock offset of WL
+         cdtSatMW,  ///< Satellite clock offset of MW
             
-            biasC1,     ///< Receiver clock offset of C1
-            biasP1,     ///< Receiver clock offset of P1
-            biasC2,     ///< Receiver clock offset of C2
-            biasP2,     ///< Receiver clock offset of P2
-            biasC5,     ///< Receiver clock offset of C5
-            biasP5,     ///< Receiver clock offset of P5
-            biasL1,     ///< Receiver clock offset of L1
-            biasL2,     ///< Receiver clock offset of L2
-            biasL5,     ///< Receiver clock offset of L5
-            biasPC,     ///< Receiver clock offset of PC
-            biasLC,     ///< Receiver clock offset of LC
-            biasL3,     ///< Receiver clock offset of LC
-            biasWL,     ///< Receiver clock offset of WL
-            biasWL2,    ///< Receiver clock offset of WL2
-            biasWL3,    ///< Receiver clock offset of WL3
-            biasWL4,    ///< Receiver clock offset of WL4
-            biasMW,     ///< Receiver clock offset of MW
-            biasSatC1,  ///< Satellite clock offset of C1
-            biasSatP1,  ///< Satellite clock offset of P1
-            biasSatC2,  ///< Satellite clock offset of C2
-            biasSatP2,  ///< Satellite clock offset of P2
-            biasSatC5,  ///< Satellite clock offset of C5
-            biasSatP5,  ///< Satellite clock offset of P5
-            biasSatL1,  ///< Satellite clock offset of L1
-            biasSatL2,  ///< Satellite clock offset of L2
-            biasSatL5,  ///< Satellite clock offset of L5
-            biasSatPC,  ///< Satellite clock offset of PC
-            biasSatLC,  ///< Satellite clock offset of LC
-            biasSatL3,  ///< Satellite clock offset of L3
-            biasSatWL,  ///< Satellite clock offset of WL
-            biasSatMW,  ///< Satellite clock offset of MW
-      // Other types
          recX,      ///< Receiver position, X component
          recY,      ///< Receiver position, Y component
          recZ,      ///< Receiver position, Z component
@@ -530,15 +472,15 @@ namespace gpstk
          recJ2kAX,  ///< Receiver acceleration in J2000, X component
          recJ2kAY,  ///< Receiver acceleration in J2000, Y component
          recJ2kAZ,  ///< Receiver acceleration in J2000, Z component
-			STAX,
-			STAY,
-			STAZ,
-			VELX,
-			VELY,
-			VELZ,
-			AntOffU,
-			AntOffN,
-			AntOffE,
+         STAX,
+         STAY,
+         STAZ,
+         VELX,
+         VELY,
+         VELZ,
+         AntOffU,
+         AntOffN,
+         AntOffE,
          Temp,
          Pres,
          Rhum,

@@ -89,6 +89,7 @@ namespace gpstk
       tStrings[S8]         = "S8";
       tStrings[SSI8]       = "SSI8";
       tStrings[LLI8]       = "LLI8";
+      tStrings[FreqNo]     = "FreqNo";
       tStrings[PC]         = "PC";
       tStrings[LC]         = "LC";
       tStrings[PI]         = "PI";
@@ -152,6 +153,8 @@ namespace gpstk
       tStrings[wetTropoVar]   = "wetTropoVar";
       tStrings[wetMap]     = "wetTropoMap";
       tStrings[tropoSlant] = "slantTropo";
+      tStrings[LatIPP]     = "LatitudeOfIPP";
+      tStrings[LonIPP]     = "LongitudeOfIPP";
       tStrings[iono]       = "verticalIono";
       tStrings[ionoTEC]    = "TotalElectronContent";
       tStrings[ionoMap]    = "ionoMap";
@@ -244,10 +247,16 @@ namespace gpstk
       tStrings[instL6]       = "instrumentalL6";
       tStrings[instL7]       = "instrumentalL7";
       tStrings[instL8]       = "instrumentalL8";
+      
+      tStrings[ISB_BDS]       = "interSystemBiasBDS";
+      tStrings[ISB_GAL]       = "interSystemBiasGAL";
+      tStrings[ISB_GLO]       = "interSystemBiasGLO";
 
       tStrings[recInstC1]    = "recInstC1";
       tStrings[recInstP1]    = "recInstP1";
       tStrings[recInstP2]    = "recInstP2";
+      tStrings[recP1P2DCB]   = "recP1P2DCB";
+      tStrings[satP1P2DCB]   = "satP1P2DCB";
       tStrings[recInstC1Var] = "recInstC1Var";
       tStrings[recInstP1Var] = "recInstP1Var";
       tStrings[recInstP2Var] = "recInstP2Var";
@@ -274,6 +283,7 @@ namespace gpstk
       tStrings[corrLdelta] = "corrLdelta";
 
       tStrings[prefitC1]   = "prefitResidualCodeC1";
+      tStrings[prefitC2]   = "prefitResidualCodeC2";
       tStrings[prefitP1]   = "prefitResidualCodeP1";
       tStrings[prefitP2]   = "prefitResidualCodeP2";
       tStrings[prefitL1]   = "prefitResidualPhaseL1";
@@ -337,6 +347,11 @@ namespace gpstk
       tStrings[dSatR]      = "dSatR";
       tStrings[dSatT]      = "dSatT";
       tStrings[dSatN]      = "dSatN";
+
+      tStrings[dRecX]      = "dRecX";
+      tStrings[dRecY]      = "dRecY";
+      tStrings[dRecZ]      = "dRecZ";
+
       tStrings[weight]     = "weight";
       tStrings[codeBias]   = "codeBias";
 
@@ -398,10 +413,10 @@ namespace gpstk
       tStrings[recJ2kAX]   = "RxJ2kAccelerationX";
       tStrings[recJ2kAY]   = "RxJ2kAccelerationY";
       tStrings[recJ2kAZ]   = "RxJ2kAccelerationZ";
-		tStrings[STAX]       = "STAX";
-		tStrings[STAY]       = "STAY";
+	  tStrings[STAX]       = "STAX";
+	  tStrings[STAY]       = "STAY";
       tStrings[STAZ]       = "STAZ";
-		tStrings[VELX]			= "VELX";
+	  tStrings[VELX]	   = "VELX";
       tStrings[VELY]       = "VELY";
       tStrings[VELZ]       = "VELZ";
       tStrings[AntOffU]    = "AntOffU";
@@ -421,8 +436,8 @@ namespace gpstk
       tStrings[a3]         = "a3";
       tStrings[a4]         = "a4";
       tStrings[a5]         = "a5";
-
-      tStrings[dummy0]     = "dummy0";
+     
+	  tStrings[dummy0]     = "dummy0";
       tStrings[dummy1]     = "dummy1";
       tStrings[dummy2]     = "dummy2";
       tStrings[dummy3]     = "dummy3";
@@ -523,11 +538,11 @@ namespace gpstk
       // 1 2 5 6 7 8
      if(roi.band == ObsID::cbL1) return 1;
      if(roi.band == ObsID::cbG1) return 1;
-     if(roi.band == ObsID::cbB1) return 1;
+   //  if(roi.band == ObsID::cbB1) return 1;
 
      if(roi.band == ObsID::cbL2) return 2;
      if(roi.band == ObsID::cbG2) return 2;
-     if(roi.band == ObsID::cbB1) return 2;      // TD this is not correct
+     if(roi.band == ObsID::cbB1) return 2; // For BeiDou L1, return 2
 
      if(roi.band == ObsID::cbL5) return 5;
 
@@ -535,6 +550,8 @@ namespace gpstk
      if(roi.band == ObsID::cbB3) return 6;
 
      if(roi.band == ObsID::cbE5b) return 7;
+       // add B2 
+     if(roi.band == ObsID::cbB2) return 7;
 
      if(roi.band == ObsID::cbE5ab) return 8;
 
@@ -675,7 +692,7 @@ namespace gpstk
          if(roi.band==ObsID::cbL1)
          {
             if(roi.type == ObsID::otRange)
-               return (roi.code == ObsID::tcCA) ? TypeID::C1 : TypeID::P1;
+            return (roi.code == ObsID::tcCA)? TypeID::C1 : TypeID::P1;
 
             if(roi.type == ObsID::otPhase) return TypeID::L1;
             if(roi.type == ObsID::otDoppler) return TypeID::D1;
@@ -685,7 +702,11 @@ namespace gpstk
          else if(roi.band==ObsID::cbL2)
          {
             if(roi.type == ObsID::otRange)
-               return (roi.code == ObsID::tcCA) ? TypeID::C2 : TypeID::P2;
+		 // add ObsID::tcC2LM,tcC2L,tcC2M (C2X,C2L,C2S --> C2)
+               return (roi.code == ObsID::tcCA   ||
+	               roi.code == ObsID::tcC2L  ||
+	               roi.code == ObsID::tcC2M  ||
+	               roi.code == ObsID::tcC2LM  ) ? TypeID::C2 : TypeID::P2;
 
             if(roi.type == ObsID::otPhase) return TypeID::L2;
             if(roi.type == ObsID::otDoppler) return TypeID::D2;
@@ -716,7 +737,7 @@ namespace gpstk
             if(roi.type == ObsID::otSNR) return TypeID::S1;
          }
          // For L2: C2 P2 L2 D2 S2
-         else if(roi.band == ObsID::cbG1)
+         else if(roi.band == ObsID::cbG2)
          {
             if(roi.type == ObsID::otRange)   // tcGCA or tcGP
                return (roi.code == ObsID::tcGCA) ? TypeID::C2 : TypeID::P2;
@@ -778,21 +799,21 @@ namespace gpstk
 
          // For E2-B1
          //if(roi.band == ObsID::cbE1) return TypeID::Unknown;
-         if(roi.band == ObsID::cbB3)         // TD is cbB3 correct?
+         if(roi.band == ObsID::cbB1)         
          {
             if(roi.type == ObsID::otRange) return TypeID::C2;
             if(roi.type == ObsID::otPhase) return TypeID::L2;
             if(roi.type == ObsID::otDoppler) return TypeID::D2;
             if(roi.type == ObsID::otSNR) return TypeID::S2;
          }
-         else if(roi.band == ObsID::cbE5b)
+         else if(roi.band == ObsID::cbB2)
          {
             if(roi.type == ObsID::otRange) return TypeID::C7;
             if(roi.type == ObsID::otPhase) return TypeID::L7;
             if(roi.type == ObsID::otDoppler) return TypeID::D7;
             if(roi.type == ObsID::otSNR) return TypeID::S7;
          }
-         else if(roi.band == ObsID::cbE6)
+         else if(roi.band == ObsID::cbB3)
          {
             if(roi.type == ObsID::otRange) return TypeID::C6;
             if(roi.type == ObsID::otPhase) return TypeID::L6;

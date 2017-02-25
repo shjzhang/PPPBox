@@ -91,6 +91,12 @@ namespace gpstk
             case 'E':
                system = SatID::systemGalileo;
                break;
+            case 'C':
+               system = SatID::systemBeiDou;
+               break;
+            case 'J':
+               system = SatID::systemQZSS;
+               break;
             case 'M':
                system = SatID::systemMixed;
                break;
@@ -293,6 +299,14 @@ namespace gpstk
             else if( freqString == "E07" ) freq = Antenna::E07;
             else if( freqString == "E08" ) freq = Antenna::E08;
             else if( freqString == "E06" ) freq = Antenna::E06;
+            else if( freqString == "C01" ) freq = Antenna::C01;// B1 
+            else if( freqString == "C02" ) freq = Antenna::C01;// B1
+            else if( freqString == "C06" ) freq = Antenna::C06;// B3
+            else if( freqString == "C07" ) freq = Antenna::C07;// B2
+            else if( freqString == "J01" ) freq = Antenna::J01;
+            else if( freqString == "J02" ) freq = Antenna::J02;
+            else if( freqString == "J05" ) freq = Antenna::J05;
+            else if( freqString == "J06" ) freq = Antenna::J06;
 
                // Read new line and extract label
             formattedGetLine(line, true);
@@ -396,6 +410,15 @@ namespace gpstk
             else if( freqString == "E07" ) freq = Antenna::E07;
             else if( freqString == "E08" ) freq = Antenna::E08;
             else if( freqString == "E06" ) freq = Antenna::E06;
+            else if( freqString == "C01" ) freq = Antenna::C01;// B1 
+            else if( freqString == "C02" ) freq = Antenna::C01;// B1
+            else if( freqString == "C06" ) freq = Antenna::C06;// B3
+            else if( freqString == "C07" ) freq = Antenna::C07;// B2
+            else if( freqString == "J01" ) freq = Antenna::J01;
+            else if( freqString == "J02" ) freq = Antenna::J02;
+            else if( freqString == "J05" ) freq = Antenna::J05;
+            else if( freqString == "J06" ) freq = Antenna::J06;
+
 
                // Read new line and extract label
             formattedGetLine(line, true);
@@ -1497,6 +1520,12 @@ namespace gpstk
             break;
          case SatID::systemGalileo:
             s << "Galileo";
+            break;
+         case SatID::systemBeiDou:
+            s << "BeiDou";
+            break;
+         case SatID::systemQZSS:
+            s << "QZSS";
             break;
          case SatID::systemMixed:
             s << "Mixed";
