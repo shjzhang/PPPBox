@@ -53,6 +53,10 @@ namespace gpstk
 
       try
       {
+         if (pEKFStateStore != NULL)
+         {
+            setNominalPosition(pEKFStateStore->getRxPosition());            
+         }
 
             // Compute Sun position at this epoch
          SunPosition sunPosition;
@@ -127,7 +131,6 @@ namespace gpstk
                // meters, and insert it in the GNSS data structure.
             (*it).second[TypeID::satPCenter] =
                getSatPCenter((*it).first, time, svPos, sunPos);
-
          }  // End of 'for (it = gData.begin(); it != gData.end(); ++it)'
 
             // Remove satellites with missing data
@@ -244,7 +247,6 @@ namespace gpstk
                sat << "0";
             }
             sat << satid.id;
-
                // Get satellite antenna information out of AntexReader object
             Antenna antenna( pAntexReader->getAntenna( sat.str(), time ) );
 
@@ -286,9 +288,97 @@ namespace gpstk
                   // satellite reference system.
                   // NOTE: It is NOT in ECEF, it is in UEN!!!
                Triple satAnt( antenna.getAntennaEccentricity( Antenna::R01) );
-
                   // Now, get the phase center variation.
                Triple var( antenna.getAntennaPCVariation( Antenna::R01, elev) );
+
+                  // We must substract them
+               satAnt = satAnt - var;
+
+                     // Change to ECEF
+               Triple svAntenna( satAnt[2]*ri + satAnt[1]*rj + satAnt[0]*rk );
+
+                  // Project "svAntenna" vector to line of sight vector rrho
+               svPCcorr = (rrho.dot(svAntenna));
+
+            }
+               // Check if this satellite belongs to Galileo system
+            else if( satid.system == SatID::systemGalileo )
+            {
+               std::stringstream sat;
+               sat << "E";
+               if( satid.id < 10 )
+               {
+                  sat << "0";
+               }
+               sat << satid.id;
+
+                  // Get satellite antenna information out of AntexReader object
+               Antenna antenna( pAntexReader->getAntenna( sat.str(), time ) );
+
+                  // Get antenna offset for frequency "E01" (Galileo), in
+                  // satellite reference system.
+                  // NOTE: It is NOT in ECEF, it is in UEN!!!
+               Triple satAnt( antenna.getAntennaEccentricity( Antenna::E01) );
+                  // Now, get the phase center variation.
+               Triple var( antenna.getAntennaPCVariation( Antenna::E01, elev) );
+
+                  // We must substract them
+               satAnt = satAnt - var;
+
+                     // Change to ECEF
+               Triple svAntenna( satAnt[2]*ri + satAnt[1]*rj + satAnt[0]*rk );
+
+                  // Project "svAntenna" vector to line of sight vector rrho
+               svPCcorr = (rrho.dot(svAntenna));
+
+            }
+               // Check if this satellite belongs to BeiDou system
+            else if( satid.system == SatID::systemBeiDou )
+            {
+               std::stringstream sat;
+               sat << "C";
+               if( satid.id < 10 )
+               {
+                  sat << "0";
+               }
+               sat << satid.id;
+
+                  // Get satellite antenna information out of AntexReader object
+               Antenna antenna( pAntexReader->getAntenna( sat.str(), time ) );
+                  //get PCO, NOTE: It is NOT in ECEF, it is in UEN!!!
+               Triple satAnt( antenna.getAntennaEccentricity( Antenna::C01) );
+                  // Now, get the phase center variation.
+               Triple var( antenna.getAntennaPCVariation( Antenna::C01, elev) );
+                  // We must substract them
+               satAnt = satAnt - var;
+
+                     // Change to ECEF
+               Triple svAntenna( satAnt[2]*ri + satAnt[1]*rj + satAnt[0]*rk );
+
+                  // Project "svAntenna" vector to line of sight vector rrho
+               svPCcorr = (rrho.dot(svAntenna));
+
+            }
+               // Check if this satellite belongs to QZSS system
+            else if( satid.system == SatID::systemQZSS )
+            {
+               std::stringstream sat;
+               sat << "J";
+               if( satid.id < 10 )
+               {
+                  sat << "0";
+               }
+               sat << satid.id;
+
+                  // Get satellite antenna information out of AntexReader object
+               Antenna antenna( pAntexReader->getAntenna( sat.str(), time ) );
+
+                  // Get antenna offset for frequency "J01" (QZSS), in
+                  // satellite reference system.
+                  // NOTE: It is NOT in ECEF, it is in UEN!!!
+               Triple satAnt( antenna.getAntennaEccentricity( Antenna::J01) );
+                  // Now, get the phase center variation.
+               Triple var( antenna.getAntennaPCVariation( Antenna::J01, elev) );
 
                   // We must substract them
                satAnt = satAnt - var;

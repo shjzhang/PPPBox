@@ -35,7 +35,7 @@
 #include <math.h>
 #include "Position.hpp"
 #include "ProcessingClass.hpp"
-
+#include "PPPExtendedKalmanFilter.hpp"
 
 
 namespace gpstk
@@ -117,7 +117,10 @@ namespace gpstk
           */
       GravitationalDelay(const Position& stapos) : nominalPos(stapos)
       { };
-
+     
+      GravitationalDelay(PPPExtendedKalmanFilter& pppEKF):pEKFStateStore(&pppEKF)
+      { };
+     
 
          /** Returns a satTypeValueMap object, adding the new data generated
           *  when calling this object.
@@ -174,7 +177,8 @@ namespace gpstk
 
          /// Receiver position
       Position nominalPos;
-
+      
+      PPPExtendedKalmanFilter* pEKFStateStore;
 
    }; // End of class 'GravitationalDelay'
 

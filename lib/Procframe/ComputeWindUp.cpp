@@ -55,6 +55,10 @@ namespace gpstk
       try
       {
 
+         if (pEKFStateStore != NULL)
+         {
+            setNominalPosition(pEKFStateStore->getRxPosition());
+         }
             // Compute Sun position at this epoch
          SunPosition sunPosition;
          Triple sunPos(sunPosition.getPosition(time));

@@ -4,6 +4,8 @@
  * @file CorrectObservables.hpp
  * This class corrects observables from effects such as antenna excentricity,
  * difference in phase centers, offsets due to tide effects, etc.
+ *
+ *
  */
 
 #ifndef GPSTK_CORRECTOBSERVABLES_HPP
@@ -40,7 +42,7 @@
 #include "Position.hpp"
 #include "Antenna.hpp"
 #include "geometry.hpp"
-
+#include "PPPExtendedKalmanFilter.hpp"
 
 
 namespace gpstk
@@ -150,6 +152,14 @@ namespace gpstk
            monumentVector(0.0, 0.0, 0.0), extraBiases(0.0, 0.0, 0.0)
       { };
 
+      CorrectObservables( XvtStore<SatID>& ephem,
+                          PPPExtendedKalmanFilter& pppEKF )
+         : pEphemeris(&ephem), pEKFStateStore(&pppEKF), useAzimuth(false),
+           L1PhaseCenter(0.0, 0.0, 0.0), L2PhaseCenter(0.0, 0.0, 0.0),
+           L5PhaseCenter(0.0, 0.0, 0.0), L6PhaseCenter(0.0, 0.0, 0.0),
+           L7PhaseCenter(0.0, 0.0, 0.0), L8PhaseCenter(0.0, 0.0, 0.0),
+           monumentVector(0.0, 0.0, 0.0), extraBiases(0.0, 0.0, 0.0)
+      { };
 
          /** Common constructor
           *
@@ -534,7 +544,7 @@ namespace gpstk
          /// Receiver position.
       Position nominalPos;
 
-
+      PPPExtendedKalmanFilter* pEKFStateStore;
          /// Antenna object with information taken from Antex file.
       Antenna antenna;
 
@@ -546,10 +556,8 @@ namespace gpstk
          /// Position of antenna L1 phase center with respect to ARP ([UEN]).
       Triple L1PhaseCenter;
 
-
          /// Position of antenna L2 phase center with respect to ARP ([UEN]).
       Triple L2PhaseCenter;
-
 
          /// Position of antenna L5 phase center with respect to ARP ([UEN]).
       Triple L5PhaseCenter;

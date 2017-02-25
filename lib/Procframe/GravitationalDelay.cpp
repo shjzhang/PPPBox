@@ -63,6 +63,10 @@ namespace gpstk
 
       try
       {
+         if (pEKFStateStore != NULL )
+         {
+            setNominalPosition(pEKFStateStore->getRxPosition());
+         }
 
          SatIDSet satRejectedSet;
 
@@ -100,7 +104,9 @@ namespace gpstk
             double r2(svPos.mag());
 
                // Get vector from Earth mass center to receiver
-            Triple rxPos(nominalPos.X(), nominalPos.Y(), nominalPos.Z());
+            Triple rxPos( nominalPos.X(), 
+                          nominalPos.Y(), 
+                          nominalPos.Z());
 
                // Compute magnitude of receiver position vector
             double r1(rxPos.mag());
