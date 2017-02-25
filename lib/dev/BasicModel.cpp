@@ -74,6 +74,7 @@ namespace gpstk
 
       minElev = 10.0;
       pDefaultEphemeris = NULL;
+      pEKFStateStore    = NULL;
       defaultObservable = TypeID::C1;
       useTGD = false;
       setInitialRxPosition( aRx, bRx, cRx, s, ell, frame );
@@ -88,6 +89,7 @@ namespace gpstk
 
       minElev = 10.0;
       pDefaultEphemeris = NULL;
+      pEKFStateStore    = NULL;
       defaultObservable = TypeID::C1;
       useTGD = false;
       setInitialRxPosition(RxCoordinates);
@@ -122,6 +124,19 @@ namespace gpstk
    }  // End of 'BasicModel::BasicModel()'
 
 
+   BasicModel::BasicModel( PPPExtendedKalmanFilter& pppEKF,
+                           XvtStore<SatID>& dEphemeris,
+                           const TypeID& dObservable,
+                           const bool& applyTGD )
+   {
+
+      minElev = 10.0;
+      pEKFStateStore = &pppEKF;
+      setDefaultEphemeris(dEphemeris);
+      defaultObservable = dObservable;
+      useTGD = applyTGD;
+
+   }  // End of 'BasicModel::BasicModel()'
 
       /* Returns a satTypeValueMap object, adding the new data generated when
        * calling a modeling object.
@@ -136,8 +151,15 @@ namespace gpstk
 
       try
       {
+            // update receiver position
+         if ( pEKFStateStore != NULL )
+         {
+            setInitialRxPosition(pEKFStateStore->getRxPosition());
+         }
 
          SatIDSet satRejectedSet;
+           // a copy of GPS default Observable(usually C1 or P1)
+         TypeID gpsObservable = defaultObservable;
 
             // Loop through all the satellites
          satTypeValueMap::iterator stv;
@@ -145,12 +167,21 @@ namespace gpstk
               stv != gData.end();
               ++stv )
          {
+            SatID::SatelliteSystem system = stv->first.system;
+                  // for Galileo E1
+            if (system == SatID::systemGalileo)
+            {
+               setDefaultObservable(TypeID::C1);
+            }
+                 // for BeiDou B1
+            else if (system == SatID::systemBeiDou)
+            {
+               setDefaultObservable(TypeID::C2);
+            }
                // Scalar to hold temporal value
             double observable( (*stv).second(defaultObservable) );
-
                // A lot of the work is done by a CorrectedEphemerisRange object
             CorrectedEphemerisRange cerange;
-
             try
             {
                   // Compute most of the parameters
@@ -162,19 +193,16 @@ namespace gpstk
             }
             catch(InvalidRequest& e)
             {
-             
+
                   // If some problem appears, then schedule this satellite
                   // for removal
                satRejectedSet.insert( (*stv).first );
-
                continue;    // Skip this SV if problems arise
 
             }
-
                // Let's test if satellite has enough elevation over horizon
             if ( rxPos.elevationGeodetic(cerange.svPosVel) < minElev )
             {
-
                   // Mark this satellite if it doesn't have enough elevation
                satRejectedSet.insert( (*stv).first );
 
@@ -189,7 +217,6 @@ namespace gpstk
 
                // Now we have to add the new values to the data structure
             (*stv).second[TypeID::dtSat] = cerange.svclkbias;
-
                // Now, lets insert the geometry matrix
             (*stv).second[TypeID::dx] = cerange.cosines[0];
             (*stv).second[TypeID::dy] = cerange.cosines[1];
@@ -201,6 +228,33 @@ namespace gpstk
 
                // When using pseudorange method, this is 1.0
             (*stv).second[TypeID::cdt] = 1.0;
+               // prepare for the class SolverPPPGNSS
+               // we will estimate the inter-system bias between GPS and Galileo
+               // and bias between GPS and BeiDou using the PPP method
+            if ((*stv).first.system == SatID::systemGPS)
+            {
+              (*stv).second[TypeID::ISB_GLO] = 0.0;
+              (*stv).second[TypeID::ISB_GAL] = 0.0;
+              (*stv).second[TypeID::ISB_BDS] = 0.0;
+            }
+            else if ((*stv).first.system == SatID::systemGlonass)
+            {
+              (*stv).second[TypeID::ISB_GLO] = 1.0;
+              (*stv).second[TypeID::ISB_GAL] = 0.0;
+              (*stv).second[TypeID::ISB_BDS] = 0.0;
+            }
+            else if ((*stv).first.system == SatID::systemGalileo)
+            {
+              (*stv).second[TypeID::ISB_GLO] = 0.0;
+              (*stv).second[TypeID::ISB_GAL] = 1.0;
+              (*stv).second[TypeID::ISB_BDS] = 0.0;
+            }
+            else if ((*stv).first.system == SatID::systemBeiDou)
+            {
+              (*stv).second[TypeID::ISB_GLO] = 0.0;
+              (*stv).second[TypeID::ISB_GAL] = 0.0;
+              (*stv).second[TypeID::ISB_BDS] = 1.0;
+            }
 
                // Now we have to add the new values to the data structure
             (*stv).second[TypeID::rho] = cerange.rawrange;
@@ -218,12 +272,29 @@ namespace gpstk
             (*stv).second[TypeID::satVY] = cerange.svPosVel.v[1];
             (*stv).second[TypeID::satVZ] = cerange.svPosVel.v[2];
 
-               // Let's insert receiver position 
+               // Let's insert receiver position
             (*stv).second[TypeID::recX] = rxPos.X();
             (*stv).second[TypeID::recY] = rxPos.Y();
             (*stv).second[TypeID::recZ] = rxPos.Z();
 
-               // Let's insert receiver velocity 
+               // there we estimate the receiver position directly(not dx,dy,dz as usual),
+               // so we need to compute these values when linearized the equation
+               // which will be used in class LinearCombinations.
+            if ( pEKFStateStore != NULL )
+            {
+               (*stv).second[TypeID::dRecX] = cerange.cosines[0]*rxPos.X();
+               (*stv).second[TypeID::dRecY] = cerange.cosines[1]*rxPos.Y();
+               (*stv).second[TypeID::dRecZ] = cerange.cosines[2]*rxPos.Z();
+            }
+            else
+            {
+               (*stv).second[TypeID::dRecX] = 0.0;
+               (*stv).second[TypeID::dRecY] = 0.0;
+               (*stv).second[TypeID::dRecZ] = 0.0;
+            }
+
+
+               // Let's insert receiver velocity
             (*stv).second[TypeID::recVX] = 0.0;
             (*stv).second[TypeID::recVY] = 0.0;
             (*stv).second[TypeID::recVZ] = 0.0;
@@ -242,8 +313,10 @@ namespace gpstk
             (*stv).second[TypeID::instC1] = tempTGD;
 
 
-
          } // End of loop for(stv = gData.begin()...
+
+            // default
+         setDefaultObservable(gpsObservable);
 
             // Remove satellites with missing data
          gData.removeSatID(satRejectedSet);
@@ -353,5 +426,5 @@ namespace gpstk
 
    }  // End of method 'BasicModel::getTGDCorrections()'
 
-   
+
 }  // End of namespace gpstk
