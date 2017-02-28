@@ -72,6 +72,8 @@
 
 #include "ThreadPool.h"
 
+#include "FileSpec.hpp"
+
 
 
 using namespace gpstk;
@@ -356,7 +358,10 @@ int main( int argc, char* argv[] )
 
         NtripTask* pTask = new NtripTask;
         pTask->setMountPoint(pt);
-        string filename = pt.getMountPointID()+".out";
+        SystemTime dateTime;
+        CommonTime comTime(dateTime);
+        std::string utcTime = CivilTime(comTime).printf("%Y%02m%02d%02H");
+        string filename = pt.getMountPointID() + "_" + utcTime +".out";
         pTask->setRawOutFile(filename);
         pTask->setRawOutOpt(outputRaw);
         pTP->pushTask(pTask);
