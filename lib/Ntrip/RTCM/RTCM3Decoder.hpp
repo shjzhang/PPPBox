@@ -11,6 +11,7 @@
 #include "CommonTime.hpp"
 #include "satObs.hpp"
 
+using namespace std;
 using namespace gpstk;
 class RTCM3Decoder:public RTCMDecoder
 {
@@ -189,6 +190,7 @@ private:
 
  /** List of decoders for Clock and Orbit data */
  //RTCM3coDecoder _coDecoder;
+ map<string, RTCM3coDecoder*> coDecoders;
  //map<QByteArray, RTCM3coDecoder*> coDecoders;
 
  /** Message buffer for input parsing */

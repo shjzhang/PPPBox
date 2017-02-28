@@ -51,6 +51,7 @@
 
 
 using namespace std;
+using namespace gpstk;
 
 // Constructor
 ////////////////////////////////////////////////////////////////////////////
@@ -272,6 +273,9 @@ void RTCM3coDecoder::sendResults() {
     {
       continue;
     }
+
+    SatID prn = SatID(_clkOrb.Sat[ii].ID, sys);
+    ClockOrbitType messageType = _clkOrb.messageType;
     // Orbit correction
     // ----------------
     if ( _clkOrb.messageType == COTYPE_GPSCOMBINED     ||
@@ -303,6 +307,7 @@ void RTCM3coDecoder::sendResults() {
 
       _orbCorrections[_lastTime].push_back(orbCorr);
 
+      SatID prn2 = orbCorr._prn;
       _IODs[orbCorr._prn] = _clkOrb.Sat[ii].IOD;
     }
 
@@ -323,7 +328,6 @@ void RTCM3coDecoder::sendResults() {
     {
 
       t_clkCorr clkCorr;
-      int satnum = _clkOrb.Sat[ii].ID;
       clkCorr._prn = SatID(_clkOrb.Sat[ii].ID, sys);
 
       clkCorr._staID      = _staID;
@@ -335,6 +339,7 @@ void RTCM3coDecoder::sendResults() {
 
       _lastClkCorrections[clkCorr._prn] = clkCorr;
 
+      int cn = _IODs.count(clkCorr._prn);
       if (_IODs.count(clkCorr._prn)==1)
       {
         clkCorr._iod = _IODs[clkCorr._prn];
@@ -494,8 +499,8 @@ void RTCM3coDecoder::sendResults() {
     satPhaseBias._updateInt  = _phaseBias.UpdateInterval;
     satPhaseBias._dispBiasConstistInd = _phaseBias.DispersiveBiasConsistencyIndicator;
     satPhaseBias._MWConsistInd        = _phaseBias.MWConsistencyIndicator;
-    satPhaseBias._yawDeg     = _phaseBias.Sat[ii].YawAngle * 180.0 / M_PI;
-    satPhaseBias._yawDegRate = _phaseBias.Sat[ii].YawRate * 180.0 / M_PI;
+	satPhaseBias._yawDeg     = _phaseBias.Sat[ii].YawAngle * 180.0 / gpstk::PI;
+    satPhaseBias._yawDegRate = _phaseBias.Sat[ii].YawRate * 180.0 / gpstk::PI;
     for (unsigned jj = 0; jj < _phaseBias.Sat[ii].NumberOfPhaseBiases; jj++)
     {
       const PhaseBias::PhaseBiasSat::PhaseBiasEntry& biasEntry = _phaseBias.Sat[ii].Biases[jj];
@@ -541,20 +546,41 @@ void RTCM3coDecoder::sendResults() {
 
   // Dump all older epochs
   // ---------------------
-  map<CommonTime, list<t_orbCorr> >::iterator itOrb = _orbCorrections.begin();
-  for (;itOrb!=_orbCorrections.end();++itOrb)
+  while(_orbCorrections.size() != 0)
   {
-    //CommonTime ct = itOrb->first;
-      //emit newOrbCorrections(itOrb.value());
-    t_orbCorr::writeEpoch(_out, itOrb->second);
-  }
-  map<CommonTime, list<t_clkCorr> >::iterator itClk = _clkCorrections.begin();
-  for (;itClk!=_clkCorrections.end();++itClk)
+	  map<CommonTime, list<t_orbCorr> >::iterator itOrb = _orbCorrections.begin();
+	  if(itOrb->first < _lastTime)
+      {
+		//SIG_CENTER->newOrbCorr(itOrb->second);
+		std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
+        t_orbCorr::writeEpoch(_out, itOrb->second);
+		_orbCorrections.erase(itOrb);
+		continue;
+      }
+	  ++itOrb;
+	  if(itOrb == _orbCorrections.end())
+	  {
+		  break;
+	  }
+   }
+
+while(_clkCorrections.size() != 0)
   {
-      //CommonTime ct = itClk->first;
-      //emit newClkCorrections(itClk.value());
-    t_clkCorr::writeEpoch(_out, itClk->second);
-  }
+	  map<CommonTime, list<t_clkCorr> >::iterator itClk = _clkCorrections.begin();
+	  if(itClk->first < _lastTime)
+      {
+		//SIG_CENTER->newOrbCorr(itClk->second);
+		std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
+        t_clkCorr::writeEpoch(_out, itClk->second);
+		_clkCorrections.erase(itClk);
+		continue;
+      }
+	  ++itClk;
+	  if(itClk == _clkCorrections.end())
+	  {
+		  break;
+	  }
+   }
   /*QMutableMapIterator<bncTime, QList<t_satCodeBias> > itCB(_codeBiases);
   while (itCB.hasNext())
   {

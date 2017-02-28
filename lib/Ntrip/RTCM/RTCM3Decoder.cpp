@@ -36,6 +36,11 @@ RTCM3Decoder::RTCM3Decoder(const string& staid)
 RTCM3Decoder::~RTCM3Decoder()
 {
     //delete _coDecoder;
+//    while(coDecoders.size()!=0)
+//    {
+//        delete (coDecoders.begin())->second;
+//        coDecoders.erase(coDecoders.begin());
+//    }
 }
 
 //
@@ -67,8 +72,12 @@ bool RTCM3Decoder::decode(unsigned char* buffer, int bufLen)
        * else. */
       if((id >= 1057 && id <= 1068) || (id >= 1240 && id <= 1270))
       {
-        RTCM3coDecoder _coDecoder = RTCM3coDecoder(staID);
-        if(_coDecoder.decode(Message, BlockSize))
+        if(coDecoders.count(staID)==0)
+        {
+          coDecoders[staID] = new RTCM3coDecoder(staID);
+        }
+        RTCM3coDecoder* decoder = coDecoders[staID];
+        if(decoder->decode(Message, BlockSize))
         {
           decoded = true;
         }
@@ -258,13 +267,15 @@ bool RTCM3Decoder::decodeRTCM3GPS(unsigned char* data, int size)
     {
       // gps
       sat =  RinexSatID(sv, SatID::systemGPS);
+      currObs._prn = sat;
     }
     else
     {
       // sbas
-      sat = RinexSatID(sv-20, SatID::systemGeosync);
+      //sat = RinexSatID(sv-20, SatID::systemGeosync);
+        continue;
     }
-    currObs._prn = sat;
+
 
     t_frqObs *frqObs = new t_frqObs;
     GETBITS(code, 1);
@@ -441,6 +452,7 @@ bool RTCM3Decoder::decodeGPSEphemeris(unsigned char* data, int size)
       GETBITS(eph.fitint, 1);
 
       decoded = true;
+      //std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
       SIG_CENTER->newGPSEph(eph);
     } 
     return decoded;
