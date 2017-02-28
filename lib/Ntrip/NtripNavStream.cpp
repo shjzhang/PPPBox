@@ -29,6 +29,10 @@ NtripNavStream::NtripNavStream()
 }
 
 
+NtripNavStream::NtripNavStream(NtripNavStream &right):
+    m_eph(right.m_eph), m_ephTime(right.m_ephTime)
+{}
+
 void NtripNavStream::setEphPath(std::string &path)
 {
     if(!path.empty())
@@ -133,7 +137,10 @@ OrbitEph2* NtripNavStream::ephPrev(const std::string &prn)
         }
 
     }
-    return 0;
+    else
+    {
+        return 0;
+    }
 }
 
 void NtripNavStream::printEph(OrbitEph2 *eph)
@@ -208,7 +215,6 @@ bool NtripNavStream::putNewEph(OrbitEph2 *eph)
             delete qq.front();
             qq.pop_front();
         }
-
         return true;
     }
     else
@@ -228,16 +234,14 @@ void NtripNavStream::checkEphmeris(OrbitEph2 *eph)
     // Simple Check - check satellite radial distance
     // ----------------------------------------------
     Xvt sv;
-    double clkcorr;
     eph->dataLoadedFlag = true;
-    if(!eph->getCrd(eph->ctToc, sv, clkcorr, false))
+    if(!eph->getCrd(eph->ctToc, sv, false))
     {
         eph->setCheckState(OrbitEph2::bad);
         return;
     }
 
     double rr = sv.x.mag();
-
 
     const double MINDIST = 2.e7;
     const double MAXDIST = 6.e7;
@@ -247,7 +251,6 @@ void NtripNavStream::checkEphmeris(OrbitEph2 *eph)
         eph->setCheckState(OrbitEph2::bad);
         return;
     }
-
 
     // Check whether the epoch is too far away from the current time
     // --------------------------------------------------------
@@ -309,12 +312,11 @@ void NtripNavStream::checkEphmeris(OrbitEph2 *eph)
     if(ephL)
     {
         Xvt svL;
-        double clkcorrL;
-        ephL->getCrd(eph->ctToc, svL, clkcorrL, false);
+        ephL->getCrd(eph->ctToc, svL, false);
 
         double dt = eph->ctToc - ephL->ctToc;
         double diffX = (sv.x - svL.x).mag();
-        double diffC = fabs(clkcorr - clkcorrL) * C_MPS;
+        double diffC = fabs(sv.clkbias - svL.clkbias) * C_MPS;
 
         // some lines to allow update of ephemeris data sets after outage
         if(system == SatID::systemGPS && dt > 4*3600)
@@ -382,7 +384,8 @@ bool NtripNavStream::checkPrintEph(OrbitEph2* eph)
     }
     if(putNewEph(eph))
     {
-        std::cout << "write the ephmeris! " << std::endl;
+        std::cout << "Write the ephmeris for "
+                  << StringUtils::asString(eph->satID) << std::endl;
         printEph(eph);
     }
     return true;

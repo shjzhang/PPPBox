@@ -35,6 +35,7 @@ void t_clkCorr::writeEpoch(ostream* out, const list<t_clkCorr>& corrList)
     out->setf(ios::fixed);
     CommonTime epoTime;
     list<t_clkCorr>::const_iterator it;
+	cout << "Write the clkCorr for , " << (corrList.begin())->_staID << endl;
     for(it=corrList.begin();it!=corrList.end();++it)
     {
         const t_clkCorr& corr = *it;
@@ -117,7 +118,8 @@ void t_orbCorr::writeEpoch(ostream* out, const list<t_orbCorr>& corrList)
     out->setf(ios::fixed);
     CommonTime epoTime;
     list<t_orbCorr>::const_iterator it;
-    for(it=corrList.begin();it!=corrList.end();++it)
+    cout << "Write the orbCorr for , " << (corrList.begin())->_staID << endl;
+	for(it=corrList.begin();it!=corrList.end();++it)
     {
         const t_orbCorr& corr = *it;
         if (!(epoTime.getDays()!=0.0 || epoTime.getSecondOfDay()!=0.0))
