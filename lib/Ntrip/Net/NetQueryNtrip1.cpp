@@ -79,6 +79,7 @@ namespace gpstk
 	   if(TCPsocket)
 	   {
 		   //TCPsocket->abort();
+           cout << "Here stop the netQuery! ";
 		   TCPsocket->CloseSocket();;
 	   }
 	   status = finished;
@@ -113,8 +114,8 @@ namespace gpstk
        if(n==-1)
        {
            err = TCPsocket->getSocketError();
-           //status = init;
-           TCPsocket->CloseSocket();
+           status = init;
+           cout << "Socket receive error! Reconnect now." << endl;
            SocketRecvError e(getClassName() +": Socket receive error!");
            //GPSTK_THROW(e);
        }
@@ -171,15 +172,15 @@ namespace gpstk
        string port = url.getCasterPort();
 
        // connect to caster
-       delete TCPsocket;
        TCPsocket = new SocketLib();
+       cout << "Connect to " << url.getCasterHost() << ", " << url.getPath() << endl;
        TCPsocket->connectToHost(caster.c_str(),port.c_str());
 
        // judge whether timeout
        if( !TCPsocket->waitForConnected(timeOut) )
        {
            // if time out
-           cout << "For host " << url.getCasterHost() << ", ";
+           cout << "For host " << url.getCasterHost() << ", " << url.getPath() << ", ";
            cout << "connect time out:\t" << TCPsocket->getSocketError() << endl;
            TCPsocket->CloseSocket();
            delete TCPsocket;
@@ -279,7 +280,6 @@ namespace gpstk
                     "' is not found in the caster");
                GPSTK_THROW(e);
            }
-
        }
 
        /* http response */
@@ -291,6 +291,7 @@ namespace gpstk
            nbyte = 0;
            buff[0]='\0';
            status = init;
+           cout << "Here3 stop the netQuery! ";
            TCPsocket->CloseSocket();
        }
 
@@ -301,6 +302,7 @@ namespace gpstk
             nbyte=0;
             buff[0]='\0';
             status = init;
+            cout << "Here4 stop the netQuery! ";
             TCPsocket->CloseSocket();
 
             BufferOverflowError e(getClassName() + ": Response buffer overflow!");
