@@ -36,11 +36,11 @@ RTCM3Decoder::RTCM3Decoder(const string& staid)
 RTCM3Decoder::~RTCM3Decoder()
 {
     //delete _coDecoder;
-//    while(coDecoders.size()!=0)
-//    {
-//        delete (coDecoders.begin())->second;
-//        coDecoders.erase(coDecoders.begin());
-//    }
+    while(coDecoders.size()!=0)
+    {
+        delete (coDecoders.begin())->second;
+        coDecoders.erase(coDecoders.begin());
+    }
 }
 
 //
@@ -237,7 +237,8 @@ bool RTCM3Decoder::decodeRTCM3GPS(unsigned char* data, int size)
   GETBITS(i,30)
 
   currObsTime = setGPS(i);
-  if(currObsTime != currentTime)
+  if(currObsTime != currentTime && (currObsTime.getDays() != 0.0
+                        || currObsTime.getSecondOfDay() != 0.0) )
   {
     decoded = true;
     for(auto& obs:currentObsList)
@@ -258,12 +259,11 @@ bool RTCM3Decoder::decodeRTCM3GPS(unsigned char* data, int size)
     int sv, code, l1range, amb=0;
     t_satObs currObs;
     currObs._time = currObsTime;
-    CivilTime cv = CivilTime(currObsTime);
 
     RinexSatID sat;
 
     GETBITS(sv, 6);
-    if(sv < 40)
+    if(sv < 40 && sv != 0)
     {
       // gps
       sat =  RinexSatID(sv, SatID::systemGPS);
@@ -272,10 +272,9 @@ bool RTCM3Decoder::decodeRTCM3GPS(unsigned char* data, int size)
     else
     {
       // sbas
-      //sat = RinexSatID(sv-20, SatID::systemGeosync);
-        continue;
+      sat = RinexSatID(sv-20, SatID::systemGeosync);
+      currObs._prn = sat;
     }
-
 
     t_frqObs *frqObs = new t_frqObs;
     GETBITS(code, 1);
@@ -343,7 +342,11 @@ bool RTCM3Decoder::decodeRTCM3GPS(unsigned char* data, int size)
       }
       currObs._obs.push_back(frqObs);
     }
-    currentObsList.push_back(currObs);
+    // Only put the GPS obs but not sbas
+    if(currObs._prn.system==SatID::systemGPS)
+    {
+      currentObsList.push_back(currObs);
+    }
   }
 
   if(!syncf)
