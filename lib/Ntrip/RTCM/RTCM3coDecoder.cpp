@@ -231,23 +231,27 @@ void RTCM3coDecoder::sendResults() {
                             + _clkOrb.NumberOfSat[CLOCKORBIT_SATBDS];ii++)
   {
     SatID::SatelliteSystem sys = SatID::systemUnknown;
+    TimeSystem timeSys;
     char sysCh;
     int flag = 0;
     if      (ii < _clkOrb.NumberOfSat[CLOCKORBIT_SATGPS])
     {
       sys = SatID::systemGPS;
+      timeSys = TimeSystem::GPS;
       sysCh = 'G';
     }
     else if (ii >= CLOCKORBIT_OFFSETGLONASS &&
         ii < CLOCKORBIT_OFFSETGLONASS + _clkOrb.NumberOfSat[CLOCKORBIT_SATGLONASS])
     {
       sys = SatID::systemGlonass;
+      timeSys = TimeSystem::GLO;
       sysCh = 'R';
     }
     else if (ii >= CLOCKORBIT_OFFSETGALILEO &&
         ii < CLOCKORBIT_OFFSETGALILEO + _clkOrb.NumberOfSat[CLOCKORBIT_SATGALILEO])
     {
       sys = SatID::systemGalileo;
+      timeSys = TimeSystem::GAL;
       sysCh = 'E';
       flag = 1; // I/NAV clock has been chosen as reference clock for Galileo SSR corrections
     }
@@ -255,6 +259,7 @@ void RTCM3coDecoder::sendResults() {
         ii < CLOCKORBIT_OFFSETQZSS + _clkOrb.NumberOfSat[CLOCKORBIT_SATQZSS])
     {
       sys = SatID::systemQZSS;
+      timeSys = TimeSystem::QZS;
       sysCh = 'J';
     }
     else if (ii >= CLOCKORBIT_OFFSETSBAS &&
@@ -267,6 +272,7 @@ void RTCM3coDecoder::sendResults() {
         ii < CLOCKORBIT_OFFSETBDS + _clkOrb.NumberOfSat[CLOCKORBIT_SATBDS])
     {
       sys = SatID::systemBeiDou;
+      timeSys = TimeSystem::BDT;
       sysCh = 'C';
     }
     else
@@ -274,8 +280,9 @@ void RTCM3coDecoder::sendResults() {
       continue;
     }
 
-    SatID prn = SatID(_clkOrb.Sat[ii].ID, sys);
-    ClockOrbitType messageType = _clkOrb.messageType;
+    // Set time system
+    _lastTime.setTimeSystem(timeSys);
+
     // Orbit correction
     // ----------------
     if ( _clkOrb.messageType == COTYPE_GPSCOMBINED     ||
@@ -307,7 +314,6 @@ void RTCM3coDecoder::sendResults() {
 
       _orbCorrections[_lastTime].push_back(orbCorr);
 
-      SatID prn2 = orbCorr._prn;
       _IODs[orbCorr._prn] = _clkOrb.Sat[ii].IOD;
     }
 
@@ -333,13 +339,12 @@ void RTCM3coDecoder::sendResults() {
       clkCorr._staID      = _staID;
       clkCorr._time       = _lastTime;
       clkCorr._updateInt  = _clkOrb.UpdateInterval;
-      clkCorr._dClk       = _clkOrb.Sat[ii].Clock.DeltaA0;
-      clkCorr._dotDClk    = _clkOrb.Sat[ii].Clock.DeltaA1;
-      clkCorr._dotDotDClk = _clkOrb.Sat[ii].Clock.DeltaA2;
+      clkCorr._dClk       = _clkOrb.Sat[ii].Clock.DeltaA0 / gpstk::C_MPS;
+      clkCorr._dotDClk    = _clkOrb.Sat[ii].Clock.DeltaA1 / gpstk::C_MPS;
+      clkCorr._dotDotDClk = _clkOrb.Sat[ii].Clock.DeltaA2 / gpstk::C_MPS;
 
       _lastClkCorrections[clkCorr._prn] = clkCorr;
 
-      int cn = _IODs.count(clkCorr._prn);
       if (_IODs.count(clkCorr._prn)==1)
       {
         clkCorr._iod = _IODs[clkCorr._prn];
@@ -552,8 +557,9 @@ void RTCM3coDecoder::sendResults() {
 	  if(itOrb->first < _lastTime)
       {
 		//SIG_CENTER->newOrbCorr(itOrb->second);
-		std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
+        //std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
         t_orbCorr::writeEpoch(_out, itOrb->second);
+        SIG_CENTER->newOrbCorr(itOrb->second);
 		_orbCorrections.erase(itOrb);
 		continue;
       }
@@ -570,7 +576,8 @@ while(_clkCorrections.size() != 0)
 	  if(itClk->first < _lastTime)
       {
 		//SIG_CENTER->newOrbCorr(itClk->second);
-		std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
+        //std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
+        SIG_CENTER->newClkCorr(itClk->second);
         t_clkCorr::writeEpoch(_out, itClk->second);
 		_clkCorrections.erase(itClk);
 		continue;
