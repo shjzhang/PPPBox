@@ -48,6 +48,7 @@
 
 #include "GPSEphemeris2.hpp"
 #include "GPSEllipsoid.hpp"
+#include "ReferenceFrame.hpp"
 
 using namespace std;
 
@@ -78,7 +79,7 @@ namespace gpstk
 
    // Compute satellite position at the given time.
    // throw Invalid Request if the required data has not been stored.
-   bool GPSEphemeris2::svXvt(const CommonTime& t, Xvt& sv, double &clkcorr) const
+   bool GPSEphemeris2::svXvt(const CommonTime& t, Xvt& sv) const
    {
       if(!dataLoadedFlag)
          GPSTK_THROW(InvalidRequest("Data not loaded"));
@@ -220,12 +221,8 @@ namespace gpstk
       sv.v[1] = vyef;
       sv.v[2] = vzef;
 
-      // Compute the clock correction
-      double tc = t - ctToc;
-      clkcorr = af0 + af1*tc + af2*tc*tc;
-
       // Add the Relativistic Correction
-      clkcorr += sv.computeRelativityCorrection();
+      sv.clkbias += sv.computeRelativityCorrection();
 
       return true;
    }

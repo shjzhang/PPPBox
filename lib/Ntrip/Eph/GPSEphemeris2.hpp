@@ -88,7 +88,7 @@ namespace gpstk
          { return ura2accuracy(accuracyFlag); }
 
       /// Compute satellite position at the given time.
-      virtual bool svXvt(const CommonTime& t, Xvt& sv, double& clkcorr) const;
+      virtual bool svXvt(const CommonTime& t, Xvt& sv) const;
 
       /// adjustBeginningValidity determines the beginValid and endValid times.
       /// @throw Invalid Request if the required data has not been stored.
@@ -114,6 +114,9 @@ namespace gpstk
          fitDuration = getFitInterval(IODC, fitint);
          adjustValidity();
       }
+
+      /// Method to get ephmeris index of data
+      virtual unsigned int IOD() const{ return static_cast<unsigned int>(IODC); }
 
    // member data
       CommonTime transmitTime;   ///< Time of transmission

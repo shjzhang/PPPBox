@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <sstream>
 
+#include "GNSSconstants.hpp"
 #include "RinexSatID.hpp"
 #include "CivilTime.hpp"
 #include "satObs.hpp"
@@ -47,9 +48,9 @@ void t_clkCorr::writeEpoch(ostream* out, const list<t_clkCorr>& corrList)
                << corrList.size() << ' ' << corr._staID << endl;
         }
         *out << RinexSatID(corr._prn) << ' ' << setw(11) << corr._iod << ' '
-             << setw(10) << setprecision(4) << corr._dClk     << ' '
-             << setw(10) << setprecision(4) << corr._dotDClk  << ' '
-             << setw(10) << setprecision(4) << corr._dotDotDClk << endl;
+             << setw(10) << setprecision(4) << corr._dClk * gpstk::C_MPS << ' '
+             << setw(10) << setprecision(4) << corr._dotDClk  * gpstk::C_MPS << ' '
+             << setw(10) << setprecision(4) << corr._dotDotDClk  * gpstk::C_MPS<< endl;
     }
     out->flush();
 }
@@ -70,7 +71,6 @@ void t_clkCorr::readEpoch(const string& epoLine, istream& inStream, list<t_clkCo
   {
       t_clkCorr corr;
       string satsys;
-      int satnum;
       corr._time      = epoTime;
       corr._updateInt = updateInt;
       corr._staID     = staID;
@@ -87,9 +87,9 @@ void t_clkCorr::readEpoch(const string& epoLine, istream& inStream, list<t_clkCo
       /*if (corr._prn.system() == 'E') {
         corr._prn.setFlags(1);// I/NAV
       }*/
-      //corr._dClk       /= t_CST::c;
-      //corr._dotDClk    /= t_CST::c;
-      //corr._dotDotDClk /= t_CST::c;
+      corr._dClk       /= gpstk::C_MPS;
+      corr._dotDClk    /= gpstk::C_MPS;
+      corr._dotDotDClk /= gpstk::C_MPS;
 
       corrList.push_back(corr);
 

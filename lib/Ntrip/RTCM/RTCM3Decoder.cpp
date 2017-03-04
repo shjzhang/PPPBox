@@ -359,6 +359,7 @@ bool RTCM3Decoder::decodeRTCM3GPS(unsigned char* data, int size)
     //CurrentTime.reset();
     currentObsList.clear();
   }
+
   return decoded;
 }
 

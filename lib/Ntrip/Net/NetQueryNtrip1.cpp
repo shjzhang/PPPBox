@@ -179,12 +179,11 @@ namespace gpstk
        // judge whether timeout
        if( !TCPsocket->waitForConnected(timeOut) )
        {
-           // if time out
-           cout << "For host " << url.getCasterHost() << ", " << url.getPath() << ", ";
-           cout << "connect time out:\t" << TCPsocket->getSocketError() << endl;
-           TCPsocket->CloseSocket();
-           delete TCPsocket;
-           status = error;
+           // if time out, reconnect
+           cout << "For host " << url.getCasterHost() << ", " << url.getPath() << ", "
+                << "connect time out." << endl;
+           status = init;
+
            return;
        }
 

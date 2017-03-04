@@ -1,13 +1,14 @@
 #include <mutex>
 #include <fstream>
 #include <ctime>
+
 #include "NtripTask.h"
 #include "NetUrl.hpp"
 #include "NetQueryBase.hpp"
 #include "NetQueryNtrip1.hpp"
 #include "RTCM3Decoder.hpp"
 #include "StringUtils.hpp"
-
+#include "SignalCenter.hpp"
 
 //using namespace gpstk;
 
@@ -19,7 +20,6 @@ NtripTask::NtripTask()
     m_decoder = 0;
     m_sRnxPath = "./";
     m_dRnxVer = 3.01;
-    //m_prnLastEpo.clear();
 }
 
 NtripTask::~NtripTask()
@@ -29,11 +29,13 @@ NtripTask::~NtripTask()
 
 RTCMDecoder* NtripTask::decoder()
 {
-    if (m_decoder != 0) {
+    if (m_decoder != 0)
+    {
       return m_decoder;
     }
 
-    else {
+    else
+    {
       if (initDecoder() == true)
       {
           return m_decoder;
@@ -44,7 +46,7 @@ RTCMDecoder* NtripTask::decoder()
 
 bool NtripTask::initDecoder()
 {
-    m_decoder = 0;
+    //m_decoder = 0;
     string staID = m_MP.getMountPointID();
 
     NetUrl mntpntUrl = m_MP.getMountPointUrl();
@@ -57,6 +59,9 @@ bool NtripTask::initDecoder()
     {
         m_decoder = new RTCM3Decoder(staID);
     }
+
+     //sleep 0.1 sec
+    this_thread::sleep_for(chrono::milliseconds(100));
     m_decoder->initRinex(staID, mntpntUrl, lat, lon,
                          nmea, ntripVer);
     return true;
@@ -88,11 +93,6 @@ void NtripTask::run()
     {
         out.open(m_sRawOutFile.c_str(),ios::out|ios::binary);
     }
-    cout << "pid=" << this_thread::get_id() << " Host:" << tempURL.getCasterHost() << ",  ";
-    // get the start time
-    time_t start_time;
-    start_time = time(NULL);
-    cout<< "Start Time:" << start_time  << endl;
 
     while(1)
     {
@@ -138,31 +138,68 @@ void NtripTask::run()
                         continue;
                     }
                 }
+                free(data);
+                data = NULL;
 
                 // Loop over all observations (observations output)
                 // ------------------------------------------------
                 list<t_satObs>::iterator it = m_decoder->m_obsList.begin();
+
+                list<t_satObs> obsListHlp;
+
                 for(;it!=(m_decoder->m_obsList.end());++it)
                 {
                     const t_satObs& obs = *it;
-                    string prn = obs._prn.toString();
                     CommonTime obsTime = obs._time;
-                    /*
+                    string prn = obs._prn.toString();
+
+                    // Check observation epoch
+                    // -----------------------
+                    if(!m_bOutputRaw)
                     {
-                        map<string, CommonTime>::iterator mt = m_prnLastEpo.begin();
-                        for(;mt!=(m_prnLastEpo.end());++mt)
+                        SystemTime sysTime;
+                        CommonTime currTime(sysTime);
+                        currTime.setTimeSystem(obsTime.getTimeSystem());
+                        const double maxDt = 600.0;
+                        if (fabs(currTime - obsTime) > maxDt)
                         {
-                            CommonTime oldTime = m_prnLastEpo[prn];
-                            // observation coming more than once
-                            if( obsTime <= oldTime )
+                            cout << obs._staID << ": Wrong observation epoch(s)" << endl;
+                            continue;
+                        }
+                    }
+
+                    // Check observations coming twice (e.g. KOUR0 Problem)
+                    // ----------------------------------------------------
+                    if(!m_bOutputRaw)
+                    {
+                        map<string, CommonTime>::const_iterator it = m_prnLastEpoch.find(prn);
+                        if (it != m_prnLastEpoch.end())
+                        {
+                            CommonTime oldTime = it->second;
+                            if(obsTime <  oldTime)
                             {
+                                cout << obs._staID <<": old observation " << prn << endl;
+                                continue;
+                            }
+                            else if(obsTime == oldTime)
+                            {
+                                cout << obs._staID <<": observation coming more than once " << prn << endl;
                                 continue;
                             }
                         }
-                        m_prnLastEpo[prn] = obsTime;
-                    }*/
+                        m_prnLastEpoch[prn] = obsTime;
+                    }
+
                     string format = "RTCM_3";
                     m_decoder->dumpRinexEpoch(obs, format);
+
+                    // Save observations
+                    // -----------------
+                    obsListHlp.push_back(obs);
+                }
+                if(obsListHlp.size()>0)
+                {
+                    SIG_CENTER->newObs(m_MP.getMountPointID(), obsListHlp);
                 }
 
             }
@@ -170,6 +207,10 @@ void NtripTask::run()
             {
                 cout << e.what();
                 continue;
+            }
+            catch(Exception& e)
+            {
+                cout << "Error: " << e << endl;
             }
         }
     }

@@ -82,8 +82,8 @@ namespace gpstk
 
       /// Create a copy of this object and return a pointer to it. This function
       /// MUST be overridden in any derived class using the derived class name.
-      //virtual OrbitEph2* clone(void) const
-      //   { return new OrbitEph2(*this); }
+      virtual OrbitEph2* clone(void) const
+         { return new OrbitEph2(*this); }
 
       /// Returns true if the time, ct, is within the period of validity of
       /// this OrbitEph2 object.
@@ -128,7 +128,7 @@ namespace gpstk
       /// Adot and dndot variables are appropriately set to 0.0 by the 
       /// LNAV loaders.) 
       /// @throw Invalid Request if the required data has not been stored.
-      virtual bool svXvt(const CommonTime& t, Xvt& xvt, double& clkcorr) const=0;
+      virtual bool svXvt(const CommonTime& t, Xvt& xvt)const {return false;}
 
       /// Compute satellite relativity correction (sec) at the given time
       /// @throw Invalid Request if the required data has not been stored.
@@ -198,10 +198,13 @@ namespace gpstk
       /// @param  xvt  structure to store the satellite position
       /// @param  clkcorr  clock correction(unit: second)
       /// @param  useCorr  choice if use orbit or clock correction
-      bool getCrd(const CommonTime& t, Xvt& xvt, double& clkcorr, bool useCorr)const;
+      bool getCrd(const CommonTime& t, Xvt& xvt, bool useCorr)const;
 
       /// Judge if this ephmeris is newer than eph2
       bool isNewerThan(const OrbitEph2* eph2);
+
+      /// Method to get ephmeris index of data
+      virtual unsigned int IOD() const{;}
 
    // member data
      
@@ -244,7 +247,7 @@ namespace gpstk
 
    protected:
       // For real-time ephmeris data
-      SystemTime   receptDateTime; ///< the time for data receiving
+      CommonTime   receptTime;     ///< the time for data receiving
       e_checkState checkState;     ///< ephmeris state
       t_orbCorr*   orbCorr;        ///< orbit correction data
       t_clkCorr*   clkCorr;        ///< clock correction data

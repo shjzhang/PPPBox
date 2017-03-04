@@ -410,7 +410,7 @@ namespace gpstk {
    }
 
    // Get satellite position at the given time
-   bool OrbitEph2::getCrd(const CommonTime &t, Xvt &xvt, double& clkcorr, bool useCorr) const
+   bool OrbitEph2::getCrd(const CommonTime &t, Xvt &xvt, bool useCorr) const
    {
       if(checkState == bad)
       {
@@ -421,8 +421,10 @@ namespace gpstk {
                            60, 120, 240, 300, 600,
                            900, 1800, 3600, 7200, 10800};
 
-      svXvt(t,xvt,clkcorr);
-
+      if(!svXvt(t,xvt))
+      {
+          return false;
+      }
 
       if(useCorr)
       {
@@ -486,11 +488,13 @@ namespace gpstk {
                dtC -= (0.5 * updateInt[clkCorr->_updateInt]);
             }
 
-
-            clkcorr += (clkCorr->_dClk + clkCorr->_dotDClk * dtC
-                       + clkCorr->_dotDotDClk * dtC * dtC) / C_MPS;
+            // Correct the satellite clock bias
+            xvt.clkbias += clkCorr->_dClk + clkCorr->_dotDClk * dtC
+                           + clkCorr->_dotDotDClk * dtC * dtC;
+            return true;
          }
       } // end of 'if(useCorr)'
+      return true;
    }
 
 }  // end namespace

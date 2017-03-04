@@ -59,9 +59,9 @@ private:
 
       // RINEX file version
     double m_dRnxVer;
-      // Last epoch time record
-    /// ????????????????????????
-    //map<string,int> m_prnLastEpo;
+
+    // Observation prn and its epoch map
+    map<string, CommonTime> m_prnLastEpoch;
 };
 
 #endif
