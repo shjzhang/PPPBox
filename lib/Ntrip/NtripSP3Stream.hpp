@@ -7,6 +7,7 @@
 
 #include "CommonTime.hpp"
 #include "OrbitEphStore2.hpp"
+#include "RealTimeEphStore.hpp"
 #include "SP3Stream.hpp"
 #include "SP3Header.hpp"
 #include "SP3SatID.hpp"
@@ -48,25 +49,13 @@ public:
     void printSP3Ephmeris();
 
     /// Write SP3 file.
-    void writeFile(CommonTime& epoTime, std::string& prn, Xvt& sv);
-
-    /// Put ephmeris data
-    void putEphmeris(const OrbitEph2* eph);
-
-    /// New GPS ephmeris comes
-    void newGPSEph(GPSEphemeris2& eph);
-
-    /// New orbit correction comes
-    void newOrbCorr(std::list<t_orbCorr> orbCorr);
-
-    /// New clock correction comes
-    void newClkCorr(std::list<t_clkCorr> clkCorr);
+    void writeFile(CommonTime& epoTime, SatID &prn, Xvt& sv);
 
     /// Set the time of last clock correction
     void setLastClkCorrTime(CommonTime& time){ m_lastClkCorrTime = time;}
 
     /// Update the ephmeris store
-    void updateEphmerisStore(NtripNavStream* ephStore);
+    void updateEphmerisStore(RealTimeEphStore *ephStore);
 
 private:
 
@@ -75,7 +64,8 @@ private:
     std::string m_sFileName;        ///< File name
 
     NtripNavStream* m_ephStream;    ///< Ntrip ephmeris stream
-    std::ofstream m_outStream;      ///< Out file stram
+    RealTimeEphStore* m_ephStore;   ///< Ephemeris store
+    std::ofstream m_outStream;      ///< Out file stream
     SP3Stream   m_sp3Stream;        ///< SP3 stream
     SP3Header   m_header;           ///< SP3 header
     SP3Header::Version m_eSP3Ver;   ///< SP3 file version

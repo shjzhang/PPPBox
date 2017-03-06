@@ -12,6 +12,7 @@
 #include "NtripNavStream.hpp"
 #include "NtripSP3Stream.hpp"
 #include "NtripObsStream.hpp"
+#include "RealTimeEphStore.hpp"
 #include "PPPMain.hpp"
 
 using namespace std;
@@ -81,6 +82,7 @@ public:
     NtripObsStream* m_obsStream;             ///< Ntrip observation stream
     NtripNavStream* m_navStream;             ///< Ntrip ephmeris stream
     NtripSP3Stream* m_sp3Stream;             ///< Ntrip SP3 stream
+    RealTimeEphStore* m_ephStore;            ///< Ephemeris store
     std::string m_sCorrPath;                 ///< Path to save the correction data
 
     CommonTime m_lastClkCorrTime;            ///< Time of last clock correction

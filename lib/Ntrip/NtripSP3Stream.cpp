@@ -19,6 +19,7 @@ NtripSP3Stream::NtripSP3Stream()
     m_dSample = 10;
     setSavePath(m_sPath);
     m_ephStream = new NtripNavStream();
+    m_ephStore = new RealTimeEphStore();
 }
 
 NtripSP3Stream::~NtripSP3Stream()
@@ -123,7 +124,7 @@ void NtripSP3Stream::printHeader(const CommonTime& dateTime)
     return;
 }
 
-void NtripSP3Stream::writeFile(CommonTime& epoTime, string &prn, Xvt &sv)
+void NtripSP3Stream::writeFile(CommonTime& epoTime, SatID &prn, Xvt &sv)
 {
     // Assure the right second to output data
     GPSWeekSecond gws = GPSWeekSecond(epoTime);
@@ -163,7 +164,7 @@ void NtripSP3Stream::writeFile(CommonTime& epoTime, string &prn, Xvt &sv)
     }
 
     // Print the data
-    double sp3Clk = sv.clkbias * 1e6;  // Mayby has some wrong here.
+    double sp3Clk = sv.clkbias * 1e6;
     m_outStream << setiosflags(ios::fixed);
     m_outStream << "P" << prn
                 << std::setw(14) << std::setprecision(6) << sv.x[0] / 1000.0
@@ -182,14 +183,13 @@ void NtripSP3Stream::closeFile()
 
 void NtripSP3Stream::printSP3Ephmeris()
 {
-    std::list<std::string> prnList;
-    prnList = m_ephStream->getPrnList();
+    std::list<SatID> prnList;
+    prnList = m_ephStore->getSatList();
 
-    std::list<std::string>::iterator it;
+    std::list<SatID>::iterator it;
     for(it=prnList.begin();it!=prnList.end();++it)
     {
-        std::string prn = *it;
-        m_eph = m_ephStream->ephLast(prn);
+        m_eph = (OrbitEph2*)m_ephStore->ephLast(*it);
 
         if(m_eph == 0)
         {
@@ -204,22 +204,11 @@ void NtripSP3Stream::printSP3Ephmeris()
 
             // Get the satellite position and clock correction
             bool useCorr = true;
-            ephGPS->dataLoadedFlag = true;;
-            ephGPS->getCrd(m_lastClkCorrTime,xvt,useCorr);
-            //PositionRecord position;
-            //ClockRecord clk;
+            ephGPS->getCrd(m_lastClkCorrTime, xvt, useCorr);
 
-            ///////////////////////////
-            // Here is a Test:
             // Output the data to SP3 file
-            ///////////////////////////
-            writeFile(m_lastClkCorrTime,prn,xvt);
+            writeFile(m_lastClkCorrTime, *it, xvt);
 
-    //        position.Pos = xvt.getPos();
-    //        clk.bias = clkcorr;
-    //        sp3EphStore.rejectBadPositions(true);
-    //        sp3EphStore.addPositionRecord(sat, time, position);
-    //        sp3EphStore.addClockRecord(sat, time, clk);
         }
         else
         {
@@ -228,103 +217,10 @@ void NtripSP3Stream::printSP3Ephmeris()
     }
 }
 
-void NtripSP3Stream::newGPSEph(GPSEphemeris2& eph)
+
+void NtripSP3Stream::updateEphmerisStore(RealTimeEphStore *ephStore)
 {
-    std::lock_guard<std::mutex> guard(m_mutex);
-    this->putEphmeris(&eph);
-}
-
-void NtripSP3Stream::putEphmeris(const OrbitEph2 *eph)
-{
-    OrbitEph2* newEph = 0;
-    const GPSEphemeris2* ephGPS = dynamic_cast<const GPSEphemeris2*>(eph);
-    if(ephGPS)
-    {
-        newEph = new GPSEphemeris2(*ephGPS);
-    }
-    else
-    {
-    }
-
-    if(m_ephStream)
-    {
-        m_ephStream->putNewEph(newEph);
-    }
-    else
-    {
-        // Wrong ephmeris data
-    }
-}
-
-void NtripSP3Stream::newOrbCorr(list<t_orbCorr> orbCorr)
-{
-    if(orbCorr.size() == 0)
-    {
-        return;
-    }
-
-    list<t_orbCorr>::iterator it = orbCorr.begin();
-//    if(m_bRealTime)
-//    {
-//        if(m_sCorrMount.empty() || m_sCorrMount != it->_staID)
-//        {
-//            return;
-//        }
-//    }
-
-    for(;it!=orbCorr.end();++it)
-    {
-        string prn = asString(it->_prn);
-        OrbitEph2* ephLast = m_ephStream->ephLast(prn);
-        OrbitEph2* ephPrev = m_ephStream->ephPrev(prn);
-        if(ephLast && ephLast->IOD() == it->_iod)
-        {
-          ephLast->setOrbCorr(&(*it));
-        }
-        else if (ephPrev && ephPrev->IOD() == it->_iod)
-        {
-          ephPrev->setOrbCorr(&(*it));
-        }
-    }
-    return;
-}
-
-void NtripSP3Stream::newClkCorr(list<t_clkCorr> clkCorr)
-{
-    if(clkCorr.size() == 0)
-    {
-        return;
-    }
-
-    list<t_clkCorr>::iterator it = clkCorr.begin();
-//    if(m_bRealTime)
-//    {
-//        if(m_sCorrMount.empty() || m_sCorrMount != it->_staID)
-//        {
-//            return;
-//        }
-//    }
-
-    for(;it!=clkCorr.end();++it)
-    {
-        string prn = asString(it->_prn);
-        OrbitEph2* ephLast = m_ephStream->ephLast(prn);
-        OrbitEph2* ephPrev = m_ephStream->ephPrev(prn);
-        if(ephLast && ephLast->IOD() == it->_iod)
-        {
-          ephLast->setClkCorr(&(*it));
-        }
-        else if (ephPrev && ephPrev->IOD() == it->_iod)
-        {
-          ephPrev->setClkCorr(&(*it));
-        }
-    }
-    return;
-}
-
-void NtripSP3Stream::updateEphmerisStore(NtripNavStream *ephStore)
-{
-    m_ephStream = new NtripNavStream(*ephStore);
+    m_ephStore = new RealTimeEphStore(*ephStore);
 }
 
 NtripSP3Stream& operator>>(NtripSP3Stream& sp3Stream,

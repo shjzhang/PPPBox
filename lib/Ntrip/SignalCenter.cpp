@@ -18,8 +18,9 @@ SignalCenter::SignalCenter()
     m_sCorrPath = ".";
     m_navStream = new NtripNavStream();
     m_sp3Stream = new NtripSP3Stream();
+    m_ephStore = new RealTimeEphStore();
     m_pppMain = new PPPMain();
-    m_dOutWait = 2.0;
+    m_dOutWait = 5.0;
     m_bWriteAllSta = true;
     reopenObsOutFile();
 }
@@ -29,6 +30,7 @@ SignalCenter::~SignalCenter()
     delete m_obsStream;
     delete m_navStream;
     delete m_sp3Stream;
+    delete m_ephStore;
     delete m_pppMain;
     m_obsOutStream->close();
     delete m_obsOutStream;
@@ -77,8 +79,8 @@ void SignalCenter::newGPSEph(GPSEphemeris2& eph)
 {
     std::cout << ", New GPS ephmeris! " << std::endl;
     //std::lock_guard<std::mutex> guard(m_gpsEphMutex);
-    //m_navStream->putNewEph(&eph);
-    writeGPSEph(&eph);
+    m_ephStore->putNewEph(&eph, true);
+    m_navStream->addNewEph(&eph, true);
 }
 
 void SignalCenter::newOrbCorr(list<t_orbCorr> orbCorr)
@@ -100,9 +102,8 @@ void SignalCenter::newOrbCorr(list<t_orbCorr> orbCorr)
     }
     for(;it!=orbCorr.end();++it)
     {
-        string prn = asString(it->_prn);
-        OrbitEph2* ephLast = m_navStream->ephLast(prn);
-        OrbitEph2* ephPrev = m_navStream->ephPrev(prn);
+        OrbitEph2* ephLast = (OrbitEph2*)m_ephStore->ephLast(it->_prn);
+        OrbitEph2* ephPrev = (OrbitEph2*)m_ephStore->ephPrev(it->_prn);
         if(ephLast && ephLast->IOD() == it->_iod)
         {
           ephLast->setOrbCorr(&(*it));
@@ -112,7 +113,7 @@ void SignalCenter::newOrbCorr(list<t_orbCorr> orbCorr)
           ephPrev->setOrbCorr(&(*it));
         }
     }
-    m_sp3Stream->updateEphmerisStore(m_navStream);
+    m_sp3Stream->updateEphmerisStore(m_ephStore);
     return;
 }
 
@@ -136,9 +137,8 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
 
     for(;it!=clkCorr.end();++it)
     {
-        string prn = asString(it->_prn);
-        OrbitEph2* ephLast = m_navStream->ephLast(prn);
-        OrbitEph2* ephPrev = m_navStream->ephPrev(prn);
+        OrbitEph2* ephLast = (OrbitEph2*)m_ephStore->ephLast(it->_prn);
+        OrbitEph2* ephPrev = (OrbitEph2*)m_ephStore->ephPrev(it->_prn);
         if(ephLast && ephLast->IOD() == it->_iod)
         {
           ephLast->setClkCorr(&(*it));
@@ -151,7 +151,7 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
     }
     std::cout << "New ClkCorr at time -> " << m_lastClkCorrTime.asString() << std::endl;
     m_sp3Stream->setLastClkCorrTime(m_lastClkCorrTime);
-    m_sp3Stream->updateEphmerisStore(m_navStream);
+    m_sp3Stream->updateEphmerisStore(m_ephStore);
     writeSP3File();
     return;
 }
@@ -159,7 +159,7 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
 
 void SignalCenter::writeGPSEph(GPSEphemeris2* eph)
 {
-    m_navStream->checkPrintEph(eph);
+
 }
 
 void SignalCenter::writeSP3File()

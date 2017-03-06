@@ -103,11 +103,6 @@ public:
     /// Method that will really process information
     void process();
 
-    void newOrbCorr(list<t_orbCorr> orbCorr);
-
-    void newClkCorr(list<t_clkCorr> clkCorr);
-
-    void newObs(string& staID, list<t_satObs> obsList);
 
 private:
 
