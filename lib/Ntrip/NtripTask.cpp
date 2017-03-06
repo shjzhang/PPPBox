@@ -67,7 +67,7 @@ bool NtripTask::initDecoder()
     return true;
 }
 
-void NtripTask::run()
+bool NtripTask::run()
 {
     string tempVersion = m_MP.getNtripVersion();
     int tempNmeaFlag = m_MP.getnmeaFlag();
@@ -109,7 +109,7 @@ void NtripTask::run()
                 query->startRequest(tempURL,"");
                 if (query->getStatus() == NetQueryBase::error)
                 {
-                    return;
+                    return false;
                 }
                 if(m_bOutputRaw)
                 {
@@ -205,8 +205,8 @@ void NtripTask::run()
             }
             catch(MountPointNotFound& e)
             {
-                cout << e.what();
-                continue;
+                cout << e.what() << endl;
+                return false;
             }
             catch(Exception& e)
             {
@@ -215,8 +215,6 @@ void NtripTask::run()
         }
     }
     out.close();
-    time_t end_time;
-    end_time = time(NULL);
-    cout<< "End Time:" << end_time  << endl;
+    return true;
 }
 

@@ -13,7 +13,7 @@ public:
     ~PPPTask();
 
     /// Run the task
-    virtual void run();
+    virtual bool run();
 
     /// Set real-time flag
     void setRealTimeFlag(bool flag){m_bRealTime = flag;}

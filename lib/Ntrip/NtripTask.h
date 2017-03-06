@@ -23,7 +23,7 @@ public:
 
 public:
 
-	virtual void run();
+    virtual bool run();
 	void setMountPoint(MountPoint pt ){m_MP = pt;}
     void setRawOutOpt(bool output) {m_bOutputRaw = output;}
     void setRawOutFile(string& file){m_sRawOutFile = file;}

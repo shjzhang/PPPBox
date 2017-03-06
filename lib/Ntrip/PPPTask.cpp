@@ -11,7 +11,7 @@ PPPTask::~PPPTask()
 {
 }
 
-void PPPTask::run()
+bool PPPTask::run()
 {
     try
     {
@@ -28,6 +28,7 @@ void PPPTask::run()
     {
 
     }
+    return false;
 }
 
 void PPPTask::processFiles()

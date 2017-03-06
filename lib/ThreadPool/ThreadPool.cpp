@@ -36,7 +36,7 @@ TaskBase* ThreadPool::popTask(){
 	return pTask;
 }
 
-void ThreadPool::run(){
+bool ThreadPool::run(){
 	m_threadLocker.lock();
 	WorkThread* wThread = *(m_threadQueue.begin());
 	TaskBase* pTask = this->popTask();
@@ -46,6 +46,7 @@ void ThreadPool::run(){
 		wThread->setTask(pTask);
 	}
 	m_threadLocker.unlock();
+    return true;
 }
 
 void ThreadPool::onStart(){

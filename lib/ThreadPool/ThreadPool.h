@@ -26,7 +26,7 @@ public:
 
 public:
 
-	virtual void run();
+    virtual bool run();
 
 public:
 
