@@ -1,13 +1,9 @@
 #include <vector>
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 
 #include "NtripObsStream.hpp"
-#include "NtripToolVersion.hpp"
-#include "StringUtils.hpp"
-#include "SystemTime.hpp"
-#include "FileUtils.hpp"
-#include "FileSpec.hpp"
 
 using namespace StringUtils;
 
@@ -74,6 +70,11 @@ void NtripObsStream::resolveFileName(CommonTime &dateTime)
     m_sFileName = m_sRnxPath + ID4 + doy + hStr + "." + yy + "O";
 }
 
+void NtripObsStream::setStaInfo(const t_staInfo &staInfo)
+{
+    m_staInfo = staInfo;
+}
+
 // Save the RINEX header
 ///////////////////////////////////////////////////////////
 void NtripObsStream::saveHeader()
@@ -90,12 +91,27 @@ void NtripObsStream::saveHeader()
     m_rinexOpt.setFileType(fileType);
     m_rinexOpt.setNavSys(navSys);
     m_rinexOpt.setFreqType(freqType);
-    m_rinexOpt.setObsType(obsType);
+    //m_rinexOpt.setObsType(obsType);
     m_rinexOpt.setMarkerName(m_sStatID);
     m_rinexOpt.setPrgName(m_sPrgmName);
     m_rinexOpt.setRunBy(m_sUserName);
 
     m_rinexOpt.getRnxObsHeader(m_header);
+
+    m_header.antennaDeltaXYZ = Triple(m_staInfo.del[0],
+                                      m_staInfo.del[1],
+                                      m_staInfo.del[2]);
+    m_header.antennaPosition = Triple(m_staInfo.pos[0],
+                                      m_staInfo.pos[1],
+                                      m_staInfo.pos[2]);
+    //m_header.recNo = m_staInfo.rcvNum;
+    m_header.recType = m_staInfo.rcvDes;
+    m_header.antType = m_staInfo.antDes;
+    m_header.antNo = m_staInfo.antNum;
+    if(m_header.antennaPosition.mag() != 0.0)
+    {
+        m_header.valid |= Rinex3ObsHeader::validAntennaPosition;
+    }
 
     m_bHeaderSaved = true;
 }
@@ -181,8 +197,7 @@ void NtripObsStream::dumpEpoch(const string &format, const CommonTime &maxTime)
         return;
     }
 
-    m_obsList.clear();
-    int ss = m_obsList.size();
+    m_obsList.erase(m_obsList.begin(),--(m_obsList.end()));
     // Time of Epoch
     const t_satObs& fObs = *(obsList.begin());
 
@@ -193,70 +208,8 @@ void NtripObsStream::dumpEpoch(const string &format, const CommonTime &maxTime)
     }
     if(!m_bHeaderWritten) return;
 
-    Rinex3ObsData rnxObsData;
-    rnxObsData.time = fObs._time;
-    rnxObsData.numSVs = obsList.size();
-    rnxObsData.epochFlag = 0;
-
-    // loop over all satellites
-    for(it = obsList.begin();it!=obsList.end();++it)
-    {
-        const t_satObs& satObs = *it;
-        // get the satellite ID
-        RinexSatID prn = satObs._prn;
-        std::vector<RinexSatID> satIndex;
-        satIndex.push_back(satObs._prn);
-        std::string sys = asString(satObs._prn.systemChar());
-        int freqNum = satObs._obs.size();
-        int typeSize  = m_header.mapObsTypes[sys].size();
-
-        // loop over all frequencies
-        std::vector<RinexDatum> data;
-        for(int i = 0; i < freqNum; ++i)
-        {
-            const t_frqObs* frqObs = satObs._obs[i];
-            // loop over all types
-            for(int j = 0; j < typeSize; ++j)
-            {
-                std::string type = m_header.mapObsTypes[sys][j].asString(); /// occurs bug
-                RinexDatum tempData;
-                if(frqObs == 0)
-                {
-                    continue;
-                }
-                if(type.substr(1) != frqObs->_rnxType2ch)
-                {
-                    data.push_back(tempData);
-                    continue;
-                }
-                if(type[0] == 'C' && frqObs->_codeValid)
-                {
-                    tempData.data = frqObs->_code;
-                }
-                else if(type[0] == 'L' && frqObs->_phaseValid)
-                {
-                    tempData.data = frqObs->_phase;
-                    if(frqObs->_slip)
-                    {
-                        tempData.lli |= 1;
-                    }
-                }
-                else if(type[0] == 'D' && frqObs->_dopplerValid)
-                {
-                    tempData.data = frqObs->_doppler;
-                }
-                else if(type[0] == 'S' &&  frqObs->_snrValid)
-                {
-                    tempData.data = frqObs->_snr;
-                }
-                data.push_back(tempData);
-            }
-        }
-        rnxObsData.obs[prn] = data;
-    }
-
+    Rinex3ObsData rnxObsData = convertToRinexObsData(obsList, m_header);
     m_outStream << rnxObsData;
     m_outStream.flush();
 }
-
 
