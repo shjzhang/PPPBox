@@ -9,55 +9,14 @@
 #include <iostream>
 #include <fstream>
 
+#include "WorkThread.h"
 #include "PPPTask.hpp"
 #include "CommonTime.hpp"
-#include "satObs.hpp"
-#include "BasicFramework.hpp"
-#include "ProcessingList.hpp"
-#include "BasicModel.hpp"
-#include "TropModel.hpp"
-#include "DataStructures.hpp"
-#include "RequireObservables.hpp"
-#include "SimpleFilter.hpp"
-#include "PPPExtendedKalmanFilter.hpp"
-#include "XYZ2NEU.hpp"
-#include "LICSDetector.hpp"
-#include "MWCSDetector.hpp"
-#include "SolidTides.hpp"
-#include "OceanLoading.hpp"
-#include "PoleTides.hpp"
-#include "CorrectObservables.hpp"
-#include "Antenna.hpp"
-#include "AntexReader.hpp"
-#include "ComputeWindUp.hpp"
-#include "ComputeSatPCenter.hpp"
-#include "ComputeTropModel.hpp"
-#include "ComputeLinear.hpp"
-#include "LinearCombinations.hpp"
-#include "ComputeDOP.hpp"
-#include "SatArcMarker.hpp"
-#include "SatArcMarker2.hpp"
-#include "GravitationalDelay.hpp"
-#include "PhaseCodeAlignment.hpp"
-#include "EclipsedSatFilter.hpp"
-#include "Decimate.hpp"
-#include "SolverPPP.hpp"
-#include "SolverPPPFB.hpp"
-#include "SolverPPPPredict.hpp"
-#include "SolverPPPCorrect.hpp"
-   // class to get an initial guess of GPS receiver's position
-#include "Bancroft.hpp"
-#include "MWFilter.hpp"
-#include "ConfDataReader.hpp"
-#include "ComputeElevWeights.hpp"
-#include "MSCStore.hpp"
-#include "CC2NONCC.hpp"
-#include "RecTypeDataReader.hpp"
-#include "NtripNavStream.hpp"
 
 using namespace std;
 using namespace gpstk;
 using namespace gpstk::StringUtils;
+
 
 
 class PPPMain
@@ -76,69 +35,45 @@ public:
     /// Stop the PPP process
     void stop();
 
-    /// Method to print solution values
-    void printSolution( ofstream& outfile,
-                        const  SolverLMS& solver,
-                        const  CommonTime& time,
-                        const  ComputeDOP& cDOP,
-                        bool   useNEU,
-                        int    numSats,
-                        double dryTropo,
-                        int    precision = 3 );
+    /// Set the time of last clock correction
+    void setLastClkCorrTime(CommonTime& time)
+    { m_pppTask->setLastClkCorrTime(time); }
 
+    /// Set real-time flag
+    void setRealTimeFlag(bool flag)
+    {  m_pppTask->setRealTimeFlag(flag);  }
 
-    /// Method to print model values
-    void printModel( ofstream& modelfile,
-                     const gnssRinex& gData,
-                     int   precision = 4 );
+    /// Set the correction mountpoint
+    void setCorrMount(string mntpnt)
+    {  m_pppTask->setCorrMount(mntpnt); }
 
-    /// Set the configuration file
-    void setConfFile(string& confFile) {m_sConfFile = confFile;}
+    /// Set the file name of EOP files list
+    void setEOPFileListName(string& eopListFile)
+    {  m_pppTask->setEOPFileListName(eopListFile); }
 
-    void setEOPFileListName(string& eopListFile) {m_sEopFileListName = eopListFile;}
-
-    /// Method that hold code to be run BEFORE processing
-    void spinUp();
-
-    /// Method that will really process information
-    void process();
-
+    /// New obs
+    void newObs(StaObsMap& staObsMap)
+    {
+        m_pppTask->newObs(staObsMap);
+    }
 
 private:
 
-    /// Epoch and satellite observation data classs
-    class EpochData
-    {
-    public:
-        EpochData() {;}
-        ~EpochData()
-        {
-            for (unsigned i = 0; i < satObs.size(); i++)
-            {
-              delete satObs[i];
-            }
-        }
-
-        CommonTime time;                ///< Epoch
-        vector<t_satObs*> satObs;       ///< satellite observation
-    };
-
-    /// Read the options
+    /// Read the PPP options
     void readOptions();
 
     /// Wait for the corrections data
-    bool waitForCorr(const CommonTime& epoTime) const;
+    //bool waitForCorr(const CommonTime& epoTime) const;
 
     mutex m_mutex;                      ///< Mutex
-    deque<EpochData*> m_epoData;        ///< Epoch observation data
     CommonTime m_lastClkCorrTime;       ///< Time of last clock correction
-    PPPTask* m_pppTask;                 ///< PPP Task
+    PPPTask* m_pppTask;                 ///< PPP task
+    WorkThread* m_pppThread;            ///< PPP thread
 
-    ConfDataReader m_confReader;        ///< Configuration file reader
     string m_sConfFile;                 ///< Configuration file name
     string m_sEopFileListName;          ///< File Name of EOP data files list
 
-    NtripNavStream* m_eph;              ///< Ephmeris user
+    //NtripNavStream* m_eph;              ///< Ephmeris user
     bool m_bRunning;                    ///< If the ppp process is running
     double m_dCorrWaitTime;             ///< Time of correction stream waiting (sec)
     string m_sCorrMount;                ///< Name of the correction mountpoint

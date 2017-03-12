@@ -13,7 +13,7 @@
 
 using namespace std;
 using namespace gpstk;
-class RTCM3Decoder:public RTCMDecoder
+class RTCM3Decoder : public RTCMDecoder
 {
 public:
 
@@ -205,6 +205,8 @@ private:
   *  {@link GetMessage()} call
   */
  size_t BlockSize;
+
+ //t_staInfo m_sta;
 
  /**
   * Current observation epoch. Used to link together blocks in one epoch.

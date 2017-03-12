@@ -29,7 +29,7 @@
 //============================================================================
 
 // Using Ntrip to retrive and decode real-time streams from IGS/EUREF
-// The preliminary test just considers the only format rtcm3 and outputs the 
+// The preliminary test just considers the only format rtcm3 and outputs the
 // retrived streams to the screen!
 
 #include <iostream>
@@ -39,19 +39,19 @@
 #include <signal.h>
 #include <thread>
 
-	/// Class to define the version of NtripTool
+    /// Class to define the version of NtripTool
 #include "NtripToolVersion.hpp"
 
-	/// Class to read configuration files
+    /// Class to read configuration files
 #include "ConfDataReader.hpp"
 
-	/// Class to define the structure of URL
+    /// Class to define the structure of URL
 #include "NetUrl.hpp"
 
-	/// Class to define the structure of mountpoint
+    /// Class to define the structure of mountpoint
 #include "MountPoint.hpp"
 
-	///	Class to store mountpoints
+    ///	Class to store mountpoints
 #include "ReadMountPoints.hpp"
 
 // Class to handle socket
@@ -63,7 +63,7 @@
 
 #include "SourceTableReader.hpp"
 
-	/// Class to hand c++ string
+    /// Class to hand c++ string
 #include "StringUtils.hpp"
 
 #include "YDSTime.hpp"
@@ -74,6 +74,7 @@
 
 #include "FileSpec.hpp"
 
+#include "SignalCenter.hpp"
 
 
 using namespace gpstk;
@@ -86,7 +87,7 @@ using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void catch_signal(int) 
+void catch_signal(int)
 {
     cout << "Program Interrupted by Ctrl-C" << endl;
     exit(1);
@@ -172,7 +173,7 @@ int main( int argc, char* argv[] )
 
     // open and parse configuration file
     ConfDataReader ntripConf;
-	
+
     //	check whether the user has provided a configuration file
     if(! ConfFileName.empty())
     {
@@ -335,15 +336,15 @@ int main( int argc, char* argv[] )
     } // end of "loop all the casters"
 
     //////////////////////// thread ////////////////////////////////////
-	
-    ThreadPool* pTP = ThreadPool::create(15);
+
+    ThreadPool* pTP = ThreadPool::create(5);
 
     pTP->onStart();
 
     // get the map
     map<string,MountPoint> mntPointsMap = ReadmntPoints.getMountPointMap();
 
-	
+
     // Loop through MountPointsMap
     map<string,MountPoint>::iterator itmnt;
 
@@ -366,7 +367,9 @@ int main( int argc, char* argv[] )
         pTask->setRawOutOpt(outputRaw);
         pTP->pushTask(pTask);
     } // end for
-  
+
+    SIG_CENTER->startPPP();
+
     char key = ' ';
 
     while( key != 'q' )

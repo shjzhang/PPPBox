@@ -20,6 +20,19 @@ namespace gpstk
         m_dAppPos[0] = m_dAppPos[1] = m_dAppPos[2] = 0.0;
         m_dAntDel[0] = m_dAntDel[1] = m_dAntDel[2] = 0.0;
 
+        defaultObsType();
+    }
+
+    void RinexObsOpt::defaultObsType()
+    {
+        std::string gpsObsType[9] = {"C1C", "L1C","S1C",
+                                     "C1W", "L1W","S1W",
+                                     "C2W", "L2W","S2W"};
+        for(int i=0; i!=9; ++i)
+        {
+            RinexObsID ro(gpsObsType[i]);
+            m_mapObsTypes["G"].push_back(ro);
+        }
     }
 
 
@@ -59,7 +72,6 @@ namespace gpstk
         header.firstObs = m_firstObsTime;
         header.lastObs = m_lastObsTime;
 
-        this->makeObsType();
         header.mapObsTypes = m_mapObsTypes;
     }
 
@@ -106,8 +118,8 @@ namespace gpstk
         /* supported codes by rtcm3 */
         std::string trackingCode_GPS[5] = {"1C","1W","2W","2X","5X"};
         std::string trackingCode_GLO[2] = {"C","P"};
-        std::string trackingCode_Gal    = {"X"};
-        std::string trackingCode_BDS    = {"I"};
+        //std::string trackingCode_Gal    = "X";
+        std::string trackingCode_BDS    = "I";
 
         // get frequencies
         if ((m_iFreqType & FREQTYPE_L1) == FREQTYPE_L1)

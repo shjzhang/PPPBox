@@ -94,17 +94,7 @@ void NtripNavStream::printEphHeader()
     std::string utcTime = CivilTime(comTime).printf("%Y%02m%02d %02H%02M%02S") +
             " UTC";
 
-    // Append to existing file and return
-    // ----------------------------------
-    if(FileUtils::fileAccessCheck(m_sFileName))
-    {
-        m_ephStream.open(m_sFileName.c_str(), std::ios::app);
-        m_bHeaderWritten = true;
-    }
-    else
-    {
-        m_ephStream.open(m_sFileName.c_str(), std::ios::out);
-    }
+    m_ephStream.open(m_sFileName.c_str(), std::ios::out);
 
     Rinex3NavHeader header;
     header.fileAgency = userName;

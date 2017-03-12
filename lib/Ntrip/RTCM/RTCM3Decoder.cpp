@@ -18,8 +18,6 @@
 
 // #include <stdint.h> //uint64_t,UINT_LEAST64_MAX的定义场所。
 
-// RTCM station information
-RTCMDecoder::t_staInfo m_sta;
 
 RTCM3Decoder::RTCM3Decoder()
 {
@@ -258,6 +256,7 @@ bool RTCM3Decoder::decodeRTCM3GPS(unsigned char* data, int size)
   {
     int sv, code, l1range, amb=0;
     t_satObs currObs;
+    currObs._staID = staID;
     currObs._time = currObsTime;
 
     RinexSatID sat;
@@ -456,8 +455,9 @@ bool RTCM3Decoder::decodeGPSEphemeris(unsigned char* data, int size)
       GETBITS(eph.fitint, 1);
 
       decoded = true;
-      //std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
+
       SIG_CENTER->newGPSEph(eph);
+
     } 
     return decoded;
 }
@@ -553,6 +553,7 @@ bool RTCM3Decoder::decodeAntenna(unsigned char* data, int size)
         }
       }
     }
+    m_rnx->setStaInfo(m_sta);
     return true;
 }
 
@@ -590,16 +591,16 @@ bool RTCM3Decoder::decodeAntennaPosition(unsigned char* data, int size)
     GETBITSSIGN(z, 38);
 
 
-    m_sta.pos[0] = x;
-    m_sta.pos[1] = y;
-    m_sta.pos[2] = z;
+    m_sta.pos[0] = x / 10000.0;
+    m_sta.pos[1] = y / 10000.0;
+    m_sta.pos[2] = z / 10000.0;
     if(type == 1006)
     {
       double h;
       GETBITS(h, 16);
-      m_sta.height = h;
+      m_sta.height = h / 10000.0;
     }
-
+    m_rnx->setStaInfo(m_sta);
     return true;
 }
 
@@ -666,5 +667,7 @@ bool RTCM3Decoder::decodeRcvAnt(unsigned char* data, int size)
       memcpy(m_sta.rcvNum, rcvSerialNum, strNum);
       m_sta.antNum[strNum] = 0;
     }
+    m_rnx->setStaInfo(m_sta);
+    return true;
 }
 

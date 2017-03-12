@@ -6,18 +6,31 @@
 #include <map>
 #include <mutex>
 #include <condition_variable>
+#include <functional>
+#include <future>
+#include <exception>
 #include <fstream>
 
+#include "NtripObsStream.hpp"
 #include "GPSEphemeris2.hpp"
 #include "NtripNavStream.hpp"
 #include "NtripSP3Stream.hpp"
-#include "NtripObsStream.hpp"
 #include "RealTimeEphStore.hpp"
-#include "PPPMain.hpp"
 
 using namespace std;
 using namespace gpstk;
 
+// Epoch observation map type
+typedef std::map<CommonTime,std::list<t_satObs> > EpochObsMap;
+
+// Station obslist map valuse
+typedef std::map<std::string, std::list<t_satObs> > StaObsMap;
+
+
+class PPPMain;
+//class PPPTask;
+
+// Class "SignalCenter"
 class SignalCenter
 {
 public:
@@ -31,7 +44,7 @@ public:
     static SignalCenter* instance();
 
     /// New observation data comes
-    void newObs(const string& staID, list<t_satObs> obsList);
+    void newObs(list<t_satObs> obsList);
 
     /// New GPS ephmeris data comes
     void newGPSEph(GPSEphemeris2& eph);
@@ -70,14 +83,14 @@ public:
 
 public:
     mutex m_obsMutex;                        ///< Mutex for observation data
+    mutex m_allObsMutex;                        ///< Mutex for observation data
     mutex m_gpsEphMutex;                     ///< Mutex for gps ephmeris data
     mutex m_orbCorrMutex;                    ///< Mutex for orbit correction data
     mutex m_clkCorrMutex;                    ///< Mutex for clock correction data
 
-    condition_variable m_condObsDecoded;     ///< condition variable for obs data
-    condition_variable m_condGPSEphDecoded;  ///< condition variable for gps eph data
-    condition_variable m_condOrbCorrDecoded; ///< condition variable for orb corr data
-    condition_variable m_condClkCorrDecoded; ///< condition variable for clk corr data
+    condition_variable m_condObsReady;       ///< condition variable for obs data
+    condition_variable m_condGPSEphReady;    ///< condition variable for gps eph data
+    condition_variable m_condClkCorrReady;   ///< condition variable for clock correction
 
     NtripObsStream* m_obsStream;             ///< Ntrip observation stream
     NtripNavStream* m_navStream;             ///< Ntrip ephmeris stream
@@ -85,7 +98,7 @@ public:
     RealTimeEphStore* m_ephStore;            ///< Ephemeris store
     std::string m_sCorrPath;                 ///< Path to save the correction data
 
-    CommonTime m_lastClkCorrTime;            ///< Time of last clock correction
+    //CommonTime m_lastClkCorrTime;            ///< Time of last clock correction
     bool m_bRunning;                         ///< If the ppp process is running
     double m_dCorrWaitTime;                  ///< Time of correction stream waiting (sec)
     string m_sCorrMount;                     ///< Name of the correction mountpoint
@@ -93,18 +106,13 @@ public:
 
     PPPMain* m_pppMain;                      ///< PPP main controller
 
-    // Epoch observation map type
-    typedef map<CommonTime,list<t_satObs> > EpochObsMap;
-
     // For observation data
-    map<string, EpochObsMap> m_staEpochObsMap;   ///< Station observation data list at specified epoch
-    map<CommonTime,list<t_satObs> > m_epoObsMap; ///< Observation data list at specified epoch
-    ofstream *m_obsOutStream;                    ///< Stream of outputing observations
-    bool m_bWriteAllSta;                         ///< If write all stations' observation data to a file
-    CommonTime m_lastObsDumpTime;                ///< Time of last dump observation
-    double m_dOutWait;                           ///< Time of waiting next observation's comming
-    typedef map<string, CommonTime> PrnEpoch;    ///< Satellite prn and its epoch type
-    map<string, PrnEpoch> m_staPrnLastEpo;       ///< Station satellite prn epoch
+    StaObsMap m_staObsMap;                   ///< Station observation data list at specified epoch
+    EpochObsMap m_epoObsMap;                 ///< Observation data list at specified epoch
+    ofstream *m_obsOutStream;                ///< Stream of outputing observations
+    bool m_bWriteAllSta;                     ///< If write all stations' observation data to a file
+    CommonTime m_lastObsDumpTime;            ///< Time of last dump observation
+    double m_dOutWait;                       ///< Time of waiting next observation's comming
 };
 
 #define SIG_CENTER (SignalCenter::instance())

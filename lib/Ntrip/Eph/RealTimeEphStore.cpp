@@ -13,18 +13,15 @@ namespace gpstk
     {
         m_bOnlyHealthy = right.m_bOnlyHealthy;
         m_bUseCorrection = right.m_bUseCorrection;
-        std::map<SatID, std::deque<OrbitEph2*> >::iterator it = right.m_ephMap.begin();
-        while(it!=right.m_ephMap.end())
-        {
-            std::deque<OrbitEph2*>& q = it->second;
-            std::deque<OrbitEph2*> eq;
-            for(unsigned i = 0;i<q.size();++i)
-            {
-                eq.push_back(q[i]);
-            }
-            m_ephMap[it->first] = eq;
-            ++it;
-        }
+        m_ephMap = right.m_ephMap;
+    }
+
+    RealTimeEphStore& RealTimeEphStore::operator=( const RealTimeEphStore& right )
+    {
+        m_bOnlyHealthy = right.m_bOnlyHealthy;
+        m_bUseCorrection = right.m_bUseCorrection;
+        m_ephMap = right.m_ephMap;
+        return *this;
     }
 
     RealTimeEphStore::~RealTimeEphStore()

@@ -38,8 +38,11 @@ namespace gpstk
     {
     public:
         RinexObsOpt();
-        /// set the options value
 
+        /// Set the default obstype
+        void defaultObsType();
+
+        /// set the options value
         void setFileType(std::string& filetype) {m_sFileType = filetype;}
         void setFileSys(std::string& filesys){m_sFileSys = filesys;}
 
@@ -63,7 +66,11 @@ namespace gpstk
 
         void setRnxVer(double version){m_dRnxVer = version;}
         void setNavSys(int sys);
-        void setObsType(int type){m_iObsType = type;}
+        void setObsType(int type)
+        {
+            m_iObsType = type;
+            makeObsType();
+        }
         void setFreqType(int type){m_iFreqType = type;}
 
         /// get the option value

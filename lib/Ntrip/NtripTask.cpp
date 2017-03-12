@@ -6,6 +6,7 @@
 #include "NetUrl.hpp"
 #include "NetQueryBase.hpp"
 #include "NetQueryNtrip1.hpp"
+#include "RTCMDecoder.hpp"
 #include "RTCM3Decoder.hpp"
 #include "StringUtils.hpp"
 #include "SignalCenter.hpp"
@@ -199,7 +200,10 @@ bool NtripTask::run()
                 }
                 if(obsListHlp.size()>0)
                 {
-                    SIG_CENTER->newObs(m_MP.getMountPointID(), obsListHlp);
+                    // Send the obsList
+                    // ----------------
+                    SIG_CENTER->m_obsStream = m_decoder->m_rnx;
+                    SIG_CENTER->newObs(obsListHlp);
                 }
 
             }

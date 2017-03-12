@@ -22,7 +22,6 @@ using namespace gpstk;
 /*  Constants  */
 #define STRFMT_RTCM2 0                  /* stream format: RTCM 2 */
 #define STRFMT_RTCM3 1                  /* stream format: RTCM 3 */
-#define MAXANT      32                  /* max length of station name/antenna type *
 #define RTCM2PREAMB 0x66                /* rtcm ver.2 frame preamble */
 #define RTCM3PREAMB 0xD3                /* rtcm ver.3 frame preamble */
 #define PRUNIT_GPS  299792.458          /* rtcm ver.3 unit of gps pseudorange (m) */
@@ -110,7 +109,7 @@ public:
      */
     void dumpRinexEpoch(const t_satObs &obs, const std::string &format);
 
-       // antenna information type
+    // antenna information type
     struct t_antInfo {
       enum t_type { ARP, APC };
 
@@ -130,40 +129,6 @@ public:
       int    message;
     };
 
-    // station information type
-    struct t_staInfo
-    {
-        t_staInfo()
-        {
-            antSetup = 0;
-            itrf = 0;
-            height = 0.0;
-            for(int i=0;i<3;++i)
-            {
-                pos[i] = del[i] = 0.0;
-            }
-            for(int i=0;i<MAXANT;++i)
-            {
-                antDes[i] = '0';
-                antNum[i] = '0';
-                rcvDes[i] = '0';
-                rcvVer[i] = '0';
-                rcvNum[i] = '0';
-            }
-        }
-        char antDes   [MAXANT]; /* antenna descriptor */
-        char antNum   [MAXANT]; /* antenna serial number */
-        char rcvDes   [MAXANT]; /* receiver type descriptor */
-        char rcvVer   [MAXANT]; /* receiver firmware version */
-        char rcvNum   [MAXANT]; /* receiver serial number */
-
-        int staID;          /* station id  */
-        int antSetup;       /* antenna setup id */
-        int itrf;           /* ITRF realization year */
-        double pos[3];      /* station position (ecef) (m) */
-        double del[3];      /* antenna position delta (x/y/z) (m) */
-        double height;      /* antenna height (m) */
-    };
 
        // List of observations
     std::list<t_satObs> m_obsList;
@@ -177,7 +142,7 @@ public:
        // RTCM antenna XYZ
     std::list<t_antInfo> m_antList;
 
-
+    t_staInfo m_sta;
 
        // GLONASS frequency
     std::string m_sGloFreq;

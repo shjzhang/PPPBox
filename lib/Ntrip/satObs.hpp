@@ -195,4 +195,42 @@ class t_corrSSR {
                             unsigned int& updateInt, int& numEntries, std::string& staID);
 };
 
+#define MAXANT      32                  /* max length of station name/antenna type */
+
+// station information type
+struct t_staInfo
+{
+    t_staInfo()
+    {
+        antSetup = 0;
+        itrf = 0;
+        height = 0.0;
+        for(int i=0;i<3;++i)
+        {
+            pos[i] = del[i] = 0.0;
+        }
+        for(int i=0;i<MAXANT;++i)
+        {
+            antDes[i] = ' ';
+            antNum[i] = ' ';
+            rcvDes[i] = ' ';
+            rcvVer[i] = ' ';
+            rcvNum[i] = ' ';
+        }
+    }
+    char antDes   [MAXANT]; /* antenna descriptor */
+    char antNum   [MAXANT]; /* antenna serial number */
+    char rcvDes   [MAXANT]; /* receiver type descriptor */
+    char rcvVer   [MAXANT]; /* receiver firmware version */
+    char rcvNum   [MAXANT]; /* receiver serial number */
+
+    int staID;          /* station id  */
+    int antSetup;       /* antenna setup id */
+    int itrf;           /* ITRF realization year */
+    double pos[3];      /* station position (ecef) (m) */
+    double del[3];      /* antenna position delta (x/y/z) (m) */
+    double height;      /* antenna height (m) */
+};
+
+
 #endif // SATOBS_HPP

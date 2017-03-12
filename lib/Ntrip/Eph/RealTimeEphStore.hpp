@@ -25,6 +25,11 @@ namespace gpstk
         /// Copy constructor
         RealTimeEphStore(RealTimeEphStore& right);
 
+        /// Assignment Operator.
+        /// @param right a const reference to the RealTimeEphStore object to copy.
+        /// @return a reference to this RealTimeEphStore object.
+        RealTimeEphStore& operator=( const RealTimeEphStore& right );
+
         /// Destructor
         virtual ~RealTimeEphStore();
 
