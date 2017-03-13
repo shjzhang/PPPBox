@@ -40,7 +40,6 @@ namespace gpstk
    {
       try {
          checkTimeSystem(ttag.getTimeSystem());
-
          bool isExact;
          ClockRecord rec;
          DataTableIterator it1, it2, kt;        // cf. TabularSatStore.hpp
@@ -76,7 +75,7 @@ namespace gpstk
 
             // commended by shjzhang
 //       if(isExact && Nmatch==Nhalf-1) { Nlow++; Nhi++; }
-
+            
          // interpolate
          rec.accel = rec.sig_accel = 0.0;              // defaults
          double dt(ttag-ttag0), err, slope;
@@ -114,7 +113,6 @@ namespace gpstk
                rec.drift = (biases[Nhi]-biases[Nlow]) /
                                    (times[Nhi]-times[Nlow]);            // sec/sec^2
                rec.bias = biases[Nlow] + (dt-times[Nlow])*rec.drift;    // sec/sec
-
                // ???
             }
 

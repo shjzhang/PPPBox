@@ -67,7 +67,13 @@ public:
    {
       GAL,     ///< Galileo
       GPSA,    ///< GPS alpha
-      GPSB     ///< GPS beta
+      GPSB,    ///< GPS beta
+      QZSA,    ///< QZS alpha
+      QZSB,    ///< QZS belta
+      BDSA,    ///< BDS alpha
+      BDSB,    ///< BDS belta
+      IRNA,    ///< IRNSS alpha
+      IRNB     ///< IRNSS belta
    };
 
       // Member data
@@ -87,6 +93,12 @@ public:
          case GAL: return std::string("GAL"); break;
          case GPSA: return std::string("GPSA"); break;
          case GPSB: return std::string("GPSB"); break;
+         case QZSA: return std::string("QZSA"); break;
+         case QZSB: return std::string("QZSB"); break;
+         case BDSA: return std::string("BDSA"); break;
+         case BDSB: return std::string("BDSB"); break;
+         case IRNA: return std::string("IRNA"); break;
+         case IRNB: return std::string("IRNB"); break;
       }
       return std::string("ERROR");
    }
@@ -97,6 +109,12 @@ public:
            if(STR == std::string("GAL")) type = GAL;
       else if(STR == std::string("GPSA")) type = GPSA;
       else if(STR == std::string("GPSB")) type = GPSB;
+      else if(STR == std::string("QZSA")) type = QZSA;
+      else if(STR == std::string("QZSB")) type = QZSB;
+      else if(STR == std::string("BDSA")) type = BDSA;
+      else if(STR == std::string("BDSB")) type = BDSB;
+      else if(STR == std::string("IRNA")) type = IRNA;
+      else if(STR == std::string("IRNB")) type = IRNB;
       else {
          Exception e("Unknown IonoCorr type: " + str);
          GPSTK_THROW(e);

@@ -2579,8 +2579,6 @@ namespace gpstk
       setDayOfYear(time);
    }
 
-
-
       // Parameters borrowed from Saastamoinen tropospheric model
       // Constants for wet mapping function
    static const double NeillWetA[5] =
@@ -3120,7 +3118,7 @@ namespace gpstk
    void NeillTropModel::setAllParameters( const CommonTime& time,
                                           const Position& rxPos )
    {
-   	YDSTime ydst = static_cast<YDSTime>(time);
+      YDSTime ydst = static_cast<YDSTime>(time);
       NeillDOY = static_cast<int>(ydst.doy);
       validDOY = true;
       NeillLat = rxPos.getGeodeticLatitude();

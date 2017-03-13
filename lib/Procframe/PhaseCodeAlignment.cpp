@@ -29,7 +29,7 @@
 
 
 #include "PhaseCodeAlignment.hpp"
-
+#include "TypeID.hpp"  // getWavelength()
 
 namespace gpstk
 {
@@ -99,12 +99,37 @@ namespace gpstk
       {
 
          SatIDSet satRejectedSet;
-
+          // a copy of GPS watchCSFlag and GPS LC wavelength
+         TypeID csFlag = watchCSFlag;
+         double wavelength = phaseWavelength;
             // Loop through all the satellites
          for( satTypeValueMap::iterator it = gData.begin();
               it != gData.end();
               ++it )
          {
+            if ((*it).first.system == SatID::systemGlonass)
+            {
+              
+              double N((*it).second[TypeID::FreqNo]);
+                 // get L1 freuquency 
+              double L1Frequency(L1_FREQ_GLO + N*L1_FREQ_STEP_GLO);
+                 // get L2 freuquency;
+              double L2Frequency(L2_FREQ_GLO + N*L2_FREQ_STEP_GLO);
+                 // LC wavelegnth of this satellite
+              double LCWavelength(C_MPS/(L1Frequency+L2Frequency));
+
+              setPhaseWavelength(LCWavelength); 
+            }
+            else if ((*it).first.system == SatID::systemGalileo)
+            {
+              setPhaseWavelength(0.108941359148506) ; // Galileo LC wavelength     
+            }
+            else if ((*it).first.system == SatID::systemBeiDou)
+            {
+              setPhaseWavelength(0.108297212161671) ; // BeiDou LC wavelength     
+              setCSFlag(TypeID::CSL2);                // BeiDou B1 
+            }
+
 
                // Check if satellite currently has entries
             std::map<SatID, alignData>::const_iterator itDat(
@@ -122,7 +147,6 @@ namespace gpstk
 
                // Place to store if there was a cycle slip. False by default
             bool csflag(false);
-
 
                // Check if we want to use satellite arcs of cycle slip flags
             if(useSatArcs)
@@ -201,7 +225,6 @@ namespace gpstk
 
                   // Compute difference between code and phase measurements
                double diff( (*it).second(codeType) - (*it).second(phaseType) );
-
                   // Convert 'diff' to cycles
                diff = diff/phaseWavelength;
 
@@ -217,7 +240,9 @@ namespace gpstk
                // corresponding offset
             (*it).second[phaseType] = (*it).second[phaseType]
                                       + svData[(*it).first].offset;
-
+              // for the next satellite 
+            setCSFlag(csFlag);
+            setPhaseWavelength(wavelength);
          }
 
             // Remove satellites with missing data

@@ -117,6 +117,12 @@ namespace gpstk
                   pcvsSystem = RinexSatID(-1,RinexSatID::systemGPS);
                else if(line[0] == 'R')
                   pcvsSystem = RinexSatID(-1,RinexSatID::systemGlonass);
+               else if(line[0] == 'E')
+                  pcvsSystem = RinexSatID(-1,RinexSatID::systemGalileo);
+               else if(line[0] == 'C')
+                  pcvsSystem = RinexSatID(-1,RinexSatID::systemBeiDou);
+               else if(line[0] == 'J')
+                  pcvsSystem = RinexSatID(-1,RinexSatID::systemQZSS);
                else {
                   FFStreamError e("Invalid pcvs system : " + line.substr(0,1));
                   GPSTK_THROW(e);
@@ -164,7 +170,7 @@ namespace gpstk
                valid |= solnStateValid;
             }
             else if(label == numSolnSatsString) {
-               numSolnSatellites = asInt(line.substr(0,6));
+               numSolnSatellites = asDouble(line.substr(0,6));
                valid |= numSolnSatsValid;
             }
             else if(label == prnListString) {
@@ -173,11 +179,18 @@ namespace gpstk
                for(i=0; i<15; ++i) {
                   label = line.substr(4*i,3);
                   if(label == string("   ")) break;
+                  if(label == string(" 00")) break;
                   prn = asInt(line.substr(4*i+1,2));
                   if(line[4*i] == 'G')
                      satList.push_back(RinexSatID(prn,RinexSatID::systemGPS));
                   else if(line[4*i] == 'R')
                      satList.push_back(RinexSatID(prn,RinexSatID::systemGlonass));
+                  else if(line[4*i] == 'E')
+                     satList.push_back(RinexSatID(prn,RinexSatID::systemGalileo));
+                  else if(line[4*i] == 'C')
+                     satList.push_back(RinexSatID(prn,RinexSatID::systemBeiDou));
+                  else if(line[4*i] == 'J')
+                     satList.push_back(RinexSatID(prn,RinexSatID::systemQZSS));
                   else {
                      FFStreamError e("Invalid sat (PRN LIST): /" + label + "/");
                      GPSTK_THROW(e);
@@ -189,9 +202,14 @@ namespace gpstk
             else if(label == endOfHeaderString) {
                valid |= endOfHeaderValid;
             }
+	       // for WHU MGEX clock files 
+            else if(label == "INTERVAL") {
+               continue;  // skip this line
+            }
             else {
                FFStreamError e("Invalid line label: " + label);
                GPSTK_THROW(e);
+	       continue;
             }
 
             if(debug) cout << "Valid is " << hex << valid << fixed << endl;
@@ -202,16 +220,16 @@ namespace gpstk
       }  // end while end-of-header not found
 
       if(debug) cout << "Header read; Valid is " << hex << valid << fixed << endl;
-
       // is this header valid?
-      if( (valid & allRequiredValid) != allRequiredValid) {
+      // Commented by weiwang
+    /*  if( (valid & allRequiredValid) != allRequiredValid) {
          cout << "Header is invalid on input (valid is x" << hex << valid
             << dec << ").\n";
          dumpValid(cout);
          FFStreamError e("Invalid header");
          GPSTK_THROW(e);
       }
-
+    */
       strm.headerRead  = true;
 
    }  // end RinexClockHeader::reallyGetRecord()
@@ -411,8 +429,8 @@ namespace gpstk
       os << " Comments:\n";
       for(i=0; i<commentList.size(); ++i)
          os << "    " << commentList[i] << endl;
-      os << " There are " << stationID.size() << " stations." << endl;
-      os << " There are " << satList.size() << " satellites." << endl;
+      os << " There are " << dec<<stationID.size() << " stations." << endl;
+      os << " There are " << dec<<satList.size() << " satellites." << endl;
       if(detail > 0) {
          os << " Stations:  identifier     X(mm)       Y(mm)       Z(mm)\n";
          map<string,string>::const_iterator it, jt;

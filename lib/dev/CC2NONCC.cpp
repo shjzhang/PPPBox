@@ -82,9 +82,9 @@ namespace gpstk
          SatIDSet satRejectedSet;
 
          bool RecHasC1(false);
-         bool RecHasP1(false);	
-         bool RecHasP2(false);	
-         bool RecHasX2(false);	
+         bool RecHasP1(false);  
+         bool RecHasP2(false);  
+         bool RecHasX2(false);  
 
             // Firstly, read the code types that the 'recType' supports
          set<string> recCodeSet = recTypeData.getCode(recType);
@@ -108,17 +108,22 @@ namespace gpstk
          satTypeValueMap::iterator it;
          for (it = gData.begin(); it != gData.end(); ++it)
          {
-            SatID sat = it->first;
+            // Now the P1-C1 DCB is just provided for GPS and Glonass
+            if ( ((*it).first.system != SatID::systemGPS) &&
+               ((*it).first.system != SatID::systemGlonass) )
+            {
+                continue;   
+            }
             
               // Get the Sat's DCB value
             double Bp1c1(0.0);      // in ns
             try
             {
-               Bp1c1 = (*dcbP1C1).getDCB(sat);
+               Bp1c1 = (*dcbP1C1).getDCB((*it).first);
             }
             catch(...)
             {
-               Bp1c1 = 0.0;
+              // do nothing
             }
 
             typeValueMap::iterator ittC1 = it->second.find(TypeID::C1);
@@ -131,7 +136,7 @@ namespace gpstk
            
                // For receiver noncc (C1,P2)
                // For the noncc: only C1 should be corrected
-            	// C1->C1+(P1-C1)
+                // C1->C1+(P1-C1)
             if( RecHasC1 && RecHasP2 )
             {
 

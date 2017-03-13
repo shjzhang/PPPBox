@@ -186,7 +186,7 @@ namespace gpstk
                         const double& tecval,
                         const std::string& ionoMapType ) const
          throw (InvalidParameter)
-      { return getIono(elevation, tecval, L1_FREQ_GPS, ionoMapType); };
+      { return getIono(elevation, tecval, L1_FREQ_BDS, ionoMapType); };
 
 
          /** Get ionospheric slant delay for L2 frequency

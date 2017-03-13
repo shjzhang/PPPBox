@@ -29,8 +29,12 @@
 //  Dagoberto Salazar - gAGE ( http://www.gage.es ). 2007, 2008, 2011
 //
 //============================================================================
-
-
+//  Revision
+//
+//  2016/06/08, add the TypeIDSet for Glonass, Galileo and BeiDou
+//
+//
+//============================================================================
 
 #include "ProcessingClass.hpp"
 
@@ -119,12 +123,27 @@ namespace gpstk
       virtual RequireObservables& addRequiredType(const TypeID& type)
       { requiredTypeSet.insert(type); return (*this); };
 
+      virtual RequireObservables& addGLORequiredType(const TypeID& type)
+      { GLORequiredTypeSet.insert(type); return (*this); };
+
+      virtual RequireObservables& addGALRequiredType(const TypeID& type)
+      { GALRequiredTypeSet.insert(type); return (*this); };
+
+      virtual RequireObservables& addBDSRequiredType(const TypeID& type)
+      { BDSRequiredTypeSet.insert(type); return (*this); };
+
 
          /** Method to add a set of TypeID's to be required.
           *
           * @param typeSet    Set of TypeID's to be required.
           */
       virtual RequireObservables& addRequiredType(TypeIDSet& typeSet);
+
+      virtual RequireObservables& addGLORequiredType(TypeIDSet& typeSet);
+
+      virtual RequireObservables& addGALRequiredType(TypeIDSet& typeSet);
+
+      virtual RequireObservables& addBDSRequiredType(TypeIDSet& typeSet);
 
 
          /** Method to set a TypeID to be required. This method will erase
@@ -184,6 +203,9 @@ namespace gpstk
          /// Set of types to be required
       TypeIDSet requiredTypeSet;
 
+      TypeIDSet GLORequiredTypeSet; // for Glonass 
+      TypeIDSet GALRequiredTypeSet; // for Galileo
+      TypeIDSet BDSRequiredTypeSet; // for BeiDou
 
    }; // End of class 'RequireObservables'
 

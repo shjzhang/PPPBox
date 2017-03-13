@@ -721,7 +721,18 @@ void pppar::process()
    {
       try
       {
-         eopStore.loadIGSFile( eopFile );
+//       if( upperCase(eopFile.substr(0,3)) == "IGS" )
+//       {
+            eopStore.loadIGSFile( eopFile );
+//       }
+//       else if( upperCase(eopFile.substr(0,3)) == "COD" )
+//       {
+//          eopStore.loadCODFile( eopFile );
+//       }
+//       else
+//       {
+//          cerr << "File type not supported!" << endl;
+//       }
       }
       catch (FileMissingException& e)
       {

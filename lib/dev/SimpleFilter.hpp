@@ -215,6 +215,15 @@ namespace gpstk
       virtual SimpleFilter& addFilteredType(const TypeID& type)
       { filterTypeSet.insert(type); return (*this); };
 
+      virtual SimpleFilter& addGLOFilteredType(const TypeID& type)
+      { GLOFilterTypeSet.insert(type); return (*this); };
+
+      virtual SimpleFilter& addGALFilteredType(const TypeID& type)
+      { GALFilterTypeSet.insert(type); return (*this); };
+
+      virtual SimpleFilter& addBDSFilteredType(const TypeID& type)
+      { BDSFilterTypeSet.insert(type); return (*this); };
+
 
          /** Method to set a TypeID to be filtered. This method will erase
           *  previous types.
@@ -261,7 +270,13 @@ namespace gpstk
          /// Set of types to be filtered
       TypeIDSet filterTypeSet;
 
+      TypeIDSet GLOFilterTypeSet;
+
+      TypeIDSet GALFilterTypeSet;
+
+      TypeIDSet BDSFilterTypeSet;
          /// Minimum value allowed for input data (in meters).
+
       double minLimit;
 
          /// Maximum value allowed for input data (in meters).

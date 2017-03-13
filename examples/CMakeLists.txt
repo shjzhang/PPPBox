@@ -17,6 +17,7 @@ target_link_libraries(example5 pppbox)
 
 add_executable(example6 example6.cpp)
 target_link_libraries(example6 pppbox)
+install (TARGETS example6 DESTINATION bin)
 
 add_executable(example7 example7.cpp)
 target_link_libraries(example7 pppbox)
@@ -56,6 +57,8 @@ target_link_libraries(example15 pppbox)
 
 #add_executable(example18 example18.cpp)
 #target_link_libraries(example18 pppbox)
+
+
 
 if (UNIX)
   execute_process(COMMAND sh -c "chmod u+x ${CMAKE_CURRENT_SOURCE_DIR}/*.sh")

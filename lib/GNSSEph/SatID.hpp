@@ -75,6 +75,7 @@ namespace gpstk
          systemTransit,
          systemBeiDou,
          systemQZSS,
+         systemIRNSS,
          systemMixed,
          systemUserDefined,
          systemUnknown
@@ -147,6 +148,7 @@ namespace gpstk
             case systemTransit:     return "Transit";       break;
             case systemBeiDou:      return "BeiDou";        break;
             case systemQZSS:        return "QZSS";          break;
+            case systemIRNSS:       return "IRNSS";          break;
             case systemMixed:       return "Mixed";         break;
             case systemUserDefined: return "UserDefined";   break;
             case systemUnknown:     return "Unknown";       break;

@@ -54,21 +54,46 @@ namespace gpstk
             // will be removed directly.
 
          SatIDSet satRejectedSet;
+           // a copy of GPS filter type
+	 TypeIDSet GPSFilterTypeSet = filterTypeSet;
+         double defaultMaxLimit = maxLimit;
+               // Loop through all the satellites
+         satTypeValueMap::iterator it;
+
+         for (it = gData.begin(); it != gData.end(); ++it) 
+         {
+	       // for Glonass
+	    if ((*it).first.system == SatID::systemGlonass
+		 && !GLOFilterTypeSet.empty() )
+	    {
+	      setFilteredType(GLOFilterTypeSet);
+	    }
+	       // for Galileo
+	    else if ((*it).first.system == SatID::systemGalileo 
+		 && !GALFilterTypeSet.empty() )
+	    {
+	      setFilteredType(GALFilterTypeSet);
+	    }    
+              // for BeiDou
+	    else if ((*it).first.system == SatID::systemBeiDou 
+		     && !BDSFilterTypeSet.empty())
+	    {
+	      setFilteredType(BDSFilterTypeSet);
+	       // for GEO and IGSO satellites, needs to change the max limit
+	      setMaxLimit(45000000.0);
+	    }    
+
 
             // Check all the indicated TypeID's
-         TypeIDSet::const_iterator pos;
-         for (pos = filterTypeSet.begin(); pos != filterTypeSet.end(); ++pos)
-         {
+            TypeIDSet::const_iterator pos;
 
-            double value(0.0);
-
-               // Loop through all the satellites
-            satTypeValueMap::iterator it;
-            for (it = gData.begin(); it != gData.end(); ++it) 
+            for (pos = filterTypeSet.begin(); pos != filterTypeSet.end(); ++pos)
             {
-               try
-               {
-                     // Try to extract the values
+                  
+              double value(0.0);
+	      try
+	      {
+	  		// Try to extract the values
                   value = (*it).second(*pos);
 
                      // Now, check that the value is within bounds
@@ -87,11 +112,13 @@ namespace gpstk
                }
             }
 
-               // Before checking next TypeID, let's remove satellites with
-               // data out of bounds
-            gData.removeSatID(satRejectedSet);
+              // set default filter type 
+	    setFilteredType(GPSFilterTypeSet);
+	    setMaxLimit(defaultMaxLimit);
          }
 
+             // let's remove satellites with data out of bounds
+         gData.removeSatID(satRejectedSet);
 
          return gData;
 

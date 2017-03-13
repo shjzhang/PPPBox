@@ -561,6 +561,16 @@ namespace gpstk
                                     << " " << icit->second.param[2]
                                     << " " << icit->second.param[3];
                break;
+            case IonoCorr::BDSA: s << "alpha " << icit->second.param[0]
+                                    << " " << icit->second.param[1]
+                                    << " " << icit->second.param[2]
+                                    << " " << icit->second.param[3];
+               break;
+            case IonoCorr::BDSB: s << "beta  " << icit->second.param[0]
+                                    << " " << icit->second.param[1]
+                                    << " " << icit->second.param[2]
+                                    << " " << icit->second.param[3];
+               break;
          }
          s << endl;
       }

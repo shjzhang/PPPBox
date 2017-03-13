@@ -153,16 +153,17 @@
    // Class to compute the elevation weights
 #include "ComputeElevWeights.hpp"
 
+   // Class to convert the CC to NONCC.
+#include "CC2NONCC.hpp"
+
+  // Class to read and store the receiver type.
+#include "RecTypeDataReader.hpp"
+
    // Class to store satellite precise navigation data
 #include "MSCStore.hpp"
 
    // Class to convert the CC to NONCC.
 #include "CC2NONCC.hpp"
-
-   // Class to read and store the receiver type.
-#include "RecTypeDataReader.hpp"
-
-
 
 
 using namespace std;
@@ -224,8 +225,8 @@ private:
    string sp3FileListName;
    string clkFileListName;
    string eopFileListName;
-   string mscFileName;
    string dcbFileListName;
+   string mscFileName;
    string outputFileListName;
 
       // Configuration file reader
@@ -306,11 +307,11 @@ ppp::ppp(char* arg0)
    mscFileOpt(        'm',
                       "mscFile",
    "file storing monitor station coordinates ",
-                      true),
-   dcbFileListOpt(    'D',
-                      "dcbFileList",
-   "file storing the P1C1 DCB file list.",
-                      false)
+               true),
+   dcbFileListOpt( 'D',
+               "dcbFile",
+   "file storing P1-C1 DCB ",
+               false)
 {
 
       // This option may appear just once at CLI
@@ -679,6 +680,34 @@ void ppp::process()
       // Close file
    eopFileListStream.close();
 
+
+      //**********************************************
+      // Now, Let's read MSC data
+      //**********************************************
+      
+      // Declare a "MSCStore" object to handle msc file 
+   MSCStore mscStore;
+
+   try
+   {
+      mscStore.loadFile( mscFileName );
+   }
+   catch (gpstk::FFStreamError& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << e << endl;
+      cerr << "MSC file '" << mscFileName << "' Format is not supported!!!"
+           << "stop." << endl;
+      exit(-1);
+   }
+   catch (FileMissingException& e)
+   {
+         // If file doesn't exist, issue a warning
+      cerr << "MSC file '" << mscFileName << "' doesn't exist or you don't "
+           << "have permission to read it." << endl;
+      exit(-1);
+   }
+
       //***********************
       // Let's read DCB files
       //***********************
@@ -719,34 +748,7 @@ void ppp::process()
       };
 
       dcbFileListStream.close();
-   }
-
-      //**********************************************
-      // Now, Let's read MSC data
-      //**********************************************
-      
-      // Declare a "MSCStore" object to handle msc file 
-   MSCStore mscStore;
-
-   try
-   {
-      mscStore.loadFile( mscFileName );
-   }
-   catch (gpstk::FFStreamError& e)
-   {
-         // If file doesn't exist, issue a warning
-      cerr << e << endl;
-      cerr << "MSC file '" << mscFileName << "' Format is not supported!!!"
-           << "stop." << endl;
-      exit(-1);
-   }
-   catch (FileMissingException& e)
-   {
-         // If file doesn't exist, issue a warning
-      cerr << "MSC file '" << mscFileName << "' doesn't exist or you don't "
-           << "have permission to read it." << endl;
-      exit(-1);
-   }
+   }    
 
       //**********************************************************
       // Now, Let's perform the PPP for each rinex files
@@ -859,6 +861,11 @@ void ppp::process()
             // Index for rinex file iterator.
          ++rnxit;
 
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
+
          continue;
 
       }  // End of 'try-catch' block
@@ -897,15 +904,15 @@ void ppp::process()
       CommonTime initialTime( roh.firstObs ) ;
 
          // Get the station name for current rinex file 
-      string station = roh.markerName;
+      string station = roh.markerName.substr(0,4);
 
          // Let's check the ocean loading data for current station before
          // the real data processing.
       if( ! blqStore.isValid(station) )
       {
-         cout << "There is no BLQ data for current station:" << station << endl;
-         cout << "Current staion will be not processed !!!!" << endl;
-         continue;
+         cerr << "There is no BLQ data for current station:" << station << endl;
+         cerr << "So the ocean tide effect of this station will be not corrected !" << endl;
+
       }
 
          // Show a message indicating that we are starting with this station
@@ -938,20 +945,19 @@ void ppp::process()
          // and deletes it from the given variable list.
       Position nominalPos( mscData.coordinates );
 
-      cout << nominalPos << endl;
 
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order
       ProcessingList pList;
 
-        	// Declare a CC2NONCC object
+          // Declare a CC2NONCC object
       CC2NONCC cc2noncc(dcbStore);
-
          // Read the receiver type file.
       cc2noncc.loadRecTypeFile( confReader.getValue("recTypeFile"));
-      cc2noncc.setRecType(roh.recType);
+         // warning: change receiver type to upper case, if not,
+         // some receiver type(lower case) can not be find in receiver_bernese.lis
+      cc2noncc.setRecType(upperCase(roh.recType));
       cc2noncc.setCopyC1ToP1(true);
-
          // Add to processing list
       pList.push_back(cc2noncc);
 
@@ -969,7 +975,7 @@ void ppp::process()
          // reasonable limits
       SimpleFilter pObsFilter;
       pObsFilter.addFilteredType(TypeID::P1);
-      pObsFilter.setFilteredType(TypeID::P2);
+      pObsFilter.addFilteredType(TypeID::P2);
 
          // IMPORTANT NOTE:
          // It turns out that some receivers don't correct their clocks
@@ -1027,7 +1033,7 @@ void ppp::process()
          // Declare a basic modeler
       BasicModel basic(nominalPos, SP3EphList);
          // Set the minimum elevation
-      basic.setMinElev( confReader.getValueAsDouble("cutOffElevation"));
+      basic.setMinElev(confReader.getValueAsDouble("cutOffElevation"));
          // If we are going to use P1 instead of C1, we must reconfigure 'basic'
       basic.setDefaultObservable(TypeID::P1);
          // Add to processing list
@@ -1170,14 +1176,14 @@ void ppp::process()
       phaseAlignL1.setPhaseType(TypeID::L1);
       phaseAlignL1.setPhaseWavelength( 0.190293672798);
 
-      pList.push_back(phaseAlignL1);       // Add to processing list
+      //pList.push_back(phaseAlignL1);       // Add to processing list
 
          // Object to align phase with code measurements
       PhaseCodeAlignment phaseAlignL2;
       phaseAlignL2.setCodeType(TypeID::Q2);
       phaseAlignL2.setPhaseType(TypeID::L2);
       phaseAlignL2.setPhaseWavelength( 0.244210213425);
-      pList.push_back(phaseAlignL2);       // Add to processing list
+      //pList.push_back(phaseAlignL2);       // Add to processing list
 
 
          // Object to compute ionosphere-free combinations to be used
@@ -1346,9 +1352,14 @@ void ppp::process()
          gRin.header.source.nominalPos = nominalPos;
 
             // Compute solid, oceanic and pole tides effects at this epoch
-         Triple tides( solid.getSolidTide( time, nominalPos )  +
-                       ocean.getOceanLoading( station, time )  +
-                       pole.getPoleTide( time, nominalPos )    );
+		 Triple oceanTide(0.0,0.0,0.0);
+		 if (blqStore.isValid(station))
+		 {
+		    oceanTide = ocean.getOceanLoading(station,time);
+		 }
+         Triple tides( solid.getSolidTide( time, nominalPos ) + oceanTide +
+                       pole.getPoleTide( time, nominalPos )  );
+		 
 
             // Update observable correction object with tides information
          corr.setExtraBiases(tides);
@@ -1409,7 +1420,6 @@ void ppp::process()
                            precision );
 
          }  // End of 'if ( cycles < 1 )'
-
 
 
          // The given epoch hass been processed. Let's get the next one
@@ -1622,3 +1632,4 @@ int main(int argc, char* argv[])
    return 0;
 
 }  // End of 'main()'
+

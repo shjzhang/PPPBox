@@ -463,11 +463,11 @@ process noise covariance matrix do not match.");
       {
             // Compute the a priori state vector
          xhatminus = phiMatrix*xhat + controlMatrix * controlInput;
-
          Matrix<double> phiT(transpose(phiMatrix));
 
             // Compute the a priori estimate error covariance matrix
          Pminus = phiMatrix*P*phiT + processNoiseCovariance;
+
       }
       catch(...)
       {
@@ -598,7 +598,6 @@ matrix and a priori state estimation vector do not match.");
             // Compute the a posteriori state estimation
          xhat = P * ( (measMatrixT * invR * measurements) + 
                       (invPMinus * xhatminus) );
-
       }
       catch(Exception e)
       {

@@ -518,7 +518,6 @@ namespace gpstk
                }
             }
             rod.obs[sat] = data;
-
          }  // end loop over sats to read obs data
       }
 

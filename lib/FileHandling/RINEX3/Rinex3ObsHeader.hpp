@@ -166,7 +166,7 @@ namespace gpstk
          validLeapSeconds       = 0x20000000, ///< "LEAP SECONDS"          optional
          validNumSats           = 0x40000000, ///< "# OF SATELLITES"       optional
          validPrnObs            = 0x80000000, ///< "PRN / # OF OBS"        optional
-         //do away with this  validEoH               =0x100000000, ///< "END OF HEADER"
+         //validEoH               =0x100000000, ///< "END OF HEADER"
    
          /// This mask is for all required valid fields
          allValid2              = 0x001207CB, // RINEX 2

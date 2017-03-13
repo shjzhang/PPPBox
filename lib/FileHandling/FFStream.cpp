@@ -55,7 +55,6 @@ namespace gpstk
    void FFStream::open( const char* fn, std::ios::openmode mode )
    {
       std::fstream::open(fn, mode);
-
       filename = std::string(fn);
       recordNumber = 0;
       clear();

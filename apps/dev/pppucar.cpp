@@ -1098,11 +1098,15 @@ void pppucar::process()
 
 
          // Object to apply the P1C1 corrections for some receivers
-      CC2NONCC p1c1Corr;
+      
+      DCBDataReader dcbStore;
+      dcbStore.open(dcbFileName);
+
+      CC2NONCC p1c1Corr(dcbStore);
+
          // recType.list is given in the configuration file
-      p1c1Corr.setRecTypeFile( confReader.getValue( "recType.list" ) );
-         // dcb file name is given from the command line
-      p1c1Corr.setDCBFile( dcbFileName );
+      p1c1Corr.loadRecTypeFile( confReader.getValue( "recType.list" ) );
+      
 
          // If you use C1 code, and the dcb file is given, then
          // correct the observables!

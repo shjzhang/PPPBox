@@ -366,6 +366,8 @@ Decompress()
 		file_suffix_head=`echo $filename | cut -c -11`
 		if [[ $file_suffix_tail = "d" ]]
 		then
+            # Convert
+	      crx2rnx "$savefile"
 			file_suffix_tail='o'
 			filename2="$file_suffix_head""$file_suffix_tail"
 		fi

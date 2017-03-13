@@ -86,6 +86,7 @@ namespace gpstk
             case systemTransit:
             case systemQZSS:
             case systemBeiDou:
+            case systemIRNSS:
             case systemMixed:
                break;
             // Invalidate anything non-RINEX.
@@ -146,7 +147,8 @@ namespace gpstk
             case systemTransit: return 'T';
             case systemQZSS:    return 'J';
             case systemBeiDou:  return 'C';
-			   case systemMixed:   return 'M';
+            case systemIRNSS:   return 'I';
+			case systemMixed:   return 'M';
             default:            return '?';
          }
       };
@@ -166,7 +168,8 @@ namespace gpstk
             case systemTransit: return "Transit";
             case systemQZSS:    return "QZSS";
             case systemBeiDou:  return "BeiDou";
-			   case systemMixed:   return "MIXED";
+            case systemIRNSS:   return "IRNSS";
+			case systemMixed:   return "MIXED";
             default:            return "Unknown";
          }
       };
@@ -185,7 +188,8 @@ namespace gpstk
             case systemTransit: return "TRN";     // RINEX ver 2
             case systemQZSS:    return "QZS";
             case systemBeiDou:  return "BDS";
-			   case systemMixed:   return "MIX";
+            case systemIRNSS:   return "IRN";
+			case systemMixed:   return "MIX";
             default:            return "Unk";
          }
       };
@@ -236,6 +240,9 @@ namespace gpstk
                break;
             case 'C': case 'c':
                system = SatID::systemBeiDou;
+               break;
+            case 'I': case 'i':
+               system = SatID::systemIRNSS;
                break;
             default:                   // non-RINEX system character
                Exception e(std::string("Invalid system character \"")
