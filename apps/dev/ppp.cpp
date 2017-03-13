@@ -165,11 +165,6 @@
    // Class to convert the CC to NONCC.
 #include "CC2NONCC.hpp"
 
-   // Class to read and store the receiver type.
-#include "RecTypeDataReader.hpp"
-
-
-
 
 using namespace std;
 using namespace gpstk;
@@ -232,7 +227,6 @@ private:
    string eopFileListName;
    string dcbFileListName;
    string mscFileName;
-   string dcbFileListName;
    string outputFileListName;
 
       // Configuration file reader
@@ -686,47 +680,6 @@ void ppp::process()
       // Close file
    eopFileListStream.close();
 
-      //***********************
-      // Let's read DCB files
-      //***********************
-
-      // Read and store dcb data
-   DCBDataReader dcbStore;
-
-   if(dcbFileListOpt.getCount() )
-   {
-         // Now read dcb file from 'dcbFileName'
-      ifstream dcbFileListStream;
-
-         // Open dcbFileList File
-      dcbFileListStream.open(dcbFileListName.c_str(), ios::in);
-      if(!dcbFileListStream)
-      {
-            // If file doesn't exist, issue a warning
-         cerr << "dcb file List Name '" << dcbFileListName << "' doesn't exist or you don't "
-              << "have permission to read it." << endl;
-         exit(-1);
-      }
-
-      string dcbFile;
-
-         // Here is just a dcb file, we only read one month's dcb data.
-      while(dcbFileListStream >> dcbFile)
-      {
-         try
-         {
-            dcbStore.open(dcbFile);
-         }
-         catch(FileMissingException e)
-         {
-            cerr << "Warning! The DCB file '"<< dcbFile <<"' does not exist!" 
-                 << endl;
-            exit(-1);
-         }
-      };
-
-      dcbFileListStream.close();
-   }
 
       //**********************************************
       // Now, Let's read MSC data
@@ -908,6 +861,11 @@ void ppp::process()
             // Index for rinex file iterator.
          ++rnxit;
 
+         if(outputFileListOpt.getCount())
+         {
+            ++outit;
+         }
+
          continue;
 
       }  // End of 'try-catch' block
@@ -946,15 +904,15 @@ void ppp::process()
       CommonTime initialTime( roh.firstObs ) ;
 
          // Get the station name for current rinex file 
-      string station = roh.markerName;
+      string station = roh.markerName.substr(0,4);
 
          // Let's check the ocean loading data for current station before
          // the real data processing.
       if( ! blqStore.isValid(station) )
       {
-         cout << "There is no BLQ data for current station:" << station << endl;
-         cout << "Current staion will be not processed !!!!" << endl;
-         continue;
+         cerr << "There is no BLQ data for current station:" << station << endl;
+         cerr << "So the ocean tide effect of this station will be not corrected !" << endl;
+
       }
 
          // Show a message indicating that we are starting with this station
@@ -987,7 +945,6 @@ void ppp::process()
          // and deletes it from the given variable list.
       Position nominalPos( mscData.coordinates );
 
-      cout << nominalPos << endl;
 
          // Create a 'ProcessingList' object where we'll store
          // the processing objects in order
@@ -1019,9 +976,6 @@ void ppp::process()
       SimpleFilter pObsFilter;
       pObsFilter.addFilteredType(TypeID::P1);
       pObsFilter.addFilteredType(TypeID::P2);
-
-         // Add 'requireObs' to processing list (it is the first)
-      pList.push_back(requireObs);
 
          // IMPORTANT NOTE:
          // It turns out that some receivers don't correct their clocks
@@ -1222,14 +1176,14 @@ void ppp::process()
       phaseAlignL1.setPhaseType(TypeID::L1);
       phaseAlignL1.setPhaseWavelength( 0.190293672798);
 
-      pList.push_back(phaseAlignL1);       // Add to processing list
+      //pList.push_back(phaseAlignL1);       // Add to processing list
 
          // Object to align phase with code measurements
       PhaseCodeAlignment phaseAlignL2;
       phaseAlignL2.setCodeType(TypeID::Q2);
       phaseAlignL2.setPhaseType(TypeID::L2);
       phaseAlignL2.setPhaseWavelength( 0.244210213425);
-      pList.push_back(phaseAlignL2);       // Add to processing list
+      //pList.push_back(phaseAlignL2);       // Add to processing list
 
 
          // Object to compute ionosphere-free combinations to be used
@@ -1398,9 +1352,14 @@ void ppp::process()
          gRin.header.source.nominalPos = nominalPos;
 
             // Compute solid, oceanic and pole tides effects at this epoch
-         Triple tides( solid.getSolidTide( time, nominalPos )  +
-                       ocean.getOceanLoading( station, time )  +
-                       pole.getPoleTide( time, nominalPos )    );
+		 Triple oceanTide(0.0,0.0,0.0);
+		 if (blqStore.isValid(station))
+		 {
+		    oceanTide = ocean.getOceanLoading(station,time);
+		 }
+         Triple tides( solid.getSolidTide( time, nominalPos ) + oceanTide +
+                       pole.getPoleTide( time, nominalPos )  );
+		 
 
             // Update observable correction object with tides information
          corr.setExtraBiases(tides);
