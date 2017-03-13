@@ -109,7 +109,3 @@ namespace gpstk
 }  // End of namespace gpstk
 
 #endif 
-<<<<<<< HEAD
-
-=======
->>>>>>> 902525c9b09a2f59b3ed34fa9311d56ffd119a55
