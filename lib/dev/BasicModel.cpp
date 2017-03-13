@@ -171,20 +171,14 @@ namespace gpstk
                   // for Galileo E1
             if (system == SatID::systemGalileo)
             {
-<<<<<<< HEAD
                setDefaultObservable(TypeID::C1);
-=======
                setDefaultObservable(TypeID::C1);        
->>>>>>> 902525c9b09a2f59b3ed34fa9311d56ffd119a55
             }
                  // for BeiDou B1
             else if (system == SatID::systemBeiDou)
             {
-<<<<<<< HEAD
                setDefaultObservable(TypeID::C2);
-=======
                setDefaultObservable(TypeID::C2);        
->>>>>>> 902525c9b09a2f59b3ed34fa9311d56ffd119a55
             }
                // Scalar to hold temporal value
             double observable( (*stv).second(defaultObservable) );
@@ -300,15 +294,12 @@ namespace gpstk
                (*stv).second[TypeID::dRecY] = 0.0;
                (*stv).second[TypeID::dRecZ] = 0.0;
             }
-<<<<<<< HEAD
 
 
                // Let's insert receiver velocity
-=======
                 
 
                // Let's insert receiver velocity 
->>>>>>> 902525c9b09a2f59b3ed34fa9311d56ffd119a55
             (*stv).second[TypeID::recVX] = 0.0;
             (*stv).second[TypeID::recVY] = 0.0;
             (*stv).second[TypeID::recVZ] = 0.0;

@@ -223,9 +223,3 @@ void NtripSP3Stream::updateEphmerisStore(RealTimeEphStore *ephStore)
     m_ephStore = new RealTimeEphStore(*ephStore);
 }
 
-NtripSP3Stream& operator>>(NtripSP3Stream& sp3Stream,
-                           OrbitEphStore2& sp3EphStore)
-{
-    //sp3Stream.addSP3Ephmeris(sp3EphStore);
-    return sp3Stream;
-}

@@ -111,9 +111,9 @@ namespace gpstk
       int numMeas;
         
 	/// the geographic latitude of geomagnetic north pole
-      static const double NGPLat = 80.27;
+      const double NGPLat = 80.27;
          /// the geographic longitude of geomagnetic north pole
-      static const double NGPLon = -72.58;
+      const double NGPLon = -72.58;
          
 	 /// Map holding receiver information
       std::map<SourceID,double> recState;

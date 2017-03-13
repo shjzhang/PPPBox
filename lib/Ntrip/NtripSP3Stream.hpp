@@ -6,7 +6,6 @@
 #include <mutex>
 
 #include "CommonTime.hpp"
-#include "OrbitEphStore2.hpp"
 #include "RealTimeEphStore.hpp"
 #include "SP3Stream.hpp"
 #include "SP3Header.hpp"
@@ -78,8 +77,5 @@ private:
 
 };
 
-    /// Add ephmeris data to the store
-    NtripSP3Stream& operator>> (NtripSP3Stream& sp3Stream,
-                                OrbitEphStore2& sp3EphStore);
 
 #endif // NTRIPSP3STREAM_HPP

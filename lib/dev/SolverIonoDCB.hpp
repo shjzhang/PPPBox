@@ -189,9 +189,9 @@ namespace gpstk
          /// Number of measurements
       int numMeas;
          /// the geographic latitude of geomagnetic north pole
-      static const double NGPLat = 80.27;
+      const double NGPLat = 80.27;
          /// the geographic longitude of geomagnetic north pole
-      static const double NGPLon = -72.58;
+      const double NGPLon = -72.58;
         /// Source-indexed(receiver-indexed) TypeID set
       TypeIDSet recIndexedTypes;
          /// Satellite-indexed TypeID set
