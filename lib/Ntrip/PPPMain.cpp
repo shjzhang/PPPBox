@@ -61,9 +61,6 @@ void PPPMain::readOptions()
     {
         return;
     }
-
-    string eopFileListName = "/home/qi/program/PPPBox/data/1936.erplist";
-    setEOPFileListName(eopFileListName);
 }
 
 //bool PPPMain::waitForCorr(const gpstk::CommonTime &epoTime) const

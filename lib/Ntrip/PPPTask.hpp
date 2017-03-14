@@ -11,6 +11,7 @@
 #include <fstream>
 
 #include "TaskBase.h"
+#include "SP3EphemerisStore.hpp"
 #include "CommonTime.hpp"
 #include "satObs.hpp"
 #include "BasicFramework.hpp"
@@ -56,6 +57,7 @@
 #include "RecTypeDataReader.hpp"
 #include "NtripNavStream.hpp"
 #include "StringUtils.hpp"
+#include "ENUUtil.hpp"
 
 #include "SignalCenter.hpp"
 #include "NtripObsStream.hpp"
@@ -113,14 +115,15 @@ private:
     bool waitForCorr(const CommonTime& epoTime) const;
 
     /// Method to print solution values
-    void printSolution( ofstream& outfile,
-                        const  SolverLMS& solver,
-                        const  CommonTime& time,
-                        const  ComputeDOP& cDOP,
-                        bool   useNEU,
-                        int    numSats,
-                        double dryTropo,
-                        int    precision = 3 );
+    void printSolution(  ofstream& outfile,
+                         const SolverLMS& solver,
+                         const CommonTime& time,
+                         const ComputeDOP& cDOP,
+                         int   numSats,
+                         double dryTropo,
+                         Position& pos,
+                         const string format,
+                         int   precision);
 
 
     /// Method to print model values
@@ -135,7 +138,7 @@ private:
     void process();
 
     StaObsMap m_staObsMap;            ///< observation data of all stations at the same epoch
-
+    deque<StaObsMap> m_staObsQueue;  ///< observation data queue of all stations during some time
     CommonTime m_lastClkCorrTime;     ///< Time of last clock correction
     string m_sCorrMount;              ///< Name of the correction mountpoint
     double m_dCorrWaitTime;             ///< Time of correction stream waiting (sec)

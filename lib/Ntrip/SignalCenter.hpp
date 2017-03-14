@@ -75,6 +75,10 @@ public:
     string getCorrPath()
     { return m_sCorrPath; }
 
+    /// Set PPP configuration file
+    void setPPPConfFile(const string& confFile)
+    { m_sPPPConfile = confFile; }
+
     /// Start PPP(precise point positioning) process
     void startPPP();
 
@@ -105,6 +109,7 @@ public:
     bool m_bRealTime;                        ///< Flag of real-time mode
 
     PPPMain* m_pppMain;                      ///< PPP main controller
+    string m_sPPPConfile;                    ///< PPP configuration file
 
     // For observation data
     StaObsMap m_staObsMap;                   ///< Station observation data list at specified epoch

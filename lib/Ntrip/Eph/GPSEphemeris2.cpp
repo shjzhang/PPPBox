@@ -222,7 +222,7 @@ namespace gpstk
       sv.v[2] = vzef;
 
       // Add the Relativistic Correction
-      sv.clkbias += sv.computeRelativityCorrection();
+      sv.relcorr = sv.computeRelativityCorrection();
 
       return true;
    }

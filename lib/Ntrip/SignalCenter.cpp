@@ -24,7 +24,7 @@ SignalCenter::SignalCenter()
     m_sp3Stream = new NtripSP3Stream();
     m_ephStore = new RealTimeEphStore();
     m_pppMain = new PPPMain();
-    m_dOutWait = 33;
+    m_dOutWait = 10;
     m_bWriteAllSta = true;
     reopenObsOutFile();
 }
@@ -44,10 +44,13 @@ void SignalCenter::newObs(list<t_satObs> obsList)
 {
     std::unique_lock<std::mutex> lock(m_obsMutex);
 
-    cout << "New Obs for station --> " << obsList.begin()->_staID << endl;
+    list<t_satObs>::iterator it = obsList.begin();
 
-    list<t_satObs>::iterator it;
-    for(it = obsList.begin();it != obsList.end();++it)
+    std::string utcTime = CivilTime(it->_time).printf("%02H:%02M:%02S");
+    cout << "New Obs for station --> " << it->_staID
+         << ", at epoch " << utcTime << endl;
+
+    while(it != obsList.end())
     {
         t_satObs& obs = *it;
 
@@ -82,6 +85,7 @@ void SignalCenter::newObs(list<t_satObs> obsList)
             // Clear older contents
             m_staObsMap.clear();
         }
+        ++it;
     }
 }
 
@@ -152,7 +156,6 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
     }
 
     CommonTime lastClkCorrTime = it->_time;
-    m_pppMain->setLastClkCorrTime(lastClkCorrTime);
     for(;it!=clkCorr.end();++it)
     {
         OrbitEph2* ephLast = (OrbitEph2*)m_ephStore->ephLast(it->_prn);
@@ -170,7 +173,9 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
             return;
         }
     }
-    std::cout << "New ClkCorr at time -> " << lastClkCorrTime.asString() << std::endl;
+    std::string utcTime = CivilTime(lastClkCorrTime).printf("%02H:%02M:%02S");
+    std::cout << "New ClkCorr at time -> " << utcTime << std::endl;
+    m_pppMain->setLastClkCorrTime(lastClkCorrTime);
     m_sp3Stream->setLastClkCorrTime(lastClkCorrTime);
     m_condClkCorrReady.notify_one();
     m_sp3Stream->updateEphmerisStore(m_ephStore);

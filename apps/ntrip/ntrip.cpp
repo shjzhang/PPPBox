@@ -337,7 +337,7 @@ int main( int argc, char* argv[] )
 
     //////////////////////// thread ////////////////////////////////////
 
-    ThreadPool* pTP = ThreadPool::create(5);
+    ThreadPool* pTP = ThreadPool::create(15);
 
     pTP->onStart();
 
@@ -368,6 +368,8 @@ int main( int argc, char* argv[] )
         pTP->pushTask(pTask);
     } // end for
 
+    string pppConf = ntripConf.getValue( "pppConf", "DEFAULT");
+    SIG_CENTER->setPPPConfFile(pppConf);
     SIG_CENTER->startPPP();
 
     char key = ' ';

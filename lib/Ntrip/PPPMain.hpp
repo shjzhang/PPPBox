@@ -44,12 +44,8 @@ public:
     {  m_pppTask->setRealTimeFlag(flag);  }
 
     /// Set the correction mountpoint
-    void setCorrMount(string mntpnt)
+    void setCorrMount(const string mntpnt)
     {  m_pppTask->setCorrMount(mntpnt); }
-
-    /// Set the file name of EOP files list
-    void setEOPFileListName(string& eopListFile)
-    {  m_pppTask->setEOPFileListName(eopListFile); }
 
     /// New obs
     void newObs(StaObsMap& staObsMap)
