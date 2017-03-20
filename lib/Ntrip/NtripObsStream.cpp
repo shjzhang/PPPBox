@@ -17,35 +17,13 @@ NtripObsStream::NtripObsStream(const std::string& staID, const NetUrl& mountPoin
     m_sLatitude = latitude;
     m_sLongitude = longitude;
     m_sNtripVersion = ntripVersion;
-
-    m_bHeaderSaved = false;
-    m_bHeaderWritten = false;
     m_sPrgmName = NTRIPTOOLPGMNAME;
-
-    m_sRnxPath = ".";
-    setRnxPath(m_sRnxPath);
 #ifdef WIN32
     m_sUserName = ::getenv("USERNAME");
 #else
     m_sUserName = ::getenv("USER");
 #endif
     m_header.clear();
-}
-
-void NtripObsStream::setRnxPath(std::string &path)
-{
-    if(!path.empty())
-    {
-        if(path[path.size()-1]!=slash)
-        {
-            path += slash;
-        }
-        m_sRnxPath = path;
-    }
-    else
-    {
-        m_sRnxPath = "." + slash;
-    }
 }
 
 // File Name according to RINEX Standards
@@ -67,7 +45,7 @@ void NtripObsStream::resolveFileName(CommonTime &dateTime)
     {
         hStr = (char)(hour-9)+ 'a' - '1';
     }
-    m_sFileName = m_sRnxPath + ID4 + doy + hStr + "." + yy + "O";
+    m_sFileName = m_sFilePath + ID4 + doy + hStr + "." + yy + "O";
 }
 
 void NtripObsStream::setStaInfo(const t_staInfo &staInfo)
@@ -202,14 +180,17 @@ void NtripObsStream::dumpEpoch(const string &format, const CommonTime &maxTime)
     const t_satObs& fObs = *(obsList.begin());
 
     // Write RINEX Header
-    if(!m_bHeaderWritten)
+    if(m_bWriteFile && !m_bHeaderWritten)
     {
         this->writeHeader(format, fObs._time);
     }
     if(!m_bHeaderWritten) return;
 
-    Rinex3ObsData rnxObsData = convertToRinexObsData(obsList, m_header);
-    m_outStream << rnxObsData;
-    m_outStream.flush();
+    if(m_bWriteFile)
+    {
+        Rinex3ObsData rnxObsData = convertToRinexObsData(obsList, m_header);
+        m_outStream << rnxObsData;
+        m_outStream.flush();
+    }
 }
 

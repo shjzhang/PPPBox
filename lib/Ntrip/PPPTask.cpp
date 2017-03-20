@@ -5,20 +5,12 @@ using namespace StringUtils;
 PPPTask::PPPTask()
 {
     m_bRealTime = true;
-    m_sPPPConfFile = "./ppprt.conf";
-    m_sEopFileListName = "/home/qi/program/PPPBox/workplace/ntrip/erplist";
-    m_sCorrMount = "IGS03";
-    m_dCorrWaitTime = 5;
+    m_dCorrWaitTime = 20;
 }
 
 // Destructor
 PPPTask::~PPPTask()
 {
-//    while(!m_staObsQueue.empty())
-//    {
-//        delete m_staObsQueue.front();
-//        m_staObsQueue.pop_front();
-//    }
 }
 
 bool PPPTask::run()
@@ -59,6 +51,7 @@ bool PPPTask::waitForCorr(const CommonTime &epoTime) const
     else
     {
         double dt = epoTime - m_lastClkCorrTime;
+        cout << "dt: " << dt << ", ";
         if(dt > 1.0 && dt < m_dCorrWaitTime)
         {
             return true;
@@ -231,6 +224,20 @@ void PPPTask::spinUp()
 }
 
 
+string PPPTask::solveResultFile(string& staID)
+{
+    SystemTime sysTime;
+    CommonTime dateTime(sysTime);
+    std::string doy  = YDSTime(dateTime).printf("%03j");
+    std::string yy = YDSTime(dateTime).printf("%y");
+    string path = SIG_CENTER->getFilePath();
+    string hour = CivilTime(dateTime).printf("%02d");
+
+    string outputFileName = path + staID + "_" + doy + hour
+                               + "." +  yy +  "out";
+    return outputFileName;
+}
+
 // Method that will really process information
 void PPPTask::process()
 {
@@ -264,35 +271,17 @@ void PPPTask::process()
 
     // Declare a "EOPDataStore" object to handle earth rotation parameter file
     EOPDataStore eopStore;
-
-    ifstream eopFileListStream;
-    eopFileListStream.open(m_sEopFileListName.c_str(), ios::in);
-
-    if(!eopFileListStream)
+    m_sEOPFileName = m_confReader.getValue("EOPFile","DEFAULT");
+    try
+    {
+       eopStore.loadIGSFile( m_sEOPFileName );
+    }
+    catch (FileMissingException& e)
     {
           // If file doesn't exist, issue a warning
-       cerr << "erp file List Name'" << m_sEopFileListName << "' doesn't exist or you don't "
+       cerr << "EOP file '" << m_sEOPFileName << "' doesn't exist or you don't "
             << "have permission to read it. Skipping it." << endl;
-
-       exit(-1);
     }
-    string eopFile;
-    while( eopFileListStream >> eopFile )
-    {
-       try
-       {
-          eopStore.loadIGSFile( eopFile );
-       }
-       catch (FileMissingException& e)
-       {
-             // If file doesn't exist, issue a warning
-          cerr << "EOP file '" << eopFile << "' doesn't exist or you don't "
-               << "have permission to read it. Skipping it." << endl;
-          continue;
-       }
-    }
-       // Close file
-    eopFileListStream.close();
 
     // Create a 'ProcessingList' object where we'll store
     // the processing objects in order
@@ -582,7 +571,6 @@ void PPPTask::process()
        // Object to compute tidal effects
     SolidTides solid;
 
-
        // Configure ocean loading model
     OceanLoading ocean(blqStore);
 
@@ -593,8 +581,8 @@ void PPPTask::process()
     // Prepare for printing
     int precision( m_confReader.getValueAsInt( "precision" ) );
 
-
-    string outputFileName = "ppp_albh0.out";
+    string staid = "ALBH0";
+    string outputFileName = solveResultFile(staid);
     ofstream outfile;
     outfile.open( outputFileName.c_str(), ios::out );
 
@@ -689,14 +677,16 @@ void PPPTask::process()
             StaObsMap::iterator itm = staObsMap.begin();
             list<t_satObs>::iterator itl = (itm->second).begin();
             CommonTime& epoTime =  itl->_time;
+            string utcTime = CivilTime(epoTime).printf("%02H:%02M:%02S");
+            cout << "epotime: " << utcTime << endl;
             if(waitForCorr(epoTime))
             {
                 break;
             }
 
             double dt = epoTime - m_lastClkCorrTime;
-            string utcTime = CivilTime(epoTime).printf("%02H:%02M:%02S");
-            cout << "epotime2: " << utcTime <<", dt: " << dt << endl;
+
+            //cout << "dt2: " << dt << endl;
 
             SIG_CENTER->m_gpsEphMutex.lock();
             ephStore = *(SIG_CENTER->m_ephStore);
@@ -709,6 +699,7 @@ void PPPTask::process()
             // ***********************
             // Loop all stations' observation data at one epoch
             // ***********************
+
             while(itm!=staObsMap.end())
             {
                 list<t_satObs> obsList = itm->second;
@@ -726,14 +717,13 @@ void PPPTask::process()
                     continue;
                 }
 
-                cout << "Process for station ==>" << station << endl;
                 try
                 {
+                    // If multi-station, there will be a bug!!!
                     Rinex3ObsHeader header = SIG_CENTER->m_obsStream->m_header;
                     gRin =  obsList2gnssRinex(obsList,header);
-
+                    //cout << gRin.body << endl;
                        // Preprocess
-                    //cout << gRin.body;
                     gRin >> preprocessList;
                     if(firstTime)
                     {
@@ -780,7 +770,7 @@ void PPPTask::process()
                     gRin >> predictList;       // TimeUpdate
 
                     Position tempPos(pppEKF.getRxPosition());
-                    cout << "predPOS: " << tempPos << endl;
+                    //cout << "predPOS: " << tempPos << endl;
                       // Compute solid, oceanic and pole tides effects at this epoch
                     Triple tides( solid.getSolidTide( epoTime, tempPos)  +
                                  ocean.getOceanLoading( staID4, epoTime )  +
@@ -793,7 +783,7 @@ void PPPTask::process()
                     neillTM.setAllParameters(initialTime,tempPos);
 
                     gRin >> correctList;       // MeasUpdate
-                    cout << "corrPOS: " << pppEKF.getRxPosition() << endl;
+                    cout << "corrPOS: " << pppEKF.getRxPosition() << endl << endl;
                       // Get the dry ZTD
                     drytropo = neillTM.dry_zenith_delay();
                 }
@@ -836,7 +826,7 @@ void PPPTask::process()
 
                       // This is a 'forwards-only' filter. Let's print to output
                       // file the results of this epoch
-                    Position precisePos(-2341333.077, -3539049.529, 4745791.267);
+                    Position precisePos(-2341333.077, -3539049.530, 4745791.268);
                     printSolution( outfile,
                                    pppCorrectSolver,
                                    epoTime,

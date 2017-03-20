@@ -19,7 +19,7 @@ NtripTask::NtripTask()
     m_sRawOutFile = "";
     m_sStreamFormat = "RTCM_3";
     m_decoder = 0;
-    m_sRnxPath = "./";
+    m_sRinexPath = "./";
     m_dRnxVer = 3.01;
 }
 
@@ -63,8 +63,15 @@ bool NtripTask::initDecoder()
 
      //sleep 0.1 sec
     this_thread::sleep_for(chrono::milliseconds(100));
+
     m_decoder->initRinex(staID, mntpntUrl, lat, lon,
                          nmea, ntripVer);
+    if(m_decoder->m_rnx)
+    {
+        m_decoder->m_rnx->setWriteFile(m_bWriteObsFile);
+        m_decoder->m_rnx->setFilePath(m_sRinexPath);
+        m_decoder->m_rnx->setRinexVer(m_dRnxVer);
+    }
     return true;
 }
 
@@ -215,6 +222,10 @@ bool NtripTask::run()
             catch(Exception& e)
             {
                 cout << "Error: " << e << endl;
+            }
+            catch(...)
+            {
+                cout << "unknown error!" << endl;
             }
         }
     }

@@ -58,6 +58,7 @@ private:
    std::string         _staID;
    std::string         _fileNameSkl;
    std::string         _fileName;
+   bool                _writeCorrFile;
    //QByteArray                    _buffer;
    ClockOrbit          _clkOrb;
    CodeBias            _codeBias;

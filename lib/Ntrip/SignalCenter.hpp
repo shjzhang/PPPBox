@@ -55,9 +55,6 @@ public:
     /// New clock correction data comes
     void newClkCorr(list<t_clkCorr> clkCorr);
 
-    /// Write GPS ephmeris to rinex navigation file
-    void writeGPSEph(GPSEphemeris2* eph);
-
     /// Write GPS SP3 file
     void writeSP3File();
 
@@ -72,8 +69,35 @@ public:
     { m_bWriteAllSta = choice; }
 
     /// Get the corrections data file's save path
-    string getCorrPath()
-    { return m_sCorrPath; }
+    string getFilePath()
+    { return m_sFilePath; }
+
+    /// Set the choice if write the observation
+    void setWriteNavFile(bool choice)
+    { m_navStream->setWriteFile(choice);}
+
+    /// Set the choice if write the observation
+    void setWriteSP3File(bool choice)
+    { m_sp3Stream->setWriteFile(choice);}
+
+    /// Set the choice if write the correction
+    void setWriteCorrFile(bool choice)
+    { m_bWriteCorrFile = choice;}
+
+    /// Set the choice if write the correction
+    bool getWriteCorrChoice()
+    { return m_bWriteCorrFile;}
+
+    /// Set the path to save ephmeris and sp3 data
+    void setFilePath(string& path)
+    {
+        m_navStream->setFilePath(path);
+        m_sp3Stream->setFilePath(path);
+        m_sFilePath = m_navStream->getFilePath();
+    }
+
+    /// Set the correction mountpoint
+    void setCorrMount(string& mntpnt);
 
     /// Set PPP configuration file
     void setPPPConfFile(const string& confFile)
@@ -100,13 +124,15 @@ public:
     NtripNavStream* m_navStream;             ///< Ntrip ephmeris stream
     NtripSP3Stream* m_sp3Stream;             ///< Ntrip SP3 stream
     RealTimeEphStore* m_ephStore;            ///< Ephemeris store
-    std::string m_sCorrPath;                 ///< Path to save the correction data
+
 
     //CommonTime m_lastClkCorrTime;            ///< Time of last clock correction
     bool m_bRunning;                         ///< If the ppp process is running
+    std::string m_sFilePath;                 ///< Path to save the decoded data
     double m_dCorrWaitTime;                  ///< Time of correction stream waiting (sec)
     string m_sCorrMount;                     ///< Name of the correction mountpoint
     bool m_bRealTime;                        ///< Flag of real-time mode
+    bool m_bWriteCorrFile;                   ///< If write thedecoded correction data
 
     PPPMain* m_pppMain;                      ///< PPP main controller
     string m_sPPPConfile;                    ///< PPP configuration file

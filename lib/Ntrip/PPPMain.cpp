@@ -4,7 +4,6 @@
 PPPMain::PPPMain()
 {
     m_bRunning = false;
-    m_sCorrMount = "IGS03";
     m_dCorrWaitTime = 5.0;
     m_pppTask = new PPPTask();
     m_pppThread = new WorkThread();

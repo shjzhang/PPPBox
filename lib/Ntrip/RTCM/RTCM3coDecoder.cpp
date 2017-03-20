@@ -63,19 +63,18 @@ RTCM3coDecoder::RTCM3coDecoder(const string& staID)
     _providerID[1] = -1;
     _providerID[2] = -1;
 
-    string path = SIG_CENTER->getCorrPath();
+    string path = SIG_CENTER->getFilePath();
+    _writeCorrFile = SIG_CENTER->getWriteCorrChoice();
     if(!path.empty())
     {
-        if(path[path.size()-1]!=slash)
-        {
-            path += slash;
-        }
         _fileNameSkl = path;
     }
     else
     {
         _fileNameSkl = "." + slash;
     }
+    unsigned mode = 0755;
+    FileUtils::makeDir(_fileNameSkl.c_str(),mode);
 
     _fileNameSkl += _staID;
     reset();
@@ -140,15 +139,19 @@ void RTCM3coDecoder::reopen()
           _fileName = fileName;
         }
 
-        _out = new ofstream();
-        if( FileUtils::fileAccessCheck(_fileName))
+        if(_writeCorrFile)
         {
-            _out->open(_fileName, ios::app);
+            _out = new ofstream();
+            if( FileUtils::fileAccessCheck(_fileName))
+            {
+                _out->open(_fileName, ios::app);
+            }
+            else
+            {
+                _out->open(_fileName,ios::out);
+            }
         }
-        else
-        {
-            _out->open(_fileName,ios::out);
-        }
+        return;
     }
 }
 
@@ -556,10 +559,13 @@ void RTCM3coDecoder::sendResults() {
 	  map<CommonTime, list<t_orbCorr> >::iterator itOrb = _orbCorrections.begin();
 	  if(itOrb->first < _lastTime)
       {
-		//SIG_CENTER->newOrbCorr(itOrb->second);
-        //std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
-        t_orbCorr::writeEpoch(_out, itOrb->second);
         SIG_CENTER->newOrbCorr(itOrb->second);
+
+        if(_writeCorrFile)
+        {
+            t_orbCorr::writeEpoch(_out, itOrb->second);
+        }
+
 		_orbCorrections.erase(itOrb);
 		continue;
       }
@@ -575,10 +581,13 @@ while(_clkCorrections.size() != 0)
 	  map<CommonTime, list<t_clkCorr> >::iterator itClk = _clkCorrections.begin();
 	  if(itClk->first < _lastTime)
       {
-		//SIG_CENTER->newOrbCorr(itClk->second);
-        //std::lock_guard<std::mutex> guard(SIG_CENTER->m_gpsEphMutex);
         SIG_CENTER->newClkCorr(itClk->second);
-        t_clkCorr::writeEpoch(_out, itClk->second);
+
+        if(_writeCorrFile)
+        {
+            t_clkCorr::writeEpoch(_out, itClk->second);
+        }
+
 		_clkCorrections.erase(itClk);
 		continue;
       }

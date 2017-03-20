@@ -7,6 +7,7 @@
 #include <map>
 #include <istream>
 
+#include "NtripFileBase.hpp"
 #include "NtripToolVersion.hpp"
 #include "StringUtils.hpp"
 #include "SystemTime.hpp"
@@ -20,7 +21,7 @@
 
 using namespace gpstk;
 
-class NtripObsStream
+class NtripObsStream : public NtripFileBase
 {
 public:
 
@@ -28,13 +29,19 @@ public:
     NtripObsStream(const std::string& staID, const NetUrl& mountPoint,
                    const std::string& latitude, const std::string& longitude,
                    const std::string& nmea, const std::string& ntripVersion);
-    //NtripObsStream();
+
+    /// Destructor
+    ~NtripObsStream(){;}
 
     /// Resolve the file name
     void resolveFileName(CommonTime& dateTime);
 
     /// Save the header data
     void saveHeader();
+
+    /// Set the rinex fiel version
+    void setRinexVer(double version)
+    { m_dRinexVersion = version;}
 
     /// Add the observation data
     void addObs(t_satObs obs);
@@ -44,9 +51,6 @@ public:
 
     /// Dump out the observation data by epoch
     void dumpEpoch(const std::string& format, const CommonTime& maxTime);
-
-    /// Set the path of RINEX file
-    void setRnxPath(std::string &path);
 
     /// Set the options of RINEX file
     void setRnxObsOpt(RinexObsOpt & opt){m_rinexOpt = opt;}
@@ -60,12 +64,9 @@ public:
 private:
     std::string     m_sStatID;          ///< station identification
     NetUrl          m_mountPoint;       ///< url of mountpoint
-    std::string     m_sRnxPath;         ///< path to save the RINEX file
 
     double          m_dRinexVersion;    ///< RINEX file version
-    bool            m_bHeaderWritten;   ///< If had already written the RINEX header
     bool            m_bHeaderSaved;     ///< If had already saved the RINEX header
-    std::string     m_sFileName;        ///< RINEX file name
     std::string     m_sPrgmName;        ///< Name of programe
     std::string     m_sUserName;        ///< User's name
     std::string     m_sNmea;            ///< nmea
@@ -156,7 +157,7 @@ private:
         return rnxObsData;
     }
 
-    /// Store the obsList data to gnssRinex object
+    /// Convert the obsList data to gnssRinex object
     inline gnssRinex obsList2gnssRinex(std::list<t_satObs> obsList, Rinex3ObsHeader& header)
     {
         gnssRinex g;

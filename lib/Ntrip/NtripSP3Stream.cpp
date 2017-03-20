@@ -13,11 +13,9 @@ using namespace gpstk::StringUtils;
 NtripSP3Stream::NtripSP3Stream()
 {
     m_sFileName = "";
-    m_sPath = ".";
     m_bHeaderWritten = false;
     m_eph = 0;
     m_dSample = 10;
-    setSavePath(m_sPath);
     m_ephStream = new NtripNavStream();
     m_ephStore = new RealTimeEphStore();
 }
@@ -29,21 +27,6 @@ NtripSP3Stream::~NtripSP3Stream()
     delete m_ephStream;
 }
 
-void NtripSP3Stream::setSavePath(string &path)
-{
-    if(!path.empty())
-    {
-        if(path[path.size()-1]!=slash)
-        {
-            path += slash;
-        }
-        m_sPath = path;
-    }
-    else
-    {
-        m_sPath = "." + slash;
-    }
-}
 
 
 void NtripSP3Stream::resolveFileName(CommonTime &dateTime)
@@ -54,7 +37,7 @@ void NtripSP3Stream::resolveFileName(CommonTime &dateTime)
     // day of week
     std::string dow = GPSWeekSecond(dateTime).printf("%w");
 
-    m_sFileName = m_sPath + "RTP" + gpsWeek + dow + "." + "sp3";
+    m_sFileName = m_sFilePath + "RTP" + gpsWeek + dow + "." + "sp3";
 }
 
 
@@ -181,7 +164,7 @@ void NtripSP3Stream::closeFile()
     m_outStream.close();
 }
 
-void NtripSP3Stream::printSP3Ephmeris()
+void NtripSP3Stream::dumpEpoch()
 {
     std::list<SatID> prnList;
     prnList = m_ephStore->getSatList();
@@ -207,8 +190,10 @@ void NtripSP3Stream::printSP3Ephmeris()
             ephGPS->getCrd(m_lastClkCorrTime, xvt, useCorr);
 
             // Output the data to SP3 file
-            writeFile(m_lastClkCorrTime, *it, xvt);
-
+            if(m_bWriteFile)
+            {
+                writeFile(m_lastClkCorrTime, *it, xvt);
+            }
         }
         else
         {

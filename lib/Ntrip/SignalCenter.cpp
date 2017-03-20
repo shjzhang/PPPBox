@@ -18,14 +18,13 @@ SignalCenter::SignalCenter()
     m_sp3Stream = 0;
     m_obsOutStream = 0;
     m_bRealTime = true;
-    m_sCorrMount = "IGS03";
-    m_sCorrPath = ".";
     m_navStream = new NtripNavStream();
     m_sp3Stream = new NtripSP3Stream();
     m_ephStore = new RealTimeEphStore();
     m_pppMain = new PPPMain();
-    m_dOutWait = 10;
+    m_dOutWait = 5;
     m_bWriteAllSta = true;
+    m_bWriteCorrFile = false;
     reopenObsOutFile();
 }
 
@@ -102,7 +101,7 @@ void SignalCenter::newOrbCorr(list<t_orbCorr> orbCorr)
 {
     std::unique_lock<std::mutex> lock(m_orbCorrMutex);
     std::unique_lock<std::mutex> lock2(m_gpsEphMutex);
-    std::cout << "New OrbCorr!" << std::endl;
+//    std::cout << "New OrbCorr!" << std::endl;
     if(orbCorr.size() == 0)
     {
         return;
@@ -179,27 +178,17 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
     m_sp3Stream->setLastClkCorrTime(lastClkCorrTime);
     m_condClkCorrReady.notify_one();
     m_sp3Stream->updateEphmerisStore(m_ephStore);
-    writeSP3File();
+    m_sp3Stream->dumpEpoch();
     return;
 }
 
-
-void SignalCenter::writeGPSEph(GPSEphemeris2* eph)
-{
-
-}
-
-void SignalCenter::writeSP3File()
-{
-    m_sp3Stream->printSP3Ephmeris();
-}
 
 void SignalCenter::reopenObsOutFile()
 {
     SystemTime dateTime;
     CommonTime comTime(dateTime);
     string timeStr = CivilTime(comTime).printf("%Y%02m%02d%02H");
-    string obsFileName = "Obs" + timeStr +".out";
+    string obsFileName = m_sFilePath + "Obs" + timeStr +".out";
 
     if(!m_obsOutStream)
     {
@@ -265,6 +254,12 @@ void SignalCenter::dumpObsEpoch(const CommonTime &maxTime)
             ++it;
         }
     }
+}
+
+void SignalCenter::setCorrMount(string &mntpnt)
+{
+    m_sCorrMount = mntpnt;
+    m_pppMain->setCorrMount(mntpnt);
 }
 
 void SignalCenter::startPPP()

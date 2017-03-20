@@ -19,7 +19,7 @@
 
 using namespace gpstk;
 
-class NtripSP3Stream
+class NtripSP3Stream  : public NtripFileBase
 {
 public:
 
@@ -32,20 +32,17 @@ public:
     /// Print Header of the output File
     void printHeader(const CommonTime &dateTime);
 
-    /// Set the SP3 file saving path
-    void setSavePath(std::string& path);
-
     /// Load the ephmeris data
     void setEph(OrbitEph2 *eph){m_eph = eph;}
 
     /// Resolve file name according to RINEX standards
     void resolveFileName(CommonTime &dateTime);
 
+    /// Dump out the data by epoch
+    void dumpEpoch();
+
     /// Close the file writer
     void closeFile();
-
-    /// Add ephmeris data to the store
-    void printSP3Ephmeris();
 
     /// Write SP3 file.
     void writeFile(CommonTime& epoTime, SatID &prn, Xvt& sv);
@@ -58,17 +55,13 @@ public:
 
 private:
 
-    std::mutex  m_mutex;            ///< Mutex
-    std::string m_sPath;            ///< Path to save SP3 file
-    std::string m_sFileName;        ///< File name
-
+    //std::mutex  m_mutex;            ///< Mutex
     NtripNavStream* m_ephStream;    ///< Ntrip ephmeris stream
     RealTimeEphStore* m_ephStore;   ///< Ephemeris store
     std::ofstream m_outStream;      ///< Out file stream
     SP3Stream   m_sp3Stream;        ///< SP3 stream
     SP3Header   m_header;           ///< SP3 header
     SP3Header::Version m_eSP3Ver;   ///< SP3 file version
-    bool        m_bHeaderWritten;   ///< If write the header
     double      m_dSample;          ///< Sample of saving SP3 file(sec)
     CommonTime  m_lastEpoTime;      ///< Last epoch time
     CommonTime  m_lastClkCorrTime;  ///< Last clock correction time

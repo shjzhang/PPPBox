@@ -8,7 +8,6 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "FileSpec.hpp"
 #include "NtripNavStream.hpp"
 #include "NtripToolVersion.hpp"
 #include "SystemTime.hpp"
@@ -20,14 +19,14 @@
 
 NtripNavStream::NtripNavStream()
 {
-    m_sEphPath = ".";
+    m_sFilePath = ".";
     m_sFileName = "";
     m_iRinexVer = 3;
     m_dRinexVer = 3.01;
     m_bHeaderWritten = false;
     m_bWriteFile = true;
     m_ephStore = new RealTimeEphStore();
-    setEphPath(m_sEphPath);
+    setFilePath(m_sFilePath);
 }
 
 
@@ -36,30 +35,7 @@ NtripNavStream::~NtripNavStream()
     delete m_ephStore;
 }
 
-
-NtripNavStream::NtripNavStream(NtripNavStream &right)
-//    m_eph(right.m_eph)
-{}
-
-void NtripNavStream::setEphPath(std::string &path)
-{
-    if(!path.empty())
-    {
-        if(path[path.size()-1]!=slash)
-        {
-            path += slash;
-        }
-        m_sEphPath = path;
-    }
-    else
-    {
-        m_sEphPath = "." + slash;
-    }
-}
-
-
-
-void NtripNavStream::resolveFileName(CommonTime &dateTime)
+void NtripNavStream::resolveFileName(CommonTime& dateTime)
 {
     std::string doy  = YDSTime(dateTime).printf("%03j");
     std::string yy = YDSTime(dateTime).printf("%y");
@@ -74,10 +50,10 @@ void NtripNavStream::resolveFileName(CommonTime &dateTime)
         hStr = (char)(hour-9)+ 'a' - '1';
     }
 
-    m_sFileName = m_sEphPath + "brdc" + doy + hStr + "." + yy + "n";
+    m_sFileName = m_sFilePath + "brdc" + doy + hStr + "." + yy + "n";
 }
 
-void NtripNavStream::printEphHeader()
+void NtripNavStream::printHeader()
 {
     std::string pgmName = NTRIPTOOLPGMNAME;
     std::string userName;
@@ -150,16 +126,19 @@ bool NtripNavStream::addNewEph(OrbitEph2* eph, bool check)
         return false;
     }
 
-    if(!m_bHeaderWritten && m_bWriteFile)
+    if(m_bWriteFile && !m_bHeaderWritten)
     {
-        printEphHeader();
+        printHeader();
     }
 
-    if(m_ephStore->putNewEph(eph,check) && m_bWriteFile)
+    if(m_ephStore->putNewEph(eph,check))
     {
-        std::cout << "Write the ephmeris for "
+        std::cout << "New ephmeris for "
                   << StringUtils::asString(eph->satID) << std::endl;
-        printEph(eph);
+        if(m_bWriteFile)
+        {
+            printEph(eph);
+        }
     }
     return true;
 }
