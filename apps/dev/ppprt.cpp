@@ -354,7 +354,7 @@ void ppprt::printSolution(  ofstream& outfile,
    }
    else if ( format == "dneu")
    {
-       ENUUtil enu(lat,lon);
+       ENUUtil enu(lat*DEG_TO_RAD,lon*DEG_TO_RAD);
        Triple denu(enu.convertToENU(dxyzTriple));
        outfile << setw(14) << denu[1];        // dn        - #4
        outfile << setw(14) << denu[0];        // de        - #5
