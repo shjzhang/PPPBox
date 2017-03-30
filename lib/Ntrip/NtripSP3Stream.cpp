@@ -15,16 +15,13 @@ NtripSP3Stream::NtripSP3Stream()
     m_sFileName = "";
     m_bHeaderWritten = false;
     m_eph = 0;
-    m_dSample = 10;
-    m_ephStream = new NtripNavStream();
-    m_ephStore = new RealTimeEphStore();
+    m_dSample = 60;
 }
 
 NtripSP3Stream::~NtripSP3Stream()
 {
     closeFile();
     delete m_eph;
-    delete m_ephStream;
 }
 
 
@@ -37,7 +34,11 @@ void NtripSP3Stream::resolveFileName(CommonTime &dateTime)
     // day of week
     std::string dow = GPSWeekSecond(dateTime).printf("%w");
 
-    m_sFileName = m_sFilePath + "RTP" + gpsWeek + dow + "." + "sp3";
+	if(m_sCorrMount.empty())
+	{
+	    m_sCorrMount = "MNT";
+	}
+    m_sFileName = m_sFilePath + m_sCorrMount + gpsWeek + dow + "." + "sp3";
 }
 
 
@@ -167,12 +168,12 @@ void NtripSP3Stream::closeFile()
 void NtripSP3Stream::dumpEpoch()
 {
     std::list<SatID> prnList;
-    prnList = m_ephStore->getSatList();
+    prnList = m_ephStore.getSatList();
 
     std::list<SatID>::iterator it;
     for(it=prnList.begin();it!=prnList.end();++it)
     {
-        m_eph = (OrbitEph2*)m_ephStore->ephLast(*it);
+        m_eph = (OrbitEph2*)m_ephStore.ephLast(*it);
 
         if(m_eph == 0)
         {
@@ -205,6 +206,7 @@ void NtripSP3Stream::dumpEpoch()
 
 void NtripSP3Stream::updateEphmerisStore(RealTimeEphStore *ephStore)
 {
-    m_ephStore = new RealTimeEphStore(*ephStore);
+	std::unique_lock<std::mutex> lock(m_mutex);
+    m_ephStore = *ephStore;
 }
 

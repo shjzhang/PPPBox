@@ -87,7 +87,7 @@ namespace gpstk
 		 * @param url: URL for network request
 		 * @param gga: NMEA GGA, usually empty 
 		 */
-		virtual void startRequest(const NetUrl& url, const string& gga) = 0;
+		virtual void startRequest(const NetUrl& url, const string& gga, unsigned char* buff) = 0;
 
 		/**
 		 * pure virtual functions
@@ -95,14 +95,6 @@ namespace gpstk
 		 */
 		virtual void keepAliveRequest(const NetUrl& url, const string& gga) = 0;
 
-		/**
-		 * pure virtual functions
-		 *	
-		 * Wait for reading caster's message after connection is built.
-		 * @param outData: output data from caster
-         * @return the number of received data bytes
-		 */
-        virtual int waitForReadyRead(unsigned char* outData) = 0;
   
 		/**	
 		 * send NMEA-GGA message to caster
@@ -118,12 +110,17 @@ namespace gpstk
          * Write the raw data to file
          * @param out: ofstream object to be writen
          */
-        virtual void writeRawData(ofstream& out) =0;
+        virtual void writeRawData(ofstream& out, unsigned char* buff) =0;
 
 		/**
 		 *	get the status of network request
 		 */
 		queryStatus getStatus() const { return status; }
+
+		/**
+         * return length of received buffer
+         */
+		virtual int getBuffLength() = 0;
 
 	protected:
 

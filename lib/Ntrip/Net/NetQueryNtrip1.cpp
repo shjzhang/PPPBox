@@ -94,7 +94,7 @@ namespace gpstk
 
 
    // connect to caster and send the network request
-   void NetQueryNtrip1::startRequest(const NetUrl& url, const string& gga)
+   void NetQueryNtrip1::startRequest(const NetUrl& url, const string& gga, unsigned char* buff)
         throw (MountPointNotFound,SocketRecvError)
    {
        int n, err;
@@ -111,12 +111,13 @@ namespace gpstk
        }
 
        n = recv(TCPsocket->getSocketID(),(char*)buff,buffersize-1,0);
-       if(n==-1)
+       if(n < 0)
        {
            err = TCPsocket->getSocketError();
            status = init;
            cout << "Socket receive error! Reconnect now." << endl;
            SocketRecvError e(getClassName() +": Socket receive error!");
+		   return;
            //GPSTK_THROW(e);
        }
        nbyte = n;
@@ -127,7 +128,7 @@ namespace gpstk
            try
            {
                string netPath = url.getPath();
-               testResponse(netPath);
+               testResponse(netPath, buff);
            }
            catch(BufferOverflowError &e)
            {
@@ -147,21 +148,10 @@ namespace gpstk
 
    }
 
-   // read the received data
-   int NetQueryNtrip1::waitForReadyRead(unsigned char *outData)
+
+   int NetQueryNtrip1::getBuffLength()
    {
-       if(status == dataReceiveable)
-       {
-           for(int i=0;i<nbyte;++i)
-           {
-               outData[i] = buff[i];
-           }
-           return nbyte;
-       }
-       else
-       {
-           return -1;
-       }
+	   return nbyte;
    }
 
 
@@ -243,7 +233,7 @@ namespace gpstk
        status = connected;
    }
 
-   void NetQueryNtrip1::testResponse(string &netPath)
+   void NetQueryNtrip1::testResponse(string &netPath, unsigned char* buff)
           throw (BufferOverflowError)
    {
        int i;
@@ -316,11 +306,10 @@ namespace gpstk
    }
 
    // write the recived raw data
-   void NetQueryNtrip1::writeRawData(ofstream& out)
+   void NetQueryNtrip1::writeRawData(ofstream& out, unsigned char* buff)
    {
        if(status == dataReceiveable)
        {
-           lock_guard<mutex> guard(m_mutex);
            out.write((const char*)buff,nbyte);
            out.flush();
        }

@@ -75,6 +75,7 @@ void WorkThread::runEntry(void* parameter){
 			thiz->setState(THREAD_BUSY);
             if(!pTask->run())
             {
+				pTask = 0;
                 return;
             }
 

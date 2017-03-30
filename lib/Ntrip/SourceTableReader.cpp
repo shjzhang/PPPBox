@@ -317,8 +317,8 @@ namespace gpstk
         lock_guard<mutex> guard(m_mutex);
 
         // source table buffer
-        char buff[MAXSRCTBL];
-        char* p = buff;
+        unsigned char buff[MAXSRCTBL];
+        unsigned char* p = buff;
         unsigned char *table=(unsigned char*)malloc(MAXSRCTBL);
         int len = strlen(ENDSRCTBL);
         int nb = 0;
@@ -329,7 +329,7 @@ namespace gpstk
         {
             try
             {
-                query->startRequest(url,"");
+                query->startRequest(url,"",buff);
 
                 if (query->getStatus() == NetQueryBase::error)
                 {
@@ -340,7 +340,7 @@ namespace gpstk
                   continue;
                 }
 
-                int buffLen = query->waitForReadyRead((unsigned char*)p);
+				int buffLen = query->getBuffLength();
 
                 if(buffLen > 0)
                 {

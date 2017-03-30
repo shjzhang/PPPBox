@@ -26,6 +26,10 @@ public:
 
 public:
 
+	/// Get class name
+	string getClassName()
+	{return "NtripTask";}
+
     /// run the task
     virtual bool run();
 

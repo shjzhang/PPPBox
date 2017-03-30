@@ -57,7 +57,9 @@
 #include "RecTypeDataReader.hpp"
 #include "NtripNavStream.hpp"
 #include "StringUtils.hpp"
+#include "FileUtils.hpp"
 #include "ENUUtil.hpp"
+#include "MutexLock.h"
 
 #include "SignalCenter.hpp"
 #include "NtripObsStream.hpp"
@@ -88,31 +90,32 @@ public:
     void setConfFile(string& confFile) {m_sPPPConfFile = confFile;}
 
     /// Set the time of last clock correction
-    void setLastClkCorrTime(CommonTime& time)
-    {   unique_lock<mutex> lock(m_mutex);
-        m_lastClkCorrTime = time;
-    }
+    void setLastClkCorrTime(CommonTime& time);
 
     /// Set the file name of EOP files list
-    void setEOPFileListName(string& eopListFile) {m_sEopFileListName = eopListFile;}
+    void setEOPFileListName(string& eopListFile) {m_sEOPFileName = eopListFile;}
 
     /// Set the correction mountpoint
     void setCorrMount(string mntpnt)
     {  m_sCorrMount = mntpnt; }
 
-
     /// Set station obs map
-    void newObs(StaObsMap& staObsMap)
-    {
-        unique_lock<mutex> lock(m_mutex);
-        m_staObsMap = staObsMap;
-    }
+    void newObs(StaObsMap& staObsMap);
 
-    mutex m_mutex;
+	/// Save rinex obs header
+	void setObsHeader(const Rinex3ObsHeader& header)
+	{
+		unique_lock<mutex> lock(m_obsHeaderMutex);
+		m_obsHeader = header;
+	}
+
+    /// Get file name of output results
+    string resolveFileName(string &staID);
+
 private:
 
     /// Wait for the corrections data
-    bool waitForCorr(const CommonTime& epoTime) const;
+    bool waitForCorr(const CommonTime& epoTime);
 
     /// Method to print solution values
     void printSolution(  ofstream& outfile,
@@ -137,16 +140,22 @@ private:
     /// Method that will really process information
     void process();
 
-    StaObsMap m_staObsMap;            ///< observation data of all stations at the same epoch
-    deque<StaObsMap> m_staObsQueue;  ///< observation data queue of all stations during some time
+    mutex m_mutex;                    ///< Global mutex
+	mutex m_obsQueueMutex;            ///< Observation queue mutex
+	mutex m_obsHeaderMutex;           ///< Rinex observation header mutex 
+
+	Rinex3ObsHeader m_obsHeader;      ///< Rinex obs header
+    deque<StaObsMap> m_staObsQueue;   ///< observation data queue of all stations during some time
     CommonTime m_lastClkCorrTime;     ///< Time of last clock correction
     string m_sCorrMount;              ///< Name of the correction mountpoint
-    double m_dCorrWaitTime;             ///< Time of correction stream waiting (sec)
+    double m_dCorrWaitTime;           ///< Time of correction stream waiting (sec)
 
     bool m_bRealTime;                 ///< Real-time process flag
     ConfDataReader m_confReader;      ///< Configuration file reader
     string m_sPPPConfFile;            ///< Configuration file name
-    string m_sEopFileListName;        ///< File Name of EOP data files list
+    string m_sEOPFileName;            ///< File Name of EOP data files list
+	thread m_processThread;             ///< process thread
+    //map<string,vector<ProcessingList> > m_processListMap;   /// stations' processlist map
 };
 
 

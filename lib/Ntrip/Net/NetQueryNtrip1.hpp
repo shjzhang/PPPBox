@@ -55,8 +55,11 @@
 namespace gpstk
 {
     NEW_EXCEPTION_CLASS(MountPointNotFound, gpstk::Exception);
+
     NEW_EXCEPTION_CLASS(BufferOverflowError, gpstk::Exception);
+
     NEW_EXCEPTION_CLASS(SocketRecvError, gpstk::Exception);
+
 	class NetQueryNtrip1: public NetQueryBase
 	{
 	public: 
@@ -88,7 +91,7 @@ namespace gpstk
          *	@param _url
          *	@param _gga
          */
-        virtual void startRequest(const NetUrl& _url, const string& _gga)
+        virtual void startRequest(const NetUrl& url, const string& gga, unsigned char* buff)
         throw (MountPointNotFound,SocketRecvError);
 
 		/**
@@ -98,23 +101,22 @@ namespace gpstk
          */
 		virtual void keepAliveRequest(const NetUrl& url, const string& gga);
 
-        /**
-         * Wait for reading caster's message after connected succesfully.
-         * @param  outData: output data from caster
-         * @return the number of received data bytes
-         */
-        virtual int waitForReadyRead(unsigned char* outData);
 
         /**
          * Write the raw data to file
          * @param out: ofstream object to be writen
          */
-        virtual void writeRawData(ofstream& out);
+        virtual void writeRawData(ofstream& out, unsigned char* buff);
 
         /**
          * return a string identifying this class
          */
 		string getClassName() const;
+
+		/**
+         * return length of received buffer
+         */
+		virtual int getBuffLength();
 
 	private:
 		/*
@@ -130,7 +132,7 @@ namespace gpstk
         void sendRequest(const NetUrl &url,const string &gga);
 
         // test the response
-        void testResponse(string &netPath) throw (BufferOverflowError);
+        void testResponse(string &netPath, unsigned char* buff) throw (BufferOverflowError);
 
         //
 		SocketLib *TCPsocket;

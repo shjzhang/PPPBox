@@ -215,9 +215,6 @@ int main( int argc, char* argv[] )
     // whether get sourcetable from network
     bool getSourceTable( ntripConf.getValueAsBoolean("GetSourceTableFromNet") );
 
-    // whether output raw data to file
-    bool outputRaw(ntripConf.getValueAsBoolean("OutputRawToFile"));
-
     // loop all the casters
     ReadMountPoints ReadmntPoints;
     string casterNum;
@@ -335,19 +332,34 @@ int main( int argc, char* argv[] )
 
     } // end of "loop all the casters"
 
+    bool outputRaw(ntripConf.getValueAsBoolean("OutputRaw", "DEFAULT"));
+    bool writeRinexObs(ntripConf.getValueAsBoolean("WriteRinexObs", "DEFAULT"));
+    bool writeRinexNav(ntripConf.getValueAsBoolean("WriteRinexNav", "DEFAULT"));
+    double rnxVer(ntripConf.getValueAsDouble("RinexVersion", "DEFAULT"));
+    bool writeSP3(ntripConf.getValueAsBoolean("WriteSP3", "DEFAULT"));
+    bool writeCorrFile(ntripConf.getValueAsBoolean("WriteCorrFile", "DEFAULT"));
+    string filePath = ntripConf.getValue("FilePath", "DEFAULT");
+    string pppConf = ntripConf.getValue( "pppConf", "DEFAULT");
+    string corrMount = ntripConf.getValue( "corrMount", "DEFAULT");
+
+    SIG_CENTER->setWriteNavFile(writeRinexNav);
+    SIG_CENTER->setWriteSP3File(writeSP3);
+    SIG_CENTER->setFilePath(filePath);
+    SIG_CENTER->setPPPConfFile(pppConf);
+    SIG_CENTER->setCorrMount(corrMount);
+    SIG_CENTER->setWriteCorrFile(writeCorrFile);
+
     //////////////////////// thread ////////////////////////////////////
 
-    ThreadPool* pTP = ThreadPool::create(15);
+    ThreadPool* pTP = ThreadPool::create(5);
 
     pTP->onStart();
 
     // get the map
     map<string,MountPoint> mntPointsMap = ReadmntPoints.getMountPointMap();
 
-
     // Loop through MountPointsMap
     map<string,MountPoint>::iterator itmnt;
-
     for(itmnt = mntPointsMap.begin();itmnt != mntPointsMap.end();++itmnt)
     {
         if(verb > 1)
@@ -362,14 +374,15 @@ int main( int argc, char* argv[] )
         SystemTime dateTime;
         CommonTime comTime(dateTime);
         std::string utcTime = CivilTime(comTime).printf("%Y%02m%02d%02H");
-        string filename = pt.getMountPointID() + "_" + utcTime +".out";
-        pTask->setRawOutFile(filename);
+        string rawFileName = filePath + pt.getMountPointID() + "_" + utcTime +".raw";
+        pTask->setRawOutFile(rawFileName);
         pTask->setRawOutOpt(outputRaw);
+        pTask->setWriteObsFile(writeRinexObs);
+        pTask->setObsFilePath(filePath);
+        pTask->setRinexVersion(rnxVer);
         pTP->pushTask(pTask);
     } // end for
 
-    string pppConf = ntripConf.getValue( "pppConf", "DEFAULT");
-    SIG_CENTER->setPPPConfFile(pppConf);
     SIG_CENTER->startPPP();
 
     char key = ' ';

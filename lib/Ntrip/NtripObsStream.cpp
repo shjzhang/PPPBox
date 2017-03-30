@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "NtripObsStream.hpp"
+#include "SignalCenter.hpp"
 
 using namespace StringUtils;
 
@@ -17,6 +18,8 @@ NtripObsStream::NtripObsStream(const std::string& staID, const NetUrl& mountPoin
     m_sLatitude = latitude;
     m_sLongitude = longitude;
     m_sNtripVersion = ntripVersion;
+	m_bHeaderWritten = false;
+	m_bHeaderSaved = false;
     m_sPrgmName = NTRIPTOOLPGMNAME;
 #ifdef WIN32
     m_sUserName = ::getenv("USERNAME");
@@ -91,6 +94,7 @@ void NtripObsStream::saveHeader()
         m_header.valid |= Rinex3ObsHeader::validAntennaPosition;
     }
 
+	SIG_CENTER->saveObsHeader(m_header);
     m_bHeaderSaved = true;
 }
 
@@ -119,7 +123,8 @@ void NtripObsStream::writeHeader(const std::string& format, const CommonTime& fi
     {
         this->saveHeader();
     }
-
+	string sys = "G";
+	int typeSize  = m_header.mapObsTypes[sys].size();
     // Add the additional comments
     // ----------------------------------
     std::string comment = leftJustify(format, 6) + "  " + m_mountPoint.getCasterHost()

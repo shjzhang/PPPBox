@@ -13,7 +13,6 @@ SignalCenter* SignalCenter::instance()
 
 SignalCenter::SignalCenter()
 {
-    m_obsStream = 0;
     m_navStream = 0;
     m_sp3Stream = 0;
     m_obsOutStream = 0;
@@ -23,14 +22,13 @@ SignalCenter::SignalCenter()
     m_ephStore = new RealTimeEphStore();
     m_pppMain = new PPPMain();
     m_dOutWait = 5;
-    m_bWriteAllSta = true;
+    m_bWriteAllSta = false;
     m_bWriteCorrFile = false;
     reopenObsOutFile();
 }
 
 SignalCenter::~SignalCenter()
 {
-    delete m_obsStream;
     delete m_navStream;
     delete m_sp3Stream;
     delete m_ephStore;
@@ -40,8 +38,8 @@ SignalCenter::~SignalCenter()
 }
 
 void SignalCenter::newObs(list<t_satObs> obsList)
-{
-    std::unique_lock<std::mutex> lock(m_obsMutex);
+{	
+	unique_lock<mutex> lock2(m_allObsMutex);
 
     list<t_satObs>::iterator it = obsList.begin();
 
@@ -51,7 +49,7 @@ void SignalCenter::newObs(list<t_satObs> obsList)
 
     while(it != obsList.end())
     {
-        t_satObs& obs = *it;
+        const t_satObs& obs = *it;
 
 
         // First time: set the _lastDumpTime
@@ -64,6 +62,7 @@ void SignalCenter::newObs(list<t_satObs> obsList)
         // An old observation - throw it away
         if (obs._time <= m_lastObsDumpTime)
         {
+			++it;
             continue;
         }
 
@@ -75,16 +74,69 @@ void SignalCenter::newObs(list<t_satObs> obsList)
         {
             dumpObsEpoch(obs._time - m_dOutWait);
             m_lastObsDumpTime = obs._time - m_dOutWait;
-            *m_obsOutStream << "Map Size" << m_staObsMap.size() << endl;
 
-            // Emit the signal to pppThread
-            unique_lock<mutex> lock2(SIG_CENTER->m_allObsMutex);
-            m_pppMain->newObs(m_staObsMap);
-            m_condObsReady.notify_one();
-            // Clear older contents
-            m_staObsMap.clear();
+			if(m_staObsMap.size() > 0)
+			{
+				m_pppMain->newObs(m_staObsMap);
+
+				// Clear older contents
+				m_staObsMap.clear();
+			}
         }
         ++it;
+    }
+}
+
+void SignalCenter::dumpObsEpoch(const CommonTime &maxTime)
+{
+	EpochObsMap::iterator it = m_epoObsMap.begin();
+    while(it!=m_epoObsMap.end())
+    {
+        const CommonTime& epoTime = it->first;
+        if(epoTime <= maxTime)
+        {
+            list<t_satObs>& allObs = it->second;
+            list<t_satObs>::iterator itObs = allObs.begin();
+			string& staID = itObs->_staID;
+			GPSWeekSecond gs = GPSWeekSecond(itObs->_time);
+			if(m_bWriteAllSta)
+			{
+				*m_obsOutStream << "> " << gs.getWeek() << ' '
+					            << setprecision(7) << gs.getSOW() << endl;
+			}
+            while(itObs!=allObs.end())
+            {
+                const t_satObs& obs = *itObs;
+
+                // Output into the File
+                if(m_bWriteAllSta)
+                {
+                    reopenObsOutFile();
+                    *m_obsOutStream << setiosflags(ios::fixed);
+                    GPSWeekSecond gs = GPSWeekSecond(obs._time);
+                    *m_obsOutStream << obs._staID << ' ' << asciiSatLine(obs) << endl;
+
+                    if((++itObs)==allObs.end())
+                    {
+                        *m_obsOutStream << endl;
+                    }
+                    m_obsOutStream->flush();
+                }
+				else
+				{
+					++itObs;
+				}
+
+                // Add the data to m_staObsMap
+                m_staObsMap[staID].push_back(obs);
+            }
+            m_epoObsMap.erase(it);
+            it = m_epoObsMap.begin();
+        }
+        else
+        {
+            ++it;
+        }
     }
 }
 
@@ -155,6 +207,7 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
     }
 
     CommonTime lastClkCorrTime = it->_time;
+	m_pppMain->setLastClkCorrTime(lastClkCorrTime);
     for(;it!=clkCorr.end();++it)
     {
         OrbitEph2* ephLast = (OrbitEph2*)m_ephStore->ephLast(it->_prn);
@@ -174,9 +227,7 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
     }
     std::string utcTime = CivilTime(lastClkCorrTime).printf("%02H:%02M:%02S");
     std::cout << "New ClkCorr at time -> " << utcTime << std::endl;
-    m_pppMain->setLastClkCorrTime(lastClkCorrTime);
     m_sp3Stream->setLastClkCorrTime(lastClkCorrTime);
-    m_condClkCorrReady.notify_one();
     m_sp3Stream->updateEphmerisStore(m_ephStore);
     m_sp3Stream->dumpEpoch();
     return;
@@ -190,7 +241,7 @@ void SignalCenter::reopenObsOutFile()
     string timeStr = CivilTime(comTime).printf("%Y%02m%02d%02H");
     string obsFileName = m_sFilePath + "Obs" + timeStr +".out";
 
-    if(!m_obsOutStream)
+	if(m_bWriteAllSta && !m_obsOutStream)
     {
         delete m_obsOutStream;
         m_obsOutStream = new ofstream;
@@ -205,61 +256,19 @@ void SignalCenter::reopenObsOutFile()
     }
 }
 
-void SignalCenter::dumpObsEpoch(const CommonTime &maxTime)
+void SignalCenter::saveObsHeader(const Rinex3ObsHeader& header)
 {
-    map<CommonTime,list<t_satObs> >::iterator it = m_epoObsMap.begin();
-    while(it!=m_epoObsMap.end())
-    {
-        const CommonTime& epoTime = it->first;
-        if(epoTime <= maxTime)
-        {
-            list<t_satObs>& allObs = it->second;
-            list<t_satObs>::iterator itObs;
-            bool firstObs = true;
-            string staID;
-            for(itObs=allObs.begin();itObs!=allObs.end();)
-            {
-                const t_satObs& obs = *itObs;
-                staID = obs._staID;
-
-                // Output into the File
-                if(m_bWriteAllSta)
-                {
-                    reopenObsOutFile();
-                    *m_obsOutStream << setiosflags(ios::fixed);
-                    GPSWeekSecond gs = GPSWeekSecond(obs._time);
-                    if(firstObs)
-                    {
-                        firstObs = false;
-                        *m_obsOutStream << "> " << gs.getWeek() << ' '
-                                       << setprecision(7) << gs.getSOW() << endl;
-                    }
-                    *m_obsOutStream << obs._staID << ' ' << asciiSatLine(obs) << endl;
-
-                    if((++itObs)==allObs.end())
-                    {
-                        *m_obsOutStream << endl;
-                    }
-                    m_obsOutStream->flush();
-                }
-
-                // Add the data to m_staObsMap
-                m_staObsMap[staID].push_back(obs);
-            }
-            m_epoObsMap.erase(it);
-            it = m_epoObsMap.begin();
-        }
-        else
-        {
-            ++it;
-        }
-    }
+	m_obsHeader = header;
+	m_pppMain->setObsHeader(header);
 }
+
+
 
 void SignalCenter::setCorrMount(string &mntpnt)
 {
     m_sCorrMount = mntpnt;
     m_pppMain->setCorrMount(mntpnt);
+	m_sp3Stream->setCorrMount(mntpnt);
 }
 
 void SignalCenter::startPPP()

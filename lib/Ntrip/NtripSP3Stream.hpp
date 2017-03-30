@@ -50,15 +50,18 @@ public:
     /// Set the time of last clock correction
     void setLastClkCorrTime(CommonTime& time){ m_lastClkCorrTime = time;}
 
+    /// Set the correction mountpoint
+    void setCorrMount(const std::string& mntpnt) { m_sCorrMount = mntpnt; }
+
     /// Update the ephmeris store
     void updateEphmerisStore(RealTimeEphStore *ephStore);
 
 private:
 
-    //std::mutex  m_mutex;            ///< Mutex
-    NtripNavStream* m_ephStream;    ///< Ntrip ephmeris stream
-    RealTimeEphStore* m_ephStore;   ///< Ephemeris store
+    std::mutex  m_mutex;            ///< Mutex
+    RealTimeEphStore m_ephStore;    ///< Ephemeris store
     std::ofstream m_outStream;      ///< Out file stream
+    std::string m_sCorrMount;       ///< Correction mountpoint
     SP3Stream   m_sp3Stream;        ///< SP3 stream
     SP3Header   m_header;           ///< SP3 header
     SP3Header::Version m_eSP3Ver;   ///< SP3 file version

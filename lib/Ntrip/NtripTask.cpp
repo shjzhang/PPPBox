@@ -108,20 +108,22 @@ bool NtripTask::run()
         {
             // added gga into string
             string gga = "";
-            query->startRequest(tempURL,gga);
+			unsigned char* data = (unsigned char *)malloc(4096);
+            query->startRequest(tempURL,gga,data);
         }
         else
         {
             try
             {
-                query->startRequest(tempURL,"");
+				unsigned char* data = (unsigned char *)malloc(4096);
+                query->startRequest(tempURL, "", data);
                 if (query->getStatus() == NetQueryBase::error)
                 {
                     return false;
                 }
                 if(m_bOutputRaw)
                 {
-                    query->writeRawData(out);
+                    query->writeRawData(out, data);
                 }
 
                 if (!decoder() || query->getStatus() != NetQueryBase::dataReceiveable)
@@ -135,8 +137,8 @@ bool NtripTask::run()
 
                 // Decode Data
                 // -------------
-                unsigned char* data = (unsigned char *)malloc(4096);
-                int buffLen = query->waitForReadyRead(data);
+                
+				int buffLen = query->getBuffLength();
 
                 if(buffLen > 0)
                 {
@@ -151,6 +153,7 @@ bool NtripTask::run()
 
                 // Loop over all observations (observations output)
                 // ------------------------------------------------
+				lock_guard<mutex> guard(m_mutex);
                 list<t_satObs>::iterator it = m_decoder->m_obsList.begin();
 
                 list<t_satObs> obsListHlp;
@@ -209,23 +212,22 @@ bool NtripTask::run()
                 {
                     // Send the obsList
                     // ----------------
-                    SIG_CENTER->m_obsStream = m_decoder->m_rnx;
                     SIG_CENTER->newObs(obsListHlp);
                 }
 
             }
             catch(MountPointNotFound& e)
             {
-                cout << e.what() << endl;
+                cout << e.what() << " in class" << getClassName() << endl;
                 return false;
             }
             catch(Exception& e)
             {
-                cout << "Error: " << e << endl;
+				cout << "Error: " << e << " in class" << getClassName() << endl;
             }
             catch(...)
             {
-                cout << "unknown error!" << endl;
+				cout << "unknown error happened in  class: " << getClassName()  << ", URLPath: " <<tempURL.getPath() << endl;
             }
         }
     }

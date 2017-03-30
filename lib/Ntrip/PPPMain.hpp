@@ -12,6 +12,7 @@
 #include "WorkThread.h"
 #include "PPPTask.hpp"
 #include "CommonTime.hpp"
+#include "Rinex3ObsHeader.hpp"
 
 using namespace std;
 using namespace gpstk;
@@ -53,6 +54,13 @@ public:
         m_pppTask->newObs(staObsMap);
     }
 
+	/// Save rinex obs header
+	void setObsHeader(const Rinex3ObsHeader& header)
+	{
+		m_pppTask->setObsHeader(header);
+	}
+
+	PPPTask* m_pppTask;                 ///< PPP task
 private:
 
     /// Read the PPP options
@@ -63,9 +71,7 @@ private:
 
     mutex m_mutex;                      ///< Mutex
     CommonTime m_lastClkCorrTime;       ///< Time of last clock correction
-    PPPTask* m_pppTask;                 ///< PPP task
     WorkThread* m_pppThread;            ///< PPP thread
-
     string m_sConfFile;                 ///< Configuration file name
     string m_sEopFileListName;          ///< File Name of EOP data files list
 

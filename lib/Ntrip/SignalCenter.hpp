@@ -16,15 +16,16 @@
 #include "NtripNavStream.hpp"
 #include "NtripSP3Stream.hpp"
 #include "RealTimeEphStore.hpp"
+#include "MutexLock.h"
 
 using namespace std;
 using namespace gpstk;
 
 // Epoch observation map type
-typedef std::map<CommonTime,std::list<t_satObs> > EpochObsMap;
+typedef map<CommonTime, list<t_satObs> > EpochObsMap;
 
 // Station obslist map valuse
-typedef std::map<std::string, std::list<t_satObs> > StaObsMap;
+typedef map<string, list<t_satObs> > StaObsMap;
 
 
 class PPPMain;
@@ -72,6 +73,9 @@ public:
     string getFilePath()
     { return m_sFilePath; }
 
+	/// Save rinex obs header
+	void saveObsHeader(const Rinex3ObsHeader& header);
+
     /// Set the choice if write the observation
     void setWriteNavFile(bool choice)
     { m_navStream->setWriteFile(choice);}
@@ -111,24 +115,19 @@ public:
 
 public:
     mutex m_obsMutex;                        ///< Mutex for observation data
-    mutex m_allObsMutex;                        ///< Mutex for observation data
+    mutex m_allObsMutex;                     ///< Mutex for observation data
     mutex m_gpsEphMutex;                     ///< Mutex for gps ephmeris data
     mutex m_orbCorrMutex;                    ///< Mutex for orbit correction data
     mutex m_clkCorrMutex;                    ///< Mutex for clock correction data
 
-    condition_variable m_condObsReady;       ///< condition variable for obs data
-    condition_variable m_condGPSEphReady;    ///< condition variable for gps eph data
-    condition_variable m_condClkCorrReady;   ///< condition variable for clock correction
-
-    NtripObsStream* m_obsStream;             ///< Ntrip observation stream
+	Rinex3ObsHeader m_obsHeader;             ///< Rinex observation header
     NtripNavStream* m_navStream;             ///< Ntrip ephmeris stream
     NtripSP3Stream* m_sp3Stream;             ///< Ntrip SP3 stream
     RealTimeEphStore* m_ephStore;            ///< Ephemeris store
 
-
     //CommonTime m_lastClkCorrTime;            ///< Time of last clock correction
     bool m_bRunning;                         ///< If the ppp process is running
-    std::string m_sFilePath;                 ///< Path to save the decoded data
+    string m_sFilePath;                      ///< Path to save the decoded data
     double m_dCorrWaitTime;                  ///< Time of correction stream waiting (sec)
     string m_sCorrMount;                     ///< Name of the correction mountpoint
     bool m_bRealTime;                        ///< Flag of real-time mode
@@ -140,6 +139,7 @@ public:
     // For observation data
     StaObsMap m_staObsMap;                   ///< Station observation data list at specified epoch
     EpochObsMap m_epoObsMap;                 ///< Observation data list at specified epoch
+	list<t_satObs> m_currObsList;            ///< Current obs list
     ofstream *m_obsOutStream;                ///< Stream of outputing observations
     bool m_bWriteAllSta;                     ///< If write all stations' observation data to a file
     CommonTime m_lastObsDumpTime;            ///< Time of last dump observation
