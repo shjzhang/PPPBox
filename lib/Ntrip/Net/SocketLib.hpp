@@ -43,199 +43,169 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef _WIN32
 
-#include "winsock2.h"
-#pragma comment(lib, "ws2_32.lib") 
-#include <ws2tcpip.h>
-typedef SOCKET sock_t;          // unsigned
-#else 
-#include <netdb.h>
-#include <netinet/in.h>  
-#include <sys/socket.h>  
-#include <sys/types.h>  
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <fcntl.h> 
-#include <time.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include <linux/tcp.h>
-typedef int sock_t;              // unsigned
-#endif 
-
-//#define SOCKET_ERROR  (-1);
+#include "SocketDefs.hpp"
 
 using namespace std;
 
-namespace gpstk
+class SocketLib
 {
-	class SocketLib
-	{
-	public:
+public:
 
-		/** 
-		 * This enumeration dedicates the status of socket
-		 * referecen to QAbstractSocket
-		 */ 
-		enum SocketStatus
-		{
-			// the socket is not connected
-			UnconnectedState = 0,
-			
-			// the socket is performing a host name lookup
-			HostLookupState,
+    /**
+     * This enumeration dedicates the status of socket
+     * referecen to QAbstractSocket
+     */
+    enum SocketStatus
+    {
+        // the socket is not connected
+        UnconnectedState = 0,
 
-			// the socket has started establishing a connection
-			ConnectingState,
+        // the socket is performing a host name lookup
+        HostLookupState,
 
-			// a connection is estalished
-			ConnectedState,
+        // the socket has started establishing a connection
+        ConnectingState,
 
-			// the socket is bound to an address and port(only server)
-			BoundState,
+        // a connection is estalished
+        ConnectedState,
 
-			// the socket is abount to close(data may still be waiting to be written)
-			ClosingState = 6,
+        // the socket is bound to an address and port(only server)
+        BoundState,
 
-		};
+        // the socket is abount to close(data may still be waiting to be written)
+        ClosingState = 6,
 
-		// return a string identifying this class
-		string getClassName() const;
+    };
 
-		/**
-		 * default constructor(state = UnconnectedState)
-		 */
-		SocketLib();
-	
-		/**
-		 * destructor
-		 */
-		~SocketLib(){};
+    // return a string identifying this class
+    string getClassName() const;
 
-		//Initialize system environment for windows
-		void Initenvironment();
+    /**
+     * default constructor(state = UnconnectedState)
+     */
+    SocketLib();
 
-		// free socket source for windows
-		void freeEnvironment();
+    /**
+     * destructor
+     */
+    ~SocketLib(){};
 
-		/**
-		 * Get the socket error.Be careful to use this function because 
-		 * Not ALL API functions can return the error identification
-		 * @return special error number( > 0 )
-		 */
-		int getSocketError();
+    //Initialize system environment for windows
+    void Initenvironment();
 
-		/**
-		 * create TCP socket
-		 * @param family:    AF_INET
-		 * @param type  :    SOCK_STREAM or SOCK_DGRAM
-		 * @param protocol:  0
-		 * @return: -1 = error,or created socket descriptor
-		 */
-		sock_t Socket(int family, int type, int protocol);
+    // free socket source for windows
+    void freeEnvironment();
 
-		/**
-		 * close socket
-		 */
-		void CloseSocket();
+    /**
+     * Get the socket error.Be careful to use this function because
+     * Not ALL API functions can return the error identification
+     * @return special error number( > 0 )
+     */
+    int getSocketError();
+
+    /**
+     * create TCP socket
+     * @param family:    AF_INET
+     * @param type  :    SOCK_STREAM or SOCK_DGRAM
+     * @param protocol:  0
+     * @return: -1 = error,or created socket descriptor
+     */
+    socket_t Socket(int family, int type, int protocol);
+
+    /**
+     * close socket
+     */
+    void CloseSocket();
 
 
-		// 立马关闭socket，丢弃读写缓冲区的所有数据，待实现！
-		void abort();
+    void abort();
 
 
 
-		/**
-		 * host name->IP(Protocol independent)
-		 * In general, we usually know the host name, rather than the 
-		 * IP addrress.Therefore, use the function getaddrinfo() to get
-		 * the IP address structure.
-		 * @param hostname: host name or IP(dotted decimal notation)
-		 * @param service: service or port(decimalist)
-		 * @param hints: struct addrinfo
-		 * @param result: struct addrinfo
-		 * @return int, MUST be 0, or will be exit
-		 */
-		int getAddrFromHost(const char * hostname, const char* service,
-			                 const struct addrinfo* hints,struct addrinfo **result);
+    /**
+     * host name->IP(Protocol independent)
+     * In general, we usually know the host name, rather than the
+     * IP addrress.Therefore, use the function getaddrinfo() to get
+     * the IP address structure.
+     * @param hostname: host name or IP(dotted decimal notation)
+     * @param service: service or port(decimalist)
+     * @param hints: struct addrinfo
+     * @param result: struct addrinfo
+     * @return int, MUST be 0, or will be exit
+     */
+    int getAddrFromHost(const char * hostname, const char* service,
+                         const struct addrinfo* hints,struct addrinfo **result);
 
-		/**
-		 * set socket option,including SO_RCVTIMEO/SO_SNDTIMEO/
-		 * SO_RCVBUF/SO_SNDBUF/TCP_NODELAY, not including connect
-		 * timeout.
-		 * @param sockfd: socket descriptor
-		 * @param rcvbuffsize: receive buffer size
-		 * @param rcvtimeo: receive timeout
-		 * @param sndbuffsize: send buffer size
-		 * @param sndtimeo: send timeout
-		 * @param mode: TCP_NODELAY
-		 * ALL time units: s
-		 */
-		int setSocketOption(sock_t sockfd,int rcvbuffsize,int sndbuffsize,
-			                int rcvtimeo,int sndtimeo,int mode);
-		
-		// only set SO_RCVBUF/SO_SNDBUF
-		int setSocketOption(sock_t sockfd,int rcvbuffsize,int sndbuffsize);
+    /**
+     * set socket option,including SO_RCVTIMEO/SO_SNDTIMEO/
+     * SO_RCVBUF/SO_SNDBUF/TCP_NODELAY, not including connect
+     * timeout.
+     * @param sockfd: socket descriptor
+     * @param rcvbuffsize: receive buffer size
+     * @param rcvtimeo: receive timeout
+     * @param sndbuffsize: send buffer size
+     * @param sndtimeo: send timeout
+     * @param mode: TCP_NODELAY
+     * ALL time units: s
+     */
+    int setSocketOption(socket_t sockfd,int rcvbuffsize,int sndbuffsize,
+                        int rcvtimeo,int sndtimeo,int mode);
 
-		
-
-		/**
-		 * connect to caster in block model
-		 * @param host: host name
-		 * @param port: port number
-		 * @return
-		 */
-		void connectToHost(const char* host,const char * port);
-
-		// wait until timeout,unit in s
-		bool waitForConnected(int timeout);
-
-		// whether readable,unit in s
-		bool sockReadable(int timeout);
-
-		// whether writeable,unit in s
-		bool sockWriteable(int timeout);
-
-
-		/**
-		 * write into socket send buffer
-		 * @param buff: string to be sent
-		 * @param nbytes: number of bytes(calling length())
-		 * @return: -1 = error
-		 * @return: the number of bytes really be written into buffer
-		 */
-		int writen(const char *buff,size_t nbytes);
-
-		// read
-		int readn(char *buff,size_t nbytes); 
-
-
-		// get the socket descriptor
-        sock_t getSocketID(){return socketID;}
-
-		// get the socket status
-        SocketStatus getSocketStatus(){return sockState;}
-
-	private:
-
-		// socket descriptor
-		sock_t socketID;
-
-		// socket state
-		SocketStatus sockState;
+    // only set SO_RCVBUF/SO_SNDBUF
+    int setSocketOption(socket_t sockfd,int rcvbuffsize,int sndbuffsize);
 
 
 
+    /**
+     * connect to caster in block model
+     * @param host: host name
+     * @param port: port number
+     * @return
+     */
+    void connectToHost(const char* host,const char * port);
+
+    // wait until timeout,unit in s
+    bool waitForConnected(int timeout);
+
+    // whether readable,unit in s
+    bool sockReadable(int timeout);
+
+    // whether writeable,unit in s
+    bool sockWriteable(int timeout);
 
 
-	};	// End of class 'SocketLib'
+    /**
+     * write into socket send buffer
+     * @param buff: string to be sent
+     * @param nbytes: number of bytes(calling length())
+     * @return: -1 = error
+     * @return: the number of bytes really be written into buffer
+     */
+    int writen(const char *buff,size_t nbytes);
+
+    // read
+    int readn(char *buff,size_t nbytes);
+
+
+    // get the socket descriptor
+    socket_t getSocketID(){return socketID;}
+
+    // get the socket status
+    SocketStatus getSocketStatus(){return sockState;}
+
+private:
+
+    // socket descriptor
+    socket_t socketID;
+
+    // socket state
+    SocketStatus sockState;
+
+};	// End of class 'SocketLib'
 
 	//@}
 
 
-} // End of namespace gpstk
 
 #endif   // GPSTK_SOCKETLIB_HPP

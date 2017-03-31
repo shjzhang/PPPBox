@@ -41,8 +41,6 @@
 
 
 #define NTRIP_AGENT         "pppbox/"   /* VER_GPSTk */
-#define NTRIP_CLI_PORT      2101        /* default ntrip-client connection port */
-#define NTRIP_SVR_PORT      80          /* default ntrip-server connection port */
 #define NTRIP_MAXRSP        32768       /* max size of ntrip response */
 #define NTRIP_MAXSTR        256         /* max length of mountpoint string */
 #define NTRIP_RSP_OK_CLI    "ICY 200 OK\r\n" /* ntrip response: client */
@@ -60,33 +58,33 @@ namespace gpstk
 
     NEW_EXCEPTION_CLASS(SocketRecvError, gpstk::Exception);
 
-	class NetQueryNtrip1: public NetQueryBase
-	{
-	public: 
+    class NetQueryNtrip1: public NetQueryBase
+    {
+    public: 
 
-		/**
-		 * default constructor
-		 */
-		NetQueryNtrip1();
-	
-		/**
-		 * destructor(must be virtual)
-		 */
-		virtual ~NetQueryNtrip1();
+        /**
+         * default constructor
+         */
+        NetQueryNtrip1();
+    
+        /**
+         * destructor(must be virtual)
+         */
+        virtual ~NetQueryNtrip1();
 
-		/**
-		 * stop 
-		 *	
-		 */
-		virtual void stop();
+        /**
+         * stop 
+         *	
+         */
+        virtual void stop();
 
-		/**
+        /**
          *	pure virtual functions
          *
          */
-		virtual void waitForRequestResult(const NetUrl& url, string& outData);
+        virtual void waitForRequestResult(const NetUrl& url, string& outData);
 
-		/**
+        /**
          *	start the network request
          *	@param _url
          *	@param _gga
@@ -94,12 +92,12 @@ namespace gpstk
         virtual void startRequest(const NetUrl& url, const string& gga, unsigned char* buff)
         throw (MountPointNotFound,SocketRecvError);
 
-		/**
+        /**
          * Wait for reading caster's message after connected succesfully.
          * @param  outData: output data from caster
          * @return the number of received data bytes
          */
-		virtual void keepAliveRequest(const NetUrl& url, const string& gga);
+        virtual void keepAliveRequest(const NetUrl& url, const string& gga);
 
 
         /**
@@ -111,22 +109,14 @@ namespace gpstk
         /**
          * return a string identifying this class
          */
-		string getClassName() const;
+        string getClassName() const;
 
-		/**
+        /**
          * return length of received buffer
          */
-		virtual int getBuffLength();
+        virtual int getBuffLength();
 
-	private:
-		/*
-		 * realization of nerwork request based on NTRIP 1.0
-		 * @param url: 
-		 * @param gga: NMEA GGA string
-		 * @param sendRequestOnly: false = send and receive, true = only send
-		 */
-		void startRequestPrivate(const NetUrl &url,const string &gga,
-			                     bool sendRequestOnly);
+    private:
 
         // send the request
         void sendRequest(const NetUrl &url,const string &gga);
@@ -135,13 +125,10 @@ namespace gpstk
         void testResponse(string &netPath, unsigned char* buff) throw (BufferOverflowError);
 
         //
-		SocketLib *TCPsocket;
+        SocketLib *TCPsocket;
 
         // size of buffer
         int buffersize;
-
-        // response buffer
-        unsigned char *buff;
 
         // the bytes of received data
         int nbyte;
@@ -149,9 +136,9 @@ namespace gpstk
         // mutex
         mutex m_mutex;
 
-	};	// End of class 'NetQueryNtrip1'
+    };	// End of class 'NetQueryNtrip1'
 
-		//@}
+    	//@}
 
 
 } // End of namespace gpstk

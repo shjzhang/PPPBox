@@ -39,71 +39,71 @@
 
 namespace gpstk
 {
-	class NetQueryBase
-	{
-	public:
+    class NetQueryBase
+    {
+    public:
 
-		/** 
-		 * This enumeration dedicates the status of network communication
+        /** 
+         * This enumeration dedicates the status of network communication
          * init = 0; connected = 1; dataReceiveable = 2; finished = 3; error = -1
-		 */ 
-		enum queryStatus
-		{
+         */ 
+        enum queryStatus
+        {
             init,                   // Initialize state
             connected,              // have connected to the server
             dataReceiveable,        // can receive the data
             finished,               // finished the work
             error = -1              // errors occur
-		};
+        };
 
-		/**
-		 * default constructor
-		 */
+        /**
+         * default constructor
+         */
         NetQueryBase(){;}
-	
-		/**
-		 * destructor(must be virtual)
-		 */
+    
+        /**
+         * destructor(must be virtual)
+         */
         virtual ~NetQueryBase(){;}
 
-		/**
-		 * pure virtual functions
-		 * 
-		 * Stop network connections and the status = finished
-		 */
-		virtual void stop() = 0;
+        /**
+         * pure virtual functions
+         * 
+         * Stop network connections and the status = finished
+         */
+        virtual void stop() = 0;
 
-		/**
-		 * pure virtual functions
-		 *	
-		 */
-		virtual void waitForRequestResult(const NetUrl& url, string& outData) = 0;
+        /**
+         * pure virtual functions
+         *	
+         */
+        virtual void waitForRequestResult(const NetUrl& url, string& outData) = 0;
 
-		/**
-		 * pure virtual functions
-		 *	
-		 * Initiate network connection. If connection is successful, then 
-		 * status = running.
-		 * @param url: URL for network request
-		 * @param gga: NMEA GGA, usually empty 
-		 */
-		virtual void startRequest(const NetUrl& url, const string& gga, unsigned char* buff) = 0;
+        /**
+         * pure virtual functions
+         *	
+         * Initiate network connection. If connection is successful, then 
+         * status = running.
+         * @param url: URL for network request
+         * @param gga: NMEA GGA, usually empty 
+         */
+        virtual void startRequest(const NetUrl& url, const string& gga, unsigned char* buff) = 0;
 
-		/**
-		 * pure virtual functions
-		 *	
-		 */
-		virtual void keepAliveRequest(const NetUrl& url, const string& gga) = 0;
+        /**
+         * pure virtual functions
+         *	
+         */
+        virtual void keepAliveRequest(const NetUrl& url, const string& gga) = 0;
 
   
-		/**	
-		 * send NMEA-GGA message to caster
-		 *	@param gga		NMEA-GGA message 
-		 */
-		void sendNMEA(const string& gga) 
-		{
-			keepAliveRequest(url, gga);
-		}
+        /**	
+         * send NMEA-GGA message to caster
+         *	@param gga		NMEA-GGA message 
+         */
+        void sendNMEA(const string& gga) 
+        {
+            keepAliveRequest(url, gga);
+        }
 
 
         /**
@@ -112,30 +112,30 @@ namespace gpstk
          */
         virtual void writeRawData(ofstream& out, unsigned char* buff) =0;
 
-		/**
-		 *	get the status of network request
-		 */
-		queryStatus getStatus() const { return status; }
+        /**
+         *	get the status of network request
+         */
+        queryStatus getStatus() const { return status; }
 
-		/**
+        /**
          * return length of received buffer
          */
-		virtual int getBuffLength() = 0;
+        virtual int getBuffLength() = 0;
 
-	protected:
+    protected:
 
-		// init, running, finished, error
-		queryStatus status;
+        // init, running, finished, error
+        queryStatus status;
 
-		// time-out threshold, unit in s.
-		int timeOut;
+        // time-out threshold, unit in s.
+        int timeOut;
 
-		// URL for network request
-		NetUrl url;
+        // URL for network request
+        NetUrl url;
 
-	};	// End of class 'NetQueryBase'
+    };	// End of class 'NetQueryBase'
 
-	//@}
+    //@}
 
 
 } // End of namespace gpstk

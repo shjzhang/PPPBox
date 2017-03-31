@@ -45,13 +45,11 @@ using namespace vdraw;
 using namespace gpstk;
 using namespace StringUtils;
 
-// max size of ntrip response
-#define NTRIP_MAXRSP   32768
 
 namespace gpstk
 {
 
-	// return a string identifying this class.
+    // return a string identifying this class.
    string NetQueryNtrip1::getClassName() const
    { return "NetQueryNtrip1"; }
 
@@ -59,31 +57,27 @@ namespace gpstk
    // constructor
    NetQueryNtrip1::NetQueryNtrip1()
    {
-	   TCPsocket = 0;
+       TCPsocket = 0;
        timeOut = 20; // by default: 20s
        status = init;
        buffersize = 4096;
-       buff = (unsigned char *)malloc(buffersize);
    }
 
 
    NetQueryNtrip1::~NetQueryNtrip1()
    {
-       free(buff);
-	   delete TCPsocket;
+       delete TCPsocket;
    }
 
    // stop the socket
    void NetQueryNtrip1::stop()
    {
-	   if(TCPsocket)
-	   {
-		   //TCPsocket->abort();
+       if(TCPsocket)
+       {
            cout << "Here stop the netQuery! ";
-		   TCPsocket->CloseSocket();;
-	   }
-	   status = finished;
-
+    	   TCPsocket->CloseSocket();
+       }
+       status = finished;
    }
 
    // send request and read the received data
@@ -111,14 +105,35 @@ namespace gpstk
        }
 
        n = recv(TCPsocket->getSocketID(),(char*)buff,buffersize-1,0);
-       if(n < 0)
+       err = TCPsocket->getSocketError();
+       // receive error
+       if(n == 0)
        {
-           err = TCPsocket->getSocketError();
+           TCPsocket->CloseSocket();
+           delete TCPsocket;
            status = init;
            cout << "Socket receive error! Reconnect now." << endl;
            SocketRecvError e(getClassName() +": Socket receive error!");
-		   return;
-           //GPSTK_THROW(e);
+           return;
+       }
+       if(n < 0)
+       {
+           // continue receive
+           if(err == GPSTK_EINTR ||  err == GPSTK_EWOULDBLOCK 
+           || err == GPSTK_EAGAIN)
+           {
+               return;
+           }
+           // receive error
+           else
+           {
+               TCPsocket->CloseSocket();
+               delete TCPsocket;
+               status = init;
+               cout << "Socket receive error! Reconnect now." << endl;
+               SocketRecvError e(getClassName() +": Socket receive error!");
+               return;
+           }
        }
        nbyte = n;
 
@@ -151,7 +166,7 @@ namespace gpstk
 
    int NetQueryNtrip1::getBuffLength()
    {
-	   return nbyte;
+       return nbyte;
    }
 
 
@@ -293,7 +308,7 @@ namespace gpstk
             status = init;
             cout << "Here4 stop the netQuery! ";
             TCPsocket->CloseSocket();
-
+    		delete TCPsocket;
             BufferOverflowError e(getClassName() + ": Response buffer overflow!");
             GPSTK_THROW(e);
        }
@@ -317,14 +332,6 @@ namespace gpstk
        {
            return;
        }
-   }
-
-   // The realization of the network request based on Ntrip 1.0 version
-   void NetQueryNtrip1::startRequestPrivate(const NetUrl& url, 
-							                const string& gga, 
-							                bool sendRequestOnly)
-   {
-       // break up the origin function from XY.Cao
    }
 
 
