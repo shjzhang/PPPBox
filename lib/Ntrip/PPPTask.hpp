@@ -102,12 +102,12 @@ public:
     /// Set station obs map
     void newObs(StaObsMap& staObsMap);
 
-	/// Save rinex obs header
-	void setObsHeader(const Rinex3ObsHeader& header)
-	{
-		unique_lock<mutex> lock(m_obsHeaderMutex);
-		m_obsHeader = header;
-	}
+    /// Save rinex obs header
+    void setObsHeader(const Rinex3ObsHeader& header)
+    {
+        unique_lock<mutex> lock(m_obsHeaderMutex);
+        m_obsHeader = header;
+    }
 
     /// Get file name of output results
     string resolveFileName(string &staID);
@@ -141,10 +141,10 @@ private:
     void process();
 
     mutex m_mutex;                    ///< Global mutex
-	mutex m_obsQueueMutex;            ///< Observation queue mutex
-	mutex m_obsHeaderMutex;           ///< Rinex observation header mutex 
+    mutex m_obsQueueMutex;            ///< Observation queue mutex
+    mutex m_obsHeaderMutex;           ///< Rinex observation header mutex 
 
-	Rinex3ObsHeader m_obsHeader;      ///< Rinex obs header
+    Rinex3ObsHeader m_obsHeader;      ///< Rinex obs header
     deque<StaObsMap> m_staObsQueue;   ///< observation data queue of all stations during some time
     CommonTime m_lastClkCorrTime;     ///< Time of last clock correction
     string m_sCorrMount;              ///< Name of the correction mountpoint
@@ -154,7 +154,7 @@ private:
     ConfDataReader m_confReader;      ///< Configuration file reader
     string m_sPPPConfFile;            ///< Configuration file name
     string m_sEOPFileName;            ///< File Name of EOP data files list
-	thread m_processThread;             ///< process thread
+    thread m_processThread;             ///< process thread
     //map<string,vector<ProcessingList> > m_processListMap;   /// stations' processlist map
 };
 

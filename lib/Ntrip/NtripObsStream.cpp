@@ -18,8 +18,8 @@ NtripObsStream::NtripObsStream(const std::string& staID, const NetUrl& mountPoin
     m_sLatitude = latitude;
     m_sLongitude = longitude;
     m_sNtripVersion = ntripVersion;
-	m_bHeaderWritten = false;
-	m_bHeaderSaved = false;
+    m_bHeaderWritten = false;
+    m_bHeaderSaved = false;
     m_sPrgmName = NTRIPTOOLPGMNAME;
 #ifdef WIN32
     m_sUserName = ::getenv("USERNAME");

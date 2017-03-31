@@ -39,7 +39,7 @@ SignalCenter::~SignalCenter()
 
 void SignalCenter::newObs(list<t_satObs> obsList)
 {	
-	unique_lock<mutex> lock2(m_allObsMutex);
+    unique_lock<mutex> lock2(m_allObsMutex);
 
     list<t_satObs>::iterator it = obsList.begin();
 
@@ -62,7 +62,7 @@ void SignalCenter::newObs(list<t_satObs> obsList)
         // An old observation - throw it away
         if (obs._time <= m_lastObsDumpTime)
         {
-			++it;
+            ++it;
             continue;
         }
 
@@ -75,13 +75,13 @@ void SignalCenter::newObs(list<t_satObs> obsList)
             dumpObsEpoch(obs._time - m_dOutWait);
             m_lastObsDumpTime = obs._time - m_dOutWait;
 
-			if(m_staObsMap.size() > 0)
-			{
-				m_pppMain->newObs(m_staObsMap);
+            if(m_staObsMap.size() > 0)
+            {
+                m_pppMain->newObs(m_staObsMap);
 
-				// Clear older contents
-				m_staObsMap.clear();
-			}
+                // Clear older contents
+                m_staObsMap.clear();
+            }
         }
         ++it;
     }
@@ -89,7 +89,7 @@ void SignalCenter::newObs(list<t_satObs> obsList)
 
 void SignalCenter::dumpObsEpoch(const CommonTime &maxTime)
 {
-	EpochObsMap::iterator it = m_epoObsMap.begin();
+    EpochObsMap::iterator it = m_epoObsMap.begin();
     while(it!=m_epoObsMap.end())
     {
         const CommonTime& epoTime = it->first;
@@ -97,13 +97,13 @@ void SignalCenter::dumpObsEpoch(const CommonTime &maxTime)
         {
             list<t_satObs>& allObs = it->second;
             list<t_satObs>::iterator itObs = allObs.begin();
-			string& staID = itObs->_staID;
-			GPSWeekSecond gs = GPSWeekSecond(itObs->_time);
-			if(m_bWriteAllSta)
-			{
-				*m_obsOutStream << "> " << gs.getWeek() << ' '
-					            << setprecision(7) << gs.getSOW() << endl;
-			}
+            string& staID = itObs->_staID;
+            GPSWeekSecond gs = GPSWeekSecond(itObs->_time);
+            if(m_bWriteAllSta)
+            {
+                *m_obsOutStream << "> " << gs.getWeek() << ' '
+                                << setprecision(7) << gs.getSOW() << endl;
+            }
             while(itObs!=allObs.end())
             {
                 const t_satObs& obs = *itObs;
@@ -122,16 +122,15 @@ void SignalCenter::dumpObsEpoch(const CommonTime &maxTime)
                     }
                     m_obsOutStream->flush();
                 }
-				else
-				{
-					++itObs;
-				}
+                else
+                {
+                    ++itObs;
+                }
 
                 // Add the data to m_staObsMap
                 m_staObsMap[staID].push_back(obs);
             }
-            m_epoObsMap.erase(it);
-            it = m_epoObsMap.begin();
+            it = m_epoObsMap.erase(it);
         }
         else
         {

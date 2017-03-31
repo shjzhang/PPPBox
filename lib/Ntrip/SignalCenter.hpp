@@ -73,8 +73,8 @@ public:
     string getFilePath()
     { return m_sFilePath; }
 
-	/// Save rinex obs header
-	void saveObsHeader(const Rinex3ObsHeader& header);
+    /// Save rinex obs header
+    void saveObsHeader(const Rinex3ObsHeader& header);
 
     /// Set the choice if write the observation
     void setWriteNavFile(bool choice)
@@ -120,7 +120,7 @@ public:
     mutex m_orbCorrMutex;                    ///< Mutex for orbit correction data
     mutex m_clkCorrMutex;                    ///< Mutex for clock correction data
 
-	Rinex3ObsHeader m_obsHeader;             ///< Rinex observation header
+    Rinex3ObsHeader m_obsHeader;             ///< Rinex observation header
     NtripNavStream* m_navStream;             ///< Ntrip ephmeris stream
     NtripSP3Stream* m_sp3Stream;             ///< Ntrip SP3 stream
     RealTimeEphStore* m_ephStore;            ///< Ephemeris store
@@ -139,7 +139,6 @@ public:
     // For observation data
     StaObsMap m_staObsMap;                   ///< Station observation data list at specified epoch
     EpochObsMap m_epoObsMap;                 ///< Observation data list at specified epoch
-	list<t_satObs> m_currObsList;            ///< Current obs list
     ofstream *m_obsOutStream;                ///< Stream of outputing observations
     bool m_bWriteAllSta;                     ///< If write all stations' observation data to a file
     CommonTime m_lastObsDumpTime;            ///< Time of last dump observation

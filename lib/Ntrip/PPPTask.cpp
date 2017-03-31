@@ -20,8 +20,8 @@ bool PPPTask::run()
         if(m_bRealTime)
         {
             spinUp();
-			m_processThread = thread(&PPPTask::process, this);
-			m_processThread.join();
+            m_processThread = thread(&PPPTask::process, this);
+            m_processThread.join();
             return true;
         }
         else
@@ -31,7 +31,7 @@ bool PPPTask::run()
     }
     catch(...)
     {
-		m_processThread.detach();
+	    m_processThread.detach();
     }
     return false;
 }
@@ -67,49 +67,49 @@ bool PPPTask::waitForCorr(const CommonTime &epoTime)
 
 void PPPTask::newObs(StaObsMap& staObsMap)
 {
-	unique_lock<mutex> lock(m_obsQueueMutex);
+    unique_lock<mutex> lock(m_obsQueueMutex);
 
-	StaObsMap newStaObsMap; 
-	StaObsMap::iterator itm = staObsMap.begin();
-	CommonTime currTime;
-	while(itm != staObsMap.end())
-	{
-		list<t_satObs>& obsList = itm->second;
-		list<t_satObs>::iterator itObs = obsList.begin();
-		string staID = itObs->_staID;
-		bool firstObs = true;
-		currTime = itObs->_time;
-		while(itObs != obsList.end())
-		{
-			const t_satObs& obs = *itObs;
-			CommonTime& epoTime = itObs->_time;
-			if(epoTime == currTime)
-			{
-				newStaObsMap[staID].push_back(obs);
-			}
+    StaObsMap newStaObsMap; 
+    StaObsMap::iterator itm = staObsMap.begin();
+    CommonTime currTime;
+    while(itm != staObsMap.end())
+    {
+        list<t_satObs>& obsList = itm->second;
+        list<t_satObs>::iterator itObs = obsList.begin();
+        string staID = itObs->_staID;
+        bool firstObs = true;
+        currTime = itObs->_time;
+        while(itObs != obsList.end())
+        {
+            const t_satObs& obs = *itObs;
+            CommonTime& epoTime = itObs->_time;
+            if(epoTime == currTime)
+            {
+                newStaObsMap[staID].push_back(obs);
+            }
 
-			// When comes observation data more than one epoch 
-			else if(epoTime > currTime)
-			{
-				m_staObsQueue.push_back(newStaObsMap);
-				newStaObsMap.clear();
-				currTime = epoTime;
-				continue;
-			}
+            // When comes observation data more than one epoch 
+            else if(epoTime > currTime)
+            {
+                m_staObsQueue.push_back(newStaObsMap);
+                newStaObsMap.clear();
+                currTime = epoTime;
+                continue;
+            }
 
-			++itObs;
-		}
-		++itm;
-	}
-	if(newStaObsMap.size() > 0)
-	{
-		m_staObsQueue.push_back(newStaObsMap);
-	}
+            ++itObs;
+        }
+        ++itm;
+    }
+    if(newStaObsMap.size() > 0)
+    {
+        m_staObsQueue.push_back(newStaObsMap);
+    }
 }
 
 void PPPTask::setLastClkCorrTime(CommonTime& time)
 {   
-	unique_lock<mutex> lock(m_mutex);
+    unique_lock<mutex> lock(m_mutex);
     m_lastClkCorrTime = time;
 }
 
@@ -288,7 +288,7 @@ string PPPTask::resolveFileName(string& staID)
 // Method that will really process information
 void PPPTask::process()
 {
-	RealTimeEphStore ephStore;
+    RealTimeEphStore ephStore;
     //******************************************
     // Let's read ocean loading BLQ data files
     //******************************************
@@ -702,15 +702,14 @@ void PPPTask::process()
     double drytropo(0.0);
 
 
-	bool firstTime = true;
+    bool firstTime = true;
     while(1)
     {
-		
         // Process the oldest epochs
-         while(m_staObsQueue.size() > 1)
+        while(m_staObsQueue.size() > 1)
         {
-			unique_lock<mutex> lock(m_obsQueueMutex);
-			
+            unique_lock<mutex> lock(m_obsQueueMutex);
+            
             StaObsMap staObsMap = m_staObsQueue.front();
             StaObsMap::iterator itm = staObsMap.begin();
             list<t_satObs>::iterator itl = (itm->second).begin();
@@ -719,29 +718,29 @@ void PPPTask::process()
             {
                 break;
             }
-
+  
             double dt = epoTime - m_lastClkCorrTime;
             string utcTime = CivilTime(epoTime).printf("%02H:%02M:%02S");
             cout << "epotime2: " << utcTime <<", dt: " << dt << endl;
-
+ 
             ephStore = *(SIG_CENTER->m_ephStore);
             ephStore.usingCorrection(true);
             basic.setDefaultEphemeris(ephStore);
             corr.setEphemeris(ephStore);
             windup.setEphemeris(ephStore);
-
+  
             // ***********************
             // Loop all stations' observation data at one epoch
             // ***********************
-			gnssRinex gRin;
+            gnssRinex gRin;
             while(itm!=staObsMap.end())
             {
                 list<t_satObs> obsList = itm->second;
                 string station = (obsList.begin())->_staID;
-
+ 
                 // Four character station
                 string staID4 = station.substr(0, 4);
-
+ 
                 // Let's check the ocean loading data for current station before
                 // the real data processing.
                 if( ! blqStore.isValid(staID4) )
@@ -753,32 +752,32 @@ void PPPTask::process()
                 
                 try
                 {
-					if(m_obsHeader.valid)
-					{
+            		if(m_obsHeader.valid)
+            		{
                         gRin =  obsList2gnssRinex(obsList,m_obsHeader);
-					}
-					else
-					{
-						cout << "Rinex obs header is not valid!" << endl;
-						break;
-					}
-
+            		}
+            		else
+            		{
+            			cout << "Rinex obs header is not valid!" << endl;
+            			break;
+            		}
+ 
                        // Preprocess
                     //cout << gRin.body;
                     gRin >> preprocessList;
                     if(firstTime)
                     {
-						cout << "Process for station ==>" << station << endl;
+                        cout << "Process for station ==>" << station << endl;
                         Bancroft bancroft;
-
+ 
                         SatIDSet currSatSet(gRin.body.getSatID());
-
+ 
                         int numSats(currSatSet.size());
-
+ 
                         Matrix<double> data(numSats,4,0.0);
-
+ 
                         Vector<double> solution;
-
+ 
                         int i(0);
                             // loop in currSatSet
                         for(SatIDSet::const_iterator it = currSatSet.begin();
@@ -787,37 +786,37 @@ void PPPTask::process()
                          {
                                // get the postion and clock bias of given satellite
                              Xvt svPosVel(ephStore.getXvt(*it,epoTime));
-
+ 
                              data(i,0) = svPosVel.x[0];         // X
                              data(i,1) = svPosVel.x[1];         // Y
                              data(i,2) = svPosVel.x[2];         // Z
                              data(i,3) = gRin.body[*it][TypeID::P1]+C_MPS*svPosVel.clkbias;
                              i++;
                          }
-
+ 
                          int ret = bancroft.Compute(data,solution);
                          double x,y,z;
                          Position recPos(solution[0],solution[1],solution[2]);
                          pppEKF.setRxPosition(recPos);
-
+ 
                            // no more first time
                          firstTime = false;
                     } // End of 'if (firstTime)'
-
+ 
                     gRin >> predictList;       // TimeUpdate
-
+ 
                     Position tempPos(pppEKF.getRxPosition());
                       // Compute solid, oceanic and pole tides effects at this epoch
                     Triple tides( solid.getSolidTide( epoTime, tempPos)  +
                                  ocean.getOceanLoading( staID4, epoTime )  +
                                  pole.getPoleTide( epoTime, tempPos) );
-
+ 
                       // Update observable correction object with tides information
                     corr.setExtraBiases(tides);
-
+ 
                       // reset the receiver position
                     neillTM.setAllParameters(initialTime,tempPos);
-
+ 
                     gRin >> correctList;       // MeasUpdate
                     cout << "corrPOS: " << pppEKF.getRxPosition() << endl << endl;;
                       // Get the dry ZTD
@@ -847,19 +846,19 @@ void PPPTask::process()
                            " at epoch: " << epoTime << endl;
                    continue;
                 }
-
-
+ 
+ 
                    // Ask if we are going to print the model
                 if ( printmodel )
                 {
                    printModel( modelfile, gRin, precision );
-
+ 
                 }
-
+ 
                    // Check what type of solver we are using
                 if ( cycles < 1 )
                 {
-
+ 
                       // This is a 'forwards-only' filter. Let's print to output
                       // file the results of this epoch
                     Position precisePos(-2341333.077, -3539049.529, 4745791.267);
@@ -872,27 +871,26 @@ void PPPTask::process()
                                    precisePos,
                                    result_format,
                                    precision );
-
+ 
                 }  // End of 'if ( cycles < 1 )'
-
+ 
                 ++itm;
             } // End of 'while(itm!=staObsMap.end())'
-
+ 
             if(m_staObsQueue.size()!=0)
             {
                 m_staObsQueue.pop_front();
             }
-			this_thread::sleep_for(chrono::milliseconds(50));
+            this_thread::sleep_for(chrono::milliseconds(50));
         } // End of 'while(m_staObsQueue.size() != 0)'
     }  // End of 'while(1)'
-
 
 
     //***********************************************
     // At last, Let's clear the content of EOP object
     //***********************************************
     eopStore.clear();
-	ephStore.clear();
+    ephStore.clear();
 }
 
 void PPPTask::processFiles()
