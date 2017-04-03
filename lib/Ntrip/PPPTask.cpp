@@ -5,6 +5,7 @@ using namespace StringUtils;
 PPPTask::PPPTask()
 {
     m_bRealTime = true;
+    m_sCorrType = "APC";
     m_dCorrWaitTime = 60;
 }
 
@@ -113,129 +114,16 @@ void PPPTask::setLastClkCorrTime(CommonTime& time)
     m_lastClkCorrTime = time;
 }
 
-// Method to print solution values
-void PPPTask::printSolution(  ofstream& outfile,
-                            const SolverLMS& solver,
-                            const CommonTime& time,
-                            const ComputeDOP& cDOP,
-                            int   numSats,
-                            double dryTropo,
-                            Position& pos,
-                            const string format,
-                            int   precision)
+void PPPTask::setStationList(const list<string>& staList)
 {
-      // Prepare for printing
-   outfile << fixed;
-
-      // Print results
-   outfile << static_cast<YDSTime>(time).year;                                // Year           - #1
-   outfile << setw(8) << static_cast<YDSTime>(time).doy;                      // DayOfYear      - #2
-   outfile << setprecision(3)<< setw(12)<< static_cast<YDSTime>(time).sod;    // SecondsOfDay   - #3
-
-   double recX(solver.getSolution(TypeID::recX));  // ECEF X
-   double recY(solver.getSolution(TypeID::recY));  // ECEF Y
-   double recZ(solver.getSolution(TypeID::recZ));  // ECEF Z
-
-   double dx(recX - pos[0]);
-   double dy(recY - pos[1]);
-   double dz(recZ - pos[2]);
-
-   Triple dxyzTriple(dx,dy,dz);
-
-   Position recPos(recX,recY,recZ);
-   double lat(recPos.getGeodeticLatitude());   // Geodetic latitude
-   double lon(recPos.getLongitude());          // Geodetic longitude
-   double height(recPos.getHeight());          // Geodetic Height
-
-   if ( format == "BLH" )
-   {
-       outfile << setprecision(9)         << setw(16) << lat;         // Lat        - #4
-       outfile << setprecision(9)         << setw(16) << lon;         // Lon        - #5
-       outfile << setprecision(precision) << setw(14) << height;      // Height     - #6
-   }
-   else if ( format == "XYZ")
-   {
-       outfile << setw(14) << recX;           // recX       - #4
-       outfile << setw(14) << recY;           // recY       - #5
-       outfile << setw(14) << recZ;           // recZ       - #6
-   }
-   else if ( format == "dxyz")
-   {
-       outfile << setw(14) << dx;             // dx       - #4
-       outfile << setw(14) << dy;             // dy       - #5
-       outfile << setw(14) << dz;             // dz       - #6
-   }
-   else if ( format == "dneu")
-   {
-       ENUUtil enu(lat*DEG_TO_RAD,lon*DEG_TO_RAD);
-       Triple denu(enu.convertToENU(dxyzTriple));
-       outfile << setw(14) << denu[1];        // dn        - #4
-       outfile << setw(14) << denu[0];        // de        - #5
-       outfile << setw(14) << denu[2];        // du        - #6
-   }
-         // We add 0.1 meters to 'wetMap' because 'NeillTropModel' sets a
-         // nominal value of 0.1 m. Also to get the total we have to add the
-         // dry tropospheric delay value
-                                                                 // ztd - #7
-   outfile << setw(10) << solver.getSolution(TypeID::wetMap) + 0.1 + dryTropo;
-
-   outfile << setw(5)  << numSats;           // Number of satellites - #12
-
-   outfile << setw(8)  << cDOP.getGDOP();    // GDOP - #13
-   outfile << setw(8)  << cDOP.getPDOP();    // PDOP - #14
-
-      // Add end-of-line
-   outfile << endl;
-
-   outfile.flush();
-   return;
-
-
-}  // End of method 'ppprt::printSolution()'
-
-
-
-// Method to print model values
-void PPPTask::printModel( ofstream& modelfile, const gnssRinex& gData,
-                          int   precision)
-{
-    // Prepare for printing
-    modelfile << fixed << setprecision( precision );
-
-    // Get epoch out of GDS
-    CommonTime time(gData.header.epoch);
-
-    // Iterate through the GNSS Data Structure
-    for ( satTypeValueMap::const_iterator it = gData.body.begin();
-          it!= gData.body.end();
-          it++ )
+    list<string>::const_iterator it;
+    for(it = staList.begin(); it != staList.end(); ++it)
     {
-
-        // Print epoch
-        modelfile << static_cast<YDSTime>(time).year << "  ";  // Year         #1
-        modelfile << static_cast<YDSTime>(time).doy  << "  ";  // DayOfYear    #2
-        modelfile << static_cast<YDSTime>(time).sod  << "  ";  // SecondsOfDay #3
-
-        // Print satellite information (Satellite system and ID number)
-        modelfile << (*it).first << " ";         // System         #4
-                                                 // ID number      #5
-
-       // Print model values
-        for( typeValueMap::const_iterator itObs  = (*it).second.begin();
-             itObs != (*it).second.end();
-             itObs++ )
-        {
-            // Print type names and values
-            modelfile << (*itObs).first << " ";
-            modelfile << (*itObs).second << " ";
-
-        }  // End of 'for( typeValueMap::const_iterator itObs = ...'
-
-        modelfile << endl;
-
-    }  // End for (it = gData.body.begin(); ... )
-    return;
+        const string& station = *it;
+        m_stationList.push_back(station);
+    }
 }
+
 
 void PPPTask::spinUp()
 {
@@ -288,7 +176,24 @@ string PPPTask::resolveFileName(string& staID)
 // Method that will really process information
 void PPPTask::process()
 {
+    // Ephemeris store for real-time brdc plused by ssr
     RealTimeEphStore ephStore;
+
+    // File Name of EOP data
+    string eopFileName; 
+
+    // File name of msc data
+    string mscFileName; 
+
+    // station
+    string staid = *(m_stationList.begin());
+
+    // Current time
+    CommonTime initialTime ;
+    SystemTime sysTime;
+    initialTime = sysTime.convertToCommonTime();
+    initialTime.setTimeSystem(TimeSystem::GPS);
+
     //******************************************
     // Let's read ocean loading BLQ data files
     //******************************************
@@ -317,17 +222,53 @@ void PPPTask::process()
 
     // Declare a "EOPDataStore" object to handle earth rotation parameter file
     EOPDataStore eopStore;
-    m_sEOPFileName = m_confReader.getValue("EOPFile","DEFAULT");
+    eopFileName = m_confReader.getValue("EOPFile","DEFAULT");
     try
     {
-       eopStore.loadIGSFile( m_sEOPFileName );
+       eopStore.loadIGSFile( eopFileName );
     }
     catch (FileMissingException& e)
     {
           // If file doesn't exist, issue a warning
-       cerr << "EOP file '" << m_sEOPFileName << "' doesn't exist or you don't "
+       cerr << "EOP file '" << eopFileName << "' doesn't exist or you don't "
             << "have permission to read it. Skipping it." << endl;
     }
+
+    MSCStore mscStore;
+    mscFileName = m_confReader.getValue("MSCFile","DEFAULT");
+    try
+    {
+       mscStore.loadFile( mscFileName );
+    }
+    catch (gpstk::FFStreamError& e)
+    {
+          // If file doesn't exist, issue a warning
+       cerr << e << endl;
+       cerr << "MSC file '" << mscFileName << "' Format is not supported!!!"
+            << "stop." << endl;
+       exit(-1);
+    }
+    catch (FileMissingException& e)
+    {
+          // If file doesn't exist, issue a warning
+       cerr << "MSC file '" << mscFileName << "' doesn't exist or you don't "
+            << "have permission to read it." << endl;
+       exit(-1);
+    }
+
+    MSCData mscData;
+    try
+    {
+       mscData = mscStore.findMSC( staid.substr(0, 4), initialTime );
+    }
+    catch (InvalidRequest& ie)
+    {
+          // If file doesn't exist, issue a warning
+       cerr << "The station " << staid.substr(0, 4)
+            << " isn't included in MSC file." << endl;
+    }
+          // get the precise position of this station( X,Y,Z in ITRF )
+    Position precisePos(mscData.coordinates);
 
     // Create a 'ProcessingList' object where we'll store
     // the processing objects in order
@@ -335,8 +276,8 @@ void PPPTask::process()
     ProcessingList predictList;
     ProcessingList correctList;
 
-    // First time for this rinex file
-    CommonTime initialTime;
+    ConvertC1ToP1 c1ToP1;
+    preprocessList.push_back(c1ToP1);
 
     // This object will check that all required observables are present
     RequireObservables requireObs;
@@ -434,41 +375,19 @@ void PPPTask::process()
        // Check if we want to use Antex information
     bool useantex( m_confReader.getValueAsBoolean( "useAntex") );
     string antennaModel;
-    if( useantex )
-    {
-          // Feed Antex reader object with Antex file
-        antexReader.open( m_confReader.getValue( "antexFile" ) );
-
-          // Antenna model
-        antennaModel = "TRM59800.00";
-
-          // Get receiver antenna parameters
-          // Warning: If no corrections are not found for one specific
-          //          radome, then the antenna with radome NONE are used.
-       try
-       {
-           receiverAntenna = antexReader.getAntenna( antennaModel );
-       }
-       catch(ObjectNotFound& notFound)
-       {
-             // new antenna model
-           antennaModel.replace(16,4,"NONE");
-             // new receiver antenna with new antenna model
-           receiverAntenna = antexReader.getAntenna( antennaModel );
-       }
-
-    }
 
     // Object to compute satellite antenna phase center effect
-    /// Because of using brdc ephemeris, we deedn't this correction.////
-//    ComputeSatPCenter svPcenter(pppEKF);
-//    if( useantex )
-//    {
-//          // Feed 'ComputeSatPCenter' object with 'AntexReader' object
-//        svPcenter.setAntexReader( antexReader );
-//    }
-
-//    correctList.push_back(svPcenter);       // Add to processing list
+    ComputeSatPCenter svPcenter(pppEKF);
+    if( useantex )
+    {
+          // Feed 'ComputeSatPCenter' object with 'AntexReader' object
+        svPcenter.setAntexReader( antexReader );
+    }
+    if(m_sCorrType != "APC")
+    {
+        // Only for CoM type
+        correctList.push_back(svPcenter);
+    }
 
 
        // Declare an object to correct observables to monument
@@ -627,7 +546,6 @@ void PPPTask::process()
     // Prepare for printing
     int precision( m_confReader.getValueAsInt( "precision" ) );
 
-    string staid = "ALBH0";
     string outputFileName = resolveFileName(staid);
     ofstream outfile;
     outfile.open( outputFileName.c_str(), ios::out );
@@ -745,14 +663,14 @@ void PPPTask::process()
                 // the real data processing.
                 if( ! blqStore.isValid(staID4) )
                 {
-                    cout << "There is no BLQ data for current station:" << station << endl;
+                    cout << "There is no BLQ data for current station:" << staID4 << endl;
                     cout << "Current staion will be not processed !!!!" << endl;
                     continue;
                 }
                 
                 try
                 {
-            		if(m_obsHeader.valid)
+                    if(m_obsHeader.isValid())
             		{
                         gRin =  obsList2gnssRinex(obsList,m_obsHeader);
             		}
@@ -767,6 +685,33 @@ void PPPTask::process()
                     gRin >> preprocessList;
                     if(firstTime)
                     {
+                        // Got antenna type
+                        if( useantex )
+                        {
+                              // Feed Antex reader object with Antex file
+                            antexReader.open( m_confReader.getValue( "antexFile" ) );
+
+                              // Antenna model
+                            antennaModel = m_obsHeader.antType;
+
+                              // Get receiver antenna parameters
+                              // Warning: If no corrections are not found for one specific
+                              //          radome, then the antenna with radome NONE are used.
+                           try
+                           {
+                               receiverAntenna = antexReader.getAntenna( antennaModel );
+                           }
+                           catch(ObjectNotFound& notFound)
+                           {
+                                 // new antenna model
+                               antennaModel.replace(16,4,"NONE");
+                                 // new receiver antenna with new antenna model
+                               receiverAntenna = antexReader.getAntenna( antennaModel );
+                           }
+                        }
+                        corr.setAntenna( receiverAntenna );
+
+                        // Start process
                         cout << "Process for station ==>" << station << endl;
                         Bancroft bancroft;
  
@@ -861,7 +806,6 @@ void PPPTask::process()
  
                       // This is a 'forwards-only' filter. Let's print to output
                       // file the results of this epoch
-                    Position precisePos(-2341333.077, -3539049.529, 4745791.267);
                     printSolution( outfile,
                                    pppCorrectSolver,
                                    epoTime,
@@ -891,7 +835,10 @@ void PPPTask::process()
     //***********************************************
     eopStore.clear();
     ephStore.clear();
-}
+
+    return;
+ }  // End of 'ppprt::processFile()'
+
 
 void PPPTask::processFiles()
 {
@@ -1712,3 +1659,129 @@ void PPPTask::processFiles()
 
     return;
  }  // End of 'ppprt::processFile()'
+
+
+ 
+ // Method to print solution values
+void PPPTask::printSolution(  ofstream& outfile,
+                            const SolverLMS& solver,
+                            const CommonTime& time,
+                            const ComputeDOP& cDOP,
+                            int   numSats,
+                            double dryTropo,
+                            Position& pos,
+                            const string format,
+                            int   precision)
+{
+      // Prepare for printing
+   outfile << fixed;
+
+      // Print results
+   outfile << static_cast<YDSTime>(time).year;                                // Year           - #1
+   outfile << setw(8) << static_cast<YDSTime>(time).doy;                      // DayOfYear      - #2
+   outfile << setprecision(3)<< setw(12)<< static_cast<YDSTime>(time).sod;    // SecondsOfDay   - #3
+
+   double recX(solver.getSolution(TypeID::recX));  // ECEF X
+   double recY(solver.getSolution(TypeID::recY));  // ECEF Y
+   double recZ(solver.getSolution(TypeID::recZ));  // ECEF Z
+
+   double dx(recX - pos[0]);
+   double dy(recY - pos[1]);
+   double dz(recZ - pos[2]);
+
+   Triple dxyzTriple(dx,dy,dz);
+
+   Position recPos(recX,recY,recZ);
+   double lat(recPos.getGeodeticLatitude());   // Geodetic latitude
+   double lon(recPos.getLongitude());          // Geodetic longitude
+   double height(recPos.getHeight());          // Geodetic Height
+
+   if ( format == "BLH" )
+   {
+       outfile << setprecision(9)         << setw(16) << lat;         // Lat        - #4
+       outfile << setprecision(9)         << setw(16) << lon;         // Lon        - #5
+       outfile << setprecision(precision) << setw(14) << height;      // Height     - #6
+   }
+   else if ( format == "XYZ")
+   {
+       outfile << setw(14) << recX;           // recX       - #4
+       outfile << setw(14) << recY;           // recY       - #5
+       outfile << setw(14) << recZ;           // recZ       - #6
+   }
+   else if ( format == "dxyz")
+   {
+       outfile << setw(14) << dx;             // dx       - #4
+       outfile << setw(14) << dy;             // dy       - #5
+       outfile << setw(14) << dz;             // dz       - #6
+   }
+   else if ( format == "dneu")
+   {
+       ENUUtil enu(lat*DEG_TO_RAD,lon*DEG_TO_RAD);
+       Triple denu(enu.convertToENU(dxyzTriple));
+       outfile << setw(14) << denu[1];        // dn        - #4
+       outfile << setw(14) << denu[0];        // de        - #5
+       outfile << setw(14) << denu[2];        // du        - #6
+   }
+         // We add 0.1 meters to 'wetMap' because 'NeillTropModel' sets a
+         // nominal value of 0.1 m. Also to get the total we have to add the
+         // dry tropospheric delay value
+                                                                 // ztd - #7
+   outfile << setw(10) << solver.getSolution(TypeID::wetMap) + 0.1 + dryTropo;
+
+   outfile << setw(5)  << numSats;           // Number of satellites - #12
+
+   outfile << setw(8)  << cDOP.getGDOP();    // GDOP - #13
+   outfile << setw(8)  << cDOP.getPDOP();    // PDOP - #14
+
+      // Add end-of-line
+   outfile << endl;
+
+   outfile.flush();
+   return;
+
+
+}  // End of method 'ppprt::printSolution()'
+
+
+
+// Method to print model values
+void PPPTask::printModel( ofstream& modelfile, const gnssRinex& gData,
+                          int   precision)
+{
+    // Prepare for printing
+    modelfile << fixed << setprecision( precision );
+
+    // Get epoch out of GDS
+    CommonTime time(gData.header.epoch);
+
+    // Iterate through the GNSS Data Structure
+    for ( satTypeValueMap::const_iterator it = gData.body.begin();
+          it!= gData.body.end();
+          it++ )
+    {
+
+        // Print epoch
+        modelfile << static_cast<YDSTime>(time).year << "  ";  // Year         #1
+        modelfile << static_cast<YDSTime>(time).doy  << "  ";  // DayOfYear    #2
+        modelfile << static_cast<YDSTime>(time).sod  << "  ";  // SecondsOfDay #3
+
+        // Print satellite information (Satellite system and ID number)
+        modelfile << (*it).first << " ";         // System         #4
+                                                 // ID number      #5
+
+       // Print model values
+        for( typeValueMap::const_iterator itObs  = (*it).second.begin();
+             itObs != (*it).second.end();
+             itObs++ )
+        {
+            // Print type names and values
+            modelfile << (*itObs).first << " ";
+            modelfile << (*itObs).second << " ";
+
+        }  // End of 'for( typeValueMap::const_iterator itObs = ...'
+
+        modelfile << endl;
+
+    }  // End for (it = gData.body.begin(); ... )
+    return;
+}

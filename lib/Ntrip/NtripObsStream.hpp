@@ -6,6 +6,8 @@
 #include <list>
 #include <map>
 #include <istream>
+#include <mutex>
+#include <condition_variable>
 
 #include "NtripFileBase.hpp"
 #include "NtripToolVersion.hpp"
@@ -58,15 +60,22 @@ public:
     /// Set the station information
     void setStaInfo(const t_staInfo& staInfo);
 
+    /// Return if has gotten antenna message
+    bool hasAntMsg() {return m_bGetAntMsg;}
+
+    /// Set the current antenna message status
+    void setAntMsgStatus(bool value) { m_bGetAntMsg = value;}
+
     // Public members
     Rinex3ObsHeader m_header;           ///< RINEX file header
-
+    
 private:
     std::string     m_sStatID;          ///< station identification
     NetUrl          m_mountPoint;       ///< url of mountpoint
 
-    double          m_dRinexVersion;    ///< RINEX file version
     bool            m_bHeaderSaved;     ///< If had already saved the RINEX header
+    bool            m_bGetAntMsg;       ///< If have already gottten antenna message
+    double          m_dRinexVersion;    ///< RINEX file version
     std::string     m_sPrgmName;        ///< Name of programe
     std::string     m_sUserName;        ///< User's name
     std::string     m_sNmea;            ///< nmea

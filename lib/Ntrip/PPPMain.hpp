@@ -45,8 +45,16 @@ public:
     {  m_pppTask->setRealTimeFlag(flag);  }
 
     /// Set the correction mountpoint
-    void setCorrMount(const string mntpnt)
+    void setCorrMount(const string& mntpnt)
     {  m_pppTask->setCorrMount(mntpnt); }
+
+    /// Set the correction type
+    void setCorrType(const string& type)
+    { m_pppTask->setCorrType(type); }
+
+    /// Set station list
+    void setStationList(const list<string>& staList)
+    { m_pppTask->setStationList(staList);}
 
     /// New obs
     void newObs(StaObsMap& staObsMap)

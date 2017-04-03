@@ -263,11 +263,21 @@ void SignalCenter::saveObsHeader(const Rinex3ObsHeader& header)
 
 
 
-void SignalCenter::setCorrMount(string &mntpnt)
+void SignalCenter::setCorrMount(const string& mntpnt)
 {
     m_sCorrMount = mntpnt;
     m_pppMain->setCorrMount(mntpnt);
 	m_sp3Stream->setCorrMount(mntpnt);
+}
+
+void SignalCenter::setCorrType(const string& corrType)
+{
+    m_pppMain->setCorrType(corrType);
+}
+
+void SignalCenter::setStationList(const list<string>& staList)
+{
+    m_pppMain->setStationList(staList);
 }
 
 void SignalCenter::startPPP()

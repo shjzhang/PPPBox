@@ -100,12 +100,18 @@ public:
         m_sFilePath = m_navStream->getFilePath();
     }
 
-    /// Set the correction mountpoint
-    void setCorrMount(string& mntpnt);
-
     /// Set PPP configuration file
     void setPPPConfFile(const string& confFile)
     { m_sPPPConfile = confFile; }
+
+    /// Set the correction mountpoint
+    void setCorrMount(const string& mntpnt);
+
+    /// Set the correction type
+    void setCorrType(const string& corrType);
+
+    /// Set station list
+    void setStationList(const list<string>& staList);
 
     /// Start PPP(precise point positioning) process
     void startPPP();
@@ -124,6 +130,7 @@ public:
     NtripNavStream* m_navStream;             ///< Ntrip ephmeris stream
     NtripSP3Stream* m_sp3Stream;             ///< Ntrip SP3 stream
     RealTimeEphStore* m_ephStore;            ///< Ephemeris store
+    map<string,Rinex3ObsHeader> m_obsHeaderMap;  ///< Map for Rinex obsHeader
 
     //CommonTime m_lastClkCorrTime;            ///< Time of last clock correction
     bool m_bRunning;                         ///< If the ppp process is running

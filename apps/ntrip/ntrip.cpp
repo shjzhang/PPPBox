@@ -341,6 +341,24 @@ int main( int argc, char* argv[] )
     string filePath = ntripConf.getValue("FilePath", "DEFAULT");
     string pppConf = ntripConf.getValue( "pppConf", "DEFAULT");
     string corrMount = ntripConf.getValue( "corrMount", "DEFAULT");
+    string corrType = ntripConf.getValue( "corrType", "DEFAULT");
+    string stations = ntripConf.getValue("pppStations", "DEFAULT");
+
+    // put the stations into list 
+    list<string> staList;
+    while(!stations.empty())
+    {
+        // every station seperated by "/"
+        string staID = stripTrailing(stripFirstWord(stations, '/'));
+        if(staID.size() == 5)
+        {
+            staList.push_back(staID);
+        }
+        else
+        {
+            continue;
+        }
+    }
 
     SIG_CENTER->setWriteNavFile(writeRinexNav);
     SIG_CENTER->setWriteSP3File(writeSP3);
@@ -348,6 +366,8 @@ int main( int argc, char* argv[] )
     SIG_CENTER->setPPPConfFile(pppConf);
     SIG_CENTER->setCorrMount(corrMount);
     SIG_CENTER->setWriteCorrFile(writeCorrFile);
+    SIG_CENTER->setCorrType(corrType);
+    SIG_CENTER->setStationList(staList);
 
     //////////////////////// thread ////////////////////////////////////
 

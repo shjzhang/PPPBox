@@ -20,6 +20,7 @@ NtripObsStream::NtripObsStream(const std::string& staID, const NetUrl& mountPoin
     m_sNtripVersion = ntripVersion;
     m_bHeaderWritten = false;
     m_bHeaderSaved = false;
+    m_bGetAntMsg = false;
     m_sPrgmName = NTRIPTOOLPGMNAME;
 #ifdef WIN32
     m_sUserName = ::getenv("USERNAME");
@@ -60,7 +61,6 @@ void NtripObsStream::setStaInfo(const t_staInfo &staInfo)
 ///////////////////////////////////////////////////////////
 void NtripObsStream::saveHeader()
 {
-
     int navSys = SYS_GPS;
     int freqType = FREQTYPE_L1 | FREQTYPE_L2;
     int obsType = OBSTYPE_PR | OBSTYPE_CP | OBSTYPE_SNR;
@@ -94,12 +94,18 @@ void NtripObsStream::saveHeader()
         m_header.valid |= Rinex3ObsHeader::validAntennaPosition;
     }
 
-	SIG_CENTER->saveObsHeader(m_header);
     m_bHeaderSaved = true;
 }
 
 void NtripObsStream::writeHeader(const std::string& format, const CommonTime& firstObsTime)
 {
+    // Wait for antenna type
+    // ---------------------
+    if(!m_bGetAntMsg)
+    {
+        return;
+    }
+
     SystemTime sysTime;
     CommonTime comTime(sysTime);
     resolveFileName(comTime);
@@ -121,7 +127,7 @@ void NtripObsStream::writeHeader(const std::string& format, const CommonTime& fi
     // ----------------------------------
     if(!m_bHeaderSaved)
     {
-        this->saveHeader();
+        saveHeader();
     }
 	string sys = "G";
 	int typeSize  = m_header.mapObsTypes[sys].size();
@@ -139,12 +145,14 @@ void NtripObsStream::writeHeader(const std::string& format, const CommonTime& fi
     m_header.valid |= Rinex3ObsHeader::validComment;
 
     m_header.firstObs = CivilTime(firstObsTime);
+    m_header.validEoH = true;
 
-    if(!m_bHeaderWritten)
+    if(!m_bHeaderWritten  && m_bWriteFile)
     {
         m_outStream << m_header;
     }
 
+    SIG_CENTER->saveObsHeader(m_header);
     m_outStream.header = m_header;
     m_bHeaderWritten = true;
 }
@@ -189,9 +197,8 @@ void NtripObsStream::dumpEpoch(const string &format, const CommonTime &maxTime)
     {
         this->writeHeader(format, fObs._time);
     }
-    if(!m_bHeaderWritten) return;
 
-    if(m_bWriteFile)
+    if(m_bWriteFile && m_bHeaderWritten)
     {
         Rinex3ObsData rnxObsData = convertToRinexObsData(obsList, m_header);
         m_outStream << rnxObsData;

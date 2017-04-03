@@ -83,7 +83,7 @@ bool RTCM3Decoder::decode(unsigned char* buffer, int bufLen)
       else if(id >= 1070 && id <= 1229) /* MSM */
       {
         //if(decodeRTCM3MSM(_Message, _BlockSize))
-        // decoded = true;
+        // decoded = true;z
       }
       else
       {
@@ -512,48 +512,52 @@ bool RTCM3Decoder::decodeBDSEphemeris(unsigned char* data, int size)
 ////////////////////////////////////////////////////////////////////////////
 bool RTCM3Decoder::decodeAntenna(unsigned char* data, int size)
 {
-\
-    int type;
-    char *antenna, *serialNum;
-    int antnum = -1, snum = -1;
-    int staID, setup;
-    uint64_t numbits = 0, bitfield = 0;
-
-    data += 3; /* header */
-    size -= 6; /* header + crc */
-
-    // get message type number
-    GETBITS(type, 12);
-
-    // get station ID
-    GETBITS(staID, 12);
-    m_sta.staID = staID;
-
-    // get antenna description
-    GETSTRING(antnum, antenna);  // Here has a question, if this function has skipped right bits
-    if (antnum > -1 && antnum < MAXANT)
+    if(!m_rnx->hasAntMsg())
     {
-      memcpy(m_sta.antDes, antenna, antnum);
-      m_sta.antDes[antnum] = 0;
-    }
+        int type;
+        char *antenna, *serialNum;
+        int antnum = -1, snum = -1;
+        int staID, setup;
+        uint64_t numbits = 0, bitfield = 0;
 
-    // get setup ID
-    GETBITS(setup, 8);
-    m_sta.antSetup = setup;
+        data += 3; /* header */
+        size -= 6; /* header + crc */
 
-    if(type == 1008)
-    {
-        // get antenna serial number
-      GETSTRING(snum, serialNum);
-      {
-        if(snum > -1 && snum < 32)
+        // get message type number
+        GETBITS(type, 12);
+
+        // get station ID
+        GETBITS(staID, 12);
+        m_sta.staID = staID;
+
+        // get antenna description
+        GETSTRING(antnum, antenna);  // Here has a question, if this function has skipped right bits
+        if (antnum > -1 && antnum < MAXANT)
         {
-          memcpy(m_sta.antNum, serialNum, snum);
-          m_sta.antNum[snum] = 0;
+          memcpy(m_sta.antDes, antenna, antnum);
+          m_sta.antDes[antnum] = 0;
         }
-      }
+
+        // get setup ID
+        GETBITS(setup, 8);
+        m_sta.antSetup = setup;
+
+        if(type == 1008)
+        {
+            // get antenna serial number
+          GETSTRING(snum, serialNum);
+          {
+            if(snum > -1 && snum < 32)
+            {
+              memcpy(m_sta.antNum, serialNum, snum);
+              m_sta.antNum[snum] = 0;
+            }
+          }
+        }
+
+        m_rnx->setStaInfo(m_sta);
+        m_rnx->setAntMsgStatus(true);
     }
-    m_rnx->setStaInfo(m_sta);
     return true;
 }
 

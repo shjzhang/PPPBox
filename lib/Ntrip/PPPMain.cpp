@@ -61,30 +61,3 @@ void PPPMain::readOptions()
         return;
     }
 }
-
-//bool PPPMain::waitForCorr(const gpstk::CommonTime &epoTime) const
-//{
-//    if(!m_bRealTime || m_sCorrMount.empty())
-//    {
-//        return false;
-//    }
-//    // Verify the validity of m_lastClkCorrTime
-//    else if(m_lastClkCorrTime.getDays()==0.0||
-//            m_lastClkCorrTime.getSecondOfDay()==0.0)
-//    {
-//        return false;
-//    }
-//    else
-//    {
-//        double dt = epoTime - m_lastClkCorrTime;
-//        if(dt > 1.0 && dt < m_dCorrWaitTime)
-//        {
-//            return true;
-//        }
-//        else
-//        {
-//            return false;
-//        }
-//    }
-//    return false;
-//}
