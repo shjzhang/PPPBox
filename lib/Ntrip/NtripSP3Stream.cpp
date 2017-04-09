@@ -7,6 +7,7 @@
 #include "SatID.hpp"
 #include "GPSWeekSecond.hpp"
 #include "SystemTime.hpp"
+#include "MJD.hpp"
 
 using namespace gpstk::StringUtils;
 
@@ -15,7 +16,7 @@ NtripSP3Stream::NtripSP3Stream()
     m_sFileName = "";
     m_bHeaderWritten = false;
     m_eph = 0;
-    m_dSample = 60;
+    m_dSample = 1.0;
 }
 
 NtripSP3Stream::~NtripSP3Stream()
@@ -58,43 +59,44 @@ void NtripSP3Stream::printHeader(const CommonTime& dateTime)
     {
         m_outStream.open(m_sFileName.c_str(), std::ios::out);
     }
-//    int    GPSWeek;
-//    double GPSWeeks;
-//    GPSweekFromDateAndTime(datTim, GPSWeek, GPSWeeks);
 
-//    double sec = fmod(GPSWeeks, 60.0);
+    GPSWeekSecond gws( dateTime );
+    int gpsWeek = gws.getWeek();
+    double gpsSOW = gws.getSOW();
 
-//    int    mjd;
-//    double dayfrac;
-//    mjdFromDateAndTime(datTim, mjd, dayfrac);
+    double sec = fmod(gpsSOW, 60.0);
+    MJD mjd;
+    mjd.convertFromCommonTime(dateTime);
+    
+    std::string utcTime = CivilTime(dateTime).printf("%Y %02m %02d %02H %02M");
 
-//    int numEpo = _numSec;
-//    if (_sampl > 0) {
-//      numEpo /= _sampl;
-//    }
+    int    mjdInt = int(mjd.mjd);
+    double dayfrac = mjd.mjd - mjdInt;
 
-//    _out << "#aP" << datTim.toString("yyyy MM dd hh mm").toAscii().data()
-//         << setw(12) << setprecision(8) << sec
-//         << " " << setw(7) << numEpo << " ORBIT IGS08 HLM  IGS" << endl;
+    m_outStream << setiosflags(ios::fixed);
 
-//    _out << "## "
-//         << setw(4)  << GPSWeek
-//         << setw(16) << setprecision(8) << GPSWeeks
-//         << setw(15) << setprecision(8) << double(_sampl)
-//         << setw(6)  << mjd
-//         << setw(16) << setprecision(13) << dayfrac << endl;
+    m_outStream << "#aP" << utcTime
+         << setw(12) << setprecision(8) << sec
+         << " " << setw(7) << 1440 << " ORBIT IGS08 HLM  IGS" << endl;
 
-    m_outStream << "+   56   G01G02G03G04G05G06G07G08G09G10G11G12G13G14G15G16G17\n"
-                << "+        G18G19G20G21G22G23G24G25G26G27G28G29G30G31G32R01R02\n"
-                << "+        R03R04R05R06R07R08R09R10R11R12R13R14R15R16R17R18R19\n"
-                << "+        R20R21R22R23R24  0  0  0  0  0  0  0  0  0  0  0  0\n"
+    m_outStream << "## "
+         << setw(4)  << gpsWeek
+         << setw(16) << setprecision(8) << gpsSOW
+         << setw(15) << setprecision(8) << m_dSample
+         << setw(6)  << mjdInt
+         << setw(16) << setprecision(13) << dayfrac << endl;
+
+    m_outStream << "+   32   G01G02G03G04G05G06G07G08G09G10G11G12G13G14G15G16G17\n"
+                << "+        G18G19G20G21G22G23G24G25G26G27G28G29G30G31G32  0  0\n"
+                << "+          0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n"
+                << "+          0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n"
                 << "+          0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n"
                 << "++         0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n"
                 << "++         0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n"
                 << "++         0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n"
                 << "++         0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n"
                 << "++         0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n"
-                << "%c cc cc ccc ccc cccc cccc cccc cccc ccccc ccccc ccccc ccccc\n"
+                << "%c G  cc GPS ccc cccc cccc cccc cccc ccccc ccccc ccccc ccccc\n"
                 << "%c cc cc ccc ccc cccc cccc cccc cccc ccccc ccccc ccccc ccccc\n"
                 << "%f  0.0000000  0.000000000  0.00000000000  0.000000000000000\n"
                 << "%f  0.0000000  0.000000000  0.00000000000  0.000000000000000\n"
@@ -129,28 +131,32 @@ void NtripSP3Stream::writeFile(CommonTime& epoTime, SatID &prn, Xvt &sv)
     {
         // Check the sampling interval (print empty epochs)
         std::string dateStr;
-        if((m_lastEpoTime.getDays()!=0.0 || m_lastEpoTime.getSecondOfDay()!=0.0)
-           && m_dSample > 0)
-        {
-            for(CommonTime ep = m_lastEpoTime + m_dSample; ep < epoTime;
-                ep = ep + m_dSample)
-            {
-                dateStr = CivilTime(ep).printf("%Y %2m %2d %2H %2M %2S");
-                m_outStream << "*  " << dateStr << endl;
-            }
-        }
 
         // Print the new epoch
         dateStr = CivilTime(epoTime).printf("%Y %2m %2d %2H %2M %2S");
-        m_outStream << "*  " << dateStr << endl;
+        m_outStream << "*  " << dateStr << ".00000000" << endl;
 
         m_lastEpoTime = epoTime;       
     }
 
     // Print the data
+    int satNum = prn.id;
+    string satStr;
+    if(prn.system == SatID::systemGPS)
+    {
+        satStr = "G";
+    }
+    if(satNum < 10)
+    {
+        satStr = satStr + "0" + asString(satNum);
+    }
+    else
+    {
+        satStr += asString(satNum);
+    }
     double sp3Clk = sv.clkbias * 1e6;
     m_outStream << setiosflags(ios::fixed);
-    m_outStream << "P" << prn
+    m_outStream << "P" << satStr
                 << std::setw(14) << std::setprecision(6) << sv.x[0] / 1000.0
                 << std::setw(14) << std::setprecision(6) << sv.x[1] / 1000.0
                 << std::setw(14) << std::setprecision(6) << sv.x[2] / 1000.0
@@ -167,38 +173,86 @@ void NtripSP3Stream::closeFile()
 
 void NtripSP3Stream::dumpEpoch()
 {
+    unique_lock<mutex> lock(m_mutex);
     std::list<SatID> prnList;
     prnList = m_ephStore.getSatList();
-
-    std::list<SatID>::iterator it;
-    for(it=prnList.begin();it!=prnList.end();++it)
+    
+    if(m_lastClkCorrTime != m_lastEpoTime)
     {
-        m_eph = (OrbitEph2*)m_ephStore.ephLast(*it);
-
-        if(m_eph == 0)
+        if((m_lastEpoTime.getDays()!=0.0 || m_lastEpoTime.getSecondOfDay()!=0.0)
+             && m_dSample > 0)
         {
-            return;
-        }
-
-        GPSEphemeris2* ephGPS = dynamic_cast<GPSEphemeris2*>(m_eph);
-
-        if(ephGPS)
-        {
-            Xvt xvt;
-
-            // Get the satellite position and clock correction
-            bool useCorr = true;
-            ephGPS->getCrd(m_lastClkCorrTime, xvt, useCorr);
-
-            // Output the data to SP3 file
-            if(m_bWriteFile)
+            std::list<SatID>::iterator it;
+            for(CommonTime ep = m_lastEpoTime + m_dSample; ep < m_lastClkCorrTime;
+                ep = ep + m_dSample)
             {
-                writeFile(m_lastClkCorrTime, *it, xvt);
+                for(it=prnList.begin();it!=prnList.end();++it)
+                {
+                    m_eph = (OrbitEph2*)m_ephStore.ephLast(*it);
+
+                    if(m_eph == 0)
+                    {
+                        return;
+                    }
+
+                    GPSEphemeris2* ephGPS = dynamic_cast<GPSEphemeris2*>(m_eph);
+
+                    if(ephGPS)
+                    {
+                        Xvt xvt;
+
+                        // Get the satellite position and clock correction
+                        bool useCorr = true;
+                        ephGPS->getCrd(ep, xvt, useCorr);
+
+                        // Output the data to SP3 file
+                        if(m_bWriteFile)
+                        {
+                            writeFile(ep, *it, xvt);
+                        }
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
             }
         }
         else
         {
-            return;
+            std::list<SatID>::iterator it;
+            for(it=prnList.begin();it!=prnList.end();++it)
+            {
+                m_eph = (OrbitEph2*)m_ephStore.ephLast(*it);
+
+                if(m_eph == 0)
+                {
+                     return;
+                }
+
+                GPSEphemeris2* ephGPS = dynamic_cast<GPSEphemeris2*>(m_eph);
+
+                if(ephGPS)
+                {
+                    Xvt xvt;
+
+                    // Get the satellite position and clock correction
+                    bool useCorr = true;
+                    ephGPS->getCrd(m_lastClkCorrTime, xvt, useCorr);
+
+                    // Output the data to SP3 file
+                    if(m_bWriteFile)
+                    {
+                        writeFile(m_lastClkCorrTime, *it, xvt);
+                    }
+
+                }
+                else
+                {
+                    return;
+                }
+            }
         }
     }
 }
