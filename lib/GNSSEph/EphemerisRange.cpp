@@ -226,7 +226,14 @@ namespace gpstk
 
    void CorrectedEphemerisRange::updateCER(const Position& Rx)
    {
-      relativity = svPosVel.computeRelativityCorrection() * C_MPS;
+      if(svPosVel.relcorr != 0.0)
+      {
+         relativity = svPosVel.relcorr * C_MPS;
+      }
+      else 
+      {
+         relativity = svPosVel.computeRelativityCorrection() * C_MPS;
+      }
 
       svclkbias = svPosVel.clkbias * C_MPS;
       svclkdrift = svPosVel.clkdrift * C_MPS;
