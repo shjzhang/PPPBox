@@ -1336,6 +1336,22 @@ namespace gpstk
          return toReturn;
       }
 
+      /** Strip the white space
+          * @param  str           the string to be stripped
+          */
+      inline void stripWhiteSpace(std::string& str)
+      {
+          if (!str.empty()) 
+          {
+              std::string::size_type beg = str.find_first_not_of(" \t\f\n\r\v");
+              std::string::size_type end = str.find_last_not_of(" \t\f\n\r\v");
+              if (beg > str.max_size())
+                  str.erase();
+              else
+                  str = str.substr(beg, end-beg+1);
+           }
+      }
+
    } // namespace StringUtils
 
 } // namespace gpstk
