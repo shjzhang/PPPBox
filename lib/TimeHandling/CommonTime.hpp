@@ -347,6 +347,8 @@ namespace gpstk
       { m_day = m_msod = 0; m_fsod = 0.0; m_timeSystem = TimeSystem::Unknown; }
 
       std::string asString() const;
+      bool valid() { return getDays() != 0.0 || getSecondOfDay() != 0.0; }
+
 
    protected:
 

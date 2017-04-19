@@ -33,7 +33,6 @@ SignalCenter::~SignalCenter()
     delete m_sp3Stream;
     delete m_ephStore;
     delete m_pppMain;
-    m_obsOutStream->close();
     delete m_obsOutStream;
 }
 
@@ -53,8 +52,7 @@ void SignalCenter::newObs(list<t_satObs> obsList)
 
 
         // First time: set the _lastDumpTime
-        if(!(m_lastObsDumpTime.getDays() != 0.0 ||
-             m_lastObsDumpTime.getSecondOfDay() !=0.0))
+        if(!m_lastObsDumpTime.valid())
         {
             m_lastObsDumpTime = obs._time - 1.0;
         }
@@ -204,7 +202,6 @@ void SignalCenter::newClkCorr(list<t_clkCorr> clkCorr)
             return;
         }
     }
-
     CommonTime lastClkCorrTime = it->_time;
 	m_pppMain->setLastClkCorrTime(lastClkCorrTime);
     for(;it!=clkCorr.end();++it)
@@ -262,6 +259,11 @@ void SignalCenter::saveObsHeader(const Rinex3ObsHeader& header)
 }
 
 
+void SignalCenter::setProcessMode(bool realtime)
+{
+    m_bRealTime = realtime;
+    m_pppMain->setRealTimeFlag(realtime);
+}
 
 void SignalCenter::setCorrMount(const string& mntpnt)
 {
