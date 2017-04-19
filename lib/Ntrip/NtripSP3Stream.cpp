@@ -22,12 +22,12 @@ NtripSP3Stream::NtripSP3Stream()
 NtripSP3Stream::~NtripSP3Stream()
 {
     closeFile();
-    delete m_eph;
+    //delete m_eph;
 }
 
 
 
-void NtripSP3Stream::resolveFileName(CommonTime &dateTime)
+void NtripSP3Stream::resolveFileName(const CommonTime &dateTime)
 {
     // full GPS week
     std::string gpsWeek = GPSWeekSecond(dateTime).printf("%04F");
@@ -45,9 +45,10 @@ void NtripSP3Stream::resolveFileName(CommonTime &dateTime)
 
 void NtripSP3Stream::printHeader(const CommonTime& dateTime)
 {
-    SystemTime sysTime;
-    CommonTime comTime(sysTime);
-    resolveFileName(comTime);
+    if(m_sFileName.empty())
+    {
+        resolveFileName(dateTime);
+    }
 
     if(FileUtils::fileAccessCheck(m_sFileName))
     {
@@ -154,7 +155,7 @@ void NtripSP3Stream::writeFile(CommonTime& epoTime, SatID &prn, Xvt &sv)
     {
         satStr += asString(satNum);
     }
-    double sp3Clk = sv.clkbias * 1e6;
+    double sp3Clk = ( sv.clkbias + sv.relcorr ) * 1e6;
     m_outStream << setiosflags(ios::fixed);
     m_outStream << "P" << satStr
                 << std::setw(14) << std::setprecision(6) << sv.x[0] / 1000.0

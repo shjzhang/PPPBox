@@ -80,8 +80,14 @@ void t_clkCorr::readEpoch(const string& epoLine, istream& inStream, list<t_clkCo
       istringstream in(line.c_str());
 
       RinexSatID rs;
+      in >> satsys;
+      satsys = satsys.substr(0,1) +" "+ satsys.substr(1);
       rs.fromString(satsys);
       corr._prn = SatID(rs.id,rs.system);
+      switch(rs.system)
+      {
+          case SatID::systemGPS:     corr._time.setTimeSystem(TimeSystem::GPS);
+      }
 
       in >> corr._iod >> corr._dClk >> corr._dotDClk >> corr._dotDotDClk;
       /*if (corr._prn.system() == 'E') {
@@ -91,7 +97,10 @@ void t_clkCorr::readEpoch(const string& epoLine, istream& inStream, list<t_clkCo
       corr._dotDClk    /= gpstk::C_MPS;
       corr._dotDotDClk /= gpstk::C_MPS;
 
-      corrList.push_back(corr);
+      if(rs.system == SatID::systemGPS)
+      {
+        corrList.push_back(corr);
+      }
 
   }
 }
@@ -166,9 +175,15 @@ void t_orbCorr::readEpoch(const string& epoLine, istream& inStream, list<t_orbCo
         istringstream in(line.c_str());
 
         in >> satsys;
+        satsys = satsys.substr(0,1) +" "+ satsys.substr(1);
         RinexSatID rs;
         rs.fromString(satsys);
         corr._prn = SatID(rs.id,rs.system);
+
+        switch(rs.system)
+        {
+            case SatID::systemGPS:     corr._time.setTimeSystem(TimeSystem::GPS);
+        }
 
         in >> corr._iod
            >> corr._xr[0]    >> corr._xr[1]    >> corr._xr[2]
@@ -177,7 +192,10 @@ void t_orbCorr::readEpoch(const string& epoLine, istream& inStream, list<t_orbCo
         //if (corr._prn.system() == 'E') {
         //  corr._prn.setFlags(1);// I/NAV
         //}
-        corrList.push_back(corr);
+        if(rs.system == SatID::systemGPS)
+        {
+            corrList.push_back(corr);
+        }
     }
 }
 

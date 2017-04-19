@@ -36,7 +36,7 @@ public:
     void setEph(OrbitEph2 *eph){m_eph = eph;}
 
     /// Resolve file name according to RINEX standards
-    void resolveFileName(CommonTime &dateTime);
+    void resolveFileName(const CommonTime &dateTime);
 
     /// Dump out the data by epoch
     void dumpEpoch();
@@ -53,8 +53,14 @@ public:
     /// Set the correction mountpoint
     void setCorrMount(const std::string& mntpnt) { m_sCorrMount = mntpnt; }
 
+    /// Set the sp3 file name
+    void setSP3FileName(const std::string& filename) { m_sFileName = filename; }
+
     /// Update the ephmeris store
     void updateEphmerisStore(RealTimeEphStore *ephStore);
+
+    /// Set the sample of output file
+    void setOutputSample(double sample) { m_dSample = sample; }
 
 private:
 

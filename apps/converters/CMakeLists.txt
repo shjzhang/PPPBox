@@ -13,3 +13,7 @@ target_link_libraries(ash2xyz pppbox)
 install (TARGETS ash2xyz DESTINATION bin)
 
 
+add_executable(navcorr2Sp3 navcorr2Sp3.cpp)
+target_link_libraries(navcorr2Sp3 pppbox)
+install (TARGETS navcorr2Sp3 DESTINATION bin)
+

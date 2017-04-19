@@ -7,6 +7,7 @@ namespace gpstk
     {
         m_bOnlyHealthy = true;
         m_bUseCorrection = false;
+        m_iMaxQueueSize = 5;
     }
 
     RealTimeEphStore::RealTimeEphStore(RealTimeEphStore &right)
@@ -94,6 +95,9 @@ namespace gpstk
         {
             checkEphmeris(eph);
         }
+
+        SatID prn = eph->satID;
+
         const GPSEphemeris2* ephGPS = dynamic_cast<const GPSEphemeris2*>(eph);
 
         OrbitEph2* ephNew = 0;
@@ -305,15 +309,8 @@ namespace gpstk
             {
                 return it->second.at(n-2);
             }
-            else
-            {
-                // do nothing here
-            }
         }
-        else
-        {
-            return 0;
-        }
+        return 0;
     }
 
     std::list<SatID> RealTimeEphStore::getSatList()

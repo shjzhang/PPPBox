@@ -61,6 +61,9 @@ namespace gpstk
         /// Get the satellite prn list
         std::list<SatID> getSatList();
 
+        /// Set the max size of epochs
+        void setMaxQueueSize(int size){m_iMaxQueueSize = size;}
+
         /// Clear the dataset, meaning remove all data
         virtual void clear();
 
@@ -107,7 +110,7 @@ namespace gpstk
         void checkEphmeris(OrbitEph2* eph);
 
         std::mutex m_mutex;                                ///< Mutex
-        static const unsigned   m_iMaxQueueSize = 5;       ///< Maximun size of ephmeris data queue
+        int m_iMaxQueueSize;                               ///< Maximun size of ephmeris data queue
         std::map<SatID, std::deque<OrbitEph2*> > m_ephMap; ///< Map to store the ephmeris
         bool m_bUseCorrection;                             ///< If use the orbit and clock correction
         bool m_bOnlyHealthy;                               ///< If only use healthy ephemeris
