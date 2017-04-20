@@ -50,12 +50,26 @@ public:
     /// and SSR correction file
     void makeSP3File();
 
+    /// Set the type of ephemeris reference point
+    void setEphRefPoint(NtripSP3Stream::ReferencePoint refPoint)
+    { m_sp3Stream->setEphRefPoint(refPoint); }
+
+    /// Set the antex file
+    void setAntexFile(std::string& file)
+    {m_sp3Stream->setAntexFile(file);}
+
+    /// Instance of NavCorrToSP3 class
     static NavCorrToSP3* instance();
 
+    /// Get the first epoch of correction file record
     void getFirstCorrTime(CommonTime&);
 
+    /// New orbit correction
     void newOrbCorrections(std::list<t_orbCorr>);
+
+    /// New clock correction
     void newClkCorrections(std::list<t_clkCorr>);
+
     void newCodeBiases(std::list<t_satCodeBias>){;}
     void newPhaseBiases(std::list<t_satPhaseBias>){;}
     void newTec(t_vTec){;}

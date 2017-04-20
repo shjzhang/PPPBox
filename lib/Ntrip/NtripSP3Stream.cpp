@@ -8,6 +8,7 @@
 #include "GPSWeekSecond.hpp"
 #include "SystemTime.hpp"
 #include "MJD.hpp"
+#include "Triple.hpp"
 
 using namespace gpstk::StringUtils;
 
@@ -17,12 +18,12 @@ NtripSP3Stream::NtripSP3Stream()
     m_bHeaderWritten = false;
     m_eph = 0;
     m_dSample = 1.0;
+    m_refPoint = Unknown;
 }
 
 NtripSP3Stream::~NtripSP3Stream()
 {
     closeFile();
-    //delete m_eph;
 }
 
 
@@ -155,7 +156,7 @@ void NtripSP3Stream::writeFile(CommonTime& epoTime, SatID &prn, Xvt &sv)
     {
         satStr += asString(satNum);
     }
-    double sp3Clk = ( sv.clkbias + sv.relcorr ) * 1e6;
+    double sp3Clk = sv.clkbias* 1e6;
     m_outStream << setiosflags(ios::fixed);
     m_outStream << "P" << satStr
                 << std::setw(14) << std::setprecision(6) << sv.x[0] / 1000.0
@@ -205,6 +206,7 @@ void NtripSP3Stream::dumpEpoch()
                         // Get the satellite position and clock correction
                         bool useCorr = true;
                         ephGPS->getCrd(ep, xvt, useCorr);
+                        satConvertToCoM(ephGPS->satID,m_lastClkCorrTime,xvt);
 
                         // Output the data to SP3 file
                         if(m_bWriteFile)
@@ -241,6 +243,7 @@ void NtripSP3Stream::dumpEpoch()
                     // Get the satellite position and clock correction
                     bool useCorr = true;
                     ephGPS->getCrd(m_lastClkCorrTime, xvt, useCorr);
+                    satConvertToCoM(ephGPS->satID,m_lastClkCorrTime,xvt);
 
                     // Output the data to SP3 file
                     if(m_bWriteFile)
@@ -263,5 +266,67 @@ void NtripSP3Stream::updateEphmerisStore(RealTimeEphStore *ephStore)
 {
 	std::unique_lock<std::mutex> lock(m_mutex);
     m_ephStore = *ephStore;
+}
+
+void NtripSP3Stream::satConvertToCoM(const SatID& satid,
+                                     const CommonTime& time,
+                                     Xvt& xvt)
+{
+    if(m_refPoint != APC)
+    {
+        return;
+    }
+
+    if(m_sAntexFile.empty())
+    {
+        std::cout << "The antex file is empty !!!" << std::endl;
+        return;
+    }
+    AntexReader antexReader;
+    antexReader.open(m_sAntexFile.c_str());
+
+    SunPosition sunPosition;
+    Triple sunPos(sunPosition.getPosition(time));
+    Triple satpos = xvt.x;
+
+    // Unitary vector from satellite to Earth mass center (ECEF)
+    Triple rk( ( (-1.0)*(satpos.unitVector()) ) );
+
+    // Unitary vector from Earth mass center to Sun (ECEF)
+    Triple ri( sunPos.unitVector() );
+
+    // rj = rk x ri: Rotation axis of solar panels (ECEF)
+    Triple rj(rk.cross(ri));
+
+    // Redefine ri: ri = rj x rk (ECEF)
+    ri = rj.cross(rk);
+
+    // Let's convert ri to an unitary vector. (ECEF)
+    ri = ri.unitVector();
+
+    // Get satellite information in Antex format. Currently this
+    // only works for GPS.
+    if( satid.system == SatID::systemGPS )
+    {
+        std::stringstream sat;
+        sat << "G";
+        if( satid.id < 10 )
+        {
+            sat << "0";
+        }
+        sat << satid.id;
+           // Get satellite antenna information out of AntexReader object
+        Antenna antenna( antexReader.getAntenna( sat.str(), time ) );
+
+           // Get antenna eccentricity for frequency "G01" (L1), in
+           // satellite reference system.
+           // NOTE: It is NOT in ECEF, it is in UEN!!!
+        Triple satAnt( antenna.getAntennaEccentricity( Antenna::G01) );
+
+           // Change to ECEF
+        Triple svAntenna( satAnt[2]*ri + satAnt[1]*rj + satAnt[0]*rk );
+
+        xvt.x = xvt.x - svAntenna;
+    }
 }
 

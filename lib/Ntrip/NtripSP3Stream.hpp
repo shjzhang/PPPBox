@@ -13,15 +13,25 @@
 #include "SP3Data.hpp"
 #include "OrbitEph2.hpp"
 #include "GPSEphemeris2.hpp"
+#include "AntexReader.hpp"
 #include "GPSWeekSecond.hpp"
 #include "Xvt.hpp"
 #include "NtripNavStream.hpp"
+#include "SunPosition.hpp"
 
 using namespace gpstk;
 
 class NtripSP3Stream  : public NtripFileBase
 {
 public:
+
+    /// Reference point for ephemeris
+    enum ReferencePoint
+    {
+       APC = 1,
+       CoM,
+       Unknown
+    };
 
     /// Default constructor
     NtripSP3Stream();
@@ -62,15 +72,31 @@ public:
     /// Set the sample of output file
     void setOutputSample(double sample) { m_dSample = sample; }
 
+    /// Set the antex file
+    void setAntexFile(const std::string& file) { m_sAntexFile = file; }
+
+    /// Set the type of ephemeris reference point
+    void setEphRefPoint(ReferencePoint& type) { m_refPoint = type; }
+
+    /// Get the ephemeris reference point
+    ReferencePoint getEphRefPoint() { return m_refPoint; }
+
+    /// Correction Phase Center --> CoM
+    void satConvertToCoM(const SatID& satid,
+                         const CommonTime& time,
+                         Xvt &xvt);
+
 private:
 
     std::mutex  m_mutex;            ///< Mutex
     RealTimeEphStore m_ephStore;    ///< Ephemeris store
     std::ofstream m_outStream;      ///< Out file stream
     std::string m_sCorrMount;       ///< Correction mountpoint
+    std::string m_sAntexFile;       ///< Antex filename
     SP3Stream   m_sp3Stream;        ///< SP3 stream
     SP3Header   m_header;           ///< SP3 header
     SP3Header::Version m_eSP3Ver;   ///< SP3 file version
+    ReferencePoint m_refPoint;      ///< Reference point
     double      m_dSample;          ///< Sample of saving SP3 file(sec)
     CommonTime  m_lastEpoTime;      ///< Last epoch time
     CommonTime  m_lastClkCorrTime;  ///< Last clock correction time

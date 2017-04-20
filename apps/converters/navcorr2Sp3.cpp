@@ -46,15 +46,19 @@ int main(int argc, char* argv[])
 {
     string navFileName;
     string corrFileName;
+    string antexFile;
+    string refPoint;
     double sample;
 
     // print help
     string PrintHelp =
     "navcorrToSp3 usage:\n"
-    " 	-help: print help{no arguments}\n"
-    "	-brdc: broadcast ephemeris file name{navFileName}\n"
-    "	-corr: SSR correction file name{corrFileName}\n"
-    "	-smpl: Sample of output sp3 file{sample}\n"
+    " 	-help  : print help{no arguments}\n"
+    "	-brdc  : broadcast ephemeris file name{navFileName}\n"
+    "	-corr  : SSR correction file name{corrFileName}\n"
+    "	-smpl  : Sample of output sp3 file{sample}\n"
+    "	-point : Reference point of corr file{refPoint}\n"
+    "	-antex : Name of antex file{antexFile}\n"
     "\n";
 
     if(argc == 1)
@@ -76,12 +80,14 @@ int main(int argc, char* argv[])
         else if(strncmp(argv[idx],"-brdc",5) == 0 && idx + 1 < argc)
         {
             navFileName = argv[idx+1];
+            navCorrToSp3->setNavFile(navFileName);
             idx++;
             continue;
         }   // end if -brdc
         else if(strncmp(argv[idx],"-corr",5) == 0 && idx + 1 < argc)
         {
             corrFileName = argv[idx+1];
+            navCorrToSp3->setCorrFile(corrFileName);
             idx++;
             continue;
         }   // end if -corr
@@ -91,7 +97,24 @@ int main(int argc, char* argv[])
             navCorrToSp3->setSample(sample);
             idx++;
             continue;
-        }   // end if -corr
+        }   // end if -smpl
+        else if(strncmp(argv[idx],"-point",6) == 0 && idx + 1 < argc)
+        {
+            refPoint = argv[idx+1];
+            if(refPoint == "APC")
+            {
+                navCorrToSp3->setEphRefPoint(NtripSP3Stream::APC);
+            }
+            idx++;
+            continue;
+        }   // end if -point
+        else if(strncmp(argv[idx],"-antex",6) == 0 && idx + 1 < argc)
+        {
+            antexFile = argv[idx+1];
+            navCorrToSp3->setAntexFile(antexFile);
+            idx++;
+            continue;
+        }   // end if -antex
         else
         {
             cout << "Error input arguments!" << endl;
@@ -104,12 +127,9 @@ int main(int argc, char* argv[])
 
     if(corrFileName.empty() || navFileName.empty())
     {
-        cerr << "Given filename is empty!" << endl;
+        cerr << "Corrrection or ephemeris filename is empty !" << endl;
         exit(-1);
     }
-
-    navCorrToSp3->setCorrFile(corrFileName);
-    navCorrToSp3->setNavFile(navFileName);
 
     cout << "Start the conversion!" <<endl;
     navCorrToSp3->makeSP3File();
