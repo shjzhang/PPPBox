@@ -78,7 +78,7 @@ void t_corrFile::syncRead(CommonTime& corrTime)
       StringUtils::stripWhiteSpace(m_sLastLine);
       if      (m_stream.eof())
       {
-        throw "t_corrFile: end of file";
+        throw "t_corrFile: end of file\n";
       }
       else if (m_sLastLine.empty() || m_sLastLine[0] == '!') 
       {
@@ -86,7 +86,7 @@ void t_corrFile::syncRead(CommonTime& corrTime)
       }
       else if (m_sLastLine[0] != '>') 
       {
-        throw "t_corrFile: error";
+        throw "t_corrFile: error\n";
       }
     }
 
@@ -123,24 +123,24 @@ void t_corrFile::syncRead(CommonTime& corrTime)
       navCorrToSp3->newOrbCorrections(orbCorrList);
     }
 
-    /*else if (corrType == t_corrSSR::codeBias) 
+    else if (corrType == t_corrSSR::codeBias)
     {
       list<t_satCodeBias> satCodeBiasList;
       t_satCodeBias::readEpoch(m_sLastLine, m_stream, satCodeBiasList);
-      navCorrToSp3.newCodeBiases(satCodeBiasList);
+      navCorrToSp3->newCodeBiases(satCodeBiasList);
     }
     else if (corrType == t_corrSSR::phaseBias) 
     {
       list<t_satPhaseBias> satPhaseBiasList;
       t_satPhaseBias::readEpoch(m_sLastLine, m_stream, satPhaseBiasList);
-      navCorrToSp3.newPhaseBiases(satPhaseBiasList);
+      navCorrToSp3->newPhaseBiases(satPhaseBiasList);
     }
     else if (corrType == t_corrSSR::vTec) 
     {
       t_vTec vTec;
       t_vTec::read(m_sLastLine, m_stream, vTec);
-      navCorrToSp3.newTec(vTec);
-    }*/
+      navCorrToSp3->newTec(vTec);
+    }
 
     m_sLastLine.clear();
   }

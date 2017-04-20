@@ -165,7 +165,6 @@ void t_orbCorr::readEpoch(const string& epoLine, istream& inStream, list<t_orbCo
     {
         t_orbCorr corr;
         string satsys;
-        int satnum;
         corr._time      = epoTime;
         corr._updateInt = updateInt;
         corr._staID     = staID;
@@ -196,6 +195,134 @@ void t_orbCorr::readEpoch(const string& epoLine, istream& inStream, list<t_orbCo
         {
             corrList.push_back(corr);
         }
+    }
+}
+
+//
+////////////////////////////////////////////////////////////////////////////
+void t_satCodeBias::readEpoch(const string& epoLine, istream& inStream, list<t_satCodeBias>& biasList)
+{
+    CommonTime   epoTime;
+    unsigned int updateInt;
+    int          numCorr;
+    string       staID;
+    if (t_corrSSR::readEpoLine(epoLine, epoTime, updateInt, numCorr, staID) != t_corrSSR::codeBias)
+    {
+        return;
+    }
+    for (int ii = 0; ii < numCorr; ii++)
+    {
+        string line;
+        getline(inStream, line);
+    }
+}
+
+void t_satPhaseBias::readEpoch(const string& epoLine, istream& inStream, list<t_satPhaseBias>& biasList)
+{
+    CommonTime   epoTime;
+    unsigned int updateInt;
+    int          numSat;
+    string       staID;
+    unsigned int dispInd;
+    unsigned int mwInd;
+    if (t_corrSSR::readEpoLine(epoLine, epoTime, updateInt, numSat, staID) != t_corrSSR::phaseBias)
+    {
+        return;
+    }
+    for (int ii = 0; ii <= numSat; ii++)
+    {
+      t_satPhaseBias satPhaseBias;
+      satPhaseBias._time      = epoTime;
+      satPhaseBias._updateInt = updateInt;
+      satPhaseBias._staID     = staID;
+
+      string line;
+      getline(inStream, line);
+      istringstream in(line.c_str());
+      string satsys;
+
+      if (ii == 0)
+      {
+        in >> dispInd >> mwInd;
+        continue;
+      }
+      satPhaseBias._dispBiasConstistInd = dispInd;
+      satPhaseBias._MWConsistInd = mwInd;
+
+      int numBias;
+
+      in >> satsys;
+      satsys = satsys.substr(0,1) +" "+ satsys.substr(1);
+      RinexSatID rs;
+      rs.fromString(satsys);
+      satPhaseBias._prn = SatID(rs.id,rs.system);
+
+      in >> satPhaseBias._yawDeg >> satPhaseBias._yawDegRate
+        >> numBias;
+
+      while (in.good())
+      {
+        t_frqPhaseBias frqPhaseBias;
+        in >> frqPhaseBias._rnxType2ch >> frqPhaseBias._value
+           >> frqPhaseBias._fixIndicator >> frqPhaseBias._fixWideLaneIndicator
+           >> frqPhaseBias._jumpCounter;
+        if (!frqPhaseBias._rnxType2ch.empty())
+        {
+          satPhaseBias._bias.push_back(frqPhaseBias);
+        }
+      }
+
+      biasList.push_back(satPhaseBias);
+    }
+}
+
+void t_vTec::read(const std::string& epoLine, std::istream& inStream, t_vTec& vTec)
+{
+    CommonTime   epoTime;
+    unsigned int updateInt;
+    int          numLayers;
+    string       staID;
+    if (t_corrSSR::readEpoLine(epoLine, epoTime, updateInt, numLayers, staID) != t_corrSSR::vTec)
+    {
+        return;
+    }
+    if (numLayers <= 0)
+    {
+        return;
+    }
+    vTec._time      = epoTime;
+    vTec._updateInt = updateInt;
+    vTec._staID     = staID;
+    for (int ii = 0; ii < numLayers; ii++)
+    {
+      t_vTecLayer layer;
+
+      std::string line;
+      getline(inStream, line);
+      istringstream in(line.c_str());
+
+      int dummy, maxDeg, maxOrd;
+      in >> dummy >> maxDeg >> maxOrd >> layer._height;
+
+      layer._C.resize(maxDeg+1, maxOrd+1);
+      layer._S.resize(maxDeg+1, maxOrd+1);
+
+      for (int iDeg = 0; iDeg <= maxDeg; iDeg++)
+      {
+        for (int iOrd = 0; iOrd <= maxOrd; iOrd++)
+        {
+          inStream >> layer._C[iDeg][iOrd];
+        }
+      }
+      for (int iDeg = 0; iDeg <= maxDeg; iDeg++)
+      {
+        for (int iOrd = 0; iOrd <= maxOrd; iOrd++)
+        {
+          inStream >> layer._S[iDeg][iOrd];
+        }
+      }
+
+      vTec._layers.push_back(layer);
     }
 }
 

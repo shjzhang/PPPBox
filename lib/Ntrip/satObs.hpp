@@ -181,7 +181,7 @@ class t_vTecLayer {
 class t_vTec {
  public:
   static void write(std::ostream* out, const t_vTec& vTec);
-  static void read(const std::string& epoLine, std::istream& in, t_vTec& vTec);
+  static void read(const std::string& epoLine, std::istream& inStream, t_vTec& vTec);
   std::string              _staID;
   gpstk::CommonTime        _time;
   unsigned int            _updateInt;
