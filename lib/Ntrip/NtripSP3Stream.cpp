@@ -16,7 +16,7 @@ NtripSP3Stream::NtripSP3Stream()
 {
     m_sFileName = "";
     m_bHeaderWritten = false;
-    m_eph = 0;
+    m_ephStore.usingCorrection(true);
     m_dSample = 1.0;
     m_refPoint = Unknown;
 }
@@ -181,8 +181,7 @@ void NtripSP3Stream::dumpEpoch()
     
     if(m_lastClkCorrTime != m_lastEpoTime)
     {
-        if((m_lastEpoTime.getDays()!=0.0 || m_lastEpoTime.getSecondOfDay()!=0.0)
-             && m_dSample > 0)
+        if(m_lastEpoTime.valid() && m_dSample > 0)
         {
             std::list<SatID>::iterator it;
             for(CommonTime ep = m_lastEpoTime + m_dSample; ep < m_lastClkCorrTime;
@@ -190,30 +189,24 @@ void NtripSP3Stream::dumpEpoch()
             {
                 for(it=prnList.begin();it!=prnList.end();++it)
                 {
-                    m_eph = (OrbitEph2*)m_ephStore.ephLast(*it);
+                    Xvt xvt = m_ephStore.getXvt(*it,ep);
 
-                    if(m_eph == 0)
+                    double d1,d2;
+
+                    // Relativity calculated from broadcast ephemeris
+                    d1 = xvt.relcorr;
+                    // Relativity calculated from precise ephemeris
+                    d2 = xvt.computeRelativityCorrection() ;
+                    satConvertToCoM(*it,m_lastClkCorrTime,xvt);
+
+                    xvt.clkbias += d1;
+                    xvt.clkbias -= d2;
+
+
+                    // Output the data to SP3 file
+                    if(m_bWriteFile)
                     {
-                        return;
-                    }
-
-                    GPSEphemeris2* ephGPS = dynamic_cast<GPSEphemeris2*>(m_eph);
-
-                    if(ephGPS)
-                    {
-                        Xvt xvt;
-
-                        // Get the satellite position and clock correction
-                        bool useCorr = true;
-                        ephGPS->getCrd(ep, xvt, useCorr);
-                        satConvertToCoM(ephGPS->satID,m_lastClkCorrTime,xvt);
-
-                        // Output the data to SP3 file
-                        if(m_bWriteFile)
-                        {
-                            writeFile(ep, *it, xvt);
-                        }
-
+                        writeFile(ep, *it, xvt);
                     }
                     else
                     {
@@ -227,30 +220,22 @@ void NtripSP3Stream::dumpEpoch()
             std::list<SatID>::iterator it;
             for(it=prnList.begin();it!=prnList.end();++it)
             {
-                m_eph = (OrbitEph2*)m_ephStore.ephLast(*it);
+                Xvt xvt = m_ephStore.getXvt(*it, m_lastClkCorrTime);
+                double d1,d2;
 
-                if(m_eph == 0)
+                // Relativity calculated from broadcast ephemeris
+                d1 = xvt.relcorr;
+                // Relativity calculated from precise ephemeris
+                d2 = xvt.computeRelativityCorrection() ;
+                satConvertToCoM(*it,m_lastClkCorrTime,xvt);
+
+                xvt.clkbias += d1;
+                xvt.clkbias -= d2;
+
+                // Output the data to SP3 file
+                if(m_bWriteFile)
                 {
-                     return;
-                }
-
-                GPSEphemeris2* ephGPS = dynamic_cast<GPSEphemeris2*>(m_eph);
-
-                if(ephGPS)
-                {
-                    Xvt xvt;
-
-                    // Get the satellite position and clock correction
-                    bool useCorr = true;
-                    ephGPS->getCrd(m_lastClkCorrTime, xvt, useCorr);
-                    satConvertToCoM(ephGPS->satID,m_lastClkCorrTime,xvt);
-
-                    // Output the data to SP3 file
-                    if(m_bWriteFile)
-                    {
-                        writeFile(m_lastClkCorrTime, *it, xvt);
-                    }
-
+                    writeFile(m_lastClkCorrTime, *it, xvt);
                 }
                 else
                 {
@@ -267,6 +252,7 @@ void NtripSP3Stream::updateEphmerisStore(RealTimeEphStore *ephStore)
 	std::unique_lock<std::mutex> lock(m_mutex);
     m_ephStore = *ephStore;
 }
+
 
 void NtripSP3Stream::satConvertToCoM(const SatID& satid,
                                      const CommonTime& time,
