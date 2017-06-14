@@ -281,107 +281,6 @@ namespace gpstk {
          << setw(16) << Cuc << " rad" << endl;
    }
 
-/*
-   // Define this OrbitEph2 by converting the given RINEX navigation data.
-   // NB this will be both overridden and called by the derived classes
-   // NB currently has fixes for MGEX data.
-   // @param rnd Rinex3NavData
-   // @return true if OrbitEph2 was defined, false otherwise
-   bool OrbitEph2::load(const Rinex3NavData& rnd)
-   {
-      try {
-         // Glonass and Geosync do not have a orbit-based ephemeris
-         if(rnd.satSys == "R" || rnd.satSys == "S") return false;
-
-         // first get times and TimeSytem
-         CommonTime gpstoe = rnd.time;
-         unsigned int year = static_cast<CivilTime>(gpstoe).year;
-
-         // Get week for clock, to build Toc
-         double dt = rnd.Toc - rnd.HOWtime;
-         int week = rnd.weeknum;
-         if(dt < -HALFWEEK) week++;
-         else if(dt > HALFWEEK) week--;
-      
-         //MGEX NB MGEX data has GPS week numbers in all systems except BeiDou,
-         //MGEX so must implement temporary fixes: use GPS Toc for GAL and QZSS
-         CommonTime gpstoc = GPSWeekSecond(week, rnd.Toc, TimeSystem::GPS);   //MGEX
-         //cout << "gpstoc is " << printTime(gpstoc,"%Y/%m/%d %H:%M:%S %P")
-         //<< " year " << year << " week " << week << " rnd.Toc " << rnd.Toc <<endl;
-
-         // based on satellite ID, define Toc with TimeSystem
-         if(rnd.satSys == "G") {
-            ctToc = GPSWeekSecond(week, rnd.Toc, TimeSystem::GPS);
-            ctToc.setTimeSystem(TimeSystem::GPS);
-         }
-         else if(rnd.satSys == "E") {
-            //MGEX GALWeekSecond galws(week, rnd.Toc, TimeSystem::GAL);
-            //MGEX galws.adjustToYear(year);
-            //MGEX ctToc = CommonTime(galws);
-            ctToc = gpstoc;        //MGEX
-            ctToc.setTimeSystem(TimeSystem::GAL);
-         }
-         else if(rnd.satSys == "C") {
-            BDSWeekSecond bdsws(week, rnd.Toc, TimeSystem::BDT);
-            bdsws.adjustToYear(year);
-            ctToc = CommonTime(bdsws);
-            ctToc.setTimeSystem(TimeSystem::BDT);
-         }
-         else if(rnd.satSys == "J") {
-            //MGEX QZSWeekSecond qzsws(week, rnd.Toc, TimeSystem::BDT);
-            //MGEX qzsws.adjustToYear(year);
-            //MGEX ctToc = CommonTime(qzsws);
-            ctToc = gpstoc;        //MGEX
-            ctToc.setTimeSystem(TimeSystem::QZS);
-         }
-         else
-            GPSTK_THROW(Exception("Unknown satellite system: " + rnd.satSys));
-
-         //cout << "ctToc " << printTime(oeptr->ctToc,"%Y/%m/%d %H:%M:%S %P") << endl;
-
-         // Overhead
-         RinexSatID sat;
-         sat.fromString(rnd.satSys + StringUtils::asString(rnd.PRNID));
-         satID = SatID(sat);
-         //obsID = ?? ObsID obsID; // Defines carrier and tracking code
-         ctToe = rnd.time;
-
-         // clock model
-         af0 = rnd.af0;
-         af1 = rnd.af1;
-         af2 = rnd.af2;
-   
-         // Major orbit parameters
-         M0 = rnd.M0;
-         dn = rnd.dn;
-         ecc = rnd.ecc;
-         A = rnd.Ahalf * rnd.Ahalf;
-         OMEGA0 = rnd.OMEGA0;
-         i0 = rnd.i0;
-         w = rnd.w;
-         OMEGAdot = rnd.OMEGAdot;
-         idot = rnd.idot;
-         // modern nav msg
-         dndot = 0.;
-         Adot = 0.;
-   
-         // Harmonic perturbations
-         Cuc = rnd.Cuc;
-         Cus = rnd.Cus;
-         Crc = rnd.Crc;
-         Crs = rnd.Crs;
-         Cic = rnd.Cic;
-         Cis = rnd.Cis;
-   
-         dataLoadedFlag = true;
-         adjustValidity();
-
-         return true;
-      }
-      catch(Exception& e) { GPSTK_RETHROW(e); }
-   }
-*/
-
    // Output object to stream
    ostream& operator<<(ostream& os, const OrbitEph2& eph)
    {
@@ -390,17 +289,17 @@ namespace gpstk {
    }
 
    // Set orbit correction
-   void OrbitEph2::setOrbCorr(const t_orbCorr *orbcorr)
+   void OrbitEph2::setOrbCorr(const t_orbCorr *corr)
    {
       delete orbCorr;
-      orbCorr = new t_orbCorr(*orbcorr);
+      orbCorr = new t_orbCorr(*corr);
    }
 
    // Set clock correction
-   void OrbitEph2::setClkCorr(const t_clkCorr *clkcorr)
+   void OrbitEph2::setClkCorr(const t_clkCorr *corr)
    {
       delete clkCorr;
-      clkCorr = new t_clkCorr(*clkcorr);
+      clkCorr = new t_clkCorr(*corr);
    }
 
    // Judge if this ephmeris is newer than eph2
@@ -433,7 +332,7 @@ namespace gpstk {
             double dtO = t - orbCorr->_time;
             if(orbCorr->_updateInt)
             {
-               dtO -= (0.5 * updateInt[orbCorr->_updateInt]);  // ??? 0.5 ???
+               dtO -= (0.5 * updateInt[orbCorr->_updateInt]);
             }
             Triple dx;
             dx[0] = orbCorr->_xr[0] + orbCorr->_dotXr[0] * dtO;
@@ -459,11 +358,13 @@ namespace gpstk {
             Matrix<double> matDx = matR*matD;
 
             // Correct the satellite position
+
             xvt.x[0] -= matDx(0,0);
             xvt.x[1] -= matDx(1,0);
             xvt.x[2] -= matDx(2,0);
 
             // RSW to XYZ for satellite velocity
+            along = xvt.v.unitVector();
             cross = xvt.x.cross(xvt.v);
             cross = cross.unitVector();
             radia = along.cross(cross);
@@ -489,8 +390,8 @@ namespace gpstk {
             }
 
             // Correct the satellite clock bias
-            xvt.clkbias += clkCorr->_dClk + clkCorr->_dotDClk * dtC
-                           + clkCorr->_dotDotDClk * dtC * dtC;
+            xvt.clkbias = xvt.clkbias + (clkCorr->_dClk + clkCorr->_dotDClk * dtC
+                           + clkCorr->_dotDotDClk * dtC * dtC);
             return true;
          }
       } // end of 'if(useCorr)'
