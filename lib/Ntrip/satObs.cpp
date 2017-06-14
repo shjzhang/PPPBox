@@ -139,12 +139,12 @@ void t_orbCorr::writeEpoch(ostream* out, const list<t_orbCorr>& corrList)
                << corrList.size() << ' ' << corr._staID << endl;
         }
         *out << RinexSatID(corr._prn)  << ' ' << setw(11) << corr._iod << ' '
-             << setw(10) << setprecision(4) << corr._xr[0]     << ' '
-             << setw(10) << setprecision(4) << corr._xr[1]     << ' '
-             << setw(10) << setprecision(4) << corr._xr[2]     << "    "
-             << setw(10) << setprecision(4) << corr._dotXr[0]  << ' '
-             << setw(10) << setprecision(4) << corr._dotXr[1]  << ' '
-             << setw(10) << setprecision(4) << corr._dotXr[2]  << endl;
+             << setw(12) << setprecision(6) << corr._xr[0]     << ' '
+             << setw(12) << setprecision(6) << corr._xr[1]     << ' '
+             << setw(12) << setprecision(6) << corr._xr[2]     << "    "
+             << setw(12) << setprecision(6) << corr._dotXr[0]  << ' '
+             << setw(12) << setprecision(6) << corr._dotXr[1]  << ' '
+             << setw(12) << setprecision(6) << corr._dotXr[2]  << endl;
     }
     out->flush();
 }
